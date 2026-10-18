@@ -3,10 +3,41 @@
   "keywords": [
     "頂讓",
     "盤讓",
+    "店面頂讓",
+    "店面轉讓",
+    "店鋪轉讓",
+    "整店頂讓",
+    "頂店",
+    "讓渡",
+    "含設備",
+    "免頂讓費",
+    "收店",
+    "結束營業",
+    "歇業",
+    "關店",
+    "收攤",
+    "退租",
     "設備轉讓",
+    "設備出清",
+    "生財器具",
+    "二手設備",
+    "餐飲設備",
+    "廚房設備",
+    "營業用",
+    "商用冰箱",
+    "免費",
+    "冷藏櫃",
+    "製冰機",
+    "蒸烤箱",
+    "飲料",
+    "爐具",
+    "咖啡機",
     "搬家出清",
-    "餐廳頂讓",
-    "二手餐飲設備"
+    "全店出清",
+    "清倉",
+    "帶走價",
+    "低價出清",
+    "便宜賣"
   ],
   "regions": [
     "台北",
@@ -17,9 +48,13 @@
     "高雄"
   ],
   "excludeWords": [
-    "徵求",
     "代辦",
-    "貸款"
+    "貸款",
+    "台股",
+    "股價",
+    "散戶",
+    "家具",
+    "床架"
   ],
   "regionRequired": false,
   "strictKeyword": true,
@@ -28,5 +63,10 @@
   "maxAgeHours": 72,
   "scrollsPerKeyword": 3,
   "maxNotifyPerRun": 15,
-  "maxStoredPosts": 300
+  "maxStoredPosts": 300,
+  "notifyTelegram": true,
+  "keywordsPerScan": 5,
+  "scanMinMinutes": 30,
+  "scanMaxMinutes": 90,
+  "restHoursPerDay": 6
 }
