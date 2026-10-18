@@ -1,0 +1,266 @@
+{
+  "updatedAt": "2026-10-18T15:39:36.002Z",
+  "lastRun": {
+    "startedAt": "2026-10-18T15:37:48.434Z",
+    "finishedAt": "2026-10-18T15:39:36.002Z",
+    "status": "ok",
+    "scanned": 68,
+    "matched": 14,
+    "newCount": 14,
+    "notified": 0,
+    "perKeyword": {
+      "頂讓": 19,
+      "盤讓": 15,
+      "設備轉讓": 0,
+      "搬家出清": 14,
+      "餐廳頂讓": 0,
+      "二手餐飲設備": 20
+    },
+    "warnings": [
+      "未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）"
+    ]
+  },
+  "runs": [
+    {
+      "startedAt": "2026-10-18T15:37:48.434Z",
+      "finishedAt": "2026-10-18T15:39:36.002Z",
+      "status": "ok",
+      "scanned": 68,
+      "matched": 14,
+      "newCount": 14,
+      "notified": 0,
+      "perKeyword": {
+        "頂讓": 19,
+        "盤讓": 15,
+        "設備轉讓": 0,
+        "搬家出清": 14,
+        "餐廳頂讓": 0,
+        "二手餐飲設備": 20
+      },
+      "warnings": [
+        "未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）"
+      ]
+    }
+  ],
+  "lastWarnAt": null,
+  "posts": [
+    {
+      "code": "Deo75pCkt1Y",
+      "user": "jianghuijing29",
+      "url": "https://www.threads.com/@jianghuijing29/post/Deo75pCkt1Y",
+      "authorUrl": "https://www.threads.com/@jianghuijing29",
+      "text": "家電出清\n【搬家出清｜二手家電家具便宜帶走～～】\n準備搬家啦！\n家裡有一些家具、家電用不到了，決定通通出清 ❤️\n✨ 歡迎大家來看看，有需要就帶走～\n💰 價格都標在圖片上，喜歡可以直接私訊詢問！\n📦 寄送方式：\n全家／黑貓，皆可貨到付款\n數量有限，售完就沒有囉～\n有興趣的朋友歡迎私訊！\n謝謝大家～～🥰",
+      "time": "2026-10-18T14:49:34.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "Deo5qxEH2Ln",
+      "user": "meijia3426",
+      "url": "https://www.threads.com/@meijia3426/post/Deo5qxEH2Ln",
+      "authorUrl": "https://www.threads.com/@meijia3426",
+      "text": "家電出清\n【搬家出清｜二手家電家具便宜帶走～～】\n準備搬家啦！\n家裡有一些家具、家電用不到了，決定通通出清 ❤️\n✨ 歡迎大家來看看，有需要就帶走～\n💰 價格都標在圖片上，喜歡可以直接私訊詢問！\n📦 寄送方式：\n全家／黑貓，皆可貨到付款\n數量有限，售完就沒有囉～\n有興趣的朋友歡迎私訊！\n謝謝大家～～🥰",
+      "time": "2026-10-18T14:30:03.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "DeozJhsie-h",
+      "user": "soso_bear_star",
+      "url": "https://www.threads.com/@soso_bear_star/post/DeozJhsie-h",
+      "authorUrl": "https://www.threads.com/@soso_bear_star",
+      "text": "飾品創業\n有人想做飾品創業嗎？\n本人有些事情想要把飾品頂讓\n含一些包裝小物\n可面交或寄貨，有興趣可以私訊Threads\n☺️☺️",
+      "time": "2026-10-18T13:33:05.000Z",
+      "keywords": [
+        "頂讓"
+      ],
+      "regions": [],
+      "foundBy": "頂讓",
+      "foundAt": "2026-10-18T15:39:35.332Z",
+      "initial": true
+    },
+    {
+      "code": "DeopYnVHzDF",
+      "user": "e5ts8",
+      "url": "https://www.threads.com/@e5ts8/post/DeopYnVHzDF",
+      "authorUrl": "https://www.threads.com/@e5ts8",
+      "text": "【搬家出清｜二手家電家具便宜帶走～～】\n準備搬家啦！\n家裡有一些家具、家電用不到了，決定通通出清 ❤️\n✨ 歡迎大家來看看，有需要就帶走～\n💰 價格都標在圖片上 喜歡可以直接私訊詢問！\n可以講價\n📦 寄送方式：\n全家／黑貓，皆可貨到付款（也可備車輛自搬載走）\n數量有限，售完就沒有囉～\n有興趣的朋友歡迎私訊！\n謝謝大家～～🥰",
+      "time": "2026-10-18T12:07:46.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "DeoX-4YE7Vw",
+      "user": "super22054",
+      "url": "https://www.threads.com/@super22054/post/DeoX-4YE7Vw",
+      "authorUrl": "https://www.threads.com/@super22054",
+      "text": "盤讓\n【盤讓】知名品牌連鎖飲料店 店面盤讓\n📍高雄市鼓山區，近西子灣、捷運站、旗津渡輪站、中山大學、駁二\n💰盤讓金額：30萬元（誠可議價）\n＊周邊環境：景區、學校、住家\n＊店面租金：目前30000元，需與房東重新簽約協調。\n＊盤讓項目含所有機器設備，不含原物料與私人物品。\n-\n🉑沿用目前品牌，需與總公司簽約培訓。\n🉑不沿用目前品牌，只承接店面器具\n在地經營已超過十五年，來店外送皆有固定客源，接手後培訓完成即可直接營業！\n目前依然在營業中，與公司的合約尚未到期，若想看看店面或是了解更多細節，請私訊或是直接撥打陳小姐0935860221，謝謝！",
+      "time": "2026-10-18T09:35:42.000Z",
+      "keywords": [
+        "盤讓"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "盤讓",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "DeoQNHsn4ln",
+      "user": "e5ts8",
+      "url": "https://www.threads.com/@e5ts8/post/DeoQNHsn4ln",
+      "authorUrl": "https://www.threads.com/@e5ts8",
+      "text": "【搬家出清｜二手家電家具便宜帶走～～】\n準備搬家啦！\n家裡有一些家具、家電用不到了，決定通通出清 ❤️\n✨ 歡迎大家來看看，有需要就帶走～\n💰 價格都標在圖片上 喜歡可以直接私訊詢問！\n可以講價\n📦 寄送方式：\n全家／黑貓，皆可貨到付款（也可備車輛自搬載走）\n數量有限，售完就沒有囉～\n有興趣的朋友歡迎私訊！\n謝謝大家～～🥰",
+      "time": "2026-10-18T08:27:44.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "DeoPceWkpU4",
+      "user": "_michelin_13",
+      "url": "https://www.threads.com/@_michelin_13/post/DeoPceWkpU4",
+      "authorUrl": "https://www.threads.com/@_michelin_13",
+      "text": "贈送自取\n搬家出清‼️\nX型曬衣架+S型衣架（都在室內使用狀況良好）\n全新除塵棒\n📌台中東區",
+      "time": "2026-10-18T08:21:06.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "DeoAiOOn77E",
+      "user": "e5ts8",
+      "url": "https://www.threads.com/@e5ts8/post/DeoAiOOn77E",
+      "authorUrl": "https://www.threads.com/@e5ts8",
+      "text": "家電\n【搬家出清｜二手家電家具便宜帶走～～】\n準備搬家啦！\n家裡有一些家具、家電用不到了，決定通通出清 ❤️\n✨ 歡迎大家來看看，有需要就帶走～\n💰 價格都標在圖片上 喜歡可以直接私訊詢問！\n可以講價\n📦 寄送方式：\n全家／黑貓，皆可貨到付款（也可備車輛自搬載走）\n數量有限，售完就沒有囉～\n有興趣的朋友歡迎私訊！\n謝謝大家～～🥰",
+      "time": "2026-10-18T06:10:49.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "Del80GDHwl_",
+      "user": "e5ts8",
+      "url": "https://www.threads.com/@e5ts8/post/Del80GDHwl_",
+      "authorUrl": "https://www.threads.com/@e5ts8",
+      "text": "二手出清\n【搬家出清｜二手家電家具便宜帶走～～】\n準備搬家啦！\n家裡有一些家具、家電用不到了，決定通通出清 ❤️\n✨ 歡迎大家來看看，有需要就帶走～\n💰 價格都標在圖片上 喜歡可以直接私訊詢問！\n可以講價\n📦 寄送方式：\n全家／黑貓，皆可貨到付款（也可備車輛自搬載走）\n數量有限，售完就沒有囉～\n有興趣的朋友歡迎私訊！\n謝謝大家～～🥰",
+      "time": "2026-10-17T10:59:49.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "DelcyK-E4aK",
+      "user": "b__841209",
+      "url": "https://www.threads.com/@b__841209/post/DelcyK-E4aK",
+      "authorUrl": "https://www.threads.com/@b__841209",
+      "text": "埔里人\n#頂讓 餐飲業\n尋找有緣人！\n還在營業中有喜歡可私訊來看看。",
+      "time": "2026-10-17T06:19:56.000Z",
+      "keywords": [
+        "頂讓"
+      ],
+      "regions": [],
+      "foundBy": "頂讓",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "DelVKGYGYOS",
+      "user": "alligator.2130718",
+      "url": "https://www.threads.com/@alligator.2130718/post/DelVKGYGYOS",
+      "authorUrl": "https://www.threads.com/@alligator.2130718",
+      "text": "店面頂讓\n想收店了，求頂讓，北區近一中街\n有朋友想開店創業的嗎？\n有基本餐飲設備",
+      "time": "2026-10-17T05:13:18.000Z",
+      "keywords": [
+        "頂讓"
+      ],
+      "regions": [],
+      "foundBy": "頂讓",
+      "foundAt": "2026-10-18T15:39:35.332Z",
+      "initial": true
+    },
+    {
+      "code": "DelTEcQk6hk",
+      "user": "nnning_133",
+      "url": "https://www.threads.com/@nnning_133/post/DelTEcQk6hk",
+      "authorUrl": "https://www.threads.com/@nnning_133",
+      "text": "頂讓\n台中市區 有沒有 美髮 越式洗髮 美容美甲\n店面要頂讓的～適合做美業的都可以\n歡迎私訊提供位置與屋況🥹",
+      "time": "2026-10-17T04:55:03.000Z",
+      "keywords": [
+        "頂讓"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "頂讓",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "DekXvF9E9oW",
+      "user": "p__o312",
+      "url": "https://www.threads.com/@p__o312/post/DekXvF9E9oW",
+      "authorUrl": "https://www.threads.com/@p__o312",
+      "text": "頂讓\n🔥 【新北板橋｜知名連鎖咖啡烘焙店誠意頂讓】 🔥\n✨ 現成店面＋完整設備＋既有客源\n📍 店面資訊\n* 地點：新北市板橋區\n* 類型：知名連鎖咖啡・蛋糕・烘焙店\n* 商圈：成熟住宅生活圈，周邊生活機能完善\n* 現況：持續正常營業中\n🌟 店面六大優勢\n✅ 知名連鎖品牌，具市場辨識度\n✅ 已有固定熟客，具備營運基礎\n✅ 店內裝潢完整，設備齊全\n✅ 咖啡、蛋糕，多元商品經營\n✅ 住宅生活圈，具日常消費需求\n✅ 適合新手及夫妻創業、家庭經營或餐飲業經營者\n💰 誠意頂讓｜細節歡迎留言洽談\n📩 歡迎有誠意、具備資金及經營規劃的朋友底下留言\n🔒 為維護正常營運，詳細資訊採私訊洽談，請勿直接至門市詢問，感謝配合。\n#板橋店面頂讓 #新北頂讓 #咖啡店頂讓 #連鎖店頂讓 #創業機會 #餐飲創業",
+      "time": "2026-10-16T20:16:35.000Z",
+      "keywords": [
+        "頂讓"
+      ],
+      "regions": [
+        "新北"
+      ],
+      "foundBy": "頂讓",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    },
+    {
+      "code": "DejedfYlDMg",
+      "user": "thy9k",
+      "url": "https://www.threads.com/@thy9k/post/DejedfYlDMg",
+      "authorUrl": "https://www.threads.com/@thy9k",
+      "text": "【搬家出清｜二手家電家具便宜帶走～～】\n準備搬家啦！\n家裡有一些家具、家電用不到了，決定通通出清 ❤️\n✨ 歡迎大家來看看，有需要就帶走～\n💰 價格都標在圖片上，喜歡可以直接私訊詢問！\n📦 寄送方式：\n全家／黑貓，皆可貨到付款\n數量有限，售完就沒有囉～\n有興趣的朋友歡迎私訊！\n謝謝大家～～🥰",
+      "time": "2026-10-16T11:56:06.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T15:39:35.333Z",
+      "initial": true
+    }
+  ]
+}
