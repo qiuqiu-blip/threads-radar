@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-10-18T16:05:02.781Z",
+  "updatedAt": "2026-10-18T16:41:22.170Z",
   "lastRun": {
-    "startedAt": "2026-10-18T16:03:08.360Z",
-    "finishedAt": "2026-10-18T16:05:02.781Z",
+    "startedAt": "2026-10-18T16:39:32.246Z",
+    "finishedAt": "2026-10-18T16:41:22.170Z",
     "status": "ok",
-    "scanned": 69,
-    "matched": 6,
-    "newCount": 6,
-    "notified": 6,
+    "scanned": 74,
+    "matched": 4,
+    "newCount": 4,
+    "notified": 4,
     "perKeyword": {
-      "頂讓": 18,
-      "盤讓": 16,
+      "頂讓": 17,
+      "盤讓": 21,
       "設備轉讓": 0,
-      "搬家出清": 13,
+      "搬家出清": 14,
       "餐廳頂讓": 0,
       "二手餐飲設備": 22
     },
@@ -21,6 +21,26 @@
     ]
   },
   "runs": [
+    {
+      "startedAt": "2026-10-18T16:39:32.246Z",
+      "finishedAt": "2026-10-18T16:41:22.170Z",
+      "status": "ok",
+      "scanned": 74,
+      "matched": 4,
+      "newCount": 4,
+      "notified": 4,
+      "perKeyword": {
+        "頂讓": 17,
+        "盤讓": 21,
+        "設備轉讓": 0,
+        "搬家出清": 14,
+        "餐廳頂讓": 0,
+        "二手餐飲設備": 22
+      },
+      "warnings": [
+        "未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）"
+      ]
+    },
     {
       "startedAt": "2026-10-18T16:03:08.360Z",
       "finishedAt": "2026-10-18T16:05:02.781Z",
@@ -64,6 +84,64 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "Deo-fjUk_Gl",
+      "user": "angelia102727",
+      "url": "https://www.threads.com/@angelia102727/post/Deo-fjUk_Gl",
+      "authorUrl": "https://www.threads.com/@angelia102727",
+      "text": "1.溫奶器$100\n2.Tomica消防車$300\n3.大玩具車$150\n4.Tayo工程車$1,500\n5.麵包超人錘$300\n6. Mesasilla書架$6,000\n7. Mesasilla推車$2,500\n8. Mesasilla小豬架$1,500\n9.uniqlo背巾防曬$150\n大型物件請聊聊\n小物件可賣貨便！\n以上誠可議（因搬家出清😍",
+      "time": "2026-10-18T15:12:13.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T16:41:16.367Z"
+    },
+    {
+      "code": "DeoDDuiEvX6",
+      "user": "adbhut.puran.tales",
+      "url": "https://www.threads.com/@adbhut.puran.tales/post/DeoDDuiEvX6",
+      "authorUrl": "https://www.threads.com/@adbhut.puran.tales",
+      "text": "台股\n8.｜高位橫盤再沖高，抓住時機趕緊拋\n這是最後一條，也是最關鍵的一條。股價在高檔橫盤整理一段時間後，突然再次沖高——這往往是「最後一波拉高出貨」。主力利用橫盤讓散戶以為「還會再漲」，然後用最後一筆資金拉高，吸引散戶進場追價，趁機把手中所有部位全部倒光。這種「最後的煙火」往往最絢麗，但也最危險。看到這種訊號，不要貪心，抓住時機趕緊拋。 因為煙火放完之後，留下的只有滿地灰燼\n我自己開一個小群組。裡面沒有業配、不用繳錢，就幾個有經驗的咖，每天一起看盤後資料、聊產業消息、互相切磋。看到什麼怪怪的訊號，大家隨口喇喇賽，交流一下看法。我平常看到不錯的買點也會直接丟進去，有興趣的就自己參考，沒興趣也沒差，反正多個視角總是好的。\n另外我每天早盤推薦【當沖】2～3檔，尾盤推薦【短線】2～3檔。為什麼買為什麼賣\n每天我都會公布到群組，想加入群組參考學習的股友\nLINE：vg475\n暗號：【345】\n傳暗號後我會手動邀請你進群。\n免費交流群組，覺得適合就留下，不習慣想退出也沒關係，完全沒有壓力。\n每天 9:10 左右，記得來看看。",
+      "time": "2026-10-18T06:32:52.000Z",
+      "keywords": [
+        "盤讓"
+      ],
+      "regions": [],
+      "foundBy": "盤讓",
+      "foundAt": "2026-10-18T16:41:16.367Z"
+    },
+    {
+      "code": "DelyvnSoAM_",
+      "user": "irene.tsao.7",
+      "url": "https://www.threads.com/@irene.tsao.7/post/DelyvnSoAM_",
+      "authorUrl": "https://www.threads.com/@irene.tsao.7",
+      "text": "二手家具出清\n【搬家出清｜10月底前搬走｜中和自取】\n因搬家出售兩件白色家具，可單買或合購！\n① IKEA 雙人床架 $1000\n* 長 200 × 寬 160 公分（人工測量外徑）\n* 使用約2年\n* 附排骨床板，不含床墊\n② 白色四層抽屜櫃 $500\n* 尺寸：90 × 70 × 47 公分\n* 四層抽屜，外觀如照片\n兩件一起帶走只要 1200\n地點：新北市中和區\n三樓無電梯，需買家自行拆卸、搬運及安排車輛。\n希望10月31日前完成搬運，能儘早取貨者優先。\n歡迎私訊詢問！",
+      "time": "2026-10-17T09:31:50.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [
+        "新北"
+      ],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T16:41:16.367Z"
+    },
+    {
+      "code": "Delob08GYhM",
+      "user": "weilingceng",
+      "url": "https://www.threads.com/@weilingceng/post/Delob08GYhM",
+      "authorUrl": "https://www.threads.com/@weilingceng",
+      "text": "小港區熱炒店要盤讓，請聯絡陳小姐：0988738230",
+      "time": "2026-10-17T08:01:45.000Z",
+      "keywords": [
+        "盤讓"
+      ],
+      "regions": [],
+      "foundBy": "盤讓",
+      "foundAt": "2026-10-18T16:41:16.367Z"
+    },
     {
       "code": "DeobdFMmulj",
       "user": "lalakent10",
