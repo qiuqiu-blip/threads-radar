@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-18T17:36:55.524Z",
+  "updatedAt": "2026-10-18T18:00:23.806Z",
   "lastRun": {
-    "startedAt": "2026-10-18T17:36:55.524Z",
-    "finishedAt": "2026-10-18T17:36:55.524Z",
+    "startedAt": "2026-10-18T18:00:23.805Z",
+    "finishedAt": "2026-10-18T18:00:23.806Z",
     "status": "paused",
     "scanned": 0,
     "matched": 0,
@@ -12,6 +12,17 @@
     "warnings": []
   },
   "runs": [
+    {
+      "startedAt": "2026-10-18T18:00:23.805Z",
+      "finishedAt": "2026-10-18T18:00:23.806Z",
+      "status": "paused",
+      "scanned": 0,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {},
+      "warnings": []
+    },
     {
       "startedAt": "2026-10-18T17:36:55.524Z",
       "finishedAt": "2026-10-18T17:36:55.524Z",
