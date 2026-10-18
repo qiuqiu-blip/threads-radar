@@ -1,27 +1,28 @@
 {
-  "updatedAt": "2026-10-18T17:07:27.971Z",
+  "updatedAt": "2026-10-18T17:36:55.524Z",
   "lastRun": {
-    "startedAt": "2026-10-18T17:05:39.492Z",
-    "finishedAt": "2026-10-18T17:07:27.971Z",
-    "status": "ok",
-    "scanned": 67,
-    "matched": 1,
-    "newCount": 1,
-    "notified": 1,
-    "perKeyword": {
-      "頂讓": 17,
-      "盤讓": 17,
-      "設備轉讓": 0,
-      "搬家出清": 11,
-      "餐廳頂讓": 0,
-      "二手餐飲設備": 22
-    },
-    "warnings": [
-      "未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）"
-    ],
-    "pushMode": "on"
+    "startedAt": "2026-10-18T17:36:55.524Z",
+    "finishedAt": "2026-10-18T17:36:55.524Z",
+    "status": "paused",
+    "scanned": 0,
+    "matched": 0,
+    "newCount": 0,
+    "notified": 0,
+    "perKeyword": {},
+    "warnings": []
   },
   "runs": [
+    {
+      "startedAt": "2026-10-18T17:36:55.524Z",
+      "finishedAt": "2026-10-18T17:36:55.524Z",
+      "status": "paused",
+      "scanned": 0,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {},
+      "warnings": []
+    },
     {
       "startedAt": "2026-10-18T17:05:39.492Z",
       "finishedAt": "2026-10-18T17:07:27.971Z",
