@@ -23,6 +23,8 @@ const DEFAULT_CONFIG = {
   strictKeyword: true,
   firstRunSilent: true,
   notifyErrors: true,
+  notifyTelegram: true,   // false = 線索只存進控制台，不推播
+  maxStoredRuns: 300,
   maxAgeHours: 72,
   scrollsPerKeyword: 3,
   maxNotifyPerRun: 15,
@@ -228,7 +230,7 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
   const finish = () => {
     run.finishedAt = new Date().toISOString();
     doc.lastRun = run;
-    doc.runs = [run, ...(doc.runs || [])].slice(0, 30);
+    doc.runs = [run, ...(doc.runs || [])].slice(0, cfg.maxStoredRuns || 300);
     store.saveDoc(doc);
     return run;
   };
@@ -282,7 +284,11 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
   const newPosts = [...fresh.values()].sort((a, b) => (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0));
   run.matched = run.newCount = newPosts.length;
 
-  if (firstRun) {
+  run.pushMode = cfg.notifyTelegram === false ? 'off' : 'on';
+  if (cfg.notifyTelegram === false) {
+    log('推播已關閉：線索只存進控制台');
+    if (firstRun) newPosts.forEach((p) => (p.initial = true));
+  } else if (firstRun) {
     newPosts.forEach((p) => (p.initial = true));
     await notify({
       html: `✅ <b>小球脆雷達已啟動</b>\n已記錄目前 ${newPosts.length} 則符合的舊貼文（不逐則推播），之後的新貼文會即時通知你。`,

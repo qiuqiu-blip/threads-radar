@@ -127,7 +127,7 @@ main{padding-top:16px}
 
 nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 10px calc(8px + env(safe-area-inset-bottom));
   background:linear-gradient(0deg,rgba(11,9,6,.98),rgba(11,9,6,.9));border-top:1px solid var(--line);backdrop-filter:blur(10px)}
-nav .in{max-width:780px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+nav .in{max-width:780px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 nav button{position:relative;border:1px solid transparent;background:none;color:var(--muted);padding:6px 2px;border-radius:12px;cursor:pointer;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:3px}
 nav button svg{width:22px;height:22px}
 nav button.on{color:var(--gold2);border-color:var(--line);background:linear-gradient(180deg,#2a2112,#16110a)}
@@ -136,6 +136,54 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
 #toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;
   background:#241c0d;border:1px solid var(--gold);color:var(--gold2);padding:10px 16px;border-radius:12px;z-index:50;transition:.25s;max-width:90vw;font-size:14px}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* 儀表板 */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:#0f0c07;border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6}
+.kpi b{display:block;font-size:24px;color:var(--gold2);font-variant-numeric:tabular-nums;line-height:1.2}
+.kpi small{color:var(--muted);font-size:12px}
+.kpi i{display:block;font-style:normal;font-size:11.5px;margin-top:3px;color:var(--muted)}
+.kpi i.up{color:var(--ok)}.kpi i.down{color:var(--bad)}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dgrid>.card{margin:0}
+@media(max-width:700px){.dgrid{grid-template-columns:1fr}}
+.chartbox{position:relative;height:220px}
+.chartbox.tall{height:280px}
+.svgc{width:100%;height:100%}
+.svgc svg{display:block;width:100%;height:100%;overflow:visible}
+.svgc text{font-family:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;font-size:12px;color:var(--muted);margin-top:6px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.chartbox.withleg{height:auto}
+.chartbox.withleg .svgc{height:200px}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700;border:1px solid var(--line)}
+.pill.ok{color:var(--ok);border-color:#2f5e43;background:rgba(95,196,139,.08)}
+.pill.off{color:var(--warn);border-color:#6b5222;background:rgba(240,176,74,.08)}
+.statusrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.mini div{background:#0f0c07;border:1px solid var(--line);border-radius:10px;padding:8px;text-align:center}
+.mini b{display:block;color:var(--text);font-size:16px}.mini small{color:var(--muted);font-size:11.5px}
+.matrix{width:100%;border-collapse:separate;border-spacing:3px;font-size:12.5px}
+.matrix th{color:var(--muted);font-weight:600;padding:4px;text-align:center;white-space:nowrap}
+.matrix th:first-child{text-align:left}
+.matrix td{text-align:center;padding:7px 4px;border-radius:6px;color:var(--text);font-variant-numeric:tabular-nums}
+.mwrap{overflow-x:auto}
+.rank{list-style:none;margin:0;padding:0}
+.rank li{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13.5px}
+.rank li:first-child{border-top:0}
+.rank .no{width:22px;height:22px;border-radius:50%;background:#2a2112;color:var(--gold2);display:grid;place-items:center;font-size:12px;flex:none}
+.rank .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank .bar{flex:0 0 32%;height:8px;border-radius:4px;background:#1c160c;overflow:hidden}
+.rank .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--gold3),var(--gold2))}
+.rank .ct{width:52px;text-align:right;color:var(--gold2);font-variant-numeric:tabular-nums}
+.flag{font-size:11px;color:var(--warn);border:1px solid #6b5222;border-radius:6px;padding:0 5px;margin-left:4px}
+.warnlist{list-style:none;margin:0;padding:0;font-size:13px}
+.warnlist li{padding:8px 0;border-top:1px solid var(--line);color:var(--warn)}
+.warnlist li:first-child{border-top:0}
+.warnlist small{display:block;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -210,6 +258,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
     </div>
     <div class="card">
       <label class="switch"><span data-i="enabled">啟用監控</span><input type="checkbox" class="tg" id="cEnabled"></label>
+      <label class="switch"><span data-i="notifyTg">推播到 Telegram（關閉＝只存進控制台）</span><input type="checkbox" class="tg" id="cTg"></label>
       <label class="switch"><span data-i="regionRequired">地區必須符合</span><input type="checkbox" class="tg" id="cRegionReq"></label>
       <label class="switch"><span data-i="strict">內文必須含關鍵字</span><input type="checkbox" class="tg" id="cStrict"></label>
       <label class="switch"><span data-i="firstSilent">初次啟動不推播舊貼文</span><input type="checkbox" class="tg" id="cFirst"></label>
@@ -220,6 +269,61 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
         <div class="field"><label data-i="scrolls">每個關鍵字往下捲動次數</label><input type="number" min="0" max="10" id="cScroll"></div>
       </div>
       <button class="btn" style="width:100%" id="saveBtn" data-i="save">儲存設定</button>
+    </div>
+  </section>
+
+  <!-- 儀表板 -->
+  <section class="tab" id="tab-dash">
+    <div class="card">
+      <h3 data-i="dRadar">雷達運作</h3>
+      <div class="statusrow"><span class="pill" id="dRun"></span><span class="pill" id="dPush"></span></div>
+      <div class="grid2">
+        <button class="btn ghost sm" id="dPauseBtn"></button>
+        <button class="btn ghost sm" id="dPushBtn"></button>
+      </div>
+      <div class="mini" style="margin-top:12px">
+        <div><b id="dLast">—</b><small data-i="dLast">上次掃描</small></div>
+        <div><b id="dNext">—</b><small data-i="dNext">預計下次</small></div>
+        <div><b id="dRate">—</b><small data-i="dRate">掃描成功率</small></div>
+        <div><b id="dAvgScan">—</b><small data-i="dAvgScan">平均每次掃到</small></div>
+        <div><b id="dAvgDur">—</b><small data-i="dAvgDur">平均耗時</small></div>
+        <div><b id="dRuns">—</b><small data-i="dRuns">紀錄次數</small></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 data-i="dKpi">線索總覽</h3>
+      <div class="kpis" id="dKpis"></div>
+    </div>
+
+    <div class="card">
+      <h3 data-i="dDaily">每日新增線索（近 14 天）</h3>
+      <div class="chartbox"><div id="cDaily" class="svgc"></div></div>
+    </div>
+
+    <div class="dgrid">
+      <div class="card"><h3 data-i="dHour">發文時段分布</h3><div class="chartbox"><div id="cHour" class="svgc"></div></div><p class="hint" data-i="dHourHint">看賣家通常幾點發文，方便抓時間回覆。</p></div>
+      <div class="card"><h3 data-i="dWeek">星期分布</h3><div class="chartbox"><div id="cWeek" class="svgc"></div></div></div>
+      <div class="card"><h3 data-i="dKw">關鍵字排行</h3><div class="chartbox tall"><div id="cKw" class="svgc"></div></div></div>
+      <div class="card"><h3 data-i="dRg">地區分布</h3><div class="chartbox withleg"><div id="cRg" class="svgc"></div><div class="legend" id="cRgLeg"></div></div></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3 data-i="dMatrix">關鍵字 × 地區 熱度表</h3>
+      <div class="mwrap"><table class="matrix" id="dMatrix"></table></div>
+      <p class="hint" data-i="dMatrixHint">顏色越金代表該組合的線索越多。</p>
+    </div>
+
+    <div class="dgrid">
+      <div class="card"><h3 data-i="dEff">關鍵字效率</h3><ul class="rank" id="dEff"></ul><p class="hint" data-i="dEffHint">命中率＝成為線索的則數 ÷ 搜尋到的貼文數。太低的關鍵字可以考慮換掉。</p></div>
+      <div class="card"><h3 data-i="dTop">熱門發文帳號</h3><ul class="rank" id="dTop"></ul><p class="hint" data-i="dTopHint">同一帳號發很多則，可能是仲介或專業賣家。</p></div>
+      <div class="card"><h3 data-i="dContact">聯絡進度</h3><div class="chartbox withleg"><div id="cContact" class="svgc"></div><div class="legend" id="cContactLeg"></div></div><p class="hint" data-i="dContactHint">「已聯絡」記錄在這台裝置上。</p></div>
+      <div class="card"><h3 data-i="dScanChart">掃描紀錄（最近 50 次）</h3><div class="chartbox withleg"><div id="cScan" class="svgc"></div><div class="legend" id="cScanLeg"></div></div></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3 data-i="dWarn">最近警告</h3>
+      <ul class="warnlist" id="dWarnList"></ul>
     </div>
   </section>
 
@@ -276,6 +380,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
 <nav><div class="in">
   <button class="on" data-tab="leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12l6-5"/></svg><span data-i="tabLeads">線索</span><i class="badge" id="badge"></i></button>
   <button data-tab="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="12" r="2"/><circle cx="14" cy="18" r="2"/></svg><span data-i="tabSettings">設定</span></button>
+  <button data-tab="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg><span data-i="tabDash">儀表板</span></button>
   <button data-tab="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg><span data-i="tabStatus">狀態</span></button>
   <button data-tab="connect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg><span data-i="tabConnect">連線</span></button>
 </div></nav>
@@ -337,6 +442,30 @@ Object.assign(I18N.vi,{disconnect:'Ngắt kết nối',disconnHint:'Sẽ xóa m�
   confirmDisconn:'Ngắt kết nối? Mã trên thiết bị này sẽ bị xóa.',disconnected:'Đã ngắt kết nối',connOn:'🟢 Đã kết nối: ',connOff:'⚪ Chưa kết nối (mẫu)',
   pause:'⏸ Tạm dừng radar',resume:'▶️ Bật lại radar',pausedMsg:'Đã tạm dừng radar',resumedMsg:'Đã bật radar',
   sumTitle:'Tổng hợp tin',export:'Xuất Excel',sumToday:'Hôm nay',sumWeek:'7 ngày qua',sumAll:'Tất cả',sumByKw:'Theo từ khóa',sumByRg:'Theo khu vực',none:'—',exported:'Đã xuất'});
+Object.assign(I18N.zh,{tabDash:'儀表板',notifyTg:'推播到 Telegram（關閉＝只存進控制台）',dRadar:'雷達運作',dLast:'上次掃描',dNext:'預計下次',dRate:'掃描成功率',dAvgScan:'平均每次掃到',dAvgDur:'平均耗時',dRuns:'紀錄次數',
+  dKpi:'線索總覽',dDaily:'每日新增線索（近 14 天）',dHour:'發文時段分布',dHourHint:'看賣家通常幾點發文，方便抓時間回覆。',dWeek:'星期分布',dKw:'關鍵字排行',dRg:'地區分布',
+  dMatrix:'關鍵字 × 地區 熱度表',dMatrixHint:'顏色越金代表該組合的線索越多。',dEff:'關鍵字效率',dEffHint:'命中率＝成為線索的則數 ÷ 搜尋到的貼文數。太低的關鍵字可以考慮換掉。',
+  dTop:'熱門發文帳號',dTopHint:'同一帳號發很多則，可能是仲介或專業賣家。',dContact:'聯絡進度',dContactHint:'「已聯絡」記錄在這台裝置上。',dScanChart:'掃描紀錄（最近 50 次）',dWarn:'最近警告',
+  pRun:'● 運行中',pPaused:'● 已暫停',pushOn:'🔔 推播：開',pushOff:'🔕 推播：關（只存控制台）',pushOnBtn:'🔔 開啟 Telegram 推播',pushOffBtn:'🔕 關閉 Telegram 推播',
+  pushOnMsg:'已開啟 Telegram 推播',pushOffMsg:'已關閉推播，線索只存進控制台',kToday:'今日新增',kYest:'昨日',k7:'近 7 天',k30:'近 30 天',kAll:'全部線索',kOpen:'未處理',kDone:'已聯絡',kRateC:'聯絡率',kAvg:'日均（近 7 天）',
+  vsY:'比昨天',noRegion:'未標地區',leadsL:'線索',scannedL:'掃到貼文',newL:'新線索',hourU:'時',weekdays:['日','一','二','三','四','五','六'],noWarn:'最近沒有警告 👍',agent:'疑似仲介',
+  soon:'即將',minU:'分',secU:'秒',noData:'尚無資料',timesU:'次',postsU:'則',hitRate:'命中率',kUsers:'不同帳號',kWithRg:'有標地區',kScanned:'累計掃描貼文',dLeftAxis:'左軸',dRightAxis:'右軸'});
+Object.assign(I18N.en,{tabDash:'Dashboard',notifyTg:'Push to Telegram (off = panel only)',dRadar:'Radar',dLast:'Last scan',dNext:'Next scan',dRate:'Success rate',dAvgScan:'Avg posts/scan',dAvgDur:'Avg duration',dRuns:'Runs logged',
+  dKpi:'Overview',dDaily:'New leads per day (14 days)',dHour:'Posting hours',dHourHint:'When sellers usually post.',dWeek:'By weekday',dKw:'Top keywords',dRg:'By region',
+  dMatrix:'Keyword × region heatmap',dMatrixHint:'More gold = more leads.',dEff:'Keyword efficiency',dEffHint:'Hit rate = leads ÷ posts found. Replace keywords with very low rates.',
+  dTop:'Top posters',dTopHint:'Many posts from one account may mean an agent.',dContact:'Contact progress',dContactHint:'“Contacted” is saved on this device.',dScanChart:'Scan history (last 50)',dWarn:'Recent warnings',
+  pRun:'● Running',pPaused:'● Paused',pushOn:'🔔 Push: on',pushOff:'🔕 Push: off (panel only)',pushOnBtn:'🔔 Turn on Telegram push',pushOffBtn:'🔕 Turn off Telegram push',
+  pushOnMsg:'Telegram push on',pushOffMsg:'Push off — leads saved to panel only',kToday:'Today',kYest:'Yesterday',k7:'7 days',k30:'30 days',kAll:'All leads',kOpen:'Unhandled',kDone:'Contacted',kRateC:'Contact rate',kAvg:'Daily avg (7d)',
+  vsY:'vs yesterday',noRegion:'No region',leadsL:'Leads',scannedL:'Posts found',newL:'New leads',hourU:'h',weekdays:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],noWarn:'No recent warnings 👍',agent:'Agent?',
+  soon:'soon',minU:'m',secU:'s',noData:'No data yet',timesU:'',postsU:'',hitRate:'Hit rate',kUsers:'Accounts',kWithRg:'With region',kScanned:'Posts scanned',dLeftAxis:'left',dRightAxis:'right'});
+Object.assign(I18N.vi,{tabDash:'Bảng số liệu',notifyTg:'Gửi Telegram (tắt = chỉ lưu bảng)',dRadar:'Radar',dLast:'Lần quét trước',dNext:'Lần quét sau',dRate:'Tỷ lệ thành công',dAvgScan:'TB bài mỗi lần',dAvgDur:'TB thời gian',dRuns:'Số lần ghi',
+  dKpi:'Tổng quan',dDaily:'Tin mới mỗi ngày (14 ngày)',dHour:'Khung giờ đăng',dHourHint:'Người bán thường đăng lúc mấy giờ.',dWeek:'Theo thứ',dKw:'Xếp hạng từ khóa',dRg:'Theo khu vực',
+  dMatrix:'Bảng nhiệt từ khóa × khu vực',dMatrixHint:'Càng vàng càng nhiều tin.',dEff:'Hiệu quả từ khóa',dEffHint:'Tỷ lệ = số tin ÷ số bài tìm được. Đổi từ khóa có tỷ lệ quá thấp.',
+  dTop:'Tài khoản đăng nhiều',dTopHint:'Một tài khoản đăng nhiều có thể là môi giới.',dContact:'Tiến độ liên hệ',dContactHint:'“Đã liên hệ” lưu trên thiết bị này.',dScanChart:'Lịch sử quét (50 lần)',dWarn:'Cảnh báo gần đây',
+  pRun:'● Đang chạy',pPaused:'● Tạm dừng',pushOn:'🔔 Thông báo: bật',pushOff:'🔕 Thông báo: tắt',pushOnBtn:'🔔 Bật thông báo Telegram',pushOffBtn:'🔕 Tắt thông báo Telegram',
+  pushOnMsg:'Đã bật thông báo',pushOffMsg:'Đã tắt thông báo, chỉ lưu vào bảng',kToday:'Hôm nay',kYest:'Hôm qua',k7:'7 ngày',k30:'30 ngày',kAll:'Tất cả',kOpen:'Chưa xử lý',kDone:'Đã liên hệ',kRateC:'Tỷ lệ liên hệ',kAvg:'TB/ngày (7 ngày)',
+  vsY:'so với hôm qua',noRegion:'Không rõ khu vực',leadsL:'Tin',scannedL:'Bài tìm được',newL:'Tin mới',hourU:'h',weekdays:['CN','T2','T3','T4','T5','T6','T7'],noWarn:'Không có cảnh báo 👍',agent:'Môi giới?',
+  soon:'sắp',minU:'p',secU:'g',noData:'Chưa có dữ liệu',timesU:'',postsU:'',hitRate:'Tỷ lệ',kUsers:'Tài khoản',kWithRg:'Có khu vực',kScanned:'Tổng bài quét',dLeftAxis:'trục trái',dRightAxis:'trục phải'});
 const SPEECH_LANG = {zh:'zh-TW',en:'en-US',vi:'vi-VN'};
 
 /* ============ 本機儲存（全部包 try/catch） ============ */
@@ -444,6 +573,7 @@ async function load(silent){
     if(state.demo)fillSettings();
     if(!LS.get('lastView',null))LS.set('lastView',new Date().toISOString());
     renderAll(); checkNew(); loadRuns();
+    if($('#tab-dash').classList.contains('show'))renderDash();
     if(!silent&&a)toast(t('connected'));
   }catch(e){toast(t('connFail')+'：'+e.message)}
 }
@@ -458,7 +588,7 @@ function checkNew(){
 function markViewed(){LS.set('lastView',new Date().toISOString());setTimeout(checkNew,50)}
 
 /* ============ 畫面：線索 ============ */
-function renderAll(){renderSummary();renderChips();renderList();renderStatus();renderPause();renderConnState()}
+function renderAll(){renderSummary();renderChips();renderList();renderStatus();renderPause();renderConnState();renderDash()}
 
 /* ============ 彙整 ============ */
 function renderSummary(){
@@ -565,7 +695,7 @@ function fillSettings(){
   const c=state.cfg;if(!c)return;
   renderTags();
   $('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;
-  $('#cFirst').checked=c.firstRunSilent!==false;$('#cErr').checked=c.notifyErrors!==false;
+  $('#cFirst').checked=c.firstRunSilent!==false;$('#cTg').checked=c.notifyTelegram!==false;$('#cErr').checked=c.notifyErrors!==false;
   $('#cAge').value=c.maxAgeHours??72;$('#cMaxN').value=c.maxNotifyPerRun??15;$('#cScroll').value=c.scrollsPerKeyword??3;
 }
 function addTag(id){
@@ -577,7 +707,7 @@ function addTag(id){
 async function saveSettings(){
   const c=state.cfg;
   Object.assign(c,{enabled:$('#cEnabled').checked,regionRequired:$('#cRegionReq').checked,strictKeyword:$('#cStrict').checked,
-    firstRunSilent:$('#cFirst').checked,notifyErrors:$('#cErr').checked,maxAgeHours:+$('#cAge').value||0,
+    firstRunSilent:$('#cFirst').checked,notifyTelegram:$('#cTg').checked,notifyErrors:$('#cErr').checked,maxAgeHours:+$('#cAge').value||0,
     maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
   const a=adapter();if(!a){toast(t('needConn'));return}
   const b=$('#saveBtn');b.disabled=true;
@@ -621,6 +751,155 @@ function fillConn(){
 }
 function toggleMode(){const api=$('#mMode').value==='api';$('#ghFields').hidden=api;$('#apiFields').hidden=!api}
 
+/* ============ 儀表板 ============ */
+const GOLD='#d4af37',GOLD2='#f5d77a',MUTED='#a8987a',GREEN='#5fc48b';
+const PALETTE=['#f5d77a','#d4af37','#b8902a','#8a6a1c','#e9c46a','#c9a227','#9fd9b1','#6fb58b','#e0a35a','#c77d3a','#a8987a','#6d5d3c'];
+const NS='http://www.w3.org/2000/svg';
+function box(id){const el=document.getElementById(id);const w=Math.max(260,el.clientWidth||600),h=Math.max(160,el.clientHeight||220);return {el,w,h}}
+const niceMax=v=>{if(v<=4)return Math.max(1,v);const p=Math.pow(10,Math.floor(Math.log10(v)));const n=v/p;return (n<=2?2:n<=5?5:10)*p};
+/* 直條 / 橫條 */
+function svgBar(id,labels,vals,o={}){
+  const {el,w,h}=box(id);const max=niceMax(Math.max(0,...vals));
+  if(o.horizontal){
+    const lw=Math.min(110,w*.32),rowH=Math.min(28,(h-10)/Math.max(1,labels.length)),bw=w-lw-40;
+    el.innerHTML=`<svg viewBox="0 0 ${w} ${h}">${labels.map((l,i)=>{const y=6+i*rowH,len=max?vals[i]/max*bw:0;
+      return `<text x="${lw-8}" y="${y+rowH*.62}" text-anchor="end" font-size="12" fill="${MUTED}">${esc(l).slice(0,10)}</text>
+      <rect x="${lw}" y="${y+rowH*.18}" width="${Math.max(2,len)}" height="${rowH*.64}" rx="5" fill="${o.colors?o.colors[i%o.colors.length]:GOLD}"><title>${esc(l)}：${vals[i]}</title></rect>
+      <text x="${lw+len+6}" y="${y+rowH*.62}" font-size="12" fill="${GOLD2}">${vals[i]}</text>`}).join('')}</svg>`;
+    return;
+  }
+  const L=30,B=24,T=10,cw=w-L-6,ch=h-B-T,n=labels.length,gap=cw/n,bw=Math.max(3,gap*.68);
+  const ticks=[0,max/2,max];const step=o.every||Math.ceil(n/(w<420?7:12));
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}">
+    ${ticks.map(v=>{const y=T+ch-(v/max)*ch;return `<line x1="${L}" x2="${w}" y1="${y}" y2="${y}" stroke="rgba(58,46,23,.7)"/><text x="${L-6}" y="${y+4}" text-anchor="end" font-size="11" fill="${MUTED}">${Math.round(v)}</text>`}).join('')}
+    ${vals.map((v,i)=>{const bh=max?v/max*ch:0,x=L+i*gap+(gap-bw)/2;const hi=o.highlight&&o.highlight(i,v);
+      return `<rect x="${x}" y="${T+ch-bh}" width="${bw}" height="${Math.max(bh,v?2:0)}" rx="4" fill="${hi?GOLD2:'rgba(212,175,55,.5)'}"><title>${esc(labels[i])}：${v}</title></rect>
+      ${v&&n<=16?`<text x="${x+bw/2}" y="${T+ch-bh-4}" text-anchor="middle" font-size="11" fill="${GOLD2}">${v}</text>`:''}
+      ${i%step===0||i===n-1?`<text x="${x+bw/2}" y="${h-6}" text-anchor="middle" font-size="11" fill="${MUTED}">${esc(labels[i])}</text>`:''}`}).join('')}
+  </svg>`;
+}
+/* 甜甜圈 */
+function svgDonut(id,legId,labels,vals,colors){
+  const {el,w,h}=box(id);const tot=vals.reduce((a,b)=>a+b,0);const cx=w/2,cy=h/2,r=Math.min(w,h)/2-8,ir=r*.6;
+  if(!tot){el.innerHTML=`<svg viewBox="0 0 ${w} ${h}"><circle cx="${cx}" cy="${cy}" r="${(r+ir)/2}" fill="none" stroke="#2a2316" stroke-width="${r-ir}"/><text x="${cx}" y="${cy+5}" text-anchor="middle" font-size="13" fill="${MUTED}">${t('noData')}</text></svg>`;$('#'+legId).innerHTML='';return}
+  let a0=-Math.PI/2;const arcs=vals.map((v,i)=>{const a1=a0+v/tot*Math.PI*2;const large=a1-a0>Math.PI?1:0;
+    const p=(a,rr)=>`${cx+rr*Math.cos(a)},${cy+rr*Math.sin(a)}`;
+    const d=v===tot?`M ${cx} ${cy-r} A ${r} ${r} 0 1 1 ${cx-0.01} ${cy-r} L ${cx-0.01} ${cy-ir} A ${ir} ${ir} 0 1 0 ${cx} ${cy-ir} Z`
+      :`M ${p(a0,r)} A ${r} ${r} 0 ${large} 1 ${p(a1,r)} L ${p(a1,ir)} A ${ir} ${ir} 0 ${large} 0 ${p(a0,ir)} Z`;
+    a0=a1;return v?`<path d="${d}" fill="${colors[i%colors.length]}" stroke="#16120b" stroke-width="2"><title>${esc(labels[i])}：${v}</title></path>`:''}).join('');
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}">${arcs}<text x="${cx}" y="${cy+2}" text-anchor="middle" font-size="24" font-weight="800" fill="${GOLD2}">${tot}</text><text x="${cx}" y="${cy+20}" text-anchor="middle" font-size="11" fill="${MUTED}">${t('leadsL')}</text></svg>`;
+  $('#'+legId).innerHTML=labels.map((l,i)=>`<span><i style="background:${colors[i%colors.length]}"></i>${esc(l)} ${vals[i]}（${Math.round(vals[i]/tot*100)}%）</span>`).join('');
+}
+/* 線＋柱 */
+function svgCombo(id,legId,lineVals,barVals){
+  const {el,w,h}=box(id);const n=lineVals.length;
+  if(!n){el.innerHTML=`<svg viewBox="0 0 ${w} ${h}"><text x="${w/2}" y="${h/2}" text-anchor="middle" font-size="13" fill="${MUTED}">${t('noData')}</text></svg>`;$('#'+legId).innerHTML='';return}
+  const L=30,R=26,T=10,B=10,cw=w-L-R,ch=h-T-B,m1=niceMax(Math.max(1,...lineVals)),m2=niceMax(Math.max(1,...barVals)),gap=cw/n;
+  const pts=lineVals.map((v,i)=>`${L+i*gap+gap/2},${T+ch-v/m1*ch}`);
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}">
+    ${[0,.5,1].map(f=>{const y=T+ch-f*ch;return `<line x1="${L}" x2="${w-R}" y1="${y}" y2="${y}" stroke="rgba(58,46,23,.7)"/><text x="${L-6}" y="${y+4}" text-anchor="end" font-size="11" fill="${MUTED}">${Math.round(m1*f)}</text><text x="${w-R+6}" y="${y+4}" font-size="11" fill="${GOLD2}">${Math.round(m2*f)}</text>`}).join('')}
+    <polygon points="${L+gap/2},${T+ch} ${pts.join(' ')} ${L+(n-1)*gap+gap/2},${T+ch}" fill="rgba(168,152,122,.15)"/>
+    <polyline points="${pts.join(' ')}" fill="none" stroke="${MUTED}" stroke-width="2" stroke-linejoin="round"/>
+    ${barVals.map((v,i)=>{const bh=v/m2*ch,bw=Math.max(2,gap*.5);return v?`<rect x="${L+i*gap+(gap-bw)/2}" y="${T+ch-bh}" width="${bw}" height="${bh}" rx="2" fill="${GOLD2}"><title>${v}</title></rect>`:''}).join('')}
+  </svg>`;
+  $('#'+legId).innerHTML=`<span><i style="background:${MUTED}"></i>${t('scannedL')}（${t('dLeftAxis')}）</span><span><i style="background:${GOLD2}"></i>${t('newL')}（${t('dRightAxis')}）</span>`;
+}
+function renderDash(){
+  if(!$('#tab-dash').classList.contains('show'))return;
+  const doc=state.doc||{}, posts=doc.posts||[], runs=doc.runs||[], cfg=state.cfg||{};
+  const now=Date.now(), DAY=864e5;
+  const found=p=>Date.parse(p.foundAt||p.time)||0;
+  const posted=p=>Date.parse(p.time||p.foundAt)||0;
+  const live=posts.filter(p=>!p.initial);
+  const t0=new Date();t0.setHours(0,0,0,0);const today=t0.getTime();
+
+  /* 雷達運作 */
+  const on=cfg.enabled!==false, push=cfg.notifyTelegram!==false;
+  $('#dRun').className='pill '+(on?'ok':'off');$('#dRun').textContent=on?t('pRun'):t('pPaused');
+  $('#dPush').className='pill '+(push?'ok':'off');$('#dPush').textContent=push?t('pushOn'):t('pushOff');
+  $('#dPauseBtn').textContent=on?t('pause'):t('resume');
+  $('#dPushBtn').textContent=push?t('pushOffBtn'):t('pushOnBtn');
+  const last=doc.lastRun;const lastT=last?Date.parse(last.finishedAt||last.startedAt):0;
+  $('#dLast').textContent=last?ago(last.finishedAt||last.startedAt):'—';
+  if(on&&lastT){const m=Math.round((lastT+15*6e4-now)/6e4);$('#dNext').textContent=m>0?`~${m} ${t('minU')}`:t('soon')}else $('#dNext').textContent='—';
+  const scanRuns=runs.filter(r=>r.status!=='paused');
+  const okRuns=scanRuns.filter(r=>r.status==='ok').length;
+  $('#dRate').textContent=scanRuns.length?Math.round(okRuns/scanRuns.length*100)+'%':'—';
+  $('#dAvgScan').textContent=scanRuns.length?Math.round(scanRuns.reduce((a,r)=>a+(r.scanned||0),0)/scanRuns.length):'—';
+  const durs=scanRuns.map(r=>Date.parse(r.finishedAt)-Date.parse(r.startedAt)).filter(x=>x>0);
+  $('#dAvgDur').textContent=durs.length?Math.round(durs.reduce((a,b)=>a+b,0)/durs.length/1000)+t('secU'):'—';
+  $('#dRuns').textContent=runs.length;
+
+  /* KPI */
+  const cnt=(from,to=Infinity)=>live.filter(p=>found(p)>=from&&found(p)<to).length;
+  const cToday=cnt(today), cY=cnt(today-DAY,today), c7=posts.filter(p=>now-found(p)<7*DAY).length, c30=posts.filter(p=>now-found(p)<30*DAY).length;
+  const done=posts.filter(p=>state.done.has(p.url)).length, diff=cToday-cY;
+  const kpis=[[cToday,t('kToday'),(cY||cToday)?`<i class="${diff>=0?'up':'down'}">${diff>=0?'▲':'▼'} ${Math.abs(diff)} ${t('vsY')}</i>`:''],
+    [cY,t('kYest'),''],[c7,t('k7'),''],[c30,t('k30'),''],[posts.length,t('kAll'),''],[posts.length-done,t('kOpen'),''],[done,t('kDone'),''],
+    [posts.length?Math.round(done/posts.length*100)+'%':'—',t('kRateC'),''],[(c7/7).toFixed(1),t('kAvg'),''],
+    [Object.keys(posts.reduce((m,p)=>(m[p.user]=1,m),{})).length,t('kUsers'),''],
+    [posts.filter(p=>(p.regions||[]).length).length,t('kWithRg'),''],
+    [scanRuns.reduce((a,r)=>a+(r.scanned||0),0),t('kScanned'),'']];
+  $('#dKpis').innerHTML=kpis.map(([v,l,x])=>`<div class="kpi"><b>${v}</b><small>${l}</small>${x}</div>`).join('');
+
+  /* 每日 14 天 */
+  const days=[],dayCounts=[];
+  for(let i=13;i>=0;i--){const d=today-i*DAY,dd=new Date(d);days.push(`${dd.getMonth()+1}/${dd.getDate()}`);dayCounts.push(posts.filter(p=>{const f=found(p);return f>=d&&f<d+DAY}).length)}
+  svgBar('cDaily',days,dayCounts,{highlight:i=>i===13,every:2});
+
+  /* 時段 / 星期 */
+  const hours=Array(24).fill(0);posts.forEach(p=>{const x=posted(p);if(x)hours[new Date(x).getHours()]++});const maxH=Math.max(...hours);
+  svgBar('cHour',hours.map((_,i)=>String(i)),hours,{highlight:(i,v)=>v&&v===maxH,every:3});
+  const wk=Array(7).fill(0);posts.forEach(p=>{const x=posted(p);if(x)wk[new Date(x).getDay()]++});const maxW=Math.max(...wk);
+  svgBar('cWeek',t('weekdays'),wk,{highlight:(i,v)=>v&&v===maxW,every:1});
+
+  /* 關鍵字 / 地區 */
+  const tally=(key)=>{const m={};posts.forEach(p=>(p[key]||[]).forEach(k=>m[k]=(m[k]||0)+1));return Object.entries(m).sort((a,b)=>b[1]-a[1])};
+  const kw=tally('keywords').slice(0,10);
+  if(kw.length)svgBar('cKw',kw.map(x=>x[0]),kw.map(x=>x[1]),{horizontal:true,colors:PALETTE});else $('#cKw').innerHTML=`<p class="hint">${t('noData')}</p>`;
+  const rg=tally('regions');const noRg=posts.filter(p=>!(p.regions||[]).length).length;if(noRg)rg.push([t('noRegion'),noRg]);
+  svgDonut('cRg','cRgLeg',rg.map(x=>x[0]),rg.map(x=>x[1]),rg.map((x,i)=>x[0]===t('noRegion')?'#4a3d22':PALETTE[i%PALETTE.length]));
+
+  /* 熱度表 */
+  const kws=(cfg.keywords&&cfg.keywords.length?cfg.keywords:kw.map(x=>x[0]));
+  const rgs=[...(cfg.regions||[]),t('noRegion')];const cell={};let maxC=0;
+  posts.forEach(p=>{const rs=(p.regions||[]).length?p.regions:[t('noRegion')];(p.keywords||[]).forEach(k=>rs.forEach(r=>{const key=k+'|'+r;cell[key]=(cell[key]||0)+1;maxC=Math.max(maxC,cell[key])}))});
+  $('#dMatrix').innerHTML=!kws.length?`<tr><td>${t('noData')}</td></tr>`:`<tr><th></th>${rgs.map(r=>`<th>${esc(r)}</th>`).join('')}</tr>`+
+    kws.map(k=>`<tr><th>${esc(k)}</th>${rgs.map(r=>{const v=cell[k+'|'+r]||0;const a=maxC?v/maxC:0;
+      return `<td style="background:rgba(212,175,55,${v?0.14+a*0.76:0.04});color:${a>.55?'#2a1d02':'var(--text)'}">${v||'·'}</td>`}).join('')}</tr>`).join('');
+
+  /* 關鍵字效率 */
+  const scannedBy={};runs.forEach(r=>Object.entries(r.perKeyword||{}).forEach(([k,v])=>{if(v>0)scannedBy[k]=(scannedBy[k]||0)+v}));
+  const leadsBy=Object.fromEntries(tally('keywords'));
+  const eff=Object.keys({...scannedBy,...leadsBy}).map(k=>{const s=scannedBy[k]||0,l=leadsBy[k]||0;return [k,l,s,s?l/s:0]}).sort((a,b)=>b[3]-a[3]);
+  const maxR=Math.max(0.0001,...eff.map(e=>e[3]));
+  $('#dEff').innerHTML=eff.length?eff.map(([k,l,s,r],i)=>`<li><span class="no">${i+1}</span><span class="nm">${esc(k)} <small style="color:var(--muted)">${l}/${s}</small></span>
+    <span class="bar"><span style="width:${r/maxR*100}%"></span></span><span class="ct">${(r*100).toFixed(1)}%</span></li>`).join(''):`<li>${t('noData')}</li>`;
+
+  /* 熱門帳號 */
+  const byUser={};posts.forEach(p=>{const u=byUser[p.user]||(byUser[p.user]={n:0,url:p.authorUrl,last:0});u.n++;u.last=Math.max(u.last,found(p))});
+  const top=Object.entries(byUser).sort((a,b)=>b[1].n-a[1].n||b[1].last-a[1].last).slice(0,10);const maxU=top.length?top[0][1].n:1;
+  $('#dTop').innerHTML=top.length?top.map(([u,v],i)=>`<li><span class="no">${i+1}</span><span class="nm"><a href="${esc(v.url)}" target="_blank" rel="noopener">@${esc(u)}</a>${v.n>=3?`<span class="flag">${t('agent')}</span>`:''}</span>
+    <span class="bar"><span style="width:${v.n/maxU*100}%"></span></span><span class="ct">${v.n}</span></li>`).join(''):`<li>${t('noData')}</li>`;
+
+  /* 聯絡進度 / 掃描紀錄 */
+  svgDonut('cContact','cContactLeg',[t('kDone'),t('kOpen')],[done,posts.length-done],[GREEN,GOLD]);
+  const rs=scanRuns.slice(0,50).reverse();
+  svgCombo('cScan','cScanLeg',rs.map(r=>r.scanned||0),rs.map(r=>r.newCount||0));
+
+  /* 警告 */
+  const warns=runs.filter(r=>r.warnings&&r.warnings.length).slice(0,10);
+  $('#dWarnList').innerHTML=warns.length?warns.map(r=>`<li>⚠️ ${esc(r.warnings.join('；'))}<small>${new Date(r.startedAt).toLocaleString()}</small></li>`).join(''):`<li style="color:var(--ok)">${t('noWarn')}</li>`;
+}
+window.addEventListener('resize',()=>{clearTimeout(window.__rz);window.__rz=setTimeout(renderDash,200)});
+async function togglePush(){
+  const a=adapter();if(!a){toast(t('needConn'));return}
+  const b=$('#dPushBtn');b.disabled=true;
+  const next=state.cfg.notifyTelegram===false;
+  try{state.cfg.notifyTelegram=next;await a.saveConfig(state.cfg);fillSettings();renderDash();const m=next?t('pushOnMsg'):t('pushOffMsg');toast(m);speak(m)}
+  catch(e){state.cfg.notifyTelegram=!next;toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
+}
+
 /* ============ 事件 ============ */
 document.addEventListener('click',e=>{
   const el=e.target.closest('button,[data-toggle]');if(!el)return;
@@ -629,6 +908,7 @@ document.addEventListener('click',e=>{
     document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b===el));
     document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('show',s.id==='tab-'+el.dataset.tab));
     if(el.dataset.tab==='status')loadRuns();
+    if(el.dataset.tab==='dash')setTimeout(renderDash,30);
     window.scrollTo({top:0});return;
   }
   if(el.dataset.f!==undefined){state.filter=state.filter===el.dataset.f&&el.dataset.f?'':el.dataset.f;renderSummary();renderChips();renderList();return}
@@ -646,6 +926,8 @@ $('#refreshBtn').onclick=()=>{markViewed();load()};
 $('#voiceBtn').onclick=()=>{state.voice=!state.voice;LS.set('voice',state.voice);applyLang();toast(state.voice?t('voiceOn'):t('voiceOff'));speak(t('voiceOn'))};
 $('#saveBtn').onclick=()=>saveSettings().then(renderPause);
 $('#pauseBtn').onclick=togglePause;
+$('#dPauseBtn').onclick=()=>togglePause().then(renderDash);
+$('#dPushBtn').onclick=togglePush;
 $('#disconnBtn').onclick=disconnect;
 $('#exportBtn').onclick=exportCsv;
 $('#scanBtn').onclick=e=>trigger('scan',e.currentTarget);
