@@ -1,26 +1,48 @@
 {
-  "updatedAt": "2026-10-18T16:41:22.170Z",
+  "updatedAt": "2026-10-18T17:07:27.971Z",
   "lastRun": {
-    "startedAt": "2026-10-18T16:39:32.246Z",
-    "finishedAt": "2026-10-18T16:41:22.170Z",
+    "startedAt": "2026-10-18T17:05:39.492Z",
+    "finishedAt": "2026-10-18T17:07:27.971Z",
     "status": "ok",
-    "scanned": 74,
-    "matched": 4,
-    "newCount": 4,
-    "notified": 4,
+    "scanned": 67,
+    "matched": 1,
+    "newCount": 1,
+    "notified": 1,
     "perKeyword": {
       "頂讓": 17,
-      "盤讓": 21,
+      "盤讓": 17,
       "設備轉讓": 0,
-      "搬家出清": 14,
+      "搬家出清": 11,
       "餐廳頂讓": 0,
       "二手餐飲設備": 22
     },
     "warnings": [
       "未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）"
-    ]
+    ],
+    "pushMode": "on"
   },
   "runs": [
+    {
+      "startedAt": "2026-10-18T17:05:39.492Z",
+      "finishedAt": "2026-10-18T17:07:27.971Z",
+      "status": "ok",
+      "scanned": 67,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "頂讓": 17,
+        "盤讓": 17,
+        "設備轉讓": 0,
+        "搬家出清": 11,
+        "餐廳頂讓": 0,
+        "二手餐飲設備": 22
+      },
+      "warnings": [
+        "未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）"
+      ],
+      "pushMode": "on"
+    },
     {
       "startedAt": "2026-10-18T16:39:32.246Z",
       "finishedAt": "2026-10-18T16:41:22.170Z",
@@ -84,6 +106,22 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DeoElNRjxTv",
+      "user": "hsu_min_xuan",
+      "url": "https://www.threads.com/@hsu_min_xuan/post/DeoElNRjxTv",
+      "authorUrl": "https://www.threads.com/@hsu_min_xuan",
+      "text": "搬家出清\n拜託脆友們救救準備搬家的我！！！😭\n🧸 娃娃、公仔\n🧩 玩具、教具\n👕 二手童裝\n通通出清！！！有賣也有送！！！🎁\n🎁 買一件商品，就可以挑一件贈物帶走！\n📸 商品照片＋價格都在留言區，快進來挖寶！\n📦 可賣貨便\n🤝 可面交｜桃園八德\n⚠️ 部分大型商品無法寄送，僅限面交！\n拜託脆神把這篇推給需要的人🙏🏻\n我負責出清，你們負責幫我搬空🤣🔥",
+      "time": "2026-10-18T06:46:10.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [
+        "桃園"
+      ],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T17:07:26.246Z"
+    },
     {
       "code": "Deo-fjUk_Gl",
       "user": "angelia102727",
