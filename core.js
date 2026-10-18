@@ -29,7 +29,10 @@ const DEFAULT_CONFIG = {
   maxStoredRuns: 300,
   scanMinMinutes: 30,     // 每次掃描間隔：最短（分鐘）
   scanMaxMinutes: 90,     // 每次掃描間隔：最長（分鐘），中間亂數
-  restHoursPerDay: 6,     // 每天隨機挑幾個小時休息（零散分布，每天不同）
+  restHoursPerDay: 6,     // 每天休息幾小時（零散分布，每天不同）
+  smartSchedule: true,    // 依發文時段：冷門時段休息、尖峰時段掃得密一點
+  detailFetchMax: 6,      // 每次最多點進幾篇新線索看完整內容
+  comboChance: 0.5,       // 每個關鍵字有多少機率搭配一個地區一起搜（0～1）
   timezone: 'Asia/Taipei',
   maxAgeHours: 72,
   scrollsPerKeyword: 3,
@@ -257,38 +260,16 @@ function pickKeywords(cfg, doc) {
   return [...must, ...shuffle(ordered.slice(0, Math.min(rest.length, n * 2))).slice(0, n)];
 }
 
-/* ---------------- 排程：亂數間隔＋休息時段 ---------------- */
-function hourIn(tz, d = new Date()) {
-  return Number(new Intl.DateTimeFormat('en-US', { timeZone: tz || 'Asia/Taipei', hour: 'numeric', hourCycle: 'h23' }).format(d)) % 24;
-}
-function dateIn(tz, d = new Date()) {
-  return new Intl.DateTimeFormat('en-CA', { timeZone: tz || 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
-}
-// 依「日期」產生當天的休息小時：同一天每次算出來都一樣，隔天自動換一組
-function restHours(cfg, d = new Date()) {
-  const n = Math.max(0, Math.min(20, Math.round(Number(cfg.restHoursPerDay ?? 6))));
-  let h = 2166136261;
-  for (const ch of dateIn(cfg.timezone, d) + '|threads-radar') { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); }
-  let x = h >>> 0;
-  const rnd = () => { x = (x + 0x6D2B79F5) >>> 0; let t = x; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
-  const hrs = [...Array(24).keys()];
-  for (let i = 23; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [hrs[i], hrs[j]] = [hrs[j], hrs[i]]; }
-  return hrs.slice(0, n).sort((p, q) => p - q);
-}
-function inQuiet(cfg, d = new Date()) {
-  return restHours(cfg, d).includes(hourIn(cfg.timezone, d));
-}
-function pickNext(cfg, from = Date.now()) {
-  let a = Number(cfg.scanMinMinutes) || 30, b = Number(cfg.scanMaxMinutes) || 90;
-  if (b < a) [a, b] = [b, a];
-  a = Math.max(5, a); b = Math.max(a, b);
-  const minutes = a + Math.random() * (b - a);
-  return { at: new Date(from + minutes * 60e3).toISOString(), minutes: Math.round(minutes) };
-}
+/* ---------------- 排程：亂數間隔＋尖峰時段（演算法在 analyze.js，與控制台共用） ---------------- */
+const SCHED = require('./analyze');
+const weightsOf = (doc, cfg) => SCHED.hourWeights((doc && doc.posts) || [], cfg.timezone);
+const restHours = (cfg, d = new Date(), doc) => SCHED.restHours(cfg, d, doc ? weightsOf(doc, cfg) : null);
+const inQuiet = (cfg, d = new Date(), doc) => SCHED.inQuiet(cfg, d, doc ? weightsOf(doc, cfg) : null);
+const pickNext = (cfg, from = Date.now(), doc) => SCHED.pickNext(cfg, from, doc ? weightsOf(doc, cfg) : null);
 function shouldScan(cfg, doc, now = new Date(), force = false) {
   if (force) return { due: true, reason: '手動執行' };
   if (!cfg.enabled) return { due: false, reason: '雷達已暫停' };
-  if (inQuiet(cfg, now)) return { due: false, reason: `今天的休息時段（${restHours(cfg, now).join('、')} 點）` };
+  if (inQuiet(cfg, now, doc)) return { due: false, reason: `今天的休息時段（${restHours(cfg, now, doc).join('、')} 點）` };
   const next = Date.parse(doc.nextScanAt || '');
   if (next && now.getTime() < next - 60e3) return { due: false, reason: `還沒到時間，預計 ${doc.nextScanAt}` };
   return { due: true, reason: '時間到了' };
@@ -304,9 +285,9 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
   const finish = () => {
     run.finishedAt = new Date().toISOString();
     if (run.status !== 'paused') {
-      const n = pickNext(cfg);
+      const n = pickNext(cfg, Date.now(), doc);
       doc.nextScanAt = n.at; run.nextInMinutes = n.minutes;
-      log(`下次掃描：約 ${n.minutes} 分鐘後`);
+      log(`下次掃描：約 ${n.minutes} 分鐘後${n.peak > 0.6 ? '（尖峰時段）' : ''}`);
     }
     doc.lastRun = run;
     doc.runs = [run, ...(doc.runs || [])].slice(0, cfg.maxStoredRuns || 300);
@@ -327,46 +308,77 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
   let loginWall = false;
 
   const browser = await chromium.launch({ headless: true });
+  const fresh = new Map();
+  run.queries = [];
   try {
     const context = await browser.newContext({
       locale: 'zh-TW', timezoneId: 'Asia/Taipei', viewport: { width: 1280, height: 900 },
       userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
     });
     const cookies = parseCookies(env.THREADS_COOKIES);
-    if (cookies.length) await context.addCookies(cookies);
-    else run.warnings.push('未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）');
+    if (cookies.length) { await context.addCookies(cookies); run.loginMode = 'login'; }
+    else run.loginMode = 'guest';   // 不登入模式（刻意選擇，不算警告）
     const page = await context.newPage();
 
+    /* ① 搜尋：關鍵字（有機率加上一個地區一起搜） */
+    const regions = cfg.regions || [];
     for (const kw of thisRun) {
-      const st = doc.kwStats[kw] || (doc.kwStats[kw] = { count: 0, last: 0 });
+      const st = doc.kwStats[kw] || (doc.kwStats[kw] = { count: 0, last: 0, scanned: 0, leads: 0 });
       st.count++; st.last = Date.now();
+      const combo = regions.length && Math.random() < Number(cfg.comboChance ?? 0.5);
+      const query = combo ? `${kw} ${regions[Math.floor(Math.random() * regions.length)]}` : kw;
+      run.queries.push(query);
       try {
-        const r = await scrapeKeyword(page, kw, { scrolls: cfg.scrollsPerKeyword });
-        run.perKeyword[kw] = r.items.length;
+        const r = await scrapeKeyword(page, query, { scrolls: cfg.scrollsPerKeyword });
+        run.perKeyword[kw] = (run.perKeyword[kw] > 0 ? run.perKeyword[kw] : 0) + r.items.length;
+        st.scanned = (st.scanned || 0) + r.items.length;
         if (r.loginWall) loginWall = true;
         for (const it of r.items) scannedItems.push({ it, kw });
-        log(`「${kw}」抓到 ${r.items.length} 則`);
+        log(`「${query}」抓到 ${r.items.length} 則`);
       } catch (e) {
-        run.perKeyword[kw] = -1;
-        run.warnings.push(`「${kw}」失敗：${e.message.split('\n')[0]}`);
+        run.perKeyword[kw] = run.perKeyword[kw] > 0 ? run.perKeyword[kw] : -1;
+        run.warnings.push(`「${query}」失敗：${e.message.split('\n')[0]}`);
       }
       await sleep(rand(3000, 6000));
     }
+
+    /* ② 過濾出新的線索 */
+    for (const { it, kw } of scannedItems) {
+      if (seen.has(it.url) || fresh.has(it.url)) continue;
+      const m = matchPost(it, cfg, kw);
+      if (m) fresh.set(it.url, { ...m, foundAt: new Date().toISOString() });
+    }
+
+    /* ③ 點進新線索看完整內容（搜尋頁常被截斷） */
+    const maxDetail = Math.max(0, Number(cfg.detailFetchMax ?? 6));
+    let fetched = 0;
+    for (const p of [...fresh.values()].slice(0, maxDetail)) {
+      try {
+        await page.goto(p.url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+        try { await page.waitForSelector('a[href*="/post/"]', { timeout: 12000 }); } catch { /* 略過 */ }
+        await page.waitForTimeout(rand(800, 1600));
+        const items = await page.evaluate(extractInPage);
+        const full = items.find((x) => x.code === p.code);
+        if (full && full.text && full.text.length > (p.text || '').length) {
+          const again = matchPost({ ...p, text: full.text, time: full.time || p.time }, cfg, p.foundBy);
+          if (!again) { fresh.delete(p.url); log(`完整內容含排除字詞，略過：${p.url}`); }
+          else fresh.set(p.url, { ...p, text: full.text, time: full.time || p.time, regions: again.regions, keywords: again.keywords, full: true });
+        }
+        fetched++;
+      } catch (e) { log(`開啟貼文失敗：${e.message.split('\n')[0]}`); }
+      await sleep(rand(2000, 4000));
+    }
+    run.detailFetched = fetched;
   } finally {
     await browser.close();
   }
 
   run.scanned = scannedItems.length;
-  if (loginWall) { run.status = 'warn'; run.warnings.push('Threads 要求登入，THREADS_COOKIES 可能已失效'); }
+  if (loginWall && run.loginMode === 'login') { run.status = 'warn'; run.warnings.push('Threads 要求登入，THREADS_COOKIES 可能已失效'); }
 
-  const fresh = new Map();
-  for (const { it, kw } of scannedItems) {
-    if (seen.has(it.url) || fresh.has(it.url)) continue;
-    const m = matchPost(it, cfg, kw);
-    if (m) fresh.set(it.url, { ...m, foundAt: new Date().toISOString() });
-  }
   scannedItems.forEach(({ it }) => seen.add(it.url));
   const newPosts = [...fresh.values()].sort((a, b) => (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0));
+  newPosts.forEach((p) => { const st = doc.kwStats[p.foundBy]; if (st) st.leads = (st.leads || 0) + 1; });
   run.matched = run.newCount = newPosts.length;
 
   run.pushMode = cfg.notifyTelegram === false ? 'off' : 'on';

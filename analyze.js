@@ -78,7 +78,53 @@
     return { role, cat, intent: { level, score, reasons }, info };
   }
 
-  const api = { analyzePost };
+  /* ================= 排程（雷達與控制台共用） ================= */
+  function hourIn(tz, d) {
+    return Number(new Intl.DateTimeFormat('en-US', { timeZone: tz || 'Asia/Taipei', hour: 'numeric', hourCycle: 'h23' }).format(d || new Date())) % 24;
+  }
+  function dateIn(tz, d) {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: tz || 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d || new Date());
+  }
+  function seeded(str) {
+    let h = 2166136261;
+    for (const ch of str) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); }
+    let x = h >>> 0;
+    return () => { x = (x + 0x6D2B79F5) >>> 0; let t = x; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  // 依「發文時間」統計每小時的熱度（0～1），資料不足 20 則回傳 null
+  function hourWeights(posts, tz) {
+    const c = Array(24).fill(0); let n = 0;
+    for (const p of posts || []) { const t = Date.parse(p.time || ''); if (!t) continue; c[hourIn(tz, new Date(t))]++; n++; }
+    if (n < 20) return null;
+    const sm = c.map((v, i) => 0.25 * c[(i + 23) % 24] + 0.5 * v + 0.25 * c[(i + 1) % 24]);
+    const mx = Math.max(...sm) || 1;
+    return sm.map((v) => Math.round((v / mx) * 1000) / 1000);
+  }
+  // 每天的休息小時：有足夠資料時，優先挑「冷門時段」休息（加一點亂數），否則完全隨機
+  function restHours(cfg, d, weights) {
+    const n = Math.max(0, Math.min(20, Math.round(Number(cfg.restHoursPerDay == null ? 6 : cfg.restHoursPerDay))));
+    const rnd = seeded(dateIn(cfg.timezone, d) + '|threads-radar');
+    const hrs = [...Array(24).keys()];
+    if (weights && cfg.smartSchedule !== false) {
+      const score = hrs.map((h) => [h, weights[h] + rnd() * 0.2]);
+      return score.sort((a, b) => a[1] - b[1]).slice(0, n).map((x) => x[0]).sort((a, b) => a - b);
+    }
+    for (let i = 23; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [hrs[i], hrs[j]] = [hrs[j], hrs[i]]; }
+    return hrs.slice(0, n).sort((a, b) => a - b);
+  }
+  function inQuiet(cfg, d, weights) { return restHours(cfg, d, weights).includes(hourIn(cfg.timezone, d)); }
+  // 下次掃描：尖峰時段間隔縮短（最多縮到範圍的 40%），冷門時段維持原本範圍
+  function pickNext(cfg, from, weights) {
+    from = from || Date.now();
+    let a = Number(cfg.scanMinMinutes) || 30, b = Number(cfg.scanMaxMinutes) || 90;
+    if (b < a) { const x = a; a = b; b = x; }
+    a = Math.max(5, a); b = Math.max(a, b);
+    const w = weights && cfg.smartSchedule !== false ? weights[hourIn(cfg.timezone, new Date(from))] : 0;
+    const minutes = a + (b - a) * Math.random() * (1 - 0.6 * w);
+    return { at: new Date(from + minutes * 60e3).toISOString(), minutes: Math.round(minutes), peak: w };
+  }
+
+  const api = { analyzePost, hourIn, dateIn, hourWeights, restHours, inQuiet, pickNext };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.RadarAnalyze = api;
 })(typeof self !== 'undefined' ? self : this);

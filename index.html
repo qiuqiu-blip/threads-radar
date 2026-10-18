@@ -323,6 +323,11 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
         <div class="field"><label data-i="minM">每次間隔：最短（分鐘）</label><input type="number" min="5" id="cMinM"></div>
         <div class="field"><label data-i="maxM">每次間隔：最長（分鐘）</label><input type="number" min="5" id="cMaxM"></div>
         <div class="field"><label data-i="restN">每天休息幾小時（隨機零散）</label><input type="number" min="0" max="20" id="cRest"></div>
+        <div class="field"><label>關鍵字＋地區組合搜尋機率（%）</label><input type="number" min="0" max="100" id="cCombo"></div>
+        <div class="field"><label>每次最多點進幾篇看完整內容</label><input type="number" min="0" max="15" id="cDetail"></div>
+      </div>
+      <label class="switch" style="margin-bottom:10px"><span>🧠 智慧排程（冷門時段休息、尖峰時段掃得密）</span><input type="checkbox" class="tg" id="cSmart"></label>
+      <div style="display:none">
       </div>
       <div class="banner" id="schedInfo" style="margin:0"></div>
     </div>
@@ -346,7 +351,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
   <section class="tab" id="tab-dash">
     <div class="card">
       <h3 data-i="dRadar">雷達運作</h3>
-      <div class="statusrow"><span class="pill" id="dRun"></span><span class="pill" id="dPush"></span></div>
+      <div class="statusrow"><span class="pill" id="dRun"></span><span class="pill" id="dPush"></span><span class="pill" id="dMode"></span></div>
       <div class="grid2">
         <button class="btn ghost sm" id="dPauseBtn"></button>
         <button class="btn ghost sm" id="dPushBtn"></button>
@@ -385,7 +390,9 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
     </div>
 
     <div class="dgrid">
-      <div class="card"><h3 data-i="dEff">關鍵字效率</h3><ul class="rank" id="dEff"></ul><p class="hint" data-i="dEffHint">命中率＝成為線索的則數 ÷ 搜尋到的貼文數。太低的關鍵字可以考慮換掉。</p></div>
+      <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3 style="margin:0" data-i="dEff">關鍵字效率</h3><button class="btn ghost sm" id="kwPruneAll" hidden>🗑 移除全部建議淘汰</button></div>
+        <ul class="rank" id="dEff" style="margin-top:8px"></ul>
+        <p class="hint">每列：搜尋次數／掃到貼文／帶來線索。搜尋 8 次以上還是 0 線索 → 標示「建議淘汰」，可以一鍵移除，把搜尋次數留給有用的詞。</p></div>
       <div class="card"><h3 data-i="dTop">熱門發文帳號</h3><ul class="rank" id="dTop"></ul><p class="hint" data-i="dTopHint">同一帳號發很多則，可能是仲介或專業賣家。</p></div>
       <div class="card"><h3 data-i="dContact">聯絡進度</h3><div class="chartbox withleg"><div id="cContact" class="svgc"></div><div class="legend" id="cContactLeg"></div></div><p class="hint" data-i="dContactHint">「已聯絡」記錄在這台裝置上。</p></div>
       <div class="card"><h3 data-i="dScanChart">掃描紀錄（最近 50 次）</h3><div class="chartbox withleg"><div id="cScan" class="svgc"></div><div class="legend" id="cScanLeg"></div></div></div>
@@ -827,7 +834,7 @@ function fillSettings(){
   renderTags();
   $('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;
   $('#cFirst').checked=c.firstRunSilent!==false;$('#cTg').checked=c.notifyTelegram!==false;$('#cErr').checked=c.notifyErrors!==false;
-  $('#cAge').value=c.maxAgeHours??72;$('#cMinM').value=c.scanMinMinutes??30;$('#cMaxM').value=c.scanMaxMinutes??90;$('#cRest').value=c.restHoursPerDay??6;renderSchedInfo();$('#cMaxN').value=c.maxNotifyPerRun??15;fillReplySettings();$('#cPerScan').value=c.keywordsPerScan??4;$('#cScroll').value=c.scrollsPerKeyword??3;
+  $('#cAge').value=c.maxAgeHours??72;$('#cMinM').value=c.scanMinMinutes??30;$('#cMaxM').value=c.scanMaxMinutes??90;$('#cRest').value=c.restHoursPerDay??6;$('#cCombo').value=Math.round((c.comboChance??0.5)*100);$('#cDetail').value=c.detailFetchMax??6;$('#cSmart').checked=c.smartSchedule!==false;renderSchedInfo();$('#cMaxN').value=c.maxNotifyPerRun??15;fillReplySettings();$('#cPerScan').value=c.keywordsPerScan??4;$('#cScroll').value=c.scrollsPerKeyword??3;
 }
 function addTag(id){
   const inp=$('#'+id+'In');const v=inp.value.trim();if(!v)return;
@@ -839,7 +846,7 @@ async function saveSettings(){
   const c=state.cfg;
   Object.assign(c,{enabled:$('#cEnabled').checked,regionRequired:$('#cRegionReq').checked,strictKeyword:$('#cStrict').checked,
     firstRunSilent:$('#cFirst').checked,notifyTelegram:$('#cTg').checked,notifyErrors:$('#cErr').checked,maxAgeHours:+$('#cAge').value||0,
-    maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),reply:collectReplySettings(),keywordsPerScan:Math.max(0,Math.round(+$('#cPerScan').value||0)),scanMinMinutes:Math.max(5,+$('#cMinM').value||30),scanMaxMinutes:Math.max(5,+$('#cMaxM').value||90),restHoursPerDay:Math.min(20,Math.max(0,+$('#cRest').value||0)),scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
+    maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),reply:collectReplySettings(),keywordsPerScan:Math.max(0,Math.round(+$('#cPerScan').value||0)),scanMinMinutes:Math.max(5,+$('#cMinM').value||30),scanMaxMinutes:Math.max(5,+$('#cMaxM').value||90),restHoursPerDay:Math.min(20,Math.max(0,+$('#cRest').value||0)),comboChance:Math.min(1,Math.max(0,(+$('#cCombo').value||0)/100)),detailFetchMax:Math.min(15,Math.max(0,Math.round(+$('#cDetail').value||0))),smartSchedule:$('#cSmart').checked,scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
   const a=adapter();if(!a){toast(t('needConn'));return}
   const b=$('#saveBtn');b.disabled=true;
   try{await a.saveConfig(c);toast(t('saved'));speak(t('saved'))}catch(e){toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
@@ -945,24 +952,25 @@ function collectReplySettings(){
 }
 
 /* ============ 排程（與 core.js 相同演算法） ============ */
+const RA=()=>window.RadarAnalyze||null;
 function tzHour(d=new Date()){return Number(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',hour:'numeric',hourCycle:'h23'}).format(d))%24}
+function weightsNow(){return RA()?RA().hourWeights(state.doc?.posts||[],'Asia/Taipei'):null}
 function restHours(cfg,d=new Date()){
-  const n=Math.max(0,Math.min(20,Math.round(Number(cfg?.restHoursPerDay??6))));
-  let h=2166136261;for(const ch of new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(d)+'|threads-radar'){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}
-  let x=h>>>0;const rnd=()=>{x=(x+0x6D2B79F5)>>>0;let t=x;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296};
-  const hrs=[...Array(24).keys()];for(let i=23;i>0;i--){const j=Math.floor(rnd()*(i+1));[hrs[i],hrs[j]]=[hrs[j],hrs[i]]}
-  return hrs.slice(0,n).sort((a,b)=>a-b);
+  if(RA())return RA().restHours({...cfg,timezone:'Asia/Taipei'},d,weightsNow());
+  return [];
 }
 function renderSchedInfo(){
   const el=$('#schedInfo');if(!el)return;
-  const c={restHoursPerDay:+$('#cRest').value||0};let a=+$('#cMinM').value||30,b=+$('#cMaxM').value||90;if(b<a)[a,b]=[b,a];
+  const c={restHoursPerDay:+$('#cRest').value||0,smartSchedule:$('#cSmart')?$('#cSmart').checked:true};let a=+$('#cMinM').value||30,b=+$('#cMaxM').value||90;if(b<a)[a,b]=[b,a];
   const pool=(state.cfg?.keywords||[]).filter(k=>!(state.cfg?.mustKeywords||[]).includes(k)).length,must=(state.cfg?.mustKeywords||[]).length;
   const per=+($('#cPerScan')?.value??4);const pick=per===0||per>=pool?pool:per;
   const work=24-c.restHoursPerDay,avg=(a+b)/2,runs=Math.round(work*60/avg),kw=Math.max(1,must+pick);
   const ki=$('#kwInfo');if(ki)ki.innerHTML=t('kwSum').replace('{m}',must).replace('{p}',pick).replace('{n}',must+pick).replace('{e}',pool?(runs*pick/pool).toFixed(1):'0');
   const rh=restHours(c),tmr=restHours(c,new Date(Date.now()+864e5));
   el.innerHTML=t('schedSum').replace('{w}',work).replace('{a}',a).replace('{b}',b).replace('{r}',runs).replace('{s}',runs*kw)
-    +`<br>${t('restToday')}：<b>${rh.length?rh.join('、')+' '+t('oclock'):t('none')}</b>　${t('restTmr')}：${tmr.length?tmr.join('、'):t('none')}`;
+    +`<br>${t('restToday')}：<b>${rh.length?rh.join('、')+' '+t('oclock'):t('none')}</b>　${t('restTmr')}：${tmr.length?tmr.join('、'):t('none')}`
+    +(()=>{const w=weightsNow();if(!c.smartSchedule)return '';if(!w)return `<br>🧠 智慧排程：資料還不夠（需要 20 則以上線索），目前先隨機休息`;
+      const top=[...w.keys()].sort((x,y)=>w[y]-w[x]).slice(0,4).sort((x,y)=>x-y);return `<br>🧠 尖峰時段：<b>${top.join('、')} 點</b>（會掃得比較密）`})();
 }
 
 /* ============ 儀表板 ============ */
@@ -1031,6 +1039,7 @@ function renderDash(){
   const on=cfg.enabled!==false, push=cfg.notifyTelegram!==false;
   $('#dRun').className='pill '+(on?'ok':'off');$('#dRun').textContent=on?t('pRun'):t('pPaused');
   $('#dPush').className='pill '+(push?'ok':'off');$('#dPush').textContent=push?t('pushOn'):t('pushOff');
+  const mode=doc.lastRun?.loginMode;$('#dMode').hidden=!mode;$('#dMode').className='pill ok';$('#dMode').textContent=mode==='login'?'🔑 登入模式':'🕶 不登入模式（零風險）';
   $('#dPauseBtn').textContent=on?t('pause'):t('resume');
   $('#dPushBtn').textContent=push?t('pushOffBtn'):t('pushOnBtn');
   const last=doc.lastRun;const lastT=last?Date.parse(last.finishedAt||last.startedAt):0;
@@ -1088,13 +1097,19 @@ function renderDash(){
     kws.map(k=>`<tr><th>${esc(k)}</th>${rgs.map(r=>{const v=cell[k+'|'+r]||0;const a=maxC?v/maxC:0;
       return `<td style="background:rgba(212,175,55,${v?0.14+a*0.76:0.04});color:${a>.55?'#2a1d02':'var(--text)'}">${v||'·'}</td>`}).join('')}</tr>`).join('');
 
-  /* 關鍵字效率 */
-  const scannedBy={};runs.forEach(r=>Object.entries(r.perKeyword||{}).forEach(([k,v])=>{if(v>0)scannedBy[k]=(scannedBy[k]||0)+v}));
-  const leadsBy=Object.fromEntries(tally('keywords'));
-  const eff=Object.keys({...scannedBy,...leadsBy}).map(k=>{const s=scannedBy[k]||0,l=leadsBy[k]||0;return [k,l,s,s?l/s:0]}).sort((a,b)=>b[3]-a[3]);
-  const maxR=Math.max(0.0001,...eff.map(e=>e[3]));
-  $('#dEff').innerHTML=eff.length?eff.map(([k,l,s,r],i)=>`<li><span class="no">${i+1}</span><span class="nm">${esc(k)} <small style="color:var(--muted)">${l}/${s}</small></span>
-    <span class="bar"><span style="width:${r/maxR*100}%"></span></span><span class="ct">${(r*100).toFixed(1)}%</span></li>`).join(''):`<li>${t('noData')}</li>`;
+  /* 關鍵字效率（用累計統計） */
+  const kst=doc.kwStats||{};const pool=[...new Set([...(cfg.mustKeywords||[]),...(cfg.keywords||[])])];
+  const leadsBy={};posts.forEach(p=>{if(p.foundBy)leadsBy[p.foundBy]=(leadsBy[p.foundBy]||0)+1});
+  const eff=pool.map(k=>{const st=kst[k]||{};const c=st.count||0,sc=st.scanned||0,l=Math.max(st.leads||0,leadsBy[k]||0);
+    return {k,c,sc,l,r:c?l/c:0,state:c<8?'watch':l===0?'cut':'ok'}}).sort((x,y)=>y.r-x.r||y.l-x.l||x.c-y.c);
+  const maxR=Math.max(0.0001,...eff.map(e=>e.r));
+  const cuts=eff.filter(e=>e.state==='cut');
+  $('#kwPruneAll').hidden=!cuts.length;$('#kwPruneAll').dataset.list=cuts.map(e=>e.k).join('|');
+  $('#dEff').innerHTML=eff.length?eff.map((e,i)=>`<li><span class="no">${i+1}</span><span class="nm">${esc(e.k)}
+      ${e.state==='cut'?`<span class="flag">建議淘汰</span>`:e.state==='watch'?`<span class="flag" style="color:var(--muted);border-color:var(--line)">觀察中</span>`:''}
+      <small style="display:block;color:var(--muted)">搜 ${e.c} 次・掃到 ${e.sc}・線索 ${e.l}</small></span>
+    <span class="bar"><span style="width:${e.r/maxR*100}%"></span></span>
+    ${e.state==='cut'?`<button class="btn ghost sm" data-kwrm="${esc(e.k)}">移除</button>`:`<span class="ct">${e.c?e.r.toFixed(1)+'/次':'—'}</span>`}</li>`).join(''):`<li>${t('noData')}</li>`;
 
   /* 熱門帳號 */
   const byUser={};posts.forEach(p=>{const u=byUser[p.user]||(byUser[p.user]={n:0,url:p.authorUrl,last:0});u.n++;u.last=Math.max(u.last,found(p))});
@@ -1112,6 +1127,13 @@ function renderDash(){
   $('#dWarnList').innerHTML=warns.length?warns.map(r=>`<li>⚠️ ${esc(r.warnings.join('；'))}<small>${new Date(r.startedAt).toLocaleString()}</small></li>`).join(''):`<li style="color:var(--ok)">${t('noWarn')}</li>`;
 }
 window.addEventListener('resize',()=>{clearTimeout(window.__rz);window.__rz=setTimeout(renderDash,200)});
+async function removeKeywords(list){
+  if(!list.length)return;const a=adapter();if(!a){toast(t('needConn'));return}
+  if(!confirm(`確定從關鍵字池移除：${list.join('、')}？`))return;
+  state.cfg.keywords=(state.cfg.keywords||[]).filter(k=>!list.includes(k));
+  state.cfg.mustKeywords=(state.cfg.mustKeywords||[]).filter(k=>!list.includes(k));
+  try{await a.saveConfig(state.cfg);fillSettings();renderDash();toast(`已移除 ${list.length} 個關鍵字`)}catch(e){toast(t('connFail')+'：'+e.message)}
+}
 async function togglePush(){
   const a=adapter();if(!a){toast(t('needConn'));return}
   const b=$('#dPushBtn');b.disabled=true;
@@ -1135,6 +1157,8 @@ document.addEventListener('click',e=>{
   if(el.hasAttribute('data-toggle')){el.classList.toggle('open');return}
   if(el.dataset.copy){navigator.clipboard?.writeText(el.dataset.copy).then(()=>toast(t('copied')),()=>toast(el.dataset.copy));return}
   if(el.dataset.read){const p=state.doc.posts.find(x=>x.url===el.dataset.read);if(p)speak(p.text);return}
+  if(el.dataset.kwrm){removeKeywords([el.dataset.kwrm]);return}
+  if(el.id==='kwPruneAll'){removeKeywords((el.dataset.list||'').split('|').filter(Boolean));return}
   if(el.dataset.reply){openReply(el.dataset.reply);return}
   if(el.dataset.rcat){renderReplyCats(el.dataset.rcat);$('#rpMsg').value=buildReply(replyPost,el.dataset.rcat);return}
   if(el.dataset.rpdefault!==undefined){const c=el.dataset.rpdefault;$('#rt_'+c).value=REPLY_DEFAULT.tpl[c];return}
@@ -1158,6 +1182,8 @@ $('#exportBtn').onclick=exportCsv;
 $('#rpClose').onclick=closeReply;$('#rpGo').onclick=()=>replyCopy(true);$('#rpCopy').onclick=()=>replyCopy(false);
 $('#replyModal').addEventListener('click',e=>{if(e.target.id==='replyModal')closeReply()});
 ['cMinM','cMaxM','cRest','cPerScan'].forEach(id=>$('#'+id).addEventListener('input',renderSchedInfo));
+$('#cSmart').addEventListener('change',renderSchedInfo);
+[].forEach(id=>$('#'+id).addEventListener('input',renderSchedInfo));
 $('#scanBtn').onclick=e=>trigger('scan',e.currentTarget);
 $('#testBtn').onclick=e=>trigger('test',e.currentTarget);
 $('#mMode').onchange=toggleMode;
