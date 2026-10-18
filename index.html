@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0906">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="脆雷達">
+<title>小球脆雷達</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0906'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23d4af37' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23d4af37' stroke-width='2' opacity='.6'/%3E%3Cpath d='M32 32 L48 18' stroke='%23f5d77a' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='3.5' fill='%23f5d77a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0b0906; --panel:#16120b; --panel2:#1e180e; --line:#3a2e17;
+  --gold:#d4af37; --gold2:#f5d77a; --gold3:#8a6a1c; --text:#f3ead2; --muted:#a8987a;
+  --ok:#5fc48b; --warn:#f0b04a; --bad:#e0645a;
+  --r:16px; --gutter:16px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;}
+body{min-height:100vh;padding-bottom:calc(84px + env(safe-area-inset-bottom));
+  background:radial-gradient(1200px 500px at 50% -200px,#2a1f0a 0%,transparent 70%),var(--bg);}
+a{color:var(--gold2)}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:780px;margin:0 auto;padding:0 var(--gutter)}
+
+/* 開場 */
+#splash{position:fixed;inset:0;z-index:99;display:grid;place-items:center;background:var(--bg);transition:opacity .6s}
+#splash.hide{opacity:0;pointer-events:none}
+.radar{width:132px;height:132px;border-radius:50%;position:relative;
+  background:radial-gradient(circle,#1d160a 0 58%,transparent 59%),repeating-radial-gradient(circle,transparent 0 18px,rgba(212,175,55,.25) 18px 19px);
+  border:2px solid var(--gold);box-shadow:0 0 40px rgba(212,175,55,.35),inset 0 0 30px rgba(212,175,55,.2);overflow:hidden}
+.radar::after{content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(245,215,122,.55),transparent 25%);animation:spin 2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.splash-t{margin-top:22px;text-align:center;font-weight:800;letter-spacing:.12em;font-size:22px;
+  background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,var(--gold3));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* 頂部 */
+header{position:sticky;top:0;z-index:20;padding:calc(10px + env(safe-area-inset-top)) 0 10px;
+  background:linear-gradient(180deg,rgba(11,9,6,.97),rgba(11,9,6,.88));backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;gap:12px}
+.logo{width:42px;height:42px;flex:none}
+.titles{flex:1;min-width:0}
+h1{margin:0;font-size:20px;font-weight:800;letter-spacing:.06em;
+  background:linear-gradient(180deg,var(--gold2),var(--gold) 55%,var(--gold3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.langbar{display:flex;gap:6px;align-items:center;margin-top:10px;flex-wrap:wrap}
+
+/* 水晶按鈕 */
+.btn{position:relative;border:1px solid var(--gold3);border-radius:12px;padding:10px 16px;cursor:pointer;font-weight:700;
+  color:#2a1d02;background:linear-gradient(180deg,#fff3c4 0%,var(--gold2) 22%,var(--gold) 55%,#a87f1f 100%);
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 -3px 6px rgba(80,50,0,.35) inset,0 4px 14px rgba(212,175,55,.25);
+  overflow:hidden;transition:transform .12s,filter .2s;white-space:nowrap;text-decoration:none;text-align:center;display:inline-block}
+.btn::before{content:"";position:absolute;left:8%;right:8%;top:2px;height:45%;border-radius:10px 10px 50% 50%;
+  background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0));pointer-events:none}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn:disabled{filter:grayscale(.7) brightness(.7);cursor:not-allowed}
+.btn.ghost{color:var(--gold2);background:linear-gradient(180deg,#2a2112,#16110a);border-color:var(--line);
+  box-shadow:0 1px 0 rgba(245,215,122,.15) inset,0 3px 10px rgba(0,0,0,.4)}
+.btn.ghost::before{background:linear-gradient(180deg,rgba(245,215,122,.18),rgba(245,215,122,0))}
+.btn.sm{padding:6px 11px;font-size:13px;border-radius:10px}
+.btn.on{color:#2a1d02;background:linear-gradient(180deg,#fff3c4 0%,var(--gold2) 22%,var(--gold) 55%,#a87f1f 100%);border-color:var(--gold3)}
+.vip{font-size:12px;padding:8px 12px;text-decoration:none;text-align:center;line-height:1.15;flex:none}
+.vip small{display:block;font-size:10px;opacity:.85}
+
+/* 內容 */
+main{padding-top:16px}
+.tab{display:none}.tab.show{display:block}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.card h3{margin:0 0 10px;font-size:16px;color:var(--gold2)}
+.hint{font-size:12.5px;color:var(--muted);margin:4px 0 0;line-height:1.5}
+.banner{border:1px dashed var(--gold3);color:var(--gold2);background:rgba(212,175,55,.07);border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:14px}
+.banner.warn{border-color:var(--warn);color:var(--warn);background:rgba(240,176,74,.08)}
+
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.search{flex:1 1 220px;min-width:0;background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:10px 12px;outline:none}
+.search:focus,.field input:focus,.field select:focus{border-color:var(--gold)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:#120e08;color:var(--muted);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer}
+.chip.on{border-color:var(--gold);color:#2a1d02;background:linear-gradient(180deg,var(--gold2),var(--gold))}
+
+.post{position:relative}
+.post.done{opacity:.55}
+.post .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.post .user{font-weight:800;color:var(--gold2);text-decoration:none}
+.post .time{font-size:12px;color:var(--muted)}
+.tag{font-size:11.5px;border:1px solid var(--gold3);color:var(--gold2);border-radius:999px;padding:2px 8px}
+.tag.reg{border-color:#4d6b55;color:#9fd9b1}
+.tag.newt{background:var(--bad);border-color:var(--bad);color:#fff}
+.post .text{white-space:pre-wrap;line-height:1.6;font-size:14.5px;max-height:7.4em;overflow:hidden;position:relative;cursor:pointer}
+.post .text.open{max-height:none}
+.post .text:not(.open)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2em;background:linear-gradient(transparent,var(--panel))}
+.post .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.post .acts .btn{flex:1 1 auto}
+
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13.5px;color:var(--muted);margin-bottom:6px}
+.field input,.field select{width:100%;background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:11px 12px;outline:none}
+.taglist{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.etag{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold3);border-radius:999px;padding:5px 6px 5px 12px;font-size:14px;background:#1a140a}
+.etag button{border:0;background:#3a2c12;color:var(--gold2);width:22px;height:22px;border-radius:50%;cursor:pointer;line-height:1}
+.addrow{display:flex;gap:8px}.addrow input{flex:1;min-width:0}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.switch:first-of-type{border-top:0}
+.switch span{font-size:14.5px}
+.tg{appearance:none;width:50px;height:28px;border-radius:999px;background:#2a2316;border:1px solid var(--line);position:relative;cursor:pointer;flex:none;transition:.2s}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#6d5d3c;transition:.2s}
+.tg:checked{background:linear-gradient(180deg,var(--gold2),var(--gold))}
+.tg:checked::after{left:25px;background:#fff8e0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.grid2{grid-template-columns:1fr}}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
+.stat{background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.stat b{display:block;font-size:22px;color:var(--gold2)}
+.stat small{color:var(--muted);font-size:12px}
+.runs{list-style:none;margin:0;padding:0}
+.runs li{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px}
+.runs li:first-child{border-top:0}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--muted)}
+.dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.bad{background:var(--bad)}.dot.run{background:var(--gold2);animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.3}}
+.kwrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+
+nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  background:linear-gradient(0deg,rgba(11,9,6,.98),rgba(11,9,6,.9));border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+nav .in{max-width:780px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+nav button{position:relative;border:1px solid transparent;background:none;color:var(--muted);padding:6px 2px;border-radius:12px;cursor:pointer;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav button svg{width:22px;height:22px}
+nav button.on{color:var(--gold2);border-color:var(--line);background:linear-gradient(180deg,#2a2112,#16110a)}
+.badge{position:absolute;top:2px;right:calc(50% - 22px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--bad);color:#fff;font-size:11px;line-height:18px;display:none}
+.empty{text-align:center;color:var(--muted);padding:40px 10px}
+#toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;
+  background:#241c0d;border:1px solid var(--gold);color:var(--gold2);padding:10px 16px;border-radius:12px;z-index:50;transition:.25s;max-width:90vw;font-size:14px}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div id="splash"><div><div class="radar"></div><div class="splash-t">小球脆雷達</div></div></div>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#16120b" stroke="#3a2e17"/><circle cx="32" cy="32" r="20" fill="none" stroke="#d4af37" stroke-width="3"/><circle cx="32" cy="32" r="10" fill="none" stroke="#d4af37" stroke-width="2" opacity=".6"/><path d="M32 32 L48 18" stroke="#f5d77a" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="32" r="3.5" fill="#f5d77a"/></svg>
+      <div class="titles">
+        <h1 data-i="appTitle">小球脆雷達</h1>
+        <div class="sub" data-i="appSub">Threads 頂讓・盤讓・設備轉讓 線索監控</div>
+      </div>
+      <a class="btn vip" href="https://young-firefly-3ed5.f123931273.workers.dev" target="_blank" rel="noopener">球球-BOT<small>VIP尊龍服務</small></a>
+    </div>
+    <div class="langbar">
+      <button class="btn ghost sm" data-lang="zh">中文</button>
+      <button class="btn ghost sm" data-lang="en">English</button>
+      <button class="btn ghost sm" data-lang="vi">Tiếng Việt</button>
+      <button class="btn ghost sm" id="voiceBtn">🔈 <span data-i="voice">語音</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="demoBanner" class="banner" data-i="demoBanner" hidden>目前為示範資料。請到「連線」填入 GitHub 資訊。</div>
+  <div id="warnBanner" class="banner warn" hidden></div>
+
+  <!-- 線索 -->
+  <section class="tab show" id="tab-leads">
+    <div class="toolbar">
+      <input class="search" id="q" data-ph="searchPh" placeholder="搜尋貼文內容或帳號…">
+      <button class="btn ghost sm" id="onlyNewBtn" data-i="onlyNew">只看未處理</button>
+      <button class="btn sm" id="refreshBtn" data-i="refresh">重新整理</button>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div id="list"></div>
+  </section>
+
+  <!-- 設定 -->
+  <section class="tab" id="tab-settings">
+    <div class="card">
+      <h3 data-i="keywords">監控關鍵字</h3>
+      <div class="taglist" id="kwList"></div>
+      <div class="addrow"><input id="kwIn" data-ph="addPh" placeholder="輸入後按 Enter 或＋"><button class="btn sm" data-add="kw">＋</button></div>
+      <p class="hint" data-i="kwHint">每個關鍵字都會在 Threads 搜尋「最新」貼文。關鍵字越多，每次掃描越久。</p>
+    </div>
+    <div class="card">
+      <h3 data-i="regions">地區</h3>
+      <div class="taglist" id="rgList"></div>
+      <div class="addrow"><input id="rgIn" data-ph="addPh" placeholder="輸入後按 Enter 或＋"><button class="btn sm" data-add="rg">＋</button></div>
+      <p class="hint" data-i="rgHint">貼文提到這些地區時會加上標籤；開啟「地區必須符合」後，沒提到的會被略過。</p>
+    </div>
+    <div class="card">
+      <h3 data-i="excludes">排除字詞</h3>
+      <div class="taglist" id="exList"></div>
+      <div class="addrow"><input id="exIn" data-ph="addPh" placeholder="輸入後按 Enter 或＋"><button class="btn sm" data-add="ex">＋</button></div>
+    </div>
+    <div class="card">
+      <label class="switch"><span data-i="enabled">啟用監控</span><input type="checkbox" class="tg" id="cEnabled"></label>
+      <label class="switch"><span data-i="regionRequired">地區必須符合</span><input type="checkbox" class="tg" id="cRegionReq"></label>
+      <label class="switch"><span data-i="strict">內文必須含關鍵字</span><input type="checkbox" class="tg" id="cStrict"></label>
+      <label class="switch"><span data-i="firstSilent">初次啟動不推播舊貼文</span><input type="checkbox" class="tg" id="cFirst"></label>
+      <label class="switch"><span data-i="notifyErrors">登入失效時通知我</span><input type="checkbox" class="tg" id="cErr"></label>
+      <div class="grid2" style="margin-top:12px">
+        <div class="field"><label data-i="maxAge">只要幾小時內的貼文（0＝不限）</label><input type="number" min="0" id="cAge"></div>
+        <div class="field"><label data-i="maxNotify">每次最多推播幾則</label><input type="number" min="1" id="cMaxN"></div>
+        <div class="field"><label data-i="scrolls">每個關鍵字往下捲動次數</label><input type="number" min="0" max="10" id="cScroll"></div>
+      </div>
+      <button class="btn" style="width:100%" id="saveBtn" data-i="save">儲存設定</button>
+    </div>
+  </section>
+
+  <!-- 狀態 -->
+  <section class="tab" id="tab-status">
+    <div class="card">
+      <h3 data-i="lastRun">上次執行</h3>
+      <div id="lastRun" class="hint">—</div>
+      <div class="stats">
+        <div class="stat"><b id="sScan">0</b><small data-i="scanned">掃描</small></div>
+        <div class="stat"><b id="sNew">0</b><small data-i="newLeads">新線索</small></div>
+        <div class="stat"><b id="sNoti">0</b><small data-i="notified">已推播</small></div>
+      </div>
+      <div class="kwrow" id="perKw"></div>
+      <div class="grid2" style="margin-top:14px">
+        <button class="btn" id="scanBtn" data-i="scanNow">立即掃描</button>
+        <button class="btn ghost" id="testBtn" data-i="testNotify">傳送測試通知</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3 data-i="runsTitle">最近執行紀錄</h3>
+      <ul class="runs" id="runs"></ul>
+    </div>
+  </section>
+
+  <!-- 連線 -->
+  <section class="tab" id="tab-connect">
+    <div class="card">
+      <div class="field"><label data-i="mode">連線模式</label>
+        <select id="mMode"><option value="github" data-i="modeGh">GitHub（方案 A）</option><option value="api" data-i="modeApi">自架伺服器（方案 B）</option></select>
+      </div>
+      <div id="ghFields">
+        <div class="grid2">
+          <div class="field"><label data-i="owner">GitHub 帳號</label><input id="mOwner" autocapitalize="off" autocomplete="off"></div>
+          <div class="field"><label data-i="repo">儲存庫名稱</label><input id="mRepo" autocapitalize="off" autocomplete="off" placeholder="threads-radar"></div>
+        </div>
+        <div class="field"><label data-i="branch">分支</label><input id="mBranch" autocapitalize="off" placeholder="main"></div>
+        <div class="field"><label data-i="token">存取權杖（Token）</label><input id="mToken" type="password" autocomplete="off" placeholder="github_pat_…"></div>
+      </div>
+      <div id="apiFields" hidden>
+        <div class="field"><label data-i="apiBase">伺服器網址</label><input id="mApi" autocapitalize="off" placeholder="https://your-app.up.railway.app"></div>
+        <div class="field"><label data-i="apiKey">管理金鑰</label><input id="mKey" type="password" autocomplete="off"></div>
+      </div>
+      <p class="hint" data-i="tokenHint">權杖只存在這台裝置的瀏覽器裡，不會上傳到任何地方。</p>
+      <button class="btn" style="width:100%;margin-top:10px" id="connBtn" data-i="connect">儲存並連線</button>
+    </div>
+  </section>
+</main>
+
+<nav><div class="in">
+  <button class="on" data-tab="leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12l6-5"/></svg><span data-i="tabLeads">線索</span><i class="badge" id="badge"></i></button>
+  <button data-tab="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="12" r="2"/><circle cx="14" cy="18" r="2"/></svg><span data-i="tabSettings">設定</span></button>
+  <button data-tab="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg><span data-i="tabStatus">狀態</span></button>
+  <button data-tab="connect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg><span data-i="tabConnect">連線</span></button>
+</div></nav>
+
+<div id="toast"></div>
+
+<script>
+/* ============ 多語言 ============ */
+const I18N = {
+  zh:{appTitle:'小球脆雷達',appSub:'Threads 頂讓・盤讓・設備轉讓 線索監控',voice:'語音',tabLeads:'線索',tabSettings:'設定',tabStatus:'狀態',tabConnect:'連線',
+    demoBanner:'目前為示範資料。請到「連線」填入 GitHub 資訊。',searchPh:'搜尋貼文內容或帳號…',onlyNew:'只看未處理',all:'全部',refresh:'重新整理',
+    openPost:'開啟貼文',openAuthor:'發文者主頁',copy:'複製連結',copied:'已複製連結',markDone:'標記已聯絡',done:'已聯絡',noPosts:'目前沒有符合的線索',
+    keywords:'監控關鍵字',kwHint:'每個關鍵字都會在 Threads 搜尋「最新」貼文。關鍵字越多，每次掃描越久。',regions:'地區',
+    rgHint:'貼文提到這些地區時會加上標籤；開啟「地區必須符合」後，沒提到的會被略過。',excludes:'排除字詞',addPh:'輸入後按 Enter 或＋',
+    enabled:'啟用監控',regionRequired:'地區必須符合',strict:'內文必須含關鍵字',firstSilent:'初次啟動不推播舊貼文',notifyErrors:'登入失效時通知我',
+    maxAge:'只要幾小時內的貼文（0＝不限）',maxNotify:'每次最多推播幾則',scrolls:'每個關鍵字往下捲動次數',save:'儲存設定',saved:'已儲存，下次掃描生效',
+    lastRun:'上次執行',scanned:'掃描',newLeads:'新線索',notified:'已推播',scanNow:'立即掃描',testNotify:'傳送測試通知',runsTitle:'最近執行紀錄',
+    mode:'連線模式',modeGh:'GitHub（方案 A）',modeApi:'自架伺服器（方案 B）',owner:'GitHub 帳號',repo:'儲存庫名稱',branch:'分支',token:'存取權杖（Token）',
+    tokenHint:'權杖只存在這台裝置的瀏覽器裡，不會上傳到任何地方。',apiBase:'伺服器網址',apiKey:'管理金鑰',connect:'儲存並連線',connected:'連線成功',
+    connFail:'連線失敗',needConn:'請先到「連線」設定',dispatched:'已送出，約 1～3 分鐘後完成',justNow:'剛剛',minAgo:'分鐘前',hrAgo:'小時前',dayAgo:'天前',
+    newSpeech:'有 {n} 則新線索',running:'執行中',queued:'排隊中',success:'成功',failure:'失敗',never:'尚未執行',paused:'已暫停',initial:'啟動時的舊貼文',newTag:'新',
+    voiceOn:'語音已開啟',voiceOff:'語音已關閉',read:'朗讀'},
+  en:{appTitle:'Threads Lead Radar',appSub:'Monitor Threads for business transfers & equipment sales',voice:'Voice',tabLeads:'Leads',tabSettings:'Settings',tabStatus:'Status',tabConnect:'Connect',
+    demoBanner:'Showing demo data. Go to “Connect” to enter your GitHub details.',searchPh:'Search text or account…',onlyNew:'Unhandled only',all:'All',refresh:'Refresh',
+    openPost:'Open post',openAuthor:'Author profile',copy:'Copy link',copied:'Link copied',markDone:'Mark contacted',done:'Contacted',noPosts:'No matching leads yet',
+    keywords:'Keywords',kwHint:'Each keyword runs a “Recent” search on Threads. More keywords = longer scans.',regions:'Regions',
+    rgHint:'Posts mentioning these regions get a tag. With “Region required”, others are skipped.',excludes:'Exclude words',addPh:'Type, then Enter or +',
+    enabled:'Monitoring on',regionRequired:'Region required',strict:'Text must contain keyword',firstSilent:'Don’t push old posts on first run',notifyErrors:'Alert me if login expires',
+    maxAge:'Only posts within N hours (0 = any)',maxNotify:'Max pushes per run',scrolls:'Scrolls per keyword',save:'Save settings',saved:'Saved — applies on next scan',
+    lastRun:'Last run',scanned:'Scanned',newLeads:'New',notified:'Pushed',scanNow:'Scan now',testNotify:'Send test',runsTitle:'Recent runs',
+    mode:'Connection mode',modeGh:'GitHub (Plan A)',modeApi:'Own server (Plan B)',owner:'GitHub user',repo:'Repository',branch:'Branch',token:'Access token',
+    tokenHint:'The token stays in this device’s browser only.',apiBase:'Server URL',apiKey:'Admin key',connect:'Save & connect',connected:'Connected',
+    connFail:'Connection failed',needConn:'Set up “Connect” first',dispatched:'Sent — done in about 1–3 min',justNow:'just now',minAgo:'min ago',hrAgo:'h ago',dayAgo:'d ago',
+    newSpeech:'{n} new leads',running:'Running',queued:'Queued',success:'Success',failure:'Failed',never:'Not run yet',paused:'Paused',initial:'Existing at start',newTag:'New',
+    voiceOn:'Voice on',voiceOff:'Voice off',read:'Read'},
+  vi:{appTitle:'Radar Threads',appSub:'Theo dõi tin sang nhượng & thanh lý thiết bị trên Threads',voice:'Giọng nói',tabLeads:'Tin',tabSettings:'Cài đặt',tabStatus:'Trạng thái',tabConnect:'Kết nối',
+    demoBanner:'Đang hiển thị dữ liệu mẫu. Vào “Kết nối” để nhập thông tin GitHub.',searchPh:'Tìm nội dung hoặc tài khoản…',onlyNew:'Chưa xử lý',all:'Tất cả',refresh:'Làm mới',
+    openPost:'Mở bài',openAuthor:'Trang tác giả',copy:'Sao chép link',copied:'Đã sao chép',markDone:'Đánh dấu đã liên hệ',done:'Đã liên hệ',noPosts:'Chưa có tin phù hợp',
+    keywords:'Từ khóa',kwHint:'Mỗi từ khóa sẽ tìm bài “Mới nhất” trên Threads. Càng nhiều từ khóa, quét càng lâu.',regions:'Khu vực',
+    rgHint:'Bài nhắc đến khu vực sẽ được gắn nhãn. Bật “Bắt buộc khu vực” để bỏ qua bài không nhắc.',excludes:'Từ loại trừ',addPh:'Nhập rồi nhấn Enter hoặc +',
+    enabled:'Bật theo dõi',regionRequired:'Bắt buộc khu vực',strict:'Nội dung phải có từ khóa',firstSilent:'Lần đầu không gửi bài cũ',notifyErrors:'Báo khi đăng nhập hết hạn',
+    maxAge:'Chỉ bài trong N giờ (0 = không giới hạn)',maxNotify:'Tối đa thông báo mỗi lần',scrolls:'Số lần cuộn mỗi từ khóa',save:'Lưu cài đặt',saved:'Đã lưu, áp dụng lần quét sau',
+    lastRun:'Lần chạy gần nhất',scanned:'Đã quét',newLeads:'Tin mới',notified:'Đã gửi',scanNow:'Quét ngay',testNotify:'Gửi thử',runsTitle:'Lịch sử chạy',
+    mode:'Chế độ kết nối',modeGh:'GitHub (Phương án A)',modeApi:'Máy chủ riêng (Phương án B)',owner:'Tài khoản GitHub',repo:'Kho lưu trữ',branch:'Nhánh',token:'Mã truy cập',
+    tokenHint:'Mã chỉ lưu trong trình duyệt của thiết bị này.',apiBase:'Địa chỉ máy chủ',apiKey:'Khóa quản trị',connect:'Lưu & kết nối',connected:'Đã kết nối',
+    connFail:'Kết nối thất bại',needConn:'Hãy cài đặt “Kết nối” trước',dispatched:'Đã gửi, xong sau khoảng 1–3 phút',justNow:'vừa xong',minAgo:'phút trước',hrAgo:'giờ trước',dayAgo:'ngày trước',
+    newSpeech:'Có {n} tin mới',running:'Đang chạy',queued:'Đang chờ',success:'Thành công',failure:'Thất bại',never:'Chưa chạy',paused:'Tạm dừng',initial:'Bài cũ lúc khởi động',newTag:'Mới',
+    voiceOn:'Đã bật giọng nói',voiceOff:'Đã tắt giọng nói',read:'Đọc'}
+};
+const SPEECH_LANG = {zh:'zh-TW',en:'en-US',vi:'vi-VN'};
+
+/* ============ 本機儲存（全部包 try/catch） ============ */
+const LS = {
+  get(k,d){try{const v=localStorage.getItem('tr_'+k);return v==null?d:JSON.parse(v)}catch{return d}},
+  set(k,v){try{localStorage.setItem('tr_'+k,JSON.stringify(v))}catch{}}
+};
+const state = {
+  lang: LS.get('lang','zh'), voice: LS.get('voice',false), conn: LS.get('conn',{mode:'github',owner:'',repo:'threads-radar',branch:'main',token:'',api:'',key:''}),
+  done: new Set(LS.get('done',[])), onlyNew:false, filter:'', q:'', doc:null, cfg:null, cfgSha:null, demo:false
+};
+const t = (k) => (I18N[state.lang]||I18N.zh)[k] ?? I18N.zh[k] ?? k;
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function applyLang(){
+  document.documentElement.lang = {zh:'zh-Hant',en:'en',vi:'vi'}[state.lang];
+  document.querySelectorAll('[data-i]').forEach(el=>el.textContent=t(el.dataset.i));
+  document.querySelectorAll('[data-ph]').forEach(el=>el.placeholder=t(el.dataset.ph));
+  document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('on',b.dataset.lang===state.lang));
+  $('#voiceBtn').classList.toggle('on',state.voice);
+  document.title = t('appTitle');
+  renderAll();
+}
+function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2400)}
+function speak(text){
+  if(!state.voice||!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=SPEECH_LANG[state.lang];speechSynthesis.speak(u)}catch{}
+}
+function ago(iso){
+  const ms=Date.now()-Date.parse(iso); if(!iso||isNaN(ms))return '';
+  const m=Math.floor(ms/60000); if(m<1)return t('justNow'); if(m<60)return m+' '+t('minAgo');
+  const h=Math.floor(m/60); if(h<48)return h+' '+t('hrAgo'); return Math.floor(h/24)+' '+t('dayAgo');
+}
+
+/* ============ 資料介面（方案 A：GitHub ／ 方案 B：自架 API） ============
+   兩個 Adapter 的方法完全相同，切換方案時畫面程式碼不用改。 */
+const b64dec = (s) => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g,'')),c=>c.charCodeAt(0)));
+const b64enc = (s) => { const b=new TextEncoder().encode(s); let x=''; for(let i=0;i<b.length;i+=0x8000)x+=String.fromCharCode(...b.subarray(i,i+0x8000)); return btoa(x); };
+
+class GitHubAdapter{
+  constructor(c){this.c=c;this.base=`https://api.github.com/repos/${c.owner}/${c.repo}`}
+  async req(path,opt={}){
+    const r=await fetch(this.base+path,{...opt,cache:'no-store',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.c.token}`,'X-GitHub-Api-Version':'2022-11-28',...(opt.body?{'Content-Type':'application/json'}:{})}});
+    if(!r.ok){let m=r.status;try{m+=' '+(await r.json()).message}catch{}throw new Error(m)}
+    return r.status===204?null:r.json();
+  }
+  async getFile(p){const j=await this.req(`/contents/${p}?ref=${encodeURIComponent(this.c.branch||'main')}&_=${Date.now()}`);return {data:JSON.parse(b64dec(j.content)),sha:j.sha}}
+  async getPosts(){
+    try{return (await this.getFile('data/posts.json')).data}
+    catch(e){if(String(e.message).startsWith('404'))return {lastRun:null,runs:[],posts:[]};throw e}
+  }
+  async getConfig(){const f=await this.getFile('config.json');state.cfgSha=f.sha;return f.data}
+  async saveConfig(cfg){
+    const j=await this.req('/contents/config.json',{method:'PUT',body:JSON.stringify({message:'更新雷達設定',content:b64enc(JSON.stringify(cfg,null,2)+'\n'),sha:state.cfgSha,branch:this.c.branch||'main'})});
+    state.cfgSha=j.content.sha;
+  }
+  async trigger(mode){await this.req('/actions/workflows/monitor.yml/dispatches',{method:'POST',body:JSON.stringify({ref:this.c.branch||'main',inputs:{mode}})})}
+  async getRuns(){const j=await this.req('/actions/workflows/monitor.yml/runs?per_page=8');
+    return j.workflow_runs.map(r=>({status:r.status,conclusion:r.conclusion,at:r.created_at,event:r.event,url:r.html_url}))}
+}
+class ApiAdapter{ // 方案 B：server.js 需提供這些路由
+  constructor(c){this.c=c;this.base=c.api.replace(/\/+$/,'')}
+  async req(p,opt={}){const r=await fetch(this.base+p,{...opt,cache:'no-store',headers:{'Content-Type':'application/json','X-Admin-Key':this.c.key||''}});
+    if(!r.ok)throw new Error(r.status);return r.status===204?null:r.json()}
+  getPosts(){return this.req('/api/posts')}
+  getConfig(){return this.req('/api/config')}
+  saveConfig(cfg){return this.req('/api/config',{method:'PUT',body:JSON.stringify(cfg)})}
+  trigger(mode){return this.req('/api/run',{method:'POST',body:JSON.stringify({mode})})}
+  getRuns(){return this.req('/api/runs')}
+}
+function adapter(){
+  const c=state.conn;
+  if(c.mode==='api') return c.api?new ApiAdapter(c):null;
+  return (c.owner&&c.repo&&c.token)?new GitHubAdapter(c):null;
+}
+
+/* ============ 示範資料 ============ */
+function demoDoc(){
+  const now=Date.now(), iso=(m)=>new Date(now-m*60000).toISOString();
+  const mk=(user,text,kw,rg,m)=>({user,code:user+m,url:'https://www.threads.com/@'+user,authorUrl:'https://www.threads.com/@'+user,text,keywords:kw,regions:rg,time:iso(m),foundAt:iso(m-3)});
+  return {lastRun:{startedAt:iso(6),finishedAt:iso(5),status:'ok',scanned:84,newCount:3,notified:3,perKeyword:{'頂讓':28,'盤讓':19,'設備轉讓':22,'搬家出清':15},warnings:[]},
+    runs:[],posts:[
+      mk('demo_noodle','台中北屯麵店頂讓，生意穩定，設備全新，含冷凍櫃、煮麵機，可現場看店。',['頂讓'],['台中'],12),
+      mk('demo_cafe','高雄咖啡廳盤讓，咖啡機、製冰機、吧台全部帶走價，私訊詳談。',['盤讓'],['高雄'],47),
+      mk('demo_move','月底搬家出清！商用冰箱、不鏽鋼工作台、四口爐便宜賣，新北自取。',['搬家出清'],['新北'],130),
+      mk('demo_bento','便當店收掉，設備轉讓：蒸飯箱、炸爐、排油煙機，台南。',['設備轉讓'],['台南'],300)]};
+}
+const demoCfg = {enabled:true,keywords:['頂讓','盤讓','設備轉讓','搬家出清'],regions:['台北','新北','台中','台南','高雄'],excludeWords:['徵求'],regionRequired:false,strictKeyword:true,firstRunSilent:true,notifyErrors:true,maxAgeHours:72,scrollsPerKeyword:3,maxNotifyPerRun:15,maxStoredPosts:300};
+
+/* ============ 載入 ============ */
+async function load(silent){
+  const a=adapter();
+  state.demo=!a;
+  $('#demoBanner').hidden=!state.demo;
+  try{
+    if(!a){state.doc=demoDoc();state.cfg=state.cfg||structuredClone(demoCfg)}
+    else{
+      // 設定只在第一次載入（避免自動刷新蓋掉正在編輯的設定）
+      const needCfg=!state.cfg;
+      const [doc,cfg]=await Promise.all([a.getPosts(),needCfg?a.getConfig():Promise.resolve(state.cfg)]);
+      state.doc=doc;state.cfg=cfg;
+      if(needCfg)fillSettings();
+    }
+    if(state.demo)fillSettings();
+    if(!LS.get('lastView',null))LS.set('lastView',new Date().toISOString());
+    renderAll(); checkNew(); loadRuns();
+    if(!silent&&a)toast(t('connected'));
+  }catch(e){toast(t('connFail')+'：'+e.message)}
+}
+function checkNew(){
+  const last=LS.get('lastView',null);
+  const posts=(state.doc?.posts||[]).filter(p=>!p.initial);
+  const n=last?posts.filter(p=>Date.parse(p.foundAt)>Date.parse(last)).length:0;
+  const b=$('#badge');b.textContent=n;b.style.display=n?'block':'none';
+  if(n&&n!==checkNew.lastN)speak(t('newSpeech').replace('{n}',n));
+  checkNew.lastN=n;
+}
+function markViewed(){LS.set('lastView',new Date().toISOString());setTimeout(checkNew,50)}
+
+/* ============ 畫面：線索 ============ */
+function renderAll(){renderChips();renderList();renderStatus()}
+function renderChips(){
+  const kws=new Set();(state.doc?.posts||[]).forEach(p=>[...(p.keywords||[]),...(p.regions||[])].forEach(k=>kws.add(k)));
+  $('#chips').innerHTML=[['',t('all')],...[...kws].map(k=>[k,k])].map(([v,l])=>`<button class="chip ${state.filter===v?'on':''}" data-f="${esc(v)}">${esc(l)}</button>`).join('');
+}
+function renderList(){
+  const last=LS.get('lastView',null);
+  const q=state.q.toLowerCase();
+  const posts=(state.doc?.posts||[]).filter(p=>{
+    if(state.onlyNew&&state.done.has(p.url))return false;
+    if(state.filter&&![...(p.keywords||[]),...(p.regions||[])].includes(state.filter))return false;
+    if(q&&!(`${p.text} ${p.user}`.toLowerCase().includes(q)))return false;
+    return true;
+  });
+  $('#onlyNewBtn').classList.toggle('on',state.onlyNew);
+  if(!posts.length){$('#list').innerHTML=`<div class="empty">${t('noPosts')}</div>`;return}
+  $('#list').innerHTML=posts.map(p=>{
+    const done=state.done.has(p.url), isNew=last&&!p.initial&&Date.parse(p.foundAt)>Date.parse(last);
+    return `<article class="card post ${done?'done':''}">
+      <div class="meta">
+        <a class="user" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">@${esc(p.user)}</a>
+        <span class="time">${ago(p.time||p.foundAt)}</span>
+        ${isNew?`<span class="tag newt">${t('newTag')}</span>`:''}
+        ${(p.keywords||[]).map(k=>`<span class="tag">${esc(k)}</span>`).join('')}
+        ${(p.regions||[]).map(k=>`<span class="tag reg">${esc(k)}</span>`).join('')}
+        ${p.initial?`<span class="tag" style="opacity:.6">${t('initial')}</span>`:''}
+      </div>
+      <div class="text" data-toggle>${esc(p.text)}</div>
+      <div class="acts">
+        <a class="btn sm" href="${esc(p.url)}" target="_blank" rel="noopener">${t('openPost')}</a>
+        <a class="btn ghost sm" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">${t('openAuthor')}</a>
+        <button class="btn ghost sm" data-copy="${esc(p.url)}">${t('copy')}</button>
+        ${state.voice?`<button class="btn ghost sm" data-read="${esc(p.url)}">🔈 ${t('read')}</button>`:''}
+        <button class="btn ${done?'':'ghost'} sm" data-done="${esc(p.url)}">${done?'✓ '+t('done'):t('markDone')}</button>
+      </div></article>`;
+  }).join('');
+}
+
+/* ============ 畫面：設定 ============ */
+const LISTS={kw:'keywords',rg:'regions',ex:'excludeWords'};
+function renderTags(){
+  for(const [id,key] of Object.entries(LISTS)){
+    $('#'+id+'List').innerHTML=(state.cfg?.[key]||[]).map((v,i)=>`<span class="etag">${esc(v)}<button data-del="${id}:${i}" aria-label="刪除">×</button></span>`).join('');
+  }
+}
+function fillSettings(){
+  const c=state.cfg;if(!c)return;
+  renderTags();
+  $('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;
+  $('#cFirst').checked=c.firstRunSilent!==false;$('#cErr').checked=c.notifyErrors!==false;
+  $('#cAge').value=c.maxAgeHours??72;$('#cMaxN').value=c.maxNotifyPerRun??15;$('#cScroll').value=c.scrollsPerKeyword??3;
+}
+function addTag(id){
+  const inp=$('#'+id+'In');const v=inp.value.trim();if(!v)return;
+  const arr=state.cfg[LISTS[id]]||(state.cfg[LISTS[id]]=[]);
+  v.split(/[,，、\s]+/).filter(Boolean).forEach(x=>{if(!arr.includes(x))arr.push(x)});
+  inp.value='';renderTags();
+}
+async function saveSettings(){
+  const c=state.cfg;
+  Object.assign(c,{enabled:$('#cEnabled').checked,regionRequired:$('#cRegionReq').checked,strictKeyword:$('#cStrict').checked,
+    firstRunSilent:$('#cFirst').checked,notifyErrors:$('#cErr').checked,maxAgeHours:+$('#cAge').value||0,
+    maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
+  const a=adapter();if(!a){toast(t('needConn'));return}
+  const b=$('#saveBtn');b.disabled=true;
+  try{await a.saveConfig(c);toast(t('saved'));speak(t('saved'))}catch(e){toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
+}
+
+/* ============ 畫面：狀態 ============ */
+function renderStatus(){
+  const r=state.doc?.lastRun;
+  const wb=$('#warnBanner');
+  if(r?.warnings?.length&&r.status==='warn'){wb.hidden=false;wb.textContent='⚠️ '+r.warnings.join('；')}else wb.hidden=true;
+  if(!r){$('#lastRun').textContent=t('never');return}
+  const st=r.status==='paused'?t('paused'):r.status==='warn'?'⚠️':'✓';
+  $('#lastRun').innerHTML=`${st} ${ago(r.finishedAt||r.startedAt)}　<span style="opacity:.7">${new Date(r.finishedAt||r.startedAt).toLocaleString()}</span>`;
+  $('#sScan').textContent=r.scanned||0;$('#sNew').textContent=r.newCount||0;$('#sNoti').textContent=r.notified||0;
+  $('#perKw').innerHTML=Object.entries(r.perKeyword||{}).map(([k,v])=>`<span class="tag">${esc(k)}：${v<0?'✕':v}</span>`).join('');
+}
+async function loadRuns(){
+  const a=adapter();const ul=$('#runs');
+  if(!a){ul.innerHTML=`<li><span>${t('needConn')}</span></li>`;return}
+  try{
+    const runs=await a.getRuns();
+    ul.innerHTML=runs.map(r=>{
+      const cls=r.status!=='completed'?'run':r.conclusion==='success'?'ok':'bad';
+      const lbl=r.status==='queued'?t('queued'):r.status!=='completed'?t('running'):r.conclusion==='success'?t('success'):t('failure');
+      return `<li><span><i class="dot ${cls}"></i>${lbl}　<span style="opacity:.6">${r.event==='schedule'?'⏱':'👆'}</span></span><span>${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">${ago(r.at)}</a>`:ago(r.at)}</span></li>`;
+    }).join('')||`<li><span>${t('never')}</span></li>`;
+  }catch(e){ul.innerHTML=`<li><span>${t('connFail')}：${esc(e.message)}</span></li>`}
+}
+async function trigger(mode,btn){
+  const a=adapter();if(!a){toast(t('needConn'));return}
+  btn.disabled=true;
+  try{await a.trigger(mode);toast(t('dispatched'));speak(t('dispatched'));setTimeout(loadRuns,4000);setTimeout(()=>{load(true)},150000)}
+  catch(e){toast(t('connFail')+'：'+e.message)}finally{setTimeout(()=>btn.disabled=false,5000)}
+}
+
+/* ============ 畫面：連線 ============ */
+function fillConn(){
+  const c=state.conn;$('#mMode').value=c.mode;$('#mOwner').value=c.owner;$('#mRepo').value=c.repo;$('#mBranch').value=c.branch;
+  $('#mToken').value=c.token;$('#mApi').value=c.api;$('#mKey').value=c.key;toggleMode();
+}
+function toggleMode(){const api=$('#mMode').value==='api';$('#ghFields').hidden=api;$('#apiFields').hidden=!api}
+
+/* ============ 事件 ============ */
+document.addEventListener('click',e=>{
+  const el=e.target.closest('button,[data-toggle]');if(!el)return;
+  if(el.dataset.lang){state.lang=el.dataset.lang;LS.set('lang',state.lang);applyLang();return}
+  if(el.dataset.tab){
+    document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b===el));
+    document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('show',s.id==='tab-'+el.dataset.tab));
+    if(el.dataset.tab==='status')loadRuns();
+    window.scrollTo({top:0});return;
+  }
+  if(el.dataset.f!==undefined){state.filter=el.dataset.f;renderChips();renderList();return}
+  if(el.hasAttribute('data-toggle')){el.classList.toggle('open');return}
+  if(el.dataset.copy){navigator.clipboard?.writeText(el.dataset.copy).then(()=>toast(t('copied')),()=>toast(el.dataset.copy));return}
+  if(el.dataset.read){const p=state.doc.posts.find(x=>x.url===el.dataset.read);if(p)speak(p.text);return}
+  if(el.dataset.done){const u=el.dataset.done;state.done.has(u)?state.done.delete(u):state.done.add(u);LS.set('done',[...state.done].slice(-2000));renderList();return}
+  if(el.dataset.add){addTag(el.dataset.add);return}
+  if(el.dataset.del){const [id,i]=el.dataset.del.split(':');state.cfg[LISTS[id]].splice(+i,1);renderTags();return}
+});
+['kw','rg','ex'].forEach(id=>$('#'+id+'In').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addTag(id)}}));
+$('#q').addEventListener('input',e=>{state.q=e.target.value;renderList()});
+$('#onlyNewBtn').onclick=()=>{state.onlyNew=!state.onlyNew;renderList()};
+$('#refreshBtn').onclick=()=>{markViewed();load()};
+$('#voiceBtn').onclick=()=>{state.voice=!state.voice;LS.set('voice',state.voice);applyLang();toast(state.voice?t('voiceOn'):t('voiceOff'));speak(t('voiceOn'))};
+$('#saveBtn').onclick=saveSettings;
+$('#scanBtn').onclick=e=>trigger('scan',e.currentTarget);
+$('#testBtn').onclick=e=>trigger('test',e.currentTarget);
+$('#mMode').onchange=toggleMode;
+$('#connBtn').onclick=()=>{
+  state.conn={mode:$('#mMode').value,owner:$('#mOwner').value.trim(),repo:$('#mRepo').value.trim()||'threads-radar',branch:$('#mBranch').value.trim()||'main',
+    token:$('#mToken').value.trim(),api:$('#mApi').value.trim(),key:$('#mKey').value.trim()};
+  LS.set('conn',state.conn);state.cfg=null;load();
+};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!state.demo)load(true)});
+setInterval(()=>{if(!document.hidden&&!state.demo)load(true)},120000);
+
+/* ============ 啟動 ============ */
+fillConn();applyLang();load(true);
+setTimeout(()=>$('#splash').classList.add('hide'),1300);
+setTimeout(()=>$('#splash').remove(),2000);
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "keywords": ["頂讓", "盤讓", "設備轉讓", "搬家出清", "餐廳頂讓", "二手餐飲設備"],
+  "regions": ["台北", "新北", "桃園", "台中", "台南", "高雄"],
+  "excludeWords": ["徵求", "代辦", "貸款"],
+  "regionRequired": false,
+  "strictKeyword": true,
+  "firstRunSilent": true,
+  "notifyErrors": true,
+  "maxAgeHours": 72,
+  "scrollsPerKeyword": 3,
+  "maxNotifyPerRun": 15,
+  "maxStoredPosts": 300
+}

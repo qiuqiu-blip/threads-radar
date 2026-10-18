@@ -1,0 +1,15 @@
+{
+  "name": "threads-radar",
+  "version": "1.0.0",
+  "description": "小球脆雷達：監控 Threads 頂讓／盤讓／設備轉讓貼文並推播到 Telegram / LINE",
+  "private": true,
+  "main": "core.js",
+  "scripts": {
+    "scan": "node run-once.js scan",
+    "test-notify": "node run-once.js test"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}
