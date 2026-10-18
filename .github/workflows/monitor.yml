@@ -1,0 +1,63 @@
+name: threads-radar
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'scan or test'
+        required: false
+        default: scan
+        type: choice
+        options: [scan, test]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: threads-radar
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install
+        run: npm install --no-audit --no-fund
+
+      - name: Cache browser
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-${{ runner.os }}-${{ hashFiles('package.json') }}
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run
+        run: node run-once.js
+        env:
+          MODE: ${{ inputs.mode || 'scan' }}
+          THREADS_COOKIES: ${{ secrets.THREADS_COOKIES }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LINE_CHANNEL_TOKEN: ${{ secrets.LINE_CHANNEL_TOKEN }}
+          LINE_TO: ${{ secrets.LINE_TO }}
+
+      - name: Save
+        if: always()
+        run: |
+          git config user.name "threads-radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ || true
+          if git diff --staged --quiet; then echo "no change"; exit 0; fi
+          git commit -m "radar data update"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
