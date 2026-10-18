@@ -167,6 +167,19 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
 
   <!-- 線索 -->
   <section class="tab show" id="tab-leads">
+    <div class="card" id="summary">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <h3 style="margin:0" data-i="sumTitle">線索彙整</h3>
+        <button class="btn sm" id="exportBtn" data-i="export">匯出 Excel</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="sumToday">0</b><small data-i="sumToday">今日新增</small></div>
+        <div class="stat"><b id="sumWeek">0</b><small data-i="sumWeek">近 7 天</small></div>
+        <div class="stat"><b id="sumAll">0</b><small data-i="sumAll">全部線索</small></div>
+      </div>
+      <div class="hint" data-i="sumByKw">依關鍵字</div><div class="kwrow" id="sumKw"></div>
+      <div class="hint" style="margin-top:10px" data-i="sumByRg">依地區</div><div class="kwrow" id="sumRg"></div>
+    </div>
     <div class="toolbar">
       <input class="search" id="q" data-ph="searchPh" placeholder="搜尋貼文內容或帳號…">
       <button class="btn ghost sm" id="onlyNewBtn" data-i="onlyNew">只看未處理</button>
@@ -225,6 +238,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
         <button class="btn" id="scanBtn" data-i="scanNow">立即掃描</button>
         <button class="btn ghost" id="testBtn" data-i="testNotify">傳送測試通知</button>
       </div>
+      <button class="btn ghost" style="width:100%;margin-top:12px" id="pauseBtn">⏸</button>
     </div>
     <div class="card">
       <h3 data-i="runsTitle">最近執行紀錄</h3>
@@ -252,6 +266,9 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
       </div>
       <p class="hint" data-i="tokenHint">權杖只存在這台裝置的瀏覽器裡，不會上傳到任何地方。</p>
       <button class="btn" style="width:100%;margin-top:10px" id="connBtn" data-i="connect">儲存並連線</button>
+      <div id="connState" class="hint" style="text-align:center;margin-top:12px"></div>
+      <button class="btn ghost" style="width:100%;margin-top:10px" id="disconnBtn" data-i="disconnect">中斷連線</button>
+      <p class="hint" data-i="disconnHint">中斷後，這台裝置會清除權杖並回到示範畫面；雷達仍會在 GitHub 上照常掃描。要停止掃描請用「狀態」裡的暫停按鈕。</p>
     </div>
   </section>
 </main>
@@ -308,6 +325,18 @@ const I18N = {
     newSpeech:'Có {n} tin mới',running:'Đang chạy',queued:'Đang chờ',success:'Thành công',failure:'Thất bại',never:'Chưa chạy',paused:'Tạm dừng',initial:'Bài cũ lúc khởi động',newTag:'Mới',
     voiceOn:'Đã bật giọng nói',voiceOff:'Đã tắt giọng nói',read:'Đọc'}
 };
+Object.assign(I18N.zh,{disconnect:'中斷連線',disconnHint:'中斷後，這台裝置會清除權杖並回到示範畫面；雷達仍會在 GitHub 上照常掃描。要停止掃描請用「狀態」裡的暫停按鈕。',
+  confirmDisconn:'確定要中斷連線？這台裝置的權杖會被清除。',disconnected:'已中斷連線',connOn:'🟢 目前已連線：',connOff:'⚪ 目前未連線（示範模式）',
+  pause:'⏸ 暫停雷達（停止自動掃描）',resume:'▶️ 啟動雷達（恢復自動掃描）',pausedMsg:'雷達已暫停',resumedMsg:'雷達已啟動',
+  sumTitle:'線索彙整',export:'匯出 Excel',sumToday:'今日新增',sumWeek:'近 7 天',sumAll:'全部線索',sumByKw:'依關鍵字',sumByRg:'依地區',none:'—',exported:'已匯出'});
+Object.assign(I18N.en,{disconnect:'Disconnect',disconnHint:'This clears the token on this device and returns to demo. The radar keeps scanning on GitHub — use Pause in Status to stop it.',
+  confirmDisconn:'Disconnect? The token on this device will be cleared.',disconnected:'Disconnected',connOn:'🟢 Connected: ',connOff:'⚪ Not connected (demo)',
+  pause:'⏸ Pause radar',resume:'▶️ Resume radar',pausedMsg:'Radar paused',resumedMsg:'Radar resumed',
+  sumTitle:'Lead summary',export:'Export Excel',sumToday:'Today',sumWeek:'Last 7 days',sumAll:'All leads',sumByKw:'By keyword',sumByRg:'By region',none:'—',exported:'Exported'});
+Object.assign(I18N.vi,{disconnect:'Ngắt kết nối',disconnHint:'Sẽ xóa mã trên thiết bị này và trở về dữ liệu mẫu. Radar vẫn quét trên GitHub — dùng nút Tạm dừng ở Trạng thái để dừng.',
+  confirmDisconn:'Ngắt kết nối? Mã trên thiết bị này sẽ bị xóa.',disconnected:'Đã ngắt kết nối',connOn:'🟢 Đã kết nối: ',connOff:'⚪ Chưa kết nối (mẫu)',
+  pause:'⏸ Tạm dừng radar',resume:'▶️ Bật lại radar',pausedMsg:'Đã tạm dừng radar',resumedMsg:'Đã bật radar',
+  sumTitle:'Tổng hợp tin',export:'Xuất Excel',sumToday:'Hôm nay',sumWeek:'7 ngày qua',sumAll:'Tất cả',sumByKw:'Theo từ khóa',sumByRg:'Theo khu vực',none:'—',exported:'Đã xuất'});
 const SPEECH_LANG = {zh:'zh-TW',en:'en-US',vi:'vi-VN'};
 
 /* ============ 本機儲存（全部包 try/catch） ============ */
@@ -429,7 +458,65 @@ function checkNew(){
 function markViewed(){LS.set('lastView',new Date().toISOString());setTimeout(checkNew,50)}
 
 /* ============ 畫面：線索 ============ */
-function renderAll(){renderChips();renderList();renderStatus()}
+function renderAll(){renderSummary();renderChips();renderList();renderStatus();renderPause();renderConnState()}
+
+/* ============ 彙整 ============ */
+function renderSummary(){
+  const posts=state.doc?.posts||[], now=Date.now();
+  const t0=new Date();t0.setHours(0,0,0,0);
+  const when=p=>Date.parse(p.foundAt||p.time)||0;
+  $('#sumToday').textContent=posts.filter(p=>!p.initial&&when(p)>=t0.getTime()).length;
+  $('#sumWeek').textContent=posts.filter(p=>now-when(p)<7*864e5).length;
+  $('#sumAll').textContent=posts.length;
+  const count=(key)=>{const m={};posts.forEach(p=>(p[key]||[]).forEach(k=>m[k]=(m[k]||0)+1));
+    return Object.entries(m).sort((a,b)=>b[1]-a[1])};
+  const chip=([k,n])=>`<button class="chip ${state.filter===k?'on':''}" data-f="${esc(k)}">${esc(k)}　${n}</button>`;
+  const kw=count('keywords'),rg=count('regions');
+  $('#sumKw').innerHTML=kw.length?kw.map(chip).join(''):`<span class="hint">${t('none')}</span>`;
+  $('#sumRg').innerHTML=rg.length?rg.map(chip).join(''):`<span class="hint">${t('none')}</span>`;
+}
+function exportCsv(){
+  const posts=state.doc?.posts||[];
+  const head=['發現時間','發文時間','帳號','關鍵字','地區','內容','貼文連結','發文者主頁','已聯絡'];
+  const fmt=s=>s?new Date(s).toLocaleString('zh-TW',{hour12:false}):'';
+  const cell=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+  const rows=posts.map(p=>[fmt(p.foundAt),fmt(p.time),'@'+p.user,(p.keywords||[]).join('、'),(p.regions||[]).join('、'),
+    (p.text||'').replace(/\s+/g,' '),p.url,p.authorUrl,state.done.has(p.url)?'是':'']);
+  const csv='﻿'+[head,...rows].map(r=>r.map(cell).join(',')).join('\r\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  const d=new Date();a.download=`脆雷達線索_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}.csv`;
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+  toast(t('exported'));
+}
+
+/* ============ 暫停／連線狀態 ============ */
+function renderPause(){
+  const b=$('#pauseBtn');if(!b)return;
+  const on=state.cfg?.enabled!==false;
+  b.textContent=on?t('pause'):t('resume');
+  b.classList.toggle('on',!on);
+}
+async function togglePause(){
+  const a=adapter();if(!a){toast(t('needConn'));return}
+  const b=$('#pauseBtn');b.disabled=true;
+  const next=!(state.cfg.enabled!==false);
+  try{state.cfg.enabled=next;await a.saveConfig(state.cfg);fillSettings();renderPause();
+    const m=next?t('resumedMsg'):t('pausedMsg');toast(m);speak(m)}
+  catch(e){state.cfg.enabled=!next;toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
+}
+function renderConnState(){
+  const el=$('#connState');if(!el)return;
+  const c=state.conn;
+  el.textContent=state.demo?t('connOff'):t('connOn')+(c.mode==='api'?c.api:`${c.owner}/${c.repo}`);
+  $('#disconnBtn').hidden=state.demo;
+}
+function disconnect(){
+  if(!confirm(t('confirmDisconn')))return;
+  state.conn={...state.conn,token:'',key:''};
+  LS.set('conn',state.conn);state.cfg=null;state.cfgSha=null;
+  fillConn();load(true);toast(t('disconnected'));
+}
 function renderChips(){
   const kws=new Set();(state.doc?.posts||[]).forEach(p=>[...(p.keywords||[]),...(p.regions||[])].forEach(k=>kws.add(k)));
   $('#chips').innerHTML=[['',t('all')],...[...kws].map(k=>[k,k])].map(([v,l])=>`<button class="chip ${state.filter===v?'on':''}" data-f="${esc(v)}">${esc(l)}</button>`).join('');
@@ -544,7 +631,7 @@ document.addEventListener('click',e=>{
     if(el.dataset.tab==='status')loadRuns();
     window.scrollTo({top:0});return;
   }
-  if(el.dataset.f!==undefined){state.filter=el.dataset.f;renderChips();renderList();return}
+  if(el.dataset.f!==undefined){state.filter=state.filter===el.dataset.f&&el.dataset.f?'':el.dataset.f;renderSummary();renderChips();renderList();return}
   if(el.hasAttribute('data-toggle')){el.classList.toggle('open');return}
   if(el.dataset.copy){navigator.clipboard?.writeText(el.dataset.copy).then(()=>toast(t('copied')),()=>toast(el.dataset.copy));return}
   if(el.dataset.read){const p=state.doc.posts.find(x=>x.url===el.dataset.read);if(p)speak(p.text);return}
@@ -557,7 +644,10 @@ $('#q').addEventListener('input',e=>{state.q=e.target.value;renderList()});
 $('#onlyNewBtn').onclick=()=>{state.onlyNew=!state.onlyNew;renderList()};
 $('#refreshBtn').onclick=()=>{markViewed();load()};
 $('#voiceBtn').onclick=()=>{state.voice=!state.voice;LS.set('voice',state.voice);applyLang();toast(state.voice?t('voiceOn'):t('voiceOff'));speak(t('voiceOn'))};
-$('#saveBtn').onclick=saveSettings;
+$('#saveBtn').onclick=()=>saveSettings().then(renderPause);
+$('#pauseBtn').onclick=togglePause;
+$('#disconnBtn').onclick=disconnect;
+$('#exportBtn').onclick=exportCsv;
 $('#scanBtn').onclick=e=>trigger('scan',e.currentTarget);
 $('#testBtn').onclick=e=>trigger('test',e.currentTarget);
 $('#mMode').onchange=toggleMode;
