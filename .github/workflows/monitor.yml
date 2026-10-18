@@ -2,7 +2,7 @@ name: threads-radar
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -26,23 +26,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check schedule
+        id: gate
+        run: node gate.js
+        env:
+          EVENT: ${{ github.event_name }}
+
       - uses: actions/setup-node@v4
+        if: steps.gate.outputs.due == 'true'
         with:
           node-version: 22
 
       - name: Install
+        if: steps.gate.outputs.due == 'true'
         run: npm install --no-audit --no-fund
 
       - name: Cache browser
+        if: steps.gate.outputs.due == 'true'
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: pw-${{ runner.os }}-${{ hashFiles('package.json') }}
 
       - name: Install Chromium
+        if: steps.gate.outputs.due == 'true'
         run: npx playwright install --with-deps chromium
 
       - name: Run
+        if: steps.gate.outputs.due == 'true'
         run: node run-once.js
         env:
           MODE: ${{ inputs.mode || 'scan' }}
@@ -53,7 +64,7 @@ jobs:
           LINE_TO: ${{ secrets.LINE_TO }}
 
       - name: Save
-        if: always()
+        if: always() && steps.gate.outputs.due == 'true'
         run: |
           git config user.name "threads-radar-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
