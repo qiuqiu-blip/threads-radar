@@ -1,26 +1,46 @@
 {
-  "updatedAt": "2026-10-18T15:39:36.002Z",
+  "updatedAt": "2026-10-18T16:05:02.781Z",
   "lastRun": {
-    "startedAt": "2026-10-18T15:37:48.434Z",
-    "finishedAt": "2026-10-18T15:39:36.002Z",
+    "startedAt": "2026-10-18T16:03:08.360Z",
+    "finishedAt": "2026-10-18T16:05:02.781Z",
     "status": "ok",
-    "scanned": 68,
-    "matched": 14,
-    "newCount": 14,
-    "notified": 0,
+    "scanned": 69,
+    "matched": 6,
+    "newCount": 6,
+    "notified": 6,
     "perKeyword": {
-      "頂讓": 19,
-      "盤讓": 15,
+      "頂讓": 18,
+      "盤讓": 16,
       "設備轉讓": 0,
-      "搬家出清": 14,
+      "搬家出清": 13,
       "餐廳頂讓": 0,
-      "二手餐飲設備": 20
+      "二手餐飲設備": 22
     },
     "warnings": [
       "未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）"
     ]
   },
   "runs": [
+    {
+      "startedAt": "2026-10-18T16:03:08.360Z",
+      "finishedAt": "2026-10-18T16:05:02.781Z",
+      "status": "ok",
+      "scanned": 69,
+      "matched": 6,
+      "newCount": 6,
+      "notified": 6,
+      "perKeyword": {
+        "頂讓": 18,
+        "盤讓": 16,
+        "設備轉讓": 0,
+        "搬家出清": 13,
+        "餐廳頂讓": 0,
+        "二手餐飲設備": 22
+      },
+      "warnings": [
+        "未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）"
+      ]
+    },
     {
       "startedAt": "2026-10-18T15:37:48.434Z",
       "finishedAt": "2026-10-18T15:39:36.002Z",
@@ -44,6 +64,94 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DeobdFMmulj",
+      "user": "lalakent10",
+      "url": "https://www.threads.com/@lalakent10/post/DeobdFMmulj",
+      "authorUrl": "https://www.threads.com/@lalakent10",
+      "text": "搬家出清\n廣大脆友，因為搬新家房子太小，很多九成新的東西都放不下，又不想浪費資源，有需要的脆友可以自行來拿，「高雄市大社區大新路125巷22號」\n目前內容物有：吉他、電鋼琴、行李箱、快煮鍋（全新）、棉被枕頭（全新）、部分新婚迎娶用品、交通錐、護膝（全新）、環保購物袋十個（全新）、籃球、保溫瓶、包包、職業安全衛生書籍、伊藤潤二漫畫、櫻桃小丸子折疊椅（全新）、肥皂（全新十幾顆）。。。等等\n預計放到10/24（六）就搬走",
+      "time": "2026-10-18T10:06:02.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T16:04:53.718Z"
+    },
+    {
+      "code": "DeoQrW6lJFs",
+      "user": "hana.901_",
+      "url": "https://www.threads.com/@hana.901_/post/DeoQrW6lJFs",
+      "authorUrl": "https://www.threads.com/@hana.901_",
+      "text": "二手家具出清\n搬家出清🥹🤍\n家裡家具便宜賣！\n奶油風岩板茶几 $2500\n大雙人／三人沙發 190公分 $2500\n📍A7 面交\n有興趣的可以私訊我～🫶🏻",
+      "time": "2026-10-18T08:31:52.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T16:04:53.718Z"
+    },
+    {
+      "code": "Denqnh4Ek0c",
+      "user": "yte55g",
+      "url": "https://www.threads.com/@yte55g/post/Denqnh4Ek0c",
+      "authorUrl": "https://www.threads.com/@yte55g",
+      "text": "電競椅\n電競椅出售搬家出清\n因為最近要搬家,所以想出售這張電競椅。\n購買時間:2026年2月\n使用時間:很少,主要使用到今年9月,目前保存 狀況良好\n售價:NT$1500\n當初是從蝦皮購買的,商品頁面的照片與原價也一起 附上,另外有放我實際使用時拍的照片,方便大家參考。\n椅子功能都正常,沒有特別的損壞,只是因為搬家後 不方便繼續留著,所以便宜出售。\n有興趣可以私訊詢問,謝謝!",
+      "time": "2026-10-18T02:59:18.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T16:04:53.718Z"
+    },
+    {
+      "code": "DemG9ugFOkR",
+      "user": "linyixuan238",
+      "url": "https://www.threads.com/@linyixuan238/post/DemG9ugFOkR",
+      "authorUrl": "https://www.threads.com/@linyixuan238",
+      "text": "家電出清\n【搬家出清｜二手家電家具便宜帶走～～】\n準備搬家啦！\n家裡有一些家具、家電用不到了，決定通通出清 ❤️\n✨ 歡迎大家來看看，有需要就帶走～\n💰 價格都標在圖片上，喜歡可以直接私訊詢問！\n📦 寄送方式：\n全家／黑貓，皆可貨到付款\n數量有限，售完就沒有囉～\n有興趣的朋友歡迎私訊！\n謝謝大家～～🥰",
+      "time": "2026-10-17T12:28:31.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T16:04:53.718Z"
+    },
+    {
+      "code": "DemAmLaoCYJ",
+      "user": "xiacao741",
+      "url": "https://www.threads.com/@xiacao741/post/DemAmLaoCYJ",
+      "authorUrl": "https://www.threads.com/@xiacao741",
+      "text": "家電出清\n【搬家出清｜二手家電家具便宜帶走～～】\n準備搬家啦！\n家裡有一些家具、家電用不到了，決定通通出清 ❤️\n✨ 歡迎大家來看看，有需要就帶走～\n💰 價格都標在圖片上，喜歡可以直接私訊詢問！\n📦 寄送方式：\n全家／黑貓，皆可貨到付款\n數量有限，售完就沒有囉～\n有興趣的朋友歡迎私訊！\n謝謝大家～～🥰",
+      "time": "2026-10-17T11:32:52.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundAt": "2026-10-18T16:04:53.718Z"
+    },
+    {
+      "code": "DejsSYklMw-",
+      "user": "____naann",
+      "url": "https://www.threads.com/@____naann/post/DejsSYklMw-",
+      "authorUrl": "https://www.threads.com/@____naann",
+      "text": "台中店面出租\n店面需求約30-50坪 面寬約四～五米以上\n可分樓層 總坪數要50以上分（頂讓佳）\n地點希望\n北屯（東山或軍功路\n潭子（潭興路）\n太平（樹德路）\n租金：6-8萬以內\n營業項目：餐飲業(有油煙)\n特別需求：可營登、不用鬧區、前面寬敞機車好停附近要有停車場，後方有地方可通風\n如有物件麻煩請私訊〜謝謝😊",
+      "time": "2026-10-16T13:56:55.000Z",
+      "keywords": [
+        "頂讓"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "頂讓",
+      "foundAt": "2026-10-18T16:04:53.718Z"
+    },
     {
       "code": "Deo75pCkt1Y",
       "user": "jianghuijing29",
