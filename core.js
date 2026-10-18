@@ -16,7 +16,9 @@ const BASE_URL = 'https://www.threads.com';
 
 const DEFAULT_CONFIG = {
   enabled: true,
-  keywords: ['頂讓', '盤讓', '設備轉讓', '搬家出清'],
+  keywords: ['頂讓', '盤讓', '設備轉讓', '搬家出清'],   // 關鍵字池：輪流隨機搜尋
+  mustKeywords: [],       // 必搜：每次掃描都搜（可留空）
+  keywordsPerScan: 4,     // 每次從關鍵字池抽幾個（0 = 全部都搜）
   regions: [],
   excludeWords: [],
   regionRequired: false,
@@ -25,6 +27,10 @@ const DEFAULT_CONFIG = {
   notifyErrors: true,
   notifyTelegram: true,   // false = 線索只存進控制台，不推播
   maxStoredRuns: 300,
+  scanMinMinutes: 30,     // 每次掃描間隔：最短（分鐘）
+  scanMaxMinutes: 90,     // 每次掃描間隔：最長（分鐘），中間亂數
+  restHoursPerDay: 6,     // 每天隨機挑幾個小時休息（零散分布，每天不同）
+  timezone: 'Asia/Taipei',
   maxAgeHours: 72,
   scrollsPerKeyword: 3,
   maxNotifyPerRun: 15,
@@ -47,6 +53,8 @@ const cleanList = (arr) => [...new Set((Array.isArray(arr) ? arr : []).map((s) =
 function loadConfig(file = path.join(ROOT, 'config.json')) {
   const cfg = { ...DEFAULT_CONFIG, ...readJson(file, {}) };
   cfg.keywords = cleanList(cfg.keywords);
+  cfg.mustKeywords = cleanList(cfg.mustKeywords);
+  cfg.allKeywords = cleanList([...cfg.mustKeywords, ...cfg.keywords]);
   cfg.regions = cleanList(cfg.regions);
   cfg.excludeWords = cleanList(cfg.excludeWords);
   return cfg;
@@ -159,7 +167,7 @@ async function scrapeKeyword(page, keyword, { scrolls = 3 } = {}) {
 /* ---------------- 過濾 ---------------- */
 function matchPost(post, cfg, foundBy) {
   const text = norm(`${post.text}\n${post.user}`);
-  const keywords = cfg.keywords.filter((k) => text.includes(norm(k)));
+  const keywords = (cfg.allKeywords || cfg.keywords).filter((k) => text.includes(norm(k)));
   if (cfg.strictKeyword && keywords.length === 0) return null;
   if (cfg.excludeWords.some((w) => text.includes(norm(w)))) return null;
   const regions = cfg.regions.filter((r) => text.includes(norm(r)));
@@ -220,6 +228,57 @@ async function notify({ html, plain }, env) {
   return a || b;
 }
 
+/* ---------------- 關鍵字輪替：平均＋隨機 ----------------
+ * 從「最久沒被搜過」的 2N 個裡面隨機抽 N 個 → 每個詞被搜的次數會很平均，順序又不固定。
+ */
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function pickKeywords(cfg, doc) {
+  const must = cfg.mustKeywords || [];
+  const rest = (cfg.keywords || []).filter((k) => !must.includes(k));
+  const n = Math.max(0, Math.round(Number(cfg.keywordsPerScan ?? 4)));
+  if (n === 0 || n >= rest.length) return [...must, ...shuffle([...rest])];
+  const stats = doc.kwStats || {};
+  const ordered = shuffle([...rest]).sort((a, b) => ((stats[a] && stats[a].last) || 0) - ((stats[b] && stats[b].last) || 0));
+  return [...must, ...shuffle(ordered.slice(0, Math.min(rest.length, n * 2))).slice(0, n)];
+}
+
+/* ---------------- 排程：亂數間隔＋休息時段 ---------------- */
+function hourIn(tz, d = new Date()) {
+  return Number(new Intl.DateTimeFormat('en-US', { timeZone: tz || 'Asia/Taipei', hour: 'numeric', hourCycle: 'h23' }).format(d)) % 24;
+}
+function dateIn(tz, d = new Date()) {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: tz || 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+}
+// 依「日期」產生當天的休息小時：同一天每次算出來都一樣，隔天自動換一組
+function restHours(cfg, d = new Date()) {
+  const n = Math.max(0, Math.min(20, Math.round(Number(cfg.restHoursPerDay ?? 6))));
+  let h = 2166136261;
+  for (const ch of dateIn(cfg.timezone, d) + '|threads-radar') { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); }
+  let x = h >>> 0;
+  const rnd = () => { x = (x + 0x6D2B79F5) >>> 0; let t = x; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  const hrs = [...Array(24).keys()];
+  for (let i = 23; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [hrs[i], hrs[j]] = [hrs[j], hrs[i]]; }
+  return hrs.slice(0, n).sort((p, q) => p - q);
+}
+function inQuiet(cfg, d = new Date()) {
+  return restHours(cfg, d).includes(hourIn(cfg.timezone, d));
+}
+function pickNext(cfg, from = Date.now()) {
+  let a = Number(cfg.scanMinMinutes) || 30, b = Number(cfg.scanMaxMinutes) || 90;
+  if (b < a) [a, b] = [b, a];
+  a = Math.max(5, a); b = Math.max(a, b);
+  const minutes = a + Math.random() * (b - a);
+  return { at: new Date(from + minutes * 60e3).toISOString(), minutes: Math.round(minutes) };
+}
+function shouldScan(cfg, doc, now = new Date(), force = false) {
+  if (force) return { due: true, reason: '手動執行' };
+  if (!cfg.enabled) return { due: false, reason: '雷達已暫停' };
+  if (inQuiet(cfg, now)) return { due: false, reason: `今天的休息時段（${restHours(cfg, now).join('、')} 點）` };
+  const next = Date.parse(doc.nextScanAt || '');
+  if (next && now.getTime() < next - 60e3) return { due: false, reason: `還沒到時間，預計 ${doc.nextScanAt}` };
+  return { due: true, reason: '時間到了' };
+}
+
 /* ---------------- 主流程（方案 A / B 共用） ---------------- */
 async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), env = process.env, log = console.log }) {
   const run = {
@@ -229,6 +288,11 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
   const doc = store.getDoc();
   const finish = () => {
     run.finishedAt = new Date().toISOString();
+    if (run.status !== 'paused') {
+      const n = pickNext(cfg);
+      doc.nextScanAt = n.at; run.nextInMinutes = n.minutes;
+      log(`下次掃描：約 ${n.minutes} 分鐘後`);
+    }
     doc.lastRun = run;
     doc.runs = [run, ...(doc.runs || [])].slice(0, cfg.maxStoredRuns || 300);
     store.saveDoc(doc);
@@ -236,7 +300,11 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
   };
 
   if (!cfg.enabled) { run.status = 'paused'; log('監控已暫停'); return finish(); }
-  if (!cfg.keywords.length) { run.status = 'warn'; run.warnings.push('沒有設定關鍵字'); return finish(); }
+  if (!cfg.allKeywords.length) { run.status = 'warn'; run.warnings.push('沒有設定關鍵字'); return finish(); }
+  const thisRun = pickKeywords(cfg, doc);
+  run.keywordsUsed = thisRun;
+  doc.kwStats = doc.kwStats || {};
+  log(`這次搜尋：${thisRun.join('、')}`);
 
   const seen = store.getSeen();
   const firstRun = seen.size === 0 && cfg.firstRunSilent;
@@ -254,7 +322,9 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
     else run.warnings.push('未設定 THREADS_COOKIES，以未登入狀態搜尋（結果可能很少）');
     const page = await context.newPage();
 
-    for (const kw of cfg.keywords) {
+    for (const kw of thisRun) {
+      const st = doc.kwStats[kw] || (doc.kwStats[kw] = { count: 0, last: 0 });
+      st.count++; st.last = Date.now();
       try {
         const r = await scrapeKeyword(page, kw, { scrolls: cfg.scrollsPerKeyword });
         run.perKeyword[kw] = r.items.length;
@@ -326,5 +396,5 @@ async function sendTestNotification(env = process.env) {
 
 module.exports = {
   DEFAULT_CONFIG, loadConfig, FileStore, parseCookies, extractInPage, scrapeKeyword,
-  matchPost, formatPost, notify, runScan, sendTestNotification,
+  matchPost, formatPost, notify, runScan, sendTestNotification, shouldScan, inQuiet, pickNext, restHours, pickKeywords,
 };
