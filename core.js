@@ -182,12 +182,27 @@ function matchPost(post, cfg, foundBy) {
 /* ---------------- 推播 ---------------- */
 const escHtml = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+const { analyzePost } = require('./analyze');
+const LEVEL_ICON = { 高: '🔥', 中: '🌤', 低: '❄️' };
 function formatPost(p) {
+  const a = analyzePost(p);
   const tags = [...p.keywords, ...p.regions].join('・');
-  const body = p.text.length > 350 ? p.text.slice(0, 350) + '…' : p.text;
+  const body = p.text.length > 300 ? p.text.slice(0, 300) + '…' : p.text;
+  const i = a.info;
+  const facts = [
+    i.city || i.district ? `📍${[i.city, i.district].filter(Boolean).join(' ')}` : '',
+    i.shop ? `🏪${i.shop}` : '',
+    i.price ? `💰${i.price}` : '',
+    i.area ? `📐${i.area}` : '',
+    i.rent ? `🏠租金${i.rent}` : '',
+    i.phone ? `📞${i.phone}` : '',
+    i.line ? `💬LINE ${i.line}` : '',
+    i.equip.length ? `🔧${i.equip.join('、')}` : '',
+  ].filter(Boolean).join('　');
+  const head = `${LEVEL_ICON[a.intent.level]}${a.intent.level}意向｜${a.role}｜${a.cat}`;
   return {
-    html: `🔔 <b>脆新線索｜${escHtml(tags)}</b>\n👤 <a href="${p.authorUrl}">@${escHtml(p.user)}</a>\n\n${escHtml(body)}\n\n🔗 <a href="${p.url}">開啟貼文</a>`,
-    plain: `🔔 脆新線索｜${tags}\n👤 @${p.user}\n${p.authorUrl}\n\n${body}\n\n🔗 ${p.url}`,
+    html: `${head}\n🔔 <b>脆新線索｜${escHtml(tags)}</b>\n👤 <a href="${p.authorUrl}">@${escHtml(p.user)}</a>${facts ? `\n${escHtml(facts)}` : ''}\n\n${escHtml(body)}\n\n🔗 <a href="${p.url}">開啟貼文</a>`,
+    plain: `${head}\n🔔 脆新線索｜${tags}\n👤 @${p.user}${facts ? `\n${facts}` : ''}\n\n${body}\n\n🔗 ${p.url}`,
   };
 }
 

@@ -17,6 +17,27 @@
   --r:16px; --gutter:16px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+.ipill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:800}
+.ipill.高{background:linear-gradient(180deg,#ff8a5c,#d9482b);color:#fff}
+.ipill.中{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#2a1d02}
+.ipill.低{background:#2a3340;color:#a9bcd0}
+.rtag{font-size:11.5px;border-radius:999px;padding:2px 8px;border:1px solid}
+.rtag.賣方{color:#9fd9b1;border-color:#3f6b4f}.rtag.買方{color:#8fc3ff;border-color:#2f5580}.rtag.同業{color:#c9a6ff;border-color:#5a3f80}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.facts span{font-size:12.5px;background:#0f0c07;border:1px solid var(--line);border-radius:8px;padding:3px 8px}
+.why{font-size:11.5px;color:var(--muted);margin-top:6px}
+.crm{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.crm .chip{padding:4px 10px;font-size:12.5px}
+.crm .sep{width:1px;height:18px;background:var(--line);margin:0 2px}
+.chip.st-成交.on{background:linear-gradient(180deg,#7fe0a6,#3fae6c);border-color:#3fae6c;color:#06210f}
+.chip.st-不需聯絡.on{background:#3a3226;border-color:#5a4c33;color:#bba}
+.chip.tp-熱.on{background:linear-gradient(180deg,#ff8a5c,#d9482b);border-color:#d9482b;color:#fff}
+.chip.tp-冷.on{background:#2a3340;border-color:#3e4c5e;color:#cfe0f0}
+.post.skip{opacity:.45}
+.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+@media(max-width:520px){.filters{grid-template-columns:repeat(2,1fr)}}
+.filters select{width:100%;background:#0f0c07;border:1px solid var(--line);border-radius:10px;padding:8px;color:var(--text)}
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;}
 body{min-height:100vh;padding-bottom:calc(84px + env(safe-area-inset-bottom));
   background:radial-gradient(1200px 500px at 50% -200px,#2a1f0a 0%,transparent 70%),var(--bg);}
@@ -230,8 +251,13 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
     </div>
     <div class="toolbar">
       <input class="search" id="q" data-ph="searchPh" placeholder="搜尋貼文內容或帳號…">
-      <button class="btn ghost sm" id="onlyNewBtn" data-i="onlyNew">只看未處理</button>
       <button class="btn sm" id="refreshBtn" data-i="refresh">重新整理</button>
+    </div>
+    <div class="filters">
+      <select id="fIntent"><option value="">意向：全部</option><option value="高">🔥 高意向</option><option value="中">🌤 中意向</option><option value="低">❄️ 低意向</option></select>
+      <select id="fRole"><option value="">角色：全部</option><option>賣方</option><option>買方</option><option>同業</option></select>
+      <select id="fStatus"><option value="">狀態：全部</option><option>未聯絡</option><option>已私訊</option><option>已回覆</option><option>成交</option><option>不需聯絡</option></select>
+      <select id="fSort"><option value="new">排序：最新</option><option value="hot">排序：意向最高</option></select>
     </div>
     <div class="chips" id="chips"></div>
     <div id="list"></div>
@@ -263,6 +289,33 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
       <h3 data-i="excludes">排除字詞</h3>
       <div class="taglist" id="exList"></div>
       <div class="addrow"><input id="exIn" data-ph="addPh" placeholder="輸入後按 Enter 或＋"><button class="btn sm" data-add="ex">＋</button></div>
+    </div>
+    <div class="card">
+      <h3 data-i="rpTitle">✍️ 回覆訊息設定</h3>
+      <div class="grid2">
+        <div class="field"><label data-i="rpName">自我介紹的名義</label><input id="rName"></div>
+        <div class="field"><label data-i="rpLine">LINE ID（會附在訊息最後）</label><input id="rLine" autocapitalize="off"></div>
+      </div>
+      <p class="hint" data-i="rpVars">範本可以用：{名義}、{店描述}（例：在台中的火鍋店）、{設備描述}（例：冰箱、製冰機這些設備）、{地區}、{店型}、{找店}（例：台北大安區的店面，買方用）、{聯絡}（LINE ID）。系統會自動判斷貼文類型，套用對應的範本。</p>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--gold2);font-weight:700">頂讓 範本</summary>
+        <textarea id="rt_頂讓" rows="5" style="width:100%;margin-top:8px;background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--text);line-height:1.6;font:inherit"></textarea>
+        <button class="btn ghost sm" style="margin-top:6px" data-rpdefault="頂讓">↺ 恢復預設</button></details>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--gold2);font-weight:700">收店 範本</summary>
+        <textarea id="rt_收店" rows="5" style="width:100%;margin-top:8px;background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--text);line-height:1.6;font:inherit"></textarea>
+        <button class="btn ghost sm" style="margin-top:6px" data-rpdefault="收店">↺ 恢復預設</button></details>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--gold2);font-weight:700">設備 範本</summary>
+        <textarea id="rt_設備" rows="5" style="width:100%;margin-top:8px;background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--text);line-height:1.6;font:inherit"></textarea>
+        <button class="btn ghost sm" style="margin-top:6px" data-rpdefault="設備">↺ 恢復預設</button></details>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--gold2);font-weight:700">出清 範本</summary>
+        <textarea id="rt_出清" rows="5" style="width:100%;margin-top:8px;background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--text);line-height:1.6;font:inherit"></textarea>
+        <button class="btn ghost sm" style="margin-top:6px" data-rpdefault="出清">↺ 恢復預設</button></details>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--gold2);font-weight:700">買方 範本</summary>
+        <textarea id="rt_買方" rows="5" style="width:100%;margin-top:8px;background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--text);line-height:1.6;font:inherit"></textarea>
+        <button class="btn ghost sm" style="margin-top:6px" data-rpdefault="買方">↺ 恢復預設</button></details>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--gold2);font-weight:700">一般 範本</summary>
+        <textarea id="rt_一般" rows="5" style="width:100%;margin-top:8px;background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--text);line-height:1.6;font:inherit"></textarea>
+        <button class="btn ghost sm" style="margin-top:6px" data-rpdefault="一般">↺ 恢復預設</button></details>
+      
     </div>
     <div class="card">
       <h3 data-i="schedTitle">掃描排程</h3>
@@ -402,8 +455,25 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
   <button data-tab="connect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg><span data-i="tabConnect">連線</span></button>
 </div></nav>
 
+<div id="replyModal" hidden style="position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.72);display:flex;align-items:flex-end;justify-content:center">
+  <div class="card" style="width:100%;max-width:640px;margin:0;border-radius:20px 20px 0 0;max-height:92vh;overflow:auto;padding-bottom:calc(16px + env(safe-area-inset-bottom))">
+    <div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0" data-i="rpModal">✍️ 產生回覆</h3><button class="btn ghost sm" id="rpClose">✕</button></div>
+    <div class="hint" style="margin-top:10px"><b id="rpUser" style="color:var(--gold2)"></b></div>
+    <div id="rpText" class="hint" style="max-height:90px;overflow:auto;white-space:pre-wrap;border-left:2px solid var(--gold3);padding-left:10px;margin:6px 0 12px"></div>
+    <div class="hint" data-i="rpType">判斷類型（可以點選更換）</div>
+    <div class="chips" id="rpCats" style="margin-top:6px"></div>
+    <textarea id="rpMsg" rows="7" style="width:100%;background:#0f0c07;border:1px solid var(--gold3);border-radius:12px;padding:12px;color:var(--text);line-height:1.7;font:inherit;font-size:15px"></textarea>
+    <div id="rpWarn" class="banner warn" style="margin:10px 0 0" data-i="rpNoLine">還沒設定 LINE ID，可以到「設定」→「回覆訊息設定」填入。</div>
+    <div class="grid2" style="margin-top:12px">
+      <button class="btn" id="rpGo" data-i="rpGo">📋 複製並開啟貼文</button>
+      <button class="btn ghost" id="rpCopy" data-i="rpCopy">只複製</button>
+    </div>
+    <p class="hint" data-i="rpHint">開啟貼文後，在 Threads 長按輸入框「貼上」→ 送出。這則線索會自動標記為已聯絡。</p>
+  </div>
+</div>
 <div id="toast"></div>
 
+<script src="analyze.js"></script>
 <script>
 /* ============ 多語言 ============ */
 const I18N = {
@@ -466,7 +536,7 @@ Object.assign(I18N.zh,{tabDash:'儀表板',notifyTg:'推播到 Telegram（關閉
   pRun:'● 運行中',pPaused:'● 已暫停',pushOn:'🔔 推播：開',pushOff:'🔕 推播：關（只存控制台）',pushOnBtn:'🔔 開啟 Telegram 推播',pushOffBtn:'🔕 關閉 Telegram 推播',
   pushOnMsg:'已開啟 Telegram 推播',pushOffMsg:'已關閉推播，線索只存進控制台',kToday:'今日新增',kYest:'昨日',k7:'近 7 天',k30:'近 30 天',kAll:'全部線索',kOpen:'未處理',kDone:'已聯絡',kRateC:'聯絡率',kAvg:'日均（近 7 天）',
   vsY:'比昨天',noRegion:'未標地區',leadsL:'線索',scannedL:'掃到貼文',newL:'新線索',hourU:'時',weekdays:['日','一','二','三','四','五','六'],noWarn:'最近沒有警告 👍',agent:'疑似仲介',
-  soon:'即將',minU:'分',secU:'秒',noData:'尚無資料',timesU:'次',postsU:'則',hitRate:'命中率',kUsers:'不同帳號',kWithRg:'有標地區',kScanned:'累計掃描貼文',dLeftAxis:'左軸',dRightAxis:'右軸',schedTitle:'掃描排程',minM:'每次間隔：最短（分鐘）',maxM:'每次間隔：最長（分鐘）',restN:'每天休息幾小時（隨機零散）',schedSum:'每天工作 <b>{w}</b> 小時，每次間隔 <b>{a}～{b}</b> 分鐘亂數，約 <b>{r}</b> 次掃描／天、搜尋約 <b>{s}</b> 次／天。',restToday:'今天休息',restTmr:'明天',oclock:'點',resting:'休息中',perScan:'每次掃描抽幾個（0＝全部都搜）',clearAll:'全部清除',mustTitle:'必搜關鍵字（每次都搜，可留空）',kwUnit:'個',confirmClear:'確定要清除全部關鍵字？（按「儲存設定」後才會生效）',kwSum:'每次搜尋 <b>{n}</b> 個（必搜 {m}＋隨機 {p}）。關鍵字池裡每個詞，平均每天會被搜約 <b>{e}</b> 次。標籤旁的小數字＝累計被搜次數。'});
+  soon:'即將',minU:'分',secU:'秒',noData:'尚無資料',timesU:'次',postsU:'則',hitRate:'命中率',kUsers:'不同帳號',kWithRg:'有標地區',kScanned:'累計掃描貼文',dLeftAxis:'左軸',dRightAxis:'右軸',schedTitle:'掃描排程',minM:'每次間隔：最短（分鐘）',maxM:'每次間隔：最長（分鐘）',restN:'每天休息幾小時（隨機零散）',schedSum:'每天工作 <b>{w}</b> 小時，每次間隔 <b>{a}～{b}</b> 分鐘亂數，約 <b>{r}</b> 次掃描／天、搜尋約 <b>{s}</b> 次／天。',restToday:'今天休息',restTmr:'明天',oclock:'點',resting:'休息中',perScan:'每次掃描抽幾個（0＝全部都搜）',clearAll:'全部清除',mustTitle:'必搜關鍵字（每次都搜，可留空）',kwUnit:'個',confirmClear:'確定要清除全部關鍵字？（按「儲存設定」後才會生效）',rpBtn:'產生回覆',rpTitle:'✍️ 回覆訊息設定',rpName:'自我介紹的名義',rpLine:'LINE ID（會附在訊息最後）',rpVars:'範本可以用：{名義}、{店描述}（例：在台中的火鍋店）、{設備描述}（例：冰箱、製冰機這些設備）、{地區}、{店型}、{聯絡}（LINE ID）。系統會自動判斷貼文類型，套用對應的範本。',rpModal:'✍️ 產生回覆',rpType:'判斷類型（可以點選更換）',rpNoLine:'還沒設定 LINE ID，可以到「設定」→「回覆訊息設定」填入。',rpGo:'📋 複製並開啟貼文',rpCopy:'只複製',rpHint:'開啟貼文後，在 Threads 長按輸入框「貼上」→ 送出。這則線索會自動標記為已聯絡。',rpCopied:'已複製訊息',rpCopyFail:'複製失敗，請手動選取',kwSum:'每次搜尋 <b>{n}</b> 個（必搜 {m}＋隨機 {p}）。關鍵字池裡每個詞，平均每天會被搜約 <b>{e}</b> 次。標籤旁的小數字＝累計被搜次數。'});
 Object.assign(I18N.en,{tabDash:'Dashboard',notifyTg:'Push to Telegram (off = panel only)',dRadar:'Radar',dLast:'Last scan',dNext:'Next scan',dRate:'Success rate',dAvgScan:'Avg posts/scan',dAvgDur:'Avg duration',dRuns:'Runs logged',
   dKpi:'Overview',dDaily:'New leads per day (14 days)',dHour:'Posting hours',dHourHint:'When sellers usually post.',dWeek:'By weekday',dKw:'Top keywords',dRg:'By region',
   dMatrix:'Keyword × region heatmap',dMatrixHint:'More gold = more leads.',dEff:'Keyword efficiency',dEffHint:'Hit rate = leads ÷ posts found. Replace keywords with very low rates.',
@@ -474,7 +544,7 @@ Object.assign(I18N.en,{tabDash:'Dashboard',notifyTg:'Push to Telegram (off = pan
   pRun:'● Running',pPaused:'● Paused',pushOn:'🔔 Push: on',pushOff:'🔕 Push: off (panel only)',pushOnBtn:'🔔 Turn on Telegram push',pushOffBtn:'🔕 Turn off Telegram push',
   pushOnMsg:'Telegram push on',pushOffMsg:'Push off — leads saved to panel only',kToday:'Today',kYest:'Yesterday',k7:'7 days',k30:'30 days',kAll:'All leads',kOpen:'Unhandled',kDone:'Contacted',kRateC:'Contact rate',kAvg:'Daily avg (7d)',
   vsY:'vs yesterday',noRegion:'No region',leadsL:'Leads',scannedL:'Posts found',newL:'New leads',hourU:'h',weekdays:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],noWarn:'No recent warnings 👍',agent:'Agent?',
-  soon:'soon',minU:'m',secU:'s',noData:'No data yet',timesU:'',postsU:'',hitRate:'Hit rate',kUsers:'Accounts',kWithRg:'With region',kScanned:'Posts scanned',dLeftAxis:'left',dRightAxis:'right',schedTitle:'Scan schedule',minM:'Interval: min (minutes)',maxM:'Interval: max (minutes)',restN:'Rest hours per day (random)',schedSum:'Works <b>{w}</b> h/day, random <b>{a}–{b}</b> min gaps, ~<b>{r}</b> scans/day, ~<b>{s}</b> searches/day.',restToday:'Rest today',restTmr:'Tomorrow',oclock:'h',resting:'Resting',perScan:'Keywords per scan (0 = all)',clearAll:'Clear all',mustTitle:'Always-search keywords (optional)',kwUnit:'',confirmClear:'Clear all keywords? (applies after Save)',kwSum:'Each scan searches <b>{n}</b> (must {m} + random {p}). Each pool keyword is searched ~<b>{e}</b> times/day. Small number = times searched.'});
+  soon:'soon',minU:'m',secU:'s',noData:'No data yet',timesU:'',postsU:'',hitRate:'Hit rate',kUsers:'Accounts',kWithRg:'With region',kScanned:'Posts scanned',dLeftAxis:'left',dRightAxis:'right',schedTitle:'Scan schedule',minM:'Interval: min (minutes)',maxM:'Interval: max (minutes)',restN:'Rest hours per day (random)',schedSum:'Works <b>{w}</b> h/day, random <b>{a}–{b}</b> min gaps, ~<b>{r}</b> scans/day, ~<b>{s}</b> searches/day.',restToday:'Rest today',restTmr:'Tomorrow',oclock:'h',resting:'Resting',perScan:'Keywords per scan (0 = all)',clearAll:'Clear all',mustTitle:'Always-search keywords (optional)',kwUnit:'',confirmClear:'Clear all keywords? (applies after Save)',rpBtn:'Reply',rpGo:'📋 Copy & open post',rpCopy:'Copy only',rpCopied:'Copied',rpModal:'✍️ Reply',kwSum:'Each scan searches <b>{n}</b> (must {m} + random {p}). Each pool keyword is searched ~<b>{e}</b> times/day. Small number = times searched.'});
 Object.assign(I18N.vi,{tabDash:'Bảng số liệu',notifyTg:'Gửi Telegram (tắt = chỉ lưu bảng)',dRadar:'Radar',dLast:'Lần quét trước',dNext:'Lần quét sau',dRate:'Tỷ lệ thành công',dAvgScan:'TB bài mỗi lần',dAvgDur:'TB thời gian',dRuns:'Số lần ghi',
   dKpi:'Tổng quan',dDaily:'Tin mới mỗi ngày (14 ngày)',dHour:'Khung giờ đăng',dHourHint:'Người bán thường đăng lúc mấy giờ.',dWeek:'Theo thứ',dKw:'Xếp hạng từ khóa',dRg:'Theo khu vực',
   dMatrix:'Bảng nhiệt từ khóa × khu vực',dMatrixHint:'Càng vàng càng nhiều tin.',dEff:'Hiệu quả từ khóa',dEffHint:'Tỷ lệ = số tin ÷ số bài tìm được. Đổi từ khóa có tỷ lệ quá thấp.',
@@ -482,7 +552,7 @@ Object.assign(I18N.vi,{tabDash:'Bảng số liệu',notifyTg:'Gửi Telegram (t�
   pRun:'● Đang chạy',pPaused:'● Tạm dừng',pushOn:'🔔 Thông báo: bật',pushOff:'🔕 Thông báo: tắt',pushOnBtn:'🔔 Bật thông báo Telegram',pushOffBtn:'🔕 Tắt thông báo Telegram',
   pushOnMsg:'Đã bật thông báo',pushOffMsg:'Đã tắt thông báo, chỉ lưu vào bảng',kToday:'Hôm nay',kYest:'Hôm qua',k7:'7 ngày',k30:'30 ngày',kAll:'Tất cả',kOpen:'Chưa xử lý',kDone:'Đã liên hệ',kRateC:'Tỷ lệ liên hệ',kAvg:'TB/ngày (7 ngày)',
   vsY:'so với hôm qua',noRegion:'Không rõ khu vực',leadsL:'Tin',scannedL:'Bài tìm được',newL:'Tin mới',hourU:'h',weekdays:['CN','T2','T3','T4','T5','T6','T7'],noWarn:'Không có cảnh báo 👍',agent:'Môi giới?',
-  soon:'sắp',minU:'p',secU:'g',noData:'Chưa có dữ liệu',timesU:'',postsU:'',hitRate:'Tỷ lệ',kUsers:'Tài khoản',kWithRg:'Có khu vực',kScanned:'Tổng bài quét',dLeftAxis:'trục trái',dRightAxis:'trục phải',schedTitle:'Lịch quét',minM:'Khoảng cách: ít nhất (phút)',maxM:'Khoảng cách: nhiều nhất (phút)',restN:'Số giờ nghỉ mỗi ngày (ngẫu nhiên)',schedSum:'Làm <b>{w}</b> giờ/ngày, cách <b>{a}–{b}</b> phút ngẫu nhiên, ~<b>{r}</b> lần quét/ngày, ~<b>{s}</b> lượt tìm/ngày.',restToday:'Nghỉ hôm nay',restTmr:'Ngày mai',oclock:'giờ',resting:'Đang nghỉ',perScan:'Số từ mỗi lần quét (0 = tất cả)',clearAll:'Xóa hết',mustTitle:'Từ khóa luôn tìm (có thể để trống)',kwUnit:'từ',confirmClear:'Xóa hết từ khóa? (có hiệu lực sau khi Lưu)',kwSum:'Mỗi lần tìm <b>{n}</b> từ (cố định {m} + ngẫu nhiên {p}). Mỗi từ trong kho được tìm ~<b>{e}</b> lần/ngày. Số nhỏ = số lần đã tìm.'});
+  soon:'sắp',minU:'p',secU:'g',noData:'Chưa có dữ liệu',timesU:'',postsU:'',hitRate:'Tỷ lệ',kUsers:'Tài khoản',kWithRg:'Có khu vực',kScanned:'Tổng bài quét',dLeftAxis:'trục trái',dRightAxis:'trục phải',schedTitle:'Lịch quét',minM:'Khoảng cách: ít nhất (phút)',maxM:'Khoảng cách: nhiều nhất (phút)',restN:'Số giờ nghỉ mỗi ngày (ngẫu nhiên)',schedSum:'Làm <b>{w}</b> giờ/ngày, cách <b>{a}–{b}</b> phút ngẫu nhiên, ~<b>{r}</b> lần quét/ngày, ~<b>{s}</b> lượt tìm/ngày.',restToday:'Nghỉ hôm nay',restTmr:'Ngày mai',oclock:'giờ',resting:'Đang nghỉ',perScan:'Số từ mỗi lần quét (0 = tất cả)',clearAll:'Xóa hết',mustTitle:'Từ khóa luôn tìm (có thể để trống)',kwUnit:'từ',confirmClear:'Xóa hết từ khóa? (có hiệu lực sau khi Lưu)',rpBtn:'Trả lời',rpGo:'📋 Sao chép & mở bài',rpCopy:'Chỉ sao chép',rpCopied:'Đã sao chép',rpModal:'✍️ Trả lời',kwSum:'Mỗi lần tìm <b>{n}</b> từ (cố định {m} + ngẫu nhiên {p}). Mỗi từ trong kho được tìm ~<b>{e}</b> lần/ngày. Số nhỏ = số lần đã tìm.'});
 const SPEECH_LANG = {zh:'zh-TW',en:'en-US',vi:'vi-VN'};
 
 /* ============ 本機儲存（全部包 try/catch） ============ */
@@ -624,11 +694,12 @@ function renderSummary(){
 }
 function exportCsv(){
   const posts=state.doc?.posts||[];
-  const head=['發現時間','發文時間','帳號','關鍵字','地區','內容','貼文連結','發文者主頁','已聯絡'];
+  const head=['發現時間','發文時間','帳號','意向','意向理由','角色','類型','聯絡狀態','冷溫熱','關鍵字','地區','行政區','店型','價格','坪數','租金','電話','LINE','設備','內容','貼文連結','發文者主頁'];
   const fmt=s=>s?new Date(s).toLocaleString('zh-TW',{hour12:false}):'';
   const cell=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
-  const rows=posts.map(p=>[fmt(p.foundAt),fmt(p.time),'@'+p.user,(p.keywords||[]).join('、'),(p.regions||[]).join('、'),
-    (p.text||'').replace(/\s+/g,' '),p.url,p.authorUrl,state.done.has(p.url)?'是':'']);
+  const rows=posts.map(p=>{const a=an(p),i=a.info,c=crm(p.url);return [fmt(p.foundAt),fmt(p.time),'@'+p.user,a.intent.level,a.intent.reasons.join('、'),a.role,a.cat,c.s,c.t||'',
+    (p.keywords||[]).join('、'),i.city||(p.regions||[]).join('、'),i.district,i.shop,i.price,i.area,i.rent,i.phone,i.line,(i.equip||[]).join('、'),
+    (p.text||'').replace(/\s+/g,' '),p.url,p.authorUrl]});
   const csv='﻿'+[head,...rows].map(r=>r.map(cell).join(',')).join('\r\n');
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
@@ -668,35 +739,75 @@ function renderChips(){
   const kws=new Set();(state.doc?.posts||[]).forEach(p=>[...(p.keywords||[]),...(p.regions||[])].forEach(k=>kws.add(k)));
   $('#chips').innerHTML=[['',t('all')],...[...kws].map(k=>[k,k])].map(([v,l])=>`<button class="chip ${state.filter===v?'on':''}" data-f="${esc(v)}">${esc(l)}</button>`).join('');
 }
+/* ============ 分析＋聯絡紀錄 ============ */
+const STATUSES=['未聯絡','已私訊','已回覆','成交','不需聯絡'];
+const TEMPS=['冷','溫','熱'];
+state.crm=LS.get('crm',{});
+state.f={intent:'',role:'',status:'',sort:'new'};
+if(state.done.size){state.done.forEach(u=>{if(!state.crm[u])state.crm[u]={s:'已私訊',at:Date.now()}});LS.set('crm',state.crm);state.done.clear();LS.set('done',[])}
+function crm(u){return state.crm[u]||{s:'未聯絡'}}
+function setCrm(u,patch){
+  state.crm[u]={...crm(u),...patch,at:Date.now()};
+  const ks=Object.keys(state.crm);if(ks.length>3000)ks.sort((a,b)=>(state.crm[a].at||0)-(state.crm[b].at||0)).slice(0,ks.length-3000).forEach(k=>delete state.crm[k]);
+  LS.set('crm',state.crm);
+}
+const contacted=u=>['已私訊','已回覆','成交'].includes(crm(u).s);
+const AN=new Map();
+function an(p){
+  let a=AN.get(p.url);
+  if(!a){a=window.RadarAnalyze?RadarAnalyze.analyzePost(p):{role:'賣方',cat:'一般',intent:{level:'中',score:3,reasons:[]},info:{equip:[]}};AN.set(p.url,a)}
+  return a;
+}
+const LV_ICON={高:'🔥',中:'🌤',低:'❄️'};
+
 function renderList(){
   const last=LS.get('lastView',null);
-  const q=state.q.toLowerCase();
-  const posts=(state.doc?.posts||[]).filter(p=>{
-    if(state.onlyNew&&state.done.has(p.url))return false;
+  const q=state.q.toLowerCase(),f=state.f;
+  let posts=(state.doc?.posts||[]).filter(p=>{
+    const a=an(p),c=crm(p.url);
+    if(f.intent&&a.intent.level!==f.intent)return false;
+    if(f.role&&a.role!==f.role)return false;
+    if(f.status&&c.s!==f.status)return false;
     if(state.filter&&![...(p.keywords||[]),...(p.regions||[])].includes(state.filter))return false;
     if(q&&!(`${p.text} ${p.user}`.toLowerCase().includes(q)))return false;
     return true;
   });
-  $('#onlyNewBtn').classList.toggle('on',state.onlyNew);
+  if(f.sort==='hot')posts=[...posts].sort((a,b)=>an(b).intent.score-an(a).intent.score||(Date.parse(b.foundAt)||0)-(Date.parse(a.foundAt)||0));
   if(!posts.length){$('#list').innerHTML=`<div class="empty">${t('noPosts')}</div>`;return}
   $('#list').innerHTML=posts.map(p=>{
-    const done=state.done.has(p.url), isNew=last&&!p.initial&&Date.parse(p.foundAt)>Date.parse(last);
-    return `<article class="card post ${done?'done':''}">
+    const a=an(p),i=a.info,c=crm(p.url),isNew=last&&!p.initial&&Date.parse(p.foundAt)>Date.parse(last);
+    const facts=[
+      i.city||i.district?`📍 ${esc([i.city,i.district].filter(Boolean).join(' '))}`:'',
+      i.shop?`🏪 ${esc(i.shop)}`:'',i.price?`💰 ${esc(i.price)}`:'',i.area?`📐 ${esc(i.area)}`:'',
+      i.rent?`🏠 租金 ${esc(i.rent)}`:'',i.phone?`📞 <a href="tel:${esc(i.phone.replace(/\D/g,''))}">${esc(i.phone)}</a>`:'',
+      i.line?`💬 LINE ${esc(i.line)}`:'',i.equip&&i.equip.length?`🔧 ${esc(i.equip.join('、'))}`:''
+    ].filter(Boolean);
+    const u=esc(p.url);
+    return `<article class="card post ${contacted(p.url)?'done':''} ${c.s==='不需聯絡'?'skip':''}">
       <div class="meta">
+        <span class="ipill ${a.intent.level}">${LV_ICON[a.intent.level]} ${a.intent.level}意向</span>
+        <span class="rtag ${a.role}">${a.role}</span>
+        ${a.cat!==a.role?`<span class="tag">${esc(a.cat)}</span>`:''}
         <a class="user" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">@${esc(p.user)}</a>
         <span class="time">${ago(p.time||p.foundAt)}</span>
         ${isNew?`<span class="tag newt">${t('newTag')}</span>`:''}
         ${(p.keywords||[]).map(k=>`<span class="tag">${esc(k)}</span>`).join('')}
-        ${(p.regions||[]).map(k=>`<span class="tag reg">${esc(k)}</span>`).join('')}
         ${p.initial?`<span class="tag" style="opacity:.6">${t('initial')}</span>`:''}
       </div>
+      ${facts.length?`<div class="facts">${facts.map(x=>`<span>${x}</span>`).join('')}</div>`:''}
       <div class="text" data-toggle>${esc(p.text)}</div>
+      ${a.intent.reasons.length?`<div class="why">💡 ${esc(a.intent.reasons.join('・'))}</div>`:''}
       <div class="acts">
-        <a class="btn sm" href="${esc(p.url)}" target="_blank" rel="noopener">${t('openPost')}</a>
+        <button class="btn sm" data-reply="${u}">✍️ ${t('rpBtn')}</button>
+        <a class="btn ghost sm" href="${u}" target="_blank" rel="noopener">${t('openPost')}</a>
         <a class="btn ghost sm" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">${t('openAuthor')}</a>
-        <button class="btn ghost sm" data-copy="${esc(p.url)}">${t('copy')}</button>
-        ${state.voice?`<button class="btn ghost sm" data-read="${esc(p.url)}">🔈 ${t('read')}</button>`:''}
-        <button class="btn ${done?'':'ghost'} sm" data-done="${esc(p.url)}">${done?'✓ '+t('done'):t('markDone')}</button>
+        <button class="btn ghost sm" data-copy="${u}">${t('copy')}</button>
+        ${state.voice?`<button class="btn ghost sm" data-read="${u}">🔈 ${t('read')}</button>`:''}
+      </div>
+      <div class="crm">
+        ${STATUSES.map(st=>`<button class="chip st-${st} ${c.s===st?'on':''}" data-st="${u}|${st}">${st}</button>`).join('')}
+        <span class="sep"></span>
+        ${TEMPS.map(tp=>`<button class="chip tp-${tp} ${c.t===tp?'on':''}" data-tp="${u}|${tp}">${tp==='熱'?'🔥':tp==='溫'?'🌤':'❄️'} ${tp}</button>`).join('')}
       </div></article>`;
   }).join('');
 }
@@ -716,7 +827,7 @@ function fillSettings(){
   renderTags();
   $('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;
   $('#cFirst').checked=c.firstRunSilent!==false;$('#cTg').checked=c.notifyTelegram!==false;$('#cErr').checked=c.notifyErrors!==false;
-  $('#cAge').value=c.maxAgeHours??72;$('#cMinM').value=c.scanMinMinutes??30;$('#cMaxM').value=c.scanMaxMinutes??90;$('#cRest').value=c.restHoursPerDay??6;renderSchedInfo();$('#cMaxN').value=c.maxNotifyPerRun??15;$('#cPerScan').value=c.keywordsPerScan??4;$('#cScroll').value=c.scrollsPerKeyword??3;
+  $('#cAge').value=c.maxAgeHours??72;$('#cMinM').value=c.scanMinMinutes??30;$('#cMaxM').value=c.scanMaxMinutes??90;$('#cRest').value=c.restHoursPerDay??6;renderSchedInfo();$('#cMaxN').value=c.maxNotifyPerRun??15;fillReplySettings();$('#cPerScan').value=c.keywordsPerScan??4;$('#cScroll').value=c.scrollsPerKeyword??3;
 }
 function addTag(id){
   const inp=$('#'+id+'In');const v=inp.value.trim();if(!v)return;
@@ -728,7 +839,7 @@ async function saveSettings(){
   const c=state.cfg;
   Object.assign(c,{enabled:$('#cEnabled').checked,regionRequired:$('#cRegionReq').checked,strictKeyword:$('#cStrict').checked,
     firstRunSilent:$('#cFirst').checked,notifyTelegram:$('#cTg').checked,notifyErrors:$('#cErr').checked,maxAgeHours:+$('#cAge').value||0,
-    maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),keywordsPerScan:Math.max(0,Math.round(+$('#cPerScan').value||0)),scanMinMinutes:Math.max(5,+$('#cMinM').value||30),scanMaxMinutes:Math.max(5,+$('#cMaxM').value||90),restHoursPerDay:Math.min(20,Math.max(0,+$('#cRest').value||0)),scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
+    maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),reply:collectReplySettings(),keywordsPerScan:Math.max(0,Math.round(+$('#cPerScan').value||0)),scanMinMinutes:Math.max(5,+$('#cMinM').value||30),scanMaxMinutes:Math.max(5,+$('#cMaxM').value||90),restHoursPerDay:Math.min(20,Math.max(0,+$('#cRest').value||0)),scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
   const a=adapter();if(!a){toast(t('needConn'));return}
   const b=$('#saveBtn');b.disabled=true;
   try{await a.saveConfig(c);toast(t('saved'));speak(t('saved'))}catch(e){toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
@@ -771,6 +882,67 @@ function fillConn(){
 }
 function toggleMode(){const api=$('#mMode').value==='api';$('#ghFields').hidden=api;$('#apiFields').hidden=!api}
 
+
+
+/* ============ 智慧回覆（規則判斷，免費） ============ */
+const REPLY_DEFAULT={
+  name:'小球球',lineId:'',
+  tpl:{
+    '頂讓':'您好～我是{名義}😊 看到您{店描述}要頂讓的貼文！我們平常在幫忙尋點頂讓、創業諮詢，也有在收購二手設備。如果想讓頂讓更快談成，或是設備想先整批處理，都可以跟我們聊聊喔～{聯絡}',
+    '收店':'您好～我是{名義}😊 看到您{店描述}準備結束營業，真的辛苦了🙏 我們有在做設備收購、拆除清運跟清潔打掃，可以一次幫您把店面整理好，讓退租更順利。需要的話可以先免費幫您估價喔～{聯絡}',
+    '設備':'您好～我是{名義}😊 看到您在轉讓{設備描述}，請問還在嗎？我們有在收購二手餐飲設備，拆裝跟南北貨運也都能處理，方便的話可以先傳幾張照片給我們估價喔～{聯絡}',
+    '出清':'您好～我是{名義}😊 看到您{店描述}在出清，請問{設備描述}還在嗎？我們有在收購二手設備，整批帶走也可以，拆除清運我們都能幫忙處理～{聯絡}',
+    '買方':'您好～我是{名義}😊 看到您在找{找店}，跟您分享一下～我們手上常有餐飲店頂讓的物件，也有在做創業諮詢、整場規劃跟設備採購。方便的話跟我說一下預算、坪數和想做的類型，我幫您留意合適的點喔！{聯絡}',
+    '一般':'您好～我是{名義}😊 看到您的貼文，想跟您打聲招呼～我們在做餐飲創業的一條龍服務（尋點頂讓、整場規劃、設備收購、拆除清運、木作水電、招牌施工等），如果有需要幫忙的地方，歡迎跟我們聊聊！{聯絡}'
+  }
+};
+const REPLY_CATS=['頂讓','收店','設備','出清','買方','一般'];
+function replyCfg(){const r=state.cfg?.reply||{};return {name:r.name||REPLY_DEFAULT.name,lineId:r.lineId||'',tpl:{...REPLY_DEFAULT.tpl,...(r.tpl||{})}}}
+function classify(p){return an(p).cat}
+function buildReply(p,cat){
+  const r=replyCfg(),i=an(p).info;
+  const loc=[i.city,i.district].filter(Boolean).join('');
+  const shopDesc=loc&&i.shop?`在${loc}的${i.shop}`:loc?`在${loc}的店`:i.shop?`的${i.shop}`:'的店';
+  const eq=(i.equip||[]).slice(0,3);
+  const eqDesc=eq.length?eq.join('、')+(eq.length>1?'這些設備':''):'店裡的設備';
+  const find=loc?`${loc}的店面`:'店面';
+  return (r.tpl[cat]||r.tpl['一般']).replace(/\{名義\}/g,r.name).replace(/\{店描述\}/g,shopDesc).replace(/\{設備描述\}/g,eqDesc)
+    .replace(/\{找店\}/g,find).replace(/\{地區\}/g,loc).replace(/\{店型\}/g,i.shop||'').replace(/\{聯絡\}/g,r.lineId?`\n我們的 LINE ID：${r.lineId}`:'').trim();
+}
+let replyPost=null;
+function openReply(url){
+  const p=(state.doc?.posts||[]).find(x=>x.url===url);if(!p)return;replyPost=p;
+  const cat=classify(p);
+  $('#rpUser').textContent='@'+p.user;$('#rpText').textContent=p.text;
+  renderReplyCats(cat);$('#rpMsg').value=buildReply(p,cat);
+  $('#rpWarn').hidden=!!replyCfg().lineId;
+  $('#replyModal').hidden=false;document.body.style.overflow='hidden';
+}
+function renderReplyCats(active){
+  $('#rpCats').innerHTML=REPLY_CATS.map(c=>`<button class="chip ${c===active?'on':''}" data-rcat="${c}">${c}</button>`).join('');
+}
+function closeReply(){$('#replyModal').hidden=true;document.body.style.overflow='';replyPost=null}
+function copyText(s){
+  if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(s);
+  const ta=document.createElement('textarea');ta.value=s;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy')}catch{}ta.remove();return Promise.resolve();
+}
+function replyCopy(open){
+  if(!replyPost)return;const msg=$('#rpMsg').value;const url=replyPost.url;
+  copyText(msg).then(()=>toast(t('rpCopied')),()=>toast(t('rpCopyFail')));
+  if(open){window.open(url,'_blank','noopener');if(!contacted(url))setCrm(url,{s:'已私訊'});renderList();renderSummary()}
+  closeReply();
+}
+/* 設定頁：範本編輯 */
+function fillReplySettings(){
+  const r=replyCfg();if(!$('#rName'))return;
+  $('#rName').value=r.name;$('#rLine').value=r.lineId;
+  REPLY_CATS.forEach(c=>{$('#rt_'+c).value=r.tpl[c]});
+}
+function collectReplySettings(){
+  const tpl={};REPLY_CATS.forEach(c=>{tpl[c]=$('#rt_'+c).value.trim()||REPLY_DEFAULT.tpl[c]});
+  return {name:$('#rName').value.trim()||REPLY_DEFAULT.name,lineId:$('#rLine').value.trim(),tpl};
+}
 
 /* ============ 排程（與 core.js 相同演算法） ============ */
 function tzHour(d=new Date()){return Number(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',hour:'numeric',hourCycle:'h23'}).format(d))%24}
@@ -879,10 +1051,12 @@ function renderDash(){
   /* KPI */
   const cnt=(from,to=Infinity)=>live.filter(p=>found(p)>=from&&found(p)<to).length;
   const cToday=cnt(today), cY=cnt(today-DAY,today), c7=posts.filter(p=>now-found(p)<7*DAY).length, c30=posts.filter(p=>now-found(p)<30*DAY).length;
-  const done=posts.filter(p=>state.done.has(p.url)).length, diff=cToday-cY;
+  const done=posts.filter(p=>contacted(p.url)).length, diff=cToday-cY;
+  const stCount=Object.fromEntries(STATUSES.map(st=>[st,posts.filter(p=>crm(p.url).s===st).length]));
+  const hi=posts.filter(p=>an(p).intent.level==='高').length, buyers=posts.filter(p=>an(p).role==='買方').length;
   const kpis=[[cToday,t('kToday'),(cY||cToday)?`<i class="${diff>=0?'up':'down'}">${diff>=0?'▲':'▼'} ${Math.abs(diff)} ${t('vsY')}</i>`:''],
     [cY,t('kYest'),''],[c7,t('k7'),''],[c30,t('k30'),''],[posts.length,t('kAll'),''],[posts.length-done,t('kOpen'),''],[done,t('kDone'),''],
-    [posts.length?Math.round(done/posts.length*100)+'%':'—',t('kRateC'),''],[(c7/7).toFixed(1),t('kAvg'),''],
+    [posts.length?Math.round(done/posts.length*100)+'%':'—',t('kRateC'),''],[stCount['成交'],'成交',''],[done?Math.round(stCount['成交']/done*100)+'%':'—','成交率',''],[hi,'🔥 高意向',''],[buyers,'買方（找店的人）',''],[(c7/7).toFixed(1),t('kAvg'),''],
     [Object.keys(posts.reduce((m,p)=>(m[p.user]=1,m),{})).length,t('kUsers'),''],
     [posts.filter(p=>(p.regions||[]).length).length,t('kWithRg'),''],
     [scanRuns.reduce((a,r)=>a+(r.scanned||0),0),t('kScanned'),'']];
@@ -929,7 +1103,7 @@ function renderDash(){
     <span class="bar"><span style="width:${v.n/maxU*100}%"></span></span><span class="ct">${v.n}</span></li>`).join(''):`<li>${t('noData')}</li>`;
 
   /* 聯絡進度 / 掃描紀錄 */
-  svgDonut('cContact','cContactLeg',[t('kDone'),t('kOpen')],[done,posts.length-done],[GREEN,GOLD]);
+  svgDonut('cContact','cContactLeg',STATUSES,STATUSES.map(st=>stCount[st]),['#4a3d22',GOLD2,'#8fc3ff',GREEN,'#6d5d3c']);
   const rs=scanRuns.slice(0,50).reverse();
   svgCombo('cScan','cScanLeg',rs.map(r=>r.scanned||0),rs.map(r=>r.newCount||0));
 
@@ -961,14 +1135,18 @@ document.addEventListener('click',e=>{
   if(el.hasAttribute('data-toggle')){el.classList.toggle('open');return}
   if(el.dataset.copy){navigator.clipboard?.writeText(el.dataset.copy).then(()=>toast(t('copied')),()=>toast(el.dataset.copy));return}
   if(el.dataset.read){const p=state.doc.posts.find(x=>x.url===el.dataset.read);if(p)speak(p.text);return}
-  if(el.dataset.done){const u=el.dataset.done;state.done.has(u)?state.done.delete(u):state.done.add(u);LS.set('done',[...state.done].slice(-2000));renderList();return}
+  if(el.dataset.reply){openReply(el.dataset.reply);return}
+  if(el.dataset.rcat){renderReplyCats(el.dataset.rcat);$('#rpMsg').value=buildReply(replyPost,el.dataset.rcat);return}
+  if(el.dataset.rpdefault!==undefined){const c=el.dataset.rpdefault;$('#rt_'+c).value=REPLY_DEFAULT.tpl[c];return}
+  if(el.dataset.st){const [u,st]=el.dataset.st.split('|');setCrm(u,{s:st});renderList();renderSummary();return}
+  if(el.dataset.tp){const [u,tp]=el.dataset.tp.split('|');setCrm(u,{t:crm(u).t===tp?'':tp});renderList();return}
   if(el.dataset.add){addTag(el.dataset.add);return}
   if(el.dataset.clear){if(confirm(t('confirmClear'))){state.cfg[LISTS[el.dataset.clear]]=[];renderTags()}return}
   if(el.dataset.del){const [id,i]=el.dataset.del.split(':');state.cfg[LISTS[id]].splice(+i,1);renderTags();return}
 });
 ['kw','mu','rg','ex'].forEach(id=>$('#'+id+'In').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addTag(id)}}));
 $('#q').addEventListener('input',e=>{state.q=e.target.value;renderList()});
-$('#onlyNewBtn').onclick=()=>{state.onlyNew=!state.onlyNew;renderList()};
+['fIntent','fRole','fStatus','fSort'].forEach(id=>$('#'+id).addEventListener('change',e=>{const k={fIntent:'intent',fRole:'role',fStatus:'status',fSort:'sort'}[id];state.f[k]=e.target.value;renderList()}));
 $('#refreshBtn').onclick=()=>{markViewed();load()};
 $('#voiceBtn').onclick=()=>{state.voice=!state.voice;LS.set('voice',state.voice);applyLang();toast(state.voice?t('voiceOn'):t('voiceOff'));speak(t('voiceOn'))};
 $('#saveBtn').onclick=()=>saveSettings().then(renderPause);
@@ -977,6 +1155,8 @@ $('#dPauseBtn').onclick=()=>togglePause().then(renderDash);
 $('#dPushBtn').onclick=togglePush;
 $('#disconnBtn').onclick=disconnect;
 $('#exportBtn').onclick=exportCsv;
+$('#rpClose').onclick=closeReply;$('#rpGo').onclick=()=>replyCopy(true);$('#rpCopy').onclick=()=>replyCopy(false);
+$('#replyModal').addEventListener('click',e=>{if(e.target.id==='replyModal')closeReply()});
 ['cMinM','cMaxM','cRest','cPerScan'].forEach(id=>$('#'+id).addEventListener('input',renderSchedInfo));
 $('#scanBtn').onclick=e=>trigger('scan',e.currentTarget);
 $('#testBtn').onclick=e=>trigger('test',e.currentTarget);
