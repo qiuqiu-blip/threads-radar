@@ -320,6 +320,23 @@ function pickKeywords(cfg, doc) {
   return [...must, ...shuffle(ordered.slice(0, Math.min(rest.length, n * 2))).slice(0, n)];
 }
 
+// 預先排好「下一次」要搜的內容，存進 posts.json，控制台就能先看到
+function planQueries(cfg, doc) {
+  const regions = cfg.regions || [];
+  return pickKeywords(cfg, doc).map((kw) => {
+    const combo = regions.length && Math.random() < Number(cfg.comboChance ?? 0.5);
+    return { kw, q: combo ? `${kw} ${regions[Math.floor(Math.random() * regions.length)]}` : kw };
+  });
+}
+function usePlan(cfg, doc) {
+  const plan = doc.nextPlan && Array.isArray(doc.nextPlan.items) ? doc.nextPlan.items : null;
+  if (!plan || !plan.length) return planQueries(cfg, doc);
+  const pool = new Set(cfg.allKeywords || []);
+  const items = plan.filter((x) => x && pool.has(x.kw));
+  for (const m of cfg.mustKeywords || []) if (!items.some((x) => x.kw === m)) items.unshift({ kw: m, q: m });
+  return items.length ? items : planQueries(cfg, doc);
+}
+
 /* ---------------- 排程：亂數間隔＋尖峰時段（演算法在 analyze.js，與控制台共用） ---------------- */
 const SCHED = require('./analyze');
 const weightsOf = (doc, cfg) => SCHED.hourWeights((doc && doc.posts) || [], cfg.timezone);
@@ -347,6 +364,7 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
     if (run.status !== 'paused') {
       const n = pickNext(cfg, Date.now(), doc);
       doc.nextScanAt = n.at; run.nextInMinutes = n.minutes;
+      try { doc.nextPlan = { at: n.at, madeAt: new Date().toISOString(), items: planQueries(cfg, doc) }; } catch (e) { doc.nextPlan = null; }
       log(`下次掃描：約 ${n.minutes} 分鐘後${n.peak > 0.6 ? '（尖峰時段）' : ''}`);
     }
     try {
@@ -363,7 +381,9 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
 
   if (!cfg.enabled) { run.status = 'paused'; log('監控已暫停'); return finish(); }
   if (!cfg.allKeywords.length) { run.status = 'warn'; run.warnings.push('沒有設定關鍵字'); return finish(); }
-  const thisRun = pickKeywords(cfg, doc);
+  const planned = usePlan(cfg, doc);
+  const thisRun = planned.map((x) => x.kw);
+  const qOf = new Map(planned.map((x) => [x.kw, x.q]));
   run.keywordsUsed = thisRun;
   doc.kwStats = doc.kwStats || {};
   log(`這次搜尋：${thisRun.join('、')}`);
@@ -391,8 +411,7 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
     for (const kw of thisRun) {
       const st = doc.kwStats[kw] || (doc.kwStats[kw] = { count: 0, last: 0, scanned: 0, leads: 0 });
       st.count++; st.last = Date.now();
-      const combo = regions.length && Math.random() < Number(cfg.comboChance ?? 0.5);
-      const query = combo ? `${kw} ${regions[Math.floor(Math.random() * regions.length)]}` : kw;
+      const query = qOf.get(kw) || kw;
       run.queries.push(query);
       try {
         const r = await scrapeKeyword(page, query, { scrolls: cfg.scrollsPerKeyword });
@@ -514,6 +533,7 @@ async function sendTestNotification(env = process.env) {
 }
 
 module.exports = {
+  planQueries, usePlan,
   DEFAULT_CONFIG, loadConfig, normUser, FileStore, parseCookies, extractInPage, scrapeKeyword,
   matchPost, formatPost, notify, runScan, sendTestNotification, shouldScan, inQuiet, pickNext, restHours, pickKeywords,
 };

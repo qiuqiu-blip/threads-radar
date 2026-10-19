@@ -52,9 +52,9 @@ const CRM_PATH = 'data/db/crm.enc.json';
 const DB = window.DB = {
   leads: [], months: [], stats: { days: {} }, loaded: false, loading: null,
   key: null, salt: null, iter: 200000, sha: null, data: null, unlocked: false, exists: null,
-  dirty: false, saving: false, saveT: null, sync: '', sub: 'leads', page: { leads: 50, cust: 50, logs: 80, match: 30 },
+  dirty: false, saving: false, saveT: null, sync: '', sub: 'leads', page: { leads: 50, cust: 50, logs: 80, match: 30, kb: 50 },
 };
-const emptyData = () => ({ v: 1, customers: {}, logs: [], postCrm: {}, updatedAt: Date.now() });
+const emptyData = () => ({ v: 1, customers: {}, logs: [], msgs: [], postCrm: {}, updatedAt: Date.now() });
 const STATUS_RANK = { 未聯絡: 0, 不需聯絡: 0, 已私訊: 1, 已回覆: 2, 成交: 3 };
 const LOG_TYPES = ['私訊', '回覆', '電話', '看店', '報價', '成交', '備註'];
 const SERVICES = ['尋點頂讓', '創業諮詢', '設備收購', '拆除清運', '清潔打掃', '整場規劃', '木作裝潢', '水電裝配', '招牌施工', '南北貨運', '資訊通勤', '加盟推薦', '維修服務'];
@@ -74,6 +74,8 @@ function merge(a, b) {
   }
   const seen = new Map(); [...(a.logs || []), ...(b.logs || [])].forEach((l) => { const cur = seen.get(l.id); if (!cur || (l.edited || 0) > (cur.edited || 0)) seen.set(l.id, l); });
   out.logs = [...seen.values()].filter((l) => !l.deleted || Date.now() - l.edited < 30 * 864e5).sort((x, y) => y.at - x.at);
+  const seenM = new Map(); [...(a.msgs || []), ...(b.msgs || [])].forEach((l) => { const cur = seenM.get(l.id); if (!cur || (l.edited || 0) > (cur.edited || 0)) seenM.set(l.id, l); });
+  out.msgs = [...seenM.values()].filter((l) => !l.deleted || Date.now() - l.edited < 30 * 864e5).sort((x, y) => y.at - x.at);
   for (const src of [a, b]) for (const u of Object.keys(src.customers || {})) if (src.customers[u] && src.customers[u].deleted && out.customers[u] && out.customers[u].updatedAt <= src.customers[u].updatedAt) out.customers[u] = src.customers[u];
   out.updatedAt = Math.max(a.updatedAt || 0, b.updatedAt || 0);
   return out;
@@ -182,6 +184,34 @@ setCrm = function (u, patch) {
   DB.markDirty();
 };
 
+/* ---------------- 話術庫：記錄傳出去的私訊 ---------------- */
+const SVC_RX = [['招牌施工', /招牌|燈箱|看板|帆布|貼紙/], ['設備收購', /收購|回收|設備|估價|冰箱|冷凍/], ['拆除清運', /拆除|清運|復原|還原/], ['清潔打掃', /清潔|打掃|油汙|水塔/],
+  ['木作裝潢', /裝潢|木作|設計|油漆/], ['水電裝配', /水電|配電|管線|瓦斯/], ['南北貨運', /貨運|搬家|搬運|運送|吊車/], ['尋點頂讓', /頂讓|找店|店面|物件|承接|轉讓/],
+  ['創業諮詢', /創業|諮詢|開店/], ['整場規劃', /規劃|動線|整場/], ['加盟推薦', /加盟|品牌/], ['維修服務', /維修|保養|修理/], ['資訊通勤', /POS|點餐|系統|網路/]];
+const svcOf = (t) => SVC_RX.filter(([, rx]) => rx.test(t || '')).map(([n]) => n);
+const REPLIED = ['已回覆', '成交'];
+function findPost(url) { return DB.leads.find((x) => x.url === url) || ((state.doc && state.doc.posts) || []).find((x) => x.url === url) || null; }
+DB.recordMsg = function (p, text, cat) {
+  text = String(text || '').trim(); if (!p || !text) return false;
+  const item = { id: uid(), url: p.url, user: normUser(p.user), text, cat: cat || '', role: an(p).role, svc: svcOf(text), post: String(p.text || '').slice(0, 300), at: Date.now() };
+  if (!DB.unlocked) { const q = LS.get('pendingMsgs', []); q.push(item); LS.set('pendingMsgs', q.slice(-200)); return 'pending'; }
+  if (DB.data.msgs.some((m) => !m.deleted && m.url === item.url && m.text === item.text && Date.now() - m.at < 30 * 60e3)) return true;
+  DB.data.msgs.unshift(item); ensureCustomer(item.user).updatedAt = Date.now(); addLog(item.user, '私訊', text, p.url); DB.markDirty(); return true;
+};
+function flushPending() {
+  if (!DB.unlocked) return; const q = LS.get('pendingMsgs', []); if (!q.length) return;
+  q.forEach((m) => { if (!DB.data.msgs.some((x) => x.id === m.id)) { DB.data.msgs.unshift(m); ensureCustomer(m.user); addLog(m.user, '私訊', m.text, m.url); } });
+  DB.data.msgs.sort((x, y) => y.at - x.at); LS.set('pendingMsgs', []); DB.markDirty();
+}
+// 產生回覆時，提供以前傳過、比較有效的話術
+DB.suggestMsgs = function (cat) {
+  if (!DB.unlocked) return [];
+  const g = new Map();
+  DB.data.msgs.filter((m) => !m.deleted).forEach((m) => { const k = m.text; const r = g.get(k) || { text: k, n: 0, rep: 0, cat: m.cat, last: 0 }; r.n++; if (REPLIED.includes(crm(m.url).s)) r.rep++; r.last = Math.max(r.last, m.at); g.set(k, r); });
+  return [...g.values()].sort((a, b) => ((b.cat === cat) - (a.cat === cat)) || (b.rep - a.rep) || (b.last - a.last)).slice(0, 6);
+};
+DB.exportMsgs = () => dl('話術庫', ['時間', '帳號', '類型', '服務', '對方狀態', '我傳的訊息', '對方貼文', '貼文連結'], DB.data.msgs.filter((m) => !m.deleted).map((m) => [fmtFull(m.at), m.user, m.cat, (m.svc || []).join('、'), crm(m.url).s, m.text, m.post, m.url]));
+
 /* ---------------- 物件配對 ---------------- */
 function wan(s) {
   if (!s) return null; s = String(s).replace(/,/g, '');
@@ -261,9 +291,10 @@ function lockPane() {
     <button class="btn" style="width:100%;margin-top:10px" data-db="unlock">解鎖</button>
     ${DB.exists === null ? '<p class="hint">（正在確認雲端資料庫…）</p>' : ''}</div>`;
 }
-const SUBS = [['leads', '📚 線索庫'], ['cust', '👥 客戶'], ['logs', '🗒 聯絡紀錄'], ['match', '🤝 物件配對'], ['stats', '📈 統計'], ['backup', '💾 備份']];
+const SUBS = [['leads', '📚 線索庫'], ['cust', '👥 客戶'], ['logs', '🗒 聯絡紀錄'], ['kb', '💬 話術庫'], ['match', '🤝 物件配對'], ['stats', '📈 統計'], ['backup', '💾 備份']];
 DB.render = function () {
   const root = $$('#dbRoot'); if (!root) return;
+  flushPending();
   const due = DB.unlocked ? custList().filter((c) => c.next && c.next <= today() && c.status !== '成交' && c.status !== '不需聯絡') : [];
   root.innerHTML = `${lockPane()}
     ${due.length ? `<div class="card" style="border-color:var(--warn)"><h3>⏰ 今日待跟進（${due.length}）</h3>${due.slice(0, 8).map((c) => `<div class="dbrow" data-cust="${esc(c.user)}"><b>@${esc(c.user)}</b> <span class="tag">${esc(c.status)}</span> <span class="hint" style="margin:0">${esc(c.next)}${c.note ? '・' + esc(c.note.slice(0, 30)) : ''}</span></div>`).join('')}</div>` : ''}
@@ -299,7 +330,7 @@ function renderPane() {
         <div><span class="ipill 高">${x.s} 分</span> <span class="hint" style="margin:0">${esc(x.why.join('、'))}</span></div>
         <div class="mrow"><span class="rtag 買方">買方</span> <b data-cust="${esc(normUser(x.b.p.user))}">@${esc(x.b.p.user)}</b> <span class="dbtxt">${esc(x.b.p.text.slice(0, 60))}</span></div>
         <div class="mrow"><span class="rtag 賣方">物件</span> <b data-cust="${esc(normUser(x.l.p.user))}">@${esc(x.l.p.user)}</b> <span class="dbtxt">${esc([[x.l.city, x.l.district].filter(Boolean).join(''), x.l.shop, x.l.priceText, x.l.area].filter(Boolean).join('・'))}</span></div>
-        <div class="acts" style="margin-top:6px"><a class="btn ghost sm" href="${esc(x.b.p.url)}" target="_blank">開啟買方貼文</a><a class="btn ghost sm" href="${esc(x.l.p.url)}" target="_blank">開啟物件貼文</a></div></div>`).join('') || '<div class="empty">目前還沒有配對成功的組合。線索累積越多，配對越多。</div>'}
+        <div class="acts" style="margin-top:6px"><a class="btn ghost sm" href="${esc(x.b.p.url)}" target="_blank">開啟買方貼文</a><a class="btn ghost sm" href="${esc(x.l.p.url)}" target="_blank">開啟物件貼文</a><button class="btn ghost sm" data-reply="${esc(x.b.p.url)}">✍️ 回覆買方／記錄私訊</button><button class="btn ghost sm" data-reply="${esc(x.l.p.url)}">✍️ 回覆物件／記錄私訊</button></div></div>`).join('') || '<div class="empty">目前還沒有配對成功的組合。線索累積越多，配對越多。</div>'}
       ${pairs.length > DB.page.match ? `<button class="btn ghost sm" style="width:100%" data-db="more" data-k="match">顯示更多</button>` : ''}</div>`;
     return;
   }
@@ -337,6 +368,27 @@ function renderPane() {
       ${list.length > DB.page.cust ? `<button class="btn ghost sm" style="width:100%" data-db="more" data-k="cust">顯示更多</button>` : ''}</div>`;
     bindFilters(); return;
   }
+  if (DB.sub === 'kb') {
+    if (!DB.unlocked) { el.innerHTML = needUnlock(); return; }
+    const all = DB.data.msgs.filter((m) => !m.deleted);
+    const list = all.filter((m) => (!DB.ks || (m.svc || []).includes(DB.ks) || (DB.ks === '其他' && !(m.svc || []).length)) && (!q || `${m.user} ${m.text} ${m.post}`.toLowerCase().includes(q)));
+    const rep = all.filter((m) => REPLIED.includes(crm(m.url).s)).length, deal = all.filter((m) => crm(m.url).s === '成交').length;
+    const bySvc = {}; all.forEach((m) => ((m.svc || []).length ? m.svc : ['其他']).forEach((s) => { const r = bySvc[s] || (bySvc[s] = { n: 0, rep: 0, deal: 0 }); r.n++; if (REPLIED.includes(crm(m.url).s)) r.rep++; if (crm(m.url).s === '成交') r.deal++; }));
+    const svcRows = Object.entries(bySvc).sort((a, b) => b[1].n - a[1].n);
+    el.innerHTML = `<div class="card"><div class="dbhead"><h3 style="margin:0">💬 話術庫（${all.length} 則私訊）</h3><button class="btn sm" data-db="xmsgs">📥 匯出</button></div>
+      <p class="hint">每次在「✍️ 產生回覆」按複製，或按「💾 只記錄」，你傳的內容就會存進來。對方回覆後，把貼文狀態改成「已回覆／成交」，這裡就會算出哪種話術最有效。</p>
+      <div class="kpis">${[[all.length, '已傳私訊'], [rep, '有回覆'], [all.length ? Math.round(rep / all.length * 100) + '%' : '—', '回覆率'], [deal, '成交']].map(([v, l]) => `<div class="kpi"><b>${v}</b><small>${l}</small></div>`).join('')}</div>
+      ${svcRows.length ? `<div class="mwrap" style="margin-top:12px"><table class="matrix"><tr><th>服務</th><th>傳送</th><th>回覆</th><th>回覆率</th><th>成交</th></tr>${svcRows.map(([s, r]) => `<tr><th>${esc(s)}</th><td>${r.n}</td><td>${r.rep}</td><td>${Math.round(r.rep / r.n * 100)}%</td><td>${r.deal}</td></tr>`).join('')}</table></div>` : ''}</div>
+      <div class="card"><div class="filters" style="grid-template-columns:2fr 1fr"><input class="search" id="dbQ" placeholder="搜尋訊息、帳號、貼文…" value="${esc(DB.q || '')}">
+      <select id="dbKs"><option value="">全部服務</option>${[...SERVICES, '其他'].map((s) => `<option ${DB.ks === s ? 'selected' : ''}>${s}</option>`).join('')}</select></div>
+      ${list.slice(0, DB.page.kb).map((m) => { const st = crm(m.url).s; return `<div class="dbrow kbrow" style="cursor:default">
+        <div><span class="hint" style="margin:0">${fmtT(m.at)}</span> ${(m.svc || []).map((s) => `<span class="tag">${esc(s)}</span>`).join(' ')} ${m.cat ? `<span class="tag">${esc(m.cat)}</span>` : ''} <b data-cust="${esc(m.user)}" style="cursor:pointer;color:var(--gold2)">@${esc(m.user)}</b> <span class="rtag ${REPLIED.includes(st) ? '賣方' : '同業'}">${esc(st)}</span></div>
+        <div style="font-size:18px;line-height:1.6;margin:8px 0;padding:10px 12px;border-left:3px solid var(--gold);background:#0f0c07;border-radius:8px;white-space:pre-wrap">${esc(m.text)}</div>
+        <div class="dbtxt">📄 對方貼文：${esc(m.post.slice(0, 90))}${m.post.length > 90 ? '…' : ''}</div>
+        <div class="acts" style="margin-top:8px"><button class="btn ghost sm" data-db="kbcopy" data-id="${m.id}">📋 複製這段話術</button><a class="btn ghost sm" href="${esc(m.url)}" target="_blank">開啟貼文</a><button class="btn ghost sm" data-db="kbdel" data-id="${m.id}">✕ 刪除</button></div></div>`; }).join('') || '<div class="empty">還沒有記錄。到線索卡片按「✍️ 產生回覆」，傳完按「💾 只記錄」或「複製」就會存進來。</div>'}
+      ${list.length > DB.page.kb ? `<button class="btn ghost sm" style="width:100%" data-db="more" data-k="kb">顯示更多</button>` : ''}</div>`;
+    bindFilters(); return;
+  }
   if (DB.sub === 'logs') {
     const list = DB.data.logs.filter((l) => !l.deleted && (!DB.lt || l.type === DB.lt) && (!q || `${l.user} ${l.note} ${l.type}`.toLowerCase().includes(q)));
     el.innerHTML = `<div class="card"><div class="dbhead"><h3 style="margin:0">🗒 聯絡紀錄（${list.length}）</h3><button class="btn sm" data-db="xlogs">📥 匯出</button></div>
@@ -349,7 +401,7 @@ function renderPane() {
 }
 function bindFilters() {
   const qi = $$('#dbQ'); if (qi) { qi.oninput = () => { DB.q = qi.value; clearTimeout(DB.qT); DB.qT = setTimeout(() => { const pos = qi.selectionStart; renderPane(); const n = $$('#dbQ'); if (n) { n.focus(); n.setSelectionRange(pos, pos); } }, 300); }; }
-  [['#dbFm', 'fm'], ['#dbFr', 'fr'], ['#dbFi', 'fi'], ['#dbLt', 'lt']].forEach(([s, k]) => { const e = $$(s); if (e) e.onchange = () => { DB[k] = e.value; renderPane(); }; });
+  [['#dbFm', 'fm'], ['#dbFr', 'fr'], ['#dbFi', 'fi'], ['#dbLt', 'lt'], ['#dbKs', 'ks']].forEach(([s, k]) => { const e = $$(s); if (e) e.onchange = () => { DB[k] = e.value; renderPane(); }; });
 }
 async function restoreFile(e) {
   const f = e.target.files[0]; if (!f) return;
@@ -432,6 +484,9 @@ document.addEventListener('click', async (e) => {
     if (act === 'xleads') DB.exportLeads(DB._leadList);
     if (act === 'xcust') DB.exportCustomers();
     if (act === 'xlogs') DB.exportLogs();
+    if (act === 'xmsgs') DB.exportMsgs();
+    if (act === 'kbcopy') { const m = DB.data.msgs.find((x) => x.id === t.dataset.id); if (m) copyText(m.text).then(() => toast('📋 已複製話術')); }
+    if (act === 'kbdel') { const m = DB.data.msgs.find((x) => x.id === t.dataset.id); if (m && confirm('刪除這則話術紀錄？')) { m.deleted = true; m.edited = Date.now(); DB.markDirty(); renderPane(); } }
     if (act === 'xlist') DB.exportListings();
     if (act === 'xmatch') DB.exportMatches();
     if (act === 'xdaily') DB.exportDaily();
