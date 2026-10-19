@@ -1,62 +1,136 @@
 {
-  "updatedAt": "2026-10-19T10:31:20.405Z",
+  "updatedAt": "2026-10-19T11:02:38.051Z",
   "lastRun": {
-    "startedAt": "2026-10-19T10:27:03.334Z",
-    "finishedAt": "2026-10-19T10:31:20.364Z",
+    "startedAt": "2026-10-19T10:58:35.566Z",
+    "finishedAt": "2026-10-19T11:02:38.020Z",
     "status": "ok",
-    "scanned": 39,
-    "matched": 13,
-    "newCount": 13,
-    "notified": 13,
+    "scanned": 74,
+    "matched": 12,
+    "newCount": 12,
+    "notified": 12,
     "perKeyword": {
-      "飲料": 23,
-      "退租": 16,
-      "整店頂讓": 0,
-      "含設備": 0,
-      "關店": 0
+      "搬家出清": 13,
+      "讓渡": 0,
+      "低價出清": 7,
+      "設備出清": 16,
+      "便宜賣": 19,
+      "生財器具": 19,
+      "帶走價": 0
     },
     "warnings": [],
     "keywordsUsed": [
-      "飲料",
-      "退租",
-      "整店頂讓",
-      "含設備",
-      "關店"
+      "搬家出清",
+      "讓渡",
+      "低價出清",
+      "設備出清",
+      "便宜賣",
+      "生財器具",
+      "帶走價"
     ],
     "queries": [
-      "飲料",
-      "退租",
-      "整店頂讓",
-      "含設備",
-      "關店"
+      "搬家出清",
+      "讓渡",
+      "低價出清",
+      "設備出清",
+      "便宜賣",
+      "生財器具",
+      "帶走價"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 0,
+      "seen": 22,
       "dup": 0,
-      "tooOld": 15,
-      "noKeyword": 11
+      "words": {
+        "家具": 2
+      },
+      "excludeWord": 2,
+      "noKeyword": 11,
+      "tooOld": 27
     },
     "detailFetched": 6,
     "newUrls": [
-      "https://www.threads.com/@yongtinghiew/post/DerCRTsjA3w",
-      "https://www.threads.com/@do_.you.know/post/DerA2AAICqt",
-      "https://www.threads.com/@sheep96_06_14/post/DerCKh7mp1T",
-      "https://www.threads.com/@armadillo.6489485/post/Deq6H3dDwG5",
-      "https://www.threads.com/@llama.970203/post/Deqy9kHGQQe",
-      "https://www.threads.com/@j0045613/post/Deqx-5fFGXH",
-      "https://www.threads.com/@luyuxin140/post/DeqtP4vneDC",
-      "https://www.threads.com/@cixxte/post/Deqc0bQEbZw",
-      "https://www.threads.com/@chi.huahua6473/post/DeqaMa8nyeT",
-      "https://www.threads.com/@kiancheng17/post/DeqMF56H6gL",
-      "https://www.threads.com/@jie030720/post/DeqEvrrE6J6",
-      "https://www.threads.com/@dcl_tw/post/Deo0G-Cn65S",
-      "https://www.threads.com/@aaa_aaa_amy/post/DentDUmGneM"
+      "https://www.threads.com/@gg88885988/post/DerEx3JE-_v",
+      "https://www.threads.com/@otter.8232334/post/DerB72CmVfN",
+      "https://www.threads.com/@armadillo.54379220/post/DerAP6ykmhk",
+      "https://www.threads.com/@coer_jh13/post/Deq-cNbAa_v",
+      "https://www.threads.com/@vinland397393/post/Deq-KaUmrHk",
+      "https://www.threads.com/@mjyj8366/post/Deqf6xekkKO",
+      "https://www.threads.com/@116.w/post/DeqT86ZmsmC",
+      "https://www.threads.com/@jmn.b9/post/DeqExN1k-g7",
+      "https://www.threads.com/@hayate_3706/post/DepwYPSkrHq",
+      "https://www.threads.com/@cdzorl/post/Deo_cptAeRQ",
+      "https://www.threads.com/@store_.1611/post/DeofYHJk-86",
+      "https://www.threads.com/@ally_o3z1/post/DenzBj4D84h"
     ],
     "pushMode": "on",
-    "nextInMinutes": 22
+    "nextInMinutes": 30
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T10:58:35.566Z",
+      "finishedAt": "2026-10-19T11:02:38.020Z",
+      "status": "ok",
+      "scanned": 74,
+      "matched": 12,
+      "newCount": 12,
+      "notified": 12,
+      "perKeyword": {
+        "搬家出清": 13,
+        "讓渡": 0,
+        "低價出清": 7,
+        "設備出清": 16,
+        "便宜賣": 19,
+        "生財器具": 19,
+        "帶走價": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "搬家出清",
+        "讓渡",
+        "低價出清",
+        "設備出清",
+        "便宜賣",
+        "生財器具",
+        "帶走價"
+      ],
+      "queries": [
+        "搬家出清",
+        "讓渡",
+        "低價出清",
+        "設備出清",
+        "便宜賣",
+        "生財器具",
+        "帶走價"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 22,
+        "dup": 0,
+        "words": {
+          "家具": 2
+        },
+        "excludeWord": 2,
+        "noKeyword": 11,
+        "tooOld": 27
+      },
+      "detailFetched": 6,
+      "newUrls": [
+        "https://www.threads.com/@gg88885988/post/DerEx3JE-_v",
+        "https://www.threads.com/@otter.8232334/post/DerB72CmVfN",
+        "https://www.threads.com/@armadillo.54379220/post/DerAP6ykmhk",
+        "https://www.threads.com/@coer_jh13/post/Deq-cNbAa_v",
+        "https://www.threads.com/@vinland397393/post/Deq-KaUmrHk",
+        "https://www.threads.com/@mjyj8366/post/Deqf6xekkKO",
+        "https://www.threads.com/@116.w/post/DeqT86ZmsmC",
+        "https://www.threads.com/@jmn.b9/post/DeqExN1k-g7",
+        "https://www.threads.com/@hayate_3706/post/DepwYPSkrHq",
+        "https://www.threads.com/@cdzorl/post/Deo_cptAeRQ",
+        "https://www.threads.com/@store_.1611/post/DeofYHJk-86",
+        "https://www.threads.com/@ally_o3z1/post/DenzBj4D84h"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 30
+    },
     {
       "startedAt": "2026-10-19T10:27:03.334Z",
       "finishedAt": "2026-10-19T10:31:20.364Z",
@@ -556,6 +630,195 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DerEx3JE-_v",
+      "user": "gg88885988",
+      "url": "https://www.threads.com/@gg88885988/post/DerEx3JE-_v",
+      "authorUrl": "https://www.threads.com/@gg88885988",
+      "text": "剛剛遇上詐騙了！\n在THREADS ，\n對方說有筆電便宜賣，\n然後開7-11賣貨便賣場給我，\n然後我一直進不去賣場，明明有網路，\n但點進去他的連結確是一直跳出來連不上，\n然後對方給我一個7-11的賣貨便客服ID 叫我加入，\n我馬上截圖問AI ,\nAI說這是詐騙手法，並指出先前新聞已有這類詐騙報導，要我停止對話並封鎖檢舉對方，\n真的好加在，\n真心覺得佛菩薩在護佑，\n冥冥之中沒有被沖昏頭，\n有網路卻一直點不進去，\n對方還一直說我的訂單已下但未成立，\n我害他賣場被凍結，\n要我盡快加入客服實名制處理，\n阿娘喂喔！\n真的，\n人千萬不能貪心！\n否則現在這個社會，真的很容易被騙！",
+      "time": "2026-10-19T10:45:37.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T11:01:48.805Z"
+    },
+    {
+      "code": "DerB72CmVfN",
+      "user": "otter.8232334",
+      "url": "https://www.threads.com/@otter.8232334/post/DerB72CmVfN",
+      "authorUrl": "https://www.threads.com/@otter.8232334",
+      "text": "4次瀏覽\n電器\n搬家出清｜二手家電\n功能全部正常\n看不出日常使用痕跡，沒有任何故障。\n已釘選\n有需要了解可以直接添加LINE\n搜尋LINE🆔 zjt22",
+      "time": "2026-10-19T10:20:46.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundQuery": "搬家出清",
+      "foundAt": "2026-10-19T11:01:48.805Z",
+      "full": true
+    },
+    {
+      "code": "DerAP6ykmhk",
+      "user": "armadillo.54379220",
+      "url": "https://www.threads.com/@armadillo.54379220/post/DerAP6ykmhk",
+      "authorUrl": "https://www.threads.com/@armadillo.54379220",
+      "text": "32次瀏覽\n搬家出清｜二手家電\n功能全部正常，日常使用痕跡，沒有故障。\n脆常常來不及回覆私訊。想要瞭解的，歡迎加我的Line：賴@486tueux\nturtle.89681511\n蒸鍋還有嗎",
+      "time": "2026-10-19T10:06:02.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundQuery": "搬家出清",
+      "foundAt": "2026-10-19T11:01:48.805Z",
+      "full": true
+    },
+    {
+      "code": "Deq-cNbAa_v",
+      "user": "coer_jh13",
+      "url": "https://www.threads.com/@coer_jh13/post/Deq-cNbAa_v",
+      "authorUrl": "https://www.threads.com/@coer_jh13",
+      "text": "#售\nParnell白氣墊04\n短效期 大概到明年（我到家確認一下）\n便宜賣300 需先匯款\n全新",
+      "time": "2026-10-19T09:50:14.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T11:01:48.805Z"
+    },
+    {
+      "code": "Deq-KaUmrHk",
+      "user": "vinland397393",
+      "url": "https://www.threads.com/@vinland397393/post/Deq-KaUmrHk",
+      "authorUrl": "https://www.threads.com/@vinland397393",
+      "text": "二手衣\n二手衣便宜賣\n1. Professor E 短板夾克 （size1)\n85% $2700\n2. Needles 🦋植絨開襟衫 棕色(s)\n95% $1800\n3. Hare 科技羊毛短版外套 灰色（s)\n85% $1500\n皆未下過水\n交易方式為匯款後店到店 面交限雙北\n價錢可小議～",
+      "time": "2026-10-19T09:47:48.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T11:01:48.805Z"
+    },
+    {
+      "code": "Deqf6xekkKO",
+      "user": "mjyj8366",
+      "url": "https://www.threads.com/@mjyj8366/post/Deqf6xekkKO",
+      "authorUrl": "https://www.threads.com/@mjyj8366",
+      "text": "277次瀏覽\nkitty\n出清便宜賣\nkitty鍋寶電鍋 市價2000多\n沒有用過幾次 幾乎就擺著而已\n賣600🥹\n有興趣可以私我！！",
+      "time": "2026-10-19T05:23:32.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T11:01:48.805Z",
+      "full": true
+    },
+    {
+      "code": "DeqT86ZmsmC",
+      "user": "116.w",
+      "url": "https://www.threads.com/@116.w/post/DeqT86ZmsmC",
+      "authorUrl": "https://www.threads.com/@116.w",
+      "text": "整理了一些二手衣！基本上都穿幾次而已，想看實穿或是詢問尺寸價錢可以直接留言或私訊😊✨🛒（都便宜賣，也可以接受議價）",
+      "time": "2026-10-19T03:38:58.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T11:01:48.805Z"
+    },
+    {
+      "code": "DeqExN1k-g7",
+      "user": "jmn.b9",
+      "url": "https://www.threads.com/@jmn.b9/post/DeqExN1k-g7",
+      "authorUrl": "https://www.threads.com/@jmn.b9",
+      "text": "39次瀏覽\n林口搬家出清，10人份大同電鍋找新主人\n型號：TATUNG 大同 TAC-10L-DV 不鏽鋼 10人份\n狀況：全新未使用，公司撤展退回來的展示機，內鍋、蒸架、飯匙、說明書都在（圖2）\n僅外箱有瑕疵，但機器全新\n原價 $3280，現在 $500賣貨便帶走\n🉑🚚取貨付款",
+      "time": "2026-10-19T01:26:18.000Z",
+      "keywords": [
+        "搬家出清"
+      ],
+      "regions": [],
+      "foundBy": "搬家出清",
+      "foundQuery": "搬家出清",
+      "foundAt": "2026-10-19T11:01:48.805Z",
+      "full": true
+    },
+    {
+      "code": "DepwYPSkrHq",
+      "user": "hayate_3706",
+      "url": "https://www.threads.com/@hayate_3706/post/DepwYPSkrHq",
+      "authorUrl": "https://www.threads.com/@hayate_3706",
+      "text": "紓壓小物\n便宜賣\n二手ins風按鍵55元，送巧克力乳酪軟軟！\n狀況9.5成新（其實我看是全新狀態但不敢說太滿）\n走賣貨便～",
+      "time": "2026-10-18T22:28:07.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T11:01:48.805Z"
+    },
+    {
+      "code": "Deo_cptAeRQ",
+      "user": "cdzorl",
+      "url": "https://www.threads.com/@cdzorl/post/Deo_cptAeRQ",
+      "authorUrl": "https://www.threads.com/@cdzorl",
+      "text": "二手衣\n有沒有美女要蹲二手衣！！本人高三～\n很多都是沒穿過的🥲🥲便宜賣～～",
+      "time": "2026-10-18T15:20:33.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T11:01:48.805Z"
+    },
+    {
+      "code": "DeofYHJk-86",
+      "user": "store_.1611",
+      "url": "https://www.threads.com/@store_.1611/post/DeofYHJk-86",
+      "authorUrl": "https://www.threads.com/@store_.1611",
+      "text": "4,673次瀏覽\nkitty\n出清便宜賣\nkitty鍋寶電鍋 市價2000多\n沒有用過幾次 幾乎就擺著而已\n二手價～賣600🥹\n高雄面交😚有興趣可以私我！！\n飄出去飄出去\n有興趣的可以直接私我然後說哪裡面交方便，先賣給約好時間跟地點的人喔 感恩\n目前暫售\na0981869003\n請問賣出去了\n_980619_\n還有嗎\nniyunyang\n排\no424_\n還在嗎\nliu_6_1_7\n還有嗎\nlin._05.17\n賣出去了嗎🥹\nruruu421\n還在嗎！！",
+      "time": "2026-10-18T10:40:19.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T11:01:48.805Z",
+      "full": true
+    },
+    {
+      "code": "DenzBj4D84h",
+      "user": "ally_o3z1",
+      "url": "https://www.threads.com/@ally_o3z1/post/DenzBj4D84h",
+      "authorUrl": "https://www.threads.com/@ally_o3z1",
+      "text": "台中市集\n無聊嗎？來這裡掏寶吧✨❤️‍🔥❤️‍🔥\n便宜賣！老玩具、老DVD、老漫畫、衣服、包包、玩具、墨鏡！等等各式各樣！\n快點來掏寶！！！！\n台中文化創意產業園區",
+      "time": "2026-10-18T04:12:45.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T11:01:48.805Z"
+    },
     {
       "code": "DerCRTsjA3w",
       "user": "yongtinghiew",
@@ -1519,10 +1782,10 @@
       "leads": 0
     },
     "便宜賣": {
-      "count": 1,
-      "last": 1792361052032,
-      "scanned": 19,
-      "leads": 10
+      "count": 2,
+      "last": 1792407620913,
+      "scanned": 38,
+      "leads": 19
     },
     "收攤": {
       "count": 2,
@@ -1531,8 +1794,8 @@
       "leads": 0
     },
     "帶走價": {
-      "count": 1,
-      "last": 1792361094599,
+      "count": 2,
+      "last": 1792407648075,
       "scanned": 0,
       "leads": 0
     },
@@ -1561,8 +1824,8 @@
       "leads": 0
     },
     "讓渡": {
-      "count": 1,
-      "last": 1792375769286,
+      "count": 2,
+      "last": 1792407533531,
       "scanned": 0,
       "leads": 0
     },
@@ -1585,16 +1848,16 @@
       "leads": 3
     },
     "低價出清": {
-      "count": 1,
-      "last": 1792380814522,
-      "scanned": 9,
+      "count": 2,
+      "last": 1792407592927,
+      "scanned": 16,
       "leads": 0
     },
     "搬家出清": {
-      "count": 1,
-      "last": 1792380830101,
-      "scanned": 0,
-      "leads": 0
+      "count": 2,
+      "last": 1792407515780,
+      "scanned": 13,
+      "leads": 3
     },
     "咖啡機": {
       "count": 1,
@@ -1609,9 +1872,9 @@
       "leads": 1
     },
     "設備出清": {
-      "count": 1,
-      "last": 1792384718380,
-      "scanned": 0,
+      "count": 2,
+      "last": 1792407604892,
+      "scanned": 16,
       "leads": 0
     },
     "蒸烤箱": {
@@ -1633,9 +1896,9 @@
       "leads": 0
     },
     "生財器具": {
-      "count": 1,
-      "last": 1792390158436,
-      "scanned": 23,
+      "count": 2,
+      "last": 1792407634502,
+      "scanned": 42,
       "leads": 0
     },
     "盤讓": {
@@ -1711,39 +1974,39 @@
       "leads": 10
     }
   },
-  "nextScanAt": "2026-10-19T10:53:34.229Z",
+  "nextScanAt": "2026-10-19T11:32:38.943Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T10:53:34.229Z",
-    "madeAt": "2026-10-19T10:31:20.400Z",
+    "at": "2026-10-19T11:32:38.943Z",
+    "madeAt": "2026-10-19T11:02:38.047Z",
     "items": [
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "冷藏櫃",
+        "q": "冷藏櫃"
       },
       {
-        "kw": "讓渡",
-        "q": "讓渡"
+        "kw": "咖啡機",
+        "q": "咖啡機"
       },
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "盤讓",
+        "q": "盤讓"
       },
       {
-        "kw": "設備出清",
-        "q": "設備出清"
+        "kw": "免頂讓費",
+        "q": "免頂讓費"
       },
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "店面轉讓",
+        "q": "店面轉讓"
       },
       {
-        "kw": "生財器具",
-        "q": "生財器具"
+        "kw": "結束營業",
+        "q": "結束營業"
       },
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "營業用",
+        "q": "營業用"
       }
     ]
   }
