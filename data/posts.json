@@ -1,58 +1,122 @@
 {
-  "updatedAt": "2026-10-19T18:32:05.023Z",
+  "updatedAt": "2026-10-19T18:43:44.020Z",
   "lastRun": {
-    "startedAt": "2026-10-19T18:27:54.447Z",
-    "finishedAt": "2026-10-19T18:32:04.983Z",
+    "startedAt": "2026-10-19T18:39:59.506Z",
+    "finishedAt": "2026-10-19T18:43:43.781Z",
     "status": "ok",
-    "scanned": 96,
-    "matched": 0,
-    "newCount": 0,
-    "notified": 0,
+    "scanned": 124,
+    "matched": 1,
+    "newCount": 1,
+    "notified": 1,
     "perKeyword": {
-      "帶走價": 0,
-      "商用冰箱": 20,
-      "爐具": 0,
-      "頂讓": 20,
-      "裝潢": 19,
-      "清倉": 19,
-      "飲料店": 18,
-      "免頂讓費": 0
+      "創業": 20,
+      "店面出租": 20,
+      "餐車": 19,
+      "廚房設備": 22,
+      "二手冰箱": 22,
+      "店面轉讓": 0,
+      "二手設備": 21,
+      "店鋪轉讓": 0
     },
     "warnings": [],
     "keywordsUsed": [
-      "帶走價",
-      "商用冰箱",
-      "爐具",
-      "頂讓",
-      "裝潢",
-      "清倉",
-      "飲料店",
-      "免頂讓費"
+      "創業",
+      "店面出租",
+      "餐車",
+      "廚房設備",
+      "二手冰箱",
+      "店面轉讓",
+      "二手設備",
+      "店鋪轉讓"
     ],
     "queries": [
-      "帶走價",
-      "商用冰箱",
-      "爐具",
-      "頂讓",
-      "裝潢",
-      "清倉",
-      "飲料店",
-      "免頂讓費"
+      "創業",
+      "店面出租",
+      "餐車",
+      "廚房設備",
+      "二手冰箱",
+      "店面轉讓",
+      "二手設備",
+      "店鋪轉讓"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 56,
+      "seen": 70,
       "dup": 0,
-      "noKeyword": 6,
-      "tooOld": 6,
-      "noContext": 28
+      "noContext": 31,
+      "noKeyword": 11,
+      "tooOld": 10,
+      "words": {
+        "家具": 1
+      },
+      "excludeWord": 1
     },
-    "detailFetched": 0,
-    "newUrls": [],
+    "detailFetched": 1,
+    "newUrls": [
+      "https://www.threads.com/@little830319/post/DemLaatIyd6"
+    ],
     "pushMode": "on",
-    "nextInMinutes": 33
+    "nextInMinutes": 28
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T18:39:59.506Z",
+      "finishedAt": "2026-10-19T18:43:43.781Z",
+      "status": "ok",
+      "scanned": 124,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "創業": 20,
+        "店面出租": 20,
+        "餐車": 19,
+        "廚房設備": 22,
+        "二手冰箱": 22,
+        "店面轉讓": 0,
+        "二手設備": 21,
+        "店鋪轉讓": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "創業",
+        "店面出租",
+        "餐車",
+        "廚房設備",
+        "二手冰箱",
+        "店面轉讓",
+        "二手設備",
+        "店鋪轉讓"
+      ],
+      "queries": [
+        "創業",
+        "店面出租",
+        "餐車",
+        "廚房設備",
+        "二手冰箱",
+        "店面轉讓",
+        "二手設備",
+        "店鋪轉讓"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 70,
+        "dup": 0,
+        "noContext": 31,
+        "noKeyword": 11,
+        "tooOld": 10,
+        "words": {
+          "家具": 1
+        },
+        "excludeWord": 1
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@little830319/post/DemLaatIyd6"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 28
+    },
     {
       "startedAt": "2026-10-19T18:27:54.447Z",
       "finishedAt": "2026-10-19T18:32:04.983Z",
@@ -1075,6 +1139,22 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DemLaatIyd6",
+      "user": "little830319",
+      "url": "https://www.threads.com/@little830319/post/DemLaatIyd6",
+      "authorUrl": "https://www.threads.com/@little830319",
+      "text": "318次瀏覽\n二手家電出清\n賣二手冰箱\n使用不到一年半\n$7500\n土城1樓自載\n意者私\nezypvrk\n土城自載的二手冰箱，若你覺得合適，歡迎在二手吐司App🍞刊登，供有興趣的人參考。\n_winnie314_\n請問還在嗎\n已有人約取\n如未取再私訊您謝謝",
+      "time": "2026-10-17T13:07:23.000Z",
+      "keywords": [
+        "二手冰箱"
+      ],
+      "regions": [],
+      "foundBy": "二手冰箱",
+      "foundQuery": "二手冰箱",
+      "foundAt": "2026-10-19T18:43:36.235Z",
+      "full": true
+    },
     {
       "code": "DeoC5bmklnF",
       "user": "chitui_x_shiba",
@@ -2557,9 +2637,9 @@
       "leads": 0
     },
     "二手設備": {
-      "count": 3,
-      "last": 1792422255324,
-      "scanned": 53,
+      "count": 4,
+      "last": 1792435339953,
+      "scanned": 74,
       "leads": 1
     },
     "關店": {
@@ -2593,9 +2673,9 @@
       "leads": 0
     },
     "廚房設備": {
-      "count": 3,
-      "last": 1792419699749,
-      "scanned": 72,
+      "count": 4,
+      "last": 1792435244985,
+      "scanned": 94,
       "leads": 9
     },
     "含設備": {
@@ -2677,8 +2757,8 @@
       "leads": 0
     },
     "店面轉讓": {
-      "count": 2,
-      "last": 1792411212319,
+      "count": 3,
+      "last": 1792435277870,
       "scanned": 0,
       "leads": 0
     },
@@ -2743,8 +2823,8 @@
       "leads": 0
     },
     "店鋪轉讓": {
-      "count": 2,
-      "last": 1792419745242,
+      "count": 3,
+      "last": 1792435355655,
       "scanned": 0,
       "leads": 0
     },
@@ -2773,9 +2853,9 @@
       "leads": 0
     },
     "店面出租": {
-      "count": 1,
-      "last": 1792422199082,
-      "scanned": 20,
+      "count": 2,
+      "last": 1792435215444,
+      "scanned": 40,
       "leads": 0
     },
     "拆除": {
@@ -2785,15 +2865,15 @@
       "leads": 2
     },
     "創業": {
-      "count": 1,
-      "last": 1792422228838,
-      "scanned": 20,
+      "count": 2,
+      "last": 1792435199789,
+      "scanned": 40,
       "leads": 0
     },
     "餐車": {
-      "count": 1,
-      "last": 1792422242810,
-      "scanned": 20,
+      "count": 2,
+      "last": 1792435231578,
+      "scanned": 39,
       "leads": 0
     },
     "排油煙": {
@@ -2809,10 +2889,10 @@
       "leads": 0
     },
     "二手冰箱": {
-      "count": 1,
-      "last": 1792427813954,
-      "scanned": 19,
-      "leads": 1
+      "count": 2,
+      "last": 1792435260711,
+      "scanned": 41,
+      "leads": 2
     },
     "冷凍櫃": {
       "count": 1,
@@ -2833,43 +2913,43 @@
       "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T19:05:23.403Z",
+  "nextScanAt": "2026-10-19T19:11:52.567Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T19:05:23.403Z",
-    "madeAt": "2026-10-19T18:32:05.021Z",
+    "at": "2026-10-19T19:11:52.567Z",
+    "madeAt": "2026-10-19T18:43:44.016Z",
     "items": [
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "店面頂讓",
+        "q": "店面頂讓"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "全店出清",
+        "q": "全店出清"
       },
       {
-        "kw": "廚房設備",
-        "q": "廚房設備"
+        "kw": "整店頂讓",
+        "q": "整店頂讓"
       },
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "歇業",
+        "q": "歇業"
       },
       {
-        "kw": "店面轉讓",
-        "q": "店面轉讓"
+        "kw": "設備出清",
+        "q": "設備出清"
       },
       {
-        "kw": "二手設備",
-        "q": "二手設備"
+        "kw": "含設備",
+        "q": "含設備"
       },
       {
-        "kw": "店鋪轉讓",
-        "q": "店鋪轉讓"
+        "kw": "製冰機",
+        "q": "製冰機"
       }
     ]
   }
