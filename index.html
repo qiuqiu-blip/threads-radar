@@ -52,8 +52,16 @@ nav button span{white-space:nowrap}
 .chip.tp-熱.on{background:linear-gradient(180deg,#ff8a5c,#d9482b);border-color:#d9482b;color:#fff}
 .chip.tp-冷.on{background:#2a3340;border-color:#3e4c5e;color:#cfe0f0}
 .post.skip{opacity:.45}
-.post.reading.big .text{max-height:none;font-size:29px;line-height:1.55;color:#fff}
-.post.reading.big .text::after{display:none}
+.post.big .text{max-height:none;font-size:29px;line-height:1.55;color:#fff}
+.post.big .text::after{display:none}
+.post.big:not(.reading){outline:2px solid var(--gold3)}
+.runpost.open .rptext{font-size:28px;line-height:1.55;color:#fff}
+#tab-dash .card{cursor:zoom-in}
+#zoomOv{position:fixed;inset:0;z-index:80;background:rgba(5,4,2,.92);overflow:auto;padding:58px 12px 40px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+#zoomOv .zin{width:calc((100vw - 24px)/2);zoom:2;margin:0 auto}
+#zoomOv .zin .card{cursor:default;margin:0}
+#zoomOv .zx{position:fixed;top:calc(10px + env(safe-area-inset-top));right:12px;z-index:81}
+#zoomOv .zhint{position:fixed;top:calc(16px + env(safe-area-inset-top));left:14px;color:var(--muted);font-size:13px}
 .meta{position:relative;padding-right:44px}
 .delbtn{position:absolute;right:0;top:-2px;width:36px;height:36px;border-radius:50%;border:1px solid #6b2a22;background:#2a1210;color:#ff9a8a;font-size:16px;cursor:pointer}
 .delbtn:active{transform:scale(.94)}
@@ -974,9 +982,47 @@ function copyPost(url){
 let userScrolling=false,usT;
 ['touchstart','touchmove','wheel'].forEach(ev=>window.addEventListener(ev,()=>{userScrolling=true;clearTimeout(usT);usT=setTimeout(()=>userScrolling=false,800)},{passive:true}));
 window.addEventListener('scroll',()=>{
-  if(!userScrolling)return;const c=document.querySelector('article.post.reading.big');if(!c)return;
-  const r=c.getBoundingClientRect();if(r.bottom<60||r.top>innerHeight-60)c.classList.remove('big');
+  if(!userScrolling)return;
+  document.querySelectorAll('article.post.big,.runpost.open').forEach(c=>{
+    const r=c.getBoundingClientRect();if(r.bottom<60||r.top>innerHeight-60)shrink(c);
+  });
 },{passive:true});
+/* 點文章放大一倍；再點一下、往旁邊滑、滑出畫面、按返回 → 還原 */
+function toggleBig(card){card.classList.contains('big')?shrink(card,true):grow(card)}
+function grow(card){
+  document.querySelectorAll('article.post.big:not(.reading)').forEach(c=>{if(c!==card)c.classList.remove('big')});
+  card.classList.add('big');card.querySelector('.text')?.classList.add('open');state.bigUrl=card.dataset.url;
+  try{if(!history.state||!history.state.zoom)history.pushState({zoom:'post'},'')}catch{}
+  const y=card.getBoundingClientRect().top+scrollY-headerH()-10;window.scrollTo({top:y,behavior:'smooth'});
+}
+function shrink(c,byTap){
+  if(c.classList.contains('runpost')){c.classList.remove('open');RUNPOST.delete(c.dataset.runpost);const t=c.querySelector('.rptext');if(t){const full=t.textContent;if(full.length>70)t.textContent=full.slice(0,70)+'…'}c.querySelector('.acts')?.remove();return}
+  c.classList.remove('big');c.querySelector('.text')?.classList.remove('open');if(state.bigUrl===c.dataset.url)state.bigUrl=null;
+  if(byTap&&history.state&&history.state.zoom==='post'){try{history.back()}catch{}}
+}
+// 左右滑動還原
+let swX=0,swY=0,swEl=null;
+document.addEventListener('touchstart',e=>{const t=e.touches[0];swX=t.clientX;swY=t.clientY;swEl=e.target.closest('article.post.big,.runpost.open,#zoomOv')},{passive:true});
+document.addEventListener('touchend',e=>{if(!swEl)return;const t=e.changedTouches[0],dx=t.clientX-swX,dy=t.clientY-swY;
+  if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.5){if(swEl.id==='zoomOv')closeZoom();else shrink(swEl,true)}swEl=null},{passive:true});
+// 儀表板：點卡片 → 全螢幕放大一倍
+function zoomCard(card){
+  closeZoom(true);const ov=document.createElement('div');ov.id='zoomOv';
+  ov.innerHTML='<span class="zhint">🔍 放大檢視｜左右滑動或點空白處關閉</span><button class="btn ghost sm zx">✕ 關閉</button><div class="zin"></div>';
+  const c=card.cloneNode(true);c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));
+  ov.querySelector('.zin').appendChild(c);document.body.appendChild(ov);document.body.style.overflow='hidden';
+  ov.addEventListener('click',e=>{if(e.target===ov||e.target.closest('.zx'))closeZoom()});
+  try{history.pushState({zoom:'card'},'')}catch{}
+}
+function closeZoom(silent){const ov=$('#zoomOv');if(!ov)return;ov.remove();document.body.style.overflow='';if(!silent&&history.state&&history.state.zoom==='card'){try{history.back()}catch{}}}
+document.addEventListener('click',e=>{
+  if(e.target.closest('a,button,select,input,textarea,label,.chip,#zoomOv'))return;
+  const card=e.target.closest('#tab-dash .card');if(card)zoomCard(card);
+});
+window.addEventListener('popstate',()=>{
+  if($('#zoomOv')){closeZoom(true);return}
+  document.querySelectorAll('article.post.big:not(.reading)').forEach(c=>shrink(c));
+});
 
 
 /* ============ 朗讀中的語音指令：刪除／跳過／暫停／繼續／停止 ============ */
@@ -1066,7 +1112,7 @@ function renderList(){
       i.line?`💬 LINE ${esc(i.line)}`:'',i.equip&&i.equip.length?`🔧 ${esc(i.equip.join('、'))}`:''
     ].filter(Boolean);
     const u=esc(p.url);
-    return `<article data-url="${u}" class="card post ${R.url===p.url&&R.mode?'reading big':''} ${contacted(p.url)?'done':''} ${c.s==='不需聯絡'?'skip':''}">
+    return `<article data-url="${u}" class="card post ${R.url===p.url&&R.mode?'reading big':''} ${state.bigUrl===p.url&&!(R.url===p.url&&R.mode)?'big':''} ${contacted(p.url)?'done':''} ${c.s==='不需聯絡'?'skip':''}">
       <div class="meta">
         <span class="tago ${Date.now()-Date.parse(p.time||p.foundAt)<3*3600e3?'fresh':''}" title="對方發文時間">🕒 發文 ${ago(p.time||p.foundAt)}</span>
         ${p.foundAt?`<span class="tagf ${Date.now()-Date.parse(p.foundAt)<3600e3?'fresh':''}" title="雷達抓到的時間：${esc(new Date(p.foundAt).toLocaleString('zh-TW',{hour12:false}))}">📡 抓到 ${ago(p.foundAt)}</span>`:''}
@@ -1081,7 +1127,7 @@ function renderList(){
         <button class="delbtn" data-delpost="${u}" title="刪除這則">🗑</button>
       </div>
       ${facts.length?`<div class="facts">${facts.map(x=>`<span>${x}</span>`).join('')}</div>`:''}
-      <div class="text" data-toggle>${esc(p.text)}</div>
+      <div class="text ${state.bigUrl===p.url?'open':''}" data-toggle>${esc(p.text)}</div>
       ${a.intent.reasons.length?`<div class="why">💡 ${esc(a.intent.reasons.join('・'))}</div>`:''}
       <div class="acts">
         <button class="btn sm" data-reply="${u}">✍️ ${t('rpBtn')}</button>
@@ -1481,7 +1527,7 @@ document.addEventListener('click',e=>{
     window.scrollTo({top:0});return;
   }
   if(el.dataset.f!==undefined){state.filter=state.filter===el.dataset.f&&el.dataset.f?'':el.dataset.f;renderSummary();renderChips();renderList();return}
-  if(el.hasAttribute('data-toggle')){el.classList.toggle('open');return}
+  if(el.hasAttribute('data-toggle')){const card=el.closest('article.post');if(card&&!card.classList.contains('reading')){toggleBig(card)}else el.classList.toggle('open');return}
   if(el.dataset.copy){navigator.clipboard?.writeText(el.dataset.copy).then(()=>toast(t('copied')),()=>toast(el.dataset.copy));return}
   if(el.dataset.read){toggleSingle(el.dataset.read);return}
   if(el.dataset.copytext){copyPost(el.dataset.copytext);return}
