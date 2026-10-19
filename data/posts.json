@@ -1,38 +1,70 @@
 {
-  "updatedAt": "2026-10-19T04:40:06.906Z",
+  "updatedAt": "2026-10-19T06:10:47.999Z",
   "lastRun": {
-    "startedAt": "2026-10-19T04:38:38.049Z",
-    "finishedAt": "2026-10-19T04:40:06.881Z",
+    "startedAt": "2026-10-19T06:09:18.123Z",
+    "finishedAt": "2026-10-19T06:10:47.956Z",
     "status": "ok",
-    "scanned": 16,
+    "scanned": 25,
     "matched": 0,
     "newCount": 0,
     "notified": 0,
     "perKeyword": {
-      "設備出清": 0,
-      "蒸烤箱": 0,
-      "歇業": 16,
-      "店面轉讓": 0
+      "生財器具": 23,
+      "盤讓": 0,
+      "營業用": 0,
+      "免費": 2
     },
     "warnings": [],
     "keywordsUsed": [
-      "設備出清",
-      "蒸烤箱",
-      "歇業",
-      "店面轉讓"
+      "生財器具",
+      "盤讓",
+      "營業用",
+      "免費"
     ],
     "queries": [
-      "設備出清 台南",
-      "蒸烤箱 台中",
-      "歇業",
-      "店面轉讓"
+      "生財器具",
+      "盤讓 桃園",
+      "營業用",
+      "免費"
     ],
     "loginMode": "guest",
-    "detailFetched": 0,
+    "detailFetched": 2,
     "pushMode": "on",
-    "nextInMinutes": 68
+    "nextInMinutes": 60
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T06:09:18.123Z",
+      "finishedAt": "2026-10-19T06:10:47.956Z",
+      "status": "ok",
+      "scanned": 25,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {
+        "生財器具": 23,
+        "盤讓": 0,
+        "營業用": 0,
+        "免費": 2
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "生財器具",
+        "盤讓",
+        "營業用",
+        "免費"
+      ],
+      "queries": [
+        "生財器具",
+        "盤讓 桃園",
+        "營業用",
+        "免費"
+      ],
+      "loginMode": "guest",
+      "detailFetched": 2,
+      "pushMode": "on",
+      "nextInMinutes": 60
+    },
     {
       "startedAt": "2026-10-19T04:38:38.049Z",
       "finishedAt": "2026-10-19T04:40:06.881Z",
@@ -1141,7 +1173,32 @@
       "last": 1792384780778,
       "scanned": 0,
       "leads": 0
+    },
+    "生財器具": {
+      "count": 1,
+      "last": 1792390158436,
+      "scanned": 23,
+      "leads": 0
+    },
+    "盤讓": {
+      "count": 1,
+      "last": 1792390170797,
+      "scanned": 0,
+      "leads": 0
+    },
+    "營業用": {
+      "count": 1,
+      "last": 1792390196915,
+      "scanned": 0,
+      "leads": 0
+    },
+    "免費": {
+      "count": 1,
+      "last": 1792390222084,
+      "scanned": 2,
+      "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T05:48:03.814Z"
+  "nextScanAt": "2026-10-19T07:10:21.817Z",
+  "archivedSeed": true
 }
