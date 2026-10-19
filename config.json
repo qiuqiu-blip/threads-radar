@@ -83,7 +83,7 @@
       "一般": "您好～我是{名義}😊 看到您的貼文，想跟您打聲招呼～我們在做餐飲創業的一條龍服務（尋點頂讓、整場規劃、設備收購、拆除清運、木作水電、招牌施工等），如果有需要幫忙的地方，歡迎跟我們聊聊！{聯絡}"
     }
   },
-  "comboChance": 0.5,
+  "comboChance": 0,
   "detailFetchMax": 6,
   "smartSchedule": true,
   "watchPerScan": 1,
