@@ -86,5 +86,8 @@
   "comboChance": 0.5,
   "detailFetchMax": 6,
   "smartSchedule": true,
-  "watchPerScan": 1
+  "watchPerScan": 1,
+  "hiddenPosts": [
+    "https://www.threads.com/@cengbaoyi929/post/DeqSKXKkjf8"
+  ]
 }
