@@ -94,6 +94,7 @@ details>summary{font-size:17px;padding:6px 0}
 .wtag{font-size:11.5px;border-radius:999px;padding:2px 8px;background:linear-gradient(180deg,var(--gold2),var(--gold));color:#2a1d02;font-weight:800}
 .readbar{display:flex;gap:8px;margin-bottom:10px}
 .readbar .btn{flex:1}
+.ratebar #rateVal{font-weight:800;color:var(--gold2)}
 .filters{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
 @media(max-width:520px){.filters{grid-template-columns:repeat(2,1fr)}}
 .filters select{width:100%;background:#0f0c07;border:1px solid var(--line);border-radius:10px;padding:8px;color:var(--text)}
@@ -320,6 +321,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
     </div>
     <div class="chips" id="chips"></div>
     <div class="readbar"><button class="btn ghost sm" id="readAllBtn">🔊 連續朗讀</button><button class="btn ghost sm" id="readStopBtn" hidden>⏹ 停止</button><button class="btn ghost sm" id="askToggle"></button><button class="btn ghost sm" id="micToggle"></button></div>
+    <div class="readbar ratebar"><button class="btn ghost sm" data-rate="-0.1">➖ 慢一點</button><button class="btn ghost sm" data-rate="0" id="rateVal" title="點一下恢復正常速度">語速 1.0 倍</button><button class="btn ghost sm" data-rate="0.1">➕ 快一點</button></div>
     <div id="list"></div>
   </section>
 
@@ -667,10 +669,13 @@ function applyLang(){
   renderAll();
 }
 function toast(msg,undo){const el=$('#toast');el.textContent=msg;if(undo){const b=document.createElement('button');b.textContent='復原';b.onclick=()=>{undo();el.classList.remove('show')};el.appendChild(b)}el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),undo?5000:2400)}
+function readRate(){const v=+LS.get('readRate',1);return v>=0.5&&v<=2?v:1}
+function renderRate(){const e=$('#rateVal');if(!e)return;const v=readRate();e.textContent=`語速 ${v.toFixed(1)} 倍${v<1?' 🐢':v>1?' 🐇':''}`}
+function setRate(d){let v=Math.round((readRate()+d)*10)/10;v=Math.min(2,Math.max(0.5,v));if(d===0)v=1;LS.set('readRate',v);renderRate();toast(`🔊 朗讀速度 ${v.toFixed(1)} 倍（下一句開始生效）`)}
 function speak(text){
   if(!state.voice||!('speechSynthesis' in window))return;
   if(typeof R!=='undefined'&&R.mode)return;
-  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=SPEECH_LANG[state.lang];speechSynthesis.speak(u)}catch{}
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=SPEECH_LANG[state.lang];u.rate=readRate();speechSynthesis.speak(u)}catch{}
 }
 function ago(iso){
   const ms=Date.now()-Date.parse(iso); if(!iso||isNaN(ms))return '';
@@ -839,8 +844,12 @@ function postHeader(p,i){
 }
 function postSpeech(p,i){return postHeader(p,i)+cleanSpeech(p.text||'')}
 // 朗讀前清掉：表情符號、星號、閃亮、～、#、網址…（畫面上的字不變）
+function moneySpeech(t){
+  return String(t).replace(/(?:NT\s*\$|NTD|NT(?=\s*\d)|＄|\$|S(?=\d{3}))\s*([\d,，]+(?:\.\d+)?)\s*(萬|千|k|K)?\s*(?:元|塊)?/g,(m,n,u)=>{n=n.replace(/[,，]/g,'');if(u&&/k/i.test(u))return Math.round(parseFloat(n)*1000)+'元';return n+(u||'')+'元'})
+    .replace(/(\d)[,，](?=\d{3})/g,'$1');
+}
 function cleanSpeech(t){
-  return String(t)
+  return moneySpeech(t)
     .replace(/https?:\/\/\S+/g,' ')
     .replace(/(\d)[-－](?=\d)/g,'$1 ')
     .replace(/[\p{Extended_Pictographic}\p{Emoji_Presentation}\u{1F1E6}-\u{1F1FF}\u{1F3FB}-\u{1F3FF}︎️‍⃣]/gu,' ')
@@ -882,7 +891,7 @@ function sayChunk(){
   if(R.ci>=R.chunks.length){const card=readingCard();card&&card.querySelectorAll('.rd-now').forEach(e=>e.classList.remove('rd-now'));
     const url=R.url,mode=R.mode;askDelete(url,()=>{if(tok!==R.tok&&R.mode!==mode)return;if(mode==='queue')nextInQueue();else stopRead()});return}
   followChunk();
-  const u=new SpeechSynthesisUtterance(R.chunks[R.ci]);u.lang=SPEECH_LANG[state.lang]||'zh-TW';u.rate=1;
+  const u=new SpeechSynthesisUtterance(R.chunks[R.ci]);u.lang=SPEECH_LANG[state.lang]||'zh-TW';u.rate=readRate();
   u.onend=()=>{if(tok!==R.tok||R.paused)return;R.ci++;sayChunk()};
   u.onerror=()=>{if(tok!==R.tok||R.paused)return;R.ci++;sayChunk()};
   speechSynthesis.speak(u);
@@ -1384,7 +1393,8 @@ function renderSchedInfo(){
 
 /* ============ 儀表板 ============ */
 const GOLD='#d4af37',GOLD2='#f5d77a',MUTED='#a8987a',GREEN='#5fc48b';
-const PALETTE=['#f5d77a','#d4af37','#b8902a','#8a6a1c','#e9c46a','#c9a227','#9fd9b1','#6fb58b','#e0a35a','#c77d3a','#a8987a','#6d5d3c'];
+const PALETTE=['#f5c542','#ff7a45','#36cfc9','#ff4d6d','#5b8cff','#b46cff','#52d273','#ffd166','#f72585','#4cc9f0','#e9a23b','#9ad94f'];
+const HOT='#ff6b35',CYAN='#4cc9f0';
 const NS='http://www.w3.org/2000/svg';
 function box(id){const el=document.getElementById(id);const w=Math.max(260,el.clientWidth||600),h=Math.max(160,el.clientHeight||220);return {el,w,h}}
 const niceMax=v=>{if(v<=4)return Math.max(1,v);const p=Math.pow(10,Math.floor(Math.log10(v)));const n=v/p;return (n<=2?2:n<=5?5:10)*p};
@@ -1401,11 +1411,11 @@ function svgBar(id,labels,vals,o={}){
   }
   const L=30,B=24,T=10,cw=w-L-6,ch=h-B-T,n=labels.length,gap=cw/n,bw=Math.max(3,gap*.68);
   const ticks=[0,max/2,max];const step=o.every||Math.ceil(n/(w<420?7:12));
-  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}">
+  el.innerHTML=`<svg viewBox="0 0 ${w} ${h}"><defs><linearGradient id="gbar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd95a"/><stop offset="1" stop-color="#c9921c"/></linearGradient></defs>
     ${ticks.map(v=>{const y=T+ch-(v/max)*ch;return `<line x1="${L}" x2="${w}" y1="${y}" y2="${y}" stroke="rgba(58,46,23,.7)"/><text x="${L-6}" y="${y+4}" text-anchor="end" font-size="11" fill="${MUTED}">${Math.round(v)}</text>`}).join('')}
     ${vals.map((v,i)=>{const bh=max?v/max*ch:0,x=L+i*gap+(gap-bw)/2;const hi=o.highlight&&o.highlight(i,v);
-      return `<rect x="${x}" y="${T+ch-bh}" width="${bw}" height="${Math.max(bh,v?2:0)}" rx="4" fill="${hi?GOLD2:'rgba(212,175,55,.5)'}"><title>${esc(labels[i])}：${v}</title></rect>
-      ${v&&n<=16?`<text x="${x+bw/2}" y="${T+ch-bh-4}" text-anchor="middle" font-size="11" fill="${GOLD2}">${v}</text>`:''}
+      return `<rect x="${x}" y="${T+ch-bh}" width="${bw}" height="${Math.max(bh,v?2:0)}" rx="4" fill="${hi?HOT:(o.colors?o.colors[i%o.colors.length]:'url(#gbar)')}"><title>${esc(labels[i])}：${v}</title></rect>
+      ${v&&n<=16?`<text x="${x+bw/2}" y="${T+ch-bh-4}" text-anchor="middle" font-size="11" font-weight="700" fill="${hi?HOT:GOLD2}">${v}</text>`:''}
       ${i%step===0||i===n-1?`<text x="${x+bw/2}" y="${h-6}" text-anchor="middle" font-size="11" fill="${MUTED}">${esc(labels[i])}</text>`:''}`}).join('')}
   </svg>`;
 }
@@ -1428,12 +1438,12 @@ function svgCombo(id,legId,lineVals,barVals){
   const L=30,R=26,T=10,B=10,cw=w-L-R,ch=h-T-B,m1=niceMax(Math.max(1,...lineVals)),m2=niceMax(Math.max(1,...barVals)),gap=cw/n;
   const pts=lineVals.map((v,i)=>`${L+i*gap+gap/2},${T+ch-v/m1*ch}`);
   el.innerHTML=`<svg viewBox="0 0 ${w} ${h}">
-    ${[0,.5,1].map(f=>{const y=T+ch-f*ch;return `<line x1="${L}" x2="${w-R}" y1="${y}" y2="${y}" stroke="rgba(58,46,23,.7)"/><text x="${L-6}" y="${y+4}" text-anchor="end" font-size="11" fill="${MUTED}">${Math.round(m1*f)}</text><text x="${w-R+6}" y="${y+4}" font-size="11" fill="${GOLD2}">${Math.round(m2*f)}</text>`}).join('')}
-    <polygon points="${L+gap/2},${T+ch} ${pts.join(' ')} ${L+(n-1)*gap+gap/2},${T+ch}" fill="rgba(168,152,122,.15)"/>
-    <polyline points="${pts.join(' ')}" fill="none" stroke="${MUTED}" stroke-width="2" stroke-linejoin="round"/>
+    ${[0,.5,1].map(f=>{const y=T+ch-f*ch;return `<line x1="${L}" x2="${w-R}" y1="${y}" y2="${y}" stroke="rgba(58,46,23,.7)"/><text x="${L-6}" y="${y+4}" text-anchor="end" font-size="11" fill="${CYAN}">${Math.round(m1*f)}</text><text x="${w-R+6}" y="${y+4}" font-size="11" fill="${GOLD2}">${Math.round(m2*f)}</text>`}).join('')}
+    <polygon points="${L+gap/2},${T+ch} ${pts.join(' ')} ${L+(n-1)*gap+gap/2},${T+ch}" fill="rgba(76,201,240,.13)"/>
+    <polyline points="${pts.join(' ')}" fill="none" stroke="${CYAN}" stroke-width="2.5" stroke-linejoin="round"/>
     ${barVals.map((v,i)=>{const bh=v/m2*ch,bw=Math.max(2,gap*.5);return v?`<rect x="${L+i*gap+(gap-bw)/2}" y="${T+ch-bh}" width="${bw}" height="${bh}" rx="2" fill="${GOLD2}"><title>${v}</title></rect>`:''}).join('')}
   </svg>`;
-  $('#'+legId).innerHTML=`<span><i style="background:${MUTED}"></i>${t('scannedL')}（${t('dLeftAxis')}）</span><span><i style="background:${GOLD2}"></i>${t('newL')}（${t('dRightAxis')}）</span>`;
+  $('#'+legId).innerHTML=`<span><i style="background:${CYAN}"></i>${t('scannedL')}（${t('dLeftAxis')}）</span><span><i style="background:${GOLD2}"></i>${t('newL')}（${t('dRightAxis')}）</span>`;
 }
 function renderDash(){
   if(!$('#tab-dash').classList.contains('show'))return;
@@ -1496,7 +1506,7 @@ function renderDash(){
   const kw=tally('keywords').slice(0,10);
   if(kw.length)svgBar('cKw',kw.map(x=>x[0]),kw.map(x=>x[1]),{horizontal:true,colors:PALETTE});else $('#cKw').innerHTML=`<p class="hint">${t('noData')}</p>`;
   const rg=tally('regions');const noRg=posts.filter(p=>!(p.regions||[]).length).length;if(noRg)rg.push([t('noRegion'),noRg]);
-  svgDonut('cRg','cRgLeg',rg.map(x=>x[0]),rg.map(x=>x[1]),rg.map((x,i)=>x[0]===t('noRegion')?'#4a3d22':PALETTE[i%PALETTE.length]));
+  svgDonut('cRg','cRgLeg',rg.map(x=>x[0]),rg.map(x=>x[1]),rg.map((x,i)=>x[0]===t('noRegion')?'#5a4a2a':PALETTE[i%PALETTE.length]));
 
   /* 熱度表 */
   const kws=kw.length?kw.map(x=>x[0]):(cfg.keywords||[]).slice(0,10);
@@ -1504,7 +1514,8 @@ function renderDash(){
   posts.forEach(p=>{const rs=(p.regions||[]).length?p.regions:[t('noRegion')];(p.keywords||[]).forEach(k=>rs.forEach(r=>{const key=k+'|'+r;cell[key]=(cell[key]||0)+1;maxC=Math.max(maxC,cell[key])}))});
   $('#dMatrix').innerHTML=!kws.length?`<tr><td>${t('noData')}</td></tr>`:`<tr><th></th>${rgs.map(r=>`<th>${esc(r)}</th>`).join('')}</tr>`+
     kws.map(k=>`<tr><th>${esc(k)}</th>${rgs.map(r=>{const v=cell[k+'|'+r]||0;const a=maxC?v/maxC:0;
-      return `<td style="background:rgba(212,175,55,${v?0.14+a*0.76:0.04});color:${a>.55?'#2a1d02':'var(--text)'}">${v||'·'}</td>`}).join('')}</tr>`).join('');
+      const hc=!v?'rgba(212,175,55,.04)':a<.34?`rgba(245,197,66,${0.25+a*1.2})`:a<.67?`rgba(255,140,50,${0.6+a*.4})`:`rgba(255,77,77,${0.75+a*.25})`;
+      return `<td style="background:${hc};color:${a>.34?'#fff':'var(--text)'};font-weight:${v?800:400}">${v||'·'}</td>`}).join('')}</tr>`).join('');
 
   /* 關鍵字效率（用累計統計） */
   const kst=doc.kwStats||{};const pool=[...new Set([...(cfg.mustKeywords||[]),...(cfg.keywords||[])])];
@@ -1527,7 +1538,7 @@ function renderDash(){
     <span class="bar"><span style="width:${v.n/maxU*100}%"></span></span><span class="ct">${v.n}</span></li>`).join(''):`<li>${t('noData')}</li>`;
 
   /* 聯絡進度 / 掃描紀錄 */
-  svgDonut('cContact','cContactLeg',STATUSES,STATUSES.map(st=>stCount[st]),['#4a3d22',GOLD2,'#8fc3ff',GREEN,'#6d5d3c']);
+  svgDonut('cContact','cContactLeg',STATUSES,STATUSES.map(st=>stCount[st]),['#6b5a3a','#f5c542','#4c9dff','#2ecc71','#ff4d6d']);
   const rs=scanRuns.slice(0,50).reverse();
   svgCombo('cScan','cScanLeg',rs.map(r=>r.scanned||0),rs.map(r=>r.newCount||0));
 
@@ -1580,6 +1591,7 @@ document.addEventListener('click',e=>{
   if(el.dataset.delpost){const u=el.dataset.delpost;if(R.url===u&&R.mode)deleteCurrent();else hidePost(u);return}
   if(el.id==='micToggle'){LISTEN.on=!LISTEN.on;LS.set('voiceCmd',LISTEN.on);renderMic();if(LISTEN.on&&R.mode)listenStart();else listenStop();toast(LISTEN.on?'🎙 朗讀中可以說「刪除」「跳過」「暫停」':'🎙 語音指令已關閉');return}
   if(el.id==='askToggle'){ASK.on=!ASK.on;LS.set('askDel',ASK.on);renderAskToggle();toast(ASK.on?'朗讀完會問是否刪除':'朗讀完不詢問');return}
+  if(el.dataset.rate!==undefined){setRate(+el.dataset.rate);return}
   if(el.id==='readAllBtn'){toggleQueue();return}
   if(el.id==='readStopBtn'){stopRead();return}
   if(el.dataset.xuser){quickUser('excludeUsers',el.dataset.xuser);return}
@@ -1679,7 +1691,7 @@ if(RESTORE){
 }
 
 /* ============ 啟動 ============ */
-fillConn();applyLang();renderAskToggle();renderMic();load(true).then(restoreView);
+fillConn();applyLang();renderAskToggle();renderMic();renderRate();load(true).then(restoreView);
 if(RESTORE){$('#splash').remove()}else{
 setTimeout(()=>$('#splash').classList.add('hide'),1300);
 setTimeout(()=>$('#splash')&&$('#splash').remove(),2000);}
