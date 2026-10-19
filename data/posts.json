@@ -1,63 +1,124 @@
 {
-  "updatedAt": "2026-10-19T14:23:48.533Z",
+  "updatedAt": "2026-10-19T15:05:56.751Z",
   "lastRun": {
-    "startedAt": "2026-10-19T14:19:25.162Z",
-    "finishedAt": "2026-10-19T14:23:48.364Z",
+    "startedAt": "2026-10-19T15:03:05.788Z",
+    "finishedAt": "2026-10-19T15:05:56.696Z",
     "status": "ok",
-    "scanned": 77,
-    "matched": 3,
-    "newCount": 3,
-    "notified": 3,
+    "scanned": 135,
+    "matched": 2,
+    "newCount": 2,
+    "notified": 2,
     "perKeyword": {
-      "清倉": 18,
-      "整店頂讓": 0,
-      "爐具": 0,
-      "廚房設備": 24,
-      "歇業": 17,
-      "收攤": 18,
-      "店鋪轉讓": 0
+      "裝潢": 19,
+      "店面出租": 20,
+      "拆除": 20,
+      "創業": 20,
+      "餐車": 20,
+      "二手設備": 19,
+      "排油煙": 0,
+      "開店": 17
     },
     "warnings": [],
     "keywordsUsed": [
-      "清倉",
-      "整店頂讓",
-      "爐具",
-      "廚房設備",
-      "歇業",
-      "收攤",
-      "店鋪轉讓"
+      "裝潢",
+      "店面出租",
+      "拆除",
+      "創業",
+      "餐車",
+      "二手設備",
+      "排油煙",
+      "開店"
     ],
     "queries": [
-      "清倉",
-      "整店頂讓",
-      "爐具",
-      "廚房設備",
-      "歇業",
-      "收攤",
-      "店鋪轉讓"
+      "裝潢",
+      "店面出租",
+      "拆除",
+      "創業",
+      "餐車",
+      "二手設備",
+      "排油煙",
+      "開店"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 37,
+      "seen": 19,
       "dup": 0,
-      "noContext": 28,
-      "noKeyword": 5,
-      "tooOld": 3,
       "words": {
         "家具": 1
       },
-      "excludeWord": 1
+      "excludeWord": 1,
+      "noContext": 67,
+      "noKeyword": 32,
+      "tooOld": 14
     },
-    "detailFetched": 3,
+    "detailFetched": 2,
     "newUrls": [
-      "https://www.threads.com/@mj039880288/post/DerYbG4FV-k",
-      "https://www.threads.com/@smart.shop2080/post/Denm3WdFA4l",
-      "https://www.threads.com/@shockg7777/post/DeoLtQDkVSX"
+      "https://www.threads.com/@aka.83314/post/DerQIhxnSXi",
+      "https://www.threads.com/@krisckc_/post/Deqok2vH3Of"
     ],
     "pushMode": "on",
-    "nextInMinutes": 21
+    "nextInMinutes": 34
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T15:03:05.788Z",
+      "finishedAt": "2026-10-19T15:05:56.696Z",
+      "status": "ok",
+      "scanned": 135,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "裝潢": 19,
+        "店面出租": 20,
+        "拆除": 20,
+        "創業": 20,
+        "餐車": 20,
+        "二手設備": 19,
+        "排油煙": 0,
+        "開店": 17
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "裝潢",
+        "店面出租",
+        "拆除",
+        "創業",
+        "餐車",
+        "二手設備",
+        "排油煙",
+        "開店"
+      ],
+      "queries": [
+        "裝潢",
+        "店面出租",
+        "拆除",
+        "創業",
+        "餐車",
+        "二手設備",
+        "排油煙",
+        "開店"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 19,
+        "dup": 0,
+        "words": {
+          "家具": 1
+        },
+        "excludeWord": 1,
+        "noContext": 67,
+        "noKeyword": 32,
+        "tooOld": 14
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@aka.83314/post/DerQIhxnSXi",
+        "https://www.threads.com/@krisckc_/post/Deqok2vH3Of"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 34
+    },
     {
       "startedAt": "2026-10-19T14:19:25.162Z",
       "finishedAt": "2026-10-19T14:23:48.364Z",
@@ -804,6 +865,44 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DerQIhxnSXi",
+      "user": "aka.83314",
+      "url": "https://www.threads.com/@aka.83314/post/DerQIhxnSXi",
+      "authorUrl": "https://www.threads.com/@aka.83314",
+      "text": "971次瀏覽\n比起接到一個案子，\n其實更希望在脆上找到幾個\n「可以長期配合的工程夥伴」🤝\n設計師有拆除 → 找我\n統包有清運 → 找我\n房仲客戶要翻修 → 找我\n店家重新裝潢 → 找我\n哪天我遇到水電、木工、泥作、設計需求，\n一樣可以互相介紹。\n工程圈很多案子，\n其實就是這樣一個介紹一個做起來的。\n主要做拆除、清運、土方工程。\n📍北北基桃竹\n相關行業歡迎來認識一下。\n先交朋友，有案子再談合作💪\nzingguang\n哩賀！👋🔨\n我們主要承接輕鋼架、輕隔間相關工程，\n師傅🚫菸🚫酒🚫檳榔，重視案場環境整潔👍\n希望有機會跟大家交流、互相配合！🤝\n🔹 輕鋼架（明架、暗架）\n🔹 輕隔間工程\n🔹 天花板工程\n🔹 大小坪數不拘\n🔹 修補支援都可\n㊗️您生意興隆🥰🥰🥰\nshineon_clean\n找你✌️\n🤣🤣\nlee07150921\n桃園木工 你好👋\nzxc_678912\n👍🫰\njxj1719\n嗨嗨 裝潢細清也可以找我喔\n希望可以互相配合🫶\nbominnng.c\n北部衛浴設備🙋\nlizhuworks_taipei\n認識一下 以後有機會可以配合\nruwang605\n新竹水電🙋‍♂️\nyu0213._\n乾淨，是一家店最基本的競爭力。\n店面的整潔程度，往往決定顧客的第一印象。\n✨ 乾淨的環境，是品牌形象的展現。\n✨ 細節的維護，是服務品質的延伸。\n✨ 定期的清潔，是營業效率的提升。\n✨ 專業的管理，是顧客信任的累積。\n把專業留給我們，把時間留給經營。\n蒜潔企業社｜軍規級細節清潔\n專業・細節・信賴\n潔淨如新・安心如家\n清潔找蒜潔，蒜潔洗淨，蒜頭搞定。\n#蒜潔企業社 #店面清潔 #商業空間清潔 #定期清潔 #專業清潔 #店家清潔\nyu0213._\n生意興隆",
+      "time": "2026-10-19T12:24:50.000Z",
+      "keywords": [
+        "拆除",
+        "裝潢"
+      ],
+      "regions": [
+        "桃園"
+      ],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-19T15:05:42.887Z",
+      "full": true
+    },
+    {
+      "code": "Deqok2vH3Of",
+      "user": "krisckc_",
+      "url": "https://www.threads.com/@krisckc_/post/Deqok2vH3Of",
+      "authorUrl": "https://www.threads.com/@krisckc_",
+      "text": "5,911次瀏覽\n拆除 清運\n有人要接基隆拆除案子嗎\n20 個房間11個廁所後面兩間磚牆的廁所。\n其實就是全部拆掉，要看照片可以私訊\n可以的直接私訊我報價，要看現場再報天價的別來謝謝～\n已經有找到配合的！往後有機會會再聯繫謝謝\njfg_as\nchengtai0611\n您好，我這邊能為您服務，歡迎詳談哦 謝謝您\nzr_0018\n您好 我們可以承攬 我們可以現場與您討論 價格合理公道\nhe66961\n私訊您了\ntotei_design\n私訊看照片 謝謝\nvincentlin_1013\n私訊！ 謝謝\nyellow123440\n🛠️拆除專業團隊🛠️\n大台北地區，打石、拆除、打水電管溝、磚牆打除、打牆工程、RC牆打除、室內外裝潢拆除、輕隔間拆除、隔間牆拆除、樣品屋拆除、水泥磁磚地磚打除、衛浴、浴缸拆除、廚俱廚櫃拆除、局部打除、木材清運、廢棄物合法清運、👉承接清拆工程🏠住家 🏢寫字樓 餐廳 商場 鋪頭還原 打石上料 清泥頭垃圾🧹清場 清拆傢俬 ， 清棄置雜物等，承接各種大小工程！\n💁‍♂清拆清場工程一條龍服務❌絕無隱藏式收費\n✅極速上料🧺乾淨清場🧹清拆一條龍🛠價錢公道.只做專業責任施工.不做廉價偷工.在請各位老闆提拔萬事拜託\n-----------------------------------\n👇歡迎查詢報價❤\n☎0979..099615潘先生\nzx858858\n私訊\nsu_162_0120\n私訊\nsu_162_0120\n我基隆人",
+      "time": "2026-10-19T06:39:11.000Z",
+      "keywords": [
+        "拆除",
+        "裝潢"
+      ],
+      "regions": [
+        "台北"
+      ],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-19T15:05:42.887Z",
+      "full": true
+    },
     {
       "code": "DerYbG4FV-k",
       "user": "mj039880288",
@@ -2194,9 +2293,9 @@
       "leads": 0
     },
     "二手設備": {
-      "count": 2,
-      "last": 1792397793189,
-      "scanned": 34,
+      "count": 3,
+      "last": 1792422255324,
+      "scanned": 53,
       "leads": 1
     },
     "關店": {
@@ -2402,45 +2501,87 @@
       "last": 1792415585201,
       "scanned": 18,
       "leads": 5
+    },
+    "裝潢": {
+      "count": 1,
+      "last": 1792422186098,
+      "scanned": 19,
+      "leads": 0
+    },
+    "店面出租": {
+      "count": 1,
+      "last": 1792422199082,
+      "scanned": 20,
+      "leads": 0
+    },
+    "拆除": {
+      "count": 1,
+      "last": 1792422213321,
+      "scanned": 20,
+      "leads": 2
+    },
+    "創業": {
+      "count": 1,
+      "last": 1792422228838,
+      "scanned": 20,
+      "leads": 0
+    },
+    "餐車": {
+      "count": 1,
+      "last": 1792422242810,
+      "scanned": 20,
+      "leads": 0
+    },
+    "排油煙": {
+      "count": 1,
+      "last": 1792422269289,
+      "scanned": 0,
+      "leads": 0
+    },
+    "開店": {
+      "count": 1,
+      "last": 1792422329875,
+      "scanned": 17,
+      "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T14:45:05.178Z",
+  "nextScanAt": "2026-10-19T15:40:14.615Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T14:45:05.178Z",
-    "madeAt": "2026-10-19T14:23:48.529Z",
+    "at": "2026-10-19T15:40:14.615Z",
+    "madeAt": "2026-10-19T15:05:56.746Z",
     "items": [
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "二手冰箱",
+        "q": "二手冰箱"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "含設備",
+        "q": "含設備"
       },
       {
-        "kw": "拆除",
-        "q": "拆除"
+        "kw": "店面頂讓",
+        "q": "店面頂讓"
       },
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "全店出清",
+        "q": "全店出清"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "退租",
+        "q": "退租"
       },
       {
-        "kw": "二手設備",
-        "q": "二手設備"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       },
       {
-        "kw": "排油煙",
-        "q": "排油煙"
+        "kw": "關店",
+        "q": "關店"
       },
       {
-        "kw": "開店",
-        "q": "開店"
+        "kw": "設備出清",
+        "q": "設備出清"
       }
     ]
   }
