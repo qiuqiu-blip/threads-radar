@@ -1,42 +1,78 @@
 {
-  "updatedAt": "2026-10-19T07:36:20.509Z",
+  "updatedAt": "2026-10-19T08:17:53.775Z",
   "lastRun": {
-    "startedAt": "2026-10-19T07:34:07.405Z",
-    "finishedAt": "2026-10-19T07:36:20.484Z",
+    "startedAt": "2026-10-19T08:15:53.608Z",
+    "finishedAt": "2026-10-19T08:17:53.745Z",
     "status": "ok",
-    "scanned": 31,
+    "scanned": 34,
     "matched": 0,
     "newCount": 0,
     "notified": 0,
     "perKeyword": {
-      "免頂讓費": 0,
-      "結束營業": 14,
-      "收店": 0,
-      "設備轉讓": 0,
-      "清倉": 17
+      "頂店": 0,
+      "餐飲設備": 20,
+      "二手設備": 14,
+      "全店出清": 0,
+      "店鋪轉讓": 0
     },
     "warnings": [],
     "keywordsUsed": [
-      "免頂讓費",
-      "結束營業",
-      "收店",
-      "設備轉讓",
-      "清倉"
+      "頂店",
+      "餐飲設備",
+      "二手設備",
+      "全店出清",
+      "店鋪轉讓"
     ],
     "queries": [
-      "免頂讓費",
-      "結束營業",
-      "收店",
-      "設備轉讓",
-      "清倉"
+      "頂店",
+      "餐飲設備",
+      "二手設備",
+      "全店出清",
+      "店鋪轉讓"
     ],
     "loginMode": "guest",
-    "detailFetched": 5,
+    "detailFetched": 3,
     "newUrls": [],
     "pushMode": "on",
-    "nextInMinutes": 32
+    "nextInMinutes": 52
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T08:15:53.608Z",
+      "finishedAt": "2026-10-19T08:17:53.745Z",
+      "status": "ok",
+      "scanned": 34,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {
+        "頂店": 0,
+        "餐飲設備": 20,
+        "二手設備": 14,
+        "全店出清": 0,
+        "店鋪轉讓": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "頂店",
+        "餐飲設備",
+        "二手設備",
+        "全店出清",
+        "店鋪轉讓"
+      ],
+      "queries": [
+        "頂店",
+        "餐飲設備",
+        "二手設備",
+        "全店出清",
+        "店鋪轉讓"
+      ],
+      "loginMode": "guest",
+      "detailFetched": 3,
+      "newUrls": [],
+      "pushMode": "on",
+      "nextInMinutes": 52
+    },
     {
       "startedAt": "2026-10-19T07:34:07.405Z",
       "finishedAt": "2026-10-19T07:36:20.484Z",
@@ -1077,8 +1113,8 @@
       "leads": 0
     },
     "頂店": {
-      "count": 1,
-      "last": 1792358989286,
+      "count": 2,
+      "last": 1792397753854,
       "scanned": 0,
       "leads": 0
     },
@@ -1089,9 +1125,9 @@
       "leads": 0
     },
     "二手設備": {
-      "count": 1,
-      "last": 1792359028121,
-      "scanned": 20,
+      "count": 2,
+      "last": 1792397793189,
+      "scanned": 34,
       "leads": 1
     },
     "關店": {
@@ -1261,8 +1297,26 @@
       "last": 1792395312026,
       "scanned": 0,
       "leads": 0
+    },
+    "餐飲設備": {
+      "count": 1,
+      "last": 1792397780060,
+      "scanned": 20,
+      "leads": 0
+    },
+    "全店出清": {
+      "count": 1,
+      "last": 1792397805265,
+      "scanned": 0,
+      "leads": 0
+    },
+    "店鋪轉讓": {
+      "count": 1,
+      "last": 1792397830927,
+      "scanned": 0,
+      "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T08:08:49.493Z",
+  "nextScanAt": "2026-10-19T09:09:43.246Z",
   "archivedSeed": true
 }
