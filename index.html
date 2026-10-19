@@ -64,7 +64,11 @@ nav button span{white-space:nowrap}
 #zoomOv .zhint{position:fixed;top:calc(16px + env(safe-area-inset-top));left:14px;color:var(--muted);font-size:13px}
 .meta{position:relative;padding-right:44px}
 .meta .trow{flex:0 0 calc(100% + 44px);margin-right:-44px;display:flex;gap:8px}
-.meta .trow>span{flex:1;text-align:center;font-size:17px;padding:7px 8px;white-space:nowrap}
+.meta .trow>span{flex:1;justify-content:center;text-align:center;font-size:17px;padding:7px 6px;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.post .meta>.rtag,.post .meta>.tag,.post .meta>.wtag{font-size:15.5px;padding:5px 13px}
+.post .meta>.user{font-size:17px}
+@media(max-width:560px){.meta .trow{gap:5px}.meta .trow>span{font-size:12.5px;padding:6px 2px;gap:2px;min-width:0;overflow:hidden}.meta .trow>.ipill{flex:0 0 auto;padding:6px 8px}.post .meta>.rtag,.post .meta>.tag,.post .meta>.wtag{font-size:14px;padding:4px 10px}.post .crm .chip{font-size:15px;padding:7px 12px}}
+.post .crm{gap:8px}.post .crm .chip{font-size:16.5px;padding:8px 15px}.post .crm .sep{height:28px}
 details[open]>textarea[id^="rt_"]{font-size:26px!important;line-height:1.55!important;min-height:300px}
 textarea[id^="rt_"]:focus{font-size:26px!important;line-height:1.55!important;min-height:300px}
 details>summary{font-size:17px;padding:6px 0}
@@ -916,6 +920,7 @@ function toggleQueue(){
   const urls=[...document.querySelectorAll('#list article.post')].map(a=>a.dataset.url);
   if(!urls.length){toast(t('noPosts'));return}
   const startAt=R.mode==='single'&&R.url?Math.max(0,urls.indexOf(R.url)):0;
+  if(!LISTEN.on){LISTEN.on=true;LS.set('voiceCmd',true);renderMic();toast('🎙 語音指令已同時開啟')}
   R.tok++;R.mode='queue';R.queue=urls;R.qi=startAt;
   const p=(state.doc?.posts||[]).find(x=>x.url===urls[startAt]);if(p)startPost(p,startAt);
 }
@@ -1126,10 +1131,9 @@ function renderList(){
     const u=esc(p.url);
     return `<article data-url="${u}" class="card post ${R.url===p.url&&R.mode?'reading big':''} ${state.bigUrl===p.url&&!(R.url===p.url&&R.mode)?'big':''} ${contacted(p.url)?'done':''} ${c.s==='不需聯絡'?'skip':''}">
       <div class="meta">
-        <div class="trow"><span class="tago ${Date.now()-Date.parse(p.time||p.foundAt)<3*3600e3?'fresh':''}" title="對方發文時間">🕒 發文 ${ago(p.time||p.foundAt)}</span>
+        <div class="trow"><span class="ipill ${a.intent.level}">${LV_ICON[a.intent.level]} ${a.intent.level}意向</span><span class="tago ${Date.now()-Date.parse(p.time||p.foundAt)<3*3600e3?'fresh':''}" title="對方發文時間">🕒 發文 ${ago(p.time||p.foundAt)}</span>
         ${p.foundAt?`<span class="tagf ${Date.now()-Date.parse(p.foundAt)<3600e3?'fresh':''}" title="雷達抓到的時間：${esc(new Date(p.foundAt).toLocaleString('zh-TW',{hour12:false}))}">📡 抓到 ${ago(p.foundAt)}</span>`:''}</div>
         ${(p.watched||(state.cfg?.watchUsers||[]).includes(normUser(p.user)))?'<span class="wtag">⭐ 關注</span>':''}
-        <span class="ipill ${a.intent.level}">${LV_ICON[a.intent.level]} ${a.intent.level}意向</span>
         <span class="rtag ${a.role}">${a.role}</span>
         ${a.cat!==a.role?`<span class="tag">${esc(a.cat)}</span>`:''}
         <a class="user" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">@${esc(p.user)}</a>
