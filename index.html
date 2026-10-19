@@ -59,6 +59,7 @@ nav button span{white-space:nowrap}
 #askBox .bar{height:4px;background:#3a2e17;border-radius:2px;overflow:hidden;margin-bottom:12px}
 #askBox .bar i{display:block;height:100%;background:var(--gold2);width:100%}
 #toast button{margin-left:10px;border:1px solid var(--gold);background:none;color:var(--gold2);border-radius:8px;padding:2px 10px;font:inherit}
+.rd-now{background:rgba(245,215,122,.25);border-radius:6px;box-shadow:0 0 0 3px rgba(245,215,122,.25);color:#fff}
 .post.reading{outline:2px solid var(--gold2);box-shadow:0 0 0 4px rgba(245,215,122,.18),0 8px 24px rgba(0,0,0,.35)}
 .tago{font-weight:800;color:var(--text);background:#2a2112;border:1px solid var(--gold3);border-radius:999px;padding:3px 10px;font-size:12.5px}
 .tagf{font-weight:700;color:#9fd9b1;background:#10231a;border:1px solid #2f5e43;border-radius:999px;padding:3px 10px;font-size:12.5px}
@@ -803,15 +804,55 @@ function renderChips(){
 /* ============ 朗讀（單則／連續，可暫停） ============ */
 const R={mode:null,url:null,queue:[],qi:0,chunks:[],ci:0,paused:false,tok:0};
 function readLabel(url){return R.url===url&&R.mode==='single'?(R.paused?'▶ 繼續':'⏸ 暫停'):'🔈 朗讀'}
-function postSpeech(p,i){
+function postHeader(p,i){
   const a=an(p),inf=a.info,loc=[inf.city,inf.district].filter(Boolean).join('');
-  return `${i!=null?`第${i+1}則，`:''}${ago(p.time||p.foundAt)}，${a.intent.level}意向，${a.role}${loc?'，'+loc:''}。${p.text||''}`;
+  return `${i!=null?`第${i+1}則，`:''}${ago(p.time||p.foundAt)}，${a.intent.level}意向，${a.role}${loc?'，'+loc:''}。`;
+}
+function postSpeech(p,i){return postHeader(p,i)+cleanSpeech(p.text||'')}
+// 朗讀前清掉：表情符號、星號、閃亮、～、#、網址…（畫面上的字不變）
+function cleanSpeech(t){
+  return String(t)
+    .replace(/https?:\/\/\S+/g,' ')
+    .replace(/(\d)[-－](?=\d)/g,'$1 ')
+    .replace(/[\p{Extended_Pictographic}\p{Emoji_Presentation}\u{1F1E6}-\u{1F1FF}\u{1F3FB}-\u{1F3FF}︎️‍⃣]/gu,' ')
+    .replace(/[~～〜*＊#＃※★☆✦✧✩✪✫✬✭✮✯✰✨⭐♥♡❤❥♪♫♬●○◎◉◆◇■□▲△▼▽►▶◀◁▸▹→←↑↓↗↘⇒⇐➡➤✓✔✗✘•·・‧∙|｜_＿=＝+＋<>＜＞《》〈〉^＾`´¨…⋯—–\-]{1,}/g,' ')
+    .replace(/[【】\[\]「」『』()（）{}]/g,' ')
+    .replace(/\s{2,}/g,' ').replace(/^[\s，,。、]+/,'').trim();
 }
 function splitChunks(t){return (String(t).replace(/\s+/g,' ').match(/[^。！？!?；;\n]{1,120}[。！？!?；;]?|.{1,120}/g)||[]).map(x=>x.trim()).filter(Boolean)}
+// 把原文切成句子（接起來＝原文），用來在畫面上標示正在唸的那一句
+function segs(t){
+  const out=[];const re=/[^。！？!?；;\n]*(?:[。！？!?；;]+|\n+|$)/g;let m;
+  while((m=re.exec(t))&&m[0]){let x=m[0];while(x.length>120){out.push(x.slice(0,120));x=x.slice(120)}out.push(x);if(re.lastIndex>=t.length)break}
+  return out;
+}
+function prepPost(p,i){
+  R.url=p.url;R.spans=segs(p.text||'');R.chunks=[];R.map=[];R.ci=0;
+  R.chunks.push(postHeader(p,i));R.map.push(-1);
+  R.spans.forEach((x,k)=>{const say=cleanSpeech(x);if(say&&/[\p{L}\p{N}]/u.test(say)){splitChunks(say).forEach(c=>{R.chunks.push(c);R.map.push(k)})}});
+}
+function readingCard(){return R.url?document.querySelector(`article[data-url="${CSS.escape(R.url)}"]`):null}
+function applySpans(){
+  const card=readingCard();if(!card||!R.spans)return;const el=card.querySelector('.text');if(!el||el.dataset.spans===R.url)return;
+  el.innerHTML=R.spans.map((x,k)=>`<span data-k="${k}">${esc(x)}</span>`).join('');el.dataset.spans=R.url;
+}
+function headerH(){const h=document.querySelector('header');return h?h.getBoundingClientRect().height:0}
+function followChunk(){
+  const card=readingCard();if(!card)return;applySpans();
+  card.querySelectorAll('.rd-now').forEach(e=>e.classList.remove('rd-now'));
+  if(userScrolling||!card.classList.contains('big'))return;
+  const k=R.map?R.map[R.ci]:-1;
+  if(k==null||k<0){const y=card.getBoundingClientRect().top+scrollY-headerH()-10;window.scrollTo({top:y,behavior:'smooth'});return}
+  const sp=card.querySelector(`.text [data-k="${k}"]`);if(!sp)return;sp.classList.add('rd-now');
+  const r=sp.getBoundingClientRect(),top=headerH()+20,bottom=innerHeight-110;
+  if(r.top<top||r.bottom>bottom){const y=r.top+scrollY-(top+(bottom-top)*0.3);window.scrollTo({top:Math.max(0,y),behavior:'smooth'})}
+}
 function sayChunk(){
   if(!('speechSynthesis' in window)){toast('這個瀏覽器不支援語音朗讀');stopRead();return}
   const tok=++R.tok;speechSynthesis.cancel();
-  if(R.ci>=R.chunks.length){const url=R.url,mode=R.mode;askDelete(url,()=>{if(tok!==R.tok&&R.mode!==mode)return;if(mode==='queue')nextInQueue();else stopRead()});return}
+  if(R.ci>=R.chunks.length){const card=readingCard();card&&card.querySelectorAll('.rd-now').forEach(e=>e.classList.remove('rd-now'));
+    const url=R.url,mode=R.mode;askDelete(url,()=>{if(tok!==R.tok&&R.mode!==mode)return;if(mode==='queue')nextInQueue();else stopRead()});return}
+  followChunk();
   const u=new SpeechSynthesisUtterance(R.chunks[R.ci]);u.lang=SPEECH_LANG[state.lang]||'zh-TW';u.rate=1;
   u.onend=()=>{if(tok!==R.tok||R.paused)return;R.ci++;sayChunk()};
   u.onerror=()=>{if(tok!==R.tok||R.paused)return;R.ci++;sayChunk()};
@@ -819,20 +860,17 @@ function sayChunk(){
 }
 function startPost(p,i){
   if(LISTEN.on)listenStart();
-  R.url=p.url;R.chunks=splitChunks(postSpeech(p,i));R.ci=0;R.paused=false;
-  markReading();
-  const card=document.querySelector(`article[data-url="${CSS.escape(p.url)}"]`);
-  if(card&&R.mode==='queue')card.scrollIntoView({behavior:'smooth',block:'center'});
+  prepPost(p,i);R.paused=false;
+  markReading();applySpans();
   sayChunk();
 }
 function nextInQueue(){
-  if(R.mode==='queue'&&R.qi+1<R.queue.length){
+  while(R.mode==='queue'&&R.qi+1<R.queue.length){
     R.qi++;const p=(state.doc?.posts||[]).find(x=>x.url===R.queue[R.qi]);
-    if(p){
-      R.url=p.url;R.chunks=splitChunks(postSpeech(p,R.qi));R.ci=0;markReading();
-      const card=document.querySelector(`article[data-url="${CSS.escape(p.url)}"]`);if(card)card.scrollIntoView({behavior:'smooth',block:'center'});
-      const tok=++R.tok;setTimeout(()=>{if(tok===R.tok&&R.mode==='queue'&&!R.paused)sayChunk()},600);return;
-    }
+    if(!p)continue; // 已刪除的跳過
+    prepPost(p,R.qi);markReading();applySpans();
+    const card=readingCard();if(card){const y=card.getBoundingClientRect().top+scrollY-headerH()-10;window.scrollTo({top:y,behavior:'smooth'})}
+    const tok=++R.tok;setTimeout(()=>{if(tok===R.tok&&R.mode==='queue'&&!R.paused)sayChunk()},600);return;
   }
   const wasQueue=R.mode==='queue';stopRead();if(wasQueue)toast('🔊 全部朗讀完畢');
 }
@@ -841,6 +879,7 @@ function resumeRead(){R.paused=false;markReading();sayChunk()}
 function stopRead(){cancelAsk();listenStop();R.tok++;try{speechSynthesis.cancel()}catch{}R.mode=null;R.url=null;R.paused=false;markReading()}
 function renderAskToggle(){const b=$('#askToggle');if(b){b.textContent=ASK.on?'🗣 唸完問刪除：開':'🗣 唸完問刪除：關';b.classList.toggle('on',ASK.on)}}
 function markReading(){
+  setTimeout(()=>{if(R.mode){applySpans();const c=readingCard();const k=R.map&&R.map[R.ci];if(c&&k>=0){const sp=c.querySelector(`.text [data-k="${k}"]`);sp&&sp.classList.add('rd-now')}}},0);
   document.querySelectorAll('article.post').forEach(a=>{const on=!!R.mode&&a.dataset.url===R.url;if(on&&!a.classList.contains('reading'))a.classList.add('big');if(!on)a.classList.remove('big');a.classList.toggle('reading',on)});
   document.querySelectorAll('[data-read]').forEach(b=>b.textContent=readLabel(b.dataset.read));
   const all=$('#readAllBtn'),st=$('#readStopBtn');if(!all)return;
