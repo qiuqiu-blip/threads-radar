@@ -55,7 +55,6 @@
     "散戶",
     "家具",
     "床架",
-    "串文",
     "定居"
   ],
   "regionRequired": false,
@@ -67,7 +66,7 @@
   "maxNotifyPerRun": 15,
   "maxStoredPosts": 300,
   "notifyTelegram": true,
-  "keywordsPerScan": 5,
+  "keywordsPerScan": 7,
   "scanMinMinutes": 30,
   "scanMaxMinutes": 90,
   "restHoursPerDay": 6,
