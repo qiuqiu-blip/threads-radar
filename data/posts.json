@@ -1,58 +1,104 @@
 {
-  "updatedAt": "2026-10-19T19:17:23.145Z",
+  "updatedAt": "2026-10-19T19:49:01.873Z",
   "lastRun": {
-    "startedAt": "2026-10-19T19:13:14.646Z",
-    "finishedAt": "2026-10-19T19:17:22.784Z",
+    "startedAt": "2026-10-19T19:45:56.122Z",
+    "finishedAt": "2026-10-19T19:49:01.824Z",
     "status": "ok",
-    "scanned": 86,
-    "matched": 0,
-    "newCount": 0,
-    "notified": 0,
+    "scanned": 84,
+    "matched": 2,
+    "newCount": 2,
+    "notified": 2,
     "perKeyword": {
-      "店面頂讓": 19,
-      "加盟": 16,
-      "全店出清": 0,
-      "整店頂讓": 0,
-      "歇業": 15,
-      "設備出清": 19,
-      "含設備": 0,
-      "製冰機": 17
+      "收店": 0,
+      "排油煙": 0,
+      "冷凍櫃": 26,
+      "咖啡機": 19,
+      "拆除": 20,
+      "收攤": 19
     },
     "warnings": [],
     "keywordsUsed": [
-      "店面頂讓",
-      "加盟",
-      "全店出清",
-      "整店頂讓",
-      "歇業",
-      "設備出清",
-      "含設備",
-      "製冰機"
+      "收店",
+      "排油煙",
+      "冷凍櫃",
+      "咖啡機",
+      "拆除",
+      "收攤"
     ],
     "queries": [
-      "店面頂讓",
-      "加盟",
-      "全店出清",
-      "整店頂讓",
-      "歇業",
-      "設備出清",
-      "含設備",
-      "製冰機"
+      "收店",
+      "排油煙",
+      "冷凍櫃",
+      "咖啡機",
+      "拆除",
+      "收攤"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 53,
+      "seen": 52,
       "dup": 0,
-      "tooOld": 16,
-      "noKeyword": 9,
-      "noContext": 8
+      "noContext": 19,
+      "tooOld": 6,
+      "noKeyword": 5
     },
-    "detailFetched": 0,
-    "newUrls": [],
+    "detailFetched": 2,
+    "newUrls": [
+      "https://www.threads.com/@mikeclm0710/post/DeqUcYLj_Tv",
+      "https://www.threads.com/@ibaba88/post/DelbscgCRQJ"
+    ],
     "pushMode": "on",
-    "nextInMinutes": 26
+    "nextInMinutes": 35
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T19:45:56.122Z",
+      "finishedAt": "2026-10-19T19:49:01.824Z",
+      "status": "ok",
+      "scanned": 84,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "收店": 0,
+        "排油煙": 0,
+        "冷凍櫃": 26,
+        "咖啡機": 19,
+        "拆除": 20,
+        "收攤": 19
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "收店",
+        "排油煙",
+        "冷凍櫃",
+        "咖啡機",
+        "拆除",
+        "收攤"
+      ],
+      "queries": [
+        "收店",
+        "排油煙",
+        "冷凍櫃",
+        "咖啡機",
+        "拆除",
+        "收攤"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 52,
+        "dup": 0,
+        "noContext": 19,
+        "tooOld": 6,
+        "noKeyword": 5
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@mikeclm0710/post/DeqUcYLj_Tv",
+        "https://www.threads.com/@ibaba88/post/DelbscgCRQJ"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 35
+    },
     {
       "startedAt": "2026-10-19T19:13:14.646Z",
       "finishedAt": "2026-10-19T19:17:22.784Z",
@@ -1185,6 +1231,43 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DeqUcYLj_Tv",
+      "user": "mikeclm0710",
+      "url": "https://www.threads.com/@mikeclm0710/post/DeqUcYLj_Tv",
+      "authorUrl": "https://www.threads.com/@mikeclm0710",
+      "text": "4,116次瀏覽\n咖啡機\n【二手出售】\n1.「220V」La Marzocco Mini R\n少見的 220V 維堤公司貨，使用約兩年，今年7月初才開始商用，之前全部都是家裡使用，每週大概出10杯，總出杯量目前大約3000多杯，每次關機前都有逆洗清潔\n2. Acaia Lunar x La Marzocco 聯名秤\n也是維堤公司貨，與咖啡機配對後可以讓萃取自動停止，可提供自動停止的影片，另外如果未來有想要購買的Pico、Swan、Jay磨豆機都可以達成精準秤重模式自動停止\n【二手價格】132,000（不拆賣可小議）\n【交易地點】新北永和，貴重物品一律面交不寄送\n【聯絡方式】私訊\ntigerhere\n你好 我想買 請問可看機嗎？\n可以 歡迎私訊詢問\n_chewe1_\n@lkai_0214\n13萬的喇嘛\nlkai_0214\n有點心動但沒空間了",
+      "time": "2026-10-19T03:43:15.000Z",
+      "keywords": [
+        "咖啡機"
+      ],
+      "regions": [
+        "新北"
+      ],
+      "foundBy": "咖啡機",
+      "foundQuery": "咖啡機",
+      "foundAt": "2026-10-19T19:48:50.097Z",
+      "full": true
+    },
+    {
+      "code": "DelbscgCRQJ",
+      "user": "ibaba88",
+      "url": "https://www.threads.com/@ibaba88/post/DelbscgCRQJ",
+      "authorUrl": "https://www.threads.com/@ibaba88",
+      "text": "2,654次瀏覽\n拆除 清運\n桃園大園兩個裝潢衣櫃拆除+清運\n2樓有電梯\n請廠商報價\n已釘選\n已找到，謝謝🙏\ntsp610324\nwoo_cg0308\n老闆。闆娘你好\n有搬家 油漆 清潔 消毒 除滿\n需求\n我可以幫你\n🙏🙏🙏\ntsp610324\n拆-5000。清-8000=13000參考\np74152001\nliuyuxuan75\n私\nlsh_8989_\n已私訊妳\nchen_831007\n拆清10000\ncn.16788\n你好能為您處理\njiayuan_h",
+      "time": "2026-10-17T06:10:25.000Z",
+      "keywords": [
+        "拆除",
+        "裝潢"
+      ],
+      "regions": [
+        "桃園"
+      ],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-19T19:48:50.097Z",
+      "full": true
+    },
     {
       "code": "DemLaatIyd6",
       "user": "little830319",
@@ -2701,9 +2784,9 @@
       "leads": 19
     },
     "收攤": {
-      "count": 3,
-      "last": 1792419728615,
-      "scanned": 38,
+      "count": 4,
+      "last": 1792439316143,
+      "scanned": 57,
       "leads": 0
     },
     "帶走價": {
@@ -2773,10 +2856,10 @@
       "leads": 3
     },
     "咖啡機": {
-      "count": 3,
-      "last": 1792429671362,
-      "scanned": 53,
-      "leads": 7
+      "count": 4,
+      "last": 1792439287947,
+      "scanned": 72,
+      "leads": 8
     },
     "製冰機": {
       "count": 3,
@@ -2845,8 +2928,8 @@
       "leads": 2
     },
     "收店": {
-      "count": 2,
-      "last": 1792429686635,
+      "count": 3,
+      "last": 1792439156456,
       "scanned": 0,
       "leads": 0
     },
@@ -2905,10 +2988,10 @@
       "leads": 0
     },
     "拆除": {
-      "count": 1,
-      "last": 1792422213321,
-      "scanned": 20,
-      "leads": 2
+      "count": 2,
+      "last": 1792439302668,
+      "scanned": 40,
+      "leads": 3
     },
     "創業": {
       "count": 2,
@@ -2923,8 +3006,8 @@
       "leads": 0
     },
     "排油煙": {
-      "count": 1,
-      "last": 1792422269289,
+      "count": 2,
+      "last": 1792439214465,
       "scanned": 0,
       "leads": 0
     },
@@ -2941,9 +3024,9 @@
       "leads": 2
     },
     "冷凍櫃": {
-      "count": 1,
-      "last": 1792427978994,
-      "scanned": 22,
+      "count": 2,
+      "last": 1792439274301,
+      "scanned": 48,
       "leads": 0
     },
     "加盟": {
@@ -2959,43 +3042,43 @@
       "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T19:43:37.605Z",
+  "nextScanAt": "2026-10-19T20:24:14.252Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T19:43:37.605Z",
-    "madeAt": "2026-10-19T19:17:23.143Z",
+    "at": "2026-10-19T20:24:14.252Z",
+    "madeAt": "2026-10-19T19:49:01.869Z",
     "items": [
       {
-        "kw": "生財器具",
-        "q": "生財器具"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "收店",
-        "q": "收店"
+        "kw": "關店",
+        "q": "關店"
       },
       {
-        "kw": "排油煙",
-        "q": "排油煙"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "冷凍櫃",
-        "q": "冷凍櫃"
+        "kw": "退租",
+        "q": "退租"
       },
       {
-        "kw": "咖啡機",
-        "q": "咖啡機"
+        "kw": "裝潢",
+        "q": "裝潢"
       },
       {
-        "kw": "拆除",
-        "q": "拆除"
+        "kw": "清倉",
+        "q": "清倉"
       },
       {
-        "kw": "設備轉讓",
-        "q": "設備轉讓"
+        "kw": "創業",
+        "q": "創業"
       },
       {
-        "kw": "收攤",
-        "q": "收攤"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       }
     ]
   }
