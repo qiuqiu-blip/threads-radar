@@ -67,9 +67,9 @@
   "maxStoredPosts": 300,
   "notifyTelegram": true,
   "keywordsPerScan": 7,
-  "scanMinMinutes": 30,
-  "scanMaxMinutes": 90,
-  "restHoursPerDay": 6,
+  "scanMinMinutes": 20,
+  "scanMaxMinutes": 45,
+  "restHoursPerDay": 4,
   "reply": {
     "name": "小球球",
     "lineId": "",
