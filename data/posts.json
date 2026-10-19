@@ -1,61 +1,118 @@
 {
-  "updatedAt": "2026-10-19T21:30:32.988Z",
+  "updatedAt": "2026-10-19T22:26:18.980Z",
   "lastRun": {
-    "startedAt": "2026-10-19T21:27:38.618Z",
-    "finishedAt": "2026-10-19T21:30:32.700Z",
+    "startedAt": "2026-10-19T22:21:48.229Z",
+    "finishedAt": "2026-10-19T22:26:18.943Z",
     "status": "ok",
-    "scanned": 117,
-    "matched": 2,
-    "newCount": 2,
-    "notified": 2,
+    "scanned": 86,
+    "matched": 3,
+    "newCount": 3,
+    "notified": 3,
     "perKeyword": {
-      "低價出清": 9,
-      "關店": 0,
-      "蒸烤箱": 21,
-      "退租": 18,
-      "裝潢": 19,
-      "清倉": 17,
-      "創業": 22,
-      "搬家出清": 11
+      "加盟": 17,
+      "收店": 0,
+      "便宜賣": 16,
+      "招牌": 19,
+      "製冰機": 18,
+      "帶走價": 0,
+      "二手設備": 16,
+      "爐具": 0
     },
     "warnings": [],
     "keywordsUsed": [
-      "低價出清",
-      "關店",
-      "蒸烤箱",
-      "退租",
-      "裝潢",
-      "清倉",
-      "創業",
-      "搬家出清"
+      "加盟",
+      "收店",
+      "便宜賣",
+      "招牌",
+      "製冰機",
+      "帶走價",
+      "二手設備",
+      "爐具"
     ],
     "queries": [
-      "低價出清",
-      "關店",
-      "蒸烤箱",
-      "退租",
-      "裝潢",
-      "清倉",
-      "創業",
-      "搬家出清"
+      "加盟",
+      "收店",
+      "便宜賣",
+      "招牌",
+      "製冰機",
+      "帶走價",
+      "二手設備",
+      "爐具"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 63,
+      "seen": 38,
       "dup": 0,
-      "noContext": 37,
-      "noKeyword": 8,
+      "noContext": 32,
+      "noKeyword": 7,
       "tooOld": 6
     },
     "detailFetched": 3,
     "newUrls": [
-      "https://www.threads.com/@cherryhaung0917/post/DerWPdWj1em",
-      "https://www.threads.com/@naz.ozyurt914/post/DerTp0BmtCP"
+      "https://www.threads.com/@feioi01.21/post/DerGb50mpuB",
+      "https://www.threads.com/@w83133/post/Deqt54-I56_",
+      "https://www.threads.com/@sheepcafe16/post/DepBzFbnQky"
     ],
     "pushMode": "on",
-    "nextInMinutes": 26
+    "nextInMinutes": 34
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T22:21:48.229Z",
+      "finishedAt": "2026-10-19T22:26:18.943Z",
+      "status": "ok",
+      "scanned": 86,
+      "matched": 3,
+      "newCount": 3,
+      "notified": 3,
+      "perKeyword": {
+        "加盟": 17,
+        "收店": 0,
+        "便宜賣": 16,
+        "招牌": 19,
+        "製冰機": 18,
+        "帶走價": 0,
+        "二手設備": 16,
+        "爐具": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "加盟",
+        "收店",
+        "便宜賣",
+        "招牌",
+        "製冰機",
+        "帶走價",
+        "二手設備",
+        "爐具"
+      ],
+      "queries": [
+        "加盟",
+        "收店",
+        "便宜賣",
+        "招牌",
+        "製冰機",
+        "帶走價",
+        "二手設備",
+        "爐具"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 38,
+        "dup": 0,
+        "noContext": 32,
+        "noKeyword": 7,
+        "tooOld": 6
+      },
+      "detailFetched": 3,
+      "newUrls": [
+        "https://www.threads.com/@feioi01.21/post/DerGb50mpuB",
+        "https://www.threads.com/@w83133/post/Deqt54-I56_",
+        "https://www.threads.com/@sheepcafe16/post/DepBzFbnQky"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 34
+    },
     {
       "startedAt": "2026-10-19T21:27:38.618Z",
       "finishedAt": "2026-10-19T21:30:32.700Z",
@@ -1292,6 +1349,57 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DerGb50mpuB",
+      "user": "feioi01.21",
+      "url": "https://www.threads.com/@feioi01.21/post/DerGb50mpuB",
+      "authorUrl": "https://www.threads.com/@feioi01.21",
+      "text": "663次瀏覽\n徵才#工作\n脆上什麼人都有，應該也找得到我們的神隊友吧？👀\n📣 徵「廣告招牌安裝／吊掛夥伴」\n💰 日薪 3,000～5,000 元，依經驗與專業能力核薪！\n我們的工作，就是把招牌裝好，\n讓別人的店被看見✨\n以後經過還能跟朋友說：「欸，那個我裝的😎」\n🔧 平常做什麼？\n招牌、結構及相關設備安裝，配合現場施工、操作吊掛設備或協助吊掛，和夥伴一起完成現場工作。\n📍公司在新北市泰山區\n主要跑北部案場，偶爾需要到外縣市施工。\n有招牌安裝、吊掛經驗的朋友，很歡迎！\n沒經驗但願意學的，也歡迎來聊聊🙌\n希望你有責任感、肯學習，能配合現場工作、互相照應。\n有興趣直接私訊，聊聊你的經驗！\n身邊有人正在找工作，也拜託幫忙轉給他🤝\n#徵才 #找工作 #新北工作 #招牌安裝\nsam_841112\n私",
+      "time": "2026-10-19T11:00:06.000Z",
+      "keywords": [
+        "招牌"
+      ],
+      "regions": [
+        "新北"
+      ],
+      "foundBy": "招牌",
+      "foundQuery": "招牌",
+      "foundAt": "2026-10-19T22:25:57.612Z",
+      "full": true
+    },
+    {
+      "code": "Deqt54-I56_",
+      "user": "w83133",
+      "url": "https://www.threads.com/@w83133/post/Deqt54-I56_",
+      "authorUrl": "https://www.threads.com/@w83133",
+      "text": "297次瀏覽\n太平\n賣二手冰箱上凍下冷藏\n工作台、洗手台、封口機\n有喜歡的歡迎詢問\n全部便宜賣",
+      "time": "2026-10-19T07:25:44.000Z",
+      "keywords": [
+        "便宜賣",
+        "二手冰箱"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-19T22:25:57.611Z",
+      "full": true
+    },
+    {
+      "code": "DepBzFbnQky",
+      "user": "sheepcafe16",
+      "url": "https://www.threads.com/@sheepcafe16/post/DepBzFbnQky",
+      "authorUrl": "https://www.threads.com/@sheepcafe16",
+      "text": "2,562次瀏覽\n招牌燈箱\n我想問竹東有沒有會修招牌燈不亮的廠商？ 我的羊黯淡無光了🥺🥺\n需要即刻救援～\ncoffee0615.sign\n裡面的變壓器壞了，找當初賣妳的來換變壓器，若是大陸買了，就只能請招牌店的人去看\njunhao0507\n回這句的作用在哪？\ncoffee0615.sign\n主要想讓老闆知道問題多半出在變壓器，不用整個重做，可以省不少錢 🙂\n我是直接找招牌廠商老闆來修，只是都沒過來🥹，我來試試看，金甘蝦\ncoffee0615.sign\n請招牌廠商老闆一杯妳特調的精品冰滴咖啡，他就會來了\nsy016551\n你那有A字梯嗎？我可以幫妳檢查問題，確認壞掉的部分。不過大部分都是變壓器的問題。\n可以跟對面鄰居借\nlovejay0908\n你好有私你唷！謝謝\nfancaipinapple\n店在哪？\n好找嗎",
+      "time": "2026-10-18T15:41:06.000Z",
+      "keywords": [
+        "招牌"
+      ],
+      "regions": [],
+      "foundBy": "招牌",
+      "foundQuery": "招牌",
+      "foundAt": "2026-10-19T22:25:57.612Z",
+      "full": true
+    },
     {
       "code": "DerWPdWj1em",
       "user": "cherryhaung0917",
@@ -2862,9 +2970,9 @@
       "leads": 0
     },
     "二手設備": {
-      "count": 4,
-      "last": 1792435339953,
-      "scanned": 74,
+      "count": 5,
+      "last": 1792448683049,
+      "scanned": 90,
       "leads": 1
     },
     "關店": {
@@ -2874,10 +2982,10 @@
       "leads": 0
     },
     "便宜賣": {
-      "count": 3,
-      "last": 1792431658989,
-      "scanned": 56,
-      "leads": 19
+      "count": 4,
+      "last": 1792448581929,
+      "scanned": 72,
+      "leads": 20
     },
     "收攤": {
       "count": 4,
@@ -2886,8 +2994,8 @@
       "leads": 0
     },
     "帶走價": {
-      "count": 3,
-      "last": 1792434474745,
+      "count": 4,
+      "last": 1792448623104,
       "scanned": 0,
       "leads": 0
     },
@@ -2958,9 +3066,9 @@
       "leads": 8
     },
     "製冰機": {
-      "count": 3,
-      "last": 1792437429739,
-      "scanned": 52,
+      "count": 4,
+      "last": 1792448609775,
+      "scanned": 70,
       "leads": 1
     },
     "設備出清": {
@@ -3024,8 +3132,8 @@
       "leads": 2
     },
     "收店": {
-      "count": 3,
-      "last": 1792439156456,
+      "count": 4,
+      "last": 1792448521683,
       "scanned": 0,
       "leads": 0
     },
@@ -3054,8 +3162,8 @@
       "leads": 0
     },
     "爐具": {
-      "count": 3,
-      "last": 1792434550250,
+      "count": 4,
+      "last": 1792448696735,
       "scanned": 0,
       "leads": 0
     },
@@ -3126,55 +3234,55 @@
       "leads": 0
     },
     "加盟": {
-      "count": 2,
-      "last": 1792437209901,
-      "scanned": 34,
+      "count": 3,
+      "last": 1792448508519,
+      "scanned": 51,
       "leads": 0
     },
     "招牌": {
-      "count": 1,
-      "last": 1792429791597,
-      "scanned": 18,
-      "leads": 0
+      "count": 2,
+      "last": 1792448595909,
+      "scanned": 37,
+      "leads": 2
     }
   },
-  "nextScanAt": "2026-10-19T21:56:15.135Z",
+  "nextScanAt": "2026-10-19T23:00:38.348Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T21:56:15.135Z",
-    "madeAt": "2026-10-19T21:30:32.984Z",
+    "at": "2026-10-19T23:00:38.348Z",
+    "madeAt": "2026-10-19T22:26:18.975Z",
     "items": [
       {
-        "kw": "加盟",
-        "q": "加盟"
+        "kw": "歇業",
+        "q": "歇業"
       },
       {
-        "kw": "收店",
-        "q": "收店"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "收攤",
+        "q": "收攤"
       },
       {
-        "kw": "招牌",
-        "q": "招牌"
+        "kw": "排油煙",
+        "q": "排油煙"
       },
       {
-        "kw": "製冰機",
-        "q": "製冰機"
+        "kw": "餐車",
+        "q": "餐車"
       },
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       },
       {
-        "kw": "二手設備",
-        "q": "二手設備"
+        "kw": "飲料店",
+        "q": "飲料店"
       },
       {
-        "kw": "爐具",
-        "q": "爐具"
+        "kw": "低價出清",
+        "q": "低價出清"
       }
     ]
   }
