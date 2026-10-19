@@ -1132,9 +1132,13 @@ function renderList(){
     if(q&&!(`${p.text} ${p.user}`.toLowerCase().includes(q)))return false;
     return true;
   });
+  const lastRun=state.doc?.runs?.[0],newSet=new Set(lastRun?.newUrls||[]);
+  const hiddenNew=(state.doc?.posts||[]).filter(p=>newSet.has(p.url)&&!posts.includes(p)&&!(state.cfg?.excludeUsers||[]).includes(normUser(p.user)));
+  const fl=[f.intent&&f.intent+'意向',f.role,f.status,state.filter,q&&'搜尋「'+q+'」'].filter(Boolean);
+  const hb=hiddenNew.length?`<div class="banner warn" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:16px">🔎 最近一次掃到的新線索，有 <b>${hiddenNew.length}</b> 則被篩選藏起來了（目前只看：${esc(fl.join('、'))}）<button class="btn sm" data-showall>顯示全部</button></div>`:'';
   if(f.sort==='hot')posts=[...posts].sort((a,b)=>an(b).intent.score-an(a).intent.score||(Date.parse(b.foundAt)||0)-(Date.parse(a.foundAt)||0));
-  if(!posts.length){$('#list').innerHTML=`<div class="empty">${t('noPosts')}</div>`;return}
-  $('#list').innerHTML=posts.map(p=>{
+  if(!posts.length){$('#list').innerHTML=hb+`<div class="empty">${t('noPosts')}</div>`;return}
+  $('#list').innerHTML=hb+posts.map(p=>{
     const a=an(p),i=a.info,c=crm(p.url),isNew=last&&!p.initial&&Date.parse(p.foundAt)>Date.parse(last);
     const facts=[
       i.city||i.district?`📍 ${esc([i.city,i.district].filter(Boolean).join(' '))}`:'',
@@ -1591,6 +1595,9 @@ document.addEventListener('click',e=>{
   if(el.dataset.delpost){const u=el.dataset.delpost;if(R.url===u&&R.mode)deleteCurrent();else hidePost(u);return}
   if(el.id==='micToggle'){LISTEN.on=!LISTEN.on;LS.set('voiceCmd',LISTEN.on);renderMic();if(LISTEN.on&&R.mode)listenStart();else listenStop();toast(LISTEN.on?'🎙 朗讀中可以說「刪除」「跳過」「暫停」':'🎙 語音指令已關閉');return}
   if(el.id==='askToggle'){ASK.on=!ASK.on;LS.set('askDel',ASK.on);renderAskToggle();toast(ASK.on?'朗讀完會問是否刪除':'朗讀完不詢問');return}
+  if(el.hasAttribute('data-showall')){state.f.intent='';state.f.role='';state.f.status='';state.filter='';state.q='';
+    ['fIntent','fRole','fStatus'].forEach(id=>{if($('#'+id))$('#'+id).value=''});if($('#q'))$('#q').value='';
+    renderChips();renderList();saveView();toast('已顯示全部線索');return}
   if(el.dataset.rate!==undefined){setRate(+el.dataset.rate);return}
   if(el.id==='readAllBtn'){toggleQueue();return}
   if(el.id==='readStopBtn'){stopRead();return}
