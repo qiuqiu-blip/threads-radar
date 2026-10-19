@@ -471,6 +471,7 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
   });
   run.matched = run.newCount = newPosts.length;
   run._new = newPosts;
+  run.newUrls = newPosts.map((p) => p.url);
 
   run.pushMode = cfg.notifyTelegram === false ? 'off' : 'on';
   if (cfg.notifyTelegram === false) {

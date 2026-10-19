@@ -18,6 +18,11 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 [hidden]{display:none!important}
+.runrow{cursor:pointer}.runrow.open{background:rgba(212,175,55,.06);border-radius:10px}
+.runs li.rundetail{border-top:0;padding:4px 6px 14px}
+.runpost{background:#0f0c07;border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;cursor:pointer;font-size:14px}
+.runpost.open{border-color:var(--gold3)}
+.rptext{margin-top:6px;line-height:1.6;white-space:pre-wrap;font-size:14px}
 .dbbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:rgba(95,196,139,.07);border:1px solid #2f5e43;border-radius:12px;padding:10px 12px;margin-bottom:14px;font-size:14px}
 .dbhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .dbrow{padding:10px 4px;border-top:1px solid var(--line);cursor:pointer;font-size:14px}
@@ -913,7 +918,7 @@ function hidePost(url,silent){
   state.hiddenLocal.add(url);LS.set('hidden',[...state.hiddenLocal].slice(-3000));
   if(state.cfg){const arr=state.cfg.hiddenPosts||(state.cfg.hiddenPosts=[]);if(!arr.includes(url))arr.push(url);if(arr.length>2000)arr.splice(0,arr.length-2000)}
   const card=document.querySelector(`article[data-url="${CSS.escape(url)}"]`);
-  const finish=()=>{applyHidden();renderList();renderSummary();renderChips()};
+  const finish=()=>{applyHidden();renderList();renderSummary();renderChips();if($('#tab-status').classList.contains('show'))loadRuns()};
   if(card){card.style.transition='opacity .25s,transform .25s';card.style.opacity='0';card.style.transform='translateX(40px)';setTimeout(finish,260)}else finish();
   clearTimeout(hideSaveT);hideSaveT=setTimeout(syncHidden,1500);
   if(!silent)toast('🗑 已刪除這則',()=>unhidePost(url));
@@ -1157,16 +1162,35 @@ function nextRunRow(){
   return `<li style="background:rgba(224,100,90,.08);border-radius:10px;padding:10px 8px;border-top:0"><span><i class="dot bad" style="box-shadow:0 0 8px #e0645a"></i><b style="color:#ffb3a8">下次執行</b></span><span style="color:#ffb3a8">${txt}</span></li>`;
 }
 async function loadRuns(){
-  const a=adapter();const ul=$('#runs');
-  if(!a){ul.innerHTML=nextRunRow()+`<li><span>${t('needConn')}</span></li>`;return}
-  try{
-    const runs=await a.getRuns();
-    ul.innerHTML=nextRunRow()+runs.map(r=>{
-      const cls=r.status!=='completed'?'run':r.conclusion==='success'?'ok':'bad';
-      const lbl=r.status==='queued'?t('queued'):r.status!=='completed'?t('running'):r.conclusion==='success'?t('success'):t('failure');
-      return `<li><span><i class="dot ${cls}"></i>${lbl}　<span style="opacity:.6">${r.event==='schedule'?'⏱':'👆'}</span></span><span>${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">${ago(r.at)}</a>`:ago(r.at)}</span></li>`;
-    }).join('')||`<li><span>${t('never')}</span></li>`;
-  }catch(e){ul.innerHTML=`<li><span>${t('connFail')}：${esc(e.message)}</span></li>`}
+  const ul=$('#runs');if(!ul)return;
+  let live='';const a=adapter();
+  if(a){try{if(!loadRuns.c||Date.now()-loadRuns.c.t>60e3)loadRuns.c={t:Date.now(),v:await a.getRuns()};const gr=loadRuns.c.v;const r=gr.find(x=>x.status!=='completed');
+    if(r)live=`<li class="runrow"><span><i class="dot run"></i>${r.status==='queued'?'排隊中':'執行中…'}</span><span>${ago(r.at)}</span></li>`}catch{}}
+  const runs=(state.doc?.runs||[]).filter(r=>r.status!=='paused').slice(0,30);
+  const pool=new Map();[...((window.DB&&DB.leads)||[]),...(state.doc?._all||state.doc?.posts||[])].forEach(p=>pool.set(p.url,p));
+  const hid=hiddenSet();
+  ul.innerHTML=nextRunRow()+live+(runs.map((r,idx)=>{
+    const st=Date.parse(r.startedAt),fin=Date.parse(r.finishedAt||r.startedAt);
+    let urls=r.newUrls;if(!urls){urls=[...pool.values()].filter(p=>{const f=Date.parse(p.foundAt);return f>=st-5e3&&f<=fin+90e3}).map(p=>p.url)}
+    const posts=urls.map(u=>pool.get(u)).filter(Boolean);
+    const cls=r.status==='warn'?'warn':'ok',lbl=r.status==='warn'?'⚠️ 有警告':'成功';
+    const qs=r.queries||Object.keys(r.perKeyword||{});
+    const open=RUNOPEN.has(r.startedAt);
+    return `<li class="runrow ${open?'open':''}" data-run="${esc(r.startedAt)}">
+      <span><i class="dot ${cls}"></i>${lbl}　<span class="hint" style="margin:0">掃 ${r.scanned||0}・<b style="color:${(r.newCount??posts.length)?'var(--gold2)':'var(--muted)'}">新線索 ${r.newCount??posts.length}</b></span></span>
+      <span>${ago(r.finishedAt||r.startedAt)} ${open?'▲':'▼'}</span></li>
+      ${open?`<li class="rundetail"><div style="width:100%">
+        <div class="hint" style="margin:0 0 8px">${esc(new Date(st).toLocaleString('zh-TW',{hour12:false}))}　耗時 ${Math.max(1,Math.round((fin-st)/1000))} 秒${r.detailFetched?`・點開完整內容 ${r.detailFetched} 篇`:''}</div>
+        <div class="kwrow" style="margin:0 0 10px">${qs.map(q=>{const k=String(q).split(' ')[0];const n=(r.perKeyword||{})[k]??(r.perKeyword||{})[q];return `<span class="tag">🔍 ${esc(q)}${n!=null?`：${n<0?'✕':n}`:''}</span>`}).join('')||'<span class="hint">（舊紀錄沒有搜尋明細）</span>'}</div>
+        ${r.warnings&&r.warnings.length?`<div class="banner warn" style="margin:0 0 10px">⚠️ ${esc(r.warnings.join('；'))}</div>`:''}
+        ${posts.length?posts.map(p=>{const an_=an(p),i=an_.info,gone=hid.has(p.url);return `<div class="runpost ${RUNPOST.has(p.url)?'open':''}" data-runpost="${esc(p.url)}">
+            <div><span class="ipill ${an_.intent.level}">${an_.intent.level}</span> <span class="rtag ${an_.role}">${an_.role}</span> <b>@${esc(p.user)}</b> <span class="hint" style="margin:0">發文 ${ago(p.time||p.foundAt)}</span>${gone?' <span class="tag" style="opacity:.6">已刪除</span>':''}</div>
+            <div class="hint" style="margin:4px 0 0">${esc([[i.city,i.district].filter(Boolean).join(''),i.shop,i.price,i.area,i.phone].filter(Boolean).join('・'))}</div>
+            <div class="rptext">${esc(RUNPOST.has(p.url)?p.text:(p.text||'').slice(0,70)+((p.text||'').length>70?'…':''))}</div>
+            ${RUNPOST.has(p.url)?`<div class="acts" style="margin-top:8px"><a class="btn sm" href="${esc(p.url)}" target="_blank">開啟貼文</a><button class="btn ghost sm" data-copytext="${esc(p.url)}">📄 複製貼文</button>${gone?'':`<button class="btn ghost sm" data-reply="${esc(p.url)}">✍️ 產生回覆</button><button class="btn ghost sm" data-delpost="${esc(p.url)}">🗑 刪除</button>`}</div>`:''}
+          </div>`}).join(''):`<div class="hint">這次沒有新線索（掃到的貼文都看過了，或不符合關鍵字／排除條件）。</div>`}
+      </div></li>`:''}`;
+  }).join('')||`<li><span>${t('never')}</span></li>`);
 }
 async function trigger(mode,btn){
   const a=adapter();if(!a){toast(t('needConn'));return}
@@ -1451,7 +1475,7 @@ document.addEventListener('click',e=>{
   if(el.dataset.lang){state.lang=el.dataset.lang;LS.set('lang',state.lang);applyLang();return}
   if(el.dataset.tab){
     showTab(el.dataset.tab);
-    if(el.dataset.tab==='status')loadRuns();
+    if(el.dataset.tab==='status'){loadRuns.c=null;loadRuns()}
     if(el.dataset.tab==='dash')setTimeout(renderDash,30);
     if(el.dataset.tab==='db'&&window.DB)DB.open();
     window.scrollTo({top:0});return;
@@ -1506,6 +1530,12 @@ $('#connBtn').onclick=()=>{
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!state.demo)load(true)});
 setInterval(()=>{if(!document.hidden&&!state.demo)load(true)},120000);
 
+const RUNOPEN=new Set(),RUNPOST=new Set();
+document.addEventListener('click',e=>{
+  if(e.target.closest('a,button'))return;
+  const rp=e.target.closest('[data-runpost]');if(rp){const u=rp.dataset.runpost;RUNPOST.has(u)?RUNPOST.delete(u):RUNPOST.add(u);loadRuns();return}
+  const rr=e.target.closest('[data-run]');if(rr){const k=rr.dataset.run;RUNOPEN.has(k)?RUNOPEN.delete(k):RUNOPEN.add(k);loadRuns()}
+});
 /* ============ 保留頁面狀態 ============ */
 function showTab(name){
   document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));
