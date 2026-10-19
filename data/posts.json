@@ -1,55 +1,116 @@
 {
-  "updatedAt": "2026-10-19T19:49:01.873Z",
+  "updatedAt": "2026-10-19T21:30:32.988Z",
   "lastRun": {
-    "startedAt": "2026-10-19T19:45:56.122Z",
-    "finishedAt": "2026-10-19T19:49:01.824Z",
+    "startedAt": "2026-10-19T21:27:38.618Z",
+    "finishedAt": "2026-10-19T21:30:32.700Z",
     "status": "ok",
-    "scanned": 84,
+    "scanned": 117,
     "matched": 2,
     "newCount": 2,
     "notified": 2,
     "perKeyword": {
-      "收店": 0,
-      "排油煙": 0,
-      "冷凍櫃": 26,
-      "咖啡機": 19,
-      "拆除": 20,
-      "收攤": 19
+      "低價出清": 9,
+      "關店": 0,
+      "蒸烤箱": 21,
+      "退租": 18,
+      "裝潢": 19,
+      "清倉": 17,
+      "創業": 22,
+      "搬家出清": 11
     },
     "warnings": [],
     "keywordsUsed": [
-      "收店",
-      "排油煙",
-      "冷凍櫃",
-      "咖啡機",
-      "拆除",
-      "收攤"
+      "低價出清",
+      "關店",
+      "蒸烤箱",
+      "退租",
+      "裝潢",
+      "清倉",
+      "創業",
+      "搬家出清"
     ],
     "queries": [
-      "收店",
-      "排油煙",
-      "冷凍櫃",
-      "咖啡機",
-      "拆除",
-      "收攤"
+      "低價出清",
+      "關店",
+      "蒸烤箱",
+      "退租",
+      "裝潢",
+      "清倉",
+      "創業",
+      "搬家出清"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 52,
+      "seen": 63,
       "dup": 0,
-      "noContext": 19,
-      "tooOld": 6,
-      "noKeyword": 5
+      "noContext": 37,
+      "noKeyword": 8,
+      "tooOld": 6
     },
-    "detailFetched": 2,
+    "detailFetched": 3,
     "newUrls": [
-      "https://www.threads.com/@mikeclm0710/post/DeqUcYLj_Tv",
-      "https://www.threads.com/@ibaba88/post/DelbscgCRQJ"
+      "https://www.threads.com/@cherryhaung0917/post/DerWPdWj1em",
+      "https://www.threads.com/@naz.ozyurt914/post/DerTp0BmtCP"
     ],
     "pushMode": "on",
-    "nextInMinutes": 35
+    "nextInMinutes": 26
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T21:27:38.618Z",
+      "finishedAt": "2026-10-19T21:30:32.700Z",
+      "status": "ok",
+      "scanned": 117,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "低價出清": 9,
+        "關店": 0,
+        "蒸烤箱": 21,
+        "退租": 18,
+        "裝潢": 19,
+        "清倉": 17,
+        "創業": 22,
+        "搬家出清": 11
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "低價出清",
+        "關店",
+        "蒸烤箱",
+        "退租",
+        "裝潢",
+        "清倉",
+        "創業",
+        "搬家出清"
+      ],
+      "queries": [
+        "低價出清",
+        "關店",
+        "蒸烤箱",
+        "退租",
+        "裝潢",
+        "清倉",
+        "創業",
+        "搬家出清"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 63,
+        "dup": 0,
+        "noContext": 37,
+        "noKeyword": 8,
+        "tooOld": 6
+      },
+      "detailFetched": 3,
+      "newUrls": [
+        "https://www.threads.com/@cherryhaung0917/post/DerWPdWj1em",
+        "https://www.threads.com/@naz.ozyurt914/post/DerTp0BmtCP"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 26
+    },
     {
       "startedAt": "2026-10-19T19:45:56.122Z",
       "finishedAt": "2026-10-19T19:49:01.824Z",
@@ -1231,6 +1292,41 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DerWPdWj1em",
+      "user": "cherryhaung0917",
+      "url": "https://www.threads.com/@cherryhaung0917/post/DerWPdWj1em",
+      "authorUrl": "https://www.threads.com/@cherryhaung0917",
+      "text": "575次瀏覽\n📦 搬家出清｜家電便宜賣！\n因為準備搬家，家電便宜出清，希望能幫它們找到新主人 🥹\n📺 歌林 40 吋電視｜$1,000\n🧊 東元雙門小冰箱｜$1,500\n📍 地點：台北市信義區，近六張犁捷運站\n🚚 需自行搬運、自取\n💬 有興趣歡迎私訊，價格很甜，希望能盡快出清！\n#搬家出清\n因搬家整理中，現場背景較雜亂，有使用 AI 去除背景\n_cccolaa\n想問冰箱！\nHi 您好我私訊您\nvantablack_yu\n想問電視📺\nljegayisfunny\n請問電視還有嗎？",
+      "time": "2026-10-19T13:18:13.000Z",
+      "keywords": [
+        "搬家出清",
+        "便宜賣"
+      ],
+      "regions": [
+        "台北"
+      ],
+      "foundBy": "搬家出清",
+      "foundQuery": "搬家出清",
+      "foundAt": "2026-10-19T21:30:15.171Z",
+      "full": true
+    },
+    {
+      "code": "DerTp0BmtCP",
+      "user": "naz.ozyurt914",
+      "url": "https://www.threads.com/@naz.ozyurt914/post/DerTp0BmtCP",
+      "authorUrl": "https://www.threads.com/@naz.ozyurt914",
+      "text": "1,699次瀏覽\n這禮拜把租屋處的退租手續辦完了，搬走前我特地請了清潔公司把房間打掃得一塵不染，連浴室的排水孔都刷得發亮\n房東來點交的時候非常滿意，當場就把兩個月的押金全數退給我，還誇我是他遇過最愛乾淨的房客\n我笑著跟他說謝謝，拉著行李箱走出大門，順手把他的聯絡方式全部封鎖加刪除\n我沒有告訴他的是，這一年來因為樓上鄰居每天半夜兩點都在拉椅子、甩門，我跟他反應了無數次他都叫我自己去溝通，而樓上那個惡鄰居其實就是他自己的親兒子\n所以在搬走的前一天，我特地去買了五個震樓神器，全部塞進客廳跟房間的天花板夾層裡，設好定時器每天凌晨三點到五點自動開啟，電池容量剛好夠用兩年，祝他們父子倆接下來的每個夜晚都能擁有高品質的睡眠",
+      "time": "2026-10-19T12:55:36.000Z",
+      "keywords": [
+        "退租"
+      ],
+      "regions": [],
+      "foundBy": "退租",
+      "foundQuery": "退租",
+      "foundAt": "2026-10-19T21:30:15.170Z",
+      "full": true
+    },
     {
       "code": "DeqUcYLj_Tv",
       "user": "mikeclm0710",
@@ -2748,9 +2844,9 @@
   ],
   "kwStats": {
     "清倉": {
-      "count": 4,
-      "last": 1792434639115,
-      "scanned": 54,
+      "count": 5,
+      "last": 1792445374361,
+      "scanned": 71,
       "leads": 0
     },
     "頂店": {
@@ -2772,8 +2868,8 @@
       "leads": 1
     },
     "關店": {
-      "count": 3,
-      "last": 1792427992923,
+      "count": 4,
+      "last": 1792445272662,
       "scanned": 0,
       "leads": 0
     },
@@ -2838,22 +2934,22 @@
       "leads": 0
     },
     "退租": {
-      "count": 3,
-      "last": 1792427964038,
-      "scanned": 34,
-      "leads": 3
+      "count": 4,
+      "last": 1792445348060,
+      "scanned": 52,
+      "leads": 4
     },
     "低價出清": {
-      "count": 3,
-      "last": 1792429777613,
-      "scanned": 24,
+      "count": 4,
+      "last": 1792445259871,
+      "scanned": 33,
       "leads": 0
     },
     "搬家出清": {
-      "count": 3,
-      "last": 1792429805087,
-      "scanned": 26,
-      "leads": 3
+      "count": 4,
+      "last": 1792445398524,
+      "scanned": 37,
+      "leads": 4
     },
     "咖啡機": {
       "count": 4,
@@ -2874,9 +2970,9 @@
       "leads": 0
     },
     "蒸烤箱": {
-      "count": 3,
-      "last": 1792431509910,
-      "scanned": 40,
+      "count": 4,
+      "last": 1792445335216,
+      "scanned": 61,
       "leads": 0
     },
     "歇業": {
@@ -2976,9 +3072,9 @@
       "leads": 5
     },
     "裝潢": {
-      "count": 2,
-      "last": 1792434625573,
-      "scanned": 38,
+      "count": 3,
+      "last": 1792445362152,
+      "scanned": 57,
       "leads": 0
     },
     "店面出租": {
@@ -2994,9 +3090,9 @@
       "leads": 3
     },
     "創業": {
-      "count": 2,
-      "last": 1792435199789,
-      "scanned": 40,
+      "count": 3,
+      "last": 1792445385943,
+      "scanned": 62,
       "leads": 0
     },
     "餐車": {
@@ -3042,43 +3138,43 @@
       "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T20:24:14.252Z",
+  "nextScanAt": "2026-10-19T21:56:15.135Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T20:24:14.252Z",
-    "madeAt": "2026-10-19T19:49:01.869Z",
+    "at": "2026-10-19T21:56:15.135Z",
+    "madeAt": "2026-10-19T21:30:32.984Z",
     "items": [
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "關店",
-        "q": "關店"
+        "kw": "收店",
+        "q": "收店"
       },
       {
-        "kw": "蒸烤箱",
-        "q": "蒸烤箱"
+        "kw": "便宜賣",
+        "q": "便宜賣"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "招牌",
+        "q": "招牌"
       },
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "清倉",
-        "q": "清倉"
+        "kw": "帶走價",
+        "q": "帶走價"
       },
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "爐具",
+        "q": "爐具"
       }
     ]
   }
