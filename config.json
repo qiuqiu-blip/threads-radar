@@ -65,7 +65,7 @@
   "maxNotifyPerRun": 15,
   "maxStoredPosts": 300,
   "notifyTelegram": true,
-  "keywordsPerScan": 7,
+  "keywordsPerScan": 8,
   "scanMinMinutes": 20,
   "scanMaxMinutes": 45,
   "restHoursPerDay": 4,
@@ -146,5 +146,6 @@
     "adbhut.puran.tales",
     "luyuxin140"
   ],
-  "watchUsers": []
+  "watchUsers": [],
+  "bizOnly": false
 }
