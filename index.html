@@ -332,6 +332,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
       <div class="taglist" id="kwList" style="margin-top:10px"></div>
       <div class="addrow"><input id="kwIn" data-ph="addPh" placeholder="輸入後按 Enter 或＋"><button class="btn sm" data-add="kw">＋</button></div>
       <p class="hint" data-i="kwHint">可以一次貼上很多個，用空格或逗號分開。每次掃描會從這裡平均輪流、隨機抽幾個去搜。</p>
+      <p class="hint" style="border-left:3px solid #52d273;padding-left:10px">🎯 <b>更精準的寫法：</b>關鍵字後面加「<b>+</b>」，再寫「一定要同時出現的字」，多個用「<b>/</b>」隔開，有一個出現就收。<br>例：<b>咖啡機+商用/營業用/二手</b>　<b>退租+清潔/打掃/拆除/復原</b>　<b>搬家出清+冰箱/冷凍/冷氣</b>　<b>飲料店+頂讓/轉讓/設備/收店</b><br>這樣只會搜前面的字，但沒提到後面任何一個字的貼文就不收。</p>
       <div class="grid2" style="margin-top:12px">
         <div class="field"><label data-i="perScan">每次掃描抽幾個（0＝全部都搜）</label><input type="number" min="0" id="cPerScan"></div>
         <div style="display:flex;align-items:flex-end;padding-bottom:14px"><button class="btn ghost sm" style="width:100%" data-clear="kw" data-i="clearAll">全部清除</button></div>
@@ -413,6 +414,8 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
       <label class="switch"><span data-i="notifyTg">推播到 Telegram（關閉＝只存進控制台）</span><input type="checkbox" class="tg" id="cTg"></label>
       <label class="switch"><span data-i="regionRequired">地區必須符合</span><input type="checkbox" class="tg" id="cRegionReq"></label>
       <label class="switch"><span data-i="strict">內文必須含關鍵字</span><input type="checkbox" class="tg" id="cStrict"></label>
+      <label class="switch"><span>🎯 只收生意相關的貼文（過濾閒聊、二手衣、日常文）</span><input type="checkbox" class="tg" id="cBiz"></label>
+      <p class="hint" style="margin:-4px 0 8px">開啟後，貼文至少要提到店面、頂讓、設備、租金、坪數、裝潢、清潔…這類生意用語才會收。</p>
       <label class="switch"><span data-i="firstSilent">初次啟動不推播舊貼文</span><input type="checkbox" class="tg" id="cFirst"></label>
       <label class="switch"><span data-i="notifyErrors">登入失效時通知我</span><input type="checkbox" class="tg" id="cErr"></label>
       <div class="grid2" style="margin-top:12px">
@@ -1189,7 +1192,7 @@ const normUser=u=>String(u||'').trim().replace(/^https?:\/\/(www\.)?threads\.(co
 function renderTags(){
   for(const [id,key] of Object.entries(LISTS)){
     const stats=state.doc?.kwStats||{};
-    $('#'+id+'List').innerHTML=(state.cfg?.[key]||[]).map((v,i)=>`<span class="etag">${esc(v)}${id==='kw'&&stats[v]?`<small style="color:var(--muted)">${stats[v].count}</small>`:''}<button data-del="${id}:${i}" aria-label="刪除">×</button></span>`).join('');
+    $('#'+id+'List').innerHTML=(state.cfg?.[key]||[]).map((v,i)=>`<span class="etag">${/[+＋]/.test(v)?`${esc(kwBase(v))}<b style="color:#52d273;font-weight:800">＋${esc(v.split(/[+＋]/)[1]||'')}</b>`:esc(v)}${id==='kw'&&stats[kwBase(v)]?`<small style="color:var(--muted)">${stats[kwBase(v)].count}</small>`:''}<button data-del="${id}:${i}" aria-label="刪除">×</button></span>`).join('');
   }
   $('#kwCount').textContent=(state.cfg?.keywords||[]).length+' '+t('kwUnit');
   renderSchedInfo();
@@ -1197,19 +1200,19 @@ function renderTags(){
 function fillSettings(){
   const c=state.cfg;if(!c)return;
   renderTags();
-  $('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;
+  $('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;if($('#cBiz'))$('#cBiz').checked=!!c.bizOnly;
   $('#cFirst').checked=c.firstRunSilent!==false;$('#cTg').checked=c.notifyTelegram!==false;$('#cErr').checked=c.notifyErrors!==false;
   $('#cAge').value=c.maxAgeHours??72;$('#cMinM').value=c.scanMinMinutes??30;$('#cMaxM').value=c.scanMaxMinutes??90;$('#cRest').value=c.restHoursPerDay??6;$('#cCombo').value=Math.round((c.comboChance??0.5)*100);$('#cDetail').value=c.detailFetchMax??6;$('#cSmart').checked=c.smartSchedule!==false;renderSchedInfo();$('#cMaxN').value=c.maxNotifyPerRun??15;$('#cWatchN').value=c.watchPerScan??1;fillReplySettings();$('#cPerScan').value=c.keywordsPerScan??4;$('#cScroll').value=c.scrollsPerKeyword??3;
 }
 function addTag(id){
   const inp=$('#'+id+'In');const v=inp.value.trim();if(!v)return;
   const arr=state.cfg[LISTS[id]]||(state.cfg[LISTS[id]]=[]);
-  v.split(/[,，、\s]+/).filter(Boolean).map(x=>id==='xu'||id==='wu'?normUser(x):x).filter(Boolean).forEach(x=>{if(!arr.includes(x))arr.push(x)});
+  v.split(/[,，、\s]+/).filter(Boolean).map(x=>id==='xu'||id==='wu'?normUser(x):x).filter(Boolean).forEach(x=>{if(arr.includes(x))return;if((id==='kw'||id==='mu')){const b=kwBase(x);for(let j=arr.length-1;j>=0;j--)if(kwBase(arr[j])===b)arr.splice(j,1)}arr.push(x)});
   inp.value='';renderTags();
 }
 async function saveSettings(){
   const c=state.cfg;
-  Object.assign(c,{enabled:$('#cEnabled').checked,regionRequired:$('#cRegionReq').checked,strictKeyword:$('#cStrict').checked,
+  Object.assign(c,{enabled:$('#cEnabled').checked,regionRequired:$('#cRegionReq').checked,strictKeyword:$('#cStrict').checked,bizOnly:!!$('#cBiz')?.checked,
     firstRunSilent:$('#cFirst').checked,notifyTelegram:$('#cTg').checked,notifyErrors:$('#cErr').checked,maxAgeHours:+$('#cAge').value||0,
     maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),watchPerScan:Math.min(5,Math.max(0,Math.round(+$('#cWatchN').value||0))),reply:collectReplySettings(),keywordsPerScan:Math.max(0,Math.round(+$('#cPerScan').value||0)),scanMinMinutes:Math.max(5,+$('#cMinM').value||30),scanMaxMinutes:Math.max(5,+$('#cMaxM').value||90),restHoursPerDay:Math.min(20,Math.max(0,+$('#cRest').value||0)),comboChance:Math.min(1,Math.max(0,(+$('#cCombo').value||0)/100)),detailFetchMax:Math.min(15,Math.max(0,Math.round(+$('#cDetail').value||0))),smartSchedule:$('#cSmart').checked,scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
   const a=adapter();if(!a){toast(t('needConn'));return}
@@ -1241,11 +1244,11 @@ function nextRunRow(){
     if(rh.includes(tzHour()))txt+='・目前休息中';
   }
   const open=RUNOPEN.has('__next');
-  const pool=new Set([...(cfg.mustKeywords||[]),...(cfg.keywords||[])]),ks=doc.kwStats||{};
+  const pool=new Set([...(cfg.mustKeywords||[]),...(cfg.keywords||[])].map(kwBase)),ks=doc.kwStats||{};
   const items=(doc.nextPlan&&doc.nextPlan.items)||[];
   const detail=open?`<li class="rundetail" style="background:rgba(224,100,90,.05)"><div style="width:100%">
     ${items.length?`<div class="hint" style="margin:0 0 8px">下一次預定要搜尋的 ${items.length} 組（排好於 ${esc(new Date(doc.nextPlan.madeAt||Date.now()).toLocaleString('zh-TW',{hour12:false,month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}))}）：</div>
-    <div style="display:flex;flex-direction:column;gap:6px">${items.map((x,i)=>{const st=ks[x.kw]||{},gone=!pool.has(x.kw),must=(cfg.mustKeywords||[]).includes(x.kw);
+    <div style="display:flex;flex-direction:column;gap:6px">${items.map((x,i)=>{const st=ks[x.kw]||{},gone=!pool.has(x.kw),must=(cfg.mustKeywords||[]).map(kwBase).includes(x.kw);
       return `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;${gone?'opacity:.5;text-decoration:line-through':''}">
         <span style="font-size:17px;font-weight:800;color:var(--gold2)">${i+1}. 🔍 ${esc(x.q)}${must?' <span class="tag">必搜</span>':''}${x.q!==x.kw?' <span class="tag">＋地區</span>':''}</span>
         <span class="hint" style="margin:0;text-align:right">${gone?'已從關鍵字池移除，會略過':`上次搜 ${st.last?ago(new Date(st.last).toISOString()):'從沒搜過'}・共 ${st.count||0} 次・抓到 ${st.leads||0} 則`}</span></div>`}).join('')}</div>
@@ -1274,7 +1277,7 @@ async function loadRuns(){
       ${open?`<li class="rundetail"><div style="width:100%">
         <div class="hint" style="margin:0 0 8px">${esc(new Date(st).toLocaleString('zh-TW',{hour12:false}))}　耗時 ${Math.max(1,Math.round((fin-st)/1000))} 秒${r.detailFetched?`・點開完整內容 ${r.detailFetched} 篇`:''}</div>
         <div class="kwrow" style="margin:0 0 10px">${qs.map(q=>{const k=String(q).split(' ')[0];const n=(r.perKeyword||{})[k]??(r.perKeyword||{})[q];return `<span class="tag">🔍 ${esc(q)}${n!=null?`：${n<0?'✕':n}`:''}</span>`}).join('')||'<span class="hint">（舊紀錄沒有搜尋明細）</span>'}</div>
-        ${r.drop?`<div class="hint" style="margin:0 0 10px">📊 掃到 ${r.scanned||0} 則 → ${[['seen','之前就抓過'],['dup','重複'],['tooOld','太舊'],['noKeyword','內文沒有關鍵字'],['excludeWord','含排除字詞'],['noRegion','沒提到地區'],['excludeUser','排除帳號']].filter(([k])=>r.drop[k]).map(([k,l])=>`${l} ${r.drop[k]}`).join('・')||'—'}${r.drop.words?`<br>🚫 被排除字詞擋掉：${Object.entries(r.drop.words).map(([w,n])=>`「${esc(w)}」${n}`).join('、')}`:''}</div>`:''}
+        ${r.drop?`<div class="hint" style="margin:0 0 10px">📊 掃到 ${r.scanned||0} 則 → ${[['seen','之前就抓過'],['dup','重複'],['tooOld','太舊'],['noKeyword','內文沒有關鍵字'],['excludeWord','含排除字詞'],['noRegion','沒提到地區'],['noContext','沒有同時出現的字'],['notBiz','不是生意相關'],['excludeUser','排除帳號']].filter(([k])=>r.drop[k]).map(([k,l])=>`${l} ${r.drop[k]}`).join('・')||'—'}${r.drop.words?`<br>🚫 被排除字詞擋掉：${Object.entries(r.drop.words).map(([w,n])=>`「${esc(w)}」${n}`).join('、')}`:''}</div>`:''}
         ${r.warnings&&r.warnings.length?`<div class="banner warn" style="margin:0 0 10px">⚠️ ${esc(r.warnings.join('；'))}</div>`:''}
         ${posts.length?posts.map(p=>{const an_=an(p),i=an_.info,gone=hid.has(p.url);return `<div class="runpost ${RUNPOST.has(p.url)?'open':''}" data-runpost="${esc(p.url)}">
             <div><span class="ipill ${an_.intent.level}">${an_.intent.level}</span> ${viaTag(p)} <span class="rtag ${an_.role}">${an_.role}</span> <b>@${esc(p.user)}</b> <span class="hint" style="margin:0">發文 ${ago(p.time||p.foundAt)}</span>${gone?' <span class="tag" style="opacity:.6">已刪除</span>':''}</div>
@@ -1524,7 +1527,7 @@ function renderDash(){
   /* 關鍵字效率（用累計統計） */
   const kst=doc.kwStats||{};const pool=[...new Set([...(cfg.mustKeywords||[]),...(cfg.keywords||[])])];
   const leadsBy={};posts.forEach(p=>{if(p.foundBy)leadsBy[p.foundBy]=(leadsBy[p.foundBy]||0)+1});
-  const eff=pool.map(k=>{const st=kst[k]||{};const c=st.count||0,sc=st.scanned||0,l=Math.max(st.leads||0,leadsBy[k]||0);
+  const eff=pool.map(k=>{const st=kst[kwBase(k)]||{};const c=st.count||0,sc=st.scanned||0,l=Math.max(st.leads||0,leadsBy[kwBase(k)]||0);
     return {k,c,sc,l,r:c?l/c:0,state:c<8?'watch':l===0?'cut':'ok'}}).sort((x,y)=>y.r-x.r||y.l-x.l||x.c-y.c);
   const maxR=Math.max(0.0001,...eff.map(e=>e.r));
   const cuts=eff.filter(e=>e.state==='cut');
@@ -1654,6 +1657,7 @@ document.addEventListener('click',e=>{
     loadRuns().then(()=>{const el=document.querySelector(sel);if(el){const d=el.getBoundingClientRect().top-top;if(Math.abs(d)>1)window.scrollTo({top:scrollY+d,behavior:'instant'})}})}
 });
 /* ============ 保留頁面狀態 ============ */
+function kwBase(k){return String(k||'').split(/[+＋]/)[0].trim()}
 function cleanTxt(t){let a=String(t||'').split('\n');const c=a.findIndex(x=>/^(相關串文|Related threads)$/i.test(x.trim()));if(c>0)a=a.slice(0,c);return a.filter(x=>!/^(串文|Thread)$/i.test(x.trim())).join('\n')}
 function viaOf(p){return p.foundQuery||p.foundBy||((p.keywords||[])[0])||''}
 function viaTag(p){const v=viaOf(p);return v?`<span class="viatag" title="雷達是搜這個才找到的">🔍 ${esc(v)}</span>`:''}

@@ -26,6 +26,7 @@ const DEFAULT_CONFIG = {
   watchPerScan: 1,        // 每次掃描看幾個關注帳號（0＝不看個人頁，只做標記）
   regionRequired: false,
   strictKeyword: true,
+  bizOnly: false,         // 只收生意相關（過濾閒聊）
   firstRunSilent: true,
   notifyErrors: true,
   notifyTelegram: true,   // false = 線索只存進控制台，不推播
@@ -57,10 +58,18 @@ const norm = (s) => String(s || '').toLowerCase().replace(/臺/g, '台');
 const normUser = (u) => String(u || '').trim().replace(/^https?:\/\/(www\.)?threads\.(com|net)\//i, '').replace(/^@/, '').replace(/[/?#].*$/, '').toLowerCase();
 const cleanList = (arr) => [...new Set((Array.isArray(arr) ? arr : []).map((s) => String(s).trim()).filter(Boolean))];
 
+// 關鍵字可以寫成「咖啡機+商用/營業用」：只搜「咖啡機」，但貼文還要有後面其中一個字
+function applyKwRules(cfg) {
+  const { parseKw } = require('./analyze');
+  cfg.kwNeed = {};
+  const conv = (list) => cleanList(list).map((k) => { const r = parseKw(k); if (r.need.length) cfg.kwNeed[r.base] = r.need; return r.base; }).filter(Boolean);
+  cfg.keywords = cleanList(conv(cfg.keywords));
+  cfg.mustKeywords = cleanList(conv(cfg.mustKeywords));
+  return cfg;
+}
 function loadConfig(file = path.join(ROOT, 'config.json')) {
   const cfg = { ...DEFAULT_CONFIG, ...readJson(file, {}) };
-  cfg.keywords = cleanList(cfg.keywords);
-  cfg.mustKeywords = cleanList(cfg.mustKeywords);
+  applyKwRules(cfg);
   cfg.allKeywords = cleanList([...cfg.mustKeywords, ...cfg.keywords]);
   cfg.regions = cleanList(cfg.regions);
   cfg.excludeWords = cleanList(cfg.excludeWords);
@@ -238,6 +247,9 @@ function matchPost(post, cfg, foundBy, drop) {
   const text = norm(`${post.text}\n${post.user}`);
   const keywords = (cfg.allKeywords || cfg.keywords).filter((k) => text.includes(norm(k)));
   if (cfg.strictKeyword && keywords.length === 0 && !watched) return no('noKeyword');
+  const need = cfg.kwNeed && cfg.kwNeed[foundBy];
+  if (!watched && need && need.length) { if (!need.some((w) => text.includes(norm(w)))) return no('noContext'); }
+  else if (!watched && cfg.bizOnly && !BIZ_RX.test(text)) return no('notBiz');
   const ew = cfg.excludeWords.find((w) => text.includes(norm(w)));
   if (ew) { if (drop) { drop.words = drop.words || {}; drop.words[ew] = (drop.words[ew] || 0) + 1; } return no('excludeWord'); }
   const regions = cfg.regions.filter((r) => text.includes(norm(r)));
@@ -254,7 +266,7 @@ function matchPost(post, cfg, foundBy, drop) {
 /* ---------------- 推播 ---------------- */
 const escHtml = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-const { analyzePost } = require('./analyze');
+const { analyzePost, BIZ_RX } = require('./analyze');
 const LEVEL_ICON = { 高: '🔥', 中: '🌤', 低: '❄️' };
 function formatPost(p) {
   const a = analyzePost(p);
@@ -545,7 +557,7 @@ async function sendTestNotification(env = process.env) {
 }
 
 module.exports = {
-  planQueries, usePlan,
+  planQueries, usePlan, applyKwRules,
   DEFAULT_CONFIG, loadConfig, normUser, FileStore, parseCookies, extractInPage, scrapeKeyword,
   matchPost, formatPost, notify, runScan, sendTestNotification, shouldScan, inQuiet, pickNext, restHours, pickKeywords,
 };

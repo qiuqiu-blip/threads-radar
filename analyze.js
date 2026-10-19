@@ -125,7 +125,14 @@
     return { at: new Date(from + minutes * 60e3).toISOString(), minutes: Math.round(minutes), peak: w };
   }
 
-  const api = { analyzePost, hourIn, dateIn, hourWeights, restHours, inQuiet, pickNext };
+  /* 生意相關字：開啟「只收生意相關」時，貼文至少要有一個 */
+  const BIZ_RX = /頂讓|盤讓|轉讓|讓渡|頂店|店面|店鋪|店舖|整店|營業用|商用|業務用|生財|餐飲設備|廚房設備|二手設備|設備|器具|收店|關店|歇業|停業|收攤|熄燈|退租|租約|租金|月租|坪|房東|押金|點交|復原|拆除|清運|裝潢|招牌|開店|創業|加盟|餐廳|餐飲|小吃|早餐店|火鍋店|咖啡廳|攤位|店家|清潔/;
+  // 「咖啡機+商用/營業用」→ 搜「咖啡機」，貼文還要有「商用」或「營業用」其中一個
+  function parseKw(k) {
+    const parts = String(k || '').split(/[+＋]/);
+    return { base: parts[0].trim(), need: (parts[1] || '').split(/[\/|｜／]/).map((x) => x.trim()).filter(Boolean) };
+  }
+  const api = { BIZ_RX, parseKw, analyzePost, hourIn, dateIn, hourWeights, restHours, inQuiet, pickNext };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.RadarAnalyze = api;
 })(typeof self !== 'undefined' ? self : this);
