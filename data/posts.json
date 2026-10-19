@@ -1,38 +1,70 @@
 {
-  "updatedAt": "2026-10-19T01:13:06.621Z",
+  "updatedAt": "2026-10-19T02:11:09.386Z",
   "lastRun": {
-    "startedAt": "2026-10-19T01:11:30.789Z",
-    "finishedAt": "2026-10-19T01:13:06.582Z",
+    "startedAt": "2026-10-19T02:09:28.994Z",
+    "finishedAt": "2026-10-19T02:11:09.351Z",
     "status": "ok",
-    "scanned": 45,
-    "matched": 2,
-    "newCount": 2,
-    "notified": 2,
+    "scanned": 0,
+    "matched": 0,
+    "newCount": 0,
+    "notified": 0,
     "perKeyword": {
-      "頂讓": 0,
-      "廚房設備": 25,
-      "含設備": 0,
-      "商用冰箱": 20
+      "讓渡": 0,
+      "整店頂讓": 0,
+      "冷藏櫃": 0,
+      "退租": 0
     },
     "warnings": [],
     "keywordsUsed": [
-      "頂讓",
-      "廚房設備",
-      "含設備",
-      "商用冰箱"
+      "讓渡",
+      "整店頂讓",
+      "冷藏櫃",
+      "退租"
     ],
     "queries": [
-      "頂讓 台南",
-      "廚房設備",
-      "含設備 高雄",
-      "商用冰箱"
+      "讓渡 新北",
+      "整店頂讓",
+      "冷藏櫃 新北",
+      "退租 新北"
     ],
     "loginMode": "guest",
-    "detailFetched": 2,
+    "detailFetched": 0,
     "pushMode": "on",
-    "nextInMinutes": 49
+    "nextInMinutes": 80
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T02:09:28.994Z",
+      "finishedAt": "2026-10-19T02:11:09.351Z",
+      "status": "ok",
+      "scanned": 0,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {
+        "讓渡": 0,
+        "整店頂讓": 0,
+        "冷藏櫃": 0,
+        "退租": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "讓渡",
+        "整店頂讓",
+        "冷藏櫃",
+        "退租"
+      ],
+      "queries": [
+        "讓渡 新北",
+        "整店頂讓",
+        "冷藏櫃 新北",
+        "退租 新北"
+      ],
+      "loginMode": "guest",
+      "detailFetched": 0,
+      "pushMode": "on",
+      "nextInMinutes": 80
+    },
     {
       "startedAt": "2026-10-19T01:11:30.789Z",
       "finishedAt": "2026-10-19T01:13:06.582Z",
@@ -910,7 +942,31 @@
       "last": 1792372355887,
       "scanned": 20,
       "leads": 0
+    },
+    "讓渡": {
+      "count": 1,
+      "last": 1792375769286,
+      "scanned": 0,
+      "leads": 0
+    },
+    "整店頂讓": {
+      "count": 1,
+      "last": 1792375794730,
+      "scanned": 0,
+      "leads": 0
+    },
+    "冷藏櫃": {
+      "count": 1,
+      "last": 1792375818007,
+      "scanned": 0,
+      "leads": 0
+    },
+    "退租": {
+      "count": 1,
+      "last": 1792375843976,
+      "scanned": 0,
+      "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T02:01:49.823Z"
+  "nextScanAt": "2026-10-19T03:31:24.032Z"
 }
