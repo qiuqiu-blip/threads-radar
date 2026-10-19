@@ -1,42 +1,88 @@
 {
-  "updatedAt": "2026-10-19T08:17:53.775Z",
+  "updatedAt": "2026-10-19T09:24:25.146Z",
   "lastRun": {
-    "startedAt": "2026-10-19T08:15:53.608Z",
-    "finishedAt": "2026-10-19T08:17:53.745Z",
+    "startedAt": "2026-10-19T09:22:27.338Z",
+    "finishedAt": "2026-10-19T09:24:24.898Z",
     "status": "ok",
-    "scanned": 34,
-    "matched": 0,
-    "newCount": 0,
-    "notified": 0,
+    "scanned": 82,
+    "matched": 4,
+    "newCount": 4,
+    "notified": 4,
     "perKeyword": {
-      "頂店": 0,
-      "餐飲設備": 20,
-      "二手設備": 14,
-      "全店出清": 0,
-      "店鋪轉讓": 0
+      "爐具": 0,
+      "店面頂讓": 20,
+      "收攤": 20,
+      "廚房設備": 23,
+      "頂讓": 19
     },
     "warnings": [],
     "keywordsUsed": [
-      "頂店",
-      "餐飲設備",
-      "二手設備",
-      "全店出清",
-      "店鋪轉讓"
+      "爐具",
+      "店面頂讓",
+      "收攤",
+      "廚房設備",
+      "頂讓"
     ],
     "queries": [
-      "頂店",
-      "餐飲設備",
-      "二手設備",
-      "全店出清",
-      "店鋪轉讓"
+      "爐具",
+      "店面頂讓",
+      "收攤",
+      "廚房設備",
+      "頂讓"
     ],
     "loginMode": "guest",
-    "detailFetched": 3,
-    "newUrls": [],
+    "detailFetched": 6,
+    "newUrls": [
+      "https://www.threads.com/@libermann88/post/Deq4hmjgWcF",
+      "https://www.threads.com/@a_chang1984/post/DeqGu-bj5wy",
+      "https://www.threads.com/@ringo.design.tw/post/DeoDYUvElaO",
+      "https://www.threads.com/@andy__828__/post/DembSCrD6mc"
+    ],
     "pushMode": "on",
     "nextInMinutes": 52
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T09:22:27.338Z",
+      "finishedAt": "2026-10-19T09:24:24.898Z",
+      "status": "ok",
+      "scanned": 82,
+      "matched": 4,
+      "newCount": 4,
+      "notified": 4,
+      "perKeyword": {
+        "爐具": 0,
+        "店面頂讓": 20,
+        "收攤": 20,
+        "廚房設備": 23,
+        "頂讓": 19
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "爐具",
+        "店面頂讓",
+        "收攤",
+        "廚房設備",
+        "頂讓"
+      ],
+      "queries": [
+        "爐具",
+        "店面頂讓",
+        "收攤",
+        "廚房設備",
+        "頂讓"
+      ],
+      "loginMode": "guest",
+      "detailFetched": 6,
+      "newUrls": [
+        "https://www.threads.com/@libermann88/post/Deq4hmjgWcF",
+        "https://www.threads.com/@a_chang1984/post/DeqGu-bj5wy",
+        "https://www.threads.com/@ringo.design.tw/post/DeoDYUvElaO",
+        "https://www.threads.com/@andy__828__/post/DembSCrD6mc"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 52
+    },
     {
       "startedAt": "2026-10-19T08:15:53.608Z",
       "finishedAt": "2026-10-19T08:17:53.745Z",
@@ -439,6 +485,65 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "Deq4hmjgWcF",
+      "user": "libermann88",
+      "url": "https://www.threads.com/@libermann88/post/Deq4hmjgWcF",
+      "authorUrl": "https://www.threads.com/@libermann88",
+      "text": "一台商用烤爐，真正的差別藏在細節裡。🔥\n從烤制空間、機身結構到散熱與加熱設計，每個細節都值得認真對待。\nLIBERMANN 中國工廠直供，歡迎全球經銷商、進口商及餐飲設備供應商洽談合作。\n📩 私訊索取產品目錄及報價！\n#LIBERMANN #商用廚房設備 #商用烤爐 #餐飲設備 #工廠直供",
+      "time": "2026-10-19T08:59:08.000Z",
+      "keywords": [
+        "餐飲設備",
+        "廚房設備"
+      ],
+      "regions": [],
+      "foundBy": "廚房設備",
+      "foundAt": "2026-10-19T09:23:49.060Z"
+    },
+    {
+      "code": "DeqGu-bj5wy",
+      "user": "a_chang1984",
+      "url": "https://www.threads.com/@a_chang1984/post/DeqGu-bj5wy",
+      "authorUrl": "https://www.threads.com/@a_chang1984",
+      "text": "「餐廳打烊後，真的就代表下班了嗎？」\n有做過餐飲業的應該都知道\n每天打烊之後\n其實還有不少清潔工作需要做\n像我們每天收店\n都需要清潔廚房設備\n整理廚房的鍋碗瓢盆\n尤其是廚房設備上的油垢\n如果沒有每天確實清理\n時間久了就會越積越厚\n到時候想清乾淨反而非常困難\n雖然這些都是每天重複的工作\n但也不能因為今天比較累\n就想說留到明天再處理\n畢竟廚房的清潔\n本來就是我們應該做好的事情\n所以其實打烊時間跟實際下班時間\n其實還是有一段差距的\n不知道其他餐飲業的朋友\n每天打烊後最花時間的工作是什麼？",
+      "time": "2026-10-19T01:43:28.000Z",
+      "keywords": [
+        "收店",
+        "廚房設備"
+      ],
+      "regions": [],
+      "foundBy": "廚房設備",
+      "foundAt": "2026-10-19T09:23:49.060Z"
+    },
+    {
+      "code": "DeoDYUvElaO",
+      "user": "ringo.design.tw",
+      "url": "https://www.threads.com/@ringo.design.tw/post/DeoDYUvElaO",
+      "authorUrl": "https://www.threads.com/@ringo.design.tw",
+      "text": "🏠【這題我會裝｜智慧廚房，真的越智慧越好嗎？】\n最近參加《阿嬤的灶咖 2.0》研討會，其中少智慧廚房設備的應用。\n其中讓我思考的是：\n「我們追求的智慧生活，究竟是功能越多越好，還是生活越簡單越好？」\n以智慧爐具為例，手機連線與遠端監控，能讓家人掌握長輩的使用狀況，確實多了一份安心。\n但如果從使用者的角度思考，我反而更在意：\n當爐具出現異常時，能不能即時警示或啟動安全保護？\n操作方式是否簡單直覺，不需要重新學習太多？\n設備故障後，是否容易維修？\n使用多年後，還能不能穩定運作？\n這些看似不起眼的細節，可能比多幾項智慧功能更重要。\n尤其對習慣原本生活方式的長輩來說，科技應該是協助他們繼續自在生活，而不是要求他們為了使用新設備，改變所有習慣。\n「好的智慧設計，不是讓人感受到科技有多厲害，而是讓科技自然融入生活。」\n科技可以很複雜，但使用者的生活，不需要跟著變複雜。",
+      "time": "2026-10-18T06:35:41.000Z",
+      "keywords": [
+        "廚房設備",
+        "爐具"
+      ],
+      "regions": [],
+      "foundBy": "廚房設備",
+      "foundAt": "2026-10-19T09:23:49.060Z"
+    },
+    {
+      "code": "DembSCrD6mc",
+      "user": "andy__828__",
+      "url": "https://www.threads.com/@andy__828__/post/DembSCrD6mc",
+      "authorUrl": "https://www.threads.com/@andy__828__",
+      "text": "創業日記\n最近有沒有朋友、夫妻、兄弟姊妹，或是本來就有打算自己創業、開火鍋店的呢？🍲\n我這邊有一間小港現成火鍋店，店面、裝潢、廚房設備、桌椅等基本設備都已經有了，不需要從零開始找店、裝潢、買設備。\n📍 地點：小港區宏平路一帶\n🍲 類型：火鍋店\n🏠 現成店面，可直接接手經營\n二樓可店住\n🔧 設備、裝潢都有\n📦 也可以進一步聊技術、設備及現場狀況\n如果你本身：\n✔️ 想在小港創業\n✔️ 想開火鍋店\n✔️ 正在找可以直接接手的店面\n✔️ 想省掉重新裝潢、找設備的時間\n都可以私訊我聊聊… 更多",
+      "time": "2026-10-17T15:26:03.000Z",
+      "keywords": [
+        "廚房設備"
+      ],
+      "regions": [],
+      "foundBy": "廚房設備",
+      "foundAt": "2026-10-19T09:23:49.060Z"
+    },
     {
       "code": "DeqTCiVE87a",
       "user": "panther.56182087",
@@ -1119,9 +1224,9 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 1,
-      "last": 1792359015422,
-      "scanned": 20,
+      "count": 2,
+      "last": 1792401772589,
+      "scanned": 40,
       "leads": 0
     },
     "二手設備": {
@@ -1143,9 +1248,9 @@
       "leads": 10
     },
     "收攤": {
-      "count": 1,
-      "last": 1792361068802,
-      "scanned": 0,
+      "count": 2,
+      "last": 1792401786337,
+      "scanned": 20,
       "leads": 0
     },
     "帶走價": {
@@ -1155,16 +1260,16 @@
       "leads": 0
     },
     "頂讓": {
-      "count": 1,
-      "last": 1792372291162,
-      "scanned": 0,
+      "count": 2,
+      "last": 1792401815585,
+      "scanned": 19,
       "leads": 0
     },
     "廚房設備": {
-      "count": 1,
-      "last": 1792372316380,
-      "scanned": 25,
-      "leads": 2
+      "count": 2,
+      "last": 1792401800121,
+      "scanned": 48,
+      "leads": 6
     },
     "含設備": {
       "count": 1,
@@ -1315,8 +1420,40 @@
       "last": 1792397830927,
       "scanned": 0,
       "leads": 0
+    },
+    "爐具": {
+      "count": 1,
+      "last": 1792401747716,
+      "scanned": 0,
+      "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T09:09:43.246Z",
-  "archivedSeed": true
+  "nextScanAt": "2026-10-19T10:15:58.382Z",
+  "archivedSeed": true,
+  "nextPlan": {
+    "at": "2026-10-19T10:15:58.382Z",
+    "madeAt": "2026-10-19T09:24:25.142Z",
+    "items": [
+      {
+        "kw": "飲料",
+        "q": "飲料"
+      },
+      {
+        "kw": "退租",
+        "q": "退租"
+      },
+      {
+        "kw": "整店頂讓",
+        "q": "整店頂讓"
+      },
+      {
+        "kw": "含設備",
+        "q": "含設備"
+      },
+      {
+        "kw": "關店",
+        "q": "關店"
+      }
+    ]
+  }
 }

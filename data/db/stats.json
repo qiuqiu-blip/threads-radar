@@ -1,12 +1,14 @@
 {
   "days": {
     "2026-10-19": {
-      "scans": 3,
-      "scanned": 90,
-      "leads": 0,
+      "scans": 4,
+      "scanned": 172,
+      "leads": 4,
       "high": 0,
-      "buyers": 0,
-      "kw": {}
+      "buyers": 1,
+      "kw": {
+        "廚房設備": 4
+      }
     }
   }
 }
