@@ -1,38 +1,78 @@
 {
-  "updatedAt": "2026-10-19T06:10:47.999Z",
+  "updatedAt": "2026-10-19T07:36:20.509Z",
   "lastRun": {
-    "startedAt": "2026-10-19T06:09:18.123Z",
-    "finishedAt": "2026-10-19T06:10:47.956Z",
+    "startedAt": "2026-10-19T07:34:07.405Z",
+    "finishedAt": "2026-10-19T07:36:20.484Z",
     "status": "ok",
-    "scanned": 25,
+    "scanned": 31,
     "matched": 0,
     "newCount": 0,
     "notified": 0,
     "perKeyword": {
-      "生財器具": 23,
-      "盤讓": 0,
-      "營業用": 0,
-      "免費": 2
+      "免頂讓費": 0,
+      "結束營業": 14,
+      "收店": 0,
+      "設備轉讓": 0,
+      "清倉": 17
     },
     "warnings": [],
     "keywordsUsed": [
-      "生財器具",
-      "盤讓",
-      "營業用",
-      "免費"
+      "免頂讓費",
+      "結束營業",
+      "收店",
+      "設備轉讓",
+      "清倉"
     ],
     "queries": [
-      "生財器具",
-      "盤讓 桃園",
-      "營業用",
-      "免費"
+      "免頂讓費",
+      "結束營業",
+      "收店",
+      "設備轉讓",
+      "清倉"
     ],
     "loginMode": "guest",
-    "detailFetched": 2,
+    "detailFetched": 5,
+    "newUrls": [],
     "pushMode": "on",
-    "nextInMinutes": 60
+    "nextInMinutes": 32
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T07:34:07.405Z",
+      "finishedAt": "2026-10-19T07:36:20.484Z",
+      "status": "ok",
+      "scanned": 31,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {
+        "免頂讓費": 0,
+        "結束營業": 14,
+        "收店": 0,
+        "設備轉讓": 0,
+        "清倉": 17
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "免頂讓費",
+        "結束營業",
+        "收店",
+        "設備轉讓",
+        "清倉"
+      ],
+      "queries": [
+        "免頂讓費",
+        "結束營業",
+        "收店",
+        "設備轉讓",
+        "清倉"
+      ],
+      "loginMode": "guest",
+      "detailFetched": 5,
+      "newUrls": [],
+      "pushMode": "on",
+      "nextInMinutes": 32
+    },
     {
       "startedAt": "2026-10-19T06:09:18.123Z",
       "finishedAt": "2026-10-19T06:10:47.956Z",
@@ -1031,9 +1071,9 @@
   ],
   "kwStats": {
     "清倉": {
-      "count": 1,
-      "last": 1792358963375,
-      "scanned": 0,
+      "count": 2,
+      "last": 1792395338195,
+      "scanned": 17,
       "leads": 0
     },
     "頂店": {
@@ -1197,8 +1237,32 @@
       "last": 1792390222084,
       "scanned": 2,
       "leads": 0
+    },
+    "免頂讓費": {
+      "count": 1,
+      "last": 1792395248851,
+      "scanned": 0,
+      "leads": 0
+    },
+    "結束營業": {
+      "count": 1,
+      "last": 1792395272838,
+      "scanned": 14,
+      "leads": 0
+    },
+    "收店": {
+      "count": 1,
+      "last": 1792395286859,
+      "scanned": 0,
+      "leads": 0
+    },
+    "設備轉讓": {
+      "count": 1,
+      "last": 1792395312026,
+      "scanned": 0,
+      "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T07:10:21.817Z",
+  "nextScanAt": "2026-10-19T08:08:49.493Z",
   "archivedSeed": true
 }
