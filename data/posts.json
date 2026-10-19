@@ -1,61 +1,28 @@
 {
-  "updatedAt": "2026-10-19T13:15:53.053Z",
+  "updatedAt": "2026-10-19T13:36:44.060Z",
   "lastRun": {
-    "startedAt": "2026-10-19T13:12:03.535Z",
-    "finishedAt": "2026-10-19T13:15:53.021Z",
-    "status": "ok",
-    "scanned": 77,
-    "matched": 6,
-    "newCount": 6,
-    "notified": 6,
-    "perKeyword": {
-      "設備轉讓": 0,
-      "飲料店": 18,
-      "蒸烤箱": 20,
-      "製冰機": 17,
-      "頂店": 0,
-      "商用冰箱": 19,
-      "免費": 3
-    },
-    "warnings": [],
-    "keywordsUsed": [
-      "設備轉讓",
-      "飲料店",
-      "蒸烤箱",
-      "製冰機",
-      "頂店",
-      "商用冰箱",
-      "免費"
-    ],
-    "queries": [
-      "設備轉讓",
-      "飲料店",
-      "蒸烤箱",
-      "製冰機",
-      "頂店",
-      "商用冰箱",
-      "免費"
-    ],
-    "loginMode": "guest",
-    "drop": {
-      "seen": 15,
-      "dup": 0,
-      "tooOld": 46,
-      "noKeyword": 10
-    },
-    "detailFetched": 6,
-    "newUrls": [
-      "https://www.threads.com/@_viviliu_/post/Deq9k5zGAOV",
-      "https://www.threads.com/@jr_1485_/post/Deq8e14gcmD",
-      "https://www.threads.com/@ming1006_/post/DeqypHtmmfu",
-      "https://www.threads.com/@wengui_115728/post/DepPLXygSYI",
-      "https://www.threads.com/@cheng4fake/post/Deoz4vSCYw1",
-      "https://www.threads.com/@joyce__6298/post/DemOYUfGiAq"
-    ],
-    "pushMode": "on",
-    "nextInMinutes": 23
+    "startedAt": "2026-10-19T13:36:44.022Z",
+    "finishedAt": "2026-10-19T13:36:44.024Z",
+    "status": "paused",
+    "scanned": 0,
+    "matched": 0,
+    "newCount": 0,
+    "notified": 0,
+    "perKeyword": {},
+    "warnings": []
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T13:36:44.022Z",
+      "finishedAt": "2026-10-19T13:36:44.024Z",
+      "status": "paused",
+      "scanned": 0,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {},
+      "warnings": []
+    },
     {
       "startedAt": "2026-10-19T13:12:03.535Z",
       "finishedAt": "2026-10-19T13:15:53.021Z",
