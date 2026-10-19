@@ -67,7 +67,7 @@
   "maxNotifyPerRun": 15,
   "maxStoredPosts": 300,
   "notifyTelegram": true,
-  "keywordsPerScan": 4,
+  "keywordsPerScan": 5,
   "scanMinMinutes": 30,
   "scanMaxMinutes": 90,
   "restHoursPerDay": 6,
