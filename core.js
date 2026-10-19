@@ -21,6 +21,9 @@ const DEFAULT_CONFIG = {
   keywordsPerScan: 4,     // 每次從關鍵字池抽幾個（0 = 全部都搜）
   regions: [],
   excludeWords: [],
+  excludeUsers: [],       // 排除帳號：這些帳號的貼文一律略過
+  watchUsers: [],         // 關注帳號：每次掃描輪流去看他們的個人頁
+  watchPerScan: 1,        // 每次掃描看幾個關注帳號（0＝不看個人頁，只做標記）
   regionRequired: false,
   strictKeyword: true,
   firstRunSilent: true,
@@ -51,6 +54,7 @@ function writeJson(file, data) {
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const rand = (a, b) => a + Math.floor(Math.random() * (b - a));
 const norm = (s) => String(s || '').toLowerCase().replace(/臺/g, '台');
+const normUser = (u) => String(u || '').trim().replace(/^https?:\/\/(www\.)?threads\.(com|net)\//i, '').replace(/^@/, '').replace(/[/?#].*$/, '').toLowerCase();
 const cleanList = (arr) => [...new Set((Array.isArray(arr) ? arr : []).map((s) => String(s).trim()).filter(Boolean))];
 
 function loadConfig(file = path.join(ROOT, 'config.json')) {
@@ -60,6 +64,8 @@ function loadConfig(file = path.join(ROOT, 'config.json')) {
   cfg.allKeywords = cleanList([...cfg.mustKeywords, ...cfg.keywords]);
   cfg.regions = cleanList(cfg.regions);
   cfg.excludeWords = cleanList(cfg.excludeWords);
+  cfg.excludeUsers = cleanList((cfg.excludeUsers || []).map(normUser));
+  cfg.watchUsers = cleanList((cfg.watchUsers || []).map(normUser));
   return cfg;
 }
 
@@ -75,7 +81,56 @@ class FileStore {
     return readJson(this.postsFile, { updatedAt: null, lastRun: null, runs: [], lastWarnAt: null, posts: [] });
   }
   saveDoc(doc) { doc.updatedAt = new Date().toISOString(); writeJson(this.postsFile, doc); }
+
+  /* ---------- 資料庫：線索永久封存（依月份分檔）＋每日統計 ---------- */
+  get dbDir() { return path.join(path.dirname(this.postsFile), 'db'); }
+  archive(posts, tz = 'Asia/Taipei') {
+    if (!posts || !posts.length) return 0;
+    const idxFile = path.join(this.dbDir, 'index.json');
+    const idx = readJson(idxFile, { months: [], counts: {} });
+    const byMonth = {};
+    for (const p of posts) {
+      const m = monthIn(tz, new Date(Date.parse(p.foundAt || p.time) || Date.now()));
+      (byMonth[m] = byMonth[m] || []).push(p);
+    }
+    let added = 0;
+    for (const [m, list] of Object.entries(byMonth)) {
+      const f = path.join(this.dbDir, `leads-${m}.json`);
+      const cur = readJson(f, []);
+      const have = new Set(cur.map((x) => x.url));
+      for (const p of list) {
+        if (have.has(p.url)) continue;
+        const { url, user, authorUrl, text, time, foundAt, keywords, regions, foundBy, watched, full, code } = p;
+        cur.push({ url, user, authorUrl, text, time, foundAt, keywords, regions, foundBy, watched, full, code });
+        have.add(url); added++;
+      }
+      writeJson(f, cur);
+      if (!idx.months.includes(m)) idx.months.push(m);
+      idx.counts[m] = cur.length;
+    }
+    idx.months.sort();
+    idx.updatedAt = new Date().toISOString();
+    writeJson(idxFile, idx);
+    return added;
+  }
+  addStats(run, newPosts, tz = 'Asia/Taipei') {
+    const f = path.join(this.dbDir, 'stats.json');
+    const st = readJson(f, { days: {} });
+    const d = dateIn(tz, new Date());
+    const day = st.days[d] || (st.days[d] = { scans: 0, scanned: 0, leads: 0, high: 0, buyers: 0, kw: {} });
+    if (run.status === 'paused') return;
+    day.scans++; day.scanned += run.scanned || 0; day.leads += (newPosts || []).length;
+    for (const p of newPosts || []) {
+      const a = require('./analyze').analyzePost(p);
+      if (a.intent.level === '高') day.high++;
+      if (a.role === '買方') day.buyers++;
+      day.kw[p.foundBy] = (day.kw[p.foundBy] || 0) + 1;
+    }
+    writeJson(f, st);
+  }
 }
+function monthIn(tz, d) { return dateIn(tz, d).slice(0, 7); }
+function dateIn(tz, d) { return new Intl.DateTimeFormat('en-CA', { timeZone: tz || 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d); }
 
 /* ---------------- 登入 Cookie 解析 ----------------
  * 支援兩種格式（放在 GitHub Secret: THREADS_COOKIES）：
@@ -169,9 +224,12 @@ async function scrapeKeyword(page, keyword, { scrolls = 3 } = {}) {
 
 /* ---------------- 過濾 ---------------- */
 function matchPost(post, cfg, foundBy) {
+  const user = normUser(post.user);
+  if ((cfg.excludeUsers || []).includes(user)) return null;
+  const watched = (cfg.watchUsers || []).includes(user);
   const text = norm(`${post.text}\n${post.user}`);
   const keywords = (cfg.allKeywords || cfg.keywords).filter((k) => text.includes(norm(k)));
-  if (cfg.strictKeyword && keywords.length === 0) return null;
+  if (cfg.strictKeyword && keywords.length === 0 && !watched) return null;
   if (cfg.excludeWords.some((w) => text.includes(norm(w)))) return null;
   const regions = cfg.regions.filter((r) => text.includes(norm(r)));
   if (cfg.regionRequired && cfg.regions.length && regions.length === 0) return null;
@@ -179,7 +237,9 @@ function matchPost(post, cfg, foundBy) {
     const t = Date.parse(post.time);
     if (!isNaN(t) && Date.now() - t > cfg.maxAgeHours * 3600e3) return null;
   }
-  return { ...post, keywords: keywords.length ? keywords : [foundBy], regions, foundBy };
+  const out = { ...post, keywords: keywords.length ? keywords : [foundBy], regions, foundBy };
+  if (watched) out.watched = true;
+  return out;
 }
 
 /* ---------------- 推播 ---------------- */
@@ -289,6 +349,12 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
       doc.nextScanAt = n.at; run.nextInMinutes = n.minutes;
       log(`下次掃描：約 ${n.minutes} 分鐘後${n.peak > 0.6 ? '（尖峰時段）' : ''}`);
     }
+    try {
+      if (!doc.archivedSeed) { store.archive(doc.posts || [], cfg.timezone); doc.archivedSeed = true; }
+      store.archive(run._new || [], cfg.timezone);
+      store.addStats(run, run._new || [], cfg.timezone);
+    } catch (e) { log('資料庫寫入失敗：' + e.message); }
+    delete run._new;
     doc.lastRun = run;
     doc.runs = [run, ...(doc.runs || [])].slice(0, cfg.maxStoredRuns || 300);
     store.saveDoc(doc);
@@ -342,6 +408,27 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
       await sleep(rand(3000, 6000));
     }
 
+    /* ①-2 關注帳號：輪流看個人頁（最久沒看的優先） */
+    const nWatch = Math.max(0, Math.round(Number(cfg.watchPerScan ?? 1)));
+    if (nWatch && cfg.watchUsers.length) {
+      doc.watchStats = doc.watchStats || {};
+      const order = [...cfg.watchUsers].sort((a, b) => ((doc.watchStats[a] || {}).last || 0) - ((doc.watchStats[b] || {}).last || 0));
+      for (const u of order.slice(0, nWatch)) {
+        const ws = doc.watchStats[u] || (doc.watchStats[u] = { count: 0, last: 0, leads: 0 });
+        ws.count++; ws.last = Date.now();
+        try {
+          await page.goto(`${BASE_URL}/@${encodeURIComponent(u)}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+          try { await page.waitForSelector('a[href*="/post/"]', { timeout: 15000 }); } catch { /* 可能沒貼文 */ }
+          await page.mouse.wheel(0, 1800); await page.waitForTimeout(rand(1200, 2000));
+          const items = (await page.evaluate(extractInPage)).filter((it) => normUser(it.user) === u);
+          for (const it of items) scannedItems.push({ it, kw: '@' + u });
+          run.perKeyword['@' + u] = items.length;
+          log(`關注帳號 @${u} 抓到 ${items.length} 則`);
+        } catch (e) { run.warnings.push(`關注帳號 @${u} 失敗：${e.message.split('\n')[0]}`); }
+        await sleep(rand(3000, 6000));
+      }
+    }
+
     /* ② 過濾出新的線索 */
     for (const { it, kw } of scannedItems) {
       if (seen.has(it.url) || fresh.has(it.url)) continue;
@@ -378,8 +465,12 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
 
   scannedItems.forEach(({ it }) => seen.add(it.url));
   const newPosts = [...fresh.values()].sort((a, b) => (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0));
-  newPosts.forEach((p) => { const st = doc.kwStats[p.foundBy]; if (st) st.leads = (st.leads || 0) + 1; });
+  newPosts.forEach((p) => {
+    const st = doc.kwStats[p.foundBy]; if (st) st.leads = (st.leads || 0) + 1;
+    const ws = doc.watchStats && doc.watchStats[String(p.foundBy).replace(/^@/, '')]; if (ws) ws.leads = (ws.leads || 0) + 1;
+  });
   run.matched = run.newCount = newPosts.length;
+  run._new = newPosts;
 
   run.pushMode = cfg.notifyTelegram === false ? 'off' : 'on';
   if (cfg.notifyTelegram === false) {
@@ -422,6 +513,6 @@ async function sendTestNotification(env = process.env) {
 }
 
 module.exports = {
-  DEFAULT_CONFIG, loadConfig, FileStore, parseCookies, extractInPage, scrapeKeyword,
+  DEFAULT_CONFIG, loadConfig, normUser, FileStore, parseCookies, extractInPage, scrapeKeyword,
   matchPost, formatPost, notify, runScan, sendTestNotification, shouldScan, inQuiet, pickNext, restHours, pickKeywords,
 };

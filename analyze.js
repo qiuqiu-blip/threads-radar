@@ -71,6 +71,7 @@
     if (equip.length >= 2) { score += 1; reasons.push('設備清單明確'); }
     const t = Date.parse(p.time || p.foundAt || '');
     if (t && now - t < 24 * 3600e3) { score += 1; reasons.push('24 小時內發文'); }
+    if (p.watched) { score += 2; reasons.push('⭐ 關注帳號'); }
     if (s.length < 15) { score -= 1; reasons.push('內容很短'); }
     if (role === '同業') { score = Math.min(score, 1); reasons.unshift('疑似同業（收購／回收廣告）'); }
     const level = score >= 5 ? '高' : score >= 3 ? '中' : '低';
