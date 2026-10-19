@@ -174,7 +174,7 @@ function parseCookies(raw) {
 /* ---------------- 頁面內擷取（在瀏覽器裡執行） ---------------- */
 function extractInPage() {
   const RE = /\/@([^/?#]+)\/post\/([^/?#]+)/;
-  const NOISE = /^(翻譯|翻譯年糕|查看翻譯|Translate|See translation|讚|回覆|轉發|分享|更多|Like|Reply|Repost|Share|More|作者|Author|·)$/i;
+  const NOISE = /^(串文|Thread|翻譯|翻譯年糕|查看翻譯|Translate|See translation|讚|回覆|轉發|分享|更多|Like|Reply|Repost|Share|More|作者|Author|·)$/i;
   const map = new Map();
   for (const a of document.querySelectorAll('a[href*="/post/"]')) {
     const m = (a.getAttribute('href') || '').match(RE);
@@ -193,7 +193,9 @@ function extractInPage() {
     if (!box) box = a.parentElement || a;
     const timeEl = box.querySelector('time');
     const TIME = /^(\d+\s*(秒|分鐘|小時|天|週|周|個月|年|[smhdw])|剛剛|\d{4}[-/]\d{1,2}[-/]\d{1,2}|\d{1,2}\/\d{1,2}(\/\d{2,4})?)$/;
-    const lines = (box.innerText || '').split('\n').map((s) => s.trim())
+    let raw = (box.innerText || '').split('\n').map((s) => s.trim());
+    const cut = raw.findIndex((s) => /^(相關串文|Related threads)$/i.test(s)); if (cut > 0) raw = raw.slice(0, cut);
+    const lines = raw
       .map((s) => (s.startsWith(user) ? s.slice(user.length).trim() : s)).filter(Boolean)
       .filter((s) => !NOISE.test(s) && !TIME.test(s) && !/^\d+([.,]\d+)?\s*[萬千kKmM]?$/.test(s) && !/^\d+\s*\/\s*\d+$/.test(s));
     const origin = location.origin && location.origin !== 'null' ? location.origin : 'https://www.threads.com';
@@ -208,10 +210,15 @@ function extractInPage() {
   return [...map.values()];
 }
 
-async function scrapeKeyword(page, keyword, { scrolls = 3 } = {}) {
+async function scrapeKeyword(page, keyword, { scrolls = 3, retry = true } = {}) {
   const url = `${BASE_URL}/search?q=${encodeURIComponent(keyword)}&serp_type=default&filter=recent`;
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-  try { await page.waitForSelector('a[href*="/post/"]', { timeout: 15000 }); } catch { /* 可能沒結果或被擋 */ }
+  let ok = true;
+  try { await page.waitForSelector('a[href*="/post/"]', { timeout: 20000 }); } catch { ok = false; }
+  if (!ok && retry) {   // 第一次常常載不出來：等一下重新整理再試一次
+    await page.waitForTimeout(rand(3000, 5000));
+    try { await page.reload({ waitUntil: 'domcontentloaded', timeout: 60000 }); await page.waitForSelector('a[href*="/post/"]', { timeout: 25000 }); } catch { /* 真的沒結果或被擋 */ }
+  }
   const loginWall = /\/login/.test(page.url()) ||
     (await page.locator('input[autocomplete="username"], input[name="username"]').count()) > 0;
   for (let i = 0; i < scrolls; i++) {
@@ -219,23 +226,25 @@ async function scrapeKeyword(page, keyword, { scrolls = 3 } = {}) {
     await page.waitForTimeout(rand(1200, 2200));
   }
   const items = await page.evaluate(extractInPage);
-  return { items, loginWall };
+  return { items, loginWall, retried: !ok };
 }
 
 /* ---------------- 過濾 ---------------- */
-function matchPost(post, cfg, foundBy) {
+function matchPost(post, cfg, foundBy, drop) {
+  const no = (k) => { if (drop) drop[k] = (drop[k] || 0) + 1; return null; };
   const user = normUser(post.user);
-  if ((cfg.excludeUsers || []).includes(user)) return null;
+  if ((cfg.excludeUsers || []).includes(user)) return no('excludeUser');
   const watched = (cfg.watchUsers || []).includes(user);
   const text = norm(`${post.text}\n${post.user}`);
   const keywords = (cfg.allKeywords || cfg.keywords).filter((k) => text.includes(norm(k)));
-  if (cfg.strictKeyword && keywords.length === 0 && !watched) return null;
-  if (cfg.excludeWords.some((w) => text.includes(norm(w)))) return null;
+  if (cfg.strictKeyword && keywords.length === 0 && !watched) return no('noKeyword');
+  const ew = cfg.excludeWords.find((w) => text.includes(norm(w)));
+  if (ew) { if (drop) { drop.words = drop.words || {}; drop.words[ew] = (drop.words[ew] || 0) + 1; } return no('excludeWord'); }
   const regions = cfg.regions.filter((r) => text.includes(norm(r)));
-  if (cfg.regionRequired && cfg.regions.length && regions.length === 0) return null;
+  if (cfg.regionRequired && cfg.regions.length && regions.length === 0) return no('noRegion');
   if (cfg.maxAgeHours > 0 && post.time) {
     const t = Date.parse(post.time);
-    if (!isNaN(t) && Date.now() - t > cfg.maxAgeHours * 3600e3) return null;
+    if (!isNaN(t) && Date.now() - t > cfg.maxAgeHours * 3600e3) return no('tooOld');
   }
   const out = { ...post, keywords: keywords.length ? keywords : [foundBy], regions, foundBy };
   if (watched) out.watched = true;
@@ -414,11 +423,12 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
       const query = qOf.get(kw) || kw;
       run.queries.push(query);
       try {
-        const r = await scrapeKeyword(page, query, { scrolls: cfg.scrollsPerKeyword });
+        let r = await scrapeKeyword(page, query, { scrolls: cfg.scrollsPerKeyword }); let usedQ = query;
+        if (!r.items.length && query !== kw) { log(`「${query}」沒結果，改搜「${kw}」`); r = await scrapeKeyword(page, kw, { scrolls: cfg.scrollsPerKeyword }); usedQ = kw; run.queries[run.queries.length - 1] = `${query}→${kw}`; }
         run.perKeyword[kw] = (run.perKeyword[kw] > 0 ? run.perKeyword[kw] : 0) + r.items.length;
         st.scanned = (st.scanned || 0) + r.items.length;
         if (r.loginWall) loginWall = true;
-        for (const it of r.items) scannedItems.push({ it, kw });
+        for (const it of r.items) scannedItems.push({ it, kw, q: usedQ });
         log(`「${query}」抓到 ${r.items.length} 則`);
       } catch (e) {
         run.perKeyword[kw] = run.perKeyword[kw] > 0 ? run.perKeyword[kw] : -1;
@@ -440,7 +450,7 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
           try { await page.waitForSelector('a[href*="/post/"]', { timeout: 15000 }); } catch { /* 可能沒貼文 */ }
           await page.mouse.wheel(0, 1800); await page.waitForTimeout(rand(1200, 2000));
           const items = (await page.evaluate(extractInPage)).filter((it) => normUser(it.user) === u);
-          for (const it of items) scannedItems.push({ it, kw: '@' + u });
+          for (const it of items) scannedItems.push({ it, kw: '@' + u, q: '@' + u });
           run.perKeyword['@' + u] = items.length;
           log(`關注帳號 @${u} 抓到 ${items.length} 則`);
         } catch (e) { run.warnings.push(`關注帳號 @${u} 失敗：${e.message.split('\n')[0]}`); }
@@ -449,10 +459,12 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
     }
 
     /* ② 過濾出新的線索 */
-    for (const { it, kw } of scannedItems) {
-      if (seen.has(it.url) || fresh.has(it.url)) continue;
-      const m = matchPost(it, cfg, kw);
-      if (m) fresh.set(it.url, { ...m, foundAt: new Date().toISOString() });
+    const drop = (run.drop = { seen: 0, dup: 0 });
+    for (const { it, kw, q } of scannedItems) {
+      if (seen.has(it.url)) { drop.seen++; continue; }
+      if (fresh.has(it.url)) { drop.dup++; continue; }
+      const m = matchPost(it, cfg, kw, drop);
+      if (m) fresh.set(it.url, { ...m, foundQuery: q || kw, foundAt: new Date().toISOString() });
     }
 
     /* ③ 點進新線索看完整內容（搜尋頁常被截斷） */

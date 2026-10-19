@@ -86,6 +86,8 @@ details>summary{font-size:17px;padding:6px 0}
 .rd-now{background:rgba(245,215,122,.25);border-radius:6px;box-shadow:0 0 0 3px rgba(245,215,122,.25);color:#fff}
 .post.reading{outline:2px solid var(--gold2);box-shadow:0 0 0 4px rgba(245,215,122,.18),0 8px 24px rgba(0,0,0,.35)}
 .tago{font-weight:800;color:var(--text);background:#2a2112;border:1px solid var(--gold3);border-radius:999px;padding:3px 10px;font-size:12.5px}
+.viatag{font-weight:800;color:#06210f;background:linear-gradient(180deg,#8ff0b4,#45b874);border:1px solid #3fae6c;border-radius:999px;padding:2px 9px;font-size:12.5px;white-space:nowrap}
+.post .meta>.viatag{font-size:15.5px;padding:5px 13px}
 .tagf{font-weight:700;color:#9fd9b1;background:#10231a;border:1px solid #2f5e43;border-radius:999px;padding:3px 10px;font-size:12.5px}
 .tagf.fresh{background:linear-gradient(180deg,#7fe0a6,#3fae6c);color:#06210f;border-color:#3fae6c}
 .tago.fresh{background:linear-gradient(180deg,#ff8a5c,#d9482b);border-color:#d9482b;color:#fff}
@@ -742,7 +744,7 @@ async function load(silent){
       // 設定只在第一次載入（避免自動刷新蓋掉正在編輯的設定）
       const needCfg=!state.cfg;
       const [doc,cfg]=await Promise.all([a.getPosts(),needCfg?a.getConfig():Promise.resolve(state.cfg)]);
-      state.doc=doc;state.cfg=cfg;state.doc._all=doc.posts||[];applyHidden();
+      (doc.posts||[]).forEach(p=>{p.text=cleanTxt(p.text)});state.doc=doc;state.cfg=cfg;state.doc._all=doc.posts||[];applyHidden();
       if(needCfg)fillSettings();
     }
     if(state.demo)fillSettings();
@@ -1137,6 +1139,7 @@ function renderList(){
         <div class="trow"><span class="ipill ${a.intent.level}">${LV_ICON[a.intent.level]} ${a.intent.level}意向</span><span class="tago ${Date.now()-Date.parse(p.time||p.foundAt)<3*3600e3?'fresh':''}" title="對方發文時間">🕒 發文 ${ago(p.time||p.foundAt)}</span>
         ${p.foundAt?`<span class="tagf ${Date.now()-Date.parse(p.foundAt)<3600e3?'fresh':''}" title="雷達抓到的時間：${esc(new Date(p.foundAt).toLocaleString('zh-TW',{hour12:false}))}">📡 抓到 ${ago(p.foundAt)}</span>`:''}</div>
         ${(p.watched||(state.cfg?.watchUsers||[]).includes(normUser(p.user)))?'<span class="wtag">⭐ 關注</span>':''}
+        ${viaTag(p)}
         <span class="rtag ${a.role}">${a.role}</span>
         ${a.cat!==a.role?`<span class="tag">${esc(a.cat)}</span>`:''}
         <a class="user" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">@${esc(p.user)}</a>
@@ -1258,9 +1261,10 @@ async function loadRuns(){
       ${open?`<li class="rundetail"><div style="width:100%">
         <div class="hint" style="margin:0 0 8px">${esc(new Date(st).toLocaleString('zh-TW',{hour12:false}))}　耗時 ${Math.max(1,Math.round((fin-st)/1000))} 秒${r.detailFetched?`・點開完整內容 ${r.detailFetched} 篇`:''}</div>
         <div class="kwrow" style="margin:0 0 10px">${qs.map(q=>{const k=String(q).split(' ')[0];const n=(r.perKeyword||{})[k]??(r.perKeyword||{})[q];return `<span class="tag">🔍 ${esc(q)}${n!=null?`：${n<0?'✕':n}`:''}</span>`}).join('')||'<span class="hint">（舊紀錄沒有搜尋明細）</span>'}</div>
+        ${r.drop?`<div class="hint" style="margin:0 0 10px">📊 掃到 ${r.scanned||0} 則 → ${[['seen','之前就抓過'],['dup','重複'],['tooOld','太舊'],['noKeyword','內文沒有關鍵字'],['excludeWord','含排除字詞'],['noRegion','沒提到地區'],['excludeUser','排除帳號']].filter(([k])=>r.drop[k]).map(([k,l])=>`${l} ${r.drop[k]}`).join('・')||'—'}${r.drop.words?`<br>🚫 被排除字詞擋掉：${Object.entries(r.drop.words).map(([w,n])=>`「${esc(w)}」${n}`).join('、')}`:''}</div>`:''}
         ${r.warnings&&r.warnings.length?`<div class="banner warn" style="margin:0 0 10px">⚠️ ${esc(r.warnings.join('；'))}</div>`:''}
         ${posts.length?posts.map(p=>{const an_=an(p),i=an_.info,gone=hid.has(p.url);return `<div class="runpost ${RUNPOST.has(p.url)?'open':''}" data-runpost="${esc(p.url)}">
-            <div><span class="ipill ${an_.intent.level}">${an_.intent.level}</span> <span class="rtag ${an_.role}">${an_.role}</span> <b>@${esc(p.user)}</b> <span class="hint" style="margin:0">發文 ${ago(p.time||p.foundAt)}</span>${gone?' <span class="tag" style="opacity:.6">已刪除</span>':''}</div>
+            <div><span class="ipill ${an_.intent.level}">${an_.intent.level}</span> ${viaTag(p)} <span class="rtag ${an_.role}">${an_.role}</span> <b>@${esc(p.user)}</b> <span class="hint" style="margin:0">發文 ${ago(p.time||p.foundAt)}</span>${gone?' <span class="tag" style="opacity:.6">已刪除</span>':''}</div>
             <div class="hint" style="margin:4px 0 0">${esc([[i.city,i.district].filter(Boolean).join(''),i.shop,i.price,i.area,i.phone].filter(Boolean).join('・'))}</div>
             <div class="rptext">${esc(RUNPOST.has(p.url)?p.text:(p.text||'').slice(0,70)+((p.text||'').length>70?'…':''))}</div>
             ${RUNPOST.has(p.url)?`<div class="acts" style="margin-top:8px"><a class="btn sm" href="${esc(p.url)}" target="_blank">開啟貼文</a><button class="btn ghost sm" data-copytext="${esc(p.url)}">📄 複製貼文</button>${gone?'':`<button class="btn ghost sm" data-reply="${esc(p.url)}">✍️ 產生回覆</button><button class="btn ghost sm" data-delpost="${esc(p.url)}">🗑 刪除</button>`}</div>`:''}
@@ -1625,10 +1629,26 @@ const RUNOPEN=new Set(),RUNPOST=new Set();
 document.addEventListener('click',e=>{
   if(e.target.closest('a,button'))return;
   const rp=e.target.closest('[data-runpost]');if(rp){const u=rp.dataset.runpost;RUNPOST.has(u)?RUNPOST.delete(u):RUNPOST.add(u);loadRuns();return}
-  const rr=e.target.closest('[data-run]');if(rr){const k=rr.dataset.run;RUNOPEN.has(k)?RUNOPEN.delete(k):RUNOPEN.add(k);loadRuns()}
+  const rr=e.target.closest('[data-run]');if(rr){const k=rr.dataset.run;
+    if(RUNOPEN.has(k)){RUNOPEN.delete(k);RUNPOST.clear()}else{if(k!=='__next'){[...RUNOPEN].forEach(x=>{if(x!=='__next')RUNOPEN.delete(x)});RUNPOST.clear()}RUNOPEN.add(k)}
+    const sel=`[data-run="${CSS.escape(k)}"]`,top=rr.getBoundingClientRect().top;
+    loadRuns().then(()=>{const el=document.querySelector(sel);if(el){const d=el.getBoundingClientRect().top-top;if(Math.abs(d)>1)window.scrollTo({top:scrollY+d,behavior:'instant'})}})}
 });
 /* ============ 保留頁面狀態 ============ */
+function cleanTxt(t){let a=String(t||'').split('\n');const c=a.findIndex(x=>/^(相關串文|Related threads)$/i.test(x.trim()));if(c>0)a=a.slice(0,c);return a.filter(x=>!/^(串文|Thread)$/i.test(x.trim())).join('\n')}
+function viaOf(p){return p.foundQuery||p.foundBy||((p.keywords||[])[0])||''}
+function viaTag(p){const v=viaOf(p);return v?`<span class="viatag" title="雷達是搜這個才找到的">🔍 ${esc(v)}</span>`:''}
+async function collapseRuns(){
+  if(!RUNOPEN.size&&!RUNPOST.size)return;
+  const key=[...RUNOPEN].find(k=>k!=='__next');const sel=key?`[data-run="${CSS.escape(key)}"]`:null;
+  const el=sel&&document.querySelector(sel),top=el?el.getBoundingClientRect().top:null;
+  RUNOPEN.clear();RUNPOST.clear();await loadRuns();
+  const el2=sel&&document.querySelector(sel);
+  if(el2&&top!=null){const d=el2.getBoundingClientRect().top-top;if(Math.abs(d)>1)window.scrollTo({top:scrollY+d,behavior:'instant'})}
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&state.tab==='status')collapseRuns()});
 function showTab(name){
+  if(state.tab==='status'&&name!=='status'){RUNOPEN.clear();RUNPOST.clear()}
   document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));
   document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('show',s.id==='tab-'+name));
   state.tab=name;saveView();
