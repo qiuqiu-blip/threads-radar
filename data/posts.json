@@ -1,17 +1,120 @@
 {
-  "updatedAt": "2026-10-19T13:36:44.060Z",
+  "updatedAt": "2026-10-19T14:23:48.533Z",
   "lastRun": {
-    "startedAt": "2026-10-19T13:36:44.022Z",
-    "finishedAt": "2026-10-19T13:36:44.024Z",
-    "status": "paused",
-    "scanned": 0,
-    "matched": 0,
-    "newCount": 0,
-    "notified": 0,
-    "perKeyword": {},
-    "warnings": []
+    "startedAt": "2026-10-19T14:19:25.162Z",
+    "finishedAt": "2026-10-19T14:23:48.364Z",
+    "status": "ok",
+    "scanned": 77,
+    "matched": 3,
+    "newCount": 3,
+    "notified": 3,
+    "perKeyword": {
+      "清倉": 18,
+      "整店頂讓": 0,
+      "爐具": 0,
+      "廚房設備": 24,
+      "歇業": 17,
+      "收攤": 18,
+      "店鋪轉讓": 0
+    },
+    "warnings": [],
+    "keywordsUsed": [
+      "清倉",
+      "整店頂讓",
+      "爐具",
+      "廚房設備",
+      "歇業",
+      "收攤",
+      "店鋪轉讓"
+    ],
+    "queries": [
+      "清倉",
+      "整店頂讓",
+      "爐具",
+      "廚房設備",
+      "歇業",
+      "收攤",
+      "店鋪轉讓"
+    ],
+    "loginMode": "guest",
+    "drop": {
+      "seen": 37,
+      "dup": 0,
+      "noContext": 28,
+      "noKeyword": 5,
+      "tooOld": 3,
+      "words": {
+        "家具": 1
+      },
+      "excludeWord": 1
+    },
+    "detailFetched": 3,
+    "newUrls": [
+      "https://www.threads.com/@mj039880288/post/DerYbG4FV-k",
+      "https://www.threads.com/@smart.shop2080/post/Denm3WdFA4l",
+      "https://www.threads.com/@shockg7777/post/DeoLtQDkVSX"
+    ],
+    "pushMode": "on",
+    "nextInMinutes": 21
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T14:19:25.162Z",
+      "finishedAt": "2026-10-19T14:23:48.364Z",
+      "status": "ok",
+      "scanned": 77,
+      "matched": 3,
+      "newCount": 3,
+      "notified": 3,
+      "perKeyword": {
+        "清倉": 18,
+        "整店頂讓": 0,
+        "爐具": 0,
+        "廚房設備": 24,
+        "歇業": 17,
+        "收攤": 18,
+        "店鋪轉讓": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "清倉",
+        "整店頂讓",
+        "爐具",
+        "廚房設備",
+        "歇業",
+        "收攤",
+        "店鋪轉讓"
+      ],
+      "queries": [
+        "清倉",
+        "整店頂讓",
+        "爐具",
+        "廚房設備",
+        "歇業",
+        "收攤",
+        "店鋪轉讓"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 37,
+        "dup": 0,
+        "noContext": 28,
+        "noKeyword": 5,
+        "tooOld": 3,
+        "words": {
+          "家具": 1
+        },
+        "excludeWord": 1
+      },
+      "detailFetched": 3,
+      "newUrls": [
+        "https://www.threads.com/@mj039880288/post/DerYbG4FV-k",
+        "https://www.threads.com/@smart.shop2080/post/Denm3WdFA4l",
+        "https://www.threads.com/@shockg7777/post/DeoLtQDkVSX"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 21
+    },
     {
       "startedAt": "2026-10-19T13:36:44.022Z",
       "finishedAt": "2026-10-19T13:36:44.024Z",
@@ -701,6 +804,59 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DerYbG4FV-k",
+      "user": "mj039880288",
+      "url": "https://www.threads.com/@mj039880288/post/DerYbG4FV-k",
+      "authorUrl": "https://www.threads.com/@mj039880288",
+      "text": "《更正》115/10/27-29 三天暫停營業\n因應貴賓需求、客流量大\n將增加廚房設備，已便利加快出餐速度\n因此內部將增加設備，暫停營業三天\n特此公告\n造成不便敬請見諒\n#休息\n美礁點茶餐廳",
+      "time": "2026-10-19T13:37:17.000Z",
+      "keywords": [
+        "廚房設備"
+      ],
+      "regions": [],
+      "foundBy": "廚房設備",
+      "foundQuery": "廚房設備",
+      "foundAt": "2026-10-19T14:23:26.471Z"
+    },
+    {
+      "code": "Denm3WdFA4l",
+      "user": "smart.shop2080",
+      "url": "https://www.threads.com/@smart.shop2080/post/Denm3WdFA4l",
+      "authorUrl": "https://www.threads.com/@smart.shop2080",
+      "text": "3.7 萬次瀏覽\n各位老闆\n大家創業第幾年了呢\n創業這麼辛苦，想知道有人創業五年以上了嗎\npinsintea\n太平飲料店\n🏮 一間茶坊，十八年初心；一杯好茶，一份堅持。\n有些味道，喝過就忘不了。\n有些堅持，走過歲月依然不變。\n從一間小小的茶坊，到每天為茶友準備一杯好茶，茶品心坊始終相信，真正值得傳承的，不只是茶的味道，更是對品質的講究、對細節的堅持，以及每一次將茶遞到客人手中的真誠。\n我們保留傳統茶文化的底蘊，也用心走進現代人的日常。\n從嚴選茶葉、到每一杯飲品的細節，只為讓你在忙碌的生活裡，依然能喝到一杯值得細細品味的好茶。\n我們不盲從，也不將就。\n因為好茶，值得用心對待；\n而每一位走進茶品心坊的你，都值得被認真款待。\n茶品心坊｜老派茶心，擁抱日常。\n以傳統為根，以品質為本，以真心傳遞每一口茶香。\n不只做好一杯茶，\n更要把一份初心，長長久久地傳下去。🍃\n#茶品心坊 #品牌故事 #老派茶心 #用心品味 #台中 #推薦 #日常 #紅茶 #手作 #團購\n請問一下您開業18年了嗎👍\npinsintea\n是的、一路上很多波折都撐過去了\n好厲害呀真不簡單👍\n請問您的茶有哪些品項呢\npinsintea",
+      "time": "2026-10-18T02:26:30.000Z",
+      "keywords": [
+        "飲料店",
+        "創業"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "廚房設備",
+      "foundQuery": "廚房設備",
+      "foundAt": "2026-10-19T14:23:26.471Z",
+      "full": true
+    },
+    {
+      "code": "DeoLtQDkVSX",
+      "user": "shockg7777",
+      "url": "https://www.threads.com/@shockg7777/post/DeoLtQDkVSX",
+      "authorUrl": "https://www.threads.com/@shockg7777",
+      "text": "67次瀏覽\nsmart.shop2080\n各位老闆\n大家創業第幾年了呢\n剛起步不久～但技術很久\n互追❤️\n你好👋 老闆我是81年級生好溝通！\n專營實心不銹鋼檯面，不銹鋼製品，衣櫃，衣架，截油槽，醫療設備 ，廚房設備規劃，金屬製品可以找我唷，高雄廠，全台服務。\nsuperrich492588\n請加賴Panarchi",
+      "time": "2026-10-18T02:26:30.000Z",
+      "keywords": [
+        "廚房設備",
+        "創業"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "廚房設備",
+      "foundQuery": "廚房設備",
+      "foundAt": "2026-10-19T14:23:26.471Z",
+      "full": true
+    },
     {
       "code": "Deq9k5zGAOV",
       "user": "_viviliu_",
@@ -2020,9 +2176,9 @@
   ],
   "kwStats": {
     "清倉": {
-      "count": 2,
-      "last": 1792395338195,
-      "scanned": 17,
+      "count": 3,
+      "last": 1792419566009,
+      "scanned": 35,
       "leads": 0
     },
     "頂店": {
@@ -2056,9 +2212,9 @@
       "leads": 19
     },
     "收攤": {
-      "count": 2,
-      "last": 1792401786337,
-      "scanned": 20,
+      "count": 3,
+      "last": 1792419728615,
+      "scanned": 38,
       "leads": 0
     },
     "帶走價": {
@@ -2074,10 +2230,10 @@
       "leads": 0
     },
     "廚房設備": {
-      "count": 2,
-      "last": 1792401800121,
-      "scanned": 48,
-      "leads": 6
+      "count": 3,
+      "last": 1792419699749,
+      "scanned": 72,
+      "leads": 9
     },
     "含設備": {
       "count": 2,
@@ -2098,8 +2254,8 @@
       "leads": 0
     },
     "整店頂讓": {
-      "count": 2,
-      "last": 1792405651092,
+      "count": 3,
+      "last": 1792419579323,
       "scanned": 0,
       "leads": 0
     },
@@ -2152,9 +2308,9 @@
       "leads": 0
     },
     "歇業": {
-      "count": 1,
-      "last": 1792384767100,
-      "scanned": 16,
+      "count": 2,
+      "last": 1792419714384,
+      "scanned": 33,
       "leads": 0
     },
     "店面轉讓": {
@@ -2224,14 +2380,14 @@
       "leads": 0
     },
     "店鋪轉讓": {
-      "count": 1,
-      "last": 1792397830927,
+      "count": 2,
+      "last": 1792419745242,
       "scanned": 0,
       "leads": 0
     },
     "爐具": {
-      "count": 1,
-      "last": 1792401747716,
+      "count": 2,
+      "last": 1792419640446,
       "scanned": 0,
       "leads": 0
     },
@@ -2248,39 +2404,43 @@
       "leads": 5
     }
   },
-  "nextScanAt": "2026-10-19T13:38:47.580Z",
+  "nextScanAt": "2026-10-19T14:45:05.178Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T13:38:47.580Z",
-    "madeAt": "2026-10-19T13:15:53.049Z",
+    "at": "2026-10-19T14:45:05.178Z",
+    "madeAt": "2026-10-19T14:23:48.529Z",
     "items": [
       {
-        "kw": "清倉",
-        "q": "清倉"
+        "kw": "裝潢",
+        "q": "裝潢"
       },
       {
-        "kw": "整店頂讓",
-        "q": "整店頂讓"
+        "kw": "店面出租",
+        "q": "店面出租"
       },
       {
-        "kw": "爐具",
-        "q": "爐具"
+        "kw": "拆除",
+        "q": "拆除"
       },
       {
-        "kw": "廚房設備",
-        "q": "廚房設備"
+        "kw": "創業",
+        "q": "創業"
       },
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "餐車",
+        "q": "餐車"
       },
       {
-        "kw": "收攤",
-        "q": "收攤"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "店鋪轉讓",
-        "q": "店鋪轉讓"
+        "kw": "排油煙",
+        "q": "排油煙"
+      },
+      {
+        "kw": "開店",
+        "q": "開店"
       }
     ]
   }
