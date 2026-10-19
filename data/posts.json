@@ -1,65 +1,122 @@
 {
-  "updatedAt": "2026-10-19T15:05:56.751Z",
+  "updatedAt": "2026-10-19T16:41:16.007Z",
   "lastRun": {
-    "startedAt": "2026-10-19T15:03:05.788Z",
-    "finishedAt": "2026-10-19T15:05:56.696Z",
+    "startedAt": "2026-10-19T16:36:53.216Z",
+    "finishedAt": "2026-10-19T16:41:15.983Z",
     "status": "ok",
-    "scanned": 135,
-    "matched": 2,
-    "newCount": 2,
-    "notified": 2,
+    "scanned": 96,
+    "matched": 1,
+    "newCount": 1,
+    "notified": 1,
     "perKeyword": {
-      "裝潢": 19,
-      "店面出租": 20,
-      "拆除": 20,
-      "創業": 20,
-      "餐車": 20,
-      "二手設備": 19,
-      "排油煙": 0,
-      "開店": 17
+      "二手冰箱": 19,
+      "含設備": 0,
+      "店面頂讓": 20,
+      "全店出清": 0,
+      "退租": 18,
+      "冷凍櫃": 22,
+      "關店": 0,
+      "設備出清": 17
     },
     "warnings": [],
     "keywordsUsed": [
-      "裝潢",
-      "店面出租",
-      "拆除",
-      "創業",
-      "餐車",
-      "二手設備",
-      "排油煙",
-      "開店"
+      "二手冰箱",
+      "含設備",
+      "店面頂讓",
+      "全店出清",
+      "退租",
+      "冷凍櫃",
+      "關店",
+      "設備出清"
     ],
     "queries": [
-      "裝潢",
-      "店面出租",
-      "拆除",
-      "創業",
-      "餐車",
-      "二手設備",
-      "排油煙",
-      "開店"
+      "二手冰箱",
+      "含設備",
+      "店面頂讓",
+      "全店出清",
+      "退租",
+      "冷凍櫃",
+      "關店",
+      "設備出清"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 19,
+      "seen": 29,
       "dup": 0,
+      "noKeyword": 15,
+      "noContext": 28,
       "words": {
-        "家具": 1
+        "定居": 1
       },
       "excludeWord": 1,
-      "noContext": 67,
-      "noKeyword": 32,
-      "tooOld": 14
+      "tooOld": 22
     },
-    "detailFetched": 2,
+    "detailFetched": 1,
     "newUrls": [
-      "https://www.threads.com/@aka.83314/post/DerQIhxnSXi",
-      "https://www.threads.com/@krisckc_/post/Deqok2vH3Of"
+      "https://www.threads.com/@studing_0408/post/DepLTxJGW--"
     ],
     "pushMode": "on",
-    "nextInMinutes": 34
+    "nextInMinutes": 24
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T16:36:53.216Z",
+      "finishedAt": "2026-10-19T16:41:15.983Z",
+      "status": "ok",
+      "scanned": 96,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "二手冰箱": 19,
+        "含設備": 0,
+        "店面頂讓": 20,
+        "全店出清": 0,
+        "退租": 18,
+        "冷凍櫃": 22,
+        "關店": 0,
+        "設備出清": 17
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "二手冰箱",
+        "含設備",
+        "店面頂讓",
+        "全店出清",
+        "退租",
+        "冷凍櫃",
+        "關店",
+        "設備出清"
+      ],
+      "queries": [
+        "二手冰箱",
+        "含設備",
+        "店面頂讓",
+        "全店出清",
+        "退租",
+        "冷凍櫃",
+        "關店",
+        "設備出清"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 29,
+        "dup": 0,
+        "noKeyword": 15,
+        "noContext": 28,
+        "words": {
+          "定居": 1
+        },
+        "excludeWord": 1,
+        "tooOld": 22
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@studing_0408/post/DepLTxJGW--"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 24
+    },
     {
       "startedAt": "2026-10-19T15:03:05.788Z",
       "finishedAt": "2026-10-19T15:05:56.696Z",
@@ -865,6 +922,22 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DepLTxJGW--",
+      "user": "studing_0408",
+      "url": "https://www.threads.com/@studing_0408/post/DepLTxJGW--",
+      "authorUrl": "https://www.threads.com/@studing_0408",
+      "text": "395次瀏覽\n【急需二手冰箱】\n想徵一台二手冰箱，功能正常、可以正常使用就可以了！\n因為家裡近期快要拆遷，不想再買新的冰箱，只希望先找一台能勉強使用的撐一陣子～\n📍地點：雙北 希望可以面交\n💰價格：3000左右\n如果有家裡用不到、想出清的小冰箱，歡迎私訊我，謝謝！\nandongni7073dz",
+      "time": "2026-10-18T17:04:12.000Z",
+      "keywords": [
+        "二手冰箱"
+      ],
+      "regions": [],
+      "foundBy": "二手冰箱",
+      "foundQuery": "二手冰箱",
+      "foundAt": "2026-10-19T16:41:10.201Z",
+      "full": true
+    },
     {
       "code": "DerQIhxnSXi",
       "user": "aka.83314",
@@ -2287,9 +2360,9 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 2,
-      "last": 1792401772589,
-      "scanned": 40,
+      "count": 3,
+      "last": 1792427887348,
+      "scanned": 60,
       "leads": 0
     },
     "二手設備": {
@@ -2299,8 +2372,8 @@
       "leads": 1
     },
     "關店": {
-      "count": 2,
-      "last": 1792405770694,
+      "count": 3,
+      "last": 1792427992923,
       "scanned": 0,
       "leads": 0
     },
@@ -2335,8 +2408,8 @@
       "leads": 9
     },
     "含設備": {
-      "count": 2,
-      "last": 1792405710458,
+      "count": 3,
+      "last": 1792427829687,
       "scanned": 0,
       "leads": 0
     },
@@ -2365,9 +2438,9 @@
       "leads": 0
     },
     "退租": {
-      "count": 2,
-      "last": 1792405637191,
-      "scanned": 16,
+      "count": 3,
+      "last": 1792427964038,
+      "scanned": 34,
       "leads": 3
     },
     "低價出清": {
@@ -2395,9 +2468,9 @@
       "leads": 1
     },
     "設備出清": {
-      "count": 2,
-      "last": 1792407604892,
-      "scanned": 16,
+      "count": 3,
+      "last": 1792428054321,
+      "scanned": 33,
       "leads": 0
     },
     "蒸烤箱": {
@@ -2473,8 +2546,8 @@
       "leads": 0
     },
     "全店出清": {
-      "count": 1,
-      "last": 1792397805265,
+      "count": 2,
+      "last": 1792427903274,
       "scanned": 0,
       "leads": 0
     },
@@ -2543,45 +2616,57 @@
       "last": 1792422329875,
       "scanned": 17,
       "leads": 0
+    },
+    "二手冰箱": {
+      "count": 1,
+      "last": 1792427813954,
+      "scanned": 19,
+      "leads": 1
+    },
+    "冷凍櫃": {
+      "count": 1,
+      "last": 1792427978994,
+      "scanned": 22,
+      "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T15:40:14.615Z",
+  "nextScanAt": "2026-10-19T17:05:15.026Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T15:40:14.615Z",
-    "madeAt": "2026-10-19T15:05:56.746Z",
+    "at": "2026-10-19T17:05:15.026Z",
+    "madeAt": "2026-10-19T16:41:16.003Z",
     "items": [
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "含設備",
-        "q": "含設備"
+        "kw": "咖啡機",
+        "q": "咖啡機"
       },
       {
-        "kw": "店面頂讓",
-        "q": "店面頂讓"
+        "kw": "收店",
+        "q": "收店"
       },
       {
-        "kw": "全店出清",
-        "q": "全店出清"
+        "kw": "生財器具",
+        "q": "生財器具"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "盤讓",
+        "q": "盤讓"
       },
       {
-        "kw": "冷凍櫃",
-        "q": "冷凍櫃"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "關店",
-        "q": "關店"
+        "kw": "招牌",
+        "q": "招牌"
       },
       {
-        "kw": "設備出清",
-        "q": "設備出清"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       }
     ]
   }
