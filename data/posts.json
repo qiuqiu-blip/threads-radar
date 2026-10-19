@@ -1,38 +1,70 @@
 {
-  "updatedAt": "2026-10-19T03:35:11.148Z",
+  "updatedAt": "2026-10-19T04:40:06.906Z",
   "lastRun": {
-    "startedAt": "2026-10-19T03:33:34.190Z",
-    "finishedAt": "2026-10-19T03:35:11.109Z",
+    "startedAt": "2026-10-19T04:38:38.049Z",
+    "finishedAt": "2026-10-19T04:40:06.881Z",
     "status": "ok",
-    "scanned": 46,
-    "matched": 4,
-    "newCount": 4,
-    "notified": 4,
+    "scanned": 16,
+    "matched": 0,
+    "newCount": 0,
+    "notified": 0,
     "perKeyword": {
-      "低價出清": 9,
-      "搬家出清": 0,
-      "咖啡機": 19,
-      "製冰機": 18
+      "設備出清": 0,
+      "蒸烤箱": 0,
+      "歇業": 16,
+      "店面轉讓": 0
     },
     "warnings": [],
     "keywordsUsed": [
-      "低價出清",
-      "搬家出清",
-      "咖啡機",
-      "製冰機"
+      "設備出清",
+      "蒸烤箱",
+      "歇業",
+      "店面轉讓"
     ],
     "queries": [
-      "低價出清",
-      "搬家出清 台南",
-      "咖啡機",
-      "製冰機"
+      "設備出清 台南",
+      "蒸烤箱 台中",
+      "歇業",
+      "店面轉讓"
     ],
     "loginMode": "guest",
-    "detailFetched": 4,
+    "detailFetched": 0,
     "pushMode": "on",
-    "nextInMinutes": 42
+    "nextInMinutes": 68
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T04:38:38.049Z",
+      "finishedAt": "2026-10-19T04:40:06.881Z",
+      "status": "ok",
+      "scanned": 16,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {
+        "設備出清": 0,
+        "蒸烤箱": 0,
+        "歇業": 16,
+        "店面轉讓": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "設備出清",
+        "蒸烤箱",
+        "歇業",
+        "店面轉讓"
+      ],
+      "queries": [
+        "設備出清 台南",
+        "蒸烤箱 台中",
+        "歇業",
+        "店面轉讓"
+      ],
+      "loginMode": "guest",
+      "detailFetched": 0,
+      "pushMode": "on",
+      "nextInMinutes": 68
+    },
     {
       "startedAt": "2026-10-19T03:33:34.190Z",
       "finishedAt": "2026-10-19T03:35:11.109Z",
@@ -1085,7 +1117,31 @@
       "last": 1792380869037,
       "scanned": 18,
       "leads": 1
+    },
+    "設備出清": {
+      "count": 1,
+      "last": 1792384718380,
+      "scanned": 0,
+      "leads": 0
+    },
+    "蒸烤箱": {
+      "count": 1,
+      "last": 1792384742781,
+      "scanned": 0,
+      "leads": 0
+    },
+    "歇業": {
+      "count": 1,
+      "last": 1792384767100,
+      "scanned": 16,
+      "leads": 0
+    },
+    "店面轉讓": {
+      "count": 1,
+      "last": 1792384780778,
+      "scanned": 0,
+      "leads": 0
     }
   },
-  "nextScanAt": "2026-10-19T04:16:52.243Z"
+  "nextScanAt": "2026-10-19T05:48:03.814Z"
 }
