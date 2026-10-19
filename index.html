@@ -1235,13 +1235,14 @@ function nextRunRow(){
   const doc=state.doc||{},cfg=state.cfg||{};let txt;
   if(cfg.enabled===false)txt='雷達已暫停，不會自動執行';
   else{
-    const now=Date.now();let next=Date.parse(doc.nextScanAt||'')||now;if(next<now)next=now;
+    const now=Date.now();let next=Date.parse(doc.nextScanAt||'')||now;const late=Math.round((now-next)/6e4);if(next<now)next=now;
     const rh=restHours(cfg);let guard=0;
     while(rh.includes(tzHour(new Date(next)))&&guard++<24){const d=new Date(next);d.setMinutes(0,0,0);next=d.getTime()+3600e3}
     const mins=Math.max(0,Math.round((next-now)/6e4));const d=new Date(next);
     const hm=`${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
     txt=mins<=5?`約 ${hm}（5 分鐘內）`:`約 ${hm}（${mins>=60?Math.floor(mins/60)+' 小時 ':''}${mins%60} 分後）`;
     if(rh.includes(tzHour()))txt+='・目前休息中';
+    else if(late>8)txt=`已超過預定 ${late} 分鐘・等 GitHub 排隊中`;
   }
   const open=RUNOPEN.has('__next');
   const pool=new Set([...(cfg.mustKeywords||[]),...(cfg.keywords||[])].map(kwBase)),ks=doc.kwStats||{};
