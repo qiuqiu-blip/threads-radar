@@ -1,47 +1,118 @@
 {
-  "updatedAt": "2026-10-19T09:24:25.146Z",
+  "updatedAt": "2026-10-19T10:31:20.405Z",
   "lastRun": {
-    "startedAt": "2026-10-19T09:22:27.338Z",
-    "finishedAt": "2026-10-19T09:24:24.898Z",
+    "startedAt": "2026-10-19T10:27:03.334Z",
+    "finishedAt": "2026-10-19T10:31:20.364Z",
     "status": "ok",
-    "scanned": 82,
-    "matched": 4,
-    "newCount": 4,
-    "notified": 4,
+    "scanned": 39,
+    "matched": 13,
+    "newCount": 13,
+    "notified": 13,
     "perKeyword": {
-      "爐具": 0,
-      "店面頂讓": 20,
-      "收攤": 20,
-      "廚房設備": 23,
-      "頂讓": 19
+      "飲料": 23,
+      "退租": 16,
+      "整店頂讓": 0,
+      "含設備": 0,
+      "關店": 0
     },
     "warnings": [],
     "keywordsUsed": [
-      "爐具",
-      "店面頂讓",
-      "收攤",
-      "廚房設備",
-      "頂讓"
+      "飲料",
+      "退租",
+      "整店頂讓",
+      "含設備",
+      "關店"
     ],
     "queries": [
-      "爐具",
-      "店面頂讓",
-      "收攤",
-      "廚房設備",
-      "頂讓"
+      "飲料",
+      "退租",
+      "整店頂讓",
+      "含設備",
+      "關店"
     ],
     "loginMode": "guest",
+    "drop": {
+      "seen": 0,
+      "dup": 0,
+      "tooOld": 15,
+      "noKeyword": 11
+    },
     "detailFetched": 6,
     "newUrls": [
-      "https://www.threads.com/@libermann88/post/Deq4hmjgWcF",
-      "https://www.threads.com/@a_chang1984/post/DeqGu-bj5wy",
-      "https://www.threads.com/@ringo.design.tw/post/DeoDYUvElaO",
-      "https://www.threads.com/@andy__828__/post/DembSCrD6mc"
+      "https://www.threads.com/@yongtinghiew/post/DerCRTsjA3w",
+      "https://www.threads.com/@do_.you.know/post/DerA2AAICqt",
+      "https://www.threads.com/@sheep96_06_14/post/DerCKh7mp1T",
+      "https://www.threads.com/@armadillo.6489485/post/Deq6H3dDwG5",
+      "https://www.threads.com/@llama.970203/post/Deqy9kHGQQe",
+      "https://www.threads.com/@j0045613/post/Deqx-5fFGXH",
+      "https://www.threads.com/@luyuxin140/post/DeqtP4vneDC",
+      "https://www.threads.com/@cixxte/post/Deqc0bQEbZw",
+      "https://www.threads.com/@chi.huahua6473/post/DeqaMa8nyeT",
+      "https://www.threads.com/@kiancheng17/post/DeqMF56H6gL",
+      "https://www.threads.com/@jie030720/post/DeqEvrrE6J6",
+      "https://www.threads.com/@dcl_tw/post/Deo0G-Cn65S",
+      "https://www.threads.com/@aaa_aaa_amy/post/DentDUmGneM"
     ],
     "pushMode": "on",
-    "nextInMinutes": 52
+    "nextInMinutes": 22
   },
   "runs": [
+    {
+      "startedAt": "2026-10-19T10:27:03.334Z",
+      "finishedAt": "2026-10-19T10:31:20.364Z",
+      "status": "ok",
+      "scanned": 39,
+      "matched": 13,
+      "newCount": 13,
+      "notified": 13,
+      "perKeyword": {
+        "飲料": 23,
+        "退租": 16,
+        "整店頂讓": 0,
+        "含設備": 0,
+        "關店": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "退租",
+        "整店頂讓",
+        "含設備",
+        "關店"
+      ],
+      "queries": [
+        "飲料",
+        "退租",
+        "整店頂讓",
+        "含設備",
+        "關店"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 0,
+        "dup": 0,
+        "tooOld": 15,
+        "noKeyword": 11
+      },
+      "detailFetched": 6,
+      "newUrls": [
+        "https://www.threads.com/@yongtinghiew/post/DerCRTsjA3w",
+        "https://www.threads.com/@do_.you.know/post/DerA2AAICqt",
+        "https://www.threads.com/@sheep96_06_14/post/DerCKh7mp1T",
+        "https://www.threads.com/@armadillo.6489485/post/Deq6H3dDwG5",
+        "https://www.threads.com/@llama.970203/post/Deqy9kHGQQe",
+        "https://www.threads.com/@j0045613/post/Deqx-5fFGXH",
+        "https://www.threads.com/@luyuxin140/post/DeqtP4vneDC",
+        "https://www.threads.com/@cixxte/post/Deqc0bQEbZw",
+        "https://www.threads.com/@chi.huahua6473/post/DeqaMa8nyeT",
+        "https://www.threads.com/@kiancheng17/post/DeqMF56H6gL",
+        "https://www.threads.com/@jie030720/post/DeqEvrrE6J6",
+        "https://www.threads.com/@dcl_tw/post/Deo0G-Cn65S",
+        "https://www.threads.com/@aaa_aaa_amy/post/DentDUmGneM"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 22
+    },
     {
       "startedAt": "2026-10-19T09:22:27.338Z",
       "finishedAt": "2026-10-19T09:24:24.898Z",
@@ -485,6 +556,212 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DerCRTsjA3w",
+      "user": "yongtinghiew",
+      "url": "https://www.threads.com/@yongtinghiew/post/DerCRTsjA3w",
+      "authorUrl": "https://www.threads.com/@yongtinghiew",
+      "text": "NamtanFilm\n點餐的胖胖好可愛 😂😂\n🗣️：Lunar 要喝什麼呢？\n🗣️：Lunar 要喝 Jewel 飲料。\n🗣️：哦，好呀～\n🐼：你們有什麼飲料呢？\n🗣️：寶貝，也想吃蛋糕嗎？\n🐼：有菜單嗎？你們有 Vimmy 蛋糕嗎？\n🗣️：我們有 Vimmy 蛋糕喔，你有看到嗎？\n🐼：我想吃 Vimmy 蛋糕 。\n🗣️：為什麼 Lunar 想吃 Vimmy 蛋糕呢？前幾天 ANY 也想吃 Vimmy 蛋糕呢。\n🐼：因為 Vimmy 蛋糕很好吃呀！\n🗣️：好呀，那我去幫你做喔。\n🐼：謝謝你呀～\n🗣️：不客氣喔～\nx.com/maews…",
+      "time": "2026-10-19T10:24:01.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.821Z"
+    },
+    {
+      "code": "DerA2AAICqt",
+      "user": "do_.you.know",
+      "url": "https://www.threads.com/@do_.you.know/post/DerA2AAICqt",
+      "authorUrl": "https://www.threads.com/@do_.you.know",
+      "text": "免費飲料\n系金欸!! 不是詐騙😍\n​\\ 加入鶴茶樓官方LINE /\n👉🏻就送「紅鶴烏龍」飲品兌換券1張\n免費飲料\n📌鶴茶樓\n📅活動時間：即日起~10/31\n📍限忠孝復興店｜南西誠品店使用\n🔗 line.me/R/ti…\n⚠️注意事項：\n1.活動對象限此期間首次加入好友者\n2.領券後需於2週內使用，兌換券限量贈送，發完為止\n3.限於鶴茶樓X你訂平台使用，僅限到店自取\n4.各項優惠不得併用，不適用環保杯折扣\npage.line.me\n鶴茶樓 Hechalou | LINE Official Account",
+      "time": "2026-10-19T10:11:14.000Z",
+      "keywords": [
+        "免費",
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.821Z",
+      "full": true
+    },
+    {
+      "code": "DerCKh7mp1T",
+      "user": "sheep96_06_14",
+      "url": "https://www.threads.com/@sheep96_06_14/post/DerCKh7mp1T",
+      "authorUrl": "https://www.threads.com/@sheep96_06_14",
+      "text": "7mkkyu\n朝陽科大\n剛剛在2餐的老哥你叫我點的我點了 吃了要回來找你找不到 結論還可以但好辣\n我剛剛跑去買飲料ㄏㄏ\n還可以就行\n7mkkyu\n有喔脆真的找人神奇",
+      "time": "2026-10-19T10:07:38.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.822Z",
+      "full": true
+    },
+    {
+      "code": "Deq6H3dDwG5",
+      "user": "armadillo.6489485",
+      "url": "https://www.threads.com/@armadillo.6489485/post/Deq6H3dDwG5",
+      "authorUrl": "https://www.threads.com/@armadillo.6489485",
+      "text": "613次瀏覽\nzzrjwqy\n摩斯漢堡\n無法提供此內容\n看到別人分享優惠券 馬上去買\n大阪燒雙蝦卡啦海陸堡*2+飲料*2\n輸入優惠代碼\n結帳$30\n超划算的 漢堡份量很足 炸蝦好吃\n補圖⬇️\nzzrjwqy\n哈哈～開心有幫到你啦✨謝謝回饋喔🫰🏻",
+      "time": "2026-10-19T08:42:20.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.822Z",
+      "full": true
+    },
+    {
+      "code": "Deqy9kHGQQe",
+      "user": "llama.970203",
+      "url": "https://www.threads.com/@llama.970203/post/Deqy9kHGQQe",
+      "authorUrl": "https://www.threads.com/@llama.970203",
+      "text": "有時候真的很佩服\n那些可以每天只喝水的人\n我只要下午一到\n就會突然想喝一杯飲料🤣\n明明也沒有很渴\n就是嘴巴想喝點有味道的\n你們最常喝哪間飲料店？\n有沒有什麼必點的？",
+      "time": "2026-10-19T08:09:56.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.821Z"
+    },
+    {
+      "code": "Deqx-5fFGXH",
+      "user": "j0045613",
+      "url": "https://www.threads.com/@j0045613/post/Deqx-5fFGXH",
+      "authorUrl": "https://www.threads.com/@j0045613",
+      "text": "居家清潔\n最近房子退租了，想找退租清潔各位網友有推薦的嗎？\n地點在台北市大同區民生西路，坪數大約10坪",
+      "time": "2026-10-19T08:01:23.000Z",
+      "keywords": [
+        "退租"
+      ],
+      "regions": [
+        "台北"
+      ],
+      "foundBy": "退租",
+      "foundQuery": "退租",
+      "foundAt": "2026-10-19T10:30:30.822Z"
+    },
+    {
+      "code": "DeqtP4vneDC",
+      "user": "luyuxin140",
+      "url": "https://www.threads.com/@luyuxin140/post/DeqtP4vneDC",
+      "authorUrl": "https://www.threads.com/@luyuxin140",
+      "text": "下午好 可以在工作室玩著遊戲 喝著咖啡飲料的 老闆天天在催我 脆上有沒有需要的看看喔\n📌 【職缺名稱】 線上小幫手\n✨ 【工作亮點】\n不用社交、不接電話、不開鏡頭，安靜做事即可。\n完全遠端，你要在床上、沙發上還是咖啡廳工作都隨便你。\n📝 【工作內容】\n純線上文字回覆客人問題、整理訂單。\n⏰ 【工時與待遇】\n正職（日上8小時）： 月薪 45,000（全勤＋3,000）+ 業績提成\n兼職（日上3小時）： 時薪 280 元起 + 提成（一週需滿 9 小時）\n（拜託～我真的不想再發一次文，讓我這次就招到人🙏）￼\n諮詢line:@903bhotg",
+      "time": "2026-10-19T07:20:00.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.822Z"
+    },
+    {
+      "code": "Deqc0bQEbZw",
+      "user": "cixxte",
+      "url": "https://www.threads.com/@cixxte/post/Deqc0bQEbZw",
+      "authorUrl": "https://www.threads.com/@cixxte",
+      "text": "中壢居家清潔\n有推薦中壢的退租清潔打掃嗎 11/3左右",
+      "time": "2026-10-19T04:56:27.000Z",
+      "keywords": [
+        "退租"
+      ],
+      "regions": [],
+      "foundBy": "退租",
+      "foundQuery": "退租",
+      "foundAt": "2026-10-19T10:30:30.822Z"
+    },
+    {
+      "code": "DeqaMa8nyeT",
+      "user": "chi.huahua6473",
+      "url": "https://www.threads.com/@chi.huahua6473/post/DeqaMa8nyeT",
+      "authorUrl": "https://www.threads.com/@chi.huahua6473",
+      "text": "跟省吃儉用沒啥關係\n吃的東西才有差吧？\n我阿公種田 省吃儉用 活到96自然老死\n現在人沒飲料、高油高鈉活不下去",
+      "time": "2026-10-19T04:33:30.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.822Z"
+    },
+    {
+      "code": "DeqMF56H6gL",
+      "user": "kiancheng17",
+      "url": "https://www.threads.com/@kiancheng17/post/DeqMF56H6gL",
+      "authorUrl": "https://www.threads.com/@kiancheng17",
+      "text": "3.5 萬次瀏覽\n8yotea\n【八曜和茶關於台中東海門市食品衛生安全事件的致歉與處理說明】\n針對顧客反映於台中東海門市購買的飲品中發現蛞蝓一事，八曜和茶向當事顧客鄭重致歉；此次事件讓顧客受到驚嚇與感到擔憂，也影響了消費者對八曜飲品衛生的信任，我們深感抱歉。\n接獲通知後，品牌執行長、總部一線主管及門市店經理已於今日（10月19日）凌晨第一時間前往醫院，陪同顧客進行檢查，我們會持續關心顧客的身體狀況，協助後續追蹤。\n我們理解這次事件造成顧客及消費者的不安，也一定會負起店家應有的責任，已採取並將持續落實以下措施：\n做過飲料業但想不通從那個步驟可以跑進去🫪\ncaiwenhao98\n主要是那玩意兒又那麼慢⋯\nclosakoy\n被你這麼一說\n感覺案情不單純\nabc.556678\n對… 蟑螂還能解釋\n這種慢的要死的生物怎麼不被發現\nben_su__\n除了用通靈術 想不到其他了\nfishask5566778\n是綱手奶奶嗎😆\nliho_meow\n剛好爬在天花板 然後又剛好在封杯的那幾秒掉進去嗎🫪",
+      "time": "2026-10-19T01:57:09.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.822Z",
+      "full": true
+    },
+    {
+      "code": "DeqEvrrE6J6",
+      "user": "jie030720",
+      "url": "https://www.threads.com/@jie030720/post/DeqEvrrE6J6",
+      "authorUrl": "https://www.threads.com/@jie030720",
+      "text": "住在彰化縣花壇國小附近的大家門要關好，鎖好。要小心這個人-男士戴著紅色帽子，我感覺是精神異常，上次在花壇國小對面的7-11把學童剛買的寶特瓶飲料拿走，孩子不敢追，怕他有攻擊，我當時在等咖啡，在回家的路上看到他想把飲料給別人(不知道是不是想賣換錢用)，今天早上我準備要騎車載小孩去幼兒園，想說先把車庫門打開，在穿鞋，結果他就走進來，我媽說家裡沒有回收的東西，他好像沒有拿到東西就不走，我就請爸爸出來，結果他看到鞋櫃上有垃圾袋就拿，爸爸搶過來，兇他把他趕出去，我就先把門拉下來，請媽媽把前面的門也拉下，後來我騎出門沒看到他。\n(後來我家人問垃圾袋哪裡的，其實是在安親班等孩子，顧勝敏團隊沿路發的)\n事後我和家人說就是他在7-11拿走小孩的飲料。",
+      "time": "2026-10-19T01:26:05.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.822Z"
+    },
+    {
+      "code": "Deo0G-Cn65S",
+      "user": "dcl_tw",
+      "url": "https://www.threads.com/@dcl_tw/post/Deo0G-Cn65S",
+      "authorUrl": "https://www.threads.com/@dcl_tw",
+      "text": "星宇頭等艙\n第一次體驗星宇頭等艙，機上服務教人非常失望。\n報到貴賓室乃至降落後的協助都非常絲滑美好，但在航程的前半段，我基本上就是被晾在一旁，好比看不見的1X乘客。\n這個航班有兩個頭等艙乘客，另一位登機不及就有組員前去問候並祝他生日快樂，我則是等了很久看著其他組員早已開始發派商務艙的熱毛巾與迎賓飲料過後才有組員來致意並跟我介紹座椅與確認預選餐點，她留下餐點跟飲料的menu過後就離開。後來我再次看到她時忍不住問請問有熱毛巾跟飲料嗎？她這時才問我想喝什麼，白桃氣泡酒或鳳梨芒果汁（與商務艙同），我表示因為剛剛在貴賓室喝了一些所以氣泡水就好。\n起飛後不久開始餐飲服務，座艙長上了前菜，一杯水都沒有，更遑論完全沒有問我隨餐飲料想喝什麼。我看著桌上的前菜真的難以下嚥，只好按下呼叫鈴表示可以幫我倒杯水嗎？而且妳們剛剛完全沒有問我想喝什麼，這時組員才像醒過來般，但說出讓我非常傻眼的一句話：\n幫您上氣泡水好嗎？抹茶拿鐵隨後上可以嗎？\n我說：妳們完全沒問我要喝什麼，抹茶拿鐵也不是我點的，妳們搞錯人了。可以麻煩妳把飲料單再拿來嗎？",
+      "time": "2026-10-18T13:41:28.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-19T10:30:30.822Z"
+    },
+    {
+      "code": "DentDUmGneM",
+      "user": "aaa_aaa_amy",
+      "url": "https://www.threads.com/@aaa_aaa_amy/post/DentDUmGneM",
+      "authorUrl": "https://www.threads.com/@aaa_aaa_amy",
+      "text": "清潔\n徵求退租清潔\n房間*2（約5坪）廁所*2（約2坪）\n+客廳約10坪\n地點：台北市萬華區（六樓爬樓梯）\n時間：10/31或11/1",
+      "time": "2026-10-18T03:20:34.000Z",
+      "keywords": [
+        "退租"
+      ],
+      "regions": [
+        "台北"
+      ],
+      "foundBy": "退租",
+      "foundQuery": "退租",
+      "foundAt": "2026-10-19T10:30:30.822Z"
+    },
     {
       "code": "Deq4hmjgWcF",
       "user": "libermann88",
@@ -1236,8 +1513,8 @@
       "leads": 1
     },
     "關店": {
-      "count": 1,
-      "last": 1792361026746,
+      "count": 2,
+      "last": 1792405770694,
       "scanned": 0,
       "leads": 0
     },
@@ -1272,8 +1549,8 @@
       "leads": 6
     },
     "含設備": {
-      "count": 1,
-      "last": 1792372330632,
+      "count": 2,
+      "last": 1792405710458,
       "scanned": 0,
       "leads": 0
     },
@@ -1290,8 +1567,8 @@
       "leads": 0
     },
     "整店頂讓": {
-      "count": 1,
-      "last": 1792375794730,
+      "count": 2,
+      "last": 1792405651092,
       "scanned": 0,
       "leads": 0
     },
@@ -1302,10 +1579,10 @@
       "leads": 0
     },
     "退租": {
-      "count": 1,
-      "last": 1792375843976,
-      "scanned": 0,
-      "leads": 0
+      "count": 2,
+      "last": 1792405637191,
+      "scanned": 16,
+      "leads": 3
     },
     "低價出清": {
       "count": 1,
@@ -1426,33 +1703,47 @@
       "last": 1792401747716,
       "scanned": 0,
       "leads": 0
+    },
+    "飲料": {
+      "count": 1,
+      "last": 1792405623651,
+      "scanned": 23,
+      "leads": 10
     }
   },
-  "nextScanAt": "2026-10-19T10:15:58.382Z",
+  "nextScanAt": "2026-10-19T10:53:34.229Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T10:15:58.382Z",
-    "madeAt": "2026-10-19T09:24:25.142Z",
+    "at": "2026-10-19T10:53:34.229Z",
+    "madeAt": "2026-10-19T10:31:20.400Z",
     "items": [
       {
-        "kw": "飲料",
-        "q": "飲料"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "讓渡",
+        "q": "讓渡"
       },
       {
-        "kw": "整店頂讓",
-        "q": "整店頂讓"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "含設備",
-        "q": "含設備"
+        "kw": "設備出清",
+        "q": "設備出清"
       },
       {
-        "kw": "關店",
-        "q": "關店"
+        "kw": "便宜賣",
+        "q": "便宜賣"
+      },
+      {
+        "kw": "生財器具",
+        "q": "生財器具"
+      },
+      {
+        "kw": "帶走價",
+        "q": "帶走價"
       }
     ]
   }
