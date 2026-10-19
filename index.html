@@ -63,7 +63,14 @@ nav button span{white-space:nowrap}
 #zoomOv .zx{position:fixed;top:calc(10px + env(safe-area-inset-top));right:12px;z-index:81}
 #zoomOv .zhint{position:fixed;top:calc(16px + env(safe-area-inset-top));left:14px;color:var(--muted);font-size:13px}
 .meta{position:relative;padding-right:44px}
-.delbtn{position:absolute;right:0;top:-2px;width:36px;height:36px;border-radius:50%;border:1px solid #6b2a22;background:#2a1210;color:#ff9a8a;font-size:16px;cursor:pointer}
+.meta .trow{flex:0 0 calc(100% + 44px);margin-right:-44px;display:flex;gap:8px}
+.meta .trow>span{flex:1;text-align:center;font-size:17px;padding:7px 8px;white-space:nowrap}
+details[open]>textarea[id^="rt_"]{font-size:26px!important;line-height:1.55!important;min-height:300px}
+textarea[id^="rt_"]:focus{font-size:26px!important;line-height:1.55!important;min-height:300px}
+details>summary{font-size:17px;padding:6px 0}
+#rpMsg{font-size:24px!important;line-height:1.55!important;min-height:280px}
+#rpText{font-size:18px!important;max-height:150px!important}
+.delbtn{position:absolute;right:0;top:50px;width:36px;height:36px;border-radius:50%;border:1px solid #6b2a22;background:#2a1210;color:#ff9a8a;font-size:16px;cursor:pointer}
 .delbtn:active{transform:scale(.94)}
 #askBox{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:70;width:min(92vw,420px);
   background:#241c0d;border:2px solid var(--gold);border-radius:18px;padding:16px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.6)}
@@ -984,16 +991,19 @@ let userScrolling=false,usT;
 window.addEventListener('scroll',()=>{
   if(!userScrolling)return;
   document.querySelectorAll('article.post.big,.runpost.open').forEach(c=>{
-    const r=c.getBoundingClientRect();if(r.bottom<60||r.top>innerHeight-60)shrink(c);
+    const r=c.getBoundingClientRect();
+    if(r.top>innerHeight-60)shrink(c);
+    else if(r.bottom<60){const nx=c.nextElementSibling,t0=nx?nx.getBoundingClientRect().top:0;shrink(c);
+      if(nx){const d=nx.getBoundingClientRect().top-t0;if(Math.abs(d)>1)window.scrollTo({top:scrollY+d,behavior:'instant'})}}
   });
 },{passive:true});
 /* 點文章放大一倍；再點一下、往旁邊滑、滑出畫面、按返回 → 還原 */
 function toggleBig(card){card.classList.contains('big')?shrink(card,true):grow(card)}
-function grow(card){
+function grow(card){const top0=card.getBoundingClientRect().top;
   document.querySelectorAll('article.post.big:not(.reading)').forEach(c=>{if(c!==card)c.classList.remove('big')});
   card.classList.add('big');card.querySelector('.text')?.classList.add('open');state.bigUrl=card.dataset.url;
   try{if(!history.state||!history.state.zoom)history.pushState({zoom:'post'},'')}catch{}
-  const y=card.getBoundingClientRect().top+scrollY-headerH()-10;window.scrollTo({top:y,behavior:'smooth'});
+  const d=card.getBoundingClientRect().top-top0;if(Math.abs(d)>1)window.scrollTo({top:scrollY+d,behavior:'instant'});
 }
 function shrink(c,byTap){
   if(c.classList.contains('runpost')){c.classList.remove('open');RUNPOST.delete(c.dataset.runpost);const t=c.querySelector('.rptext');if(t){const full=t.textContent;if(full.length>70)t.textContent=full.slice(0,70)+'…'}c.querySelector('.acts')?.remove();return}
@@ -1001,14 +1011,16 @@ function shrink(c,byTap){
   if(byTap&&history.state&&history.state.zoom==='post'){try{history.back()}catch{}}
 }
 // 左右滑動還原
-let swX=0,swY=0,swEl=null;
-document.addEventListener('touchstart',e=>{const t=e.touches[0];swX=t.clientX;swY=t.clientY;swEl=e.target.closest('article.post.big,.runpost.open,#zoomOv')},{passive:true});
+let swX=0,swY=0,swEl=null,swTop=0;
+document.addEventListener('touchstart',e=>{const t=e.touches[0];swX=t.clientX;swY=t.clientY;swEl=e.target.closest('article.post.big,.runpost.open,#zoomOv');swTop=swEl&&swEl.id==='zoomOv'?swEl.scrollTop:0},{passive:true});
 document.addEventListener('touchend',e=>{if(!swEl)return;const t=e.changedTouches[0],dx=t.clientX-swX,dy=t.clientY-swY;
-  if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.5){if(swEl.id==='zoomOv')closeZoom();else shrink(swEl,true)}swEl=null},{passive:true});
+  if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.5){if(swEl.id==='zoomOv')closeZoom();else shrink(swEl,true)}
+  else if(swEl.id==='zoomOv'&&dy>90&&dy>Math.abs(dx)*1.5&&swTop<=2)closeZoom();
+  swEl=null},{passive:true});
 // 儀表板：點卡片 → 全螢幕放大一倍
 function zoomCard(card){
   closeZoom(true);const ov=document.createElement('div');ov.id='zoomOv';
-  ov.innerHTML='<span class="zhint">🔍 放大檢視｜左右滑動或點空白處關閉</span><button class="btn ghost sm zx">✕ 關閉</button><div class="zin"></div>';
+  ov.innerHTML='<span class="zhint">🔍 放大檢視｜往下滑、左右滑或點空白處關閉</span><button class="btn ghost sm zx">✕ 關閉</button><div class="zin"></div>';
   const c=card.cloneNode(true);c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));
   ov.querySelector('.zin').appendChild(c);document.body.appendChild(ov);document.body.style.overflow='hidden';
   ov.addEventListener('click',e=>{if(e.target===ov||e.target.closest('.zx'))closeZoom()});
@@ -1114,8 +1126,8 @@ function renderList(){
     const u=esc(p.url);
     return `<article data-url="${u}" class="card post ${R.url===p.url&&R.mode?'reading big':''} ${state.bigUrl===p.url&&!(R.url===p.url&&R.mode)?'big':''} ${contacted(p.url)?'done':''} ${c.s==='不需聯絡'?'skip':''}">
       <div class="meta">
-        <span class="tago ${Date.now()-Date.parse(p.time||p.foundAt)<3*3600e3?'fresh':''}" title="對方發文時間">🕒 發文 ${ago(p.time||p.foundAt)}</span>
-        ${p.foundAt?`<span class="tagf ${Date.now()-Date.parse(p.foundAt)<3600e3?'fresh':''}" title="雷達抓到的時間：${esc(new Date(p.foundAt).toLocaleString('zh-TW',{hour12:false}))}">📡 抓到 ${ago(p.foundAt)}</span>`:''}
+        <div class="trow"><span class="tago ${Date.now()-Date.parse(p.time||p.foundAt)<3*3600e3?'fresh':''}" title="對方發文時間">🕒 發文 ${ago(p.time||p.foundAt)}</span>
+        ${p.foundAt?`<span class="tagf ${Date.now()-Date.parse(p.foundAt)<3600e3?'fresh':''}" title="雷達抓到的時間：${esc(new Date(p.foundAt).toLocaleString('zh-TW',{hour12:false}))}">📡 抓到 ${ago(p.foundAt)}</span>`:''}</div>
         ${(p.watched||(state.cfg?.watchUsers||[]).includes(normUser(p.user)))?'<span class="wtag">⭐ 關注</span>':''}
         <span class="ipill ${a.intent.level}">${LV_ICON[a.intent.level]} ${a.intent.level}意向</span>
         <span class="rtag ${a.role}">${a.role}</span>
