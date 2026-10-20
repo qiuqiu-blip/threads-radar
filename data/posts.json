@@ -1,62 +1,128 @@
 {
-  "updatedAt": "2026-10-20T09:00:46.523Z",
+  "updatedAt": "2026-10-20T14:06:29.478Z",
   "lastRun": {
-    "startedAt": "2026-10-20T08:57:51.349Z",
-    "finishedAt": "2026-10-20T09:00:46.478Z",
+    "startedAt": "2026-10-20T14:03:30.055Z",
+    "finishedAt": "2026-10-20T14:06:29.433Z",
     "status": "ok",
-    "scanned": 120,
+    "scanned": 129,
     "matched": 3,
     "newCount": 3,
     "notified": 3,
     "perKeyword": {
-      "便宜賣": 20,
-      "低價出清": 7,
-      "收攤": 21,
-      "退租": 20,
-      "咖啡機": 17,
-      "裝潢": 16,
-      "關店": 0,
-      "創業": 19
+      "餐車": 19,
+      "結束營業": 20,
+      "搬家出清": 12,
+      "歇業": 18,
+      "帶走價": 0,
+      "二手冰箱": 19,
+      "店面出租": 18,
+      "拆除": 23
     },
     "warnings": [],
     "keywordsUsed": [
-      "便宜賣",
-      "低價出清",
-      "收攤",
-      "退租",
-      "咖啡機",
-      "裝潢",
-      "關店",
-      "創業"
+      "餐車",
+      "結束營業",
+      "搬家出清",
+      "歇業",
+      "帶走價",
+      "二手冰箱",
+      "店面出租",
+      "拆除"
     ],
     "queries": [
-      "便宜賣",
-      "低價出清",
-      "收攤",
-      "退租",
-      "咖啡機",
-      "裝潢",
-      "關店",
-      "創業"
+      "餐車",
+      "結束營業",
+      "搬家出清",
+      "歇業",
+      "帶走價",
+      "二手冰箱",
+      "店面出租",
+      "拆除"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 64,
+      "seen": 74,
       "dup": 0,
-      "noContext": 42,
-      "noKeyword": 9,
-      "tooOld": 2
+      "noContext": 31,
+      "noKeyword": 13,
+      "words": {
+        "家具": 1,
+        "定居": 1
+      },
+      "excludeWord": 2,
+      "tooOld": 6
     },
     "detailFetched": 3,
     "newUrls": [
-      "https://www.threads.com/@winwin.888580/post/DetaYe_k4sY",
-      "https://www.threads.com/@hxuvwq0y/post/DetAcHjGvyV",
-      "https://www.threads.com/@rong.zi.35/post/DeqqdXWn9hY"
+      "https://www.threads.com/@happy_0123_yoo/post/DettO-_jSkY",
+      "https://www.threads.com/@linyuting3401/post/Dets7ZrDmak",
+      "https://www.threads.com/@sdi.teahub/post/DetgcnUFKCi"
     ],
     "pushMode": "on",
-    "nextInMinutes": 23
+    "nextInMinutes": 25
   },
   "runs": [
+    {
+      "startedAt": "2026-10-20T14:03:30.055Z",
+      "finishedAt": "2026-10-20T14:06:29.433Z",
+      "status": "ok",
+      "scanned": 129,
+      "matched": 3,
+      "newCount": 3,
+      "notified": 3,
+      "perKeyword": {
+        "餐車": 19,
+        "結束營業": 20,
+        "搬家出清": 12,
+        "歇業": 18,
+        "帶走價": 0,
+        "二手冰箱": 19,
+        "店面出租": 18,
+        "拆除": 23
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "餐車",
+        "結束營業",
+        "搬家出清",
+        "歇業",
+        "帶走價",
+        "二手冰箱",
+        "店面出租",
+        "拆除"
+      ],
+      "queries": [
+        "餐車",
+        "結束營業",
+        "搬家出清",
+        "歇業",
+        "帶走價",
+        "二手冰箱",
+        "店面出租",
+        "拆除"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 74,
+        "dup": 0,
+        "noContext": 31,
+        "noKeyword": 13,
+        "words": {
+          "家具": 1,
+          "定居": 1
+        },
+        "excludeWord": 2,
+        "tooOld": 6
+      },
+      "detailFetched": 3,
+      "newUrls": [
+        "https://www.threads.com/@happy_0123_yoo/post/DettO-_jSkY",
+        "https://www.threads.com/@linyuting3401/post/Dets7ZrDmak",
+        "https://www.threads.com/@sdi.teahub/post/DetgcnUFKCi"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 25
+    },
     {
       "startedAt": "2026-10-20T08:57:51.349Z",
       "finishedAt": "2026-10-20T09:00:46.478Z",
@@ -1955,6 +2021,58 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DettO-_jSkY",
+      "user": "happy_0123_yoo",
+      "url": "https://www.threads.com/@happy_0123_yoo/post/DettO-_jSkY",
+      "authorUrl": "https://www.threads.com/@happy_0123_yoo",
+      "text": "11次瀏覽\n經營的瑜伽館\n最近迫於家庭因素決定歇業了😔\n館內還有lulu瑜伽墊/磚/保溫瓶/運動內衣\n不打算回收 全部 150低價出清 留著也沒用\n希望這些lulu瑜伽用品\n可以繼續陪伴熱愛瑜伽運動的人！\n有興趣歡迎私訊詢問挑選款式\n數量有限賣完為止 可超商取貨付/郵寄/面交\n地址：新竹市東區龍山里立鵬路瑜伽館\n麻煩幫忙按讚、轉發，讓有需要的人看到❤️\n需要領取的聯絡我賴ID：6483368",
+      "time": "2026-10-20T11:17:36.000Z",
+      "keywords": [
+        "歇業",
+        "低價出清"
+      ],
+      "regions": [],
+      "foundBy": "歇業",
+      "foundQuery": "歇業",
+      "foundAt": "2026-10-20T14:06:08.130Z",
+      "full": true
+    },
+    {
+      "code": "Dets7ZrDmak",
+      "user": "linyuting3401",
+      "url": "https://www.threads.com/@linyuting3401/post/Dets7ZrDmak",
+      "authorUrl": "https://www.threads.com/@linyuting3401",
+      "text": "372次瀏覽\n經營的瑜伽館\n最近迫於家庭因素決定歇業了😔\n館內還有lulu瑜伽墊/磚/保溫瓶/運動內衣\n不打算回收 全部 150低價出清 留著也沒用\n希望這些lulu瑜伽用品\n可以繼續陪伴熱愛瑜伽運動的人！\n有興趣歡迎私訊詢問挑選款式\n數量有限賣完為止 可超商取貨付/郵寄/面交\n地址：新竹市東區龍山里立鵬路瑜伽館\n麻煩幫忙按讚、轉發，讓有需要的人看到❤️\n需要領取的聯絡我賴ID：6483368\nian_0403\n賣 這麼高檔的瑜伽用品\n割 愛不捨地便宜出清\n偏 好高檔又平價的人買起來\nlinsha0131\n炸起乃",
+      "time": "2026-10-20T11:14:56.000Z",
+      "keywords": [
+        "歇業",
+        "低價出清"
+      ],
+      "regions": [],
+      "foundBy": "歇業",
+      "foundQuery": "歇業",
+      "foundAt": "2026-10-20T14:06:08.130Z",
+      "full": true
+    },
+    {
+      "code": "DetgcnUFKCi",
+      "user": "sdi.teahub",
+      "url": "https://www.threads.com/@sdi.teahub/post/DetgcnUFKCi",
+      "authorUrl": "https://www.threads.com/@sdi.teahub",
+      "text": "5,006次瀏覽\n商品出清\n店面結束營業 多樣商品、設備出清\n桃園區自取，可約現場看呦！！！\nqianhui387\n請問有電鍋的照片嗎？\n謝謝😊\ntorii_cafe.tw\n現場看有時間限制嗎\n平日11:00-17:00\nphyllis.chen\n請問Mac幾年\n0317.ig\n你好👋想詢問mac價錢？\n$5000\nnanalo_8206\n收Mac 跟電鍋\nmarosanail\n請問電鍋還有嗎？想收\nlarry523982\n好可惜\n再附近補習時\n喝過你們家飲料兩次\nysy_vegetarian\n請問明天可以過去看嗎？\nga_hong\n你好想約看冰箱",
+      "time": "2026-10-20T09:25:52.000Z",
+      "keywords": [
+        "結束營業"
+      ],
+      "regions": [
+        "桃園"
+      ],
+      "foundBy": "結束營業",
+      "foundQuery": "結束營業",
+      "foundAt": "2026-10-20T14:06:08.129Z",
+      "full": true
+    },
     {
       "code": "DetaYe_k4sY",
       "user": "winwin.888580",
@@ -3934,8 +4052,8 @@
       "leads": 0
     },
     "帶走價": {
-      "count": 7,
-      "last": 1792480863402,
+      "count": 8,
+      "last": 1792505066792,
       "scanned": 0,
       "leads": 0
     },
@@ -3994,9 +4112,9 @@
       "leads": 0
     },
     "搬家出清": {
-      "count": 7,
-      "last": 1792483086352,
-      "scanned": 71,
+      "count": 8,
+      "last": 1792505037308,
+      "scanned": 83,
       "leads": 4
     },
     "咖啡機": {
@@ -4024,10 +4142,10 @@
       "leads": 0
     },
     "歇業": {
-      "count": 6,
-      "last": 1792480792496,
-      "scanned": 101,
-      "leads": 0
+      "count": 7,
+      "last": 1792505052055,
+      "scanned": 119,
+      "leads": 2
     },
     "店面轉讓": {
       "count": 3,
@@ -4066,10 +4184,10 @@
       "leads": 0
     },
     "結束營業": {
-      "count": 5,
-      "last": 1792476339617,
-      "scanned": 84,
-      "leads": 2
+      "count": 6,
+      "last": 1792505023402,
+      "scanned": 104,
+      "leads": 3
     },
     "收店": {
       "count": 7,
@@ -4126,15 +4244,15 @@
       "leads": 0
     },
     "店面出租": {
-      "count": 5,
-      "last": 1792480821077,
-      "scanned": 97,
+      "count": 6,
+      "last": 1792505139899,
+      "scanned": 115,
       "leads": 4
     },
     "拆除": {
-      "count": 5,
-      "last": 1792483073855,
-      "scanned": 103,
+      "count": 6,
+      "last": 1792505152820,
+      "scanned": 126,
       "leads": 4
     },
     "創業": {
@@ -4144,9 +4262,9 @@
       "leads": 0
     },
     "餐車": {
-      "count": 5,
-      "last": 1792476293901,
-      "scanned": 102,
+      "count": 6,
+      "last": 1792505010394,
+      "scanned": 121,
       "leads": 0
     },
     "排油煙": {
@@ -4162,9 +4280,9 @@
       "leads": 1
     },
     "二手冰箱": {
-      "count": 5,
-      "last": 1792480835586,
-      "scanned": 103,
+      "count": 6,
+      "last": 1792505126420,
+      "scanned": 122,
       "leads": 2
     },
     "冷凍櫃": {
@@ -4186,43 +4304,43 @@
       "leads": 4
     }
   },
-  "nextScanAt": "2026-10-20T09:24:08.612Z",
+  "nextScanAt": "2026-10-20T14:31:46.620Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-20T09:24:08.612Z",
-    "madeAt": "2026-10-20T09:00:46.518Z",
+    "at": "2026-10-20T14:31:46.620Z",
+    "madeAt": "2026-10-20T14:06:29.473Z",
     "items": [
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "結束營業",
-        "q": "結束營業"
+        "kw": "收攤",
+        "q": "收攤"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "商用冰箱",
+        "q": "商用冰箱"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "爐具",
+        "q": "爐具"
       },
       {
-        "kw": "拆除",
-        "q": "拆除"
+        "kw": "收店",
+        "q": "收店"
       }
     ]
   }
