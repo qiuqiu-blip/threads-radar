@@ -1,58 +1,120 @@
 {
-  "updatedAt": "2026-10-20T06:05:53.257Z",
+  "updatedAt": "2026-10-20T07:22:43.776Z",
   "lastRun": {
-    "startedAt": "2026-10-20T06:02:56.208Z",
-    "finishedAt": "2026-10-20T06:05:53.220Z",
+    "startedAt": "2026-10-20T07:19:39.698Z",
+    "finishedAt": "2026-10-20T07:22:43.745Z",
     "status": "ok",
-    "scanned": 137,
-    "matched": 0,
-    "newCount": 0,
-    "notified": 0,
+    "scanned": 124,
+    "matched": 4,
+    "newCount": 4,
+    "notified": 4,
     "perKeyword": {
-      "招牌": 16,
-      "收店": 0,
-      "開店": 20,
-      "商用冰箱": 21,
-      "餐車": 24,
-      "飲料店": 19,
-      "收攤": 20,
-      "結束營業": 17
+      "低價出清": 4,
+      "歇業": 17,
+      "咖啡機": 21,
+      "店面出租": 19,
+      "二手冰箱": 20,
+      "冷凍櫃": 23,
+      "帶走價": 0,
+      "蒸烤箱": 20
     },
     "warnings": [],
     "keywordsUsed": [
-      "招牌",
-      "收店",
-      "開店",
-      "商用冰箱",
-      "餐車",
-      "飲料店",
-      "收攤",
-      "結束營業"
+      "低價出清",
+      "歇業",
+      "咖啡機",
+      "店面出租",
+      "二手冰箱",
+      "冷凍櫃",
+      "帶走價",
+      "蒸烤箱"
     ],
     "queries": [
-      "招牌",
-      "收店",
-      "開店",
-      "商用冰箱",
-      "餐車",
-      "飲料店",
-      "收攤",
-      "結束營業"
+      "低價出清",
+      "歇業",
+      "咖啡機",
+      "店面出租",
+      "二手冰箱",
+      "冷凍櫃",
+      "帶走價",
+      "蒸烤箱"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 71,
+      "seen": 80,
       "dup": 0,
-      "noContext": 50,
-      "tooOld": 2,
-      "noKeyword": 14
+      "noContext": 24,
+      "noKeyword": 13,
+      "tooOld": 3
     },
-    "detailFetched": 0,
-    "newUrls": [],
+    "detailFetched": 4,
+    "newUrls": [
+      "https://www.threads.com/@zatlgram/post/DetOtKwHU4t",
+      "https://www.threads.com/@summerw.0823/post/DetHkV0kX_L",
+      "https://www.threads.com/@shuyu_________________/post/DeoE32WElHJ",
+      "https://www.threads.com/@new_life7965/post/DemMpOyCdUI"
+    ],
     "pushMode": "on",
     "nextInMinutes": 33
   },
   "runs": [
+    {
+      "startedAt": "2026-10-20T07:19:39.698Z",
+      "finishedAt": "2026-10-20T07:22:43.745Z",
+      "status": "ok",
+      "scanned": 124,
+      "matched": 4,
+      "newCount": 4,
+      "notified": 4,
+      "perKeyword": {
+        "低價出清": 4,
+        "歇業": 17,
+        "咖啡機": 21,
+        "店面出租": 19,
+        "二手冰箱": 20,
+        "冷凍櫃": 23,
+        "帶走價": 0,
+        "蒸烤箱": 20
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "低價出清",
+        "歇業",
+        "咖啡機",
+        "店面出租",
+        "二手冰箱",
+        "冷凍櫃",
+        "帶走價",
+        "蒸烤箱"
+      ],
+      "queries": [
+        "低價出清",
+        "歇業",
+        "咖啡機",
+        "店面出租",
+        "二手冰箱",
+        "冷凍櫃",
+        "帶走價",
+        "蒸烤箱"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 80,
+        "dup": 0,
+        "noContext": 24,
+        "noKeyword": 13,
+        "tooOld": 3
+      },
+      "detailFetched": 4,
+      "newUrls": [
+        "https://www.threads.com/@zatlgram/post/DetOtKwHU4t",
+        "https://www.threads.com/@summerw.0823/post/DetHkV0kX_L",
+        "https://www.threads.com/@shuyu_________________/post/DeoE32WElHJ",
+        "https://www.threads.com/@new_life7965/post/DemMpOyCdUI"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 33
+    },
     {
       "startedAt": "2026-10-20T06:02:56.208Z",
       "finishedAt": "2026-10-20T06:05:53.220Z",
@@ -1783,6 +1845,73 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DetOtKwHU4t",
+      "user": "zatlgram",
+      "url": "https://www.threads.com/@zatlgram/post/DetOtKwHU4t",
+      "authorUrl": "https://www.threads.com/@zatlgram",
+      "text": "7次瀏覽\n店面出租\n出租內湖港華街店面\n可使用面積近120坪\n含自有貨梯、地下室、前後店面\n權狀面積：64.808坪\n門口登記用途是停車位\n（屋主也有考慮租售並行）\n永義房屋 淡水義山站前店\n鄭安廷0966263262同Line\n營業員（113）登字第462752號\n經紀業名稱：富川不動產經紀有限公司\n經紀人：莊文隆 (99)北縣字第002083號\n月租金16萬元\nmeta.ai\n這價格可以嗎？",
+      "time": "2026-10-20T06:50:51.000Z",
+      "keywords": [
+        "店面出租"
+      ],
+      "regions": [],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-20T07:22:16.440Z",
+      "full": true
+    },
+    {
+      "code": "DetHkV0kX_L",
+      "user": "summerw.0823",
+      "url": "https://www.threads.com/@summerw.0823/post/DetHkV0kX_L",
+      "authorUrl": "https://www.threads.com/@summerw.0823",
+      "text": "278次瀏覽\n店面出租\n📣 宜蘭店面出租｜幫長輩親友尋找有緣人！\n幫長輩親友發文，希望能幫這個地方找到下一位有緣的經營者 ✨\n📍 地點：宜蘭縣壯圍鄉\n🏡 原店家：廢墟餐廳\n因前租客身體微恙，決定不再續租、繼續經營，因此希望幫店面尋找新的承租人。\n目前餐廳及周邊環境都保存得相當良好，很適合有餐飲創業規劃的朋友參考！\n不論是想承接原有空間、打造自己的特色餐廳，或是企業、品牌有意進駐開設咖啡廳，都非常歡迎聯繫洽詢 ☕️\n🙏 如果剛好有認識的人正在找店面，或是有創業、展店計畫的朋友，也拜託大家幫忙分享，讓更多有緣人看到！\n📍 店面位置：\nmaps.app.goo.gl/XNwjf…\n有興趣歡迎私訊詢問，感謝大家\ngoogle.com\n廢墟餐廳 Restaurant feishu · Donggang Village, Zhuangwei Township, Yilan County\n宜蘭店面出租\n參考參考\n海邊咖啡廳\n出租中\n宜蘭店面\n歡迎企業承租",
+      "time": "2026-10-20T05:48:28.000Z",
+      "keywords": [
+        "店面出租",
+        "創業"
+      ],
+      "regions": [],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-20T07:22:16.441Z",
+      "full": true
+    },
+    {
+      "code": "DeoE32WElHJ",
+      "user": "shuyu_________________",
+      "url": "https://www.threads.com/@shuyu_________________/post/DeoE32WElHJ",
+      "authorUrl": "https://www.threads.com/@shuyu_________________",
+      "text": "852次瀏覽\n永和\n我有二手直立冷凍櫃跟冰箱 各一\n🈶需要也可以跟我說！便宜售出～\n但就是在永和要自取",
+      "time": "2026-10-18T06:48:43.000Z",
+      "keywords": [
+        "冷凍櫃"
+      ],
+      "regions": [],
+      "foundBy": "冷凍櫃",
+      "foundQuery": "冷凍櫃",
+      "foundAt": "2026-10-20T07:22:16.441Z",
+      "full": true
+    },
+    {
+      "code": "DemMpOyCdUI",
+      "user": "new_life7965",
+      "url": "https://www.threads.com/@new_life7965/post/DemMpOyCdUI",
+      "authorUrl": "https://www.threads.com/@new_life7965",
+      "text": "996次瀏覽\n台中二手傢俱\n換新的舊的出清～\n冰箱、直立冷凍櫃、超大組沙發\n#西屯區 #逢甲 #沙發 #冰箱 #直立冷凍櫃\npj_0220\n請問多少錢呢~\n那個呢？還是你私訊我～\npj_0220\n私訊囉\n回覆囉～\na3000033000\n你好 全凍多少錢 ？公升？\n私訊回覆囉\nyihan3050\n請問冷凍櫃價錢\n訊息回覆囉～\nshiu_x_\n請問冰箱價格\n回覆囉！",
+      "time": "2026-10-17T13:18:09.000Z",
+      "keywords": [
+        "冷凍櫃"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "冷凍櫃",
+      "foundQuery": "冷凍櫃",
+      "foundAt": "2026-10-20T07:22:16.441Z",
+      "full": true
+    },
     {
       "code": "DetFzKpGN7k",
       "user": "ting197630",
@@ -3610,8 +3739,8 @@
       "leads": 0
     },
     "帶走價": {
-      "count": 6,
-      "last": 1792474370920,
+      "count": 7,
+      "last": 1792480863402,
       "scanned": 0,
       "leads": 0
     },
@@ -3664,9 +3793,9 @@
       "leads": 5
     },
     "低價出清": {
-      "count": 6,
-      "last": 1792467417505,
-      "scanned": 47,
+      "count": 7,
+      "last": 1792480779919,
+      "scanned": 51,
       "leads": 0
     },
     "搬家出清": {
@@ -3676,9 +3805,9 @@
       "leads": 4
     },
     "咖啡機": {
-      "count": 6,
-      "last": 1792470970826,
-      "scanned": 111,
+      "count": 7,
+      "last": 1792480806991,
+      "scanned": 132,
       "leads": 11
     },
     "製冰機": {
@@ -3694,15 +3823,15 @@
       "leads": 0
     },
     "蒸烤箱": {
-      "count": 6,
-      "last": 1792470873759,
-      "scanned": 102,
+      "count": 7,
+      "last": 1792480920664,
+      "scanned": 122,
       "leads": 0
     },
     "歇業": {
-      "count": 5,
-      "last": 1792460862761,
-      "scanned": 84,
+      "count": 6,
+      "last": 1792480792496,
+      "scanned": 101,
       "leads": 0
     },
     "店面轉讓": {
@@ -3802,10 +3931,10 @@
       "leads": 0
     },
     "店面出租": {
-      "count": 4,
-      "last": 1792470847706,
-      "scanned": 78,
-      "leads": 2
+      "count": 5,
+      "last": 1792480821077,
+      "scanned": 97,
+      "leads": 4
     },
     "拆除": {
       "count": 4,
@@ -3838,16 +3967,16 @@
       "leads": 0
     },
     "二手冰箱": {
-      "count": 4,
-      "last": 1792467375596,
-      "scanned": 83,
+      "count": 5,
+      "last": 1792480835586,
+      "scanned": 103,
       "leads": 2
     },
     "冷凍櫃": {
-      "count": 5,
-      "last": 1792474432585,
-      "scanned": 115,
-      "leads": 0
+      "count": 6,
+      "last": 1792480849662,
+      "scanned": 138,
+      "leads": 2
     },
     "加盟": {
       "count": 5,
@@ -3862,43 +3991,43 @@
       "leads": 4
     }
   },
-  "nextScanAt": "2026-10-20T06:38:54.158Z",
+  "nextScanAt": "2026-10-20T07:56:01.777Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-20T06:38:54.158Z",
-    "madeAt": "2026-10-20T06:05:53.255Z",
+    "at": "2026-10-20T07:56:01.777Z",
+    "madeAt": "2026-10-20T07:22:43.772Z",
     "items": [
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "爐具",
+        "q": "爐具"
       },
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "拆除",
+        "q": "拆除"
       },
       {
-        "kw": "咖啡機",
-        "q": "咖啡機"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "冷凍櫃",
-        "q": "冷凍櫃"
+        "kw": "開店",
+        "q": "開店"
       },
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "清倉",
+        "q": "清倉"
       },
       {
-        "kw": "蒸烤箱",
-        "q": "蒸烤箱"
+        "kw": "加盟",
+        "q": "加盟"
       }
     ]
   }
