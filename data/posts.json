@@ -1,66 +1,114 @@
 {
-  "updatedAt": "2026-10-20T04:36:45.363Z",
+  "updatedAt": "2026-10-20T05:37:05.869Z",
   "lastRun": {
-    "startedAt": "2026-10-20T04:33:52.960Z",
-    "finishedAt": "2026-10-20T04:36:45.312Z",
+    "startedAt": "2026-10-20T05:32:50.657Z",
+    "finishedAt": "2026-10-20T05:37:05.838Z",
     "status": "ok",
-    "scanned": 132,
-    "matched": 3,
-    "newCount": 3,
-    "notified": 3,
+    "scanned": 94,
+    "matched": 1,
+    "newCount": 1,
+    "notified": 1,
     "perKeyword": {
-      "收攤": 18,
-      "店面出租": 19,
-      "二手設備": 16,
-      "蒸烤箱": 20,
-      "關店": 0,
-      "拆除": 21,
-      "加盟": 19,
-      "咖啡機": 19
+      "帶走價": 0,
+      "冷凍櫃": 22,
+      "裝潢": 20,
+      "排油煙": 0,
+      "退租": 19,
+      "搬家出清": 13,
+      "便宜賣": 20,
+      "爐具": 0
     },
     "warnings": [],
     "keywordsUsed": [
-      "收攤",
-      "店面出租",
-      "二手設備",
-      "蒸烤箱",
-      "關店",
-      "拆除",
-      "加盟",
-      "咖啡機"
+      "帶走價",
+      "冷凍櫃",
+      "裝潢",
+      "排油煙",
+      "退租",
+      "搬家出清",
+      "便宜賣",
+      "爐具"
     ],
     "queries": [
-      "收攤",
-      "店面出租",
-      "二手設備",
-      "蒸烤箱",
-      "關店",
-      "拆除",
-      "加盟",
-      "咖啡機"
+      "帶走價",
+      "冷凍櫃",
+      "裝潢",
+      "排油煙",
+      "退租",
+      "搬家出清",
+      "便宜賣",
+      "爐具"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 94,
+      "seen": 45,
       "dup": 0,
-      "noContext": 25,
-      "noKeyword": 7,
-      "tooOld": 2,
-      "words": {
-        "家具": 1
-      },
-      "excludeWord": 1
+      "noContext": 32,
+      "tooOld": 5,
+      "noKeyword": 11
     },
-    "detailFetched": 3,
+    "detailFetched": 1,
     "newUrls": [
-      "https://www.threads.com/@bswqes1j/post/Des0evlgfkC",
-      "https://www.threads.com/@chenliqing4734/post/Destp9yEilh",
-      "https://www.threads.com/@__cathyslife__/post/DemnPqImV5t"
+      "https://www.threads.com/@ting197630/post/DetFzKpGN7k"
     ],
     "pushMode": "on",
-    "nextInMinutes": 34
+    "nextInMinutes": 22
   },
   "runs": [
+    {
+      "startedAt": "2026-10-20T05:32:50.657Z",
+      "finishedAt": "2026-10-20T05:37:05.838Z",
+      "status": "ok",
+      "scanned": 94,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "帶走價": 0,
+        "冷凍櫃": 22,
+        "裝潢": 20,
+        "排油煙": 0,
+        "退租": 19,
+        "搬家出清": 13,
+        "便宜賣": 20,
+        "爐具": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "帶走價",
+        "冷凍櫃",
+        "裝潢",
+        "排油煙",
+        "退租",
+        "搬家出清",
+        "便宜賣",
+        "爐具"
+      ],
+      "queries": [
+        "帶走價",
+        "冷凍櫃",
+        "裝潢",
+        "排油煙",
+        "退租",
+        "搬家出清",
+        "便宜賣",
+        "爐具"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 45,
+        "dup": 0,
+        "noContext": 32,
+        "tooOld": 5,
+        "noKeyword": 11
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@ting197630/post/DetFzKpGN7k"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 22
+    },
     {
       "startedAt": "2026-10-20T04:33:52.960Z",
       "finishedAt": "2026-10-20T04:36:45.312Z",
@@ -1685,6 +1733,23 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DetFzKpGN7k",
+      "user": "ting197630",
+      "url": "https://www.threads.com/@ting197630/post/DetFzKpGN7k",
+      "authorUrl": "https://www.threads.com/@ting197630",
+      "text": "台中市\n海線沒接案\n退租套房清潔\n入住套房清潔\n居家整理清潔\n招待所清潔\n收費一小時500元\n六日一小時550元\n歡迎私訊預約\n我是賴小姐\n另有冷氣清洗服務\n姐姐 · 謝金燕",
+      "time": "2026-10-20T05:33:01.000Z",
+      "keywords": [
+        "退租"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "退租",
+      "foundQuery": "退租",
+      "foundAt": "2026-10-20T05:36:59.980Z"
+    },
     {
       "code": "Des0evlgfkC",
       "user": "bswqes1j",
@@ -3483,9 +3548,9 @@
       "leads": 0
     },
     "便宜賣": {
-      "count": 5,
-      "last": 1792461017999,
-      "scanned": 92,
+      "count": 6,
+      "last": 1792474547595,
+      "scanned": 112,
       "leads": 20
     },
     "收攤": {
@@ -3495,8 +3560,8 @@
       "leads": 0
     },
     "帶走價": {
-      "count": 5,
-      "last": 1792460944013,
+      "count": 6,
+      "last": 1792474370920,
       "scanned": 0,
       "leads": 0
     },
@@ -3543,10 +3608,10 @@
       "leads": 0
     },
     "退租": {
-      "count": 4,
-      "last": 1792445348060,
-      "scanned": 52,
-      "leads": 4
+      "count": 5,
+      "last": 1792474519871,
+      "scanned": 71,
+      "leads": 5
     },
     "低價出清": {
       "count": 6,
@@ -3555,9 +3620,9 @@
       "leads": 0
     },
     "搬家出清": {
-      "count": 5,
-      "last": 1792460897935,
-      "scanned": 48,
+      "count": 6,
+      "last": 1792474531660,
+      "scanned": 61,
       "leads": 4
     },
     "咖啡機": {
@@ -3663,8 +3728,8 @@
       "leads": 0
     },
     "爐具": {
-      "count": 5,
-      "last": 1792463921582,
+      "count": 6,
+      "last": 1792474560747,
       "scanned": 0,
       "leads": 0
     },
@@ -3681,9 +3746,9 @@
       "leads": 5
     },
     "裝潢": {
-      "count": 5,
-      "last": 1792467290808,
-      "scanned": 94,
+      "count": 6,
+      "last": 1792474445757,
+      "scanned": 114,
       "leads": 0
     },
     "店面出租": {
@@ -3711,8 +3776,8 @@
       "leads": 0
     },
     "排油煙": {
-      "count": 4,
-      "last": 1792467314754,
+      "count": 5,
+      "last": 1792474459939,
       "scanned": 0,
       "leads": 0
     },
@@ -3729,9 +3794,9 @@
       "leads": 2
     },
     "冷凍櫃": {
-      "count": 4,
-      "last": 1792464011929,
-      "scanned": 93,
+      "count": 5,
+      "last": 1792474432585,
+      "scanned": 115,
       "leads": 0
     },
     "加盟": {
@@ -3747,43 +3812,43 @@
       "leads": 4
     }
   },
-  "nextScanAt": "2026-10-20T05:10:17.223Z",
+  "nextScanAt": "2026-10-20T05:59:35.047Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-20T05:10:17.223Z",
-    "madeAt": "2026-10-20T04:36:45.358Z",
+    "at": "2026-10-20T05:59:35.047Z",
+    "madeAt": "2026-10-20T05:37:05.865Z",
     "items": [
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "招牌",
+        "q": "招牌"
       },
       {
-        "kw": "冷凍櫃",
-        "q": "冷凍櫃"
+        "kw": "收店",
+        "q": "收店"
       },
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "開店",
+        "q": "開店"
       },
       {
-        "kw": "排油煙",
-        "q": "排油煙"
+        "kw": "商用冰箱",
+        "q": "商用冰箱"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "餐車",
+        "q": "餐車"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "飲料店",
+        "q": "飲料店"
       },
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "收攤",
+        "q": "收攤"
       },
       {
-        "kw": "爐具",
-        "q": "爐具"
+        "kw": "結束營業",
+        "q": "結束營業"
       }
     ]
   }
