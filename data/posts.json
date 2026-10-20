@@ -1,61 +1,118 @@
 {
-  "updatedAt": "2026-10-20T07:59:43.979Z",
+  "updatedAt": "2026-10-20T09:00:46.523Z",
   "lastRun": {
-    "startedAt": "2026-10-20T07:56:53.625Z",
-    "finishedAt": "2026-10-20T07:59:43.930Z",
+    "startedAt": "2026-10-20T08:57:51.349Z",
+    "finishedAt": "2026-10-20T09:00:46.478Z",
     "status": "ok",
-    "scanned": 118,
-    "matched": 2,
-    "newCount": 2,
-    "notified": 2,
+    "scanned": 120,
+    "matched": 3,
+    "newCount": 3,
+    "notified": 3,
     "perKeyword": {
-      "爐具": 0,
-      "拆除": 21,
-      "搬家出清": 10,
-      "製冰機": 18,
-      "二手設備": 15,
-      "開店": 23,
-      "清倉": 11,
-      "加盟": 20
+      "便宜賣": 20,
+      "低價出清": 7,
+      "收攤": 21,
+      "退租": 20,
+      "咖啡機": 17,
+      "裝潢": 16,
+      "關店": 0,
+      "創業": 19
     },
     "warnings": [],
     "keywordsUsed": [
-      "爐具",
-      "拆除",
-      "搬家出清",
-      "製冰機",
-      "二手設備",
-      "開店",
-      "清倉",
-      "加盟"
+      "便宜賣",
+      "低價出清",
+      "收攤",
+      "退租",
+      "咖啡機",
+      "裝潢",
+      "關店",
+      "創業"
     ],
     "queries": [
-      "爐具",
-      "拆除",
-      "搬家出清",
-      "製冰機",
-      "二手設備",
-      "開店",
-      "清倉",
-      "加盟"
+      "便宜賣",
+      "低價出清",
+      "收攤",
+      "退租",
+      "咖啡機",
+      "裝潢",
+      "關店",
+      "創業"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 82,
+      "seen": 64,
       "dup": 0,
-      "noContext": 24,
-      "tooOld": 2,
-      "noKeyword": 8
+      "noContext": 42,
+      "noKeyword": 9,
+      "tooOld": 2
     },
-    "detailFetched": 2,
+    "detailFetched": 3,
     "newUrls": [
-      "https://www.threads.com/@cenghonghui4/post/DetVi5sj4zF",
-      "https://www.threads.com/@wafflemonster19/post/DetSyeQEcbD"
+      "https://www.threads.com/@winwin.888580/post/DetaYe_k4sY",
+      "https://www.threads.com/@hxuvwq0y/post/DetAcHjGvyV",
+      "https://www.threads.com/@rong.zi.35/post/DeqqdXWn9hY"
     ],
     "pushMode": "on",
-    "nextInMinutes": 28
+    "nextInMinutes": 23
   },
   "runs": [
+    {
+      "startedAt": "2026-10-20T08:57:51.349Z",
+      "finishedAt": "2026-10-20T09:00:46.478Z",
+      "status": "ok",
+      "scanned": 120,
+      "matched": 3,
+      "newCount": 3,
+      "notified": 3,
+      "perKeyword": {
+        "便宜賣": 20,
+        "低價出清": 7,
+        "收攤": 21,
+        "退租": 20,
+        "咖啡機": 17,
+        "裝潢": 16,
+        "關店": 0,
+        "創業": 19
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "便宜賣",
+        "低價出清",
+        "收攤",
+        "退租",
+        "咖啡機",
+        "裝潢",
+        "關店",
+        "創業"
+      ],
+      "queries": [
+        "便宜賣",
+        "低價出清",
+        "收攤",
+        "退租",
+        "咖啡機",
+        "裝潢",
+        "關店",
+        "創業"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 64,
+        "dup": 0,
+        "noContext": 42,
+        "noKeyword": 9,
+        "tooOld": 2
+      },
+      "detailFetched": 3,
+      "newUrls": [
+        "https://www.threads.com/@winwin.888580/post/DetaYe_k4sY",
+        "https://www.threads.com/@hxuvwq0y/post/DetAcHjGvyV",
+        "https://www.threads.com/@rong.zi.35/post/DeqqdXWn9hY"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 23
+    },
     {
       "startedAt": "2026-10-20T07:56:53.625Z",
       "finishedAt": "2026-10-20T07:59:43.930Z",
@@ -1898,6 +1955,56 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DetaYe_k4sY",
+      "user": "winwin.888580",
+      "url": "https://www.threads.com/@winwin.888580/post/DetaYe_k4sY",
+      "authorUrl": "https://www.threads.com/@winwin.888580",
+      "text": "37次瀏覽\n中永和清潔打掃\n現主時 退租兩房一廳 需要打掃清潔\n麻煩請私訊 謝謝🙏\n_min811\n私或是電話0979263797\nuyen.uyen2095\n我擁有多年的清潔經驗，並且配備了所有必要的工具。請問您能否在Line上加入我的聯絡方式，以便我們方便溝通？🤭🤭🤭",
+      "time": "2026-10-20T08:32:53.000Z",
+      "keywords": [
+        "退租"
+      ],
+      "regions": [],
+      "foundBy": "退租",
+      "foundQuery": "退租",
+      "foundAt": "2026-10-20T09:00:25.196Z",
+      "full": true
+    },
+    {
+      "code": "DetAcHjGvyV",
+      "user": "hxuvwq0y",
+      "url": "https://www.threads.com/@hxuvwq0y/post/DetAcHjGvyV",
+      "authorUrl": "https://www.threads.com/@hxuvwq0y",
+      "text": "3,360次瀏覽\n準備同先生搬去台灣喇\n急住要清理二手家電\n價錢已包運費，有冇人要呀？\n除濕機＄150\n咖啡機＄110\n洗碗機＄180\n微波爐$140\n拍立得＄120\n麻將機＄130\n洗地機＄170\n掃地機械人＄130\n細雪櫃＄130\n大雪櫃＄300\n飲水機＄140\n洗衣機＄160\n電飯煲＄130\n空氣清新機九五成新 ＄130\n氣炸鍋九成新 ＄120\n有需要嘅pm我\ndickilaw\n掃地機械人🙏🏼☺️\npm\ndickilaw\n請問要如何聯絡你\npm\nwinniekayi\nPm\npm\nkc3130\npm\npm\nha.ha.ha.ha.h.a\npm\npm",
+      "time": "2026-10-20T04:46:11.000Z",
+      "keywords": [
+        "咖啡機"
+      ],
+      "regions": [],
+      "foundBy": "咖啡機",
+      "foundQuery": "咖啡機",
+      "foundAt": "2026-10-20T09:00:25.196Z",
+      "full": true
+    },
+    {
+      "code": "DeqqdXWn9hY",
+      "user": "rong.zi.35",
+      "url": "https://www.threads.com/@rong.zi.35/post/DeqqdXWn9hY",
+      "authorUrl": "https://www.threads.com/@rong.zi.35",
+      "text": "247次瀏覽\n台中清潔\n退租清潔完成✨\n該清的、該刷的，一樣都不馬虎\n把房子整理乾淨，交還給房東\n也給下一位住戶一個舒服的開始🧹\n現在要看的是車車在上面飛😁\nadachen_clean\n老闆帶我飛\n老闆都飛那麼高了\nadachen_clean\n我都要抬頭看\ncapoo_724\n水噹噹\n你更是水水噹噹👍\ncapoo_724\n你不嫌棄🤣",
+      "time": "2026-10-19T06:55:38.000Z",
+      "keywords": [
+        "退租"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "退租",
+      "foundQuery": "退租",
+      "foundAt": "2026-10-20T09:00:25.196Z",
+      "full": true
+    },
     {
       "code": "DetVi5sj4zF",
       "user": "cenghonghui4",
@@ -3809,21 +3916,21 @@
       "leads": 1
     },
     "關店": {
-      "count": 5,
-      "last": 1792470888262,
+      "count": 6,
+      "last": 1792486751789,
       "scanned": 0,
       "leads": 0
     },
     "便宜賣": {
-      "count": 6,
-      "last": 1792474547595,
-      "scanned": 112,
+      "count": 7,
+      "last": 1792486671661,
+      "scanned": 132,
       "leads": 20
     },
     "收攤": {
-      "count": 7,
-      "last": 1792476324950,
-      "scanned": 115,
+      "count": 8,
+      "last": 1792486699357,
+      "scanned": 136,
       "leads": 0
     },
     "帶走價": {
@@ -3875,15 +3982,15 @@
       "leads": 0
     },
     "退租": {
-      "count": 5,
-      "last": 1792474519871,
-      "scanned": 71,
-      "leads": 5
+      "count": 6,
+      "last": 1792486712279,
+      "scanned": 91,
+      "leads": 7
     },
     "低價出清": {
-      "count": 7,
-      "last": 1792480779919,
-      "scanned": 51,
+      "count": 8,
+      "last": 1792486685801,
+      "scanned": 58,
       "leads": 0
     },
     "搬家出清": {
@@ -3893,10 +4000,10 @@
       "leads": 4
     },
     "咖啡機": {
-      "count": 7,
-      "last": 1792480806991,
-      "scanned": 132,
-      "leads": 11
+      "count": 8,
+      "last": 1792486725714,
+      "scanned": 149,
+      "leads": 12
     },
     "製冰機": {
       "count": 6,
@@ -4013,9 +4120,9 @@
       "leads": 5
     },
     "裝潢": {
-      "count": 6,
-      "last": 1792474445757,
-      "scanned": 114,
+      "count": 7,
+      "last": 1792486739095,
+      "scanned": 130,
       "leads": 0
     },
     "店面出租": {
@@ -4031,9 +4138,9 @@
       "leads": 4
     },
     "創業": {
-      "count": 5,
-      "last": 1792467303747,
-      "scanned": 99,
+      "count": 6,
+      "last": 1792486812240,
+      "scanned": 118,
       "leads": 0
     },
     "餐車": {
@@ -4079,43 +4186,43 @@
       "leads": 4
     }
   },
-  "nextScanAt": "2026-10-20T08:27:53.690Z",
+  "nextScanAt": "2026-10-20T09:24:08.612Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-20T08:27:53.690Z",
-    "madeAt": "2026-10-20T07:59:43.974Z",
+    "at": "2026-10-20T09:24:08.612Z",
+    "madeAt": "2026-10-20T09:00:46.518Z",
     "items": [
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "餐車",
+        "q": "餐車"
       },
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "結束營業",
+        "q": "結束營業"
       },
       {
-        "kw": "收攤",
-        "q": "收攤"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "歇業",
+        "q": "歇業"
       },
       {
-        "kw": "咖啡機",
-        "q": "咖啡機"
+        "kw": "帶走價",
+        "q": "帶走價"
       },
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "二手冰箱",
+        "q": "二手冰箱"
       },
       {
-        "kw": "關店",
-        "q": "關店"
+        "kw": "店面出租",
+        "q": "店面出租"
       },
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "拆除",
+        "q": "拆除"
       }
     ]
   }
