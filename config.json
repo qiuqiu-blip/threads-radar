@@ -162,5 +162,8 @@
     "fgh7ev"
   ],
   "watchUsers": [],
-  "bizOnly": true
+  "bizOnly": true,
+  "mustKeywords": [
+    "飲料"
+  ]
 }
