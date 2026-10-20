@@ -170,6 +170,16 @@ main{padding-top:16px}
 .post .time{font-size:12px;color:var(--muted)}
 .tag{font-size:11.5px;border:1px solid var(--gold3);color:var(--gold2);border-radius:999px;padding:2px 8px}
 .tag.reg{border-color:#4d6b55;color:#9fd9b1}
+.post.unseen .ipill{animation:goldglow 1.4s ease-in-out infinite;box-shadow:0 0 0 2px #ffd95a,0 0 16px 4px rgba(255,210,80,.75)}
+@keyframes goldglow{0%,100%{box-shadow:0 0 0 2px #ffd95a,0 0 10px 2px rgba(255,210,80,.55)}50%{box-shadow:0 0 0 3px #fff2b0,0 0 26px 8px rgba(255,210,80,.95)}}
+.post.seen{opacity:.86}
+.post.pinned{border-color:#f5c542;box-shadow:inset 4px 0 0 #f5c542}
+.batchhd{display:flex;align-items:center;gap:8px;margin:18px 4px 8px;color:var(--gold2);font-weight:800;font-size:15px}
+.batchhd:before,.batchhd:after{content:'';flex:1;height:1px;background:var(--line)}
+.batchhd b{color:#ffd95a}
+#dirtyBar{position:fixed;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:55;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#5a2a10,#3a1a08);border:1px solid #ff8a3d;color:#ffd7b8;font-weight:800;font-size:16px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#dirtyBar[hidden]{display:none}
+.chip.pinchip{border-color:#f5c542;color:#ffd95a;font-weight:800}
 .tag.newt{background:var(--bad);border-color:var(--bad);color:#fff}
 .post .text{white-space:pre-wrap;line-height:1.6;font-size:14.5px;max-height:7.4em;overflow:hidden;position:relative;cursor:pointer}
 .post .text.open{max-height:none}
@@ -565,6 +575,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
     <p class="hint" data-i="rpHint">開啟貼文後，在 Threads 長按輸入框「貼上」→ 送出。這則線索會自動標記為已聯絡。</p>
   </div>
 </div>
+<div id="dirtyBar" hidden><span>⚠️ 設定有修改，還沒儲存！</span><button class="btn sm" id="dirtySave">💾 立即儲存</button></div>
 <div id="toast"></div>
 
 <script src="analyze.js"></script>
@@ -757,17 +768,17 @@ async function load(silent){
     }
     if(state.demo)fillSettings();
     if(!LS.get('lastView',null))LS.set('lastView',new Date().toISOString());
+    if(!state.demo&&!LS.get('viewedInit',false)){const last=Date.parse(LS.get('lastView',''))||Date.now();(state.doc?.posts||[]).forEach(p=>{if(p.initial||!(Date.parse(p.foundAt)>last))state.viewed.add(p.url)});LS.set('viewed',[...state.viewed].slice(-4000));LS.set('viewedInit',true);snapViewed()}
     renderAll(); checkNew(); loadRuns();
     if($('#tab-dash').classList.contains('show'))renderDash();
     if(!silent&&a)toast(t('connected'));
   }catch(e){toast(t('connFail')+'：'+e.message)}
 }
 function checkNew(){
-  const last=LS.get('lastView',null);
-  const posts=(state.doc?.posts||[]).filter(p=>!p.initial);
-  const n=last?posts.filter(p=>Date.parse(p.foundAt)>Date.parse(last)).length:0;
+  const xs=state.cfg?.excludeUsers||[];
+  const n=(state.doc?.posts||[]).filter(p=>!p.initial&&!state.viewed.has(p.url)&&!xs.includes(normUser(p.user))).length;
   const b=$('#badge');b.textContent=n;b.style.display=n?'block':'none';
-  if(n&&n!==checkNew.lastN)speak(t('newSpeech').replace('{n}',n));
+  if(n&&checkNew.lastN!=null&&n>checkNew.lastN)speak(t('newSpeech').replace('{n}',n-checkNew.lastN));
   checkNew.lastN=n;
 }
 function markViewed(){LS.set('lastView',new Date().toISOString());setTimeout(checkNew,50)}
@@ -835,7 +846,8 @@ function disconnect(){
 }
 function renderChips(){
   const kws=new Set();(state.doc?.posts||[]).forEach(p=>[...(p.keywords||[]),...(p.regions||[])].forEach(k=>kws.add(k)));
-  $('#chips').innerHTML=[['',t('all')],...[...kws].map(k=>[k,k])].map(([v,l])=>`<button class="chip ${state.filter===v?'on':''}" data-f="${esc(v)}">${esc(l)}</button>`).join('');
+  const np=Object.values(state.crm).filter(c=>c&&c.pin).length;
+  $('#chips').innerHTML=[['',t('all')],['__pin',`📌 重點 ${np}`],...[...kws].map(k=>[k,k])].map(([v,l])=>`<button class="chip ${v==='__pin'?'pinchip':''} ${state.filter===v?'on':''}" data-f="${esc(v)}">${esc(l)}</button>`).join('');
 }
 
 /* ============ 朗讀（單則／連續，可暫停） ============ */
@@ -868,6 +880,7 @@ function segs(t){
   return out;
 }
 function prepPost(p,i){
+  markPostViewed(p.url);
   R.url=p.url;R.spans=segs(p.text||'');R.chunks=[];R.map=[];R.ci=0;
   R.chunks.push(postHeader(p,i));R.map.push(-1);
   R.spans.forEach((x,k)=>{const say=cleanSpeech(x);if(say&&/[\p{L}\p{N}]/u.test(say)){splitChunks(say).forEach(c=>{R.chunks.push(c);R.map.push(k)})}});
@@ -907,7 +920,7 @@ function startPost(p,i){
 }
 function nextInQueue(){
   while(R.mode==='queue'&&R.qi+1<R.queue.length){
-    R.qi++;const p=(state.doc?.posts||[]).find(x=>x.url===R.queue[R.qi]);
+    R.qi++;const p=findPostU(R.queue[R.qi]);
     if(!p)continue; // 已刪除的跳過
     prepPost(p,R.qi);markReading();applySpans();
     const card=readingCard();if(card){const y=card.getBoundingClientRect().top+scrollY-headerH()-10;window.scrollTo({top:y,behavior:'smooth'})}
@@ -929,17 +942,19 @@ function markReading(){
 }
 function toggleSingle(url){
   if(R.url===url&&R.mode==='single'){R.paused?resumeRead():pauseRead();return}
-  const p=(state.doc?.posts||[]).find(x=>x.url===url);if(!p)return;
+  const p=findPostU(url);if(!p)return;
   R.tok++;R.mode='single';R.queue=[];startPost(p,null);
 }
 function toggleQueue(){
   if(R.mode==='queue'){R.paused?resumeRead():pauseRead();return}
-  const urls=[...document.querySelectorAll('#list article.post')].map(a=>a.dataset.url);
+  let urls=[...document.querySelectorAll('#list article.post')].map(a=>a.dataset.url);
   if(!urls.length){toast(t('noPosts'));return}
+  const unseen=[...document.querySelectorAll('#list article.post.unseen')].map(a=>a.dataset.url);
+  if(unseen.length&&R.mode!=='single'){urls=unseen;toast(`🔊 只念 ${unseen.length} 則沒看過的新線索，念完自動停止`)}
   const startAt=R.mode==='single'&&R.url?Math.max(0,urls.indexOf(R.url)):0;
   if(!LISTEN.on){LISTEN.on=true;LS.set('voiceCmd',true);renderMic();toast('🎙 語音指令已同時開啟')}
   R.tok++;R.mode='queue';R.queue=urls;R.qi=startAt;
-  const p=(state.doc?.posts||[]).find(x=>x.url===urls[startAt]);if(p)startPost(p,startAt);
+  const p=findPostU(urls[startAt]);if(p)startPost(p,startAt);
 }
 
 
@@ -1002,7 +1017,7 @@ function cancelAsk(){ASK.speaking=false;clearTimeout(ASK.timer);ASK.timer=null;t
 
 /* 複製貼文內容 */
 function copyPost(url){
-  const p=(state.doc?.posts||[]).find(x=>x.url===url);if(!p)return;
+  const p=findPostU(url);if(!p)return;
   const txt=`${p.text}\n\n— @${p.user}\n${p.url}`;
   (typeof copyText==='function'?copyText(txt):navigator.clipboard.writeText(txt)).then(()=>toast('📄 已複製貼文內容'),()=>toast('複製失敗'));
 }
@@ -1021,7 +1036,7 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 /* 點文章放大一倍；再點一下、往旁邊滑、滑出畫面、按返回 → 還原 */
 function toggleBig(card){card.classList.contains('big')?shrink(card,true):grow(card)}
-function grow(card){const top0=card.getBoundingClientRect().top;
+function grow(card){markPostViewed(card.dataset.url);const top0=card.getBoundingClientRect().top;
   document.querySelectorAll('article.post.big:not(.reading)').forEach(c=>{if(c!==card)c.classList.remove('big')});
   card.classList.add('big');card.querySelector('.text')?.classList.add('open');state.bigUrl=card.dataset.url;
   try{if(!history.state||!history.state.zoom)history.pushState({zoom:'post'},'')}catch{}
@@ -1113,6 +1128,26 @@ function setCrm(u,patch){
   LS.set('crm',state.crm);
 }
 const contacted=u=>['已私訊','已回覆','成交'].includes(crm(u).s);
+/* ---- 看過／沒看過 ---- */
+state.viewed=new Set(LS.get('viewed',[]));let VIEW_SNAP=new Set(state.viewed);
+function snapViewed(){VIEW_SNAP=new Set(state.viewed)}
+function markPostViewed(u){
+  if(!u||state.viewed.has(u))return;state.viewed.add(u);LS.set('viewed',[...state.viewed].slice(-4000));
+  document.querySelectorAll(`article.post[data-url="${CSS.escape(u)}"]`).forEach(c=>{c.classList.remove('unseen');c.querySelector('.newt')?.remove()});
+  checkNew();
+}
+/* ---- 📌 重點線索 ---- */
+function pinStore(){const m=LS.get('pins',{});if(window.DB&&DB.unlocked&&DB.data&&DB.data.pins)for(const[u,p]of Object.entries(DB.data.pins)){if(!p.deleted&&(!m[u]||(p.pinAt||0)>(m[u].pinAt||0)))m[u]=p}return m}
+function pinnedPosts(){const m=pinStore();const live=new Map((state.doc?.posts||[]).map(p=>[p.url,p]));
+  return Object.keys(state.crm).filter(u=>state.crm[u]&&state.crm[u].pin).map(u=>live.get(u)||m[u]).filter(Boolean).sort((a,b)=>(crm(b.url).pinAt||0)-(crm(a.url).pinAt||0))}
+function findPostU(u){return (state.doc?.posts||[]).find(x=>x.url===u)||pinStore()[u]||((window.DB&&DB.leads)||[]).find(x=>x.url===u)||null}
+function togglePin(u){
+  const p=findPostU(u);const on=!crm(u).pin;const now=Date.now();
+  setCrm(u,{pin:on,pinAt:on?now:0});
+  const m=LS.get('pins',{});if(on&&p)m[u]={...p,pinAt:now};else delete m[u];LS.set('pins',m);
+  if(window.DB&&DB.unlocked&&DB.data){DB.data.pins=DB.data.pins||{};DB.data.pins[u]=on&&p?{...p,pinAt:now}:{deleted:true,pinAt:now};DB.markDirty()}
+  toast(on?'📌 已加入重點線索':'已從重點線索移除');renderChips();renderList();
+}
 const AN=new Map();
 function an(p){
   const w=!!(p.watched||(state.cfg?.watchUsers||[]).includes(normUser(p.user)));const key=p.url+'|'+w;
@@ -1125,24 +1160,34 @@ const LV_ICON={高:'🔥',中:'🌤',低:'❄️'};
 function renderList(){
   const last=LS.get('lastView',null);
   const q=state.q.toLowerCase(),f=state.f;
-  let posts=(state.doc?.posts||[]).filter(p=>{
+  const pinMode=state.filter==='__pin';
+  let posts=(pinMode?pinnedPosts():(state.doc?.posts||[])).filter(p=>{
     const a=an(p),c=crm(p.url);
     if((state.cfg?.excludeUsers||[]).includes(normUser(p.user)))return false;
     if(f.intent&&a.intent.level!==f.intent)return false;
     if(f.role&&a.role!==f.role)return false;
     if(f.status&&c.s!==f.status)return false;
-    if(state.filter&&![...(p.keywords||[]),...(p.regions||[])].includes(state.filter))return false;
+    if(state.filter&&!pinMode&&![...(p.keywords||[]),...(p.regions||[])].includes(state.filter))return false;
     if(q&&!(`${p.text} ${p.user}`.toLowerCase().includes(q)))return false;
     return true;
   });
   const lastRun=state.doc?.runs?.[0],newSet=new Set(lastRun?.newUrls||[]);
   const hiddenNew=(state.doc?.posts||[]).filter(p=>newSet.has(p.url)&&!posts.includes(p)&&!(state.cfg?.excludeUsers||[]).includes(normUser(p.user)));
   const fl=[f.intent&&f.intent+'意向',f.role,f.status,state.filter,q&&'搜尋「'+q+'」'].filter(Boolean);
-  const hb=hiddenNew.length?`<div class="banner warn" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:16px">🔎 最近一次掃到的新線索，有 <b>${hiddenNew.length}</b> 則被篩選藏起來了（目前只看：${esc(fl.join('、'))}）<button class="btn sm" data-showall>顯示全部</button></div>`:'';
+  const hb=hiddenNew.length&&!pinMode?`<div class="banner warn" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:16px">🔎 最近一次掃到的新線索，有 <b>${hiddenNew.length}</b> 則被篩選藏起來了（目前只看：${esc(fl.join('、'))}）<button class="btn sm" data-showall>顯示全部</button></div>`:'';
   if(f.sort==='hot')posts=[...posts].sort((a,b)=>an(b).intent.score-an(a).intent.score||(Date.parse(b.foundAt)||0)-(Date.parse(a.foundAt)||0));
-  if(!posts.length){$('#list').innerHTML=hb+`<div class="empty">${t('noPosts')}</div>`;return}
-  $('#list').innerHTML=hb+posts.map(p=>{
-    const a=an(p),i=a.info,c=crm(p.url),isNew=last&&!p.initial&&Date.parse(p.foundAt)>Date.parse(last);
+  // 依「哪一次掃描抓到的」分組：每組裡沒看過的在前、看過的沉到這組最下面
+  const runsW=(state.doc?.runs||[]).map(r=>[Date.parse(r.startedAt)-5e3,Date.parse(r.finishedAt||r.startedAt)+120e3,r.startedAt]);
+  const bKey=p=>{const fa=Date.parse(p.foundAt)||0;const w=runsW.find(([s,e])=>fa>=s&&fa<=e);return w?Date.parse(w[2]):Math.floor(fa/6e5)*6e5};
+  const grouped=f.sort!=='hot'&&!pinMode;
+  if(grouped){const K=new Map(posts.map(p=>[p.url,bKey(p)]));posts=[...posts].sort((a,b)=>K.get(b.url)-K.get(a.url)||(VIEW_SNAP.has(a.url)-VIEW_SNAP.has(b.url))||(Date.parse(b.foundAt)||0)-(Date.parse(a.foundAt)||0));posts._K=K}
+  const pinHd=pinMode?`<div class="banner" style="font-size:16px">📌 <b>重點線索</b>（${posts.length} 則）：你標記為重點的線索都集中在這裡，雷達清掉舊資料也會保留。</div>`:'';
+  if(!posts.length){$('#list').innerHTML=hb+pinHd+`<div class="empty">${pinMode?'還沒有重點線索。在線索卡片按「📌 加入重點」就會出現在這裡。':t('noPosts')}</div>`;return}
+  let lastK=null;
+  $('#list').innerHTML=hb+pinHd+posts.map(p=>{
+    let hd='';if(grouped){const k=posts._K.get(p.url);if(k!==lastK){lastK=k;const grp=posts.filter(x=>posts._K.get(x.url)===k);const un=grp.filter(x=>!state.viewed.has(x.url)&&!x.initial).length;
+      hd=`<div class="batchhd">📡 ${esc(new Date(k).toLocaleString('zh-TW',{hour12:false,month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}))} 掃到 ${grp.length} 則${un?`・<b>${un} 則沒看過</b>`:''}</div>`}}
+    const a=an(p),i=a.info,c=crm(p.url),isNew=!p.initial&&!state.viewed.has(p.url);
     const facts=[
       i.city||i.district?`📍 ${esc([i.city,i.district].filter(Boolean).join(' '))}`:'',
       i.shop?`🏪 ${esc(i.shop)}`:'',i.price?`💰 ${esc(i.price)}`:'',i.area?`📐 ${esc(i.area)}`:'',
@@ -1150,7 +1195,7 @@ function renderList(){
       i.line?`💬 LINE ${esc(i.line)}`:'',i.equip&&i.equip.length?`🔧 ${esc(i.equip.join('、'))}`:''
     ].filter(Boolean);
     const u=esc(p.url);
-    return `<article data-url="${u}" class="card post ${R.url===p.url&&R.mode?'reading big':''} ${state.bigUrl===p.url&&!(R.url===p.url&&R.mode)?'big':''} ${contacted(p.url)?'done':''} ${c.s==='不需聯絡'?'skip':''}">
+    return hd+`<article data-url="${u}" class="card post ${isNew?'unseen':'seen'} ${c.pin?'pinned':''} ${R.url===p.url&&R.mode?'reading big':''} ${state.bigUrl===p.url&&!(R.url===p.url&&R.mode)?'big':''} ${contacted(p.url)?'done':''} ${c.s==='不需聯絡'?'skip':''}">
       <div class="meta">
         <div class="trow"><span class="ipill ${a.intent.level}">${LV_ICON[a.intent.level]} ${a.intent.level}意向</span><span class="tago ${Date.now()-Date.parse(p.time||p.foundAt)<3*3600e3?'fresh':''}" title="對方發文時間">🕒 發文 ${ago(p.time||p.foundAt)}</span>
         ${p.foundAt?`<span class="tagf ${Date.now()-Date.parse(p.foundAt)<3600e3?'fresh':''}" title="雷達抓到的時間：${esc(new Date(p.foundAt).toLocaleString('zh-TW',{hour12:false}))}">📡 抓到 ${ago(p.foundAt)}</span>`:''}</div>
@@ -1177,6 +1222,7 @@ function renderList(){
         <button class="btn ghost sm" data-read="${u}">${readLabel(p.url)}</button>
         <button class="btn ghost sm" data-wuser="${esc(normUser(p.user))}">${(state.cfg?.watchUsers||[]).includes(normUser(p.user))?'★ 已關注':'⭐ 關注帳號'}</button>
         <button class="btn ghost sm" data-xuser="${esc(normUser(p.user))}">🚫 排除帳號</button>
+        <button class="btn ${c.pin?'':'ghost '}sm" data-pin="${u}">${c.pin?'📌 已是重點（點我移除）':'📌 加入重點'}</button>
       </div>
       <div class="crm">
         ${STATUSES.map(st=>`<button class="chip st-${st} ${c.s===st?'on':''}" data-st="${u}|${st}">${st}</button>`).join('')}
@@ -1203,21 +1249,23 @@ function fillSettings(){
   $('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;if($('#cBiz'))$('#cBiz').checked=!!c.bizOnly;
   $('#cFirst').checked=c.firstRunSilent!==false;$('#cTg').checked=c.notifyTelegram!==false;$('#cErr').checked=c.notifyErrors!==false;
   $('#cAge').value=c.maxAgeHours??72;$('#cMinM').value=c.scanMinMinutes??30;$('#cMaxM').value=c.scanMaxMinutes??90;$('#cRest').value=c.restHoursPerDay??6;$('#cCombo').value=Math.round((c.comboChance??0.5)*100);$('#cDetail').value=c.detailFetchMax??6;$('#cSmart').checked=c.smartSchedule!==false;renderSchedInfo();$('#cMaxN').value=c.maxNotifyPerRun??15;$('#cWatchN').value=c.watchPerScan??1;fillReplySettings();$('#cPerScan').value=c.keywordsPerScan??4;$('#cScroll').value=c.scrollsPerKeyword??3;
+  snapCfg();
 }
 function addTag(id){
   const inp=$('#'+id+'In');const v=inp.value.trim();if(!v)return;
   const arr=state.cfg[LISTS[id]]||(state.cfg[LISTS[id]]=[]);
   v.split(/[,，、\s]+/).filter(Boolean).map(x=>id==='xu'||id==='wu'?normUser(x):x).filter(Boolean).forEach(x=>{if(arr.includes(x))return;if((id==='kw'||id==='mu')){const b=kwBase(x);for(let j=arr.length-1;j>=0;j--)if(kwBase(arr[j])===b)arr.splice(j,1)}arr.push(x)});
-  inp.value='';renderTags();
+  inp.value='';renderTags();setDirty(true);
 }
 async function saveSettings(){
+  Object.keys(LISTS).forEach(id=>{const i=$('#'+id+'In');if(i&&i.value.trim())addTag(id)});
   const c=state.cfg;
   Object.assign(c,{enabled:$('#cEnabled').checked,regionRequired:$('#cRegionReq').checked,strictKeyword:$('#cStrict').checked,bizOnly:!!$('#cBiz')?.checked,
     firstRunSilent:$('#cFirst').checked,notifyTelegram:$('#cTg').checked,notifyErrors:$('#cErr').checked,maxAgeHours:+$('#cAge').value||0,
     maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),watchPerScan:Math.min(5,Math.max(0,Math.round(+$('#cWatchN').value||0))),reply:collectReplySettings(),keywordsPerScan:Math.max(0,Math.round(+$('#cPerScan').value||0)),scanMinMinutes:Math.max(5,+$('#cMinM').value||30),scanMaxMinutes:Math.max(5,+$('#cMaxM').value||90),restHoursPerDay:Math.min(20,Math.max(0,+$('#cRest').value||0)),comboChance:Math.min(1,Math.max(0,(+$('#cCombo').value||0)/100)),detailFetchMax:Math.min(15,Math.max(0,Math.round(+$('#cDetail').value||0))),smartSchedule:$('#cSmart').checked,scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
   const a=adapter();if(!a){toast(t('needConn'));return}
   const b=$('#saveBtn');b.disabled=true;
-  try{await a.saveConfig(c);toast(t('saved'));speak(t('saved'))}catch(e){toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
+  try{await a.saveConfig(c);snapCfg();toast(t('saved'));speak(t('saved'))}catch(e){toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
 }
 
 /* ============ 畫面：狀態 ============ */
@@ -1332,7 +1380,7 @@ function buildReply(p,cat){
 }
 let replyPost=null;
 function openReply(url){
-  const p=(state.doc?.posts||[]).find(x=>x.url===url)||((window.DB&&DB.leads)||[]).find(x=>x.url===url);if(!p)return;replyPost=p;
+  const p=findPostU(url)||((window.DB&&DB.leads)||[]).find(x=>x.url===url);if(!p)return;replyPost=p;
   const cat=classify(p);
   $('#rpUser').textContent='@'+p.user;$('#rpText').textContent=p.text;
   renderReplyCats(cat);$('#rpMsg').value=buildReply(p,cat);
@@ -1602,6 +1650,7 @@ document.addEventListener('click',e=>{
   if(el.hasAttribute('data-showall')){state.f.intent='';state.f.role='';state.f.status='';state.filter='';state.q='';
     ['fIntent','fRole','fStatus'].forEach(id=>{if($('#'+id))$('#'+id).value=''});if($('#q'))$('#q').value='';
     renderChips();renderList();saveView();toast('已顯示全部線索');return}
+  if(el.dataset.pin){togglePin(el.dataset.pin);return}
   if(el.dataset.rate!==undefined){setRate(+el.dataset.rate);return}
   if(el.id==='readAllBtn'){toggleQueue();return}
   if(el.id==='readStopBtn'){stopRead();return}
@@ -1611,19 +1660,22 @@ document.addEventListener('click',e=>{
   if(el.id==='kwPruneAll'){removeKeywords((el.dataset.list||'').split('|').filter(Boolean));return}
   if(el.dataset.reply){openReply(el.dataset.reply);return}
   if(el.dataset.rcat){renderReplyCats(el.dataset.rcat);$('#rpMsg').value=buildReply(replyPost,el.dataset.rcat);return}
-  if(el.dataset.rpdefault!==undefined){const c=el.dataset.rpdefault;$('#rt_'+c).value=REPLY_DEFAULT.tpl[c];return}
+  if(el.dataset.rpdefault!==undefined){const c=el.dataset.rpdefault;$('#rt_'+c).value=REPLY_DEFAULT.tpl[c];setDirty(true);return}
   if(el.dataset.st){const [u,st]=el.dataset.st.split('|');setCrm(u,{s:st});renderList();renderSummary();return}
   if(el.dataset.tp){const [u,tp]=el.dataset.tp.split('|');setCrm(u,{t:crm(u).t===tp?'':tp});renderList();return}
   if(el.dataset.add){addTag(el.dataset.add);return}
   if(el.dataset.clear){if(confirm(t('confirmClear'))){state.cfg[LISTS[el.dataset.clear]]=[];renderTags()}return}
-  if(el.dataset.del){const [id,i]=el.dataset.del.split(':');state.cfg[LISTS[id]].splice(+i,1);renderTags();return}
+  if(el.dataset.del){const [id,i]=el.dataset.del.split(':');state.cfg[LISTS[id]].splice(+i,1);renderTags();setDirty(true);return}
 });
 ['kw','mu','rg','ex','xu','wu'].forEach(id=>$('#'+id+'In').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addTag(id)}}));
 $('#q').addEventListener('input',e=>{state.q=e.target.value;renderList()});
 ['fIntent','fRole','fStatus','fSort'].forEach(id=>$('#'+id).addEventListener('change',e=>{const k={fIntent:'intent',fRole:'role',fStatus:'status',fSort:'sort'}[id];state.f[k]=e.target.value;renderList()}));
-$('#refreshBtn').onclick=()=>{markViewed();load()};
+$('#refreshBtn').onclick=()=>{snapViewed();load()};
 $('#voiceBtn').onclick=()=>{state.voice=!state.voice;LS.set('voice',state.voice);applyLang();toast(state.voice?t('voiceOn'):t('voiceOff'));speak(t('voiceOn'))};
 $('#saveBtn').onclick=()=>saveSettings().then(renderPause);
+$('#dirtySave').onclick=()=>saveSettings().then(renderPause);
+['input','change'].forEach(ev=>$('#tab-settings').addEventListener(ev,e=>{if(e.target.matches('input,select,textarea'))setDirty(true)}));
+window.addEventListener('beforeunload',e=>{if(state.cfgDirty){e.preventDefault();e.returnValue=''}});
 $('#pauseBtn').onclick=togglePause;
 $('#dPauseBtn').onclick=()=>togglePause().then(renderDash);
 $('#dPushBtn').onclick=togglePush;
@@ -1649,6 +1701,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!state.de
 setInterval(()=>{if(!document.hidden&&!state.demo)load(true)},120000);
 
 const RUNOPEN=new Set(),RUNPOST=new Set();
+document.addEventListener('click',e=>{const c=e.target.closest('article.post');if(c&&e.target.closest('a[href],[data-reply],[data-copytext],[data-cust]'))markPostViewed(c.dataset.url)},true);
 document.addEventListener('click',e=>{
   if(e.target.closest('a,button'))return;
   const rp=e.target.closest('[data-runpost]');if(rp){const u=rp.dataset.runpost;RUNPOST.has(u)?RUNPOST.delete(u):RUNPOST.add(u);loadRuns();return}
@@ -1671,11 +1724,19 @@ async function collapseRuns(){
   if(el2&&top!=null){const d=el2.getBoundingClientRect().top-top;if(Math.abs(d)>1)window.scrollTo({top:scrollY+d,behavior:'instant'})}
 }
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&state.tab==='status')collapseRuns()});
+let CFG_SAVED=null;
+function setDirty(v){state.cfgDirty=!!v;const b=$('#dirtyBar');if(b)b.hidden=!(state.cfgDirty&&state.tab==='settings')}
+function snapCfg(){try{CFG_SAVED=JSON.stringify(state.cfg||{})}catch{}setDirty(false)}
 function showTab(name){
+  if(state.tab==='settings'&&name!=='settings'&&state.cfgDirty){
+    if(confirm('⚠️ 設定有修改還沒儲存！\n\n按「確定」＝幫你儲存\n按「取消」＝放棄這些修改'))saveSettings().then(renderPause);
+    else{if(CFG_SAVED){state.cfg=JSON.parse(CFG_SAVED);fillSettings()}setDirty(false);toast('已放棄修改')}
+  }
+  if(name==='leads'&&state.tab!=='leads'){snapViewed();setTimeout(renderList,0)}
   if(state.tab==='status'&&name!=='status'){RUNOPEN.clear();RUNPOST.clear()}
   document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));
   document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('show',s.id==='tab-'+name));
-  state.tab=name;saveView();
+  state.tab=name;saveView();setDirty(state.cfgDirty);
 }
 function saveView(){LS.set('view',{tab:state.tab||'leads',y:window.scrollY,at:Date.now(),f:state.f,filter:state.filter,q:state.q})}
 let svT;window.addEventListener('scroll',()=>{clearTimeout(svT);svT=setTimeout(saveView,250)},{passive:true});

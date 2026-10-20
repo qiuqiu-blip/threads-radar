@@ -54,7 +54,7 @@ const DB = window.DB = {
   key: null, salt: null, iter: 200000, sha: null, data: null, unlocked: false, exists: null,
   dirty: false, saving: false, saveT: null, sync: '', sub: 'leads', page: { leads: 50, cust: 50, logs: 80, match: 30, kb: 50 },
 };
-const emptyData = () => ({ v: 1, customers: {}, logs: [], msgs: [], postCrm: {}, updatedAt: Date.now() });
+const emptyData = () => ({ v: 1, customers: {}, logs: [], msgs: [], pins: {}, postCrm: {}, updatedAt: Date.now() });
 const STATUS_RANK = { 未聯絡: 0, 不需聯絡: 0, 已私訊: 1, 已回覆: 2, 成交: 3 };
 const LOG_TYPES = ['私訊', '回覆', '電話', '看店', '報價', '成交', '備註'];
 const SERVICES = ['尋點頂讓', '創業諮詢', '設備收購', '拆除清運', '清潔打掃', '整場規劃', '木作裝潢', '水電裝配', '招牌施工', '南北貨運', '資訊通勤', '加盟推薦', '維修服務'];
@@ -71,6 +71,7 @@ function merge(a, b) {
   for (const src of [a, b]) {
     for (const [u, c] of Object.entries(src.customers || {})) { const cur = out.customers[u]; if (!cur || (c.updatedAt || 0) > (cur.updatedAt || 0)) out.customers[u] = c; }
     for (const [u, c] of Object.entries(src.postCrm || {})) { const cur = out.postCrm[u]; if (!cur || (c.at || 0) > (cur.at || 0)) out.postCrm[u] = c; }
+    for (const [u, c] of Object.entries(src.pins || {})) { const cur = out.pins[u]; if (!cur || (c.pinAt || 0) > (cur.pinAt || 0)) out.pins[u] = c; }
   }
   const seen = new Map(); [...(a.logs || []), ...(b.logs || [])].forEach((l) => { const cur = seen.get(l.id); if (!cur || (l.edited || 0) > (cur.edited || 0)) seen.set(l.id, l); });
   out.logs = [...seen.values()].filter((l) => !l.deleted || Date.now() - l.edited < 30 * 864e5).sort((x, y) => y.at - x.at);
