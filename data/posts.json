@@ -1,62 +1,108 @@
 {
-  "updatedAt": "2026-10-19T22:26:18.980Z",
+  "updatedAt": "2026-10-20T00:05:17.901Z",
   "lastRun": {
-    "startedAt": "2026-10-19T22:21:48.229Z",
-    "finishedAt": "2026-10-19T22:26:18.943Z",
+    "startedAt": "2026-10-20T00:02:33.031Z",
+    "finishedAt": "2026-10-20T00:05:17.855Z",
     "status": "ok",
-    "scanned": 86,
-    "matched": 3,
-    "newCount": 3,
-    "notified": 3,
+    "scanned": 125,
+    "matched": 0,
+    "newCount": 0,
+    "notified": 0,
     "perKeyword": {
-      "加盟": 17,
-      "收店": 0,
-      "便宜賣": 16,
-      "招牌": 19,
-      "製冰機": 18,
-      "帶走價": 0,
-      "二手設備": 16,
-      "爐具": 0
+      "歇業": 17,
+      "蒸烤箱": 21,
+      "收攤": 20,
+      "排油煙": 0,
+      "餐車": 19,
+      "冷凍櫃": 23,
+      "飲料店": 19,
+      "低價出清": 6
     },
     "warnings": [],
     "keywordsUsed": [
-      "加盟",
-      "收店",
-      "便宜賣",
-      "招牌",
-      "製冰機",
-      "帶走價",
-      "二手設備",
-      "爐具"
+      "歇業",
+      "蒸烤箱",
+      "收攤",
+      "排油煙",
+      "餐車",
+      "冷凍櫃",
+      "飲料店",
+      "低價出清"
     ],
     "queries": [
-      "加盟",
-      "收店",
-      "便宜賣",
-      "招牌",
-      "製冰機",
-      "帶走價",
-      "二手設備",
-      "爐具"
+      "歇業",
+      "蒸烤箱",
+      "收攤",
+      "排油煙",
+      "餐車",
+      "冷凍櫃",
+      "飲料店",
+      "低價出清"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 38,
+      "seen": 58,
       "dup": 0,
-      "noContext": 32,
-      "noKeyword": 7,
-      "tooOld": 6
+      "noContext": 47,
+      "noKeyword": 20
     },
-    "detailFetched": 3,
-    "newUrls": [
-      "https://www.threads.com/@feioi01.21/post/DerGb50mpuB",
-      "https://www.threads.com/@w83133/post/Deqt54-I56_",
-      "https://www.threads.com/@sheepcafe16/post/DepBzFbnQky"
-    ],
+    "detailFetched": 0,
+    "newUrls": [],
     "pushMode": "on",
-    "nextInMinutes": 34
+    "nextInMinutes": 35
   },
   "runs": [
+    {
+      "startedAt": "2026-10-20T00:02:33.031Z",
+      "finishedAt": "2026-10-20T00:05:17.855Z",
+      "status": "ok",
+      "scanned": 125,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {
+        "歇業": 17,
+        "蒸烤箱": 21,
+        "收攤": 20,
+        "排油煙": 0,
+        "餐車": 19,
+        "冷凍櫃": 23,
+        "飲料店": 19,
+        "低價出清": 6
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "歇業",
+        "蒸烤箱",
+        "收攤",
+        "排油煙",
+        "餐車",
+        "冷凍櫃",
+        "飲料店",
+        "低價出清"
+      ],
+      "queries": [
+        "歇業",
+        "蒸烤箱",
+        "收攤",
+        "排油煙",
+        "餐車",
+        "冷凍櫃",
+        "飲料店",
+        "低價出清"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 58,
+        "dup": 0,
+        "noContext": 47,
+        "noKeyword": 20
+      },
+      "detailFetched": 0,
+      "newUrls": [],
+      "pushMode": "on",
+      "nextInMinutes": 35
+    },
     {
       "startedAt": "2026-10-19T22:21:48.229Z",
       "finishedAt": "2026-10-19T22:26:18.943Z",
@@ -2988,9 +3034,9 @@
       "leads": 20
     },
     "收攤": {
-      "count": 4,
-      "last": 1792439316143,
-      "scanned": 57,
+      "count": 5,
+      "last": 1792454583696,
+      "scanned": 77,
       "leads": 0
     },
     "帶走價": {
@@ -3048,9 +3094,9 @@
       "leads": 4
     },
     "低價出清": {
-      "count": 4,
-      "last": 1792445259871,
-      "scanned": 33,
+      "count": 5,
+      "last": 1792454703179,
+      "scanned": 39,
       "leads": 0
     },
     "搬家出清": {
@@ -3078,15 +3124,15 @@
       "leads": 0
     },
     "蒸烤箱": {
-      "count": 4,
-      "last": 1792445335216,
-      "scanned": 61,
+      "count": 5,
+      "last": 1792454568412,
+      "scanned": 82,
       "leads": 0
     },
     "歇業": {
-      "count": 3,
-      "last": 1792437341003,
-      "scanned": 48,
+      "count": 4,
+      "last": 1792454553330,
+      "scanned": 65,
       "leads": 0
     },
     "店面轉讓": {
@@ -3174,9 +3220,9 @@
       "leads": 10
     },
     "飲料店": {
-      "count": 2,
-      "last": 1792434652738,
-      "scanned": 36,
+      "count": 3,
+      "last": 1792454688731,
+      "scanned": 55,
       "leads": 5
     },
     "裝潢": {
@@ -3204,14 +3250,14 @@
       "leads": 0
     },
     "餐車": {
-      "count": 2,
-      "last": 1792435231578,
-      "scanned": 39,
+      "count": 3,
+      "last": 1792454657811,
+      "scanned": 58,
       "leads": 0
     },
     "排油煙": {
-      "count": 2,
-      "last": 1792439214465,
+      "count": 3,
+      "last": 1792454598890,
       "scanned": 0,
       "leads": 0
     },
@@ -3228,9 +3274,9 @@
       "leads": 2
     },
     "冷凍櫃": {
-      "count": 2,
-      "last": 1792439274301,
-      "scanned": 48,
+      "count": 3,
+      "last": 1792454672917,
+      "scanned": 71,
       "leads": 0
     },
     "加盟": {
@@ -3246,43 +3292,43 @@
       "leads": 2
     }
   },
-  "nextScanAt": "2026-10-19T23:00:38.348Z",
+  "nextScanAt": "2026-10-20T00:40:10.639Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-19T23:00:38.348Z",
-    "madeAt": "2026-10-19T22:26:18.975Z",
+    "at": "2026-10-20T00:40:10.639Z",
+    "madeAt": "2026-10-20T00:05:17.899Z",
     "items": [
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "收店",
+        "q": "收店"
       },
       {
-        "kw": "蒸烤箱",
-        "q": "蒸烤箱"
+        "kw": "清倉",
+        "q": "清倉"
       },
       {
-        "kw": "收攤",
-        "q": "收攤"
+        "kw": "開店",
+        "q": "開店"
       },
       {
-        "kw": "排油煙",
-        "q": "排油煙"
+        "kw": "二手冰箱",
+        "q": "二手冰箱"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "創業",
+        "q": "創業"
       },
       {
-        "kw": "冷凍櫃",
-        "q": "冷凍櫃"
+        "kw": "裝潢",
+        "q": "裝潢"
       },
       {
-        "kw": "飲料店",
-        "q": "飲料店"
+        "kw": "商用冰箱",
+        "q": "商用冰箱"
       },
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "拆除",
+        "q": "拆除"
       }
     ]
   }
