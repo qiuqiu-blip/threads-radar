@@ -86,6 +86,17 @@ details>summary{font-size:17px;padding:6px 0}
 .rd-now{background:rgba(245,215,122,.25);border-radius:6px;box-shadow:0 0 0 3px rgba(245,215,122,.25);color:#fff}
 .post.reading{outline:2px solid var(--gold2);box-shadow:0 0 0 4px rgba(245,215,122,.18),0 8px 24px rgba(0,0,0,.35)}
 .tago{font-weight:800;color:var(--text);background:#2a2112;border:1px solid var(--gold3);border-radius:999px;padding:3px 10px;font-size:12.5px}
+.hotmic{display:flex;align-items:center;gap:8px;margin:-4px 0 10px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#3a0f0f,#5a1a12);border:2px solid #ff5a4d;color:#ffd7cf;font-size:18px;animation:micpulse 1s ease-in-out infinite}
+.hotmic .cd{margin-left:auto;font-size:24px;font-weight:900;color:#fff}
+.hotmic.idle{animation:none;border-width:1px;border-color:#6b2a22;background:#1e1210;font-size:14px;padding:6px 12px;color:#e8b4aa}
+@keyframes micpulse{0%,100%{box-shadow:0 0 0 0 rgba(255,90,77,.6)}50%{box-shadow:0 0 0 8px rgba(255,90,77,0)}}
+button.viatag{cursor:pointer;font-family:inherit}
+.etagbtn{all:unset;cursor:pointer}
+#kwOv{position:fixed;inset:0;z-index:85;background:rgba(5,4,2,.88);overflow:auto;padding:24px 12px 60px;overscroll-behavior:contain}
+#kwOv .card{max-width:760px;margin:0 auto}
+#kwOv .kpis{grid-template-columns:repeat(4,1fr)}
+#kwOv .kr{display:flex;justify-content:space-between;gap:8px;padding:9px 4px;border-top:1px solid var(--line);font-size:15px}
+#kwOv .kr:first-child{border-top:0}
 .viatag{font-weight:800;color:#06210f;background:linear-gradient(180deg,#8ff0b4,#45b874);border:1px solid #3fae6c;border-radius:999px;padding:2px 9px;font-size:12.5px;white-space:nowrap}
 .post .meta>.viatag{font-size:15.5px;padding:5px 13px}
 .tagf{font-weight:700;color:#9fd9b1;background:#10231a;border:1px solid #2f5e43;border-radius:999px;padding:3px 10px;font-size:12.5px}
@@ -915,14 +926,14 @@ function sayChunk(){
 function startPost(p,i){
   if(LISTEN.on)listenStart();
   prepPost(p,i);R.paused=false;
-  markReading();applySpans();
+  markReading();applySpans();if(LISTEN.on)hotMic();
   sayChunk();
 }
 function nextInQueue(){
   while(R.mode==='queue'&&R.qi+1<R.queue.length){
     R.qi++;const p=findPostU(R.queue[R.qi]);
     if(!p)continue; // 已刪除的跳過
-    prepPost(p,R.qi);markReading();applySpans();
+    prepPost(p,R.qi);markReading();applySpans();if(LISTEN.on){listenStart();setTimeout(hotMic,50)}
     const card=readingCard();if(card){const y=card.getBoundingClientRect().top+scrollY-headerH()-10;window.scrollTo({top:y,behavior:'smooth'})}
     const tok=++R.tok;setTimeout(()=>{if(tok===R.tok&&R.mode==='queue'&&!R.paused)sayChunk()},600);return;
   }
@@ -1089,6 +1100,8 @@ function heardBySelf(word){ // 避免麥克風聽到喇叭正在唸的字
 }
 function onCommand(txt){
   const now=Date.now();if(now-LISTEN.last<1500)return;
+  // 只收「短指令」：背景聊天、電視、喇叭念的長句子都不理
+  const clean=String(txt||'').replace(/[\s，。,.!?！？、]/g,'');if(!clean||clean.length>8)return;
   const has=w=>txt.includes(w);
   if(ASK.done){ // 正在問「要刪除這則嗎」
     if(ASK.speaking)return;
@@ -1112,6 +1125,19 @@ function listenStart(){
     rec.onend=()=>{LISTEN.active=false;LISTEN.rec=null;if(LISTEN.on&&R.mode)setTimeout(listenStart,300)};
     rec.start();
   }catch{LISTEN.active=false}
+}
+// 看門狗：朗讀中麥克風一定要開著（Android 常會自己停掉，停了就馬上重開）
+setInterval(()=>{if(LISTEN.on&&R.mode&&!LISTEN.active)listenStart()},1500);
+let HOTMIC={t:null,end:0};
+function hotMic(){ // 每則開頭 10 秒：卡片上顯示「正在聽」倒數
+  clearInterval(HOTMIC.t);HOTMIC.end=Date.now()+10e3;
+  const draw=()=>{const c=readingCard();document.querySelectorAll('.hotmic').forEach(x=>{if(!c||!c.contains(x))x.remove()});
+    if(!c||!R.mode||!LISTEN.on){clearInterval(HOTMIC.t);return}
+    let b=c.querySelector('.hotmic');if(!b){b=document.createElement('div');b.className='hotmic';c.prepend(b)}
+    const left=Math.ceil((HOTMIC.end-Date.now())/1000);
+    if(left<=0){b.classList.add('idle');b.textContent=LISTEN.active?'🎙 一直在聽：說「刪除」「跳過」「暫停」':'🎙 麥克風重新連線中…';if(left<-1)clearInterval(HOTMIC.t);return}
+    b.classList.remove('idle');b.innerHTML=`🎙 <b>正在聽</b>：不對就說「<b>刪除</b>」　<span class="cd">${left}</span>`;};
+  draw();HOTMIC.t=setInterval(draw,250);
 }
 function listenStop(){LISTEN.active=false;const r=LISTEN.rec;LISTEN.rec=null;try{r&&r.abort()}catch{}}
 
@@ -1167,7 +1193,8 @@ function renderList(){
     if(f.intent&&a.intent.level!==f.intent)return false;
     if(f.role&&a.role!==f.role)return false;
     if(f.status&&c.s!==f.status)return false;
-    if(state.filter&&!pinMode&&![...(p.keywords||[]),...(p.regions||[])].includes(state.filter))return false;
+    if(state.filter&&state.filter.startsWith('via:')){if(viaBase(p)!==state.filter.slice(4))return false}
+    else if(state.filter&&!pinMode&&![...(p.keywords||[]),...(p.regions||[])].includes(state.filter))return false;
     if(q&&!(`${p.text} ${p.user}`.toLowerCase().includes(q)))return false;
     return true;
   });
@@ -1238,7 +1265,7 @@ const normUser=u=>String(u||'').trim().replace(/^https?:\/\/(www\.)?threads\.(co
 function renderTags(){
   for(const [id,key] of Object.entries(LISTS)){
     const stats=state.doc?.kwStats||{};
-    $('#'+id+'List').innerHTML=(state.cfg?.[key]||[]).map((v,i)=>`<span class="etag">${/[+＋]/.test(v)?`${esc(kwBase(v))}<b style="color:#52d273;font-weight:800">＋${esc(v.split(/[+＋]/)[1]||'')}</b>`:esc(v)}${id==='kw'&&stats[kwBase(v)]?`<small style="color:var(--muted)">${stats[kwBase(v)].count}</small>`:''}<button data-del="${id}:${i}" aria-label="刪除">×</button></span>`).join('');
+    $('#'+id+'List').innerHTML=(state.cfg?.[key]||[]).map((v,i)=>`<span class="etag">${(id==='kw'||id==='mu')?`<button class="etagbtn" data-kwinfo="${esc(kwBase(v))}" title="點我看數據">`:''}${/[+＋]/.test(v)?`${esc(kwBase(v))}<b style="color:#52d273;font-weight:800">＋${esc(v.split(/[+＋]/)[1]||'')}</b>`:esc(v)}${(id==='kw'||id==='mu')?'</button>':''}${id==='kw'&&stats[kwBase(v)]?`<small style="color:var(--muted)">${stats[kwBase(v)].count}</small>`:''}<button data-del="${id}:${i}" aria-label="刪除">×</button></span>`).join('');
   }
   $('#kwCount').textContent=(state.cfg?.keywords||[]).length+' '+t('kwUnit');
   renderSchedInfo();
@@ -1650,6 +1677,7 @@ document.addEventListener('click',e=>{
   if(el.hasAttribute('data-showall')){state.f.intent='';state.f.role='';state.f.status='';state.filter='';state.q='';
     ['fIntent','fRole','fStatus'].forEach(id=>{if($('#'+id))$('#'+id).value=''});if($('#q'))$('#q').value='';
     renderChips();renderList();saveView();toast('已顯示全部線索');return}
+  if(el.dataset.kwinfo){openKwInfo(el.dataset.kwinfo);return}
   if(el.dataset.pin){togglePin(el.dataset.pin);return}
   if(el.dataset.rate!==undefined){setRate(+el.dataset.rate);return}
   if(el.id==='readAllBtn'){toggleQueue();return}
@@ -1714,7 +1742,44 @@ document.addEventListener('click',e=>{
 function kwBase(k){return String(k||'').split(/[+＋]/)[0].trim()}
 function cleanTxt(t){let a=String(t||'').split('\n');const c=a.findIndex(x=>/^(相關串文|Related threads)$/i.test(x.trim()));if(c>0)a=a.slice(0,c);return a.filter(x=>!/^(串文|Thread)$/i.test(x.trim())).join('\n')}
 function viaOf(p){return p.foundQuery||p.foundBy||((p.keywords||[])[0])||''}
-function viaTag(p){const v=viaOf(p);return v?`<span class="viatag" title="雷達是搜這個才找到的">🔍 ${esc(v)}</span>`:''}
+function viaBase(p){return kwBase(String(viaOf(p)||'').split(/[\s→]/)[0])}
+function viaTag(p){const v=viaOf(p);return v?`<button class="viatag" data-kwinfo="${esc(viaBase(p))}" title="點我看這個關鍵字的數據">🔍 ${esc(v)}</button>`:''}
+/* ---- 關鍵字數據 ---- */
+function openKwInfo(k){
+  const doc=state.doc||{},cfg=state.cfg||{},st=(doc.kwStats||{})[k]||{};
+  const raw=[...(cfg.mustKeywords||[]),...(cfg.keywords||[])].find(x=>kwBase(x)===k);
+  const need=raw&&/[+＋]/.test(raw)?raw.split(/[+＋]/)[1]:'';
+  const pool=new Map();[...((window.DB&&DB.leads)||[]),...(doc.posts||[])].forEach(p=>pool.set(p.url,p));
+  const mine=[...pool.values()].filter(p=>viaBase(p)===k).sort((a,b)=>(Date.parse(b.foundAt)||0)-(Date.parse(a.foundAt)||0));
+  const lv={高:0,中:0,低:0},role={},city={};let contacted=0,deal=0;
+  mine.forEach(p=>{const a=an(p);lv[a.intent.level]++;role[a.role]=(role[a.role]||0)+1;const c=a.info.city||'未標';city[c]=(city[c]||0)+1;const s=crm(p.url).s;if(['已私訊','已回覆','成交'].includes(s))contacted++;if(s==='成交')deal++});
+  const runs=(doc.runs||[]).filter(r=>r.perKeyword&&k in r.perKeyword).slice(0,10);
+  const leads=Math.max(st.leads||0,mine.length),hit=st.scanned?Math.round(leads/st.scanned*1000)/10:0;
+  const rank=(()=>{const all=Object.entries(doc.kwStats||{}).sort((a,b)=>(b[1].leads||0)-(a[1].leads||0));const i=all.findIndex(x=>x[0]===k);return i<0?'—':`${i+1} / ${all.length}`})();
+  const top=(o)=>Object.entries(o).sort((a,b)=>b[1]-a[1]).map(([n,v])=>`<span class="tag">${esc(n)} ${v}</span>`).join(' ')||'—';
+  const ov=document.createElement('div');ov.id='kwOv';
+  ov.innerHTML=`<div class="card"><div class="dbhead"><h3 style="margin:0">🔍 關鍵字數據：<span style="color:#52d273">${esc(k)}</span></h3><button class="btn ghost sm" data-kwclose>✕ 關閉</button></div>
+    <p class="hint">${raw?`設定：<b>${esc(raw)}</b>${need?`（貼文還要有「${esc(need.split('/').join('」或「'))}」才收）`:''}`:'⚠️ 這個字已經不在關鍵字池裡了'}</p>
+    <div class="kpis">${[[st.count||0,'搜了幾次'],[st.scanned||0,'掃到貼文'],[leads,'抓到線索'],[hit+'%','命中率'],[st.count?Math.round(leads/st.count*10)/10:'—','平均每次'],[st.last?ago(new Date(st.last).toISOString()):'—','上次搜'],[contacted,'已聯絡'],[rank,'線索排名']].map(([v,l])=>`<div class="kpi"><b>${v}</b><small>${l}</small></div>`).join('')}</div>
+    <h3 style="margin-top:16px">線索品質</h3>
+    <div class="kr"><span>意向</span><span><span class="ipill 高">高 ${lv.高}</span> <span class="ipill 中">中 ${lv.中}</span> <span class="ipill 低">低 ${lv.低}</span></span></div>
+    <div class="kr"><span>角色</span><span>${top(role)}</span></div>
+    <div class="kr"><span>地區</span><span>${top(city)}</span></div>
+    <div class="kr"><span>成交</span><span>${deal}</span></div>
+    <h3 style="margin-top:16px">最近 ${runs.length} 次搜尋</h3>
+    ${runs.map(r=>{const st0=Date.parse(r.startedAt),fin=Date.parse(r.finishedAt||r.startedAt)+120e3;const got=mine.filter(p=>{const f=Date.parse(p.foundAt);return f>=st0-5e3&&f<=fin}).length;const n=r.perKeyword[k];
+      return `<div class="kr"><span>${esc(new Date(st0).toLocaleString('zh-TW',{hour12:false,month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}))}</span><span>搜到 <b>${n<0?'失敗':n}</b> 則 → 新線索 <b style="color:${got?'#52d273':'var(--muted)'}">${got}</b></span></div>`}).join('')||'<p class="hint">還沒有紀錄</p>'}
+    <h3 style="margin-top:16px">這個字找到的線索（${mine.length}）</h3>
+    ${mine.slice(0,15).map(p=>{const a=an(p);return `<div class="kr" style="display:block"><span class="ipill ${a.intent.level}">${a.intent.level}</span> <span class="rtag ${a.role}">${a.role}</span> <b>@${esc(p.user)}</b> <span class="hint" style="margin:0">${ago(p.foundAt)}・${esc(crm(p.url).s)}</span><div class="dbtxt">${esc((p.text||'').slice(0,80))}</div><a class="btn ghost sm" style="margin-top:6px" href="${esc(p.url)}" target="_blank" rel="noopener">開啟貼文</a></div>`}).join('')||'<p class="hint">還沒有找到線索</p>'}
+    <div class="grid2" style="margin-top:16px"><button class="btn" data-kwonly="${esc(k)}">只看這個字的線索</button>${raw?`<button class="btn ghost" data-kwrm2="${esc(raw)}">🗑 移除這個關鍵字</button>`:''}</div>
+  </div>`;
+  document.body.appendChild(ov);document.body.style.overflow='hidden';
+  ov.addEventListener('click',e=>{
+    if(e.target===ov||e.target.closest('[data-kwclose]')){ov.remove();document.body.style.overflow='';return}
+    const o=e.target.closest('[data-kwonly]');if(o){ov.remove();document.body.style.overflow='';state.filter='via:'+o.dataset.kwonly;showTab('leads');renderChips();renderList();window.scrollTo({top:0});toast('只顯示「'+o.dataset.kwonly+'」找到的線索，點「全部」恢復');return}
+    const r=e.target.closest('[data-kwrm2]');if(r){ov.remove();document.body.style.overflow='';removeKeywords([r.dataset.kwrm2]);return}
+  });
+}
 async function collapseRuns(){
   if(!RUNOPEN.size&&!RUNPOST.size)return;
   const key=[...RUNOPEN].find(k=>k!=='__next');const sel=key?`[data-run="${CSS.escape(key)}"]`:null;
