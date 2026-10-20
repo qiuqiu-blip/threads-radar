@@ -1,63 +1,110 @@
 {
-  "updatedAt": "2026-10-20T01:51:09.662Z",
+  "updatedAt": "2026-10-20T02:40:55.689Z",
   "lastRun": {
-    "startedAt": "2026-10-20T01:47:42.555Z",
-    "finishedAt": "2026-10-20T01:51:09.637Z",
+    "startedAt": "2026-10-20T02:37:32.710Z",
+    "finishedAt": "2026-10-20T02:40:55.660Z",
     "status": "ok",
-    "scanned": 132,
-    "matched": 5,
-    "newCount": 5,
-    "notified": 5,
+    "scanned": 118,
+    "matched": 0,
+    "newCount": 0,
+    "notified": 0,
     "perKeyword": {
-      "歇業": 19,
-      "招牌": 28,
-      "搬家出清": 11,
-      "咖啡機": 20,
-      "二手設備": 15,
-      "帶走價": 0,
-      "店面出租": 19,
-      "便宜賣": 20
+      "加盟": 21,
+      "收店": 0,
+      "爐具": 0,
+      "餐車": 20,
+      "結束營業": 19,
+      "冷凍櫃": 22,
+      "飲料店": 18,
+      "開店": 18
     },
     "warnings": [],
     "keywordsUsed": [
-      "歇業",
-      "招牌",
-      "搬家出清",
-      "咖啡機",
-      "二手設備",
-      "帶走價",
-      "店面出租",
-      "便宜賣"
+      "加盟",
+      "收店",
+      "爐具",
+      "餐車",
+      "結束營業",
+      "冷凍櫃",
+      "飲料店",
+      "開店"
     ],
     "queries": [
-      "歇業",
-      "招牌",
-      "搬家出清",
-      "咖啡機",
-      "二手設備",
-      "帶走價",
-      "店面出租",
-      "便宜賣"
+      "加盟",
+      "收店",
+      "爐具",
+      "餐車",
+      "結束營業",
+      "冷凍櫃",
+      "飲料店",
+      "開店"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 56,
+      "seen": 69,
       "dup": 0,
-      "noKeyword": 22,
-      "noContext": 49
+      "noContext": 36,
+      "tooOld": 3,
+      "noKeyword": 10
     },
-    "detailFetched": 5,
-    "newUrls": [
-      "https://www.threads.com/@deli_station_korea/post/DesrBtWE72n",
-      "https://www.threads.com/@coffee0615.sign/post/DerLrZPD2aD",
-      "https://www.threads.com/@fgh7ev/post/Deq2uZ8iEto",
-      "https://www.threads.com/@eggsyqx/post/DeqkKXzkWcD",
-      "https://www.threads.com/@star52017/post/DeqJoYNAXXH"
-    ],
+    "detailFetched": 0,
+    "newUrls": [],
     "pushMode": "on",
-    "nextInMinutes": 23
+    "nextInMinutes": 36
   },
   "runs": [
+    {
+      "startedAt": "2026-10-20T02:37:32.710Z",
+      "finishedAt": "2026-10-20T02:40:55.660Z",
+      "status": "ok",
+      "scanned": 118,
+      "matched": 0,
+      "newCount": 0,
+      "notified": 0,
+      "perKeyword": {
+        "加盟": 21,
+        "收店": 0,
+        "爐具": 0,
+        "餐車": 20,
+        "結束營業": 19,
+        "冷凍櫃": 22,
+        "飲料店": 18,
+        "開店": 18
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "加盟",
+        "收店",
+        "爐具",
+        "餐車",
+        "結束營業",
+        "冷凍櫃",
+        "飲料店",
+        "開店"
+      ],
+      "queries": [
+        "加盟",
+        "收店",
+        "爐具",
+        "餐車",
+        "結束營業",
+        "冷凍櫃",
+        "飲料店",
+        "開店"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 69,
+        "dup": 0,
+        "noContext": 36,
+        "tooOld": 3,
+        "noKeyword": 10
+      },
+      "detailFetched": 0,
+      "newUrls": [],
+      "pushMode": "on",
+      "nextInMinutes": 36
+    },
     {
       "startedAt": "2026-10-20T01:47:42.555Z",
       "finishedAt": "2026-10-20T01:51:09.637Z",
@@ -3386,14 +3433,14 @@
       "leads": 0
     },
     "結束營業": {
-      "count": 3,
-      "last": 1792431583718,
-      "scanned": 48,
+      "count": 4,
+      "last": 1792463998656,
+      "scanned": 67,
       "leads": 2
     },
     "收店": {
-      "count": 5,
-      "last": 1792458993053,
+      "count": 6,
+      "last": 1792463863478,
       "scanned": 0,
       "leads": 0
     },
@@ -3422,8 +3469,8 @@
       "leads": 0
     },
     "爐具": {
-      "count": 4,
-      "last": 1792448696735,
+      "count": 5,
+      "last": 1792463921582,
       "scanned": 0,
       "leads": 0
     },
@@ -3434,9 +3481,9 @@
       "leads": 10
     },
     "飲料店": {
-      "count": 3,
-      "last": 1792454688731,
-      "scanned": 55,
+      "count": 4,
+      "last": 1792464029527,
+      "scanned": 73,
       "leads": 5
     },
     "裝潢": {
@@ -3464,9 +3511,9 @@
       "leads": 0
     },
     "餐車": {
-      "count": 3,
-      "last": 1792454657811,
-      "scanned": 58,
+      "count": 4,
+      "last": 1792463983414,
+      "scanned": 78,
       "leads": 0
     },
     "排油煙": {
@@ -3476,9 +3523,9 @@
       "leads": 0
     },
     "開店": {
-      "count": 2,
-      "last": 1792459067407,
-      "scanned": 33,
+      "count": 3,
+      "last": 1792464041530,
+      "scanned": 51,
       "leads": 0
     },
     "二手冰箱": {
@@ -3488,15 +3535,15 @@
       "leads": 2
     },
     "冷凍櫃": {
-      "count": 3,
-      "last": 1792454672917,
-      "scanned": 71,
+      "count": 4,
+      "last": 1792464011929,
+      "scanned": 93,
       "leads": 0
     },
     "加盟": {
-      "count": 3,
-      "last": 1792448508519,
-      "scanned": 51,
+      "count": 4,
+      "last": 1792463852974,
+      "scanned": 72,
       "leads": 0
     },
     "招牌": {
@@ -3506,43 +3553,43 @@
       "leads": 4
     }
   },
-  "nextScanAt": "2026-10-20T02:14:28.075Z",
+  "nextScanAt": "2026-10-20T03:16:46.144Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-20T02:14:28.075Z",
-    "madeAt": "2026-10-20T01:51:09.659Z",
+    "at": "2026-10-20T03:16:46.144Z",
+    "madeAt": "2026-10-20T02:40:55.687Z",
     "items": [
       {
-        "kw": "加盟",
-        "q": "加盟"
+        "kw": "裝潢",
+        "q": "裝潢"
       },
       {
-        "kw": "收店",
-        "q": "收店"
+        "kw": "創業",
+        "q": "創業"
       },
       {
-        "kw": "爐具",
-        "q": "爐具"
+        "kw": "排油煙",
+        "q": "排油煙"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "二手冰箱",
+        "q": "二手冰箱"
       },
       {
-        "kw": "結束營業",
-        "q": "結束營業"
+        "kw": "清倉",
+        "q": "清倉"
       },
       {
-        "kw": "冷凍櫃",
-        "q": "冷凍櫃"
+        "kw": "商用冰箱",
+        "q": "商用冰箱"
       },
       {
-        "kw": "飲料店",
-        "q": "飲料店"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "開店",
-        "q": "開店"
+        "kw": "製冰機",
+        "q": "製冰機"
       }
     ]
   }
