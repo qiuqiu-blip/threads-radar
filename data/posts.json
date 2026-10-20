@@ -1,57 +1,114 @@
 {
-  "updatedAt": "2026-10-20T00:05:17.901Z",
+  "updatedAt": "2026-10-20T01:19:18.441Z",
   "lastRun": {
-    "startedAt": "2026-10-20T00:02:33.031Z",
-    "finishedAt": "2026-10-20T00:05:17.855Z",
+    "startedAt": "2026-10-20T01:16:32.696Z",
+    "finishedAt": "2026-10-20T01:19:18.401Z",
     "status": "ok",
-    "scanned": 125,
-    "matched": 0,
-    "newCount": 0,
-    "notified": 0,
+    "scanned": 132,
+    "matched": 1,
+    "newCount": 1,
+    "notified": 1,
     "perKeyword": {
-      "歇業": 17,
-      "蒸烤箱": 21,
-      "收攤": 20,
-      "排油煙": 0,
-      "餐車": 19,
-      "冷凍櫃": 23,
-      "飲料店": 19,
-      "低價出清": 6
+      "收店": 0,
+      "清倉": 15,
+      "開店": 16,
+      "二手冰箱": 23,
+      "創業": 18,
+      "裝潢": 19,
+      "商用冰箱": 20,
+      "拆除": 21
     },
     "warnings": [],
     "keywordsUsed": [
-      "歇業",
-      "蒸烤箱",
-      "收攤",
-      "排油煙",
-      "餐車",
-      "冷凍櫃",
-      "飲料店",
-      "低價出清"
+      "收店",
+      "清倉",
+      "開店",
+      "二手冰箱",
+      "創業",
+      "裝潢",
+      "商用冰箱",
+      "拆除"
     ],
     "queries": [
-      "歇業",
-      "蒸烤箱",
-      "收攤",
-      "排油煙",
-      "餐車",
-      "冷凍櫃",
-      "飲料店",
-      "低價出清"
+      "收店",
+      "清倉",
+      "開店",
+      "二手冰箱",
+      "創業",
+      "裝潢",
+      "商用冰箱",
+      "拆除"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 58,
+      "seen": 65,
       "dup": 0,
-      "noContext": 47,
-      "noKeyword": 20
+      "noKeyword": 13,
+      "noContext": 45,
+      "tooOld": 8
     },
-    "detailFetched": 0,
-    "newUrls": [],
+    "detailFetched": 1,
+    "newUrls": [
+      "https://www.threads.com/@cgg_forfree/post/DepIV5ln_W6"
+    ],
     "pushMode": "on",
-    "nextInMinutes": 35
+    "nextInMinutes": 26
   },
   "runs": [
+    {
+      "startedAt": "2026-10-20T01:16:32.696Z",
+      "finishedAt": "2026-10-20T01:19:18.401Z",
+      "status": "ok",
+      "scanned": 132,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "收店": 0,
+        "清倉": 15,
+        "開店": 16,
+        "二手冰箱": 23,
+        "創業": 18,
+        "裝潢": 19,
+        "商用冰箱": 20,
+        "拆除": 21
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "收店",
+        "清倉",
+        "開店",
+        "二手冰箱",
+        "創業",
+        "裝潢",
+        "商用冰箱",
+        "拆除"
+      ],
+      "queries": [
+        "收店",
+        "清倉",
+        "開店",
+        "二手冰箱",
+        "創業",
+        "裝潢",
+        "商用冰箱",
+        "拆除"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 65,
+        "dup": 0,
+        "noKeyword": 13,
+        "noContext": 45,
+        "tooOld": 8
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@cgg_forfree/post/DepIV5ln_W6"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 26
+    },
     {
       "startedAt": "2026-10-20T00:02:33.031Z",
       "finishedAt": "2026-10-20T00:05:17.855Z",
@@ -1395,6 +1452,22 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DepIV5ln_W6",
+      "user": "cgg_forfree",
+      "url": "https://www.threads.com/@cgg_forfree/post/DepIV5ln_W6",
+      "authorUrl": "https://www.threads.com/@cgg_forfree",
+      "text": "151次瀏覽\n餐飲設備出清\n出售商用冰箱\n上凍下藏 220V\n功能正常\n8000自運",
+      "time": "2026-10-18T16:38:17.000Z",
+      "keywords": [
+        "商用冰箱"
+      ],
+      "regions": [],
+      "foundBy": "商用冰箱",
+      "foundQuery": "商用冰箱",
+      "foundAt": "2026-10-20T01:19:10.790Z",
+      "full": true
+    },
     {
       "code": "DerGb50mpuB",
       "user": "feioi01.21",
@@ -2998,9 +3071,9 @@
   ],
   "kwStats": {
     "清倉": {
-      "count": 5,
-      "last": 1792445374361,
-      "scanned": 71,
+      "count": 6,
+      "last": 1792459053508,
+      "scanned": 86,
       "leads": 0
     },
     "頂店": {
@@ -3064,10 +3137,10 @@
       "leads": 0
     },
     "商用冰箱": {
-      "count": 3,
-      "last": 1792434535655,
-      "scanned": 59,
-      "leads": 0
+      "count": 4,
+      "last": 1792459121920,
+      "scanned": 79,
+      "leads": 1
     },
     "讓渡": {
       "count": 3,
@@ -3178,8 +3251,8 @@
       "leads": 2
     },
     "收店": {
-      "count": 4,
-      "last": 1792448521683,
+      "count": 5,
+      "last": 1792458993053,
       "scanned": 0,
       "leads": 0
     },
@@ -3226,9 +3299,9 @@
       "leads": 5
     },
     "裝潢": {
-      "count": 3,
-      "last": 1792445362152,
-      "scanned": 57,
+      "count": 4,
+      "last": 1792459109740,
+      "scanned": 76,
       "leads": 0
     },
     "店面出租": {
@@ -3238,15 +3311,15 @@
       "leads": 0
     },
     "拆除": {
-      "count": 2,
-      "last": 1792439302668,
-      "scanned": 40,
+      "count": 3,
+      "last": 1792459135417,
+      "scanned": 61,
       "leads": 3
     },
     "創業": {
-      "count": 3,
-      "last": 1792445385943,
-      "scanned": 62,
+      "count": 4,
+      "last": 1792459097702,
+      "scanned": 80,
       "leads": 0
     },
     "餐車": {
@@ -3262,15 +3335,15 @@
       "leads": 0
     },
     "開店": {
-      "count": 1,
-      "last": 1792422329875,
-      "scanned": 17,
+      "count": 2,
+      "last": 1792459067407,
+      "scanned": 33,
       "leads": 0
     },
     "二手冰箱": {
-      "count": 2,
-      "last": 1792435260711,
-      "scanned": 41,
+      "count": 3,
+      "last": 1792459082774,
+      "scanned": 64,
       "leads": 2
     },
     "冷凍櫃": {
@@ -3292,43 +3365,43 @@
       "leads": 2
     }
   },
-  "nextScanAt": "2026-10-20T00:40:10.639Z",
+  "nextScanAt": "2026-10-20T01:45:08.115Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-20T00:40:10.639Z",
-    "madeAt": "2026-10-20T00:05:17.899Z",
+    "at": "2026-10-20T01:45:08.115Z",
+    "madeAt": "2026-10-20T01:19:18.437Z",
     "items": [
       {
-        "kw": "收店",
-        "q": "收店"
+        "kw": "歇業",
+        "q": "歇業"
       },
       {
-        "kw": "清倉",
-        "q": "清倉"
+        "kw": "招牌",
+        "q": "招牌"
       },
       {
-        "kw": "開店",
-        "q": "開店"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       },
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "咖啡機",
+        "q": "咖啡機"
       },
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "帶走價",
+        "q": "帶走價"
       },
       {
-        "kw": "商用冰箱",
-        "q": "商用冰箱"
+        "kw": "店面出租",
+        "q": "店面出租"
       },
       {
-        "kw": "拆除",
-        "q": "拆除"
+        "kw": "便宜賣",
+        "q": "便宜賣"
       }
     ]
   }
