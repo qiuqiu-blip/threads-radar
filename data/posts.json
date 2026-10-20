@@ -1,60 +1,120 @@
 {
-  "updatedAt": "2026-10-20T01:19:18.441Z",
+  "updatedAt": "2026-10-20T01:51:09.662Z",
   "lastRun": {
-    "startedAt": "2026-10-20T01:16:32.696Z",
-    "finishedAt": "2026-10-20T01:19:18.401Z",
+    "startedAt": "2026-10-20T01:47:42.555Z",
+    "finishedAt": "2026-10-20T01:51:09.637Z",
     "status": "ok",
     "scanned": 132,
-    "matched": 1,
-    "newCount": 1,
-    "notified": 1,
+    "matched": 5,
+    "newCount": 5,
+    "notified": 5,
     "perKeyword": {
-      "收店": 0,
-      "清倉": 15,
-      "開店": 16,
-      "二手冰箱": 23,
-      "創業": 18,
-      "裝潢": 19,
-      "商用冰箱": 20,
-      "拆除": 21
+      "歇業": 19,
+      "招牌": 28,
+      "搬家出清": 11,
+      "咖啡機": 20,
+      "二手設備": 15,
+      "帶走價": 0,
+      "店面出租": 19,
+      "便宜賣": 20
     },
     "warnings": [],
     "keywordsUsed": [
-      "收店",
-      "清倉",
-      "開店",
-      "二手冰箱",
-      "創業",
-      "裝潢",
-      "商用冰箱",
-      "拆除"
+      "歇業",
+      "招牌",
+      "搬家出清",
+      "咖啡機",
+      "二手設備",
+      "帶走價",
+      "店面出租",
+      "便宜賣"
     ],
     "queries": [
-      "收店",
-      "清倉",
-      "開店",
-      "二手冰箱",
-      "創業",
-      "裝潢",
-      "商用冰箱",
-      "拆除"
+      "歇業",
+      "招牌",
+      "搬家出清",
+      "咖啡機",
+      "二手設備",
+      "帶走價",
+      "店面出租",
+      "便宜賣"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 65,
+      "seen": 56,
       "dup": 0,
-      "noKeyword": 13,
-      "noContext": 45,
-      "tooOld": 8
+      "noKeyword": 22,
+      "noContext": 49
     },
-    "detailFetched": 1,
+    "detailFetched": 5,
     "newUrls": [
-      "https://www.threads.com/@cgg_forfree/post/DepIV5ln_W6"
+      "https://www.threads.com/@deli_station_korea/post/DesrBtWE72n",
+      "https://www.threads.com/@coffee0615.sign/post/DerLrZPD2aD",
+      "https://www.threads.com/@fgh7ev/post/Deq2uZ8iEto",
+      "https://www.threads.com/@eggsyqx/post/DeqkKXzkWcD",
+      "https://www.threads.com/@star52017/post/DeqJoYNAXXH"
     ],
     "pushMode": "on",
-    "nextInMinutes": 26
+    "nextInMinutes": 23
   },
   "runs": [
+    {
+      "startedAt": "2026-10-20T01:47:42.555Z",
+      "finishedAt": "2026-10-20T01:51:09.637Z",
+      "status": "ok",
+      "scanned": 132,
+      "matched": 5,
+      "newCount": 5,
+      "notified": 5,
+      "perKeyword": {
+        "歇業": 19,
+        "招牌": 28,
+        "搬家出清": 11,
+        "咖啡機": 20,
+        "二手設備": 15,
+        "帶走價": 0,
+        "店面出租": 19,
+        "便宜賣": 20
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "歇業",
+        "招牌",
+        "搬家出清",
+        "咖啡機",
+        "二手設備",
+        "帶走價",
+        "店面出租",
+        "便宜賣"
+      ],
+      "queries": [
+        "歇業",
+        "招牌",
+        "搬家出清",
+        "咖啡機",
+        "二手設備",
+        "帶走價",
+        "店面出租",
+        "便宜賣"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 56,
+        "dup": 0,
+        "noKeyword": 22,
+        "noContext": 49
+      },
+      "detailFetched": 5,
+      "newUrls": [
+        "https://www.threads.com/@deli_station_korea/post/DesrBtWE72n",
+        "https://www.threads.com/@coffee0615.sign/post/DerLrZPD2aD",
+        "https://www.threads.com/@fgh7ev/post/Deq2uZ8iEto",
+        "https://www.threads.com/@eggsyqx/post/DeqkKXzkWcD",
+        "https://www.threads.com/@star52017/post/DeqJoYNAXXH"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 23
+    },
     {
       "startedAt": "2026-10-20T01:16:32.696Z",
       "finishedAt": "2026-10-20T01:19:18.401Z",
@@ -1452,6 +1512,87 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DesrBtWE72n",
+      "user": "deli_station_korea",
+      "url": "https://www.threads.com/@deli_station_korea/post/DesrBtWE72n",
+      "authorUrl": "https://www.threads.com/@deli_station_korea",
+      "text": "首爾美食\n在安國，先決定今天想怎麼喝湯。\n從地鐵3號線安國站出發，可以認識兩種不同的韓式湯料理。\n・黃生家刀切麵（황생가칼국수）：牛骨湯刀切麵，也有大顆韓式餃子。\n・Muguok（무구옥）：以北韓風味雞肉料理為主，招牌套餐將雞肉與雞湯分開上桌。\n一種把麵放進湯裡，一種將肉與湯分開呈現。你會先選哪一家？\n出發前，請確認店家的最新營業與菜單資訊。\n圖片為AI製作的參考示意，實際餐點與擺盤可能不同。",
+      "time": "2026-10-20T01:39:04.000Z",
+      "keywords": [
+        "招牌"
+      ],
+      "regions": [],
+      "foundBy": "招牌",
+      "foundQuery": "招牌",
+      "foundAt": "2026-10-20T01:50:32.468Z"
+    },
+    {
+      "code": "DerLrZPD2aD",
+      "user": "coffee0615.sign",
+      "url": "https://www.threads.com/@coffee0615.sign/post/DerLrZPD2aD",
+      "authorUrl": "https://www.threads.com/@coffee0615.sign",
+      "text": "62次瀏覽\nbloomory_balloon\n林口招牌\n請問林口脆友，有推薦做招牌的店家嗎？謝謝🙏\n廣告招牌制作廠家\nHi晚安，做招牌我推薦我自己，最近在林口做了蠻多大樓建案的招牌，我有將我們在林口的施工工作紀錄放在脆上面，你可以先參考參考，如果有需要歡迎私訊討論討論\nbloomory_balloon\n好喔 ！謝謝您的推薦",
+      "time": "2026-10-19T11:05:42.000Z",
+      "keywords": [
+        "招牌"
+      ],
+      "regions": [],
+      "foundBy": "招牌",
+      "foundQuery": "招牌",
+      "foundAt": "2026-10-20T01:50:32.468Z",
+      "full": true
+    },
+    {
+      "code": "Deq2uZ8iEto",
+      "user": "fgh7ev",
+      "url": "https://www.threads.com/@fgh7ev/post/Deq2uZ8iEto",
+      "authorUrl": "https://www.threads.com/@fgh7ev",
+      "text": "462次瀏覽\n準備跟先生搬去澳洲了\n急需二手家電出清\n價格已包含運費\n除濕機$600\n咖啡機$500\n洗碗機$800\n微波爐$1000\n拍立得$500\n麻將機$1200\n洗地機$1000\n掃地機器人$1000\n小冰箱$600\n大冰箱$2000\n飲水機$600\n洗衣機 $900\n電鍋$500\n清淨機九五新 $600\n氣炸鍋九成新 $600\n有需要的私訊我\n有想要瞭解的 請添加我的賴：\n@946pjihx\ndavidenglish30\n請問咖啡機\n請添加我的賴：\n@946pjihx\nhongqi.hong\n地點在那裡\n請添加我的賴：\n@946pjihx\nnewwenwin\n電鍋500 氣炸鍋600 洗衣機900 掃地機器人1000 請問這些還有嗎？\n還有 請添加我的賴：\n@946pjihx\nmimimomo5387\n清淨機還有嗎\n還有 請添加我的賴：\n@946pjihx\nwushujuan902\n咖啡機、掃地機器人",
+      "time": "2026-10-19T08:42:49.000Z",
+      "keywords": [
+        "咖啡機"
+      ],
+      "regions": [],
+      "foundBy": "咖啡機",
+      "foundQuery": "咖啡機",
+      "foundAt": "2026-10-20T01:50:32.469Z",
+      "full": true
+    },
+    {
+      "code": "DeqkKXzkWcD",
+      "user": "eggsyqx",
+      "url": "https://www.threads.com/@eggsyqx/post/DeqkKXzkWcD",
+      "authorUrl": "https://www.threads.com/@eggsyqx",
+      "text": "198次瀏覽\n店面出租\n五股水碓路｜巷口店面招租\n正在找五股店面的老闆，可以看看這間👇\n📍 水碓路16巷1號1樓\n🏠 約36坪｜1、2樓夾層\n💰 月租35,000元\n管理費1444\n🚗 門口方便停車\n📌 巷口位置，住宅區生活圈\n✨ 店面目前整理中，歡迎實際看屋\n適合：\n✔️ 飲料店／手搖飲\n✔️ 眼鏡行\n✔️ 便利商店／連鎖店\n✔️ 團購／電商取貨\n✔️ 工作室、門市等\n五股在地、想找店面的朋友，歡迎留言或私訊我 📩\n也歡迎大家幫忙轉發給正在找店面的朋友，謝謝🙏\n目前重新整理裝潢中，預計本週完成\n全室電力更新 油漆粉刷\n2樓木地板更新\n開放式空間好規劃\nsuperlian0712\n想了解\nbotengzhang\n請問店面還在嗎？想了解",
+      "time": "2026-10-19T06:00:37.000Z",
+      "keywords": [
+        "飲料店",
+        "店面出租",
+        "裝潢"
+      ],
+      "regions": [],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-20T01:50:32.469Z",
+      "full": true
+    },
+    {
+      "code": "DeqJoYNAXXH",
+      "user": "star52017",
+      "url": "https://www.threads.com/@star52017/post/DeqJoYNAXXH",
+      "authorUrl": "https://www.threads.com/@star52017",
+      "text": "1,309次瀏覽\n#土城延和路42巷 店面出租\n店面出租 內附2台大金冷氣\n安和國小門口 正對面巷子\n門口可以停車 近學區\n可 工作室 辦公室 餐飲業 美容 美甲 美髮 美體\n邊間 一整排氣密窗\n獨立鐵門 獨立廁所 獨立電表\n歡迎詢問 09-1358-2062\njohnjohnfang\n您好，可以幫您招租嗎\n可以\njohnjohnfang\n已私訊",
+      "time": "2026-10-19T02:08:47.000Z",
+      "keywords": [
+        "店面出租"
+      ],
+      "regions": [],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-20T01:50:32.469Z",
+      "full": true
+    },
     {
       "code": "DepIV5ln_W6",
       "user": "cgg_forfree",
@@ -3089,9 +3230,9 @@
       "leads": 0
     },
     "二手設備": {
-      "count": 5,
-      "last": 1792448683049,
-      "scanned": 90,
+      "count": 6,
+      "last": 1792460927937,
+      "scanned": 105,
       "leads": 1
     },
     "關店": {
@@ -3101,9 +3242,9 @@
       "leads": 0
     },
     "便宜賣": {
-      "count": 4,
-      "last": 1792448581929,
-      "scanned": 72,
+      "count": 5,
+      "last": 1792461017999,
+      "scanned": 92,
       "leads": 20
     },
     "收攤": {
@@ -3113,8 +3254,8 @@
       "leads": 0
     },
     "帶走價": {
-      "count": 4,
-      "last": 1792448623104,
+      "count": 5,
+      "last": 1792460944013,
       "scanned": 0,
       "leads": 0
     },
@@ -3173,16 +3314,16 @@
       "leads": 0
     },
     "搬家出清": {
-      "count": 4,
-      "last": 1792445398524,
-      "scanned": 37,
+      "count": 5,
+      "last": 1792460897935,
+      "scanned": 48,
       "leads": 4
     },
     "咖啡機": {
-      "count": 4,
-      "last": 1792439287947,
-      "scanned": 72,
-      "leads": 8
+      "count": 5,
+      "last": 1792460913282,
+      "scanned": 92,
+      "leads": 9
     },
     "製冰機": {
       "count": 4,
@@ -3203,9 +3344,9 @@
       "leads": 0
     },
     "歇業": {
-      "count": 4,
-      "last": 1792454553330,
-      "scanned": 65,
+      "count": 5,
+      "last": 1792460862761,
+      "scanned": 84,
       "leads": 0
     },
     "店面轉讓": {
@@ -3305,10 +3446,10 @@
       "leads": 0
     },
     "店面出租": {
-      "count": 2,
-      "last": 1792435215444,
-      "scanned": 40,
-      "leads": 0
+      "count": 3,
+      "last": 1792461004050,
+      "scanned": 59,
+      "leads": 2
     },
     "拆除": {
       "count": 3,
@@ -3359,49 +3500,49 @@
       "leads": 0
     },
     "招牌": {
-      "count": 2,
-      "last": 1792448595909,
-      "scanned": 37,
-      "leads": 2
+      "count": 3,
+      "last": 1792460883790,
+      "scanned": 65,
+      "leads": 4
     }
   },
-  "nextScanAt": "2026-10-20T01:45:08.115Z",
+  "nextScanAt": "2026-10-20T02:14:28.075Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-20T01:45:08.115Z",
-    "madeAt": "2026-10-20T01:19:18.437Z",
+    "at": "2026-10-20T02:14:28.075Z",
+    "madeAt": "2026-10-20T01:51:09.659Z",
     "items": [
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "招牌",
-        "q": "招牌"
+        "kw": "收店",
+        "q": "收店"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "爐具",
+        "q": "爐具"
       },
       {
-        "kw": "咖啡機",
-        "q": "咖啡機"
+        "kw": "餐車",
+        "q": "餐車"
       },
       {
-        "kw": "二手設備",
-        "q": "二手設備"
+        "kw": "結束營業",
+        "q": "結束營業"
       },
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "飲料店",
+        "q": "飲料店"
       },
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "開店",
+        "q": "開店"
       }
     ]
   }
