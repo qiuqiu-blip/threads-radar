@@ -1,68 +1,146 @@
 {
-  "updatedAt": "2026-10-21T12:53:43.709Z",
+  "updatedAt": "2026-10-21T14:40:29.751Z",
   "lastRun": {
-    "startedAt": "2026-10-21T12:49:22.870Z",
-    "finishedAt": "2026-10-21T12:53:43.436Z",
+    "startedAt": "2026-10-21T14:37:45.185Z",
+    "finishedAt": "2026-10-21T14:40:29.698Z",
     "status": "ok",
-    "scanned": 132,
-    "matched": 5,
-    "newCount": 5,
-    "notified": 5,
+    "scanned": 181,
+    "matched": 9,
+    "newCount": 9,
+    "notified": 9,
     "perKeyword": {
-      "飲料": 18,
-      "歇業": 23,
-      "清倉": 16,
-      "收攤": 20,
-      "商用冰箱": 18,
-      "爐具": 0,
-      "開店": 22,
-      "二手冰箱": 15,
-      "排油煙": 0
+      "飲料": 17,
+      "加盟": 28,
+      "店面出租": 19,
+      "退租": 20,
+      "創業": 19,
+      "裝潢": 18,
+      "拆除": 18,
+      "招牌": 20,
+      "結束營業": 22
     },
     "warnings": [],
     "keywordsUsed": [
       "飲料",
-      "歇業",
-      "清倉",
-      "收攤",
-      "商用冰箱",
-      "爐具",
-      "開店",
-      "二手冰箱",
-      "排油煙"
+      "加盟",
+      "店面出租",
+      "退租",
+      "創業",
+      "裝潢",
+      "拆除",
+      "招牌",
+      "結束營業"
     ],
     "queries": [
       "飲料",
-      "歇業",
-      "清倉",
-      "收攤",
-      "商用冰箱",
-      "爐具",
-      "開店",
-      "二手冰箱",
-      "排油煙"
+      "加盟",
+      "店面出租",
+      "退租",
+      "創業",
+      "裝潢",
+      "拆除",
+      "招牌",
+      "結束營業"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 61,
+      "seen": 72,
       "dup": 0,
-      "notBiz": 9,
-      "noKeyword": 20,
-      "noContext": 36,
-      "tooOld": 1
+      "notBiz": 10,
+      "noContext": 69,
+      "noKeyword": 15,
+      "tooOld": 5,
+      "words": {
+        "家具": 1
+      },
+      "excludeWord": 1
     },
-    "detailFetched": 5,
+    "detailFetched": 6,
     "newUrls": [
-      "https://www.threads.com/@px.bear/post/DewOswOmudt",
-      "https://www.threads.com/@lin_612/post/DewM0Igk9zJ",
-      "https://www.threads.com/@guijhgfrt/post/DeuK8F0n2CF",
-      "https://www.threads.com/@noweggcake/post/Det8Q-CkyyT",
-      "https://www.threads.com/@menya.niwa/post/DeqW_UcGcnG"
+      "https://www.threads.com/@kikichen0522/post/Dewh3HDGmW0",
+      "https://www.threads.com/@aka.83314/post/DewcogcHTvM",
+      "https://www.threads.com/@kasumiwu2427/post/DewVblNE-tm",
+      "https://www.threads.com/@_.three_shun_ss/post/DevrvKsEgh3",
+      "https://www.threads.com/@haitai726/post/Devq_qFErqr",
+      "https://www.threads.com/@elane90845/post/DevpvH-EmxM",
+      "https://www.threads.com/@nana02208/post/DevlKWyiTp9",
+      "https://www.threads.com/@ginger_flowerstudio/post/DeviHdeEYEB",
+      "https://www.threads.com/@babo_o125/post/DepF5vnAfp0"
     ],
     "pushMode": "on",
-    "nextInMinutes": 22
+    "nextInMinutes": 21
   },
   "runs": [
+    {
+      "startedAt": "2026-10-21T14:37:45.185Z",
+      "finishedAt": "2026-10-21T14:40:29.698Z",
+      "status": "ok",
+      "scanned": 181,
+      "matched": 9,
+      "newCount": 9,
+      "notified": 9,
+      "perKeyword": {
+        "飲料": 17,
+        "加盟": 28,
+        "店面出租": 19,
+        "退租": 20,
+        "創業": 19,
+        "裝潢": 18,
+        "拆除": 18,
+        "招牌": 20,
+        "結束營業": 22
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "加盟",
+        "店面出租",
+        "退租",
+        "創業",
+        "裝潢",
+        "拆除",
+        "招牌",
+        "結束營業"
+      ],
+      "queries": [
+        "飲料",
+        "加盟",
+        "店面出租",
+        "退租",
+        "創業",
+        "裝潢",
+        "拆除",
+        "招牌",
+        "結束營業"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 72,
+        "dup": 0,
+        "notBiz": 10,
+        "noContext": 69,
+        "noKeyword": 15,
+        "tooOld": 5,
+        "words": {
+          "家具": 1
+        },
+        "excludeWord": 1
+      },
+      "detailFetched": 6,
+      "newUrls": [
+        "https://www.threads.com/@kikichen0522/post/Dewh3HDGmW0",
+        "https://www.threads.com/@aka.83314/post/DewcogcHTvM",
+        "https://www.threads.com/@kasumiwu2427/post/DewVblNE-tm",
+        "https://www.threads.com/@_.three_shun_ss/post/DevrvKsEgh3",
+        "https://www.threads.com/@haitai726/post/Devq_qFErqr",
+        "https://www.threads.com/@elane90845/post/DevpvH-EmxM",
+        "https://www.threads.com/@nana02208/post/DevlKWyiTp9",
+        "https://www.threads.com/@ginger_flowerstudio/post/DeviHdeEYEB",
+        "https://www.threads.com/@babo_o125/post/DepF5vnAfp0"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 21
+    },
     {
       "startedAt": "2026-10-21T12:49:22.870Z",
       "finishedAt": "2026-10-21T12:53:43.436Z",
@@ -2398,6 +2476,162 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "Dewh3HDGmW0",
+      "user": "kikichen0522",
+      "url": "https://www.threads.com/@kikichen0522/post/Dewh3HDGmW0",
+      "authorUrl": "https://www.threads.com/@kikichen0522",
+      "text": "台中工程\n想問問有沒有台中的統包或工程師傅願意接小案子🥹\n最近想幫家裡做一點簡單的小改造，不是什麼大工程，主要就是換櫃子、換鏡子跟重新油漆，希望可以找一位師傅一次處理～\n大概的需求是：\n📍臥室\n・拆掉原本黏在牆上的吊櫃\n・兩面牆重新油漆（需要局部補土、上底漆跟乳膠漆蓋色）\n・幫忙鑽孔安裝新的壁掛櫃\n📍浴室\n・拆掉原本黏在磁磚上的鏡子\n・幫忙鑽孔安裝新鏡子\n另外新櫃子跟鏡子都會自己買好，主要需要師傅幫忙拆除跟安裝！\n也希望可以順便幫忙清運拆下來的舊櫃子、舊鏡子，還有新商品包裝的木箱、木架等垃圾。\n因為工程比較零碎，不確定有沒有師傅願意接這種小案子，希望能找到可以全部一起處理、整包報價的師傅。\n如果有推薦或自薦的台中統包或工程師傅，歡迎留言或私訊我！\n先謝謝大家了🙏",
+      "time": "2026-10-21T13:35:57.000Z",
+      "keywords": [
+        "拆除"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-21T14:39:46.366Z"
+    },
+    {
+      "code": "DewcogcHTvM",
+      "user": "aka.83314",
+      "url": "https://www.threads.com/@aka.83314/post/DewcogcHTvM",
+      "authorUrl": "https://www.threads.com/@aka.83314",
+      "text": "917次瀏覽\n每天發文直到被看到為止💪\n一開始只是想讓更多人知道我在做拆除，\n慢慢發現——\n比起多1000個不認識的粉絲，\n我更希望在這裡認識：\n✏️ 室內設計師\n👷 統包／裝潢\n🏗️ 營造／建商\n🏠 房仲\n🍴 店家老闆\n🔧 各類工程同行\n🔨 大小型拆除\n🏠 室內／裝潢拆除\n🚛 廢棄物清運\n⛏️ 土方工程\n📍北北基桃竹\n如果你也是相關行業，\n歡迎追蹤、留言認識一下🤝\n不一定今天就會合作，\n但哪天你需要拆除清運的時候，\n希望你會突然想到我\n繼續做工程，也繼續讓更多人認識我💪\nlee07150921\n桃園木工 來 加起來\n💪💪\nhuihong_chen\n認真經營的創作者，別再單打獨鬥了！\n你發文，我看見。\n你努力，我支持。\n我們一起把彼此推向更大的舞台！🔥\n不管你經營的是👇\n🤖 AI｜🥗 健康｜🍜 美食｜📸 生活｜💪 體態管理\n認真創作，就值得被更多人看見！\n📣 一起雙追。不退追。一起漲粉。\n🤝 真誠互動，不玩假熱度；\n📈 持續創作，一起累積影響力。\n👍👍\nhuihong_chen\n認真經營的創作者，別再單打獨鬥了！\n你發文，我看見。\n你努力，我支持。\n我們一起把彼此推向更大的舞台！🔥\n不管你經營的是👇\n🤖 AI｜🥗 健康｜🍜 美食｜📸 生活｜💪 體態管理\n認真創作，就值得被更多人看見！\n📣 一起雙追。不退追。一起漲粉。\n🤝 真誠互動，不玩假熱度；\n📈 持續創作，一起累積影響力。\nannie.shih.1273\n互追記得回追\n沒問題\nannie.shih.1273\n謝謝\nzxc_678912\n💪👍👍\nfusheng0718\n雙追IG.脆不退🤗\nanbu.tw\n已追追￼\n各位老闆小編大家好\n我是安步防滑的小編\n歡迎互粉互追\n店裡最怕遇到下雨天或客人打翻飲料。推薦您試試 安步防滑（透明地板防滑液）！\n• 不改變美觀：完工後完全透明，保留原本漂亮的裝潢設計。\n•施工超快速：不砸地磚、無噪音、無異味，半天即可完工，不影響營業。\n• 安全有保障：符合國家防滑標準，給顧客最安心的用餐/消費環境。\n現在提供免費現場防滑測試，歡迎私訊我們為您的店面把關安全\na629874\n追\nakai6885\n相互加油….已追\nchengwei_chang18\n已追\njin.sauce2026\n追起來​​～～互相支持鼓勵​​​​​\n讓更多人看見，一起閃閃發亮​\n歡迎來嘉義玩找金魚編吃涼麵喔～\n金醬香涼麵專賣\n📍營業中｜10:00－18:30（售完提早打烊）\n📍嘉義市台林街180號\n（目前無固定公休，歡迎追蹤FB、IG 粉絲團，會提前公布唷）\n@jin.sauce2026",
+      "time": "2026-10-21T12:50:16.000Z",
+      "keywords": [
+        "飲料",
+        "拆除",
+        "裝潢"
+      ],
+      "regions": [
+        "桃園"
+      ],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-21T14:39:46.366Z",
+      "full": true
+    },
+    {
+      "code": "DewVblNE-tm",
+      "user": "kasumiwu2427",
+      "url": "https://www.threads.com/@kasumiwu2427/post/DewVblNE-tm",
+      "authorUrl": "https://www.threads.com/@kasumiwu2427",
+      "text": "275次瀏覽\n台中店面出租\n北屯機捷核心｜百坪大面寬電梯樓店\n好市多對面第一排｜旗艦店規格一次到位\n總建坪：230.3坪｜2300/坪、1-2樓全開放空間\n💰租金：53萬\n0972062888-吳小姐\n成侑不動產\n（104）中市經紀字01592號",
+      "time": "2026-10-21T11:47:20.000Z",
+      "keywords": [
+        "店面出租"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-21T14:39:46.365Z",
+      "full": true
+    },
+    {
+      "code": "DevrvKsEgh3",
+      "user": "_.three_shun_ss",
+      "url": "https://www.threads.com/@_.three_shun_ss/post/DevrvKsEgh3",
+      "authorUrl": "https://www.threads.com/@_.three_shun_ss",
+      "text": "廣告招牌\n📍 今日施工紀錄\n又完成一個新案！💪\n招牌製作・施工安裝・廣告工程\n不論是店面招牌、立體字、燈箱招牌，都歡迎洽詢！\n有需要的朋友歡迎私訊我們 📩",
+      "time": "2026-10-21T05:43:00.000Z",
+      "keywords": [
+        "招牌"
+      ],
+      "regions": [],
+      "foundBy": "招牌",
+      "foundQuery": "招牌",
+      "foundAt": "2026-10-21T14:39:46.366Z"
+    },
+    {
+      "code": "Devq_qFErqr",
+      "user": "haitai726",
+      "url": "https://www.threads.com/@haitai726/post/Devq_qFErqr",
+      "authorUrl": "https://www.threads.com/@haitai726",
+      "text": "2,559次瀏覽\n創業日記\n聽說脆上面有一種神奇的力量🤣❤️\n小小創業闆娘也想來試試看！！\n🐔 從路邊攤賣鹹水雞到開店面\n🍗 從炸雞一路做到甜點店🍰\n每天不是在店裡忙\n就是在去店裡的路上🤣🤣\n想認識更多努力生活、努力創業的朋友❤️\n不管你是老闆、上班族\n還是跟我一樣每天忙到懷疑人生的🤣\n歡迎來交朋友啦～～🙋🏻‍♀️\n✨ IG & Threads 互追交流\n✨ 留言讓闆娘認識你們\n讓我們一起把小帳號養大❤️\n新店的朋友也來認親一下啦！！\n看看這裡有多少鄰居🤣🤣\nchengwei_chang18\n已追\n追起來\nying_spa2026\n好厲害 分一點好運給我這個不務正業的溫罐師\nannie.shih.1273\n互追記得回追\n我來了\nsolarezza_081\n追\n追\ncanofang\n互追謝謝🙏\n3721.loy\n雙追不退\n追起來\nfeng_22.11\n已追~\n叡宸食品國際有限公司-新品上市\n(一) 【ぷるぷる噗嚕噗嚕】 晶凍 ｜果凍系列｜12入童趣版禮盒\n吃的是晶凍，玩的是驚喜！\n晶凍吃完，外盒搖身一變成為趣味彈珠台\n---------------------------------------------------\n(二) 【呼嚕熊】 100%新鮮果汁｜400ml × 6款風味\n｜ 無額外添加糖｜多種水果調配｜鮮果冷壓榨\n「一瓶多種水果，喝出不一樣的果汁。」\n「讓水果，好好相遇。」\n---------------------------------------------------\n(三)【鮮萃果序】水果氣泡飲(無酒精)真實果汁芭樂/葡萄 單瓶裝\n｜330ml/瓶× 2款風味｜芭檸青沐、葡桃拾光\n「果香正好,氣泡正盛」- 果香加氣泡,清爽更升級\n叡宸食品樂天賣場-歡迎選購\nrakuten.com.tw/shop…\n很特別哦\nfeng_22.11\n感謝支持(#^.^#)\na5566789332\n已雙追了～希望回追🥹\nIG跟脆主要分享旅遊，放假喜歡開著車四處走 親近大自然 拍不錯的景 分享 限動跟貼文 給大家欣賞\n謝謝你❤️不能放假的我，可以看看您的貼文幻想一下\na5566789332\nIG可以再幫我回追一下 感謝嘍～\njoa.tea1001\n嗨嗨，已追蹤\n歡迎回追，一起加油🩷🥰\n我們一起加油❤️❤️❤️\njoa.tea1001\n加油加油🩷🩷🩷",
+      "time": "2026-10-21T05:36:31.000Z",
+      "keywords": [
+        "開店",
+        "創業"
+      ],
+      "regions": [],
+      "foundBy": "創業",
+      "foundQuery": "創業",
+      "foundAt": "2026-10-21T14:39:46.365Z",
+      "full": true
+    },
+    {
+      "code": "DevpvH-EmxM",
+      "user": "elane90845",
+      "url": "https://www.threads.com/@elane90845/post/DevpvH-EmxM",
+      "authorUrl": "https://www.threads.com/@elane90845",
+      "text": "2.0 萬次瀏覽\n南勢角新開一間早午餐\n還不錯吃\n飲料好喝餐點份量也很多跟豐富\n環境也很舒服\n很值得推薦\n聽說是一個可愛妹妹創業😍\n真的蠻可愛的也很親切\n店名：午杉Woods Sun早午餐\n地址：新北市中和區景新街462號1樓\nterry19790411\n改天去嚐鮮😊\n很很吃，店內環境也很舒服\now911063\n沒看到 妹妹\n你可以多去幾次\now911063\n好吃\n對呀，東西還不錯\now911063\n辣媽推薦 好的\now911063\n收到\ny.s.l._________\n是在地球村那邊嗎？\n還沒到地球村那，他在過郵局一點點還沒到地球村中間\ny.s.l._________\n感謝您\n不會😊\nbig_boss_0766\n年輕老闆創業的早午餐，飲料好喝份量又夠，值得支持\n東西也好吃👍👍\nbig_boss_0766\n好吃又有誠意，這種小店值得多推\npeifang.sung\n最近去吃了三次，全家都覺得喜歡\n對呀，我下次也想去吃別的，環境也很讓人舒服\nfaith_hong_ru\n真的很讚！推推！店內給人的氛圍也很輕鬆自在\nxhkoin\n留趙明看\n？？\nabc.556678\n南勢角開早午餐蠻勇的😂\n對呀，南勢角一隻手指數的出來，沒幾間\nyyw_1028\n寵物可以嗎？\n這可能要問店家\n@woods_sun_brunch\nwoods_sun_brunch\n嗨囉，寵物可以入內喲，但需要在袋子或推車裡！歡迎大家來喲😊",
+      "time": "2026-10-21T05:25:31.000Z",
+      "keywords": [
+        "飲料",
+        "創業"
+      ],
+      "regions": [
+        "新北"
+      ],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-21T14:39:46.364Z",
+      "full": true
+    },
+    {
+      "code": "DevlKWyiTp9",
+      "user": "nana02208",
+      "url": "https://www.threads.com/@nana02208/post/DevlKWyiTp9",
+      "authorUrl": "https://www.threads.com/@nana02208",
+      "text": "5.2 萬次瀏覽\n⚠️⚠️⚠️急急急頂讓！\n頂讓金原本18萬降至10萬\n這週五能接手者直接10萬讓出！\n真的捨不得店內裝潢\n想著寧願讓出也不想拆除\n有沒有人想開店🥹🥹🥹🥹\n原本只有我跟姐姐一起開店\n但她有小小年紀的女孩要照顧\n我為了圓夢回歸校園，自己還有2個小孩要照顧的小家庭\n實在沒辦法再這樣一直帶孩子照顧店面又上課🥲\n10萬就能有裝潢+1台變頻冷氣+16個座位+軌道燈+部份餐飲設備+地下停車位\n另外因為真的已經降到很低價了🥹\n不再接受議價&原況出租\n會再簡單打掃整理過\n補土油漆等需自行處理\n真的省下超多裝潢費用\n不用等設備進來就可以直接營業\n有興趣的可以私訊\nbezold.tw\n老闆你好～歡迎到 Bezold 免費刊登頂讓資訊 ☺️ 多一個曝光管道，讓正在找店的買家看見你的店！刊登有問題也歡迎私訊我們 🫡\n👉 bezold.com.tw\nbezold.com.tw\n頂讓網｜全台店面頂讓平台 - Bezold 頂讓必售\nyagodmoon123master\n👌\naop7852\n地點在哪裡\nmia_song726\n請問位置在哪裡？\nangus810602\n請問在哪？\nwe_8806\n請問在哪\nblakeouou\n在哪呢\nying_0407\n請問地點\na14716123\n想了解",
+      "time": "2026-10-21T04:45:33.000Z",
+      "keywords": [
+        "拆除",
+        "開店",
+        "裝潢"
+      ],
+      "regions": [],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-21T14:39:46.365Z",
+      "full": true
+    },
+    {
+      "code": "DeviHdeEYEB",
+      "user": "ginger_flowerstudio",
+      "url": "https://www.threads.com/@ginger_flowerstudio/post/DeviHdeEYEB",
+      "authorUrl": "https://www.threads.com/@ginger_flowerstudio",
+      "text": "4.9 萬次瀏覽\n真的覺得，創業初期如果：\n1.不需要請員工\n2.店面又剛好是自己家的\n3.手上還有存款\n4.沒有負債\n這種開局根本超強吧\nmeatshop.tw\n那還要創業嗎😂\n哈～對吼😂\nlittle_girl_flower\n開局先贏一半\n真的，尤其是1、2，有這個條件根本無敵了吧🥹\nyapin015\n這樣我店面會直接出租！不想創業😌😌\ntour_bmw_v8\n超強 根本就是做一個有在做事業給人看的而已😏😏\n完全不用看客人臉色😂\nunaschen\n日本鄉下拉麵店的經營模式😆\n是相當可行的👍👍👍\nyoutube.com\n為什麼日本鄉下，拉麵店特別多，人口明明很少，能養活這麼多店嗎\n好棒喔🥹\nmoka200321\n2根本是無敵,每個月的租金基本成本是零\nwang_teng_chun\n沒有，我覺得這開局注定會失敗，你定價策略從一開始就會走錯～\n你說得對\nproworkercoffee\n想說些什麼🤔，想想還是算了---，畢竟創個業賠掉房子的也不少---\n請員工+租店面+負債也是會創業創到賠掉房子呀，有自己的店面至少還有房子可以賠\nproworkercoffee\n就因為有房子可賠就放膽賠賠得更快---而且通常無處週轉---\n你說得對\nproworkercoffee\n創業都是血淚，但沒人會聽你的血淚。\nlilys_bagel\n店面是自己家的，但還是被收租金😆😆😆\n哈～算清楚也很好😂",
+      "time": "2026-10-21T04:18:56.000Z",
+      "keywords": [
+        "創業"
+      ],
+      "regions": [],
+      "foundBy": "創業",
+      "foundQuery": "創業",
+      "foundAt": "2026-10-21T14:39:46.365Z",
+      "full": true
+    },
+    {
+      "code": "DepF5vnAfp0",
+      "user": "babo_o125",
+      "url": "https://www.threads.com/@babo_o125/post/DepF5vnAfp0",
+      "authorUrl": "https://www.threads.com/@babo_o125",
+      "text": "女裝出清#流量密碼\n📣結束營業延長加碼最後的隨便賣\n最後的清倉時間延長到光復連假的星期日\n喊著加開的寶寶們不要再說你沒有買到惹\n錯過我也沒辦法\n只有拜託房東再給我一個禮拜的時間\n10/25 晚上10點一到立馬清空\n讓我把店裡的庫存清完把\n全館100起，請看影片介紹\n店內的衣架衣桿假人身材器具也歡迎二手撿便宜\n梦的翅膀受了伤 · DJ阿布",
+      "time": "2026-10-18T16:18:03.000Z",
+      "keywords": [
+        "結束營業",
+        "清倉"
+      ],
+      "regions": [],
+      "foundBy": "結束營業",
+      "foundQuery": "結束營業",
+      "foundAt": "2026-10-21T14:39:46.367Z"
+    },
     {
       "code": "DewOswOmudt",
       "user": "px.bear",
@@ -4921,9 +5155,9 @@
       "leads": 0
     },
     "退租": {
-      "count": 7,
-      "last": 1792557557510,
-      "scanned": 111,
+      "count": 8,
+      "last": 1792593506593,
+      "scanned": 131,
       "leads": 7
     },
     "低價出清": {
@@ -5005,10 +5239,10 @@
       "leads": 0
     },
     "結束營業": {
-      "count": 8,
-      "last": 1792575371016,
-      "scanned": 140,
-      "leads": 7
+      "count": 9,
+      "last": 1792593572121,
+      "scanned": 162,
+      "leads": 8
     },
     "收店": {
       "count": 9,
@@ -5047,10 +5281,10 @@
       "leads": 0
     },
     "飲料": {
-      "count": 7,
-      "last": 1792586964028,
-      "scanned": 125,
-      "leads": 18
+      "count": 8,
+      "last": 1792593465869,
+      "scanned": 142,
+      "leads": 19
     },
     "飲料店": {
       "count": 7,
@@ -5059,28 +5293,28 @@
       "leads": 5
     },
     "裝潢": {
-      "count": 9,
-      "last": 1792557488763,
-      "scanned": 163,
+      "count": 10,
+      "last": 1792593533790,
+      "scanned": 181,
       "leads": 0
     },
     "店面出租": {
-      "count": 7,
-      "last": 1792557545267,
-      "scanned": 134,
-      "leads": 7
+      "count": 8,
+      "last": 1792593493025,
+      "scanned": 153,
+      "leads": 9
     },
     "拆除": {
-      "count": 7,
-      "last": 1792541514205,
-      "scanned": 147,
-      "leads": 4
+      "count": 8,
+      "last": 1792593545025,
+      "scanned": 165,
+      "leads": 6
     },
     "創業": {
-      "count": 7,
-      "last": 1792541499333,
-      "scanned": 138,
-      "leads": 0
+      "count": 8,
+      "last": 1792593519994,
+      "scanned": 157,
+      "leads": 2
     },
     "餐車": {
       "count": 8,
@@ -5113,59 +5347,59 @@
       "leads": 3
     },
     "加盟": {
-      "count": 8,
-      "last": 1792557572939,
-      "scanned": 152,
+      "count": 9,
+      "last": 1792593477399,
+      "scanned": 180,
       "leads": 0
     },
     "招牌": {
-      "count": 5,
-      "last": 1792575384525,
-      "scanned": 101,
-      "leads": 4
+      "count": 6,
+      "last": 1792593558020,
+      "scanned": 121,
+      "leads": 5
     }
   },
-  "nextScanAt": "2026-10-21T13:15:45.544Z",
+  "nextScanAt": "2026-10-21T15:01:00.512Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-21T13:15:45.544Z",
-    "madeAt": "2026-10-21T12:53:43.704Z",
+    "at": "2026-10-21T15:01:00.512Z",
+    "madeAt": "2026-10-21T14:40:29.745Z",
     "items": [
       {
         "kw": "飲料",
         "q": "飲料"
       },
       {
-        "kw": "加盟",
-        "q": "加盟"
+        "kw": "帶走價",
+        "q": "帶走價"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "歇業",
+        "q": "歇業"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "拆除",
-        "q": "拆除"
+        "kw": "餐車",
+        "q": "餐車"
       },
       {
-        "kw": "招牌",
-        "q": "招牌"
+        "kw": "咖啡機",
+        "q": "咖啡機"
       },
       {
-        "kw": "結束營業",
-        "q": "結束營業"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       }
     ]
   }
