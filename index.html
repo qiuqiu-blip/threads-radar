@@ -188,6 +188,14 @@ main{padding-top:16px}
 .batchhd{display:flex;align-items:center;gap:8px;margin:18px 4px 8px;color:var(--gold2);font-weight:800;font-size:15px}
 .batchhd:before,.batchhd:after{content:'';flex:1;height:1px;background:var(--line)}
 .batchhd b{color:#ffd95a}
+#tab-settings{padding-bottom:110px}
+#readFab{position:fixed;right:14px;bottom:calc(96px + env(safe-area-inset-bottom));z-index:58;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+#readFab[hidden]{display:none}
+#readFab .fab{width:82px;height:82px;border-radius:50%;border:2px solid #ffd95a;background:linear-gradient(180deg,#ffe28a,#c9921c);color:#2a1d02;font-size:30px;font-weight:900;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.55),0 0 18px rgba(255,210,80,.45);cursor:pointer;line-height:1}
+#readFab .fab small{font-size:13px;margin-top:3px}
+#readFab .fab.ghost{width:64px;height:64px;font-size:22px;background:#1e170c;color:var(--gold2);border-color:var(--gold3)}
+#readFab .fab.ghost small{font-size:11px}
+#readFab .fab:active{transform:scale(.93)}
 #dirtyBar{position:fixed;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:55;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#5a2a10,#3a1a08);border:1px solid #ff8a3d;color:#ffd7b8;font-weight:800;font-size:16px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 #dirtyBar[hidden]{display:none}
 .chip.pinchip{border-color:#f5c542;color:#ffd95a;font-weight:800}
@@ -342,7 +350,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
     </div>
     <div class="chips" id="chips"></div>
     <div class="readbar"><button class="btn ghost sm" id="readAllBtn">🔊 連續朗讀</button><button class="btn ghost sm" id="readStopBtn" hidden>⏹ 停止</button><button class="btn ghost sm" id="askToggle"></button><button class="btn ghost sm" id="micToggle"></button></div>
-    <div class="readbar ratebar"><button class="btn ghost sm" data-rate="-0.1">➖ 慢一點</button><button class="btn ghost sm" data-rate="0" id="rateVal" title="點一下恢復正常速度">語速 1.0 倍</button><button class="btn ghost sm" data-rate="0.1">➕ 快一點</button></div>
+    <div class="readbar ratebar"><button class="btn ghost sm" data-rate="-0.1">➖ 慢一點</button><button class="btn ghost sm" data-rate="0" id="rateVal" title="點一下恢復正常速度">語速 1.0 倍</button><button class="btn ghost sm" data-rate="0.1">➕ 快一點</button><button class="btn ghost sm" id="gapToggle">⏱ 每句停一下：開</button></div>
     <div id="list"></div>
   </section>
 
@@ -431,6 +439,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
       <div class="banner" id="schedInfo" style="margin:0"></div>
     </div>
     <div class="card">
+      <div class="field"><label>🏷 系統名稱（顯示在最上面和 Telegram 通知，有好幾套雷達時用來分辨）</label><input id="cTitle" placeholder="小球脆雷達"></div>
       <label class="switch"><span data-i="enabled">啟用監控</span><input type="checkbox" class="tg" id="cEnabled"></label>
       <label class="switch"><span data-i="notifyTg">推播到 Telegram（關閉＝只存進控制台）</span><input type="checkbox" class="tg" id="cTg"></label>
       <label class="switch"><span data-i="regionRequired">地區必須符合</span><input type="checkbox" class="tg" id="cRegionReq"></label>
@@ -586,6 +595,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
     <p class="hint" data-i="rpHint">開啟貼文後，在 Threads 長按輸入框「貼上」→ 送出。這則線索會自動標記為已聯絡。</p>
   </div>
 </div>
+<div id="readFab" hidden><button class="fab ghost" data-fab="del">🗑<small>刪除</small></button><button class="fab ghost" data-fab="pause">⏸<small>暫停</small></button><button class="fab" data-fab="next">⏭<small>下一則</small></button></div>
 <div id="dirtyBar" hidden><span>⚠️ 設定有修改，還沒儲存！</span><button class="btn sm" id="dirtySave">💾 立即儲存</button></div>
 <div id="toast"></div>
 
@@ -680,7 +690,7 @@ const state = {
   lang: LS.get('lang','zh'), voice: LS.get('voice',false), conn: LS.get('conn',{mode:'github',owner:'',repo:'threads-radar',branch:'main',token:'',api:'',key:''}),
   done: new Set(LS.get('done',[])), onlyNew:false, filter:'', q:'', doc:null, cfg:null, cfgSha:null, demo:false
 };
-const t = (k) => (I18N[state.lang]||I18N.zh)[k] ?? I18N.zh[k] ?? k;
+const t = (k) => (k==='appTitle'&&state.cfg&&state.cfg.title)?state.cfg.title:((I18N[state.lang]||I18N.zh)[k] ?? I18N.zh[k] ?? k);
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -775,7 +785,7 @@ async function load(silent){
       const needCfg=!state.cfg;
       const [doc,cfg]=await Promise.all([a.getPosts(),needCfg?a.getConfig():Promise.resolve(state.cfg)]);
       (doc.posts||[]).forEach(p=>{p.text=cleanTxt(p.text)});state.doc=doc;state.cfg=cfg;state.doc._all=doc.posts||[];applyHidden();
-      if(needCfg)fillSettings();
+      if(needCfg){fillSettings();applyLang()}
     }
     if(state.demo)fillSettings();
     if(!LS.get('lastView',null))LS.set('lastView',new Date().toISOString());
@@ -866,7 +876,8 @@ const R={mode:null,url:null,queue:[],qi:0,chunks:[],ci:0,paused:false,tok:0};
 function readLabel(url){return R.url===url&&R.mode==='single'?(R.paused?'▶ 繼續':'⏸ 暫停'):'🔈 朗讀'}
 function postHeader(p,i){
   const a=an(p),inf=a.info,loc=[inf.city,inf.district].filter(Boolean).join('');
-  return `${i!=null?`第${i+1}則，`:''}${ago(p.time||p.foundAt)}，${a.intent.level}意向，${a.role}${loc?'，'+loc:''}。`;
+  const kw=viaBase(p);
+  return `${i!=null?`第${i+1}則，`:''}${kw?`搜「${kw}」找到的，`:''}${ago(p.time||p.foundAt)}，${a.intent.level}意向，${a.role}${loc?'，'+loc:''}。`;
 }
 function postSpeech(p,i){return postHeader(p,i)+cleanSpeech(p.text||'')}
 // 朗讀前清掉：表情符號、星號、閃亮、～、#、網址…（畫面上的字不變）
@@ -919,7 +930,7 @@ function sayChunk(){
     const url=R.url,mode=R.mode;askDelete(url,()=>{if(tok!==R.tok&&R.mode!==mode)return;if(mode==='queue')nextInQueue();else stopRead()});return}
   followChunk();
   const u=new SpeechSynthesisUtterance(R.chunks[R.ci]);u.lang=SPEECH_LANG[state.lang]||'zh-TW';u.rate=readRate();
-  u.onend=()=>{if(tok!==R.tok||R.paused)return;R.ci++;sayChunk()};
+  u.onend=()=>{if(tok!==R.tok||R.paused)return;R.ci++;const g=LISTEN.on&&LS.get('gap',true)?900:0;if(g)setTimeout(()=>{if(tok===R.tok&&!R.paused)sayChunk()},g);else sayChunk()};
   u.onerror=()=>{if(tok!==R.tok||R.paused)return;R.ci++;sayChunk()};
   speechSynthesis.speak(u);
 }
@@ -950,6 +961,8 @@ function markReading(){
   const all=$('#readAllBtn'),st=$('#readStopBtn');if(!all)return;
   all.textContent=R.mode==='queue'?(R.paused?`▶ 繼續連讀（${R.qi+1}/${R.queue.length}）`:`⏸ 暫停連讀（${R.qi+1}/${R.queue.length}）`):'🔊 連續朗讀';
   all.classList.toggle('on',R.mode==='queue');st.hidden=!R.mode;
+  const fab=$('#readFab');if(fab){fab.hidden=!R.mode;const pb=fab.querySelector('[data-fab=pause]');if(pb)pb.innerHTML=R.paused?'▶<small>繼續</small>':'⏸<small>暫停</small>';const nb=fab.querySelector('[data-fab=next]');if(nb)nb.innerHTML=R.mode==='queue'?'⏭<small>下一則</small>':'⏹<small>停止</small>'}
+  const gb=$('#gapToggle');if(gb)gb.textContent=LS.get('gap',true)?'⏱ 每句停一下：開':'⏱ 每句停一下：關';
 }
 function toggleSingle(url){
   if(R.url===url&&R.mode==='single'){R.paused?resumeRead():pauseRead();return}
@@ -1096,7 +1109,7 @@ function deleteCurrent(){
 }
 function skipCurrent(){if(R.mode!=='queue'){stopRead();return}cancelAsk();R.tok++;try{speechSynthesis.cancel()}catch{}nextInQueue()}
 function heardBySelf(word){ // 避免麥克風聽到喇叭正在唸的字
-  const cur=(R.chunks&&R.chunks[R.ci])||'';return ASK.speaking||cur.includes(word);
+  const cur=((R.chunks&&R.chunks[R.ci])||'')+((R.chunks&&R.chunks[R.ci-1])||'');return ASK.speaking||cur.includes(word);
 }
 function onCommand(txt){
   const now=Date.now();if(now-LISTEN.last<1500)return;
@@ -1109,8 +1122,9 @@ function onCommand(txt){
     if(/好|刪|删|是|要|ok/i.test(txt)){LISTEN.last=now;ASK.done(true);return}
     return;
   }
-  if((has('刪除')||has('删除'))&&!heardBySelf('刪除')){LISTEN.last=now;deleteCurrent();return}
-  if((has('跳過')||has('下一則')||has('下一個'))&&!heardBySelf('跳過')){LISTEN.last=now;skipCurrent();return}
+  const mDel=clean.match(/刪除|删除|刪掉|删掉|山除|閃除|刪出|三除|珊除|善除|垃圾|刪|删/),mSkip=clean.match(/跳過|跳过|下一則|下一个|下一個|下一篇|下一|換一|跳/);
+  if(mDel&&!heardBySelf(mDel[0])){LISTEN.last=now;deleteCurrent();return true}
+  if(mSkip&&!heardBySelf(mSkip[0])){LISTEN.last=now;skipCurrent();return true}
   if(has('暫停')&&!R.paused&&!heardBySelf('暫停')){LISTEN.last=now;R.mode==='queue'?pauseRead():pauseRead();toast('⏸ 已暫停（說「繼續」接著唸）');return}
   if(has('繼續')&&R.paused){LISTEN.last=now;resumeRead();return}
   if(has('停止')&&!heardBySelf('停止')){LISTEN.last=now;stopRead();toast('⏹ 已停止朗讀');return}
@@ -1119,8 +1133,8 @@ function listenStart(){
   if(!LISTEN.on||LISTEN.active)return;
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return;
   try{
-    const rec=new SR();LISTEN.rec=rec;LISTEN.active=true;rec.lang='zh-TW';rec.continuous=true;rec.interimResults=true;
-    rec.onresult=e=>{for(let i=e.resultIndex||0;i<e.results.length;i++){const r=e.results[i];const txt=[...r].map(a=>a.transcript).join(' ');onCommand(txt)}};
+    const rec=new SR();LISTEN.rec=rec;LISTEN.active=true;rec.lang='zh-TW';rec.continuous=true;rec.interimResults=true;rec.maxAlternatives=5;
+    rec.onresult=e=>{for(let i=e.resultIndex||0;i<e.results.length;i++){const r=e.results[i];const l0=LISTEN.last;for(const alt of [...r]){onCommand(alt.transcript);if(LISTEN.last!==l0)return}}};
     rec.onerror=ev=>{if(ev&&(ev.error==='not-allowed'||ev.error==='service-not-allowed')){LISTEN.on=false;LS.set('voiceCmd',false);renderMic();toast('🎙 沒有麥克風權限，語音指令已關閉')}};
     rec.onend=()=>{LISTEN.active=false;LISTEN.rec=null;if(LISTEN.on&&R.mode)setTimeout(listenStart,300)};
     rec.start();
@@ -1273,7 +1287,7 @@ function renderTags(){
 function fillSettings(){
   const c=state.cfg;if(!c)return;
   renderTags();
-  $('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;if($('#cBiz'))$('#cBiz').checked=!!c.bizOnly;
+  if($('#cTitle'))$('#cTitle').value=c.title||'';$('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;if($('#cBiz'))$('#cBiz').checked=!!c.bizOnly;
   $('#cFirst').checked=c.firstRunSilent!==false;$('#cTg').checked=c.notifyTelegram!==false;$('#cErr').checked=c.notifyErrors!==false;
   $('#cAge').value=c.maxAgeHours??72;$('#cMinM').value=c.scanMinMinutes??30;$('#cMaxM').value=c.scanMaxMinutes??90;$('#cRest').value=c.restHoursPerDay??6;$('#cCombo').value=Math.round((c.comboChance??0.5)*100);$('#cDetail').value=c.detailFetchMax??6;$('#cSmart').checked=c.smartSchedule!==false;renderSchedInfo();$('#cMaxN').value=c.maxNotifyPerRun??15;$('#cWatchN').value=c.watchPerScan??1;fillReplySettings();$('#cPerScan').value=c.keywordsPerScan??4;$('#cScroll').value=c.scrollsPerKeyword??3;
   snapCfg();
@@ -1287,12 +1301,13 @@ function addTag(id){
 async function saveSettings(){
   Object.keys(LISTS).forEach(id=>{const i=$('#'+id+'In');if(i&&i.value.trim())addTag(id)});
   const c=state.cfg;
+  c.title=($('#cTitle')?.value||'').trim()||undefined;
   Object.assign(c,{enabled:$('#cEnabled').checked,regionRequired:$('#cRegionReq').checked,strictKeyword:$('#cStrict').checked,bizOnly:!!$('#cBiz')?.checked,
     firstRunSilent:$('#cFirst').checked,notifyTelegram:$('#cTg').checked,notifyErrors:$('#cErr').checked,maxAgeHours:+$('#cAge').value||0,
     maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),watchPerScan:Math.min(5,Math.max(0,Math.round(+$('#cWatchN').value||0))),reply:collectReplySettings(),keywordsPerScan:Math.max(0,Math.round(+$('#cPerScan').value||0)),scanMinMinutes:Math.max(5,+$('#cMinM').value||30),scanMaxMinutes:Math.max(5,+$('#cMaxM').value||90),restHoursPerDay:Math.min(20,Math.max(0,+$('#cRest').value||0)),comboChance:Math.min(1,Math.max(0,(+$('#cCombo').value||0)/100)),detailFetchMax:Math.min(15,Math.max(0,Math.round(+$('#cDetail').value||0))),smartSchedule:$('#cSmart').checked,scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
   const a=adapter();if(!a){toast(t('needConn'));return}
   const b=$('#saveBtn');b.disabled=true;
-  try{await a.saveConfig(c);snapCfg();toast(t('saved'));speak(t('saved'))}catch(e){toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
+  try{await a.saveConfig(c);snapCfg();applyLang();toast(t('saved'));speak(t('saved'))}catch(e){toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
 }
 
 /* ============ 畫面：狀態 ============ */
@@ -1677,6 +1692,8 @@ document.addEventListener('click',e=>{
   if(el.hasAttribute('data-showall')){state.f.intent='';state.f.role='';state.f.status='';state.filter='';state.q='';
     ['fIntent','fRole','fStatus'].forEach(id=>{if($('#'+id))$('#'+id).value=''});if($('#q'))$('#q').value='';
     renderChips();renderList();saveView();toast('已顯示全部線索');return}
+  if(el.dataset.fab){const f=el.dataset.fab;if(f==='next')skipCurrent();else if(f==='del')deleteCurrent();else if(f==='pause'){R.paused?resumeRead():pauseRead()}return}
+  if(el.id==='gapToggle'){LS.set('gap',!LS.get('gap',true));markReading();toast(LS.get('gap',true)?'⏱ 每句念完停 1 秒，讓麥克風聽清楚':'⏱ 已關閉句間停頓');return}
   if(el.dataset.kwinfo){openKwInfo(el.dataset.kwinfo);return}
   if(el.dataset.pin){togglePin(el.dataset.pin);return}
   if(el.dataset.rate!==undefined){setRate(+el.dataset.rate);return}

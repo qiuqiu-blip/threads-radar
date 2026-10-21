@@ -268,7 +268,7 @@ const escHtml = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt
 
 const { analyzePost, BIZ_RX } = require('./analyze');
 const LEVEL_ICON = { 高: '🔥', 中: '🌤', 低: '❄️' };
-function formatPost(p) {
+function formatPost(p, cfg) {
   const a = analyzePost(p);
   const tags = [...p.keywords, ...p.regions].join('・');
   const body = p.text.length > 300 ? p.text.slice(0, 300) + '…' : p.text;
@@ -283,7 +283,7 @@ function formatPost(p) {
     i.line ? `💬LINE ${i.line}` : '',
     i.equip.length ? `🔧${i.equip.join('、')}` : '',
   ].filter(Boolean).join('　');
-  const head = `${LEVEL_ICON[a.intent.level]}${a.intent.level}意向｜${a.role}｜${a.cat}`;
+  const head = `${cfg && cfg.title ? `【${cfg.title}】\n` : ''}${LEVEL_ICON[a.intent.level]}${a.intent.level}意向｜${a.role}｜${a.cat}`;
   return {
     html: `${head}\n🔔 <b>脆新線索｜${escHtml(tags)}</b>\n👤 <a href="${p.authorUrl}">@${escHtml(p.user)}</a>${facts ? `\n${escHtml(facts)}` : ''}\n\n${escHtml(body)}\n\n🔗 <a href="${p.url}">開啟貼文</a>`,
     plain: `${head}\n🔔 脆新線索｜${tags}\n👤 @${p.user}${facts ? `\n${facts}` : ''}\n\n${body}\n\n🔗 ${p.url}`,
@@ -527,7 +527,7 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
     }, env);
   } else {
     for (const p of newPosts.slice(0, cfg.maxNotifyPerRun)) {
-      if (await notify(formatPost(p), env)) run.notified++;
+      if (await notify(formatPost(p, cfg), env)) run.notified++;
       await sleep(1100);
     }
     const rest = newPosts.length - cfg.maxNotifyPerRun;
