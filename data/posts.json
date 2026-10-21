@@ -1,66 +1,126 @@
 {
-  "updatedAt": "2026-10-21T00:13:15.304Z",
+  "updatedAt": "2026-10-21T04:41:06.078Z",
   "lastRun": {
-    "startedAt": "2026-10-21T00:09:52.882Z",
-    "finishedAt": "2026-10-21T00:13:15.269Z",
+    "startedAt": "2026-10-21T04:37:54.783Z",
+    "finishedAt": "2026-10-21T04:41:06.044Z",
     "status": "ok",
-    "scanned": 133,
+    "scanned": 136,
     "matched": 3,
     "newCount": 3,
     "notified": 3,
     "perKeyword": {
-      "飲料": 14,
-      "收攤": 17,
-      "餐車": 21,
-      "帶走價": 0,
-      "創業": 20,
-      "拆除": 21,
-      "搬家出清": 7,
-      "歇業": 16,
-      "便宜賣": 17
+      "飲料": 15,
+      "裝潢": 15,
+      "低價出清": 8,
+      "蒸烤箱": 20,
+      "咖啡機": 18,
+      "店面出租": 19,
+      "退租": 20,
+      "加盟": 21,
+      "收店": 0
     },
     "warnings": [],
     "keywordsUsed": [
       "飲料",
-      "收攤",
-      "餐車",
-      "帶走價",
-      "創業",
-      "拆除",
-      "搬家出清",
-      "歇業",
-      "便宜賣"
+      "裝潢",
+      "低價出清",
+      "蒸烤箱",
+      "咖啡機",
+      "店面出租",
+      "退租",
+      "加盟",
+      "收店"
     ],
     "queries": [
       "飲料",
-      "收攤",
-      "餐車",
-      "帶走價",
-      "創業",
-      "拆除",
-      "搬家出清",
-      "歇業",
-      "便宜賣"
+      "裝潢",
+      "低價出清",
+      "蒸烤箱",
+      "咖啡機",
+      "店面出租",
+      "退租",
+      "加盟",
+      "收店"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 92,
+      "seen": 73,
       "dup": 0,
-      "notBiz": 2,
-      "noContext": 27,
-      "noKeyword": 6,
-      "tooOld": 3
+      "notBiz": 9,
+      "noContext": 34,
+      "noKeyword": 8,
+      "tooOld": 9
     },
     "detailFetched": 3,
     "newUrls": [
-      "https://www.threads.com/@sf960530/post/Deu9BpsEqZO",
-      "https://www.threads.com/@tony.8821135/post/DeueD68k1_a",
-      "https://www.threads.com/@d2d4605/post/Det5StPHxOi"
+      "https://www.threads.com/@wei_z714/post/DeuI8hYgd5i",
+      "https://www.threads.com/@chienyuan978/post/Deqko3Mk0xK",
+      "https://www.threads.com/@lin.myhomeagent/post/DeqbCBIGUBI"
     ],
     "pushMode": "on",
-    "nextInMinutes": 24
+    "nextInMinutes": 21
   },
   "runs": [
+    {
+      "startedAt": "2026-10-21T04:37:54.783Z",
+      "finishedAt": "2026-10-21T04:41:06.044Z",
+      "status": "ok",
+      "scanned": 136,
+      "matched": 3,
+      "newCount": 3,
+      "notified": 3,
+      "perKeyword": {
+        "飲料": 15,
+        "裝潢": 15,
+        "低價出清": 8,
+        "蒸烤箱": 20,
+        "咖啡機": 18,
+        "店面出租": 19,
+        "退租": 20,
+        "加盟": 21,
+        "收店": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "裝潢",
+        "低價出清",
+        "蒸烤箱",
+        "咖啡機",
+        "店面出租",
+        "退租",
+        "加盟",
+        "收店"
+      ],
+      "queries": [
+        "飲料",
+        "裝潢",
+        "低價出清",
+        "蒸烤箱",
+        "咖啡機",
+        "店面出租",
+        "退租",
+        "加盟",
+        "收店"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 73,
+        "dup": 0,
+        "notBiz": 9,
+        "noContext": 34,
+        "noKeyword": 8,
+        "tooOld": 9
+      },
+      "detailFetched": 3,
+      "newUrls": [
+        "https://www.threads.com/@wei_z714/post/DeuI8hYgd5i",
+        "https://www.threads.com/@chienyuan978/post/Deqko3Mk0xK",
+        "https://www.threads.com/@lin.myhomeagent/post/DeqbCBIGUBI"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 21
+    },
     {
       "startedAt": "2026-10-21T00:09:52.882Z",
       "finishedAt": "2026-10-21T00:13:15.269Z",
@@ -2207,6 +2267,55 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DeuI8hYgd5i",
+      "user": "wei_z714",
+      "url": "https://www.threads.com/@wei_z714/post/DeuI8hYgd5i",
+      "authorUrl": "https://www.threads.com/@wei_z714",
+      "text": "1,941次瀏覽\n店面出租\n新莊福壽街店面出租\n店面坪數： 約 15坪\n歡迎百業有興趣私信洽談詳細內容，可約看店\n#新莊#福壽街#出租#頂讓\nlisavm025\n請問店租多少\nyongzhencai\n地址？？租金？？",
+      "time": "2026-10-20T15:19:45.000Z",
+      "keywords": [
+        "店面出租"
+      ],
+      "regions": [],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-21T04:40:45.023Z",
+      "full": true
+    },
+    {
+      "code": "Deqko3Mk0xK",
+      "user": "chienyuan978",
+      "url": "https://www.threads.com/@chienyuan978/post/Deqko3Mk0xK",
+      "authorUrl": "https://www.threads.com/@chienyuan978",
+      "text": "60次瀏覽\n潮州店面\n🏪 【潮州新生路｜黃金店面出租】 📍 正新生路大馬路旁｜地段醒目 🚗 人車流量大｜周邊商家林立 📐 地坪約51坪｜建坪約82坪 🏢 一樓整層出租｜空間寬敞好規劃 💰 月租金：4.5萬元 🔹 租期至少一年｜押金2個月 🔹 服務費1個月租金｜需辦理公證 🔹 適合辦公、零售、展示等用途 🔹 禁油湯，餐飲業態不適用 🔹 樓上整棟可另行洽談，原屋況需自行整理 ✨ 新生路黃金地段，店面曝光度高！ 📞 歡迎預約看店，洽詢租賃詳情！ 🔸賞屋專線：0927-699656 簡才淵 🔸歡迎洽詢：有巢氏潮州四維鑫茗店 🔸有任何房地產疑問立即撥打專線，會有專人為您服務。 🔸有多筆農地｜房屋，提供您選擇。 🔸歡迎房地買賣｜租賃｜委託｜諮詢 🔸如有誤差以實際權狀為主。 📣強力徵才！ 加入鑫茗，成就自己。 📣從新手到專業，鑫茗陪你走 🏅經紀業：鑫茗不動產有限公司 🏅公司專線：08-7800222 🏅公司地址：屏東縣潮州鎮四維路270號 🏅經紀人：(108)屏縣字第00118號 🏅營業員：(108)登字第351328號",
+      "time": "2026-10-19T06:05:03.000Z",
+      "keywords": [
+        "店面出租"
+      ],
+      "regions": [],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-21T04:40:45.023Z",
+      "full": true
+    },
+    {
+      "code": "DeqbCBIGUBI",
+      "user": "lin.myhomeagent",
+      "url": "https://www.threads.com/@lin.myhomeagent/post/DeqbCBIGUBI",
+      "authorUrl": "https://www.threads.com/@lin.myhomeagent",
+      "text": "34次瀏覽\n海線店面出租\n龍井沙田路｜整棟透天出租 $25,000/月\n店面、辦公、工作室、倉儲或純住宅都可規劃！\n📍 龍井區沙田路六段｜臨路鬧區\n▪ 3房3廳2衛\n▪ 建坪37.72坪，含增建使用約55坪\n▪ 整棟出租，樓層空間可彈性運用\n▪ 台水、台電、桶裝瓦斯\n❌ 不可餐飲、養寵物、私人宮廟\n📩 歡迎私訊詢問、預約看屋\n實際營業、倉儲用途及相關登記，須符合規定並經房東同意。\n洽詢專線🎵\n劉英煜：0919-815-554\n群義房屋 沙鹿旗艦加盟店\n上宜不動產經紀有限公司\n經紀人謝正男(113)基市字第000246號",
+      "time": "2026-10-19T04:40:50.000Z",
+      "keywords": [
+        "店面出租",
+        "加盟"
+      ],
+      "regions": [],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-21T04:40:45.023Z",
+      "full": true
+    },
     {
       "code": "Deu9BpsEqZO",
       "user": "sf960530",
@@ -4506,15 +4615,15 @@
       "leads": 0
     },
     "退租": {
-      "count": 6,
-      "last": 1792486712279,
-      "scanned": 91,
+      "count": 7,
+      "last": 1792557557510,
+      "scanned": 111,
       "leads": 7
     },
     "低價出清": {
-      "count": 9,
-      "last": 1792520804780,
-      "scanned": 64,
+      "count": 10,
+      "last": 1792557501241,
+      "scanned": 72,
       "leads": 0
     },
     "搬家出清": {
@@ -4524,9 +4633,9 @@
       "leads": 4
     },
     "咖啡機": {
-      "count": 9,
-      "last": 1792532805139,
-      "scanned": 170,
+      "count": 10,
+      "last": 1792557530900,
+      "scanned": 188,
       "leads": 12
     },
     "製冰機": {
@@ -4542,9 +4651,9 @@
       "leads": 0
     },
     "蒸烤箱": {
-      "count": 8,
-      "last": 1792520775197,
-      "scanned": 142,
+      "count": 9,
+      "last": 1792557515878,
+      "scanned": 162,
       "leads": 0
     },
     "歇業": {
@@ -4596,8 +4705,8 @@
       "leads": 5
     },
     "收店": {
-      "count": 8,
-      "last": 1792520916340,
+      "count": 9,
+      "last": 1792557586487,
       "scanned": 0,
       "leads": 0
     },
@@ -4632,9 +4741,9 @@
       "leads": 0
     },
     "飲料": {
-      "count": 4,
-      "last": 1792541393139,
-      "scanned": 72,
+      "count": 5,
+      "last": 1792557475053,
+      "scanned": 87,
       "leads": 15
     },
     "飲料店": {
@@ -4644,16 +4753,16 @@
       "leads": 5
     },
     "裝潢": {
-      "count": 8,
-      "last": 1792532793849,
-      "scanned": 148,
+      "count": 9,
+      "last": 1792557488763,
+      "scanned": 163,
       "leads": 0
     },
     "店面出租": {
-      "count": 6,
-      "last": 1792505139899,
-      "scanned": 115,
-      "leads": 4
+      "count": 7,
+      "last": 1792557545267,
+      "scanned": 134,
+      "leads": 7
     },
     "拆除": {
       "count": 7,
@@ -4698,9 +4807,9 @@
       "leads": 2
     },
     "加盟": {
-      "count": 7,
-      "last": 1792520831879,
-      "scanned": 131,
+      "count": 8,
+      "last": 1792557572939,
+      "scanned": 152,
       "leads": 0
     },
     "招牌": {
@@ -4710,47 +4819,47 @@
       "leads": 4
     }
   },
-  "nextScanAt": "2026-10-21T00:37:13.351Z",
+  "nextScanAt": "2026-10-21T05:01:43.791Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-21T00:37:13.351Z",
-    "madeAt": "2026-10-21T00:13:15.299Z",
+    "at": "2026-10-21T05:01:43.791Z",
+    "madeAt": "2026-10-21T04:41:06.074Z",
     "items": [
       {
         "kw": "飲料",
         "q": "飲料"
       },
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       },
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "結束營業",
+        "q": "結束營業"
       },
       {
-        "kw": "蒸烤箱",
-        "q": "蒸烤箱"
+        "kw": "招牌",
+        "q": "招牌"
       },
       {
-        "kw": "咖啡機",
-        "q": "咖啡機"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "飲料店",
+        "q": "飲料店"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "加盟",
-        "q": "加盟"
+        "kw": "帶走價",
+        "q": "帶走價"
       },
       {
-        "kw": "收店",
-        "q": "收店"
+        "kw": "餐車",
+        "q": "餐車"
       }
     ]
   }
