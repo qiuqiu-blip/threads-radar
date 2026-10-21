@@ -1,73 +1,126 @@
 {
-  "updatedAt": "2026-10-20T21:50:35.350Z",
+  "updatedAt": "2026-10-21T00:13:15.304Z",
   "lastRun": {
-    "startedAt": "2026-10-20T21:46:21.049Z",
-    "finishedAt": "2026-10-20T21:50:35.316Z",
+    "startedAt": "2026-10-21T00:09:52.882Z",
+    "finishedAt": "2026-10-21T00:13:15.269Z",
     "status": "ok",
-    "scanned": 135,
-    "matched": 6,
-    "newCount": 6,
-    "notified": 6,
+    "scanned": 133,
+    "matched": 3,
+    "newCount": 3,
+    "notified": 3,
     "perKeyword": {
-      "飲料": 16,
-      "裝潢": 18,
-      "咖啡機": 21,
-      "關店": 0,
-      "開店": 21,
-      "結束營業": 18,
-      "飲料店": 20,
-      "排油煙": 0,
-      "二手設備": 21
+      "飲料": 14,
+      "收攤": 17,
+      "餐車": 21,
+      "帶走價": 0,
+      "創業": 20,
+      "拆除": 21,
+      "搬家出清": 7,
+      "歇業": 16,
+      "便宜賣": 17
     },
     "warnings": [],
     "keywordsUsed": [
       "飲料",
-      "裝潢",
-      "咖啡機",
-      "關店",
-      "開店",
-      "結束營業",
-      "飲料店",
-      "排油煙",
-      "二手設備"
+      "收攤",
+      "餐車",
+      "帶走價",
+      "創業",
+      "拆除",
+      "搬家出清",
+      "歇業",
+      "便宜賣"
     ],
     "queries": [
       "飲料",
-      "裝潢",
-      "咖啡機",
-      "關店",
-      "開店",
-      "結束營業",
-      "飲料店",
-      "排油煙",
-      "二手設備"
+      "收攤",
+      "餐車",
+      "帶走價",
+      "創業",
+      "拆除",
+      "搬家出清",
+      "歇業",
+      "便宜賣"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 74,
-      "dup": 1,
-      "notBiz": 13,
-      "noContext": 30,
-      "noKeyword": 8,
-      "words": {
-        "家具": 1
-      },
-      "excludeWord": 1,
-      "tooOld": 2
+      "seen": 92,
+      "dup": 0,
+      "notBiz": 2,
+      "noContext": 27,
+      "noKeyword": 6,
+      "tooOld": 3
     },
-    "detailFetched": 6,
+    "detailFetched": 3,
     "newUrls": [
-      "https://www.threads.com/@zhengzheng9270/post/DeuUcsfmReS",
-      "https://www.threads.com/@_jun_09.30/post/Detmtjuk5zw",
-      "https://www.threads.com/@jiouhe/post/DetNdEHlE7-",
-      "https://www.threads.com/@macongbing_321/post/DetLuWbDIyH",
-      "https://www.threads.com/@yeonwookwithryeo/post/Des_d0hkwoK",
-      "https://www.threads.com/@twentwen.studio/post/Deq2hFWFAS-"
+      "https://www.threads.com/@sf960530/post/Deu9BpsEqZO",
+      "https://www.threads.com/@tony.8821135/post/DeueD68k1_a",
+      "https://www.threads.com/@d2d4605/post/Det5StPHxOi"
     ],
     "pushMode": "on",
-    "nextInMinutes": 21
+    "nextInMinutes": 24
   },
   "runs": [
+    {
+      "startedAt": "2026-10-21T00:09:52.882Z",
+      "finishedAt": "2026-10-21T00:13:15.269Z",
+      "status": "ok",
+      "scanned": 133,
+      "matched": 3,
+      "newCount": 3,
+      "notified": 3,
+      "perKeyword": {
+        "飲料": 14,
+        "收攤": 17,
+        "餐車": 21,
+        "帶走價": 0,
+        "創業": 20,
+        "拆除": 21,
+        "搬家出清": 7,
+        "歇業": 16,
+        "便宜賣": 17
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "收攤",
+        "餐車",
+        "帶走價",
+        "創業",
+        "拆除",
+        "搬家出清",
+        "歇業",
+        "便宜賣"
+      ],
+      "queries": [
+        "飲料",
+        "收攤",
+        "餐車",
+        "帶走價",
+        "創業",
+        "拆除",
+        "搬家出清",
+        "歇業",
+        "便宜賣"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 92,
+        "dup": 0,
+        "notBiz": 2,
+        "noContext": 27,
+        "noKeyword": 6,
+        "tooOld": 3
+      },
+      "detailFetched": 3,
+      "newUrls": [
+        "https://www.threads.com/@sf960530/post/Deu9BpsEqZO",
+        "https://www.threads.com/@tony.8821135/post/DeueD68k1_a",
+        "https://www.threads.com/@d2d4605/post/Det5StPHxOi"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 24
+    },
     {
       "startedAt": "2026-10-20T21:46:21.049Z",
       "finishedAt": "2026-10-20T21:50:35.316Z",
@@ -2154,6 +2207,57 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "Deu9BpsEqZO",
+      "user": "sf960530",
+      "url": "https://www.threads.com/@sf960530/post/Deu9BpsEqZO",
+      "authorUrl": "https://www.threads.com/@sf960530",
+      "text": "1,292次瀏覽\n洋流\n先前幸運領到洋流順的購物袋，越看越覺得它的圖案不變飲料提袋太可惜了⋯⋯\n雖然家裡也是洋流，但要自費把這個想法做成實體，一路上真的也是困難重重🥹做這沒有別的目的，就是私心希望大家能好好珍惜，拿到了就一定要帶出門天天使用、幫忙宣傳！\n感謝原作者\n@theaya1108\n大方提供圖檔授權，讓這個飲料提袋順利誕生 😭❤️\n目前物資已經陸續就位，請大家去拿的時候務必配合小店的發放規則，不要造成店家困擾喔！\n📍 物資發放傳送門：\n• 昨晚已送去\n@chef_dancingpig\n囉！\n• 今天預計會去\n@oa.cafe_\nSQUEEZE | Specialty Coffee\n（陸續看哪邊還可以投放會再更新上來～）\n拿到提袋，我們 1128 一起出門投票，票票入匭！ 💪🗳️\n這個好實用\ngrasskitty\n我一直也想做飲料提帶😍\nee2311\n您好\n想請問訂製帆布袋的店家是哪一間呢？\n因為也想做橘色提袋的袋子\n我看其他家都是素色提袋\n謝謝您\nmamama6566\n私\nn0919919\n您好，有私訊您，謝謝",
+      "time": "2026-10-20T22:54:50.000Z",
+      "keywords": [
+        "飲料"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-21T00:12:54.529Z",
+      "full": true
+    },
+    {
+      "code": "DeueD68k1_a",
+      "user": "tony.8821135",
+      "url": "https://www.threads.com/@tony.8821135/post/DeueD68k1_a",
+      "authorUrl": "https://www.threads.com/@tony.8821135",
+      "text": "13次瀏覽\n賣雙門省電小冰箱\n地點：台北市信義區虎林市場\n因爲搬家用不上了！便宜賣使用不到2年的雙門小冰箱！多用來冰飲料…沒有冰生鮮的異味…售價4000元（自己來取再減500）\n意者私訊！先到先得！",
+      "time": "2026-10-20T18:24:16.000Z",
+      "keywords": [
+        "飲料",
+        "便宜賣"
+      ],
+      "regions": [
+        "台北"
+      ],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-21T00:12:54.530Z",
+      "full": true
+    },
+    {
+      "code": "Det5StPHxOi",
+      "user": "d2d4605",
+      "url": "https://www.threads.com/@d2d4605/post/Det5StPHxOi",
+      "authorUrl": "https://www.threads.com/@d2d4605",
+      "text": "3,135次瀏覽\n剛上岸魷魚🦑\n全台冷凍發貨 保證新鮮\n自家漁船捕撈 便宜賣一盒十隻 100\n有需要聯絡 數量不多\n需要海鮮🦞可以.加\nLINE： @065zegcb\n方便即時回復喔\nbeardfaa2\n買多點還能優惠點嗎\nchip6gff\n好新鮮 怎麼購買",
+      "time": "2026-10-20T13:02:58.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-21T00:12:54.530Z",
+      "full": true
+    },
     {
       "code": "DeuUcsfmReS",
       "user": "zhengzheng9270",
@@ -4342,20 +4446,20 @@
       "leads": 0
     },
     "便宜賣": {
-      "count": 7,
-      "last": 1792486671661,
-      "scanned": 132,
-      "leads": 20
+      "count": 8,
+      "last": 1792541560457,
+      "scanned": 149,
+      "leads": 22
     },
     "收攤": {
-      "count": 9,
-      "last": 1792520789705,
-      "scanned": 155,
+      "count": 10,
+      "last": 1792541408180,
+      "scanned": 172,
       "leads": 0
     },
     "帶走價": {
-      "count": 8,
-      "last": 1792505066792,
+      "count": 9,
+      "last": 1792541437961,
       "scanned": 0,
       "leads": 0
     },
@@ -4414,9 +4518,9 @@
       "leads": 0
     },
     "搬家出清": {
-      "count": 8,
-      "last": 1792505037308,
-      "scanned": 83,
+      "count": 9,
+      "last": 1792541530174,
+      "scanned": 90,
       "leads": 4
     },
     "咖啡機": {
@@ -4444,9 +4548,9 @@
       "leads": 0
     },
     "歇業": {
-      "count": 7,
-      "last": 1792505052055,
-      "scanned": 119,
+      "count": 8,
+      "last": 1792541546406,
+      "scanned": 135,
       "leads": 2
     },
     "店面轉讓": {
@@ -4528,10 +4632,10 @@
       "leads": 0
     },
     "飲料": {
-      "count": 3,
-      "last": 1792532781315,
-      "scanned": 58,
-      "leads": 14
+      "count": 4,
+      "last": 1792541393139,
+      "scanned": 72,
+      "leads": 15
     },
     "飲料店": {
       "count": 6,
@@ -4552,21 +4656,21 @@
       "leads": 4
     },
     "拆除": {
-      "count": 6,
-      "last": 1792505152820,
-      "scanned": 126,
+      "count": 7,
+      "last": 1792541514205,
+      "scanned": 147,
       "leads": 4
     },
     "創業": {
-      "count": 6,
-      "last": 1792486812240,
-      "scanned": 118,
+      "count": 7,
+      "last": 1792541499333,
+      "scanned": 138,
       "leads": 0
     },
     "餐車": {
-      "count": 6,
-      "last": 1792505010394,
-      "scanned": 121,
+      "count": 7,
+      "last": 1792541422174,
+      "scanned": 142,
       "leads": 0
     },
     "排油煙": {
@@ -4606,47 +4710,47 @@
       "leads": 4
     }
   },
-  "nextScanAt": "2026-10-20T22:11:28.682Z",
+  "nextScanAt": "2026-10-21T00:37:13.351Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-20T22:11:28.682Z",
-    "madeAt": "2026-10-20T21:50:35.344Z",
+    "at": "2026-10-21T00:37:13.351Z",
+    "madeAt": "2026-10-21T00:13:15.299Z",
     "items": [
       {
         "kw": "飲料",
         "q": "飲料"
       },
       {
-        "kw": "收攤",
-        "q": "收攤"
+        "kw": "裝潢",
+        "q": "裝潢"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "咖啡機",
+        "q": "咖啡機"
       },
       {
-        "kw": "拆除",
-        "q": "拆除"
+        "kw": "店面出租",
+        "q": "店面出租"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "退租",
+        "q": "退租"
       },
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "收店",
+        "q": "收店"
       }
     ]
   }
