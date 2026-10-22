@@ -1,64 +1,126 @@
 {
-  "updatedAt": "2026-10-22T10:14:57.412Z",
+  "updatedAt": "2026-10-22T12:47:51.782Z",
   "lastRun": {
-    "startedAt": "2026-10-22T10:12:33.901Z",
-    "finishedAt": "2026-10-22T10:14:57.359Z",
+    "startedAt": "2026-10-22T12:45:18.251Z",
+    "finishedAt": "2026-10-22T12:47:51.731Z",
     "status": "ok",
-    "scanned": 168,
-    "matched": 1,
-    "newCount": 1,
-    "notified": 1,
+    "scanned": 151,
+    "matched": 3,
+    "newCount": 3,
+    "notified": 3,
     "perKeyword": {
-      "飲料": 12,
-      "冷凍櫃": 22,
-      "拆除": 20,
-      "製冰機": 22,
-      "咖啡機": 21,
-      "便宜賣": 15,
-      "二手設備": 18,
-      "餐車": 20,
-      "裝潢": 18
+      "飲料": 16,
+      "低價出清": 9,
+      "創業": 19,
+      "清倉": 18,
+      "飲料店": 18,
+      "開店": 19,
+      "退租": 15,
+      "店面出租": 20,
+      "招牌": 17
     },
     "warnings": [],
     "keywordsUsed": [
       "飲料",
-      "冷凍櫃",
-      "拆除",
-      "製冰機",
-      "咖啡機",
-      "便宜賣",
-      "二手設備",
-      "餐車",
-      "裝潢"
+      "低價出清",
+      "創業",
+      "清倉",
+      "飲料店",
+      "開店",
+      "退租",
+      "店面出租",
+      "招牌"
     ],
     "queries": [
       "飲料",
-      "冷凍櫃",
-      "拆除",
-      "製冰機",
-      "咖啡機",
-      "便宜賣",
-      "二手設備",
-      "餐車",
-      "裝潢"
+      "低價出清",
+      "創業",
+      "清倉",
+      "飲料店",
+      "開店",
+      "退租",
+      "店面出租",
+      "招牌"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 81,
-      "dup": 0,
-      "notBiz": 5,
-      "noContext": 69,
-      "tooOld": 2,
-      "noKeyword": 9
+      "seen": 74,
+      "dup": 1,
+      "notBiz": 7,
+      "tooOld": 5,
+      "noKeyword": 10,
+      "noContext": 50
     },
-    "detailFetched": 2,
+    "detailFetched": 4,
     "newUrls": [
-      "https://www.threads.com/@943diner/post/DexxROwk7Hd"
+      "https://www.threads.com/@caocao6869/post/Dew6VWCmJAu",
+      "https://www.threads.com/@caocao6869/post/DewkWMnGDXN",
+      "https://www.threads.com/@bomb_1116/post/DernrwGj1uV"
     ],
     "pushMode": "on",
-    "nextInMinutes": 22
+    "nextInMinutes": 21
   },
   "runs": [
+    {
+      "startedAt": "2026-10-22T12:45:18.251Z",
+      "finishedAt": "2026-10-22T12:47:51.731Z",
+      "status": "ok",
+      "scanned": 151,
+      "matched": 3,
+      "newCount": 3,
+      "notified": 3,
+      "perKeyword": {
+        "飲料": 16,
+        "低價出清": 9,
+        "創業": 19,
+        "清倉": 18,
+        "飲料店": 18,
+        "開店": 19,
+        "退租": 15,
+        "店面出租": 20,
+        "招牌": 17
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "低價出清",
+        "創業",
+        "清倉",
+        "飲料店",
+        "開店",
+        "退租",
+        "店面出租",
+        "招牌"
+      ],
+      "queries": [
+        "飲料",
+        "低價出清",
+        "創業",
+        "清倉",
+        "飲料店",
+        "開店",
+        "退租",
+        "店面出租",
+        "招牌"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 74,
+        "dup": 1,
+        "notBiz": 7,
+        "tooOld": 5,
+        "noKeyword": 10,
+        "noContext": 50
+      },
+      "detailFetched": 4,
+      "newUrls": [
+        "https://www.threads.com/@caocao6869/post/Dew6VWCmJAu",
+        "https://www.threads.com/@caocao6869/post/DewkWMnGDXN",
+        "https://www.threads.com/@bomb_1116/post/DernrwGj1uV"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 21
+    },
     {
       "startedAt": "2026-10-22T10:12:33.901Z",
       "finishedAt": "2026-10-22T10:14:57.359Z",
@@ -2703,6 +2765,56 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "Dew6VWCmJAu",
+      "user": "caocao6869",
+      "url": "https://www.threads.com/@caocao6869/post/Dew6VWCmJAu",
+      "authorUrl": "https://www.threads.com/@caocao6869",
+      "text": "309次瀏覽\n想問一下正在開店，或準備開店的老闆們！\n如果今天要做招牌，你最怕遇到什麼問題？\n1️⃣ 報價太貴，怕被當盤子\n2️⃣ 招牌做出來跟想像不一樣\n3️⃣ 施工品質不好\n4️⃣ 做完有問題，找不到人處理\n我自己是做廣告招牌工程的師傅兼小編，從工廠製作到現場安裝都有接觸。\n想聽聽大家的經驗，也希望認識更多各行各業的人\n已釘選\n希望大家都來留言",
+      "time": "2026-10-21T17:09:47.000Z",
+      "keywords": [
+        "招牌",
+        "開店"
+      ],
+      "regions": [],
+      "foundBy": "招牌",
+      "foundQuery": "招牌",
+      "foundAt": "2026-10-22T12:47:27.464Z",
+      "full": true
+    },
+    {
+      "code": "DewkWMnGDXN",
+      "user": "caocao6869",
+      "url": "https://www.threads.com/@caocao6869/post/DewkWMnGDXN",
+      "authorUrl": "https://www.threads.com/@caocao6869",
+      "text": "349次瀏覽\n感謝傑晟工程行\n⚠️施工項目⚠️\n帆布\n新式防颱無接縫招牌",
+      "time": "2026-10-21T13:57:40.000Z",
+      "keywords": [
+        "招牌"
+      ],
+      "regions": [],
+      "foundBy": "招牌",
+      "foundQuery": "招牌",
+      "foundAt": "2026-10-22T12:47:27.464Z",
+      "full": true
+    },
+    {
+      "code": "DernrwGj1uV",
+      "user": "bomb_1116",
+      "url": "https://www.threads.com/@bomb_1116/post/DernrwGj1uV",
+      "authorUrl": "https://www.threads.com/@bomb_1116",
+      "text": "3.8 萬次瀏覽\n飲料店日常\n店長一定很開心請到我們這些員工\n有空檔時間就主動自己清潔😚\n都不需要人叫\nBbY WOW · KAROL G, Judeline, rusowsky\nyawas.300\n多少可以請你🫣🫣\n哈哈 我只是做該做的事😍\nc___c801\n真的欸\nlove9292q\n同款洗手槽\n這麼剛好😆\nlove9292q\n嗨，同學\npo_hung103\n要怎麼不@讓我親愛的員工看到\n直接@下去 讓大家一起動起來😆\n0515love0612\n我一定要跟我同事分享\n哈哈 歡迎分享\nxia_dao_cha888\n刷的好乾淨喔🤩\n謝謝 刷乾淨後 心情真的會變很好😍\nmimichun20\n真的、我每次都要請、拜託、麻煩了🥲\n明明是日常該維持的事情，卻還要一直提醒，久了真的會心累\nsyuuu1121_\n@員工\n這篇變成各位老闆的員工召喚大會\nchun_hua_washoku\n很優秀👍🏻\n謝謝誇獎\n看到這句突然覺得刷得很值得",
+      "time": "2026-10-19T15:50:37.000Z",
+      "keywords": [
+        "飲料",
+        "飲料店"
+      ],
+      "regions": [],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-22T12:47:27.462Z",
+      "full": true
+    },
     {
       "code": "DexxROwk7Hd",
       "user": "943diner",
@@ -5398,9 +5510,9 @@
   ],
   "kwStats": {
     "清倉": {
-      "count": 10,
-      "last": 1792629262277,
-      "scanned": 154,
+      "count": 11,
+      "last": 1792673159207,
+      "scanned": 172,
       "leads": 0
     },
     "頂店": {
@@ -5488,15 +5600,15 @@
       "leads": 0
     },
     "退租": {
-      "count": 9,
-      "last": 1792629348572,
-      "scanned": 149,
+      "count": 10,
+      "last": 1792673204042,
+      "scanned": 164,
       "leads": 8
     },
     "低價出清": {
-      "count": 10,
-      "last": 1792557501241,
-      "scanned": 72,
+      "count": 11,
+      "last": 1792673134839,
+      "scanned": 81,
       "leads": 0
     },
     "搬家出清": {
@@ -5614,15 +5726,15 @@
       "leads": 0
     },
     "飲料": {
-      "count": 12,
-      "last": 1792663954195,
-      "scanned": 208,
-      "leads": 21
+      "count": 13,
+      "last": 1792673119757,
+      "scanned": 224,
+      "leads": 22
     },
     "飲料店": {
-      "count": 7,
-      "last": 1792575410484,
-      "scanned": 132,
+      "count": 8,
+      "last": 1792673178510,
+      "scanned": 150,
       "leads": 5
     },
     "裝潢": {
@@ -5632,9 +5744,9 @@
       "leads": 0
     },
     "店面出租": {
-      "count": 9,
-      "last": 1792629128274,
-      "scanned": 173,
+      "count": 10,
+      "last": 1792673219240,
+      "scanned": 193,
       "leads": 9
     },
     "拆除": {
@@ -5644,9 +5756,9 @@
       "leads": 6
     },
     "創業": {
-      "count": 8,
-      "last": 1792593519994,
-      "scanned": 157,
+      "count": 9,
+      "last": 1792673146339,
+      "scanned": 176,
       "leads": 2
     },
     "餐車": {
@@ -5662,9 +5774,9 @@
       "leads": 0
     },
     "開店": {
-      "count": 8,
-      "last": 1792629363836,
-      "scanned": 157,
+      "count": 9,
+      "last": 1792673190720,
+      "scanned": 176,
       "leads": 8
     },
     "二手冰箱": {
@@ -5686,53 +5798,53 @@
       "leads": 0
     },
     "招牌": {
-      "count": 6,
-      "last": 1792593558020,
-      "scanned": 121,
-      "leads": 5
+      "count": 7,
+      "last": 1792673233488,
+      "scanned": 138,
+      "leads": 7
     }
   },
-  "nextScanAt": "2026-10-22T10:37:23.587Z",
+  "nextScanAt": "2026-10-22T13:09:07.060Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-22T10:37:23.587Z",
-    "madeAt": "2026-10-22T10:14:57.406Z",
+    "at": "2026-10-22T13:09:07.060Z",
+    "madeAt": "2026-10-22T12:47:51.776Z",
     "items": [
       {
         "kw": "飲料",
         "q": "飲料"
       },
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "帶走價",
+        "q": "帶走價"
       },
       {
-        "kw": "清倉",
-        "q": "清倉"
+        "kw": "排油煙",
+        "q": "排油煙"
       },
       {
-        "kw": "飲料店",
-        "q": "飲料店"
+        "kw": "拆除",
+        "q": "拆除"
       },
       {
-        "kw": "開店",
-        "q": "開店"
+        "kw": "二手冰箱",
+        "q": "二手冰箱"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       },
       {
-        "kw": "招牌",
-        "q": "招牌"
+        "kw": "加盟",
+        "q": "加盟"
       }
     ]
   }
