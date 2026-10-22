@@ -1,64 +1,116 @@
 {
-  "updatedAt": "2026-10-22T20:20:05.138Z",
+  "updatedAt": "2026-10-22T21:03:55.046Z",
   "lastRun": {
-    "startedAt": "2026-10-22T20:17:53.736Z",
-    "finishedAt": "2026-10-22T20:20:04.717Z",
+    "startedAt": "2026-10-22T21:01:02.276Z",
+    "finishedAt": "2026-10-22T21:03:55.000Z",
     "status": "ok",
-    "scanned": 156,
+    "scanned": 116,
     "matched": 1,
     "newCount": 1,
     "notified": 1,
     "perKeyword": {
-      "飲料": 16,
-      "二手冰箱": 12,
-      "飲料店": 20,
-      "裝潢": 18,
-      "清倉": 17,
-      "拆除": 20,
-      "店面出租": 19,
-      "商用冰箱": 19,
-      "歇業": 15
+      "飲料": 18,
+      "爐具": 0,
+      "餐車": 18,
+      "收攤": 16,
+      "搬家出清": 12,
+      "咖啡機": 20,
+      "便宜賣": 15,
+      "結束營業": 17
     },
     "warnings": [],
     "keywordsUsed": [
       "飲料",
-      "二手冰箱",
-      "飲料店",
-      "裝潢",
-      "清倉",
-      "拆除",
-      "店面出租",
-      "商用冰箱",
-      "歇業"
+      "爐具",
+      "餐車",
+      "收攤",
+      "搬家出清",
+      "咖啡機",
+      "便宜賣",
+      "結束營業"
     ],
     "queries": [
       "飲料",
-      "二手冰箱",
-      "飲料店",
-      "裝潢",
-      "清倉",
-      "拆除",
-      "店面出租",
-      "商用冰箱",
-      "歇業"
+      "爐具",
+      "餐車",
+      "收攤",
+      "搬家出清",
+      "咖啡機",
+      "便宜賣",
+      "結束營業"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 104,
+      "seen": 76,
       "dup": 0,
-      "noKeyword": 8,
-      "notBiz": 1,
-      "noContext": 37,
-      "tooOld": 5
+      "notBiz": 5,
+      "noKeyword": 11,
+      "noContext": 20,
+      "tooOld": 3
     },
     "detailFetched": 1,
     "newUrls": [
-      "https://www.threads.com/@queen___harper/post/Deyy8Ipkryu"
+      "https://www.threads.com/@i7uygg/post/DexwBf5n3A8"
     ],
     "pushMode": "on",
-    "nextInMinutes": 30
+    "nextInMinutes": 23
   },
   "runs": [
+    {
+      "startedAt": "2026-10-22T21:01:02.276Z",
+      "finishedAt": "2026-10-22T21:03:55.000Z",
+      "status": "ok",
+      "scanned": 116,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "飲料": 18,
+        "爐具": 0,
+        "餐車": 18,
+        "收攤": 16,
+        "搬家出清": 12,
+        "咖啡機": 20,
+        "便宜賣": 15,
+        "結束營業": 17
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "爐具",
+        "餐車",
+        "收攤",
+        "搬家出清",
+        "咖啡機",
+        "便宜賣",
+        "結束營業"
+      ],
+      "queries": [
+        "飲料",
+        "爐具",
+        "餐車",
+        "收攤",
+        "搬家出清",
+        "咖啡機",
+        "便宜賣",
+        "結束營業"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 76,
+        "dup": 0,
+        "notBiz": 5,
+        "noKeyword": 11,
+        "noContext": 20,
+        "tooOld": 3
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@i7uygg/post/DexwBf5n3A8"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 23
+    },
     {
       "startedAt": "2026-10-22T20:17:53.736Z",
       "finishedAt": "2026-10-22T20:20:04.717Z",
@@ -2995,6 +3047,22 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "DexwBf5n3A8",
+      "user": "i7uygg",
+      "url": "https://www.threads.com/@i7uygg/post/DexwBf5n3A8",
+      "authorUrl": "https://www.threads.com/@i7uygg",
+      "text": "13次瀏覽\n剛上岸魷魚🦑\n全台冷凍發貨 保證新鮮\n自家漁船捕撈 便宜賣一盒十隻左右$100\n有需要聯絡 數量不多\n喜歡想要的私訊我🙋",
+      "time": "2026-10-22T00:58:56.000Z",
+      "keywords": [
+        "便宜賣"
+      ],
+      "regions": [],
+      "foundBy": "便宜賣",
+      "foundQuery": "便宜賣",
+      "foundAt": "2026-10-22T21:03:47.085Z",
+      "full": true
+    },
+    {
       "code": "Deyy8Ipkryu",
       "user": "queen___harper",
       "url": "https://www.threads.com/@queen___harper/post/Deyy8Ipkryu",
@@ -5839,15 +5907,15 @@
       "leads": 0
     },
     "便宜賣": {
-      "count": 10,
-      "last": 1792691088574,
-      "scanned": 178,
-      "leads": 22
+      "count": 11,
+      "last": 1792702996747,
+      "scanned": 193,
+      "leads": 23
     },
     "收攤": {
-      "count": 12,
-      "last": 1792691011793,
-      "scanned": 211,
+      "count": 13,
+      "last": 1792702952753,
+      "scanned": 227,
       "leads": 0
     },
     "帶走價": {
@@ -5911,15 +5979,15 @@
       "leads": 0
     },
     "搬家出清": {
-      "count": 11,
-      "last": 1792680917270,
-      "scanned": 110,
+      "count": 12,
+      "last": 1792702966773,
+      "scanned": 122,
       "leads": 4
     },
     "咖啡機": {
-      "count": 12,
-      "last": 1792664009669,
-      "scanned": 230,
+      "count": 13,
+      "last": 1792702980186,
+      "scanned": 250,
       "leads": 13
     },
     "製冰機": {
@@ -5983,9 +6051,9 @@
       "leads": 0
     },
     "結束營業": {
-      "count": 11,
-      "last": 1792691063022,
-      "scanned": 199,
+      "count": 12,
+      "last": 1792703011657,
+      "scanned": 216,
       "leads": 9
     },
     "收店": {
@@ -6019,15 +6087,15 @@
       "leads": 0
     },
     "爐具": {
-      "count": 10,
-      "last": 1792629277484,
+      "count": 11,
+      "last": 1792702876317,
       "scanned": 0,
       "leads": 0
     },
     "飲料": {
-      "count": 17,
-      "last": 1792700274062,
-      "scanned": 287,
+      "count": 18,
+      "last": 1792702862593,
+      "scanned": 305,
       "leads": 22
     },
     "飲料店": {
@@ -6061,9 +6129,9 @@
       "leads": 2
     },
     "餐車": {
-      "count": 11,
-      "last": 1792691024010,
-      "scanned": 223,
+      "count": 12,
+      "last": 1792702938001,
+      "scanned": 241,
       "leads": 1
     },
     "排油煙": {
@@ -6103,47 +6171,47 @@
       "leads": 7
     }
   },
-  "nextScanAt": "2026-10-22T20:49:45.732Z",
+  "nextScanAt": "2026-10-22T21:27:05.294Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-22T20:49:45.732Z",
-    "madeAt": "2026-10-22T20:20:05.131Z",
+    "at": "2026-10-22T21:27:05.294Z",
+    "madeAt": "2026-10-22T21:03:55.040Z",
     "items": [
       {
         "kw": "飲料",
         "q": "飲料"
       },
       {
-        "kw": "爐具",
-        "q": "爐具"
+        "kw": "二手冰箱",
+        "q": "二手冰箱"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "收攤",
-        "q": "收攤"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       },
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "咖啡機",
-        "q": "咖啡機"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "關店",
+        "q": "關店"
       },
       {
-        "kw": "結束營業",
-        "q": "結束營業"
+        "kw": "招牌",
+        "q": "招牌"
       }
     ]
   }
