@@ -1,70 +1,122 @@
 {
-  "updatedAt": "2026-10-22T00:36:31.288Z",
+  "updatedAt": "2026-10-22T05:19:14.077Z",
   "lastRun": {
-    "startedAt": "2026-10-22T00:31:53.805Z",
-    "finishedAt": "2026-10-22T00:36:31.050Z",
+    "startedAt": "2026-10-22T05:15:30.473Z",
+    "finishedAt": "2026-10-22T05:19:13.668Z",
     "status": "ok",
-    "scanned": 109,
-    "matched": 2,
-    "newCount": 2,
-    "notified": 2,
+    "scanned": 124,
+    "matched": 1,
+    "newCount": 1,
+    "notified": 1,
     "perKeyword": {
-      "飲料": 19,
-      "店面出租": 20,
-      "關店": 0,
-      "排油煙": 0,
-      "清倉": 18,
-      "爐具": 0,
-      "二手冰箱": 14,
-      "退租": 18,
-      "開店": 20
+      "飲料": 18,
+      "結束營業": 20,
+      "加盟": 20,
+      "蒸烤箱": 19,
+      "帶走價": 0,
+      "歇業": 17,
+      "收店": 0,
+      "商用冰箱": 20,
+      "搬家出清": 10
     },
     "warnings": [],
     "keywordsUsed": [
       "飲料",
-      "店面出租",
-      "關店",
-      "排油煙",
-      "清倉",
-      "爐具",
-      "二手冰箱",
-      "退租",
-      "開店"
+      "結束營業",
+      "加盟",
+      "蒸烤箱",
+      "帶走價",
+      "歇業",
+      "收店",
+      "商用冰箱",
+      "搬家出清"
     ],
     "queries": [
       "飲料",
-      "店面出租",
-      "關店",
-      "排油煙",
-      "清倉",
-      "爐具",
-      "二手冰箱",
-      "退租",
-      "開店"
+      "結束營業",
+      "加盟",
+      "蒸烤箱",
+      "帶走價",
+      "歇業",
+      "收店",
+      "商用冰箱",
+      "搬家出清"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 67,
+      "seen": 70,
       "dup": 0,
-      "notBiz": 9,
-      "noContext": 21,
-      "tooOld": 6,
-      "noKeyword": 2,
-      "words": {
-        "定居": 1,
-        "代辦": 1
-      },
-      "excludeWord": 2
+      "notBiz": 7,
+      "noKeyword": 13,
+      "noContext": 30,
+      "tooOld": 3
     },
-    "detailFetched": 2,
+    "detailFetched": 1,
     "newUrls": [
-      "https://www.threads.com/@jinchuntw/post/Dew7erBmT0z",
-      "https://www.threads.com/@abing.oxox/post/Dev2aaSEplW"
+      "https://www.threads.com/@duck.7133265/post/DewQJhkn35m"
     ],
     "pushMode": "on",
-    "nextInMinutes": 39
+    "nextInMinutes": 26
   },
   "runs": [
+    {
+      "startedAt": "2026-10-22T05:15:30.473Z",
+      "finishedAt": "2026-10-22T05:19:13.668Z",
+      "status": "ok",
+      "scanned": 124,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "飲料": 18,
+        "結束營業": 20,
+        "加盟": 20,
+        "蒸烤箱": 19,
+        "帶走價": 0,
+        "歇業": 17,
+        "收店": 0,
+        "商用冰箱": 20,
+        "搬家出清": 10
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "結束營業",
+        "加盟",
+        "蒸烤箱",
+        "帶走價",
+        "歇業",
+        "收店",
+        "商用冰箱",
+        "搬家出清"
+      ],
+      "queries": [
+        "飲料",
+        "結束營業",
+        "加盟",
+        "蒸烤箱",
+        "帶走價",
+        "歇業",
+        "收店",
+        "商用冰箱",
+        "搬家出清"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 70,
+        "dup": 0,
+        "notBiz": 7,
+        "noKeyword": 13,
+        "noContext": 30,
+        "tooOld": 3
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@duck.7133265/post/DewQJhkn35m"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 26
+    },
     {
       "startedAt": "2026-10-22T00:31:53.805Z",
       "finishedAt": "2026-10-22T00:36:31.050Z",
@@ -2593,6 +2645,25 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DewQJhkn35m",
+      "user": "duck.7133265",
+      "url": "https://www.threads.com/@duck.7133265/post/DewQJhkn35m",
+      "authorUrl": "https://www.threads.com/@duck.7133265",
+      "text": "6,962次瀏覽\n想請問台北文山區附近有可以購買整桶的飲料桶的店家嗎？希望能幫忙外送，使用完畢可自行前往歸還🙏🏻\n需要「冬瓜茶」及「紅茶」\n各要分裝成500ml容量50杯（共計100杯），謝謝\n非常感謝大家回覆，已找到合作店家🙏🏻\nmr.wish_slgg\n這邊可以 我們是mr.wish公館水源\n您好，請問價格的部份要怎麼算呢？謝謝\nmr.wish_slgg\n私訊您\ndragonhorn.wenshan\n您好 我們是龍角文山政大店🫶\n桶茶以及這兩個品項的茶我們也都有唷\nchabaihui_tea\n我們可以外送唷～也有送過園遊會的🫶🏻\nemmamama0116\n您好 我們是迷客夏木新店\n桶茶以及這兩個品項的茶我們也都有唷\ntaeyang_yu0509\n哈囉 👋\n我們是先喝道文山興隆店，\n有販售桶裝茶及外送服務，冬瓜茶及紅茶都有唷！\n我們紅茶還有不同風味可以選擇\n（錫蘭、玫瑰、伯爵、蜜桃）\n電話：（02）8663-8168\nLine ID:@501pwcak\n歡迎私訊詢問\nrandy79512\n希望能有機會能為您服務～\nlexinmingcha\n你好 我是安坑區的手搖飲料店\n我們有提供這類服務 歡迎來店裡詢問看看喔",
+      "time": "2026-10-21T11:01:10.000Z",
+      "keywords": [
+        "飲料",
+        "飲料店"
+      ],
+      "regions": [
+        "台北"
+      ],
+      "foundBy": "飲料",
+      "foundQuery": "飲料",
+      "foundAt": "2026-10-22T05:19:06.578Z",
+      "full": true
+    },
     {
       "code": "Dew7erBmT0z",
       "user": "jinchuntw",
@@ -5292,8 +5363,8 @@
       "leads": 0
     },
     "帶走價": {
-      "count": 11,
-      "last": 1792620116207,
+      "count": 12,
+      "last": 1792646187403,
       "scanned": 0,
       "leads": 0
     },
@@ -5316,9 +5387,9 @@
       "leads": 0
     },
     "商用冰箱": {
-      "count": 8,
-      "last": 1792587019694,
-      "scanned": 157,
+      "count": 9,
+      "last": 1792646321636,
+      "scanned": 177,
       "leads": 2
     },
     "讓渡": {
@@ -5352,9 +5423,9 @@
       "leads": 0
     },
     "搬家出清": {
-      "count": 9,
-      "last": 1792541530174,
-      "scanned": 90,
+      "count": 10,
+      "last": 1792646333723,
+      "scanned": 100,
       "leads": 4
     },
     "咖啡機": {
@@ -5376,15 +5447,15 @@
       "leads": 0
     },
     "蒸烤箱": {
-      "count": 10,
-      "last": 1792620189995,
-      "scanned": 182,
+      "count": 11,
+      "last": 1792646169955,
+      "scanned": 201,
       "leads": 0
     },
     "歇業": {
-      "count": 10,
-      "last": 1792620178780,
-      "scanned": 174,
+      "count": 11,
+      "last": 1792646246431,
+      "scanned": 191,
       "leads": 2
     },
     "店面轉讓": {
@@ -5424,14 +5495,14 @@
       "leads": 0
     },
     "結束營業": {
-      "count": 9,
-      "last": 1792593572121,
-      "scanned": 162,
+      "count": 10,
+      "last": 1792646142880,
+      "scanned": 182,
       "leads": 8
     },
     "收店": {
-      "count": 9,
-      "last": 1792557586487,
+      "count": 10,
+      "last": 1792646260556,
       "scanned": 0,
       "leads": 0
     },
@@ -5466,10 +5537,10 @@
       "leads": 0
     },
     "飲料": {
-      "count": 10,
-      "last": 1792629114779,
-      "scanned": 178,
-      "leads": 19
+      "count": 11,
+      "last": 1792646130835,
+      "scanned": 196,
+      "leads": 20
     },
     "飲料店": {
       "count": 7,
@@ -5532,9 +5603,9 @@
       "leads": 3
     },
     "加盟": {
-      "count": 9,
-      "last": 1792593477399,
-      "scanned": 180,
+      "count": 10,
+      "last": 1792646156736,
+      "scanned": 200,
       "leads": 0
     },
     "招牌": {
@@ -5544,47 +5615,47 @@
       "leads": 5
     }
   },
-  "nextScanAt": "2026-10-22T01:15:26.748Z",
+  "nextScanAt": "2026-10-22T05:45:20.257Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-22T01:15:26.748Z",
-    "madeAt": "2026-10-22T00:36:31.283Z",
+    "at": "2026-10-22T05:45:20.257Z",
+    "madeAt": "2026-10-22T05:19:14.070Z",
     "items": [
       {
         "kw": "飲料",
         "q": "飲料"
       },
       {
-        "kw": "結束營業",
-        "q": "結束營業"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       },
       {
-        "kw": "加盟",
-        "q": "加盟"
+        "kw": "拆除",
+        "q": "拆除"
       },
       {
-        "kw": "蒸烤箱",
-        "q": "蒸烤箱"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "咖啡機",
+        "q": "咖啡機"
       },
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "便宜賣",
+        "q": "便宜賣"
       },
       {
-        "kw": "收店",
-        "q": "收店"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "商用冰箱",
-        "q": "商用冰箱"
+        "kw": "餐車",
+        "q": "餐車"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "裝潢",
+        "q": "裝潢"
       }
     ]
   }
