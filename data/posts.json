@@ -1,65 +1,134 @@
 {
-  "updatedAt": "2026-10-21T22:04:45.984Z",
+  "updatedAt": "2026-10-22T00:36:31.288Z",
   "lastRun": {
-    "startedAt": "2026-10-21T22:01:41.709Z",
-    "finishedAt": "2026-10-21T22:04:45.925Z",
+    "startedAt": "2026-10-22T00:31:53.805Z",
+    "finishedAt": "2026-10-22T00:36:31.050Z",
     "status": "ok",
-    "scanned": 161,
+    "scanned": 109,
     "matched": 2,
     "newCount": 2,
     "notified": 2,
     "perKeyword": {
-      "飲料": 17,
-      "帶走價": 0,
-      "歇業": 16,
-      "蒸烤箱": 20,
-      "二手設備": 20,
-      "製冰機": 20,
-      "餐車": 22,
-      "咖啡機": 21,
-      "冷凍櫃": 25
+      "飲料": 19,
+      "店面出租": 20,
+      "關店": 0,
+      "排油煙": 0,
+      "清倉": 18,
+      "爐具": 0,
+      "二手冰箱": 14,
+      "退租": 18,
+      "開店": 20
     },
     "warnings": [],
     "keywordsUsed": [
       "飲料",
-      "帶走價",
-      "歇業",
-      "蒸烤箱",
-      "二手設備",
-      "製冰機",
-      "餐車",
-      "咖啡機",
-      "冷凍櫃"
+      "店面出租",
+      "關店",
+      "排油煙",
+      "清倉",
+      "爐具",
+      "二手冰箱",
+      "退租",
+      "開店"
     ],
     "queries": [
       "飲料",
-      "帶走價",
-      "歇業",
-      "蒸烤箱",
-      "二手設備",
-      "製冰機",
-      "餐車",
-      "咖啡機",
-      "冷凍櫃"
+      "店面出租",
+      "關店",
+      "排油煙",
+      "清倉",
+      "爐具",
+      "二手冰箱",
+      "退租",
+      "開店"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 105,
+      "seen": 67,
       "dup": 0,
-      "notBiz": 8,
-      "noContext": 31,
-      "noKeyword": 12,
-      "tooOld": 3
+      "notBiz": 9,
+      "noContext": 21,
+      "tooOld": 6,
+      "noKeyword": 2,
+      "words": {
+        "定居": 1,
+        "代辦": 1
+      },
+      "excludeWord": 2
     },
     "detailFetched": 2,
     "newUrls": [
-      "https://www.threads.com/@wuzh.enjia/post/DevtJM7EW1T",
-      "https://www.threads.com/@hooyent/post/DewYJwxo4sX"
+      "https://www.threads.com/@jinchuntw/post/Dew7erBmT0z",
+      "https://www.threads.com/@abing.oxox/post/Dev2aaSEplW"
     ],
     "pushMode": "on",
-    "nextInMinutes": 44
+    "nextInMinutes": 39
   },
   "runs": [
+    {
+      "startedAt": "2026-10-22T00:31:53.805Z",
+      "finishedAt": "2026-10-22T00:36:31.050Z",
+      "status": "ok",
+      "scanned": 109,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "飲料": 19,
+        "店面出租": 20,
+        "關店": 0,
+        "排油煙": 0,
+        "清倉": 18,
+        "爐具": 0,
+        "二手冰箱": 14,
+        "退租": 18,
+        "開店": 20
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "店面出租",
+        "關店",
+        "排油煙",
+        "清倉",
+        "爐具",
+        "二手冰箱",
+        "退租",
+        "開店"
+      ],
+      "queries": [
+        "飲料",
+        "店面出租",
+        "關店",
+        "排油煙",
+        "清倉",
+        "爐具",
+        "二手冰箱",
+        "退租",
+        "開店"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 67,
+        "dup": 0,
+        "notBiz": 9,
+        "noContext": 21,
+        "tooOld": 6,
+        "noKeyword": 2,
+        "words": {
+          "定居": 1,
+          "代辦": 1
+        },
+        "excludeWord": 2
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@jinchuntw/post/Dew7erBmT0z",
+        "https://www.threads.com/@abing.oxox/post/Dev2aaSEplW"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 39
+    },
     {
       "startedAt": "2026-10-21T22:01:41.709Z",
       "finishedAt": "2026-10-21T22:04:45.925Z",
@@ -2524,6 +2593,38 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "Dew7erBmT0z",
+      "user": "jinchuntw",
+      "url": "https://www.threads.com/@jinchuntw/post/Dew7erBmT0z",
+      "authorUrl": "https://www.threads.com/@jinchuntw",
+      "text": "3,819次瀏覽\n民雄 美食\n民雄的朋友，我們來了！我們是「錦淳」👋\n一個攤位，想把兩種我們認真準備的美味做好。\n🥩 現煎牛排、雞排、豬排\n🍮 手作豆花、剉冰、燒仙草\n我們正在為開店做最後準備，\n接下來會慢慢分享菜單、料理準備、店面進度，還有開幕活動。\n📍民雄新市場 E04・E05\n嘉義縣民雄鄉東榮村文化路48之1號\n民雄的朋友先來跟我們打聲招呼，你比較想先吃牛排還是豆花？\nzumutiandesign\n追追追追追~!!!用心店家!!!!!!\nwxes90078\n讓更多的客人可以吃到老闆的牛排～～\nguotai_hong\n民雄好多新店😍\nlaiyunlin\n期待牛排\nshine_00215\n都想吃😋\nchengxingma.hats\n想吃",
+      "time": "2026-10-21T17:19:48.000Z",
+      "keywords": [
+        "開店"
+      ],
+      "regions": [],
+      "foundBy": "開店",
+      "foundQuery": "開店",
+      "foundAt": "2026-10-22T00:36:16.604Z",
+      "full": true
+    },
+    {
+      "code": "Dev2aaSEplW",
+      "user": "abing.oxox",
+      "url": "https://www.threads.com/@abing.oxox/post/Dev2aaSEplW",
+      "authorUrl": "https://www.threads.com/@abing.oxox",
+      "text": "688次瀏覽\n屏東人\n想請教各位清潔、除蟲達人！\n遇到衛生習慣很差的租客退租，留下滿屋子的蟑螂和小蟲\n9月底已經大掃除過一次，也噴了殺蟲劑處理看得到的小蟑螂，各個排水孔也都倒了消毒水。\n沒想到10/21再次到現場，發現地板和櫃子縫隙還是有一堆一顆顆的不明物體，不確定是蟲卵還是小蟲屍體。\n請問有沒有人遇過類似情況？該怎麼處理才能徹底解決？還是直接找專業除蟲公司比較好？\n拜託大家分享經驗 真的超噁😫\noctober19th_\n縫隙感覺是蟑螂蛋......\nkujo_pest\n除蟲公司比較了解蟲蟲藏身處\nlove29151020\n可以過去做消毒和防治！有需要可以聯繫我～0972-115-399\nlove29151020\n可以去勘查後再看如何做防治！\nxin.rui.17_061\n直接找專業除蟲公司最快唷😊\n__lucas.co\n您好\n我們有清潔及除蟲的服務\n希望能幫到您 ☺️\nmarie_soju_kian\n推專業清潔～～～\n@__lucas.co\n__lucas.co\n謝謝推薦🤩\npestartisan\n與其自己勞心勞力\n不如直接交給專業的處理\n蟑螂！我專業的！\n📲 LINE：@758hoahl",
+      "time": "2026-10-21T07:16:17.000Z",
+      "keywords": [
+        "退租"
+      ],
+      "regions": [],
+      "foundBy": "退租",
+      "foundQuery": "退租",
+      "foundAt": "2026-10-22T00:36:16.604Z",
+      "full": true
+    },
     {
       "code": "DevtJM7EW1T",
       "user": "wuzh.enjia",
@@ -5149,9 +5250,9 @@
   ],
   "kwStats": {
     "清倉": {
-      "count": 9,
-      "last": 1792586992563,
-      "scanned": 136,
+      "count": 10,
+      "last": 1792629262277,
+      "scanned": 154,
       "leads": 0
     },
     "頂店": {
@@ -5173,8 +5274,8 @@
       "leads": 1
     },
     "關店": {
-      "count": 7,
-      "last": 1792532820232,
+      "count": 8,
+      "last": 1792629142219,
       "scanned": 0,
       "leads": 0
     },
@@ -5239,10 +5340,10 @@
       "leads": 0
     },
     "退租": {
-      "count": 8,
-      "last": 1792593506593,
-      "scanned": 131,
-      "leads": 7
+      "count": 9,
+      "last": 1792629348572,
+      "scanned": 149,
+      "leads": 8
     },
     "低價出清": {
       "count": 10,
@@ -5359,15 +5460,15 @@
       "leads": 0
     },
     "爐具": {
-      "count": 9,
-      "last": 1792587033843,
+      "count": 10,
+      "last": 1792629277484,
       "scanned": 0,
       "leads": 0
     },
     "飲料": {
-      "count": 9,
-      "last": 1792620101996,
-      "scanned": 159,
+      "count": 10,
+      "last": 1792629114779,
+      "scanned": 178,
       "leads": 19
     },
     "飲料店": {
@@ -5383,9 +5484,9 @@
       "leads": 0
     },
     "店面出租": {
-      "count": 8,
-      "last": 1792593493025,
-      "scanned": 153,
+      "count": 9,
+      "last": 1792629128274,
+      "scanned": 173,
       "leads": 9
     },
     "拆除": {
@@ -5407,21 +5508,21 @@
       "leads": 1
     },
     "排油煙": {
-      "count": 7,
-      "last": 1792587123770,
+      "count": 8,
+      "last": 1792629202028,
       "scanned": 0,
       "leads": 0
     },
     "開店": {
-      "count": 7,
-      "last": 1792587094141,
-      "scanned": 137,
-      "leads": 7
+      "count": 8,
+      "last": 1792629363836,
+      "scanned": 157,
+      "leads": 8
     },
     "二手冰箱": {
-      "count": 7,
-      "last": 1792587108709,
-      "scanned": 137,
+      "count": 8,
+      "last": 1792629336299,
+      "scanned": 151,
       "leads": 2
     },
     "冷凍櫃": {
@@ -5443,47 +5544,47 @@
       "leads": 5
     }
   },
-  "nextScanAt": "2026-10-21T22:48:22.881Z",
+  "nextScanAt": "2026-10-22T01:15:26.748Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-21T22:48:22.881Z",
-    "madeAt": "2026-10-21T22:04:45.979Z",
+    "at": "2026-10-22T01:15:26.748Z",
+    "madeAt": "2026-10-22T00:36:31.283Z",
     "items": [
       {
         "kw": "飲料",
         "q": "飲料"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "結束營業",
+        "q": "結束營業"
       },
       {
-        "kw": "關店",
-        "q": "關店"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "排油煙",
-        "q": "排油煙"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "清倉",
-        "q": "清倉"
+        "kw": "帶走價",
+        "q": "帶走價"
       },
       {
-        "kw": "爐具",
-        "q": "爐具"
+        "kw": "歇業",
+        "q": "歇業"
       },
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "收店",
+        "q": "收店"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "商用冰箱",
+        "q": "商用冰箱"
       },
       {
-        "kw": "開店",
-        "q": "開店"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       }
     ]
   }
