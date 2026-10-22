@@ -1,66 +1,124 @@
 {
-  "updatedAt": "2026-10-22T12:47:51.782Z",
+  "updatedAt": "2026-10-22T14:56:01.897Z",
   "lastRun": {
-    "startedAt": "2026-10-22T12:45:18.251Z",
-    "finishedAt": "2026-10-22T12:47:51.731Z",
+    "startedAt": "2026-10-22T14:52:10.992Z",
+    "finishedAt": "2026-10-22T14:56:01.849Z",
     "status": "ok",
-    "scanned": 151,
-    "matched": 3,
-    "newCount": 3,
-    "notified": 3,
+    "scanned": 116,
+    "matched": 2,
+    "newCount": 2,
+    "notified": 1,
     "perKeyword": {
-      "飲料": 16,
-      "低價出清": 9,
-      "創業": 19,
-      "清倉": 18,
-      "飲料店": 18,
-      "開店": 19,
-      "退租": 15,
-      "店面出租": 20,
-      "招牌": 17
+      "飲料": 14,
+      "製冰機": 19,
+      "帶走價": 0,
+      "排油煙": 0,
+      "拆除": 19,
+      "二手冰箱": 13,
+      "蒸烤箱": 22,
+      "搬家出清": 10,
+      "加盟": 19
     },
     "warnings": [],
     "keywordsUsed": [
       "飲料",
-      "低價出清",
-      "創業",
-      "清倉",
-      "飲料店",
-      "開店",
-      "退租",
-      "店面出租",
-      "招牌"
+      "製冰機",
+      "帶走價",
+      "排油煙",
+      "拆除",
+      "二手冰箱",
+      "蒸烤箱",
+      "搬家出清",
+      "加盟"
     ],
     "queries": [
       "飲料",
-      "低價出清",
-      "創業",
-      "清倉",
-      "飲料店",
-      "開店",
-      "退租",
-      "店面出租",
-      "招牌"
+      "製冰機",
+      "帶走價",
+      "排油煙",
+      "拆除",
+      "二手冰箱",
+      "蒸烤箱",
+      "搬家出清",
+      "加盟"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 74,
-      "dup": 1,
-      "notBiz": 7,
-      "tooOld": 5,
-      "noKeyword": 10,
-      "noContext": 50
+      "seen": 72,
+      "dup": 0,
+      "notBiz": 5,
+      "tooOld": 3,
+      "noContext": 30,
+      "noKeyword": 4
     },
-    "detailFetched": 4,
+    "detailFetched": 2,
     "newUrls": [
-      "https://www.threads.com/@caocao6869/post/Dew6VWCmJAu",
-      "https://www.threads.com/@caocao6869/post/DewkWMnGDXN",
-      "https://www.threads.com/@bomb_1116/post/DernrwGj1uV"
+      "https://www.threads.com/@ig3067888/post/DexivLVE95j",
+      "https://www.threads.com/@lulutai5/post/DewU1BCk9Xv"
     ],
     "pushMode": "on",
-    "nextInMinutes": 21
+    "nextInMinutes": 24
   },
   "runs": [
+    {
+      "startedAt": "2026-10-22T14:52:10.992Z",
+      "finishedAt": "2026-10-22T14:56:01.849Z",
+      "status": "ok",
+      "scanned": 116,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 1,
+      "perKeyword": {
+        "飲料": 14,
+        "製冰機": 19,
+        "帶走價": 0,
+        "排油煙": 0,
+        "拆除": 19,
+        "二手冰箱": 13,
+        "蒸烤箱": 22,
+        "搬家出清": 10,
+        "加盟": 19
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "製冰機",
+        "帶走價",
+        "排油煙",
+        "拆除",
+        "二手冰箱",
+        "蒸烤箱",
+        "搬家出清",
+        "加盟"
+      ],
+      "queries": [
+        "飲料",
+        "製冰機",
+        "帶走價",
+        "排油煙",
+        "拆除",
+        "二手冰箱",
+        "蒸烤箱",
+        "搬家出清",
+        "加盟"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 72,
+        "dup": 0,
+        "notBiz": 5,
+        "tooOld": 3,
+        "noContext": 30,
+        "noKeyword": 4
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@ig3067888/post/DexivLVE95j",
+        "https://www.threads.com/@lulutai5/post/DewU1BCk9Xv"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 24
+    },
     {
       "startedAt": "2026-10-22T12:45:18.251Z",
       "finishedAt": "2026-10-22T12:47:51.731Z",
@@ -2765,6 +2823,42 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "DexivLVE95j",
+      "user": "ig3067888",
+      "url": "https://www.threads.com/@ig3067888/post/DexivLVE95j",
+      "authorUrl": "https://www.threads.com/@ig3067888",
+      "text": "321次瀏覽\n漲粉計畫\n努力💪經營脆的《第840天》\n也讓我感受脆的威力吧🙏\n聽說 Threads 漲粉很厲害\n想漲粉的，一起追起來\n你有想法，我們有做法‼️\n只要錢到位，什麼工程都會‼️\n營建工程⚠️各項工程⚠️\n鋼構架設⚠️土木工程⚠️\n老屋修繕⚠️拆除清運⚠️\n屋頂翻新⚠️水電工程⚠️\n等等項目⋯\n一次信任🙏終身服務🫡\n只有你想不到，沒有我們做不到‼️\n❤️IG/Threads 互追不退❤️\nway5520\nm.facebook.com/group…\n感謝版主🙏🏼\nthreads.com\n木匠精工\nmarble.yu01\n嗨，已追待回追\n我們是大理石直營廠商，期待有機會合作🙌🏻\nji.jing._\n追追 我們在台中西區美術館附近 🌿\n一站式 SPA 店，洗頭＋按摩一次服務完成，舒舒服服搭 💖\n忙完一整天，來寂境享受完全安靜的獨立包廂！\n全身精油舒壓完，直接幫妳把頭髮洗好、吹整乾淨，乾乾淨淨香香地回家，完全不用再花力氣洗澡洗頭，直接無縫接軌舒服秒睡\n💤\n🌿 超划算熱門專案\n▫️ 全身精油按摩 90m（含按頭）＋ 30m 洗髮＋吹髮 ｜ 只要 $1,500 🫶🫶\n📍 寂境｜台中西區（近美術館）\n🌙 最晚接客至 23:00 ｜ 夜間完全不加價\n🚿 獨立包廂 ｜ 可沖澡 ｜ 絕不推銷 ｜ 採全預約制",
+      "time": "2026-10-21T23:02:51.000Z",
+      "keywords": [
+        "拆除"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-22T14:55:47.660Z",
+      "full": true
+    },
+    {
+      "code": "DewU1BCk9Xv",
+      "user": "lulutai5",
+      "url": "https://www.threads.com/@lulutai5/post/DewU1BCk9Xv",
+      "authorUrl": "https://www.threads.com/@lulutai5",
+      "text": "114次瀏覽\n飲料店設備出清\n使用七年，設備功能皆完好✨\n‼️未付定皆不幫保留，東西在埔里（詐騙勿擾‼️）\n🔹實木電腦桌（四尺）$3000（僅用三年）\n🔸雪花製冰機800磅$10000",
+      "time": "2026-10-21T11:42:04.000Z",
+      "keywords": [
+        "飲料",
+        "飲料店",
+        "製冰機"
+      ],
+      "regions": [],
+      "foundBy": "製冰機",
+      "foundQuery": "製冰機",
+      "foundAt": "2026-10-22T14:55:47.660Z",
+      "full": true
+    },
     {
       "code": "Dew6VWCmJAu",
       "user": "caocao6869",
@@ -5552,8 +5646,8 @@
       "leads": 0
     },
     "帶走價": {
-      "count": 12,
-      "last": 1792646187403,
+      "count": 13,
+      "last": 1792680758187,
       "scanned": 0,
       "leads": 0
     },
@@ -5612,9 +5706,9 @@
       "leads": 0
     },
     "搬家出清": {
-      "count": 10,
-      "last": 1792646333723,
-      "scanned": 100,
+      "count": 11,
+      "last": 1792680917270,
+      "scanned": 110,
       "leads": 4
     },
     "咖啡機": {
@@ -5624,10 +5718,10 @@
       "leads": 13
     },
     "製冰機": {
-      "count": 10,
-      "last": 1792663996706,
-      "scanned": 191,
-      "leads": 3
+      "count": 11,
+      "last": 1792680743844,
+      "scanned": 210,
+      "leads": 4
     },
     "設備出清": {
       "count": 4,
@@ -5636,9 +5730,9 @@
       "leads": 0
     },
     "蒸烤箱": {
-      "count": 11,
-      "last": 1792646169955,
-      "scanned": 201,
+      "count": 12,
+      "last": 1792680903654,
+      "scanned": 223,
       "leads": 0
     },
     "歇業": {
@@ -5726,9 +5820,9 @@
       "leads": 0
     },
     "飲料": {
-      "count": 13,
-      "last": 1792673119757,
-      "scanned": 224,
+      "count": 14,
+      "last": 1792680731318,
+      "scanned": 238,
       "leads": 22
     },
     "飲料店": {
@@ -5750,10 +5844,10 @@
       "leads": 9
     },
     "拆除": {
-      "count": 9,
-      "last": 1792663983565,
-      "scanned": 185,
-      "leads": 6
+      "count": 10,
+      "last": 1792680878361,
+      "scanned": 204,
+      "leads": 7
     },
     "創業": {
       "count": 9,
@@ -5768,8 +5862,8 @@
       "leads": 1
     },
     "排油煙": {
-      "count": 8,
-      "last": 1792629202028,
+      "count": 9,
+      "last": 1792680818853,
       "scanned": 0,
       "leads": 0
     },
@@ -5780,9 +5874,9 @@
       "leads": 8
     },
     "二手冰箱": {
-      "count": 8,
-      "last": 1792629336299,
-      "scanned": 151,
+      "count": 9,
+      "last": 1792680889636,
+      "scanned": 164,
       "leads": 2
     },
     "冷凍櫃": {
@@ -5792,9 +5886,9 @@
       "leads": 3
     },
     "加盟": {
-      "count": 10,
-      "last": 1792646156736,
-      "scanned": 200,
+      "count": 11,
+      "last": 1792680933162,
+      "scanned": 219,
       "leads": 0
     },
     "招牌": {
@@ -5804,47 +5898,47 @@
       "leads": 7
     }
   },
-  "nextScanAt": "2026-10-22T13:09:07.060Z",
+  "nextScanAt": "2026-10-22T15:19:58.951Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-22T13:09:07.060Z",
-    "madeAt": "2026-10-22T12:47:51.776Z",
+    "at": "2026-10-22T15:19:58.951Z",
+    "madeAt": "2026-10-22T14:56:01.891Z",
     "items": [
       {
         "kw": "飲料",
         "q": "飲料"
       },
       {
-        "kw": "製冰機",
-        "q": "製冰機"
+        "kw": "收攤",
+        "q": "收攤"
       },
       {
-        "kw": "帶走價",
-        "q": "帶走價"
+        "kw": "餐車",
+        "q": "餐車"
       },
       {
-        "kw": "排油煙",
-        "q": "排油煙"
+        "kw": "裝潢",
+        "q": "裝潢"
       },
       {
-        "kw": "拆除",
-        "q": "拆除"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "結束營業",
+        "q": "結束營業"
       },
       {
-        "kw": "蒸烤箱",
-        "q": "蒸烤箱"
+        "kw": "創業",
+        "q": "創業"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "便宜賣",
+        "q": "便宜賣"
       },
       {
-        "kw": "加盟",
-        "q": "加盟"
+        "kw": "關店",
+        "q": "關店"
       }
     ]
   }
