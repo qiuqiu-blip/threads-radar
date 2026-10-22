@@ -183,7 +183,5 @@
   ],
   "watchUsers": [],
   "bizOnly": true,
-  "mustKeywords": [
-    "飲料"
-  ]
+  "mustKeywords": []
 }
