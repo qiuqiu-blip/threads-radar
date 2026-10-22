@@ -1,65 +1,122 @@
 {
-  "updatedAt": "2026-10-22T14:56:01.897Z",
+  "updatedAt": "2026-10-22T17:46:06.931Z",
   "lastRun": {
-    "startedAt": "2026-10-22T14:52:10.992Z",
-    "finishedAt": "2026-10-22T14:56:01.849Z",
+    "startedAt": "2026-10-22T17:43:17.324Z",
+    "finishedAt": "2026-10-22T17:46:06.896Z",
     "status": "ok",
-    "scanned": 116,
-    "matched": 2,
-    "newCount": 2,
+    "scanned": 128,
+    "matched": 1,
+    "newCount": 1,
     "notified": 1,
     "perKeyword": {
-      "飲料": 14,
-      "製冰機": 19,
-      "帶走價": 0,
-      "排油煙": 0,
-      "拆除": 19,
-      "二手冰箱": 13,
-      "蒸烤箱": 22,
-      "搬家出清": 10,
-      "加盟": 19
+      "飲料": 17,
+      "收攤": 19,
+      "餐車": 19,
+      "裝潢": 17,
+      "低價出清": 6,
+      "結束營業": 17,
+      "創業": 19,
+      "便宜賣": 14,
+      "關店": 0
     },
     "warnings": [],
     "keywordsUsed": [
       "飲料",
-      "製冰機",
-      "帶走價",
-      "排油煙",
-      "拆除",
-      "二手冰箱",
-      "蒸烤箱",
-      "搬家出清",
-      "加盟"
+      "收攤",
+      "餐車",
+      "裝潢",
+      "低價出清",
+      "結束營業",
+      "創業",
+      "便宜賣",
+      "關店"
     ],
     "queries": [
       "飲料",
-      "製冰機",
-      "帶走價",
-      "排油煙",
-      "拆除",
-      "二手冰箱",
-      "蒸烤箱",
-      "搬家出清",
-      "加盟"
+      "收攤",
+      "餐車",
+      "裝潢",
+      "低價出清",
+      "結束營業",
+      "創業",
+      "便宜賣",
+      "關店"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 72,
+      "seen": 76,
       "dup": 0,
-      "notBiz": 5,
-      "tooOld": 3,
-      "noContext": 30,
-      "noKeyword": 4
+      "noKeyword": 4,
+      "notBiz": 1,
+      "noContext": 45,
+      "tooOld": 1
     },
-    "detailFetched": 2,
+    "detailFetched": 1,
     "newUrls": [
-      "https://www.threads.com/@ig3067888/post/DexivLVE95j",
-      "https://www.threads.com/@lulutai5/post/DewU1BCk9Xv"
+      "https://www.threads.com/@c.le0410/post/Dext0_ZmZp4"
     ],
     "pushMode": "on",
-    "nextInMinutes": 24
+    "nextInMinutes": 37
   },
   "runs": [
+    {
+      "startedAt": "2026-10-22T17:43:17.324Z",
+      "finishedAt": "2026-10-22T17:46:06.896Z",
+      "status": "ok",
+      "scanned": 128,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "飲料": 17,
+        "收攤": 19,
+        "餐車": 19,
+        "裝潢": 17,
+        "低價出清": 6,
+        "結束營業": 17,
+        "創業": 19,
+        "便宜賣": 14,
+        "關店": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料",
+        "收攤",
+        "餐車",
+        "裝潢",
+        "低價出清",
+        "結束營業",
+        "創業",
+        "便宜賣",
+        "關店"
+      ],
+      "queries": [
+        "飲料",
+        "收攤",
+        "餐車",
+        "裝潢",
+        "低價出清",
+        "結束營業",
+        "創業",
+        "便宜賣",
+        "關店"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 76,
+        "dup": 0,
+        "noKeyword": 4,
+        "notBiz": 1,
+        "noContext": 45,
+        "tooOld": 1
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@c.le0410/post/Dext0_ZmZp4"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 37
+    },
     {
       "startedAt": "2026-10-22T14:52:10.992Z",
       "finishedAt": "2026-10-22T14:56:01.849Z",
@@ -2823,6 +2880,22 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "Dext0_ZmZp4",
+      "user": "c.le0410",
+      "url": "https://www.threads.com/@c.le0410/post/Dext0_ZmZp4",
+      "authorUrl": "https://www.threads.com/@c.le0410",
+      "text": "1.4 萬次瀏覽\n二手出清\n結束營業出清，僅能面交\n詐騙不要來\n地點 竹南頭份\n忠孝二路2-1號（水活力斜對面）\n這週星期四/星期五 8-15點可以來現場\n已釘選\n更新：\n不鏽鋼盤、鐵盤、麵包抹刀、玻璃水壺售完\no.ba.john\n請問地點在哪？想要玻璃水壺\ncheng_ya_sin\n請問杯子跟醬料碗售價？\n竹南那邊可以取貨付款？\n忠孝二路2-1號（水活力斜對面）\n這週星期四/星期五 8-15點可以來現場\ncheng_ya_sin\n請問杯子、醬料碗售價？\n杯碗$10\n二手小碟$5\n千全新小碟$10\nbull_beef._\n請問在哪\n忠孝二路2-1號（水活力斜對面）\n這週星期四/星期五 8-15點可以來現場\nsheep_lyt\n請問手上那價格？謝謝\n大圓盤類、ikea木盤都$50\nelaine_lin_0313\n請問是六寸盤那邊嗎\n六寸盤以後不再開了嗎QAQ\nying_peppa\n想要奶酪杯跟湯匙，但週四週五不在，如果週末過後還有可以再聯繫嗎？謝謝\n可以，湯匙很小喔\nangeladerla\n6吋盤在屏東市很紅\n還沒吃過頭份的（嗚嗚嗚\nx030152841\n那不鏽鋼盤有興趣\nshihshih122\n希望以後還能再吃六吋盤🥲\ntiamut0826\n造景多少\n單片：高220公分寬105公分\n圖片總共2片\n單片$1500\n2片$2500",
+      "time": "2026-10-22T00:39:45.000Z",
+      "keywords": [
+        "結束營業"
+      ],
+      "regions": [],
+      "foundBy": "結束營業",
+      "foundQuery": "結束營業",
+      "foundAt": "2026-10-22T17:45:58.676Z",
+      "full": true
+    },
     {
       "code": "DexivLVE95j",
       "user": "ig3067888",
@@ -5628,21 +5701,21 @@
       "leads": 1
     },
     "關店": {
-      "count": 8,
-      "last": 1792629142219,
+      "count": 9,
+      "last": 1792691100192,
       "scanned": 0,
       "leads": 0
     },
     "便宜賣": {
-      "count": 9,
-      "last": 1792664029405,
-      "scanned": 164,
+      "count": 10,
+      "last": 1792691088574,
+      "scanned": 178,
       "leads": 22
     },
     "收攤": {
-      "count": 11,
-      "last": 1792587006316,
-      "scanned": 192,
+      "count": 12,
+      "last": 1792691011793,
+      "scanned": 211,
       "leads": 0
     },
     "帶走價": {
@@ -5700,9 +5773,9 @@
       "leads": 8
     },
     "低價出清": {
-      "count": 11,
-      "last": 1792673134839,
-      "scanned": 81,
+      "count": 12,
+      "last": 1792691049778,
+      "scanned": 87,
       "leads": 0
     },
     "搬家出清": {
@@ -5778,10 +5851,10 @@
       "leads": 0
     },
     "結束營業": {
-      "count": 10,
-      "last": 1792646142880,
-      "scanned": 182,
-      "leads": 8
+      "count": 11,
+      "last": 1792691063022,
+      "scanned": 199,
+      "leads": 9
     },
     "收店": {
       "count": 10,
@@ -5820,9 +5893,9 @@
       "leads": 0
     },
     "飲料": {
-      "count": 14,
-      "last": 1792680731318,
-      "scanned": 238,
+      "count": 15,
+      "last": 1792690998520,
+      "scanned": 255,
       "leads": 22
     },
     "飲料店": {
@@ -5832,9 +5905,9 @@
       "leads": 5
     },
     "裝潢": {
-      "count": 11,
-      "last": 1792664073152,
-      "scanned": 199,
+      "count": 12,
+      "last": 1792691036933,
+      "scanned": 216,
       "leads": 0
     },
     "店面出租": {
@@ -5850,15 +5923,15 @@
       "leads": 7
     },
     "創業": {
-      "count": 9,
-      "last": 1792673146339,
-      "scanned": 176,
+      "count": 10,
+      "last": 1792691076715,
+      "scanned": 195,
       "leads": 2
     },
     "餐車": {
-      "count": 10,
-      "last": 1792664057804,
-      "scanned": 204,
+      "count": 11,
+      "last": 1792691024010,
+      "scanned": 223,
       "leads": 1
     },
     "排油煙": {
@@ -5898,47 +5971,47 @@
       "leads": 7
     }
   },
-  "nextScanAt": "2026-10-22T15:19:58.951Z",
+  "nextScanAt": "2026-10-22T18:23:23.868Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-22T15:19:58.951Z",
-    "madeAt": "2026-10-22T14:56:01.891Z",
+    "at": "2026-10-22T18:23:23.868Z",
+    "madeAt": "2026-10-22T17:46:06.927Z",
     "items": [
       {
         "kw": "飲料",
         "q": "飲料"
       },
       {
-        "kw": "收攤",
-        "q": "收攤"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "帶走價",
+        "q": "帶走價"
       },
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "排油煙",
+        "q": "排油煙"
       },
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "結束營業",
-        "q": "結束營業"
+        "kw": "開店",
+        "q": "開店"
       },
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       },
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "招牌",
+        "q": "招牌"
       },
       {
-        "kw": "關店",
-        "q": "關店"
+        "kw": "收店",
+        "q": "收店"
       }
     ]
   }
