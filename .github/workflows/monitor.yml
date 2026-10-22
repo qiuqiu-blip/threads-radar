@@ -10,7 +10,7 @@ on:
         required: false
         default: scan
         type: choice
-        options: [scan, test]
+        options: [scan, test, auto]
 
 permissions:
   contents: write
@@ -31,6 +31,7 @@ jobs:
         run: node gate.js
         env:
           EVENT: ${{ github.event_name }}
+          MODE: ${{ inputs.mode || 'scan' }}
 
       - uses: actions/setup-node@v4
         if: steps.gate.outputs.due == 'true'
