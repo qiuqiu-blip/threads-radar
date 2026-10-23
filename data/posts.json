@@ -1,61 +1,116 @@
 {
-  "updatedAt": "2026-10-23T00:05:02.721Z",
+  "updatedAt": "2026-10-23T00:40:03.843Z",
   "lastRun": {
-    "startedAt": "2026-10-23T00:01:13.162Z",
-    "finishedAt": "2026-10-23T00:05:01.721Z",
+    "startedAt": "2026-10-23T00:38:02.992Z",
+    "finishedAt": "2026-10-23T00:40:03.799Z",
     "status": "ok",
-    "scanned": 104,
+    "scanned": 144,
     "matched": 2,
     "newCount": 2,
     "notified": 2,
     "perKeyword": {
-      "歇業": 21,
-      "收店": 0,
-      "餐車": 20,
-      "搬家出清": 10,
-      "清倉": 13,
-      "店面出租": 20,
-      "爐具": 0,
-      "拆除": 20
+      "飲料店": 19,
+      "二手設備": 18,
+      "低價出清": 10,
+      "加盟": 22,
+      "開店": 21,
+      "二手冰箱": 16,
+      "結束營業": 17,
+      "冷凍櫃": 21
     },
     "warnings": [],
     "keywordsUsed": [
-      "歇業",
-      "收店",
-      "餐車",
-      "搬家出清",
-      "清倉",
-      "店面出租",
-      "爐具",
-      "拆除"
+      "飲料店",
+      "二手設備",
+      "低價出清",
+      "加盟",
+      "開店",
+      "二手冰箱",
+      "結束營業",
+      "冷凍櫃"
     ],
     "queries": [
-      "歇業",
-      "收店",
-      "餐車",
-      "搬家出清",
-      "清倉",
-      "店面出租",
-      "爐具",
-      "拆除"
+      "飲料店",
+      "二手設備",
+      "低價出清",
+      "加盟",
+      "開店",
+      "二手冰箱",
+      "結束營業",
+      "冷凍櫃"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 58,
+      "seen": 84,
       "dup": 0,
-      "noContext": 33,
+      "noContext": 47,
       "noKeyword": 8,
       "tooOld": 3
     },
     "detailFetched": 2,
     "newUrls": [
-      "https://www.threads.com/@1212__dad/post/DezJXZME3VU",
-      "https://www.threads.com/@wenguo.wang/post/DeyZPzlExCd"
+      "https://www.threads.com/@linglingsstudio/post/DeybLmzHV86",
+      "https://www.threads.com/@qqqq0989576526/post/Dev7AZTAaAD"
     ],
     "pushMode": "on",
-    "nextInMinutes": 22
+    "nextInMinutes": 28
   },
   "runs": [
+    {
+      "startedAt": "2026-10-23T00:38:02.992Z",
+      "finishedAt": "2026-10-23T00:40:03.799Z",
+      "status": "ok",
+      "scanned": 144,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "飲料店": 19,
+        "二手設備": 18,
+        "低價出清": 10,
+        "加盟": 22,
+        "開店": 21,
+        "二手冰箱": 16,
+        "結束營業": 17,
+        "冷凍櫃": 21
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "飲料店",
+        "二手設備",
+        "低價出清",
+        "加盟",
+        "開店",
+        "二手冰箱",
+        "結束營業",
+        "冷凍櫃"
+      ],
+      "queries": [
+        "飲料店",
+        "二手設備",
+        "低價出清",
+        "加盟",
+        "開店",
+        "二手冰箱",
+        "結束營業",
+        "冷凍櫃"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 84,
+        "dup": 0,
+        "noContext": 47,
+        "noKeyword": 8,
+        "tooOld": 3
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@linglingsstudio/post/DeybLmzHV86",
+        "https://www.threads.com/@qqqq0989576526/post/Dev7AZTAaAD"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 28
+    },
     {
       "startedAt": "2026-10-23T00:01:13.162Z",
       "finishedAt": "2026-10-23T00:05:01.721Z",
@@ -3160,6 +3215,42 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "DeybLmzHV86",
+      "user": "linglingsstudio",
+      "url": "https://www.threads.com/@linglingsstudio/post/DeybLmzHV86",
+      "authorUrl": "https://www.threads.com/@linglingsstudio",
+      "text": "2,803次瀏覽\n花材出清\n🌷 藍芯工作室｜結束營業・花材全面出清公告 🌷\n有些決定，真的需要一點勇氣。 因為近期身體狀況的關係，經過一番考量後，決定讓藍芯工作室暫時畫下句點，結束營業。\n一路走來，謝謝每一位曾經支持、喜愛藍芯作品的朋友，也謝謝大家讓我有機會透過花藝，參與你們生命中許多美好的時刻。\n雖然有些不捨，但現階段想先把自己的身體照顧好，好好休息。\n由於工作室累積了非常多花材、花器及各式材料，決定趁這次機會，將所有物品全面出清，希望這些美麗的材料，能在其他人的手中繼續綻放。\n🌸\n花材出清日｜10/30（五）－11/1（日）\n從早上10點到下午四點\n資材日擇日公告 ✨ 全場甜甜價，歡迎來挖寶！\n📌 出清注意事項\n・花材、花器及各式材料全面出清\n・因品項及數量繁多，僅開放現場挑選，恕不提供線上選購\n・請自行攜帶購物袋，響應環保\n・付款方式：現金／LINE Pay\n・出清商品數量有限，售完為止\n📍 門市：高雄市左營區富國路11號4樓（北京蘭園），到了請先電聯0928307515/0963451169\n最後，真的很謝謝大家這一路以來的陪伴與支持。\ndine.with.v\n請問是當天才能進去選購嗎？\n是喔，因為老師平時不住高雄，最近都在家裡靜養\ntsukikaede\n請問有紅色山茶花類型的花材嗎\n沒有捏",
+      "time": "2026-10-22T07:16:04.000Z",
+      "keywords": [
+        "結束營業"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "結束營業",
+      "foundQuery": "結束營業",
+      "foundAt": "2026-10-23T00:39:51.082Z",
+      "full": true
+    },
+    {
+      "code": "Dev7AZTAaAD",
+      "user": "qqqq0989576526",
+      "url": "https://www.threads.com/@qqqq0989576526/post/Dev7AZTAaAD",
+      "authorUrl": "https://www.threads.com/@qqqq0989576526",
+      "text": "5,586次瀏覽\n玩具店\n結束營業出清 ，新品出清750 $/盒\n四盒一箱出貨 ，任挑。\ncoldpinapple\n是有實體店的嗎\nleee._4\n一次要買4盒嗎\n是 出清賠售價\nsunwukong3311\n問一下你的店在哪裡\nmiya__hsu\n每一種只能選一盒？\narthur_wolfwild\n你好 想要買星街的 有實體店能去看嗎\n臺中后里",
+      "time": "2026-10-21T07:56:26.000Z",
+      "keywords": [
+        "結束營業"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "結束營業",
+      "foundQuery": "結束營業",
+      "foundAt": "2026-10-23T00:39:51.082Z",
+      "full": true
+    },
+    {
       "code": "DezJXZME3VU",
       "user": "1212__dad",
       "url": "https://www.threads.com/@1212__dad/post/DezJXZME3VU",
@@ -6062,9 +6153,9 @@
       "leads": 0
     },
     "二手設備": {
-      "count": 14,
-      "last": 1792704717133,
-      "scanned": 247,
+      "count": 15,
+      "last": 1792715895095,
+      "scanned": 265,
       "leads": 1
     },
     "關店": {
@@ -6140,9 +6231,9 @@
       "leads": 8
     },
     "低價出清": {
-      "count": 13,
-      "last": 1792704732882,
-      "scanned": 97,
+      "count": 14,
+      "last": 1792715909042,
+      "scanned": 107,
       "leads": 0
     },
     "搬家出清": {
@@ -6218,10 +6309,10 @@
       "leads": 0
     },
     "結束營業": {
-      "count": 12,
-      "last": 1792703011657,
-      "scanned": 216,
-      "leads": 9
+      "count": 13,
+      "last": 1792715966125,
+      "scanned": 233,
+      "leads": 11
     },
     "收店": {
       "count": 12,
@@ -6266,9 +6357,9 @@
       "leads": 23
     },
     "飲料店": {
-      "count": 9,
-      "last": 1792700302985,
-      "scanned": 170,
+      "count": 10,
+      "last": 1792715883298,
+      "scanned": 189,
       "leads": 5
     },
     "裝潢": {
@@ -6308,27 +6399,27 @@
       "leads": 0
     },
     "開店": {
-      "count": 10,
-      "last": 1792696974857,
-      "scanned": 193,
+      "count": 11,
+      "last": 1792715939776,
+      "scanned": 214,
       "leads": 8
     },
     "二手冰箱": {
-      "count": 11,
-      "last": 1792704678592,
-      "scanned": 192,
+      "count": 12,
+      "last": 1792715951233,
+      "scanned": 208,
       "leads": 2
     },
     "冷凍櫃": {
-      "count": 11,
-      "last": 1792704705003,
-      "scanned": 241,
+      "count": 12,
+      "last": 1792715978952,
+      "scanned": 262,
       "leads": 3
     },
     "加盟": {
-      "count": 11,
-      "last": 1792680933162,
-      "scanned": 219,
+      "count": 12,
+      "last": 1792715922652,
+      "scanned": 241,
       "leads": 0
     },
     "招牌": {
@@ -6338,43 +6429,43 @@
       "leads": 7
     }
   },
-  "nextScanAt": "2026-10-23T00:27:11.862Z",
+  "nextScanAt": "2026-10-23T01:07:53.404Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-23T00:27:11.862Z",
-    "madeAt": "2026-10-23T00:05:02.717Z",
+    "at": "2026-10-23T01:07:53.404Z",
+    "madeAt": "2026-10-23T00:40:03.837Z",
     "items": [
       {
-        "kw": "飲料店",
-        "q": "飲料店"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "二手設備",
-        "q": "二手設備"
+        "kw": "歇業",
+        "q": "歇業"
       },
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "咖啡機",
+        "q": "咖啡機"
       },
       {
-        "kw": "加盟",
-        "q": "加盟"
+        "kw": "收攤",
+        "q": "收攤"
       },
       {
-        "kw": "開店",
-        "q": "開店"
+        "kw": "商用冰箱",
+        "q": "商用冰箱"
       },
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "餐車",
+        "q": "餐車"
       },
       {
-        "kw": "結束營業",
-        "q": "結束營業"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "冷凍櫃",
-        "q": "冷凍櫃"
+        "kw": "便宜賣",
+        "q": "便宜賣"
       }
     ]
   }
