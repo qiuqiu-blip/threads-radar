@@ -1,61 +1,126 @@
 {
-  "updatedAt": "2026-10-23T01:51:18.553Z",
+  "updatedAt": "2026-10-23T02:33:53.780Z",
   "lastRun": {
-    "startedAt": "2026-10-23T01:47:34.747Z",
-    "finishedAt": "2026-10-23T01:51:18.524Z",
+    "startedAt": "2026-10-23T02:30:48.802Z",
+    "finishedAt": "2026-10-23T02:33:53.744Z",
     "status": "ok",
-    "scanned": 113,
-    "matched": 2,
-    "newCount": 2,
-    "notified": 2,
+    "scanned": 122,
+    "matched": 3,
+    "newCount": 3,
+    "notified": 3,
     "perKeyword": {
-      "裝潢": 17,
-      "關店": 0,
-      "開店": 17,
-      "招牌": 19,
-      "收店": 0,
-      "清倉": 20,
-      "店面出租": 20,
-      "退租": 20
+      "低價出清": 10,
+      "二手設備": 20,
+      "飲料店": 18,
+      "爐具": 0,
+      "商用冰箱": 18,
+      "冷凍櫃": 21,
+      "拆除": 21,
+      "搬家出清": 14
     },
     "warnings": [],
     "keywordsUsed": [
-      "裝潢",
-      "關店",
-      "開店",
-      "招牌",
-      "收店",
-      "清倉",
-      "店面出租",
-      "退租"
+      "低價出清",
+      "二手設備",
+      "飲料店",
+      "爐具",
+      "商用冰箱",
+      "冷凍櫃",
+      "拆除",
+      "搬家出清"
     ],
     "queries": [
-      "裝潢",
-      "關店",
-      "開店",
-      "招牌",
-      "收店",
-      "清倉",
-      "店面出租",
-      "退租"
+      "低價出清",
+      "二手設備",
+      "飲料店",
+      "爐具",
+      "商用冰箱",
+      "冷凍櫃",
+      "拆除",
+      "搬家出清"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 58,
+      "seen": 78,
       "dup": 0,
-      "noContext": 40,
-      "noKeyword": 9,
-      "tooOld": 4
+      "noContext": 32,
+      "noKeyword": 4,
+      "tooOld": 4,
+      "words": {
+        "家具": 1
+      },
+      "excludeWord": 1
     },
-    "detailFetched": 2,
+    "detailFetched": 3,
     "newUrls": [
-      "https://www.threads.com/@shuochen_ig/post/Dey-9_NE6Tp",
-      "https://www.threads.com/@yes_g_jiachores/post/DewjFaJH2KY"
+      "https://www.threads.com/@wa.huiyu0815/post/Dey7hkRFFcU",
+      "https://www.threads.com/@fubin300/post/DeyjphFk5Ul",
+      "https://www.threads.com/@mushroom_hung_/post/DevyPYEkcqQ"
     ],
     "pushMode": "on",
-    "nextInMinutes": 30
+    "nextInMinutes": 22
   },
   "runs": [
+    {
+      "startedAt": "2026-10-23T02:30:48.802Z",
+      "finishedAt": "2026-10-23T02:33:53.744Z",
+      "status": "ok",
+      "scanned": 122,
+      "matched": 3,
+      "newCount": 3,
+      "notified": 3,
+      "perKeyword": {
+        "低價出清": 10,
+        "二手設備": 20,
+        "飲料店": 18,
+        "爐具": 0,
+        "商用冰箱": 18,
+        "冷凍櫃": 21,
+        "拆除": 21,
+        "搬家出清": 14
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "低價出清",
+        "二手設備",
+        "飲料店",
+        "爐具",
+        "商用冰箱",
+        "冷凍櫃",
+        "拆除",
+        "搬家出清"
+      ],
+      "queries": [
+        "低價出清",
+        "二手設備",
+        "飲料店",
+        "爐具",
+        "商用冰箱",
+        "冷凍櫃",
+        "拆除",
+        "搬家出清"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 78,
+        "dup": 0,
+        "noContext": 32,
+        "noKeyword": 4,
+        "tooOld": 4,
+        "words": {
+          "家具": 1
+        },
+        "excludeWord": 1
+      },
+      "detailFetched": 3,
+      "newUrls": [
+        "https://www.threads.com/@wa.huiyu0815/post/Dey7hkRFFcU",
+        "https://www.threads.com/@fubin300/post/DeyjphFk5Ul",
+        "https://www.threads.com/@mushroom_hung_/post/DevyPYEkcqQ"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 22
+    },
     {
       "startedAt": "2026-10-23T01:47:34.747Z",
       "finishedAt": "2026-10-23T01:51:18.524Z",
@@ -3324,6 +3389,61 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "Dey7hkRFFcU",
+      "user": "wa.huiyu0815",
+      "url": "https://www.threads.com/@wa.huiyu0815/post/Dey7hkRFFcU",
+      "authorUrl": "https://www.threads.com/@wa.huiyu0815",
+      "text": "991次瀏覽\n颱風\n颱風救災🙋\n樹木倒塌、拆除裝潢、五金買賣歡迎找我們清運！\nLine:zzz0815xxx\n📱：0926-511-311\n廢棄物清運\n地區：嘉義台南高雄（均17噸夾子車）\n歡迎私訊～\n合法三聯單～\n#台南夾子車#台南廢棄物清運#裝潢清運#庫板清運#岩棉板清運#防火棉庫板清運#垃圾清運#棧板清運#樹枝樹木清運#五金買賣#板模清運#合法三聯單#夾子車清運\nhsin_kai_wang28\n您好！想了解怎麼計價\n已私訊",
+      "time": "2026-10-22T11:58:41.000Z",
+      "keywords": [
+        "拆除",
+        "裝潢"
+      ],
+      "regions": [
+        "台南",
+        "高雄"
+      ],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-23T02:33:33.619Z",
+      "full": true
+    },
+    {
+      "code": "DeyjphFk5Ul",
+      "user": "fubin300",
+      "url": "https://www.threads.com/@fubin300/post/DeyjphFk5Ul",
+      "authorUrl": "https://www.threads.com/@fubin300",
+      "text": "6,258次瀏覽\nThreads\n想認識工程圈的朋友🤝🔥\n做工程的朋友在哪裡～～🙋‍♂️\n不管你是做土木、營造、室內設計、拆除、清運、泥作、水電、油漆、鋪路、機具，還是其他工程相關的行業。\n通通歡迎來認識一下！🤣\n大家都是靠雙手吃飯，\n靠自己努力打拚，沒有什麼工作比較輕鬆，都是各有各的辛苦💪\n今天不談生意、不打廣告😂\n單純想多認識一些工程圈的朋友！\n有機會互相交流、互相學習，\n說不定哪天就在同一個工地碰面了🤝\n📍做工程的底下留個言，讓我認識你！\n也歡迎互追一波，擴大一下工程圈🤣\n出門靠朋友，做工程靠專業，做人靠信用！\n看看這篇能不能把工程圈的大家都串起來🔥\n已釘選\n工程人不是都很早睡嗎？\n我看你們也都是很皮喔🤣\nwillis2006104\n你好\n大理石\n你好老闆\n我是拆除清運\nferdis.studio\n版主好\n大家好\n你好 準備下班了嗎？🤣\ndldl97155003\n哩賀！👋🔨\n我們主要承接輕鋼架、輕隔間相關工程，\n師傅🚫菸🚫酒🚫檳榔，重視案場環境整潔👍\n希望有機會跟大家交流、互相配合！🤝\n🔹 輕鋼架（明架、暗架）\n🔹 輕隔間工程\n🔹 天花板工程\n🔹 大小坪數不拘\n🔹 修補支援都可\n㊗️您生意興隆🥰🥰🥰\nzingguang\n裝潢\n😂 天花板選錯，抬頭就想哭！🤣\n🏠 塑膠板派：好清潔、好整理\n🔥 矽酸鈣板派：重視防火與耐用\n✨ 石膏板派：平整美觀，造型變化多\n🔇 礦纖板派：注重吸音，打造舒適空間\n沒有最好的材質，只有最適合你的需求！\n別等到裝潢完才發現：「欸？怎麼跟我想的不一樣！」😂\n天花板的事，就交給專業的來！\n吉冠工程行｜輕鋼架・輕隔間\n💚 LINE：@366lcgkf\n👇 換你選！如果是你家，你會選哪一種天花板？\n留言告訴我們，看看大家的眼光是不是都一樣！😎\n｜紀錄第2️⃣2️⃣天的小小編｜\n#吉冠工程行 #輕鋼架天花板 #輕隔間 #裝潢知識 #裝潢日常 #工程人的日常\n哩賀喔\n很高興認識你\ndldl97155003\n有機會合作一波～\njz._.0831\n追追\n拆除老闆路過\n一起擴大工程圈\n你好同業\n團結力量大！\nrun_love_0628\n拆除清運綁鐵👍\n是個狠人 多才多藝\nrun_love_0628\n多看多聽多學習\n沒錯 做中學 學中做\n我也在學習的路上\ncreator__interior_decoration\n裝潢統包\n你好\n你好喔 我拆除清運\nbelief_1390\n版主好 小小水電行 多指教\n你好 我是拆除跟清運\nzsxdc1352\n工安 你好\n你好 我拆除清運\nhsien_xinyu\n嗨嗨\n中部油漆🙋‍♀️",
+      "time": "2026-10-22T08:30:03.000Z",
+      "keywords": [
+        "拆除",
+        "裝潢"
+      ],
+      "regions": [],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-23T02:33:33.619Z",
+      "full": true
+    },
+    {
+      "code": "DevyPYEkcqQ",
+      "user": "mushroom_hung_",
+      "url": "https://www.threads.com/@mushroom_hung_/post/DevyPYEkcqQ",
+      "authorUrl": "https://www.threads.com/@mushroom_hung_",
+      "text": "650次瀏覽\n打石拆除翻修\n高雄拆除清運。打石。衛浴整修\n注重每個細節 歡迎參考\nzxc_678912\n💪🫰👍\ndora11020522\n辛苦的職人 🫡",
+      "time": "2026-10-21T06:39:50.000Z",
+      "keywords": [
+        "拆除"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-23T02:33:33.619Z",
+      "full": true
+    },
+    {
       "code": "Dey-9_NE6Tp",
       "user": "shuochen_ig",
       "url": "https://www.threads.com/@shuochen_ig/post/Dey-9_NE6Tp",
@@ -6316,9 +6436,9 @@
       "leads": 0
     },
     "二手設備": {
-      "count": 15,
-      "last": 1792715895095,
-      "scanned": 265,
+      "count": 16,
+      "last": 1792722664256,
+      "scanned": 285,
       "leads": 1
     },
     "關店": {
@@ -6364,9 +6484,9 @@
       "leads": 0
     },
     "商用冰箱": {
-      "count": 11,
-      "last": 1792717893348,
-      "scanned": 214,
+      "count": 12,
+      "last": 1792722752363,
+      "scanned": 232,
       "leads": 3
     },
     "讓渡": {
@@ -6394,15 +6514,15 @@
       "leads": 9
     },
     "低價出清": {
-      "count": 14,
-      "last": 1792715909042,
-      "scanned": 107,
+      "count": 15,
+      "last": 1792722649042,
+      "scanned": 117,
       "leads": 0
     },
     "搬家出清": {
-      "count": 13,
-      "last": 1792713764306,
-      "scanned": 132,
+      "count": 14,
+      "last": 1792722797059,
+      "scanned": 146,
       "leads": 4
     },
     "咖啡機": {
@@ -6508,8 +6628,8 @@
       "leads": 0
     },
     "爐具": {
-      "count": 12,
-      "last": 1792713807743,
+      "count": 13,
+      "last": 1792722691662,
       "scanned": 0,
       "leads": 0
     },
@@ -6520,9 +6640,9 @@
       "leads": 23
     },
     "飲料店": {
-      "count": 10,
-      "last": 1792715883298,
-      "scanned": 189,
+      "count": 11,
+      "last": 1792722678396,
+      "scanned": 207,
       "leads": 5
     },
     "裝潢": {
@@ -6538,10 +6658,10 @@
       "leads": 10
     },
     "拆除": {
-      "count": 12,
-      "last": 1792713865874,
-      "scanned": 244,
-      "leads": 8
+      "count": 13,
+      "last": 1792722780017,
+      "scanned": 265,
+      "leads": 11
     },
     "創業": {
       "count": 10,
@@ -6574,9 +6694,9 @@
       "leads": 2
     },
     "冷凍櫃": {
-      "count": 12,
-      "last": 1792715978952,
-      "scanned": 262,
+      "count": 13,
+      "last": 1792722766274,
+      "scanned": 283,
       "leads": 3
     },
     "加盟": {
@@ -6592,43 +6712,43 @@
       "leads": 7
     }
   },
-  "nextScanAt": "2026-10-23T02:21:33.390Z",
+  "nextScanAt": "2026-10-23T02:55:25.024Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-23T02:21:33.390Z",
-    "madeAt": "2026-10-23T01:51:18.549Z",
+    "at": "2026-10-23T02:55:25.024Z",
+    "madeAt": "2026-10-23T02:33:53.775Z",
     "items": [
       {
-        "kw": "低價出清",
-        "q": "低價出清"
+        "kw": "關店",
+        "q": "關店"
       },
       {
-        "kw": "二手設備",
-        "q": "二手設備"
+        "kw": "便宜賣",
+        "q": "便宜賣"
       },
       {
-        "kw": "飲料店",
-        "q": "飲料店"
+        "kw": "收攤",
+        "q": "收攤"
       },
       {
-        "kw": "爐具",
-        "q": "爐具"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "商用冰箱",
-        "q": "商用冰箱"
+        "kw": "結束營業",
+        "q": "結束營業"
       },
       {
-        "kw": "冷凍櫃",
-        "q": "冷凍櫃"
+        "kw": "收店",
+        "q": "收店"
       },
       {
-        "kw": "拆除",
-        "q": "拆除"
+        "kw": "二手冰箱",
+        "q": "二手冰箱"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "製冰機",
+        "q": "製冰機"
       }
     ]
   }
