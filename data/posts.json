@@ -1,66 +1,120 @@
 {
-  "updatedAt": "2026-10-23T02:33:53.780Z",
+  "updatedAt": "2026-10-23T03:09:17.942Z",
   "lastRun": {
-    "startedAt": "2026-10-23T02:30:48.802Z",
-    "finishedAt": "2026-10-23T02:33:53.744Z",
+    "startedAt": "2026-10-23T03:05:53.459Z",
+    "finishedAt": "2026-10-23T03:09:17.896Z",
     "status": "ok",
-    "scanned": 122,
-    "matched": 3,
-    "newCount": 3,
-    "notified": 3,
+    "scanned": 101,
+    "matched": 1,
+    "newCount": 1,
+    "notified": 1,
     "perKeyword": {
-      "低價出清": 10,
-      "二手設備": 20,
-      "飲料店": 18,
-      "爐具": 0,
-      "商用冰箱": 18,
-      "冷凍櫃": 21,
-      "拆除": 21,
-      "搬家出清": 14
+      "關店": 0,
+      "便宜賣": 20,
+      "收攤": 18,
+      "加盟": 21,
+      "結束營業": 15,
+      "收店": 0,
+      "二手冰箱": 9,
+      "製冰機": 18
     },
     "warnings": [],
     "keywordsUsed": [
-      "低價出清",
-      "二手設備",
-      "飲料店",
-      "爐具",
-      "商用冰箱",
-      "冷凍櫃",
-      "拆除",
-      "搬家出清"
+      "關店",
+      "便宜賣",
+      "收攤",
+      "加盟",
+      "結束營業",
+      "收店",
+      "二手冰箱",
+      "製冰機"
     ],
     "queries": [
-      "低價出清",
-      "二手設備",
-      "飲料店",
-      "爐具",
-      "商用冰箱",
-      "冷凍櫃",
-      "拆除",
-      "搬家出清"
+      "關店",
+      "便宜賣",
+      "收攤",
+      "加盟",
+      "結束營業",
+      "收店",
+      "二手冰箱",
+      "製冰機"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 78,
+      "seen": 67,
       "dup": 0,
-      "noContext": 32,
-      "noKeyword": 4,
-      "tooOld": 4,
+      "noContext": 25,
+      "noKeyword": 7,
       "words": {
-        "家具": 1
+        "定居": 1
       },
       "excludeWord": 1
     },
-    "detailFetched": 3,
+    "detailFetched": 1,
     "newUrls": [
-      "https://www.threads.com/@wa.huiyu0815/post/Dey7hkRFFcU",
-      "https://www.threads.com/@fubin300/post/DeyjphFk5Ul",
-      "https://www.threads.com/@mushroom_hung_/post/DevyPYEkcqQ"
+      "https://www.threads.com/@liguifang722/post/Dey_2nhGAIT"
     ],
     "pushMode": "on",
-    "nextInMinutes": 22
+    "nextInMinutes": 29
   },
   "runs": [
+    {
+      "startedAt": "2026-10-23T03:05:53.459Z",
+      "finishedAt": "2026-10-23T03:09:17.896Z",
+      "status": "ok",
+      "scanned": 101,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "關店": 0,
+        "便宜賣": 20,
+        "收攤": 18,
+        "加盟": 21,
+        "結束營業": 15,
+        "收店": 0,
+        "二手冰箱": 9,
+        "製冰機": 18
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "關店",
+        "便宜賣",
+        "收攤",
+        "加盟",
+        "結束營業",
+        "收店",
+        "二手冰箱",
+        "製冰機"
+      ],
+      "queries": [
+        "關店",
+        "便宜賣",
+        "收攤",
+        "加盟",
+        "結束營業",
+        "收店",
+        "二手冰箱",
+        "製冰機"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 67,
+        "dup": 0,
+        "noContext": 25,
+        "noKeyword": 7,
+        "words": {
+          "定居": 1
+        },
+        "excludeWord": 1
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@liguifang722/post/Dey_2nhGAIT"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 29
+    },
     {
       "startedAt": "2026-10-23T02:30:48.802Z",
       "finishedAt": "2026-10-23T02:33:53.744Z",
@@ -3389,6 +3443,23 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "Dey_2nhGAIT",
+      "user": "liguifang722",
+      "url": "https://www.threads.com/@liguifang722/post/Dey_2nhGAIT",
+      "authorUrl": "https://www.threads.com/@liguifang722",
+      "text": "147次瀏覽\n家電出清\n🔥搬家急出 最後幾樣\n家電全出清｜可貨到付款\n📦 出清品項&價格：\n烘乾機｜$1200\n• 除濕機｜$1000\n• 咖啡機｜$900\n• 洗碗機｜$600\n• 微波爐｜$1000\n• 麻將機｜$900\n• 洗地機｜$1000\n• 掃地機器人｜$1500\n• 小冰箱｜$1000/ 大冰箱｜$2000\n• 飲水機｜$900\n• 洗衣機｜$1200\n• 電鍋｜$500\n• 清淨機｜$1200（95成新，使用次數少）\n• 飛利浦氣炸鍋｜$600（9成新，功能正常）\n·製冰機｜$600\nchenkc0501\n詐騙",
+      "time": "2026-10-22T12:36:30.000Z",
+      "keywords": [
+        "咖啡機",
+        "製冰機"
+      ],
+      "regions": [],
+      "foundBy": "製冰機",
+      "foundQuery": "製冰機",
+      "foundAt": "2026-10-23T03:09:09.562Z",
+      "full": true
+    },
+    {
       "code": "Dey7hkRFFcU",
       "user": "wa.huiyu0815",
       "url": "https://www.threads.com/@wa.huiyu0815/post/Dey7hkRFFcU",
@@ -6442,21 +6513,21 @@
       "leads": 1
     },
     "關店": {
-      "count": 11,
-      "last": 1792720066881,
+      "count": 12,
+      "last": 1792724755265,
       "scanned": 0,
       "leads": 0
     },
     "便宜賣": {
-      "count": 12,
-      "last": 1792717932297,
-      "scanned": 214,
+      "count": 13,
+      "last": 1792724814726,
+      "scanned": 234,
       "leads": 23
     },
     "收攤": {
-      "count": 14,
-      "last": 1792717878883,
-      "scanned": 245,
+      "count": 15,
+      "last": 1792724828200,
+      "scanned": 263,
       "leads": 0
     },
     "帶走價": {
@@ -6532,10 +6603,10 @@
       "leads": 13
     },
     "製冰機": {
-      "count": 14,
-      "last": 1792717839979,
-      "scanned": 268,
-      "leads": 5
+      "count": 15,
+      "last": 1792724936480,
+      "scanned": 286,
+      "leads": 6
     },
     "設備出清": {
       "count": 4,
@@ -6592,14 +6663,14 @@
       "leads": 0
     },
     "結束營業": {
-      "count": 13,
-      "last": 1792715966125,
-      "scanned": 233,
+      "count": 14,
+      "last": 1792724854794,
+      "scanned": 248,
       "leads": 11
     },
     "收店": {
-      "count": 13,
-      "last": 1792720158321,
+      "count": 14,
+      "last": 1792724867857,
       "scanned": 0,
       "leads": 0
     },
@@ -6688,9 +6759,9 @@
       "leads": 8
     },
     "二手冰箱": {
-      "count": 12,
-      "last": 1792715951233,
-      "scanned": 208,
+      "count": 13,
+      "last": 1792724925725,
+      "scanned": 217,
       "leads": 2
     },
     "冷凍櫃": {
@@ -6700,9 +6771,9 @@
       "leads": 3
     },
     "加盟": {
-      "count": 12,
-      "last": 1792715922652,
-      "scanned": 241,
+      "count": 13,
+      "last": 1792724841206,
+      "scanned": 262,
       "leads": 0
     },
     "招牌": {
@@ -6712,43 +6783,43 @@
       "leads": 7
     }
   },
-  "nextScanAt": "2026-10-23T02:55:25.024Z",
+  "nextScanAt": "2026-10-23T03:37:56.442Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-23T02:55:25.024Z",
-    "madeAt": "2026-10-23T02:33:53.775Z",
+    "at": "2026-10-23T03:37:56.442Z",
+    "madeAt": "2026-10-23T03:09:17.936Z",
     "items": [
       {
-        "kw": "關店",
-        "q": "關店"
+        "kw": "咖啡機",
+        "q": "咖啡機"
       },
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "收攤",
-        "q": "收攤"
+        "kw": "爐具",
+        "q": "爐具"
       },
       {
-        "kw": "加盟",
-        "q": "加盟"
+        "kw": "蒸烤箱",
+        "q": "蒸烤箱"
       },
       {
-        "kw": "結束營業",
-        "q": "結束營業"
+        "kw": "店面出租",
+        "q": "店面出租"
       },
       {
-        "kw": "收店",
-        "q": "收店"
+        "kw": "創業",
+        "q": "創業"
       },
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "清倉",
+        "q": "清倉"
       },
       {
-        "kw": "製冰機",
-        "q": "製冰機"
+        "kw": "招牌",
+        "q": "招牌"
       }
     ]
   }
