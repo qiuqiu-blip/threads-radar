@@ -90,6 +90,8 @@ details>summary{font-size:17px;padding:6px 0}
 .hotmic .cd{margin-left:auto;font-size:24px;font-weight:900;color:#fff}
 .hotmic.idle{animation:none;border-width:1px;border-color:#6b2a22;background:#1e1210;font-size:14px;padding:6px 12px;color:#e8b4aa}
 @keyframes micpulse{0%,100%{box-shadow:0 0 0 0 rgba(255,90,77,.6)}50%{box-shadow:0 0 0 8px rgba(255,90,77,0)}}
+.kwhl{text-decoration:underline;text-decoration-color:#ff3b3b;text-decoration-thickness:3px;text-underline-offset:5px;text-decoration-skip-ink:none}
+.kwc{text-decoration:underline dashed;text-decoration-color:#ff7a5c;text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-skip-ink:none}
 button.viatag{cursor:pointer;font-family:inherit}
 .etag .etagbtn{all:unset;cursor:pointer;white-space:nowrap;font:inherit;color:inherit}
 #kwOv{position:fixed;inset:0;z-index:85;background:rgba(5,4,2,.88);overflow:auto;padding:24px 12px 60px;overscroll-behavior:contain}
@@ -921,7 +923,7 @@ function prepPost(p,i){
 function readingCard(){return R.url?document.querySelector(`article[data-url="${CSS.escape(R.url)}"]`):null}
 function applySpans(){
   const card=readingCard();if(!card||!R.spans)return;const el=card.querySelector('.text');if(!el||el.dataset.spans===R.url)return;
-  el.innerHTML=R.spans.map((x,k)=>`<span data-k="${k}">${esc(x)}</span>`).join('');el.dataset.spans=R.url;
+  const _p=findPostU(R.url),_w=_p?hlWords(_p):{kw:[],cond:[]};el.innerHTML=R.spans.map((x,k)=>`<span data-k="${k}">${hl(x,_w)}</span>`).join('');el.dataset.spans=R.url;
 }
 function headerH(){const h=document.querySelector('header');return h?h.getBoundingClientRect().height:0}
 function followChunk(){
@@ -929,7 +931,7 @@ function followChunk(){
   card.querySelectorAll('.rd-now').forEach(e=>e.classList.remove('rd-now'));
   if(userScrolling||!card.classList.contains('big'))return;
   const k=R.map?R.map[R.ci]:-1;
-  if(k==null||k<0){const y=card.getBoundingClientRect().top+scrollY-headerH()-10;window.scrollTo({top:y,behavior:'smooth'});return}
+  if(k==null||k<0){alignReading();return}
   const sp=card.querySelector(`.text [data-k="${k}"]`);if(!sp)return;sp.classList.add('rd-now');
   const r=sp.getBoundingClientRect(),top=headerH()+20,bottom=innerHeight-110;
   if(r.top<top||r.bottom>bottom){const y=r.top+scrollY-(top+(bottom-top)*0.3);window.scrollTo({top:Math.max(0,y),behavior:'smooth'})}
@@ -948,15 +950,20 @@ function sayChunk(){
 function startPost(p,i){
   if(LISTEN.on)listenStart();
   prepPost(p,i);R.paused=false;
-  markReading();applySpans();if(LISTEN.on)hotMic();
+  markReading();applySpans();if(LISTEN.on)hotMic();alignReading();
   sayChunk();
+}
+// 朗讀換下一則：把卡片對齊到畫面最上方（版面會變動，所以分幾次校正）
+function alignReading(){
+  [0,150,450,1000].forEach(ms=>setTimeout(()=>{if(!R.mode||userScrolling)return;const c=readingCard();if(!c)return;
+    const y=c.getBoundingClientRect().top+scrollY-headerH()-8;if(Math.abs(y-scrollY)>4)window.scrollTo({top:Math.max(0,y),behavior:'instant'})},ms));
 }
 function nextInQueue(){
   while(R.mode==='queue'&&R.qi+1<R.queue.length){
     R.qi++;const p=findPostU(R.queue[R.qi]);
     if(!p)continue; // 已刪除的跳過
     prepPost(p,R.qi);markReading();applySpans();if(LISTEN.on){listenStart();setTimeout(hotMic,50)}
-    const card=readingCard();if(card){const y=card.getBoundingClientRect().top+scrollY-headerH()-10;window.scrollTo({top:y,behavior:'smooth'})}
+    userScrolling=false;alignReading();
     const tok=++R.tok;setTimeout(()=>{if(tok===R.tok&&R.mode==='queue'&&!R.paused)sayChunk()},600);return;
   }
   const wasQueue=R.mode==='queue';stopRead();if(wasQueue)toast('🔊 全部朗讀完畢');
@@ -1262,7 +1269,7 @@ function renderList(){
         <button class="delbtn" data-delpost="${u}" title="刪除這則">🗑</button>
       </div>
       ${facts.length?`<div class="facts">${facts.map(x=>`<span>${x}</span>`).join('')}</div>`:''}
-      <div class="text ${state.bigUrl===p.url?'open':''}" data-toggle>${esc(p.text)}</div>
+      <div class="text ${state.bigUrl===p.url?'open':''}" data-toggle>${hl(p.text,hlWords(p))}</div>
       ${a.intent.reasons.length?`<div class="why">💡 ${esc(a.intent.reasons.join('・'))}</div>`:''}
       <div class="acts">
         <button class="btn sm" data-reply="${u}">✍️ ${t('rpBtn')}</button>
@@ -1771,6 +1778,19 @@ document.addEventListener('click',e=>{
 function kwBase(k){return String(k||'').split(/[+＋]/)[0].trim()}
 function cleanTxt(t){let a=String(t||'').split('\n');const c=a.findIndex(x=>/^(相關串文|Related threads)$/i.test(x.trim()));if(c>0)a=a.slice(0,c);return a.filter(x=>!/^(串文|Thread)$/i.test(x.trim())).join('\n')}
 function viaOf(p){return p.foundQuery||p.foundBy||((p.keywords||[])[0])||''}
+function hlWords(p){
+  const kw=new Set([...(p.keywords||[]).filter(k=>!String(k).startsWith('@')),viaBase(p)].filter(Boolean));
+  const raw=[...(state.cfg?.mustKeywords||[]),...(state.cfg?.keywords||[])].find(x=>kwBase(x)===viaBase(p));
+  const cond=new Set(raw&&/[+＋]/.test(raw)?raw.split(/[+＋]/)[1].split(/[\/|｜／]/).map(x=>x.trim()).filter(Boolean):[]);
+  kw.forEach(k=>cond.delete(k));return {kw:[...kw],cond:[...cond]};
+}
+function hl(raw,w){
+  raw=String(raw||'');const words=[...w.kw.map(x=>[x,'kwhl']),...w.cond.map(x=>[x,'kwc'])].filter(([x])=>x).sort((a,b)=>b[0].length-a[0].length);
+  if(!words.length)return esc(raw);
+  const re=new RegExp(words.map(([x])=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g');const cls=new Map(words);
+  let out='',i=0;raw.replace(re,(m,off)=>{out+=esc(raw.slice(i,off))+`<span class="${cls.get(m)}">${esc(m)}</span>`;i=off+m.length;return m});
+  return out+esc(raw.slice(i));
+}
 function viaBase(p){return kwBase(String(viaOf(p)||'').split(/[\s→]/)[0])}
 function viaTag(p){const v=viaOf(p);return v?`<button class="viatag" data-kwinfo="${esc(viaBase(p))}" title="點我看這個關鍵字的數據">🔍 ${esc(v)}</button>`:''}
 /* ---- 關鍵字數據 ---- */
