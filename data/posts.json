@@ -1,60 +1,116 @@
 {
-  "updatedAt": "2026-10-23T01:14:32.814Z",
+  "updatedAt": "2026-10-23T01:51:18.553Z",
   "lastRun": {
-    "startedAt": "2026-10-23T01:10:38.804Z",
-    "finishedAt": "2026-10-23T01:14:32.764Z",
+    "startedAt": "2026-10-23T01:47:34.747Z",
+    "finishedAt": "2026-10-23T01:51:18.524Z",
     "status": "ok",
-    "scanned": 146,
-    "matched": 1,
-    "newCount": 1,
-    "notified": 0,
+    "scanned": 113,
+    "matched": 2,
+    "newCount": 2,
+    "notified": 2,
     "perKeyword": {
-      "製冰機": 19,
-      "歇業": 15,
-      "咖啡機": 16,
-      "收攤": 18,
-      "商用冰箱": 18,
-      "餐車": 21,
-      "蒸烤箱": 18,
-      "便宜賣": 21
+      "裝潢": 17,
+      "關店": 0,
+      "開店": 17,
+      "招牌": 19,
+      "收店": 0,
+      "清倉": 20,
+      "店面出租": 20,
+      "退租": 20
     },
     "warnings": [],
     "keywordsUsed": [
-      "製冰機",
-      "歇業",
-      "咖啡機",
-      "收攤",
-      "商用冰箱",
-      "餐車",
-      "蒸烤箱",
-      "便宜賣"
+      "裝潢",
+      "關店",
+      "開店",
+      "招牌",
+      "收店",
+      "清倉",
+      "店面出租",
+      "退租"
     ],
     "queries": [
-      "製冰機",
-      "歇業",
-      "咖啡機",
-      "收攤",
-      "商用冰箱",
-      "餐車",
-      "蒸烤箱",
-      "便宜賣"
+      "裝潢",
+      "關店",
+      "開店",
+      "招牌",
+      "收店",
+      "清倉",
+      "店面出租",
+      "退租"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 101,
+      "seen": 58,
       "dup": 0,
-      "noContext": 36,
-      "noKeyword": 7,
-      "tooOld": 1
+      "noContext": 40,
+      "noKeyword": 9,
+      "tooOld": 4
     },
-    "detailFetched": 1,
+    "detailFetched": 2,
     "newUrls": [
-      "https://www.threads.com/@lovebf2014/post/DezOcAKkiLp"
+      "https://www.threads.com/@shuochen_ig/post/Dey-9_NE6Tp",
+      "https://www.threads.com/@yes_g_jiachores/post/DewjFaJH2KY"
     ],
     "pushMode": "on",
-    "nextInMinutes": 23
+    "nextInMinutes": 30
   },
   "runs": [
+    {
+      "startedAt": "2026-10-23T01:47:34.747Z",
+      "finishedAt": "2026-10-23T01:51:18.524Z",
+      "status": "ok",
+      "scanned": 113,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "裝潢": 17,
+        "關店": 0,
+        "開店": 17,
+        "招牌": 19,
+        "收店": 0,
+        "清倉": 20,
+        "店面出租": 20,
+        "退租": 20
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "裝潢",
+        "關店",
+        "開店",
+        "招牌",
+        "收店",
+        "清倉",
+        "店面出租",
+        "退租"
+      ],
+      "queries": [
+        "裝潢",
+        "關店",
+        "開店",
+        "招牌",
+        "收店",
+        "清倉",
+        "店面出租",
+        "退租"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 58,
+        "dup": 0,
+        "noContext": 40,
+        "noKeyword": 9,
+        "tooOld": 4
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@shuochen_ig/post/Dey-9_NE6Tp",
+        "https://www.threads.com/@yes_g_jiachores/post/DewjFaJH2KY"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 30
+    },
     {
       "startedAt": "2026-10-23T01:10:38.804Z",
       "finishedAt": "2026-10-23T01:14:32.764Z",
@@ -3268,6 +3324,42 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "Dey-9_NE6Tp",
+      "user": "shuochen_ig",
+      "url": "https://www.threads.com/@shuochen_ig/post/Dey-9_NE6Tp",
+      "authorUrl": "https://www.threads.com/@shuochen_ig",
+      "text": "4.8 萬次瀏覽\n三重美食\n三重自強路也開了一間樂天羊肉！🐑\n原本在台北南門市場對面、每次都要排隊的人氣店，現在在三重就能免排隊吃到，真的很棒！\n從裝潢到餐點，都有把原本的風格帶過來，店面一樣乾淨清爽，滷肉飯還是一樣好吃，羊肉湯也一樣清甜，重點是湯還可以無限續喝！\n不用特地跑台北，也不用排隊，就能吃到熟悉的好味道，真的很讚。\nluia17\n這間滷肉飯比今大店小二都好吃 燙青菜也給的很大方 蔬菜湯的紅蘿蔔味有點重 整體乾淨好吃\nwwww199308\n卡一個有沒有人吃過\nnancy_feng_1231\n我愛羊肉\n_.yorozuya\n我的💖店\nmgc._2011\n@5meow_paradise\nwtf.photopic\n還好\n我個人覺得滿普\n自強路也是食物的一級戰區\n希望它活得下去\nzhiyuan6538\n這家不錯，2個月前我也是看裏面快坐滿了才進去吃的\ngash0723\n湯頭很讚",
+      "time": "2026-10-22T12:28:46.000Z",
+      "keywords": [
+        "裝潢"
+      ],
+      "regions": [
+        "台北"
+      ],
+      "foundBy": "裝潢",
+      "foundQuery": "裝潢",
+      "foundAt": "2026-10-23T01:51:04.811Z",
+      "full": true
+    },
+    {
+      "code": "DewjFaJH2KY",
+      "user": "yes_g_jiachores",
+      "url": "https://www.threads.com/@yes_g_jiachores/post/DewjFaJH2KY",
+      "authorUrl": "https://www.threads.com/@yes_g_jiachores",
+      "text": "9,798次瀏覽\n清潔服務\n清潔公司收費越貴\n就一定洗得越乾淨嗎！？\n先告訴你們結論 不會\n我 在高雄 一小時500\n最低三小時\n就是幫你們服務到好\n有需要退租或是住家清潔\n歡迎聯絡我！！\npeip.ei829\n請問房子退租大樓平面。粗清多少錢\n您好 我私訊您\nyacian314\n私訊\nshing_2185\n留\n_isole._\n想了解\n已私訊您！\ncn.7744\n私\ncheng_579824\n你是整理東西高手嗎\ncherry51685168\n想了解\n已私訊您！\nxxooobb\n有聯絡方式嗎？到時候有需要可以找你\n您好 私訊！\nleohouse_1218\n想了解\n沒問題 我私訊您",
+      "time": "2026-10-21T13:46:38.000Z",
+      "keywords": [
+        "退租"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "退租",
+      "foundQuery": "退租",
+      "foundAt": "2026-10-23T01:51:04.811Z",
+      "full": true
+    },
+    {
       "code": "DezOcAKkiLp",
       "user": "lovebf2014",
       "url": "https://www.threads.com/@lovebf2014/post/DezOcAKkiLp",
@@ -6206,9 +6298,9 @@
   ],
   "kwStats": {
     "清倉": {
-      "count": 13,
-      "last": 1792713776767,
-      "scanned": 202,
+      "count": 14,
+      "last": 1792720219693,
+      "scanned": 222,
       "leads": 0
     },
     "頂店": {
@@ -6230,8 +6322,8 @@
       "leads": 1
     },
     "關店": {
-      "count": 10,
-      "last": 1792704759436,
+      "count": 11,
+      "last": 1792720066881,
       "scanned": 0,
       "leads": 0
     },
@@ -6296,10 +6388,10 @@
       "leads": 0
     },
     "退租": {
-      "count": 10,
-      "last": 1792673204042,
-      "scanned": 164,
-      "leads": 8
+      "count": 11,
+      "last": 1792720248927,
+      "scanned": 184,
+      "leads": 9
     },
     "低價出清": {
       "count": 14,
@@ -6386,8 +6478,8 @@
       "leads": 11
     },
     "收店": {
-      "count": 12,
-      "last": 1792713689007,
+      "count": 13,
+      "last": 1792720158321,
       "scanned": 0,
       "leads": 0
     },
@@ -6434,15 +6526,15 @@
       "leads": 5
     },
     "裝潢": {
-      "count": 13,
-      "last": 1792700318681,
-      "scanned": 234,
-      "leads": 0
+      "count": 14,
+      "last": 1792720054976,
+      "scanned": 251,
+      "leads": 1
     },
     "店面出租": {
-      "count": 12,
-      "last": 1792713792091,
-      "scanned": 232,
+      "count": 13,
+      "last": 1792720233057,
+      "scanned": 252,
       "leads": 10
     },
     "拆除": {
@@ -6470,9 +6562,9 @@
       "leads": 0
     },
     "開店": {
-      "count": 11,
-      "last": 1792715939776,
-      "scanned": 214,
+      "count": 12,
+      "last": 1792720129602,
+      "scanned": 231,
       "leads": 8
     },
     "二手冰箱": {
@@ -6494,49 +6586,49 @@
       "leads": 0
     },
     "招牌": {
-      "count": 9,
-      "last": 1792704817890,
-      "scanned": 175,
+      "count": 10,
+      "last": 1792720143101,
+      "scanned": 194,
       "leads": 7
     }
   },
-  "nextScanAt": "2026-10-23T01:38:00.864Z",
+  "nextScanAt": "2026-10-23T02:21:33.390Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-23T01:38:00.864Z",
-    "madeAt": "2026-10-23T01:14:32.808Z",
+    "at": "2026-10-23T02:21:33.390Z",
+    "madeAt": "2026-10-23T01:51:18.549Z",
     "items": [
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "關店",
-        "q": "關店"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "開店",
-        "q": "開店"
+        "kw": "飲料店",
+        "q": "飲料店"
       },
       {
-        "kw": "招牌",
-        "q": "招牌"
+        "kw": "爐具",
+        "q": "爐具"
       },
       {
-        "kw": "收店",
-        "q": "收店"
+        "kw": "商用冰箱",
+        "q": "商用冰箱"
       },
       {
-        "kw": "清倉",
-        "q": "清倉"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "拆除",
+        "q": "拆除"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       }
     ]
   }
