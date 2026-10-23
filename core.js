@@ -436,7 +436,10 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
 
     /* ① 搜尋：關鍵字（有機率加上一個地區一起搜） */
     const regions = cfg.regions || [];
+    const tStart = Date.now(), budget = Math.max(3, Number(cfg.maxScanMinutes) || 10) * 60e3;
     for (const kw of thisRun) {
+      // 時間保護：GitHub 一次最多跑 15 分鐘，搜太久就先停，剩下的下次再搜，已抓到的線索不會不見
+      if (Date.now() - tStart > budget) { run.warnings.push(`搜尋時間超過 ${Math.round(budget / 60e3)} 分鐘，剩下 ${thisRun.length - run.queries.length} 個關鍵字留到下次`); if (cfg.kwOrder !== 'random') doc.kwCursor = Math.max(0, (Number(doc.kwCursor) || 0) - (thisRun.length - run.queries.length)); break; }
       const st = doc.kwStats[kw] || (doc.kwStats[kw] = { count: 0, last: 0, scanned: 0, leads: 0 });
       st.count++; st.last = Date.now();
       const query = qOf.get(kw) || kw;
@@ -563,7 +566,53 @@ async function sendTestNotification(env = process.env) {
   return ok;
 }
 
+/* ---------------- 📣 發文排程：時間到提醒（半自動）／官方 API 自動發文（之後啟用） ---------------- */
+async function threadsPublish(it, env, log) {
+  const base = 'https://graph.threads.net/v1.0', uidT = env.THREADS_USER_ID, tok = env.THREADS_TOKEN;
+  const repo = env.GITHUB_REPOSITORY || '';
+  const urlOf = (p) => `https://raw.githubusercontent.com/${repo}/${env.GITHUB_REF_NAME || 'main'}/${p}`;
+  const post = async (path, params) => {
+    const r = await fetch(`${base}${path}`, { method: 'POST', body: new URLSearchParams({ ...params, access_token: tok }) });
+    const j = await r.json().catch(() => ({})); if (!r.ok || !j.id) throw new Error((j.error && j.error.message) || `HTTP ${r.status}`); return j.id;
+  };
+  const text = (it.text || '').trim() + (it.topic ? `\n#${String(it.topic).replace(/^#/, '')}` : '');
+  const imgs = (it.images || []).filter((x) => x.path).slice(0, 10);
+  let creation;
+  if (!imgs.length) creation = await post(`/${uidT}/threads`, { media_type: 'TEXT', text });
+  else if (imgs.length === 1) creation = await post(`/${uidT}/threads`, { media_type: 'IMAGE', image_url: urlOf(imgs[0].path), text });
+  else {
+    const kids = []; for (const im of imgs) kids.push(await post(`/${uidT}/threads`, { media_type: 'IMAGE', image_url: urlOf(im.path), is_carousel_item: 'true' }));
+    creation = await post(`/${uidT}/threads`, { media_type: 'CAROUSEL', children: kids.join(','), text });
+  }
+  await sleep(30000);   // 官方建議等約 30 秒再發布
+  const id = await post(`/${uidT}/threads_publish`, { creation_id: creation });
+  log(`🤖 已自動發文：${id}`); return id;
+}
+async function handleOutbox({ cfg, store, env = process.env, log = console.log }) {
+  const dir = path.dirname(store.postsFile);
+  const out = readJson(path.join(dir, 'outbox.json'), null); if (!out || !Array.isArray(out.items)) return;
+  const stFile = path.join(dir, 'outbox-state.json');
+  const st = readJson(stFile, { reminded: {}, published: {} }); st.reminded = st.reminded || {}; st.published = st.published || {};
+  const now = Date.now(); let changed = false;
+  const repo = env.GITHUB_REPOSITORY || ''; const panel = repo ? `https://${repo.split('/')[0]}.github.io/${repo.split('/')[1]}/` : '';
+  for (const it of out.items) {
+    if (it.deleted || it.status !== 'scheduled' || !it.planAt || Date.parse(it.planAt) > now || st.published[it.id]) continue;
+    if (it.mode === 'auto' && cfg.threadsAuto && env.THREADS_TOKEN && env.THREADS_USER_ID) {
+      try { const id = await threadsPublish(it, env, log); st.published[it.id] = { at: new Date().toISOString(), threadsId: id }; changed = true;
+        await sendTelegram(`🤖 <b>已自動發文</b>｜${escHtml(it.cat || '')}\n\n${escHtml((it.text || '').slice(0, 300))}`, env).catch(() => {}); }
+      catch (e) { log('自動發文失敗：' + e.message); if (!st.reminded[it.id]) { st.reminded[it.id] = new Date().toISOString(); changed = true;
+        await sendTelegram(`⚠️ <b>自動發文失敗，請手動發</b>（${escHtml(e.message)}）\n\n${escHtml((it.text || '').slice(0, 300))}${panel ? `\n\n👉 <a href="${panel}">打開控制台 → 發文</a>` : ''}`, env).catch(() => {}); } }
+      continue;
+    }
+    if (st.reminded[it.id]) continue;
+    const ok = await sendTelegram(`⏰ <b>該發文了｜${escHtml(it.cat || '貼文')}</b>${(it.images || []).length ? `（📷 ${it.images.length} 張）` : ''}\n\n${escHtml((it.text || '').slice(0, 600))}${it.topic ? `\n#${escHtml(it.topic)}` : ''}${panel ? `\n\n👉 <a href="${panel}">打開控制台 → 發文 → 📤 發文</a>` : ''}`, env).catch(() => false);
+    st.reminded[it.id] = new Date().toISOString(); changed = true; log(`⏰ 發文提醒：${it.id}${ok ? '' : '（Telegram 沒送出）'}`);
+  }
+  if (changed) writeJson(stFile, st);
+}
+
 module.exports = {
+  handleOutbox, threadsPublish,
   planQueries, usePlan, applyKwRules,
   DEFAULT_CONFIG, loadConfig, normUser, FileStore, parseCookies, extractInPage, scrapeKeyword,
   matchPost, formatPost, notify, runScan, sendTestNotification, shouldScan, inQuiet, pickNext, restHours, pickKeywords,

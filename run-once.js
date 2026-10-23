@@ -12,6 +12,7 @@ const core = require('./core');
   }
   const { chromium } = require('playwright');
   await core.runScan({ chromium });
+  try { await core.handleOutbox({ cfg: core.loadConfig(), store: new core.FileStore() }); } catch (e) { console.warn('發文排程處理失敗：' + e.message); }
 })().catch((e) => {
   console.error(e);
   process.exitCode = 1;
