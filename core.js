@@ -335,7 +335,14 @@ function pickKeywords(cfg, doc) {
   const must = cfg.mustKeywords || [];
   const rest = (cfg.keywords || []).filter((k) => !must.includes(k));
   const n = Math.max(0, Math.round(Number(cfg.keywordsPerScan ?? 4)));
-  if (n === 0 || n >= rest.length) return [...must, ...shuffle([...rest])];
+  if (n === 0 || n >= rest.length) return [...must, ...(cfg.kwOrder === 'random' ? shuffle([...rest]) : rest)];
+  if (cfg.kwOrder !== 'random') {   // 照順序輪流：每次接著上次的位置往下搜，一輪搜完才重來，不重複
+    const start = (Number(doc.kwCursor) || 0) % rest.length;
+    const pick = [];
+    for (let i = 0; i < n; i++) pick.push(rest[(start + i) % rest.length]);
+    doc.kwCursor = (start + n) % rest.length;
+    return [...must, ...pick];
+  }
   const stats = doc.kwStats || {};
   const ordered = shuffle([...rest]).sort((a, b) => ((stats[a] && stats[a].last) || 0) - ((stats[b] && stats[b].last) || 0));
   return [...must, ...shuffle(ordered.slice(0, Math.min(rest.length, n * 2))).slice(0, n)];
