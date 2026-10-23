@@ -1,61 +1,114 @@
 {
-  "updatedAt": "2026-10-23T00:40:03.843Z",
+  "updatedAt": "2026-10-23T01:14:32.814Z",
   "lastRun": {
-    "startedAt": "2026-10-23T00:38:02.992Z",
-    "finishedAt": "2026-10-23T00:40:03.799Z",
+    "startedAt": "2026-10-23T01:10:38.804Z",
+    "finishedAt": "2026-10-23T01:14:32.764Z",
     "status": "ok",
-    "scanned": 144,
-    "matched": 2,
-    "newCount": 2,
-    "notified": 2,
+    "scanned": 146,
+    "matched": 1,
+    "newCount": 1,
+    "notified": 0,
     "perKeyword": {
-      "飲料店": 19,
-      "二手設備": 18,
-      "低價出清": 10,
-      "加盟": 22,
-      "開店": 21,
-      "二手冰箱": 16,
-      "結束營業": 17,
-      "冷凍櫃": 21
+      "製冰機": 19,
+      "歇業": 15,
+      "咖啡機": 16,
+      "收攤": 18,
+      "商用冰箱": 18,
+      "餐車": 21,
+      "蒸烤箱": 18,
+      "便宜賣": 21
     },
     "warnings": [],
     "keywordsUsed": [
-      "飲料店",
-      "二手設備",
-      "低價出清",
-      "加盟",
-      "開店",
-      "二手冰箱",
-      "結束營業",
-      "冷凍櫃"
+      "製冰機",
+      "歇業",
+      "咖啡機",
+      "收攤",
+      "商用冰箱",
+      "餐車",
+      "蒸烤箱",
+      "便宜賣"
     ],
     "queries": [
-      "飲料店",
-      "二手設備",
-      "低價出清",
-      "加盟",
-      "開店",
-      "二手冰箱",
-      "結束營業",
-      "冷凍櫃"
+      "製冰機",
+      "歇業",
+      "咖啡機",
+      "收攤",
+      "商用冰箱",
+      "餐車",
+      "蒸烤箱",
+      "便宜賣"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 84,
+      "seen": 101,
       "dup": 0,
-      "noContext": 47,
-      "noKeyword": 8,
-      "tooOld": 3
+      "noContext": 36,
+      "noKeyword": 7,
+      "tooOld": 1
     },
-    "detailFetched": 2,
+    "detailFetched": 1,
     "newUrls": [
-      "https://www.threads.com/@linglingsstudio/post/DeybLmzHV86",
-      "https://www.threads.com/@qqqq0989576526/post/Dev7AZTAaAD"
+      "https://www.threads.com/@lovebf2014/post/DezOcAKkiLp"
     ],
     "pushMode": "on",
-    "nextInMinutes": 28
+    "nextInMinutes": 23
   },
   "runs": [
+    {
+      "startedAt": "2026-10-23T01:10:38.804Z",
+      "finishedAt": "2026-10-23T01:14:32.764Z",
+      "status": "ok",
+      "scanned": 146,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 0,
+      "perKeyword": {
+        "製冰機": 19,
+        "歇業": 15,
+        "咖啡機": 16,
+        "收攤": 18,
+        "商用冰箱": 18,
+        "餐車": 21,
+        "蒸烤箱": 18,
+        "便宜賣": 21
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "製冰機",
+        "歇業",
+        "咖啡機",
+        "收攤",
+        "商用冰箱",
+        "餐車",
+        "蒸烤箱",
+        "便宜賣"
+      ],
+      "queries": [
+        "製冰機",
+        "歇業",
+        "咖啡機",
+        "收攤",
+        "商用冰箱",
+        "餐車",
+        "蒸烤箱",
+        "便宜賣"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 101,
+        "dup": 0,
+        "noContext": 36,
+        "noKeyword": 7,
+        "tooOld": 1
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@lovebf2014/post/DezOcAKkiLp"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 23
+    },
     {
       "startedAt": "2026-10-23T00:38:02.992Z",
       "finishedAt": "2026-10-23T00:40:03.799Z",
@@ -3215,6 +3268,24 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "DezOcAKkiLp",
+      "user": "lovebf2014",
+      "url": "https://www.threads.com/@lovebf2014/post/DezOcAKkiLp",
+      "authorUrl": "https://www.threads.com/@lovebf2014",
+      "text": "562次瀏覽\n二手設備\n飲料店設備出售\n新舊狀態不一\n製冰機\n電磁爐\n工作台冰箱\n檯面\n封口機等等\n座標：龜山（靠近林口長庚）\nliu.j.tong\n請問有照片嗎",
+      "time": "2026-10-22T14:43:57.000Z",
+      "keywords": [
+        "飲料店",
+        "二手設備",
+        "製冰機"
+      ],
+      "regions": [],
+      "foundBy": "製冰機",
+      "foundQuery": "製冰機",
+      "foundAt": "2026-10-23T01:12:26.336Z",
+      "full": true
+    },
+    {
       "code": "DeybLmzHV86",
       "user": "linglingsstudio",
       "url": "https://www.threads.com/@linglingsstudio/post/DeybLmzHV86",
@@ -6165,15 +6236,15 @@
       "leads": 0
     },
     "便宜賣": {
-      "count": 11,
-      "last": 1792702996747,
-      "scanned": 193,
+      "count": 12,
+      "last": 1792717932297,
+      "scanned": 214,
       "leads": 23
     },
     "收攤": {
-      "count": 13,
-      "last": 1792702952753,
-      "scanned": 227,
+      "count": 14,
+      "last": 1792717878883,
+      "scanned": 245,
       "leads": 0
     },
     "帶走價": {
@@ -6201,9 +6272,9 @@
       "leads": 0
     },
     "商用冰箱": {
-      "count": 10,
-      "last": 1792700372266,
-      "scanned": 196,
+      "count": 11,
+      "last": 1792717893348,
+      "scanned": 214,
       "leads": 3
     },
     "讓渡": {
@@ -6243,16 +6314,16 @@
       "leads": 4
     },
     "咖啡機": {
-      "count": 13,
-      "last": 1792702980186,
-      "scanned": 250,
+      "count": 14,
+      "last": 1792717865109,
+      "scanned": 266,
       "leads": 13
     },
     "製冰機": {
-      "count": 13,
-      "last": 1792704746769,
-      "scanned": 249,
-      "leads": 4
+      "count": 14,
+      "last": 1792717839979,
+      "scanned": 268,
+      "leads": 5
     },
     "設備出清": {
       "count": 4,
@@ -6261,15 +6332,15 @@
       "leads": 0
     },
     "蒸烤箱": {
-      "count": 13,
-      "last": 1792704689776,
-      "scanned": 242,
+      "count": 14,
+      "last": 1792717918226,
+      "scanned": 260,
       "leads": 0
     },
     "歇業": {
-      "count": 13,
-      "last": 1792713675765,
-      "scanned": 227,
+      "count": 14,
+      "last": 1792717853782,
+      "scanned": 242,
       "leads": 2
     },
     "店面轉讓": {
@@ -6387,9 +6458,9 @@
       "leads": 2
     },
     "餐車": {
-      "count": 13,
-      "last": 1792713748634,
-      "scanned": 261,
+      "count": 14,
+      "last": 1792717906088,
+      "scanned": 282,
       "leads": 1
     },
     "排油煙": {
@@ -6429,43 +6500,43 @@
       "leads": 7
     }
   },
-  "nextScanAt": "2026-10-23T01:07:53.404Z",
+  "nextScanAt": "2026-10-23T01:38:00.864Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-23T01:07:53.404Z",
-    "madeAt": "2026-10-23T00:40:03.837Z",
+    "at": "2026-10-23T01:38:00.864Z",
+    "madeAt": "2026-10-23T01:14:32.808Z",
     "items": [
       {
-        "kw": "製冰機",
-        "q": "製冰機"
+        "kw": "裝潢",
+        "q": "裝潢"
       },
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "關店",
+        "q": "關店"
       },
       {
-        "kw": "咖啡機",
-        "q": "咖啡機"
+        "kw": "開店",
+        "q": "開店"
       },
       {
-        "kw": "收攤",
-        "q": "收攤"
+        "kw": "招牌",
+        "q": "招牌"
       },
       {
-        "kw": "商用冰箱",
-        "q": "商用冰箱"
+        "kw": "收店",
+        "q": "收店"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "清倉",
+        "q": "清倉"
       },
       {
-        "kw": "蒸烤箱",
-        "q": "蒸烤箱"
+        "kw": "店面出租",
+        "q": "店面出租"
       },
       {
-        "kw": "便宜賣",
-        "q": "便宜賣"
+        "kw": "退租",
+        "q": "退租"
       }
     ]
   }
