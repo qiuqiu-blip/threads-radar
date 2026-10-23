@@ -1,31 +1,31 @@
 {
-  "updatedAt": "2026-10-23T10:59:31.895Z",
+  "updatedAt": "2026-10-23T11:55:53.558Z",
   "lastRun": {
-    "startedAt": "2026-10-23T10:50:41.283Z",
-    "finishedAt": "2026-10-23T10:59:31.857Z",
+    "startedAt": "2026-10-23T11:46:06.014Z",
+    "finishedAt": "2026-10-23T11:55:53.502Z",
     "status": "ok",
-    "scanned": 206,
-    "matched": 3,
-    "newCount": 3,
-    "notified": 3,
+    "scanned": 193,
+    "matched": 2,
+    "newCount": 2,
+    "notified": 2,
     "perKeyword": {
       "頂讓": 19,
       "盤讓": 19,
-      "店面頂讓": 20,
+      "店面頂讓": 19,
       "頂讓金": 0,
       "店面出租": 20,
-      "即將開幕": 20,
-      "試營運": 19,
-      "飲料店": 18,
-      "餐車": 17,
-      "維修": 20,
-      "油煙機": 19,
-      "讓渡金": 0,
-      "頂讓費": 0,
-      "找接手": 0,
-      "接手": 0,
-      "收掉": 0,
-      "熄燈": 15
+      "不做了": 0,
+      "工作台": 0,
+      "冰櫃": 0,
+      "展示櫃": 18,
+      "封口機": 19,
+      "炸爐": 0,
+      "煮麵機": 0,
+      "快速爐": 0,
+      "冰淇淋機": 16,
+      "收銀機": 21,
+      "二手冷氣": 22,
+      "統包": 20
     },
     "warnings": [],
     "keywordsUsed": [
@@ -34,18 +34,18 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "即將開幕",
-      "試營運",
-      "飲料店",
-      "餐車",
-      "維修",
-      "油煙機",
-      "讓渡金",
-      "頂讓費",
-      "找接手",
-      "接手",
-      "收掉",
-      "熄燈"
+      "不做了",
+      "工作台",
+      "冰櫃",
+      "展示櫃",
+      "封口機",
+      "炸爐",
+      "煮麵機",
+      "快速爐",
+      "冰淇淋機",
+      "收銀機",
+      "二手冷氣",
+      "統包"
     ],
     "queries": [
       "頂讓",
@@ -53,42 +53,118 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "即將開幕",
-      "試營運",
-      "飲料店",
-      "餐車",
-      "維修",
-      "油煙機",
-      "讓渡金",
-      "頂讓費",
-      "找接手",
-      "接手",
-      "收掉",
-      "熄燈"
+      "不做了",
+      "工作台",
+      "冰櫃",
+      "展示櫃",
+      "封口機",
+      "炸爐",
+      "煮麵機",
+      "快速爐",
+      "冰淇淋機",
+      "收銀機",
+      "二手冷氣",
+      "統包"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 145,
+      "seen": 119,
       "dup": 0,
-      "tooOld": 16,
-      "words": {
-        "家具": 1
-      },
-      "excludeWord": 1,
-      "noKeyword": 4,
-      "notBiz": 8,
-      "noContext": 29
+      "noKeyword": 12,
+      "tooOld": 10,
+      "noContext": 50
     },
-    "detailFetched": 3,
+    "detailFetched": 2,
     "newUrls": [
-      "https://www.threads.com/@rock_love_food/post/De1EZDVkyFe",
-      "https://www.threads.com/@weining_1117/post/De09aZiH2xe",
-      "https://www.threads.com/@hoven0401/post/Dey8sBciafl"
+      "https://www.threads.com/@_xing.818/post/De1c0zgExw2",
+      "https://www.threads.com/@jcnana0520/post/De1bSyZmPtH"
     ],
     "pushMode": "on",
-    "nextInMinutes": 23
+    "nextInMinutes": 33
   },
   "runs": [
+    {
+      "startedAt": "2026-10-23T11:46:06.014Z",
+      "finishedAt": "2026-10-23T11:55:53.502Z",
+      "status": "ok",
+      "scanned": 193,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "頂讓": 19,
+        "盤讓": 19,
+        "店面頂讓": 19,
+        "頂讓金": 0,
+        "店面出租": 20,
+        "不做了": 0,
+        "工作台": 0,
+        "冰櫃": 0,
+        "展示櫃": 18,
+        "封口機": 19,
+        "炸爐": 0,
+        "煮麵機": 0,
+        "快速爐": 0,
+        "冰淇淋機": 16,
+        "收銀機": 21,
+        "二手冷氣": 22,
+        "統包": 20
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "不做了",
+        "工作台",
+        "冰櫃",
+        "展示櫃",
+        "封口機",
+        "炸爐",
+        "煮麵機",
+        "快速爐",
+        "冰淇淋機",
+        "收銀機",
+        "二手冷氣",
+        "統包"
+      ],
+      "queries": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "不做了",
+        "工作台",
+        "冰櫃",
+        "展示櫃",
+        "封口機",
+        "炸爐",
+        "煮麵機",
+        "快速爐",
+        "冰淇淋機",
+        "收銀機",
+        "二手冷氣",
+        "統包"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 119,
+        "dup": 0,
+        "noKeyword": 12,
+        "tooOld": 10,
+        "noContext": 50
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@_xing.818/post/De1c0zgExw2",
+        "https://www.threads.com/@jcnana0520/post/De1bSyZmPtH"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 33
+    },
     {
       "startedAt": "2026-10-23T10:50:41.283Z",
       "finishedAt": "2026-10-23T10:59:31.857Z",
@@ -4648,6 +4724,44 @@
   ],
   "lastWarnAt": null,
   "posts": [
+    {
+      "code": "De1c0zgExw2",
+      "user": "_xing.818",
+      "url": "https://www.threads.com/@_xing.818/post/De1c0zgExw2",
+      "authorUrl": "https://www.threads.com/@_xing.818",
+      "text": "近期整理倉庫，整理出一些閒置品\n二手便宜賣一賣\n1.冰箱9000（可小議）\n3.封口機1500\n4.承重台500\n5.狗籠100\n6.三口瓦斯爐500\n7.折疊腳踏車（送）\n8.承重架100\n9.小俓腳踏車300\n10.品牌腳踏車300\n11.LG腳踏車500\n以上皆面交～～只限高雄～",
+      "time": "2026-10-23T11:28:09.000Z",
+      "keywords": [
+        "便宜賣",
+        "封口機"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "封口機",
+      "foundQuery": "封口機",
+      "foundAt": "2026-10-23T11:55:40.687Z"
+    },
+    {
+      "code": "De1bSyZmPtH",
+      "user": "jcnana0520",
+      "url": "https://www.threads.com/@jcnana0520/post/De1bSyZmPtH",
+      "authorUrl": "https://www.threads.com/@jcnana0520",
+      "text": "431次瀏覽\n室內設計\n林口 文化一路二段\n需要統包 （負責天花板/電燈/油漆）\n10/25早上11點可配合實地丈量\n求推薦🙏\n預算30萬內\nking_88168\n您好有需要 其餘可幫你統籌\nxunweil\n0905313093 元萱屋研黃先生\nvincentlin_1013\n私訊！ 先了解坪數格局需求 25號可以配合\ndream99407\n您好～👋🏻\n我們是桃園的藝術塗料・油漆團隊🎨\n主頁有放我們的作品集，歡迎參考看看唷！🤎\n如果有任何施工或塗料相關問題，也歡迎私訊小編🙋🏻‍♀️ 我們很樂意為您提供建議～\n我們提供的服務：\n👷｜油漆工程\n🎨｜藝術塗料專業施作\n🪣｜藝術塗料販售\n🤝｜設計公司配合\n🏠｜連鎖店・展店工程\n✍️｜異業合作洽詢\n🚗 服務範圍｜台中以北（桃園出發）\niamcy77\n嗨👋您好啊，我們是醞美漆飾塗裝，有漆面塗裝需求歡迎聊聊哦😊 我們依現場實際丈量施作面積報價、工程合約保障、一年漆面保固、每日進度回報～工班不菸不酒，新成屋改色、舊漆整新、主視覺牆面設計、特殊塗料等我們都有施作 歡迎參考 atelierpura.com\natelierpura.com\n醞美漆飾塗裝｜Atelier Pura\nyuhao456\nzhongqingyunzhong\n你好，請先加聯絡方式0980577835可加賴\nxuezhangyuan8\ndingcheng-engineering.gdysrt6xng.chatgpt…\n燈具安裝工程，歡迎配工。\ndingcheng-engineering.gdysrt6xng.chatgpt.site\n雙北燈光工程服務｜燈具安裝、燈帶與光膜施工｜鼎承工程行\nsense_space\n您好新成屋系統櫃一坪$9,999元起\n以實坪計扣30%公設\n主頁有作品集連結歡迎參觀聊聊\n雙北免費丈量報價有緣加LINE 0919-318-178號\nwiekinhayun\n您好我們是統包工程 🫡\n希望有機會能為您服務",
+      "time": "2026-10-23T11:14:46.000Z",
+      "keywords": [
+        "統包",
+        "油漆"
+      ],
+      "regions": [
+        "桃園",
+        "台中"
+      ],
+      "foundBy": "統包",
+      "foundQuery": "統包",
+      "foundAt": "2026-10-23T11:55:40.688Z",
+      "full": true
+    },
     {
       "code": "De1EZDVkyFe",
       "user": "rock_love_food",
@@ -9742,9 +9856,9 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 14,
-      "last": 1792752668275,
-      "scanned": 272,
+      "count": 15,
+      "last": 1792755998202,
+      "scanned": 291,
       "leads": 9
     },
     "二手設備": {
@@ -9778,9 +9892,9 @@
       "leads": 0
     },
     "頂讓": {
-      "count": 13,
-      "last": 1792752641548,
-      "scanned": 218,
+      "count": 14,
+      "last": 1792755968259,
+      "scanned": 237,
       "leads": 8
     },
     "廚房設備": {
@@ -9880,9 +9994,9 @@
       "leads": 1
     },
     "盤讓": {
-      "count": 13,
-      "last": 1792752654021,
-      "scanned": 226,
+      "count": 14,
+      "last": 1792755983282,
+      "scanned": 245,
       "leads": 12
     },
     "營業用": {
@@ -9964,9 +10078,9 @@
       "leads": 1
     },
     "店面出租": {
-      "count": 24,
-      "last": 1792752743178,
-      "scanned": 467,
+      "count": 25,
+      "last": 1792756075040,
+      "scanned": 487,
       "leads": 15
     },
     "拆除": {
@@ -10066,8 +10180,8 @@
       "leads": 1
     },
     "頂讓金": {
-      "count": 10,
-      "last": 1792752683116,
+      "count": 11,
+      "last": 1792756015320,
       "scanned": 0,
       "leads": 0
     },
@@ -10108,76 +10222,76 @@
       "leads": 0
     },
     "不做了": {
-      "count": 1,
-      "last": 1792744556595,
+      "count": 2,
+      "last": 1792756091455,
       "scanned": 0,
       "leads": 0
     },
     "工作台": {
-      "count": 1,
-      "last": 1792744616346,
+      "count": 2,
+      "last": 1792756149823,
       "scanned": 0,
       "leads": 0
     },
     "冰櫃": {
-      "count": 1,
-      "last": 1792744675389,
+      "count": 2,
+      "last": 1792756208793,
       "scanned": 0,
       "leads": 0
     },
     "展示櫃": {
-      "count": 1,
-      "last": 1792744736563,
-      "scanned": 21,
+      "count": 2,
+      "last": 1792756267307,
+      "scanned": 39,
       "leads": 2
     },
     "封口機": {
-      "count": 1,
-      "last": 1792744751247,
-      "scanned": 22,
-      "leads": 1
+      "count": 2,
+      "last": 1792756281323,
+      "scanned": 41,
+      "leads": 2
     },
     "炸爐": {
-      "count": 1,
-      "last": 1792744764806,
+      "count": 2,
+      "last": 1792756297769,
       "scanned": 0,
       "leads": 0
     },
     "煮麵機": {
-      "count": 1,
-      "last": 1792744824433,
+      "count": 2,
+      "last": 1792756359174,
       "scanned": 0,
       "leads": 0
     },
     "快速爐": {
-      "count": 1,
-      "last": 1792746764515,
+      "count": 2,
+      "last": 1792756418442,
       "scanned": 0,
       "leads": 0
     },
     "冰淇淋機": {
-      "count": 1,
-      "last": 1792746822836,
-      "scanned": 18,
+      "count": 2,
+      "last": 1792756477744,
+      "scanned": 34,
       "leads": 0
     },
     "收銀機": {
-      "count": 1,
-      "last": 1792746837712,
-      "scanned": 19,
+      "count": 2,
+      "last": 1792756492872,
+      "scanned": 40,
       "leads": 0
     },
     "二手冷氣": {
-      "count": 1,
-      "last": 1792746852946,
-      "scanned": 22,
+      "count": 2,
+      "last": 1792756507329,
+      "scanned": 44,
       "leads": 0
     },
     "統包": {
-      "count": 1,
-      "last": 1792746867471,
-      "scanned": 20,
-      "leads": 2
+      "count": 2,
+      "last": 1792756523770,
+      "scanned": 40,
+      "leads": 3
     },
     "油漆": {
       "count": 1,
@@ -10240,11 +10354,11 @@
       "leads": 0
     }
   },
-  "nextScanAt": "2026-10-23T11:22:49.070Z",
+  "nextScanAt": "2026-10-23T12:28:58.415Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-23T11:22:49.070Z",
-    "madeAt": "2026-10-23T10:59:31.889Z",
+    "at": "2026-10-23T12:28:58.415Z",
+    "madeAt": "2026-10-23T11:55:53.551Z",
     "items": [
       {
         "kw": "頂讓",
@@ -10267,54 +10381,54 @@
         "q": "店面出租"
       },
       {
-        "kw": "不做了",
-        "q": "不做了"
+        "kw": "油漆",
+        "q": "油漆"
       },
       {
-        "kw": "工作台",
-        "q": "工作台"
+        "kw": "冷氣",
+        "q": "冷氣"
       },
       {
-        "kw": "冰櫃",
-        "q": "冰櫃"
+        "kw": "搬家",
+        "q": "搬家"
       },
       {
-        "kw": "展示櫃",
-        "q": "展示櫃"
+        "kw": "貨運",
+        "q": "貨運"
       },
       {
-        "kw": "封口機",
-        "q": "封口機"
+        "kw": "清運",
+        "q": "清運"
       },
       {
-        "kw": "炸爐",
-        "q": "炸爐"
+        "kw": "漏水",
+        "q": "漏水"
       },
       {
-        "kw": "煮麵機",
-        "q": "煮麵機"
+        "kw": "POS",
+        "q": "POS"
       },
       {
-        "kw": "快速爐",
-        "q": "快速爐"
+        "kw": "點餐系統",
+        "q": "點餐系統"
       },
       {
-        "kw": "冰淇淋機",
-        "q": "冰淇淋機"
+        "kw": "創業",
+        "q": "創業"
       },
       {
-        "kw": "收銀機",
-        "q": "收銀機"
+        "kw": "找店面",
+        "q": "找店面"
       },
       {
-        "kw": "二手冷氣",
-        "q": "二手冷氣"
+        "kw": "籌備",
+        "q": "籌備"
       },
       {
-        "kw": "統包",
-        "q": "統包"
+        "kw": "加盟",
+        "q": "加盟"
       }
     ]
   },
-  "kwCursor": 43
+  "kwCursor": 0
 }
