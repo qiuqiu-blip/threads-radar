@@ -6,7 +6,10 @@
 <meta name="theme-color" content="#0b0906">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="脆雷達">
+<meta name="apple-mobile-web-app-title" content="球球雷達">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <title>小球脆雷達</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0906'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23d4af37' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23d4af37' stroke-width='2' opacity='.6'/%3E%3Cpath d='M32 32 L48 18' stroke='%23f5d77a' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='3.5' fill='%23f5d77a'/%3E%3C/svg%3E">
 <style>
@@ -108,7 +111,7 @@ button.viatag{cursor:pointer;font-family:inherit}
 .readbar{display:flex;gap:8px;margin-bottom:10px}
 .readbar .btn{flex:1}
 .ratebar #rateVal{font-weight:800;color:var(--gold2)}
-.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+.filters{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:10px}
 @media(max-width:520px){.filters{grid-template-columns:repeat(2,1fr)}}
 .filters select{width:100%;background:#0f0c07;border:1px solid var(--line);border-radius:10px;padding:8px;color:var(--text)}
 html,body{overscroll-behavior-y:none;margin:0;background:var(--bg);color:var(--text);font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;}
@@ -206,6 +209,22 @@ main{padding-top:16px}
 .pimg{position:relative}.pimg button{position:absolute;top:-6px;right:-6px;width:26px;height:26px;border-radius:50%;border:0;background:#c0392b;color:#fff;cursor:pointer}
 .padd{width:86px;height:86px;border-radius:10px;border:2px dashed var(--gold3);display:flex;align-items:center;justify-content:center;font-size:34px;color:var(--gold2);cursor:pointer}
 .ptext{white-space:pre-wrap;font-size:16px;line-height:1.6;margin-top:8px;max-height:200px;overflow:auto}
+#splash{position:fixed;inset:0;z-index:999;background:radial-gradient(circle at 50% 40%,#2a1a08,#0b0906 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .6s,transform .6s}
+#splash img{width:min(78vw,520px);height:auto;border-radius:22%;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 60px rgba(255,170,40,.35);animation:splpop .7s cubic-bezier(.2,1.4,.4,1)}
+#splash .spl-bar{width:min(60vw,320px);height:6px;border-radius:9px;background:#2a2112;overflow:hidden}
+#splash .spl-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd95a,#ff9a2e);animation:splbar 2s ease forwards}
+#splash.hide{opacity:0;transform:scale(1.04);pointer-events:none}
+#splash .splash-t{margin-top:0}
+@keyframes splpop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes splbar{to{width:100%}}
+nav button.ring svg{animation:ring 1s ease-in-out infinite;color:#ffb347}
+@keyframes ring{0%,100%{transform:rotate(0)}20%{transform:rotate(-18deg)}40%{transform:rotate(16deg)}60%{transform:rotate(-10deg)}80%{transform:rotate(6deg)}}
+.svtag{font-size:14px;border-radius:999px;padding:4px 11px;border:1px solid #4c7dff;color:#9fc0ff;background:#101a33}
+.asktag{font-size:14px;border-radius:999px;padding:4px 11px;background:linear-gradient(180deg,#ffb36b,#ff7a2e);color:#2a1000;font-weight:800;border:0}
+.fubox{margin-top:12px;padding:12px;border-radius:12px;border:1px dashed var(--gold3);background:rgba(212,175,55,.05)}
+.fubox .row{display:grid;grid-template-columns:1fr 2fr;gap:8px}
+.fubox input{width:100%;background:#0f0c07;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text);font:inherit}
+.post.fudue{border-color:#ff5a4d!important;box-shadow:0 0 0 2px rgba(255,90,77,.35)}
 #dirtyBar{position:fixed;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:55;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#5a2a10,#3a1a08);border:1px solid #ff8a3d;color:#ffd7b8;font-weight:800;font-size:16px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 #dirtyBar[hidden]{display:none}
 .chip.pinchip{border-color:#f5c542;color:#ffd95a;font-weight:800}
@@ -308,7 +327,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
 </head>
 <body>
 
-<div id="splash"><div><div class="radar"></div><div class="splash-t">小球脆雷達</div></div></div>
+<div id="splash" onclick="this.classList.add('hide');setTimeout(()=>this.remove(),600)"><img src="splash.jpg" alt="球球雷達"><div class="splash-t">小球脆雷達</div><div class="spl-bar"><i></i></div></div>
 
 <header>
   <div class="wrap">
@@ -356,6 +375,7 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
       <select id="fIntent"><option value="">意向：全部</option><option value="高">🔥 高意向</option><option value="中">🌤 中意向</option><option value="低">❄️ 低意向</option></select>
       <select id="fRole"><option value="">角色：全部</option><option>賣方</option><option>買方</option><option>同業</option></select>
       <select id="fStatus"><option value="">狀態：全部</option><option>未聯絡</option><option>已私訊</option><option>已回覆</option><option>成交</option><option>不需聯絡</option></select>
+      <select id="fSvc"><option value="">服務：全部</option><option value="ask">🙋 只看發問／找廠商</option></select>
       <select id="fSort"><option value="new">排序：最新</option><option value="hot">排序：意向最高</option></select>
     </div>
     <div class="chips" id="chips"></div>
@@ -880,8 +900,8 @@ function disconnect(){
 }
 function renderChips(){
   const kws=new Set();(state.doc?.posts||[]).forEach(p=>[...(p.keywords||[]),...(p.regions||[])].forEach(k=>kws.add(k)));
-  const np=Object.values(state.crm).filter(c=>c&&c.pin).length;
-  $('#chips').innerHTML=[['',t('all')],['__pin',`📌 重點 ${np}`],...[...kws].map(k=>[k,k])].map(([v,l])=>`<button class="chip ${v==='__pin'?'pinchip':''} ${state.filter===v?'on':''}" data-f="${esc(v)}">${esc(l)}</button>`).join('');
+  const np=Object.values(state.crm).filter(c=>c&&c.pin).length,nd=Object.values(state.crm).filter(fuDue).length;
+  $('#chips').innerHTML=[['',t('all')],['__pin',`📌 重點 ${np}${nd?`・⏰${nd}`:''}`],...[...kws].map(k=>[k,k])].map(([v,l])=>`<button class="chip ${v==='__pin'?'pinchip':''} ${state.filter===v?'on':''}" data-f="${esc(v)}">${esc(l)}</button>`).join('');
 }
 
 /* ============ 朗讀（單則／連續，可暫停） ============ */
@@ -1177,7 +1197,7 @@ function listenStop(){LISTEN.active=false;const r=LISTEN.rec;LISTEN.rec=null;try
 const STATUSES=['未聯絡','已私訊','已回覆','成交','不需聯絡'];
 const TEMPS=['冷','溫','熱'];
 state.crm=LS.get('crm',{});
-state.f={intent:'',role:'',status:'',sort:'new'};
+state.f={intent:'',role:'',status:'',svc:'',sort:'new'};
 if(state.done.size){state.done.forEach(u=>{if(!state.crm[u])state.crm[u]={s:'已私訊',at:Date.now()}});LS.set('crm',state.crm);state.done.clear();LS.set('done',[])}
 function crm(u){return state.crm[u]||{s:'未聯絡'}}
 function setCrm(u,patch){
@@ -1199,12 +1219,24 @@ function pinStore(){const m=LS.get('pins',{});if(window.DB&&DB.unlocked&&DB.data
 function pinnedPosts(){const m=pinStore();const live=new Map((state.doc?.posts||[]).map(p=>[p.url,p]));
   return Object.keys(state.crm).filter(u=>state.crm[u]&&state.crm[u].pin).map(u=>live.get(u)||m[u]).filter(Boolean).sort((a,b)=>(crm(b.url).pinAt||0)-(crm(a.url).pinAt||0))}
 function findPostU(u){return (state.doc?.posts||[]).find(x=>x.url===u)||pinStore()[u]||((window.DB&&DB.leads)||[]).find(x=>x.url===u)||null}
+const SVC_CACHE=new Map();
+function svcOf(p){let v=SVC_CACHE.get(p.url);if(!v){v=window.RadarAnalyze&&RadarAnalyze.serviceOf?RadarAnalyze.serviceOf(p):{svc:[],ask:false};SVC_CACHE.set(p.url,v)}return v}
+function todayStr(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei'}).format(new Date())}
+function fuDue(c){return c&&c.pin&&c.fu&&c.fu<=todayStr()}
+function addDays(n){const d=new Date();d.setDate(d.getDate()+n);return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei'}).format(d)}
+function fuBox(p){const c=crm(p.url);const log=(c.fuLog||[]).slice(-3).reverse();
+  return `<div class="fubox"><div style="font-weight:800;color:var(--gold2);margin-bottom:8px">📋 後續跟進${fuDue(c)?' <span class="asktag">⏰ 今天要跟進</span>':''}</div>
+    <div class="row"><label class="hint" style="margin:0">下次跟進日期<input type="date" data-fudate="${esc(p.url)}" value="${esc(c.fu||'')}"></label>
+    <label class="hint" style="margin:0">跟進備註<input data-funote="${esc(p.url)}" value="${esc(c.fuNote||'')}" placeholder="例：週五下午打電話問設備"></label></div>
+    <div class="acts" style="margin-top:8px"><button class="btn sm" data-fudone="${esc(p.url)}">✅ 今天已跟進</button>${[1,3,7].map(n=>`<button class="btn ghost sm" data-fuin="${esc(p.url)}|${n}">${n} 天後</button>`).join('')}</div>
+    ${log.length?`<div class="hint" style="margin:8px 0 0">${log.map(l=>`・${esc(new Date(l.at).toLocaleDateString('zh-TW'))} ${esc(l.note||'已跟進')}`).join('<br>')}</div>`:''}</div>`}
+function toastAct(msg,label,fn){toast(msg,fn);const b=$('#toast button');if(b)b.textContent=label}
 function togglePin(u){
   const p=findPostU(u);const on=!crm(u).pin;const now=Date.now();
   setCrm(u,{pin:on,pinAt:on?now:0});
   const m=LS.get('pins',{});if(on&&p)m[u]={...p,pinAt:now};else delete m[u];LS.set('pins',m);
   if(window.DB&&DB.unlocked&&DB.data){DB.data.pins=DB.data.pins||{};DB.data.pins[u]=on&&p?{...p,pinAt:now}:{deleted:true,pinAt:now};DB.markDirty()}
-  toast(on?'📌 已加入重點線索':'已從重點線索移除');renderChips();renderList();
+  if(on){if(!crm(u).fu)setCrm(u,{fu:addDays(1)});toastAct('📌 已移到「重點」，明天提醒你跟進','前往',()=>{state.filter='__pin';renderChips();renderList();window.scrollTo({top:0})})}else toast('已從重點線索移除');renderChips();renderList();
 }
 const AN=new Map();
 function an(p){
@@ -1225,6 +1257,8 @@ function renderList(){
     if(f.intent&&a.intent.level!==f.intent)return false;
     if(f.role&&a.role!==f.role)return false;
     if(f.status&&c.s!==f.status)return false;
+    if(f.svc){const sv=svcOf(p);if(f.svc==='ask'?!sv.ask:!sv.svc.includes(f.svc))return false}
+    if(!pinMode&&c.pin)return false; // 加入重點的線索，搬到「📌 重點」去跟進
     if(state.filter&&state.filter.startsWith('via:')){if(viaBase(p)!==state.filter.slice(4))return false}
     else if(state.filter&&!pinMode&&![...(p.keywords||[]),...(p.regions||[])].includes(state.filter))return false;
     if(q&&!(`${p.text} ${p.user}`.toLowerCase().includes(q)))return false;
@@ -1240,6 +1274,7 @@ function renderList(){
   const bKey=p=>{const fa=Date.parse(p.foundAt)||0;const w=runsW.find(([s,e])=>fa>=s&&fa<=e);return w?Date.parse(w[2]):Math.floor(fa/6e5)*6e5};
   const grouped=f.sort!=='hot'&&!pinMode;
   if(grouped){const K=new Map(posts.map(p=>[p.url,bKey(p)]));posts=[...posts].sort((a,b)=>K.get(b.url)-K.get(a.url)||(VIEW_SNAP.has(a.url)-VIEW_SNAP.has(b.url))||(Date.parse(b.foundAt)||0)-(Date.parse(a.foundAt)||0));posts._K=K}
+  if(pinMode)posts=[...posts].sort((a,b)=>{const x=crm(a.url).fu||'9999',y=crm(b.url).fu||'9999';return x<y?-1:x>y?1:(crm(b.url).pinAt||0)-(crm(a.url).pinAt||0)});
   const pinHd=pinMode?`<div class="banner" style="font-size:16px">📌 <b>重點線索</b>（${posts.length} 則）：你標記為重點的線索都集中在這裡，雷達清掉舊資料也會保留。</div>`:'';
   if(!posts.length){$('#list').innerHTML=hb+pinHd+`<div class="empty">${pinMode?'還沒有重點線索。在線索卡片按「📌 加入重點」就會出現在這裡。':t('noPosts')}</div>`;return}
   let lastK=null;
@@ -1254,12 +1289,13 @@ function renderList(){
       i.line?`💬 LINE ${esc(i.line)}`:'',i.equip&&i.equip.length?`🔧 ${esc(i.equip.join('、'))}`:''
     ].filter(Boolean);
     const u=esc(p.url);
-    return hd+`<article data-url="${u}" class="card post ${isNew?'unseen':'seen'} ${c.pin?'pinned':''} ${R.url===p.url&&R.mode?'reading big':''} ${state.bigUrl===p.url&&!(R.url===p.url&&R.mode)?'big':''} ${contacted(p.url)?'done':''} ${c.s==='不需聯絡'?'skip':''}">
+    return hd+`<article data-url="${u}" class="card post ${isNew?'unseen':'seen'} ${c.pin?'pinned':''} ${pinMode&&fuDue(c)?'fudue':''} ${R.url===p.url&&R.mode?'reading big':''} ${state.bigUrl===p.url&&!(R.url===p.url&&R.mode)?'big':''} ${contacted(p.url)?'done':''} ${c.s==='不需聯絡'?'skip':''}">
       <div class="meta">
         <div class="trow"><span class="ipill ${a.intent.level}">${LV_ICON[a.intent.level]} ${a.intent.level}意向</span><span class="tago ${Date.now()-Date.parse(p.time||p.foundAt)<3*3600e3?'fresh':''}" title="對方發文時間">🕒 發文 ${ago(p.time||p.foundAt)}</span>
         ${p.foundAt?`<span class="tagf ${Date.now()-Date.parse(p.foundAt)<3600e3?'fresh':''}" title="雷達抓到的時間：${esc(new Date(p.foundAt).toLocaleString('zh-TW',{hour12:false}))}">📡 抓到 ${ago(p.foundAt)}</span>`:''}</div>
         ${(p.watched||(state.cfg?.watchUsers||[]).includes(normUser(p.user)))?'<span class="wtag">⭐ 關注</span>':''}
         ${viaTag(p)}
+        ${(()=>{const sv=svcOf(p);return (sv.ask?'<span class="asktag">🙋 發問</span>':'')+sv.svc.map(x=>`<span class="svtag">🛠 ${esc(x)}</span>`).join('')})()}
         <span class="rtag ${a.role}">${a.role}</span>
         ${a.cat!==a.role?`<span class="tag">${esc(a.cat)}</span>`:''}
         <a class="user" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">@${esc(p.user)}</a>
@@ -1283,6 +1319,7 @@ function renderList(){
         <button class="btn ghost sm" data-xuser="${esc(normUser(p.user))}">🚫 排除帳號</button>
         <button class="btn ${c.pin?'':'ghost '}sm" data-pin="${u}">${c.pin?'📌 已是重點（點我移除）':'📌 加入重點'}</button>
       </div>
+      ${pinMode?fuBox(p):''}
       <div class="crm">
         ${STATUSES.map(st=>`<button class="chip st-${st} ${c.s===st?'on':''}" data-st="${u}|${st}">${st}</button>`).join('')}
         <span class="sep"></span>
@@ -1708,13 +1745,16 @@ document.addEventListener('click',e=>{
   if(el.dataset.delpost){const u=el.dataset.delpost;if(R.url===u&&R.mode)deleteCurrent();else hidePost(u);return}
   if(el.id==='micToggle'){LISTEN.on=!LISTEN.on;LS.set('voiceCmd',LISTEN.on);renderMic();if(LISTEN.on&&R.mode)listenStart();else listenStop();toast(LISTEN.on?'🎙 朗讀中可以說「刪除」「跳過」「暫停」':'🎙 語音指令已關閉');return}
   if(el.id==='askToggle'){ASK.on=!ASK.on;LS.set('askDel',ASK.on);renderAskToggle();toast(ASK.on?'朗讀完會問是否刪除':'朗讀完不詢問');return}
-  if(el.hasAttribute('data-showall')){state.f.intent='';state.f.role='';state.f.status='';state.filter='';state.q='';
-    ['fIntent','fRole','fStatus'].forEach(id=>{if($('#'+id))$('#'+id).value=''});if($('#q'))$('#q').value='';
+  if(el.hasAttribute('data-showall')){state.f.intent='';state.f.role='';state.f.status='';state.f.svc='';state.filter='';state.q='';
+    ['fIntent','fRole','fStatus','fSvc'].forEach(id=>{if($('#'+id))$('#'+id).value=''});if($('#q'))$('#q').value='';
     renderChips();renderList();saveView();toast('已顯示全部線索');return}
   if(el.dataset.fab){const f=el.dataset.fab;if(f==='next')skipCurrent();else if(f==='del')deleteCurrent();else if(f==='pause'){R.paused?resumeRead():pauseRead()}return}
   if(el.id==='gapToggle'){LS.set('gap',!LS.get('gap',true));markReading();toast(LS.get('gap',true)?'⏱ 每句念完停 1 秒，讓麥克風聽清楚':'⏱ 已關閉句間停頓');return}
   if(el.dataset.kwinfo){openKwInfo(el.dataset.kwinfo);return}
   if(el.dataset.pin){togglePin(el.dataset.pin);return}
+  if(el.dataset.fudone){const u=el.dataset.fudone,c=crm(u),note=(document.querySelector(`[data-funote="${CSS.escape(u)}"]`)||{}).value||'';setCrm(u,{fuLog:[...(c.fuLog||[]),{at:Date.now(),note}].slice(-20),fu:addDays(3),fuNote:''});
+    if(window.DB&&DB.unlocked){try{const p=findPostU(u);if(p)DB.recordFollow&&DB.recordFollow(p,note)}catch{}}toast('✅ 已記錄跟進，3 天後再提醒');renderChips();renderList();return}
+  if(el.dataset.fuin){const [u,n]=el.dataset.fuin.split('|');setCrm(u,{fu:addDays(+n)});toast(`⏰ ${n} 天後提醒跟進`);renderChips();renderList();return}
   if(el.dataset.rate!==undefined){setRate(+el.dataset.rate);return}
   if(el.id==='readAllBtn'){toggleQueue();return}
   if(el.id==='readStopBtn'){stopRead();return}
@@ -1733,7 +1773,8 @@ document.addEventListener('click',e=>{
 });
 ['kw','mu','rg','ex','xu','wu'].forEach(id=>$('#'+id+'In').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addTag(id)}}));
 $('#q').addEventListener('input',e=>{state.q=e.target.value;renderList()});
-['fIntent','fRole','fStatus','fSort'].forEach(id=>$('#'+id).addEventListener('change',e=>{const k={fIntent:'intent',fRole:'role',fStatus:'status',fSort:'sort'}[id];state.f[k]=e.target.value;renderList()}));
+$('#list').addEventListener('change',e=>{const d=e.target.dataset;if(d.fudate){setCrm(d.fudate,{fu:e.target.value});renderChips();toast('📅 已設定跟進日期')}if(d.funote!==undefined&&e.target.dataset.funote){setCrm(d.funote,{fuNote:e.target.value});toast('📝 已存備註')}});
+['fIntent','fRole','fStatus','fSvc','fSort'].forEach(id=>$('#'+id).addEventListener('change',e=>{const k={fIntent:'intent',fRole:'role',fStatus:'status',fSvc:'svc',fSort:'sort'}[id];state.f[k]=e.target.value;renderList()}));
 $('#refreshBtn').onclick=()=>{snapViewed();load()};
 $('#voiceBtn').onclick=()=>{state.voice=!state.voice;LS.set('voice',state.voice);applyLang();toast(state.voice?t('voiceOn'):t('voiceOff'));speak(t('voiceOn'))};
 $('#saveBtn').onclick=()=>saveSettings().then(renderPause);
@@ -1874,15 +1915,17 @@ function restoreView(){
 }
 if(RESTORE){
   if(VIEW.f)Object.assign(state.f,VIEW.f);state.filter=VIEW.filter||'';state.q=VIEW.q||'';
-  ['fIntent','fRole','fStatus','fSort'].forEach(id=>{const k={fIntent:'intent',fRole:'role',fStatus:'status',fSort:'sort'}[id];if($('#'+id))$('#'+id).value=state.f[k]||(k==='sort'?'new':'')});
+  ['fIntent','fRole','fStatus','fSvc','fSort'].forEach(id=>{const k={fIntent:'intent',fRole:'role',fStatus:'status',fSvc:'svc',fSort:'sort'}[id];if($('#'+id))$('#'+id).value=state.f[k]||(k==='sort'?'new':'')});
   if($('#q'))$('#q').value=state.q;
 }
 
 /* ============ 啟動 ============ */
-fillConn();applyLang();renderAskToggle();renderMic();renderRate();load(true).then(restoreView);
+if(window.RadarAnalyze&&RadarAnalyze.SERVICES){const sel=$('#fSvc');RadarAnalyze.SERVICES.forEach(x=>{const o=document.createElement('option');o.value=x;o.textContent='🛠 '+x;sel.appendChild(o)})}
+fillConn();applyLang();renderAskToggle();renderMic();renderRate();load(true).then(restoreView).then(()=>{if(window.POST&&adapter())POST.boot()});
+if('serviceWorker' in navigator&&location.protocol.startsWith('http')){navigator.serviceWorker.register('sw.js').catch(()=>{})}
 if(RESTORE){$('#splash').remove()}else{
-setTimeout(()=>$('#splash').classList.add('hide'),1300);
-setTimeout(()=>$('#splash')&&$('#splash').remove(),2000);}
+setTimeout(()=>$('#splash')&&$('#splash').classList.add('hide'),2000);
+setTimeout(()=>$('#splash')&&$('#splash').remove(),2700);}
 </script>
 <script src="db.js"></script>
 <script src="post.js"></script>

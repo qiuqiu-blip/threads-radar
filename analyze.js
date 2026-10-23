@@ -132,7 +132,26 @@
     const parts = String(k || '').split(/[+＋]/);
     return { base: parts[0].trim(), need: (parts[1] || '').split(/[\/|｜／]/).map((x) => x.trim()).filter(Boolean) };
   }
-  const api = { BIZ_RX, parseKw, analyzePost, hourIn, dateIn, hourWeights, restHours, inQuiet, pickNext };
+  /* 服務分類：這則貼文跟哪一項服務有關＋是不是在「發問／找廠商」 */
+  const SERVICE_RX = [
+    ['創業服務', /創業|開店|籌備|加盟|找店|找店面|開幕|試營運|展店/],
+    ['頂讓租店', /頂讓|盤讓|讓渡|轉讓|頂店|店面出租|出租店面|租店|接手/],
+    ['維修服務', /維修|修理|故障|壞掉|壞了|不冷|不亮|保養|漏水|檢修/],
+    ['設備買賣', /設備|冰箱|冷凍|冷藏|製冰機|咖啡機|蒸烤箱|爐|工作台|冰櫃|展示櫃|炸爐|煮麵機|封口機|收購|出清|二手/],
+    ['清潔服務', /清潔|打掃|油煙|清洗|消毒|除蟲|細清/],
+    ['拆除清運', /拆除|清運|復原|廢棄物|垃圾清/],
+    ['招牌裝潢', /招牌|燈箱|裝潢|木作|油漆|統包|設計|施工/],
+    ['水電冷氣', /水電|冷氣|配電|管線|排水|瓦斯|插座/],
+    ['搬運貨運', /搬家|搬運|貨運|運送|吊車|物流/],
+    ['資訊POS', /POS|pos|點餐|收銀|系統|網路|監視器/],
+  ];
+  const ASK_RX = /請問|推薦|有沒有|有人知道|求推|求助|報價|找.{0,4}(廠商|師傅|公司|店家)|徵求|想找|哪裡|誰會|幫忙|急需|需要.{0,6}(幫|處理|師傅)|\?|？/;
+  function serviceOf(p) {
+    const s = String((p && p.text) || '');
+    return { svc: SERVICE_RX.filter(([, rx]) => rx.test(s)).map(([n]) => n).slice(0, 3), ask: ASK_RX.test(s) };
+  }
+  const SERVICES = SERVICE_RX.map(([n]) => n);
+  const api = { BIZ_RX, parseKw, serviceOf, SERVICES, analyzePost, hourIn, dateIn, hourWeights, restHours, inQuiet, pickNext };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.RadarAnalyze = api;
 })(typeof self !== 'undefined' ? self : this);

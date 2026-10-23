@@ -170,14 +170,16 @@ function askPosted(it) {
   const m = document.createElement('div'); m.className = 'pmodal';
   m.innerHTML = `<div class="card"><h3 style="margin-top:0">發好了嗎？</h3><p class="hint">在 Threads 送出後，按「發好了」，這篇就會標記成已發布。也可以貼上貼文網址，之後方便追蹤成效。</p>
     <input class="search" id="pmUrl" placeholder="（可不填）貼上這篇的 Threads 網址" style="width:100%;margin:6px 0 12px">
-    <div class="grid2"><button class="btn" data-pm="yes">✅ 發好了</button><button class="btn ghost" data-pm="no">還沒，等等再發</button></div></div>`;
+    <div class="grid2"><button class="btn" data-pm="yes">✅ 發好了</button><button class="btn ghost" data-pm="no">還沒，等等再發</button></div>
+    ${it.repeat && it.repeat !== 'none' ? `<p class="hint" style="margin:10px 0 0">🔁 這篇設定「${REPEAT[it.repeat]}」，發好後會自動排好下一次。</p>` : ''}</div>`;
   document.body.appendChild(m);
   m.addEventListener('click', async (e) => {
     const b = e.target.closest('[data-pm]'); if (!b && e.target !== m) return;
     const yes = b && b.dataset.pm === 'yes'; const url = ($$('#pmUrl').value || '').trim(); m.remove();
     if (!yes) return;
     Object.assign(it, { status: 'posted', postedAt: Date.now(), postUrl: url || it.postUrl || '', updatedAt: Date.now() });
-    try { await save('標記已發文'); toast('✅ 已標記發布'); } catch (err) { toast('⚠️ 儲存失敗：' + err.message); }
+    const nx = spawnNext(it);
+    try { await save('標記已發文'); toast(nx ? `✅ 已發布，下一次：${fmt(nx.planAt)}` : '✅ 已標記發布'); } catch (err) { toast('⚠️ 儲存失敗：' + err.message); }
     render();
   });
 }
@@ -186,6 +188,51 @@ async function downloadImgs(it) {
     const b = await blobOf(it.images[i]); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = `小球貼文-${i + 1}.jpg`; document.body.appendChild(a); a.click(); a.remove();
   }
 }
+
+/* ---------------- 重複排程（每天／每週／每月） ---------------- */
+const REPEAT = { none: '不重複', daily: '每天', weekdays: '每週一～五', weekly: '每週', biweekly: '每兩週', monthly: '每月' };
+function nextAt(iso, rep) {
+  const d = new Date(iso || Date.now()); const now = Date.now();
+  const step = () => { if (rep === 'daily') d.setDate(d.getDate() + 1); else if (rep === 'weekdays') { do d.setDate(d.getDate() + 1); while ([0, 6].includes(d.getDay())); }
+    else if (rep === 'weekly') d.setDate(d.getDate() + 7); else if (rep === 'biweekly') d.setDate(d.getDate() + 14); else if (rep === 'monthly') d.setMonth(d.getMonth() + 1); };
+  step(); let g = 0; while (d.getTime() < now && g++ < 400) step(); return d.toISOString();
+}
+// 這次發完／跳過 → 自動排下一次
+function spawnNext(it) {
+  if (!it.repeat || it.repeat === 'none' || it.nextId) return null;
+  const n = { ...JSON.parse(JSON.stringify(it)), id: uid(), status: 'scheduled', planAt: nextAt(it.planAt, it.repeat), postedAt: 0, postUrl: '', replies: 0, nextId: '', createdAt: Date.now(), updatedAt: Date.now() };
+  it.nextId = n.id; P.data.items.push(n); return n;
+}
+// 智能推薦時間：依「線索發文的熱門時段」（大家最常滑脆的時候）挑時間
+function smartSlots() {
+  const posts = (state.doc && state.doc.posts) || []; let w = null;
+  try { w = window.RadarAnalyze && RadarAnalyze.hourWeights(posts, 'Asia/Taipei'); } catch { /* 略過 */ }
+  const hours = w ? [...w.keys()].filter((h) => h >= 7 && h <= 23).sort((a, b) => w[b] - w[a]).slice(0, 3) : [12, 18, 21];
+  const out = []; const base = new Date(); base.setMinutes(0, 0, 0);
+  for (let day = 0; day < 3 && out.length < 6; day++) for (const h of hours.slice().sort((a, b) => a - b)) {
+    const d = new Date(base); d.setDate(d.getDate() + day); d.setHours(h); if (d.getTime() > Date.now() + 15 * 60e3) out.push(d);
+  }
+  return { hours, slots: out.slice(0, 6) };
+}
+
+/* ---------------- 時間到：畫面圖示＋語音提醒 ---------------- */
+function dueItems() { return items().filter((x) => statusOf(x) === 'scheduled' && isDue(x)); }
+function badge() {
+  const n = P.loaded ? dueItems().length : 0; const btn = document.querySelector('nav [data-tab=post]'); if (!btn) return;
+  let b = btn.querySelector('.badge'); if (!b) { b = document.createElement('i'); b.className = 'badge'; btn.appendChild(b); }
+  b.textContent = n; b.style.display = n ? 'block' : 'none'; btn.classList.toggle('ring', n > 0);
+}
+function alertDue() {
+  if (!P.loaded) return; badge();
+  const seen = new Set(LS.get('postAlerted', [])); const fresh = dueItems().filter((x) => !seen.has(x.id)); if (!fresh.length) return;
+  fresh.forEach((x) => seen.add(x.id)); LS.set('postAlerted', [...seen].slice(-300));
+  const x = fresh[0]; const msg = `⏰ 該發文了：${x.cat || '貼文'}${fresh.length > 1 ? `（還有 ${fresh.length - 1} 篇）` : ''}`;
+  toast(msg + '，到「📣 發文」按「📤 發文」');
+  try { if (window.speechSynthesis && !(typeof R !== 'undefined' && R.mode)) { const u = new SpeechSynthesisUtterance(`小球球，該發文了，${x.cat || ''}，${fresh.length}篇`); u.lang = 'zh-TW'; speechSynthesis.speak(u); } } catch { /* 略過 */ }
+  try { if (navigator.vibrate) navigator.vibrate([300, 150, 300]); } catch { /* 略過 */ }
+}
+setInterval(() => { if (!document.hidden) alertDue(); }, 30000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) alertDue(); });
 
 /* ---------------- 畫面 ---------------- */
 function kpis() {
@@ -197,6 +244,9 @@ function kpis() {
 async function render() {
   const root = $$('#postRoot'); if (!root) return;
   if (!P.loaded) { root.innerHTML = '<div class="empty">📣 讀取中…</div>'; try { await load(); } catch (e) { root.innerHTML = `<div class="empty">讀取失敗：${esc(e.message)}</div>`; return; } }
+  let spawned = 0; items().forEach((x) => { if (P.st.published[x.id] && x.repeat && x.repeat !== 'none' && !x.nextId) { x.status = 'posted'; x.postedAt = x.postedAt || Date.parse(P.st.published[x.id].at); if (spawnNext(x)) spawned++; } });
+  if (spawned) save('排下一次重複貼文').catch(() => {});
+  badge();
   const all = items().sort((a, b) => (Date.parse(a.planAt || 0) || a.createdAt) - (Date.parse(b.planAt || 0) || b.createdAt));
   const due = all.filter((x) => statusOf(x) === 'scheduled' && isDue(x));
   const F = { todo: ['📅 待發', (x) => ['draft', 'scheduled'].includes(statusOf(x))], posted: ['✅ 已發布', (x) => statusOf(x) === 'posted'], all: ['全部', () => true] };
@@ -213,13 +263,13 @@ async function render() {
 }
 function card(x) {
   const s = statusOf(x), c = CATS[x.cat] || CATS['自由發文'];
-  const pill = s === 'posted' ? '<span class="rtag 賣方">✅ 已發布</span>' : s === 'scheduled' ? `<span class="rtag ${isDue(x) ? '同業' : '買方'}">📅 ${esc(fmt(x.planAt))}${x.mode === 'auto' ? '・🤖自動' : ''}</span>` : '<span class="tag">草稿</span>';
+  const pill = (s === 'posted' ? (x.skipped ? '<span class="tag">⏭ 已跳過</span>' : '<span class="rtag 賣方">✅ 已發布</span>') : s === 'scheduled' ? `<span class="rtag ${isDue(x) ? '同業' : '買方'}">${isDue(x) ? '⏰' : '📅'} ${esc(fmt(x.planAt))}${x.mode === 'auto' ? '・🤖自動' : ''}</span>` : '<span class="tag">草稿</span>') + (x.repeat && x.repeat !== 'none' ? `<span class="tag">🔁 ${REPEAT[x.repeat]}</span>` : '');
   return `<div class="card pcard" data-id="${x.id}"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="tag">${c.icon} ${esc(x.cat || '自由發文')}</span>${pill}${x.topic ? `<span class="viatag">#${esc(x.topic)}</span>` : ''}
       ${s === 'posted' ? `<span class="hint" style="margin:0">${esc(fmt(x.postedAt || (P.st.published[x.id] || {}).at))}・私訊 ${x.replies || 0}</span>` : ''}</div>
     ${(x.images || []).length ? `<div class="pthumbs">${x.images.map((im, i) => `<img data-path="${esc(im.path || '')}" data-id="${x.id}" data-i="${i}" alt="">`).join('')}</div>` : ''}
     <div class="ptext">${esc(x.text || '')}</div>
     <div class="acts" style="margin-top:8px">
-      ${s !== 'posted' ? `<button class="btn sm" data-po="pub" data-id="${x.id}">📤 發文</button><button class="btn ghost sm" data-po="edit" data-id="${x.id}">✏️ 編輯</button>` : `<button class="btn ghost sm" data-po="rep" data-id="${x.id}">💬 ＋1 私訊</button>${x.postUrl ? `<a class="btn ghost sm" href="${esc(x.postUrl)}" target="_blank" rel="noopener">開啟貼文</a>` : ''}<button class="btn ghost sm" data-po="dup" data-id="${x.id}">🔁 再發一次</button>`}
+      ${s !== 'posted' ? `<button class="btn sm" data-po="pub" data-id="${x.id}">📤 發文</button><button class="btn ghost sm" data-po="edit" data-id="${x.id}">✏️ 編輯</button>${x.repeat && x.repeat !== 'none' && s === 'scheduled' ? `<button class="btn ghost sm" data-po="skip" data-id="${x.id}">⏭ 跳過這次</button>` : ''}` : `<button class="btn ghost sm" data-po="rep" data-id="${x.id}">💬 ＋1 私訊</button>${x.postUrl ? `<a class="btn ghost sm" href="${esc(x.postUrl)}" target="_blank" rel="noopener">開啟貼文</a>` : ''}<button class="btn ghost sm" data-po="dup" data-id="${x.id}">🔁 再發一次</button>`}
       <button class="btn ghost sm" data-po="copy" data-id="${x.id}">📋 複製文字</button>
       ${(x.images || []).length ? `<button class="btn ghost sm" data-po="dl" data-id="${x.id}">⬇ 下載圖片</button>` : ''}
       <button class="btn ghost sm" data-po="del" data-id="${x.id}">🗑</button></div></div>`;
@@ -249,13 +299,17 @@ function openEditor(src) {
         ${it.images.length < MAX_IMG ? '<label class="padd">＋<input type="file" accept="image/*" multiple id="edFile" hidden></label>' : ''}</div>
       <div class="grid2" style="margin-top:12px"><div class="field" style="margin:0"><label>📅 預定發文時間</label><input type="datetime-local" id="edAt" value="${localDT(it.planAt)}"></div>
         <div class="field" style="margin:0"><label>發文方式</label><select id="edMode"><option value="manual">📱 時間到提醒我（半自動）</option><option value="auto" ${autoReady ? '' : 'disabled'}>🤖 時間到自動發${autoReady ? '' : '（尚未設定）'}</option></select></div></div>
+      <div class="field" style="margin:12px 0 0"><label>🔁 重複</label><select id="edRep">${Object.entries(REPEAT).map(([k, l]) => `<option value="${k}">${l}</option>`).join('')}</select></div>
+      <div class="hint" style="margin-top:10px">✨ 智能推薦時間（依你抓到的線索，大家最常滑脆的時段：${smartSlots().hours.map((h) => h + '點').join('、')}）</div>
+      <div class="chips" style="flex-wrap:wrap">${smartSlots().slots.map((d) => `<button class="chip" data-edslot="${d.toISOString()}">${['今天', '明天', '後天'][Math.round((new Date(d).setHours(0, 0, 0, 0) - new Date().setHours(0, 0, 0, 0)) / 864e5)] || ''} ${String(d.getHours()).padStart(2, '0')}:00</button>`).join('')}</div>
       <div class="grid2" style="margin-top:14px"><button class="btn" data-ed="sched">📅 排程</button><button class="btn" data-ed="now">📤 存好並馬上發</button></div>
       <button class="btn ghost" style="width:100%;margin-top:8px" data-ed="draft">💾 只存草稿</button></div>`;
     q('#edMode').value = it.mode === 'auto' && autoReady ? 'auto' : 'manual';
+    q('#edRep').value = it.repeat || 'none';
     m.querySelectorAll('img[data-edi]').forEach(async (el) => { el.src = await thumbURL(it.images[+el.dataset.edi]); });
     count();
   };
-  const sync = () => { const t = q('#edText'); if (t) it.text = t.value; const tp = q('#edTopic'); if (tp) it.topic = tp.value.replace(/^#/, '').trim(); m.querySelectorAll('[data-edv]').forEach((e) => { it.vals[e.dataset.edv] = e.value; }); const a = q('#edAt'); if (a) it.planAt = a.value ? new Date(a.value).toISOString() : ''; const md = q('#edMode'); if (md) it.mode = md.value; };
+  const sync = () => { const t = q('#edText'); if (t) it.text = t.value; const tp = q('#edTopic'); if (tp) it.topic = tp.value.replace(/^#/, '').trim(); m.querySelectorAll('[data-edv]').forEach((e) => { it.vals[e.dataset.edv] = e.value; }); const a = q('#edAt'); if (a) it.planAt = a.value ? new Date(a.value).toISOString() : ''; const md = q('#edMode'); if (md) it.mode = md.value; const rp = q('#edRep'); if (rp) it.repeat = rp.value; };
   const count = () => { const n = new TextEncoder().encode(fullText({ text: q('#edText').value, topic: q('#edTopic').value })).length; const ch = [...fullText({ text: q('#edText').value, topic: q('#edTopic').value })].length; const el = q('#edCount'); if (el) { el.textContent = `${ch} / ${MAX_TXT} 字`; el.style.color = ch > MAX_TXT ? '#ff6b6b' : ''; } };
   draw(); document.body.appendChild(m); document.body.style.overflow = 'hidden';
   if (!src) { it.text = genText(it.cat, it.vals); q('#edText').value = it.text; count(); }
@@ -269,6 +323,7 @@ function openEditor(src) {
   const close = () => { m.remove(); document.body.style.overflow = ''; };
   m.addEventListener('click', async (e) => {
     if (e.target === m) return;
+    const sl = e.target.closest('[data-edslot]'); if (sl) { sync(); it.planAt = sl.dataset.edslot; q('#edAt').value = localDT(it.planAt); m.querySelectorAll('[data-edslot]').forEach((c) => c.classList.toggle('on', c === sl)); return; }
     const cb = e.target.closest('[data-edcat]'); if (cb) { sync(); it.cat = cb.dataset.edcat; it.topic = CATS[it.cat].topic || it.topic; it.text = genText(it.cat, it.vals) || it.text; draw(); return; }
     const rm = e.target.closest('[data-edrm]'); if (rm) { sync(); it.images.splice(+rm.dataset.edrm, 1); draw(); return; }
     const b = e.target.closest('[data-ed]'); if (!b) return; const act = b.dataset.ed;
@@ -303,11 +358,13 @@ document.addEventListener('click', async (e) => {
   if (act === 'dl') { downloadImgs(it).catch((err) => toast('⚠️ ' + err.message)); return; }
   if (act === 'dup') { openEditor({ ...it, id: uid(), status: 'draft', planAt: '', postedAt: 0, postUrl: '', replies: 0, createdAt: Date.now() }); return; }
   try {
+    if (act === 'skip') { const nx = spawnNext(it); it.status = 'posted'; it.skipped = true; it.updatedAt = Date.now(); await save('跳過這次'); toast(nx ? `⏭ 已跳過，下一次：${fmt(nx.planAt)}` : '已跳過'); }
     if (act === 'rep') { it.replies = (it.replies || 0) + 1; it.updatedAt = Date.now(); await save('記錄私訊'); toast('💬 已記錄 +1 私訊'); }
     if (act === 'del') { if (!confirm('刪除這篇？')) return; it.deleted = true; it.updatedAt = Date.now(); await save('刪除貼文'); toast('已刪除'); }
   } catch (err) { toast('⚠️ ' + err.message); }
   render();
 });
+P.boot = async function () { try { await load(true); alertDue(); } catch { /* 略過 */ } };
 P.open = async function () { await render(); try { await load(true); } catch { /* 略過 */ } render(); };
 P.render = render; P.genText = genText; P.CATS = CATS; P.fullText = fullText;
 })();
