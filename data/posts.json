@@ -1,64 +1,116 @@
 {
-  "updatedAt": "2026-10-22T21:33:57.087Z",
+  "updatedAt": "2026-10-23T00:05:02.721Z",
   "lastRun": {
-    "startedAt": "2026-10-22T21:31:03.766Z",
-    "finishedAt": "2026-10-22T21:33:56.846Z",
+    "startedAt": "2026-10-23T00:01:13.162Z",
+    "finishedAt": "2026-10-23T00:05:01.721Z",
     "status": "ok",
-    "scanned": 130,
-    "matched": 1,
-    "newCount": 1,
-    "notified": 1,
+    "scanned": 104,
+    "matched": 2,
+    "newCount": 2,
+    "notified": 2,
     "perKeyword": {
-      "飲料": 18,
-      "二手冰箱": 16,
-      "蒸烤箱": 19,
-      "冷凍櫃": 10,
-      "二手設備": 18,
-      "低價出清": 10,
-      "製冰機": 20,
-      "關店": 0,
-      "招牌": 19
+      "歇業": 21,
+      "收店": 0,
+      "餐車": 20,
+      "搬家出清": 10,
+      "清倉": 13,
+      "店面出租": 20,
+      "爐具": 0,
+      "拆除": 20
     },
     "warnings": [],
     "keywordsUsed": [
-      "飲料",
-      "二手冰箱",
-      "蒸烤箱",
-      "冷凍櫃",
-      "二手設備",
-      "低價出清",
-      "製冰機",
-      "關店",
-      "招牌"
+      "歇業",
+      "收店",
+      "餐車",
+      "搬家出清",
+      "清倉",
+      "店面出租",
+      "爐具",
+      "拆除"
     ],
     "queries": [
-      "飲料",
-      "二手冰箱",
-      "蒸烤箱",
-      "冷凍櫃",
-      "二手設備",
-      "低價出清",
-      "製冰機",
-      "關店",
-      "招牌"
+      "歇業",
+      "收店",
+      "餐車",
+      "搬家出清",
+      "清倉",
+      "店面出租",
+      "爐具",
+      "拆除"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 107,
+      "seen": 58,
       "dup": 0,
-      "notBiz": 1,
-      "noKeyword": 5,
-      "noContext": 15,
-      "tooOld": 1
+      "noContext": 33,
+      "noKeyword": 8,
+      "tooOld": 3
     },
-    "detailFetched": 1,
+    "detailFetched": 2,
     "newUrls": [
-      "https://www.threads.com/@qiao.0215/post/Deys0lbmnzp"
+      "https://www.threads.com/@1212__dad/post/DezJXZME3VU",
+      "https://www.threads.com/@wenguo.wang/post/DeyZPzlExCd"
     ],
     "pushMode": "on",
-    "nextInMinutes": 29
+    "nextInMinutes": 22
   },
   "runs": [
+    {
+      "startedAt": "2026-10-23T00:01:13.162Z",
+      "finishedAt": "2026-10-23T00:05:01.721Z",
+      "status": "ok",
+      "scanned": 104,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "歇業": 21,
+        "收店": 0,
+        "餐車": 20,
+        "搬家出清": 10,
+        "清倉": 13,
+        "店面出租": 20,
+        "爐具": 0,
+        "拆除": 20
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "歇業",
+        "收店",
+        "餐車",
+        "搬家出清",
+        "清倉",
+        "店面出租",
+        "爐具",
+        "拆除"
+      ],
+      "queries": [
+        "歇業",
+        "收店",
+        "餐車",
+        "搬家出清",
+        "清倉",
+        "店面出租",
+        "爐具",
+        "拆除"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 58,
+        "dup": 0,
+        "noContext": 33,
+        "noKeyword": 8,
+        "tooOld": 3
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@1212__dad/post/DezJXZME3VU",
+        "https://www.threads.com/@wenguo.wang/post/DeyZPzlExCd"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 22
+    },
     {
       "startedAt": "2026-10-22T21:31:03.766Z",
       "finishedAt": "2026-10-22T21:33:56.846Z",
@@ -3108,6 +3160,42 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "DezJXZME3VU",
+      "user": "1212__dad",
+      "url": "https://www.threads.com/@1212__dad/post/DezJXZME3VU",
+      "authorUrl": "https://www.threads.com/@1212__dad",
+      "text": "72次瀏覽\n台中店面求租\n大里、太平的脆友 是否能幫忙找找落腳處🥹\n📍希望地點：太平、大里成功路、塗城路\n📍坪數：約10-15坪\n📍營業項目：雞蛋燒\n如果您們家附近剛好有店面出租\n或有認識的屋主、仲介 歡迎留言或私訊我！\n也歡迎幫忙轉發\n讓正在找尋落腳處的小店被看見\n謝謝大家🫡",
+      "time": "2026-10-22T13:59:37.000Z",
+      "keywords": [
+        "店面出租"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-23T00:04:46.204Z",
+      "full": true
+    },
+    {
+      "code": "DeyZPzlExCd",
+      "user": "wenguo.wang",
+      "url": "https://www.threads.com/@wenguo.wang/post/DeyZPzlExCd",
+      "authorUrl": "https://www.threads.com/@wenguo.wang",
+      "text": "307次瀏覽\n新北民宅拆除～\n拆除／清運\nlizhengzhoul\n已私訊\nsu_162_0120\n已私訊",
+      "time": "2026-10-22T06:59:09.000Z",
+      "keywords": [
+        "拆除"
+      ],
+      "regions": [
+        "新北"
+      ],
+      "foundBy": "拆除",
+      "foundQuery": "拆除",
+      "foundAt": "2026-10-23T00:04:46.204Z",
+      "full": true
+    },
+    {
       "code": "Deys0lbmnzp",
       "user": "qiao.0215",
       "url": "https://www.threads.com/@qiao.0215/post/Deys0lbmnzp",
@@ -5956,9 +6044,9 @@
   ],
   "kwStats": {
     "清倉": {
-      "count": 12,
-      "last": 1792700332747,
-      "scanned": 189,
+      "count": 13,
+      "last": 1792713776767,
+      "scanned": 202,
       "leads": 0
     },
     "頂店": {
@@ -6058,9 +6146,9 @@
       "leads": 0
     },
     "搬家出清": {
-      "count": 12,
-      "last": 1792702966773,
-      "scanned": 122,
+      "count": 13,
+      "last": 1792713764306,
+      "scanned": 132,
       "leads": 4
     },
     "咖啡機": {
@@ -6088,9 +6176,9 @@
       "leads": 0
     },
     "歇業": {
-      "count": 12,
-      "last": 1792700384492,
-      "scanned": 206,
+      "count": 13,
+      "last": 1792713675765,
+      "scanned": 227,
       "leads": 2
     },
     "店面轉讓": {
@@ -6136,8 +6224,8 @@
       "leads": 9
     },
     "收店": {
-      "count": 11,
-      "last": 1792697016743,
+      "count": 12,
+      "last": 1792713689007,
       "scanned": 0,
       "leads": 0
     },
@@ -6166,8 +6254,8 @@
       "leads": 0
     },
     "爐具": {
-      "count": 11,
-      "last": 1792702876317,
+      "count": 12,
+      "last": 1792713807743,
       "scanned": 0,
       "leads": 0
     },
@@ -6190,16 +6278,16 @@
       "leads": 0
     },
     "店面出租": {
-      "count": 11,
-      "last": 1792700358499,
-      "scanned": 212,
-      "leads": 9
+      "count": 12,
+      "last": 1792713792091,
+      "scanned": 232,
+      "leads": 10
     },
     "拆除": {
-      "count": 11,
-      "last": 1792700344598,
-      "scanned": 224,
-      "leads": 7
+      "count": 12,
+      "last": 1792713865874,
+      "scanned": 244,
+      "leads": 8
     },
     "創業": {
       "count": 10,
@@ -6208,9 +6296,9 @@
       "leads": 2
     },
     "餐車": {
-      "count": 12,
-      "last": 1792702938001,
-      "scanned": 241,
+      "count": 13,
+      "last": 1792713748634,
+      "scanned": 261,
       "leads": 1
     },
     "排油煙": {
@@ -6250,47 +6338,43 @@
       "leads": 7
     }
   },
-  "nextScanAt": "2026-10-22T22:02:48.121Z",
+  "nextScanAt": "2026-10-23T00:27:11.862Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-22T22:02:48.121Z",
-    "madeAt": "2026-10-22T21:33:57.082Z",
+    "at": "2026-10-23T00:27:11.862Z",
+    "madeAt": "2026-10-23T00:05:02.717Z",
     "items": [
       {
-        "kw": "飲料",
-        "q": "飲料"
+        "kw": "飲料店",
+        "q": "飲料店"
       },
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "收店",
-        "q": "收店"
+        "kw": "低價出清",
+        "q": "低價出清"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "搬家出清",
-        "q": "搬家出清"
+        "kw": "開店",
+        "q": "開店"
       },
       {
-        "kw": "清倉",
-        "q": "清倉"
+        "kw": "二手冰箱",
+        "q": "二手冰箱"
       },
       {
-        "kw": "店面出租",
-        "q": "店面出租"
+        "kw": "結束營業",
+        "q": "結束營業"
       },
       {
-        "kw": "爐具",
-        "q": "爐具"
-      },
-      {
-        "kw": "拆除",
-        "q": "拆除"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       }
     ]
   }
