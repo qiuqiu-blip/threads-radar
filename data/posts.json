@@ -1,31 +1,31 @@
 {
-  "updatedAt": "2026-10-24T06:36:06.804Z",
+  "updatedAt": "2026-10-24T07:08:02.468Z",
   "lastRun": {
-    "startedAt": "2026-10-24T06:30:42.565Z",
-    "finishedAt": "2026-10-24T06:36:06.761Z",
+    "startedAt": "2026-10-24T07:01:23.657Z",
+    "finishedAt": "2026-10-24T07:08:01.877Z",
     "status": "ok",
-    "scanned": 296,
-    "matched": 9,
-    "newCount": 9,
-    "notified": 9,
+    "scanned": 265,
+    "matched": 6,
+    "newCount": 6,
+    "notified": 6,
     "perKeyword": {
-      "頂讓": 21,
-      "盤讓": 22,
-      "店面頂讓": 19,
+      "頂讓": 19,
+      "盤讓": 18,
+      "店面頂讓": 18,
       "頂讓金": 0,
       "店面出租": 20,
-      "結束營業": 16,
-      "歇業": 20,
-      "製冰機": 16,
-      "冷凍櫃": 17,
-      "商用冰箱": 19,
-      "營業用冰箱": 17,
-      "二手冰箱": 17,
-      "咖啡機": 19,
-      "便宜賣": 19,
-      "搬家出清": 11,
-      "招牌": 21,
-      "拆除": 22
+      "退租": 17,
+      "清潔": 17,
+      "水電": 19,
+      "裝潢": 21,
+      "即將開幕": 20,
+      "試營運": 19,
+      "飲料店": 19,
+      "餐車": 19,
+      "維修": 20,
+      "油煙機": 19,
+      "讓渡金": 0,
+      "頂讓費": 0
     },
     "warnings": [],
     "keywordsUsed": [
@@ -34,18 +34,18 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "結束營業",
-      "歇業",
-      "製冰機",
-      "冷凍櫃",
-      "商用冰箱",
-      "營業用冰箱",
-      "二手冰箱",
-      "咖啡機",
-      "便宜賣",
-      "搬家出清",
-      "招牌",
-      "拆除"
+      "退租",
+      "清潔",
+      "水電",
+      "裝潢",
+      "即將開幕",
+      "試營運",
+      "飲料店",
+      "餐車",
+      "維修",
+      "油煙機",
+      "讓渡金",
+      "頂讓費"
     ],
     "queries": [
       "頂讓",
@@ -53,48 +53,128 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "結束營業",
-      "歇業",
-      "製冰機",
-      "冷凍櫃",
-      "商用冰箱",
-      "營業用冰箱",
-      "二手冰箱",
-      "咖啡機",
-      "便宜賣",
-      "搬家出清",
-      "招牌",
-      "拆除"
+      "退租",
+      "清潔",
+      "水電",
+      "裝潢",
+      "即將開幕",
+      "試營運",
+      "飲料店",
+      "餐車",
+      "維修",
+      "油煙機",
+      "讓渡金",
+      "頂讓費"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 202,
-      "dup": 1,
-      "noKeyword": 18,
-      "tooOld": 14,
-      "noContext": 45,
-      "words": {
-        "定居": 6,
-        "澳洲": 1
-      },
-      "excludeWord": 7
+      "seen": 186,
+      "dup": 0,
+      "tooOld": 11,
+      "noContext": 51,
+      "noKeyword": 6,
+      "notBiz": 5
     },
     "detailFetched": 6,
     "newUrls": [
-      "https://www.threads.com/@tomlin715/post/De3daJYDJgC",
-      "https://www.threads.com/@dan.dan.370/post/De3dNkIGWvV",
-      "https://www.threads.com/@jiebang.tw/post/De3byuBEzLo",
-      "https://www.threads.com/@goat.8625516/post/De3bKvVn86n",
-      "https://www.threads.com/@thankyou261024/post/De3TJqViSie",
-      "https://www.threads.com/@wabi820804/post/De1uKVwmRlY",
-      "https://www.threads.com/@maggielee3333/post/De09Yz5iTji",
-      "https://www.threads.com/@poporain6/post/De1B0LeE2rK",
-      "https://www.threads.com/@yy4875623/post/DeybR9tCRw6"
+      "https://www.threads.com/@angel_style0623/post/De3i7TqH6_W",
+      "https://www.threads.com/@fu_.8.3/post/De3iDk3jy_o",
+      "https://www.threads.com/@tomlin715/post/De3giFujPF8",
+      "https://www.threads.com/@512_.han/post/De3fMcuk71u",
+      "https://www.threads.com/@xkn__9/post/De3b7uygbZj",
+      "https://www.threads.com/@zhengyi_hou/post/De3MUdNEx4a"
     ],
     "pushMode": "on",
-    "nextInMinutes": 22
+    "nextInMinutes": 24
   },
   "runs": [
+    {
+      "startedAt": "2026-10-24T07:01:23.657Z",
+      "finishedAt": "2026-10-24T07:08:01.877Z",
+      "status": "ok",
+      "scanned": 265,
+      "matched": 6,
+      "newCount": 6,
+      "notified": 6,
+      "perKeyword": {
+        "頂讓": 19,
+        "盤讓": 18,
+        "店面頂讓": 18,
+        "頂讓金": 0,
+        "店面出租": 20,
+        "退租": 17,
+        "清潔": 17,
+        "水電": 19,
+        "裝潢": 21,
+        "即將開幕": 20,
+        "試營運": 19,
+        "飲料店": 19,
+        "餐車": 19,
+        "維修": 20,
+        "油煙機": 19,
+        "讓渡金": 0,
+        "頂讓費": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "退租",
+        "清潔",
+        "水電",
+        "裝潢",
+        "即將開幕",
+        "試營運",
+        "飲料店",
+        "餐車",
+        "維修",
+        "油煙機",
+        "讓渡金",
+        "頂讓費"
+      ],
+      "queries": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "退租",
+        "清潔",
+        "水電",
+        "裝潢",
+        "即將開幕",
+        "試營運",
+        "飲料店",
+        "餐車",
+        "維修",
+        "油煙機",
+        "讓渡金",
+        "頂讓費"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 186,
+        "dup": 0,
+        "tooOld": 11,
+        "noContext": 51,
+        "noKeyword": 6,
+        "notBiz": 5
+      },
+      "detailFetched": 6,
+      "newUrls": [
+        "https://www.threads.com/@angel_style0623/post/De3i7TqH6_W",
+        "https://www.threads.com/@fu_.8.3/post/De3iDk3jy_o",
+        "https://www.threads.com/@tomlin715/post/De3giFujPF8",
+        "https://www.threads.com/@512_.han/post/De3fMcuk71u",
+        "https://www.threads.com/@xkn__9/post/De3b7uygbZj",
+        "https://www.threads.com/@zhengyi_hou/post/De3MUdNEx4a"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 24
+    },
     {
       "startedAt": "2026-10-24T06:30:42.565Z",
       "finishedAt": "2026-10-24T06:36:06.761Z",
@@ -6581,6 +6661,121 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "De3i7TqH6_W",
+      "user": "angel_style0623",
+      "url": "https://www.threads.com/@angel_style0623/post/De3i7TqH6_W",
+      "authorUrl": "https://www.threads.com/@angel_style0623",
+      "text": "Dasin 🧋冷飲設備專家\n🔥飲料店老闆看過來！你的製茶神隊友來了！ 💚達鑫 ST800｜讓每一杯好茶，都成為店裡的競爭力！\n開飲料店最怕什麼？😵‍💫\n尖峰時段忙不過來、製茶流程繁瑣、每杯品質都要顧！\n✨想讓飲品製作更有效率？\n✨想讓工作流程更順暢？\n✨想打造專業又有質感的飲料店？\n💡選對設備，就是提升營運效率的第一步！🧋從一杯好茶開始，讓顧客喝出用心，也讓老闆經營更省心！\n🌟達鑫 ST800，為你的飲品事業增添好實力！\n📣 想了解 ST800 是否適合你的店面？歡迎私訊我們！\n━━━━━━━━━━━━━━\n💚達鑫機械 Dasin\n📞預約專線｜049-2318335\n💬LINE｜\n@dasin\n📍展示中心｜南投縣草屯鎮新庄里博愛路1056巷20號\n━━━━━━━━━━━━━━\n#達鑫機械 #Dasin #ST800 #商用設備 #飲料店設備 #手搖飲創業 #飲料店創業 #茶飲設備 #開店必備 #飲品創業 #餐飲設備\n有点甜 (《萌三国》网游主题曲|《微微一笑很倾城》电视剧插曲) · 汪苏泷, BY2",
+      "time": "2026-10-24T06:59:57.000Z",
+      "keywords": [
+        "餐飲設備",
+        "飲料店",
+        "創業"
+      ],
+      "regions": [],
+      "foundBy": "飲料店",
+      "foundQuery": "飲料店",
+      "foundAt": "2026-10-24T07:07:24.560Z"
+    },
+    {
+      "code": "De3iDk3jy_o",
+      "user": "fu_.8.3",
+      "url": "https://www.threads.com/@fu_.8.3/post/De3iDk3jy_o",
+      "authorUrl": "https://www.threads.com/@fu_.8.3",
+      "text": "高雄 盤讓\n【黃金店面/餐酒館/工作室頂讓】1+2樓超大空間，立即可營業！質感工業風裝潢，省去龐大裝潢期與費用\n地點位置：修明街107號-1（含 1 樓與 2 樓空間）\n適合行業：餐酒館、小酒吧、咖啡廳、私廚、工作室、美學空間等\n聯絡方式：LINE:koko8870 電話:0981419683\n歡迎私訊洽詢 / 留言看房\n💡 空間特色與優勢：\n1. 1+2樓超大使用空間：本物件包含 1 樓與 2 樓，空間彈性大，可靈活規劃營業區、包廂、倉儲或辦公空間。\n2. 質感工業風裝潢：室內採用沉穩質感的水泥刷舊牆面、黑色工業風吊頂與軌道投射燈，氛圍極佳，接手即可營造沈浸式消費體驗，省去動輒數十萬甚至百萬的設計與施工時間。\n3. 硬體設備齊全：\n內建氣派耐用的石材/特色吧檯區及吊櫃，動線流暢。\n備有直立式大冷氣，客群用餐與聚會環境舒適。\n配備專業抽油煙風管設備、不鏽鋼工作台、水槽、冷凍/冷藏冰箱等餐飲基礎硬體。\n4. 格局方正、機能完善：設有獨立衛浴設備，動線分明。\n🛠️ 設備與頂讓說明：\n裝潢與基本硬體設備一次到位（包含燈光照明、吧檯、空調、冰箱、排油煙設備等）。\n高雄 盤讓\n貼心承諾：確定頂讓時，除了上述保留的設備外，店內其餘雜物皆會幫您完全清理乾淨，讓您交屋即可輕鬆進駐！\n頂讓金誠意可談，希望能找到有緣人接手這塊質感空間，省去從零開始裝潢的痛苦，讓您用最快速度低成本創業！\n有興趣的朋友歡迎私訊預約看店，非誠勿擾，謝謝！",
+      "time": "2026-10-24T06:52:20.000Z",
+      "keywords": [
+        "頂讓",
+        "盤讓",
+        "頂讓金",
+        "裝潢",
+        "接手",
+        "工作台",
+        "冷氣",
+        "創業"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "店面頂讓",
+      "foundQuery": "店面頂讓",
+      "foundAt": "2026-10-24T07:07:24.559Z",
+      "full": true
+    },
+    {
+      "code": "De3giFujPF8",
+      "user": "tomlin715",
+      "url": "https://www.threads.com/@tomlin715/post/De3giFujPF8",
+      "authorUrl": "https://www.threads.com/@tomlin715",
+      "text": "怎麼會😂我怎麼會生氣❤️\n上次那個沒下斡的客人，還沒回家嗎？\n想看更多盤讓案件👉\nlinkgoods.com/tom19…\n#台南租屋 #商用店鋪 #lin選址顧問\n#租屋找大淵 #台南頂讓\n乘加兆租賃管理顧問有限公司\n（106）高市字第01306號 王淑琴\n成交收取半個月租金與盤金10%為仲介服務費\n如需看屋，再幫我填寫一下客需表，可以一鍵寄出或是複製文字後貼上此即可。\nreurl.cc/YDaL7…\nAI 內容\n乘加兆租賃管理顧問有限公司",
+      "time": "2026-10-24T06:39:03.000Z",
+      "keywords": [
+        "頂讓",
+        "盤讓"
+      ],
+      "regions": [
+        "台南"
+      ],
+      "foundBy": "盤讓",
+      "foundQuery": "盤讓",
+      "foundAt": "2026-10-24T07:07:24.559Z"
+    },
+    {
+      "code": "De3fMcuk71u",
+      "user": "512_.han",
+      "url": "https://www.threads.com/@512_.han/post/De3fMcuk71u",
+      "authorUrl": "https://www.threads.com/@512_.han",
+      "text": "600次瀏覽\n求高雄推薦的居家清潔 要是專業的！🙏\n地點：梓官\n需求：入住清潔/空屋清潔\njeffhuang1102\nLine ID ：jeff-ice-cream\n主頁歡迎多比較、參考。\n無法私訊，再麻煩老闆聯繫了解一下，感恩。\n老闆，希望有機會服務，我的主頁有聯繫方式，歡迎洽詢，沒有華麗的文宣，也沒有誘人的AI前後照片，只有簡單的責任與熱心。\n歡迎私訊，或是透過主頁Qr code或電話了解，費用與服務，都是高CP值，感恩。\nsmart_.tiger\n還行不 這是養寵物退租去清的～ 梓官哪裡呀？\npeggy_storage\n推薦這家lin.ee/6IB9j…\ntsp610324\nreal_life_tw\n老闆您好🙋‍♂️\nw_wangzhenzhen\n請指定➡️家珍極緻清潔\n‼️ 專業級清潔技術服務‼️\n👉🏻 採用最新徒手技術並與國際認證專業用藥劑\n👨‍🦱專業的清潔美學 👩‍🦰細心的清潔服務\n🌟局部髒污清洗\n🌟居家清潔服務\n🌟裝潢翻修細清\n🌟住家整理收納\n🌟住宅水塔清洗\n🌟居家定期清潔\n🌟現場線上評估\n🌟垃圾雜物清除\n‼️居家清潔、裝潢細清、局部服務 、居家收納…最*家*品牌團隊\n🌈全台統一服務，您家的事就是我的事⋯⋯\n清運垃圾，搬家，壁紙，窗簾，油漆，木工，全省定點團隊服務\nLine:axs5909\nw_wangzhenzhen\n已私訊，謝謝\nshowtime048\n@dust.mite_buster\n推這位老闆 細清完可以找他洗床 跟沙發\ndust.mite_buster\n感謝推薦\ngecko.7430114\n@jesslca_lin\n推薦 很細心",
+      "time": "2026-10-24T06:27:20.000Z",
+      "keywords": [
+        "退租",
+        "清潔",
+        "裝潢",
+        "油漆",
+        "搬家",
+        "清運"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "清潔",
+      "foundQuery": "清潔",
+      "foundAt": "2026-10-24T07:07:24.559Z",
+      "full": true
+    },
+    {
+      "code": "De3b7uygbZj",
+      "user": "xkn__9",
+      "url": "https://www.threads.com/@xkn__9/post/De3b7uygbZj",
+      "authorUrl": "https://www.threads.com/@xkn__9",
+      "text": "1,366次瀏覽\nowala\n詢問大家 Owala水壺\n清潔 大家都用什麼 有推薦的清潔刷嗎\nthrreisacity\nOwala 最難洗的是吸管跟蓋子那圈縫，一般瓶刷刷不太到\n這組三件是專門配 Owala 的，瓶身、吸管、縫隙都有，才 39\ns.shopee.tw/5q9Bu…\n這款縫隙刷也可以，Stanley 跟 Owala 都適用，評價 5 顆星\ns.shopee.tw/7Kxzh…\n洗完蓋子記得拆開晾乾，不然橡膠圈容易有味道\ns.shopee.tw\nP&D現貨實拍 吸管刷 奶瓶刷 縫隙刷 細縫清潔刷 杯蓋 水壺 保溫杯 不鏽鋼 適用Stanley Owala 配件 | 蝦皮購物\na0955371175\nOwala矽膠清潔刷 刷吸管的\ns.shopee.tw/2BFta…\n瓶身裡面 我都用Simba奶瓶刷 很好用\ns.shopee.tw/1qd3B…",
+      "time": "2026-10-24T05:58:50.000Z",
+      "keywords": [
+        "清潔"
+      ],
+      "regions": [],
+      "foundBy": "清潔",
+      "foundQuery": "清潔",
+      "foundAt": "2026-10-24T07:07:24.559Z",
+      "full": true
+    },
+    {
+      "code": "De3MUdNEx4a",
+      "user": "zhengyi_hou",
+      "url": "https://www.threads.com/@zhengyi_hou/post/De3MUdNEx4a",
+      "authorUrl": "https://www.threads.com/@zhengyi_hou",
+      "text": "426次瀏覽\n工作日常，osama近吸式\n✨ 分享osama近吸式排油煙機，DIY拆裝方式，提供給 己裝 或想裝的脆友參考。\n📍安裝地區：嘉義太保。\n#雲嘉地區\n#osama\n#近吸式排油煙機\n#大叔的工作日常\n已釘選\n✨語言：國台語發音",
+      "time": "2026-10-24T03:42:24.000Z",
+      "keywords": [
+        "油煙機"
+      ],
+      "regions": [],
+      "foundBy": "油煙機",
+      "foundQuery": "油煙機",
+      "foundAt": "2026-10-24T07:07:24.560Z",
+      "full": true
+    },
+    {
       "code": "De3daJYDJgC",
       "user": "tomlin715",
       "url": "https://www.threads.com/@tomlin715/post/De3daJYDJgC",
@@ -11786,119 +11981,6 @@
       "foundQuery": "便宜賣",
       "foundAt": "2026-10-21T00:12:54.530Z",
       "full": true
-    },
-    {
-      "code": "Det5StPHxOi",
-      "user": "d2d4605",
-      "url": "https://www.threads.com/@d2d4605/post/Det5StPHxOi",
-      "authorUrl": "https://www.threads.com/@d2d4605",
-      "text": "3,135次瀏覽\n剛上岸魷魚🦑\n全台冷凍發貨 保證新鮮\n自家漁船捕撈 便宜賣一盒十隻 100\n有需要聯絡 數量不多\n需要海鮮🦞可以.加\nLINE： @065zegcb\n方便即時回復喔\nbeardfaa2\n買多點還能優惠點嗎\nchip6gff\n好新鮮 怎麼購買",
-      "time": "2026-10-20T13:02:58.000Z",
-      "keywords": [
-        "便宜賣"
-      ],
-      "regions": [],
-      "foundBy": "便宜賣",
-      "foundQuery": "便宜賣",
-      "foundAt": "2026-10-21T00:12:54.530Z",
-      "full": true
-    },
-    {
-      "code": "DeuUcsfmReS",
-      "user": "zhengzheng9270",
-      "url": "https://www.threads.com/@zhengzheng9270/post/DeuUcsfmReS",
-      "authorUrl": "https://www.threads.com/@zhengzheng9270",
-      "text": "21次瀏覽\n頂讓\n🍹 桃園飲料店店面頂讓｜設備齊全・接手即可營業 🍹\n【店面頂讓資訊】\n現有飲料店誠意頂讓，店面位於桃園中正路，鄰近夜市及捷運，周邊住宅與商圈人潮穩定。店內裝潢完善、設備齊全，適合想投入飲料業、創業開店，或有意拓展品牌的朋友，接手後即可營業，省下重新裝潢與採購設備的時間及成本。\n【店面優勢】\n✅ 位於中正路，鄰近夜市及捷運，交通便利\n✅ 周邊住宅區與商圈聚集，人潮及客源穩定\n✅ 店面裝潢完善，環境乾淨明亮\n✅ 生財設備齊全，接手即可營業\n✅ 可協助技術及營運經驗交接，降低接手門檻\n✅ 適合個人創業、夫妻共同經營或品牌展店\n【頂讓內容】\n・現有店面裝潢\n・製冰機\n・封口機\n・冰箱\n・冷凍櫃\n・工作檯及層架\n・其他營業所需設備與生財器具\n【店面基本資料】\n📍 地點：桃園中正路，近夜市、近捷運\n📏 坪數：約 30坪\n💰 頂讓金：50萬元（不含押金）\n🏷️ 品牌頂讓：如不含品牌，價格另議\n💵 租金：75000\n📞 聯絡方式：歡迎私訊洽詢\n店面設備與裝潢皆已備妥，適合有意快速投入市場的創業者。\n歡迎預約現場看店，頂讓條件及價格可誠意討論，有興趣歡迎私訊",
-      "time": "2026-10-20T17:00:16.000Z",
-      "keywords": [
-        "飲料",
-        "飲料店",
-        "製冰機",
-        "冷凍櫃",
-        "開店",
-        "創業",
-        "裝潢"
-      ],
-      "regions": [
-        "桃園"
-      ],
-      "foundBy": "開店",
-      "foundQuery": "開店",
-      "foundAt": "2026-10-20T21:49:54.645Z",
-      "full": true
-    },
-    {
-      "code": "Detmtjuk5zw",
-      "user": "_jun_09.30",
-      "url": "https://www.threads.com/@_jun_09.30/post/Detmtjuk5zw",
-      "authorUrl": "https://www.threads.com/@_jun_09.30",
-      "text": "1,132次瀏覽\n高雄\n📢 因結束營業｜店內設備出清\n因本店即將結束營業，現有設備出售，有需要的朋友歡迎詢問！\n🧾 出售設備清單\n▪️ 三層架｜長 200 × 高 200 × 寬 60\n▪️ 工作吧台｜長 290\n▪️ 中美牌煮茶機\n▪️ 鼎鑫牌製冰機\n💰 設備價格歡迎私訊詢問\n📩 有興趣歡迎私訊了解詳細資訊！\nhuan_02.01\n請問層架多少錢\n已私",
-      "time": "2026-10-20T10:20:37.000Z",
-      "keywords": [
-        "結束營業",
-        "製冰機"
-      ],
-      "regions": [
-        "高雄"
-      ],
-      "foundBy": "結束營業",
-      "foundQuery": "結束營業",
-      "foundAt": "2026-10-20T21:49:54.645Z",
-      "full": true
-    },
-    {
-      "code": "DetNdEHlE7-",
-      "user": "jiouhe",
-      "url": "https://www.threads.com/@jiouhe/post/DetNdEHlE7-",
-      "authorUrl": "https://www.threads.com/@jiouhe",
-      "text": "2,001次瀏覽\n飲料店、早餐店等\n老闆們🥹\n原物料又要開始漲了……\n雀巢三花奶精先來一波😭\n棕櫚仁油、脫脂奶粉成本持續上升，\n小店的經營壓力又要再增加了。\n連原物料都在告訴我們\n做生意真的越來越不容易了🥲\n自己開店的人，看到這張通知應該都懂。\n有沒有人跟我一樣，\n看到漲價通知，心先涼了一半？\n小店我剛好使用雀巢🥹\nkiki._.drama\n😭 不要在漲了 我的薪水都沒漲\n可是台灣薪水漲\n物價也跟著漲\nfeast.steak_zhonghe\n萬物皆漲 只有薪水不漲\n台灣好像薪水漲物價就漲🥹\nroll_one_roll\n😭😭😭\n什麼都又要漲😮‍💨\nbreakfast_220\n漲聲不斷\n經營者好難\n只有經營者才懂\n消費者很難懂😵‍💫😵‍💫😵‍💫😵‍💫\n真的\n現在經營什麼都不容易🥹\nbreakfast_220\n🤝\nfruit_juice92\n😭😭😭\n😮‍💨😮‍💨😮‍💨\nssy9302199\n🫂\n❤️❤️\njhejhe1208\n請您加油\n北斗必喝\n我努力堅持💪\njhejhe1208\n👍👍\ntanggou__\n一直漲漲漲😭😭😭\n只能努力撐著🥹\n1688_vd\n萬物皆漲，售價不敢漲🥹🥹🥹\n真的\n繼續撐著💪\nstar20211107\n一路漲不停啊😭😭😭😭😭😭\n每年都在改變🥹\nstar20211107\n嘿啊🥹\n完全不敢算下去🤩🤩😭",
-      "time": "2026-10-20T06:39:54.000Z",
-      "keywords": [
-        "飲料",
-        "飲料店",
-        "開店"
-      ],
-      "regions": [],
-      "foundBy": "飲料",
-      "foundQuery": "飲料",
-      "foundAt": "2026-10-20T21:49:54.644Z",
-      "full": true
-    },
-    {
-      "code": "DetLuWbDIyH",
-      "user": "macongbing_321",
-      "url": "https://www.threads.com/@macongbing_321/post/DetLuWbDIyH",
-      "authorUrl": "https://www.threads.com/@macongbing_321",
-      "text": "823次瀏覽\n📣 **馬蔥餅－義華店｜開幕籌備日記 Day 2**\n距離試營運越來越近啦！😍\n今天設備陸陸續續進場中～\n店裡也開始慢慢有了模樣！❤️\n每天都在忙著準備，希望能把最好的一面呈現給大家！\n雖然忙碌，但更多的是期待🥰\n📅 **10/23－10/25 試營運**\n🎊 **10/26 正式開幕**\n📍 高雄市三民區義華路321號\n再過幾天就能跟大家見面啦！\n記得幫我們追蹤、分享，一起期待開幕吧！🫶🏻\n#馬蔥餅義華店 #高雄美食 #三民區美食 #開幕倒數 #開店日記\nfoodiebro0327\n老闆您好 為您的試營運加油🎉\n若有考慮使用點餐系統輔助經營\n推薦使用點了沒\n系統穩定不會讓您失望\nchi_sun0624\n您好！我是熊貓總公司的資深業務jason，全台服務，Line pay pos 街口 全支付全部可以一起介紹窗口一併申辦！uber 也能介紹合作的窗口一起服務～有需要歡迎聯繫，祝您開業順利，打擾囉！\nt055480_0708\n期待開幕喔\n歡迎你\nsmallgamble1\n設備進場那段看著店慢慢成形最有感了，加油！開幕初期人潮一多，點餐跟出單最容易亂。可以考慮不抽成的線上點餐，客人先點好你們專心做餅，有需要可以點我檔案看看\nbig_boss_0766\n恭喜義華店快開幕！蔥油餅配一杯古早味紅茶很對味，阿薩姆原葉我們有，茶味夠濃，可以寄樣，試營運會賣飲料嗎？",
-      "time": "2026-10-20T06:24:48.000Z",
-      "keywords": [
-        "飲料",
-        "開店"
-      ],
-      "regions": [
-        "高雄"
-      ],
-      "foundBy": "開店",
-      "foundQuery": "開店",
-      "foundAt": "2026-10-20T21:49:54.644Z",
-      "full": true
-    },
-    {
-      "code": "Des_d0hkwoK",
-      "user": "yeonwookwithryeo",
-      "url": "https://www.threads.com/@yeonwookwithryeo/post/Des_d0hkwoK",
-      "authorUrl": "https://www.threads.com/@yeonwookwithryeo",
-      "text": "2 萬次瀏覽\n我喝飲料的原則：\n只是想喝點東西—不喝\n很渴—不喝\n辦公室一起訂—不喝\n心中突然浮現非常具體確切的店家與品項名稱（例如迷客夏青檸香茶微糖少冰）—喝\n21212jey\n我的原則\n不是白毫烏龍-不喝\nlinnyuuu_103\n是茶裏王的那個白毫烏龍嗎\nihuangzc\n別人請的飲料—喝\njay110331021\n存自己看\nrrr19820213\n我喝飲料的原則：\n喝！\niguaran_\n主管請客—喝\nlinnyuuu_103\n茶魔青梅青無糖少冰\nfumii_0103\n我的原則：\n出門了&飲料店營業中->喝！！\nyangwennnnn\n只想喝點東西-喝\n很渴-喝\n同事一起訂-喝\n突然很想喝-喝\n沒什麼事-喝\ndrinqsy_\n我喝飲料的原則：\n能喝都喝",
-      "time": "2026-10-20T04:37:41.000Z",
-      "keywords": [
-        "飲料",
-        "飲料店"
-      ],
-      "regions": [],
-      "foundBy": "飲料",
-      "foundQuery": "飲料",
-      "foundAt": "2026-10-20T21:49:54.644Z",
-      "full": true
     }
   ],
   "kwStats": {
@@ -11915,10 +11997,10 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 36,
-      "last": 1792823470672,
-      "scanned": 689,
-      "leads": 16
+      "count": 37,
+      "last": 1792825311379,
+      "scanned": 707,
+      "leads": 17
     },
     "二手設備": {
       "count": 25,
@@ -11951,9 +12033,9 @@
       "leads": 0
     },
     "頂讓": {
-      "count": 35,
-      "last": 1792823442800,
-      "scanned": 650,
+      "count": 36,
+      "last": 1792825285996,
+      "scanned": 669,
       "leads": 25
     },
     "廚房設備": {
@@ -11993,9 +12075,9 @@
       "leads": 0
     },
     "退租": {
-      "count": 21,
-      "last": 1792814002958,
-      "scanned": 361,
+      "count": 22,
+      "last": 1792825396713,
+      "scanned": 378,
       "leads": 14
     },
     "低價出清": {
@@ -12053,10 +12135,10 @@
       "leads": 1
     },
     "盤讓": {
-      "count": 35,
-      "last": 1792823456914,
-      "scanned": 644,
-      "leads": 19
+      "count": 36,
+      "last": 1792825299071,
+      "scanned": 662,
+      "leads": 20
     },
     "營業用": {
       "count": 2,
@@ -12125,21 +12207,21 @@
       "leads": 23
     },
     "飲料店": {
-      "count": 20,
-      "last": 1792814083237,
-      "scanned": 377,
-      "leads": 6
+      "count": 21,
+      "last": 1792825473807,
+      "scanned": 396,
+      "leads": 7
     },
     "裝潢": {
-      "count": 24,
-      "last": 1792814044456,
-      "scanned": 423,
+      "count": 25,
+      "last": 1792825434944,
+      "scanned": 444,
       "leads": 1
     },
     "店面出租": {
-      "count": 46,
-      "last": 1792823547504,
-      "scanned": 898,
+      "count": 47,
+      "last": 1792825383083,
+      "scanned": 918,
       "leads": 21
     },
     "拆除": {
@@ -12155,9 +12237,9 @@
       "leads": 3
     },
     "餐車": {
-      "count": 23,
-      "last": 1792814097161,
-      "scanned": 459,
+      "count": 24,
+      "last": 1792825488231,
+      "scanned": 478,
       "leads": 1
     },
     "排油煙": {
@@ -12197,40 +12279,40 @@
       "leads": 15
     },
     "油煙機": {
-      "count": 9,
-      "last": 1792816365159,
-      "scanned": 177,
-      "leads": 8
+      "count": 10,
+      "last": 1792825512551,
+      "scanned": 196,
+      "leads": 9
     },
     "維修": {
-      "count": 9,
-      "last": 1792814111276,
-      "scanned": 174,
+      "count": 10,
+      "last": 1792825500854,
+      "scanned": 194,
       "leads": 0
     },
     "試營運": {
-      "count": 9,
-      "last": 1792814070687,
-      "scanned": 168,
+      "count": 10,
+      "last": 1792825461454,
+      "scanned": 187,
       "leads": 13
     },
     "即將開幕": {
-      "count": 9,
-      "last": 1792814057941,
-      "scanned": 180,
+      "count": 10,
+      "last": 1792825448680,
+      "scanned": 200,
       "leads": 8
     },
     "水電": {
-      "count": 9,
-      "last": 1792814029240,
-      "scanned": 152,
+      "count": 10,
+      "last": 1792825420503,
+      "scanned": 171,
       "leads": 7
     },
     "清潔": {
-      "count": 9,
-      "last": 1792814015252,
-      "scanned": 163,
-      "leads": 12
+      "count": 10,
+      "last": 1792825408917,
+      "scanned": 180,
+      "leads": 14
     },
     "營業用冰箱": {
       "count": 10,
@@ -12239,20 +12321,20 @@
       "leads": 1
     },
     "頂讓金": {
-      "count": 32,
-      "last": 1792823486968,
+      "count": 33,
+      "last": 1792825323906,
       "scanned": 0,
       "leads": 0
     },
     "讓渡金": {
-      "count": 7,
-      "last": 1792816378532,
+      "count": 8,
+      "last": 1792825526633,
       "scanned": 0,
       "leads": 0
     },
     "頂讓費": {
-      "count": 7,
-      "last": 1792816437700,
+      "count": 8,
+      "last": 1792825586709,
       "scanned": 0,
       "leads": 0
     },
@@ -12413,11 +12495,11 @@
       "leads": 0
     }
   },
-  "nextScanAt": "2026-10-24T06:58:30.938Z",
+  "nextScanAt": "2026-10-24T07:31:55.135Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-24T06:58:30.938Z",
-    "madeAt": "2026-10-24T06:36:06.796Z",
+    "at": "2026-10-24T07:31:55.135Z",
+    "madeAt": "2026-10-24T07:08:02.452Z",
     "items": [
       {
         "kw": "頂讓",
@@ -12440,54 +12522,54 @@
         "q": "店面出租"
       },
       {
-        "kw": "退租",
-        "q": "退租"
+        "kw": "找接手",
+        "q": "找接手"
       },
       {
-        "kw": "清潔",
-        "q": "清潔"
+        "kw": "接手",
+        "q": "接手"
       },
       {
-        "kw": "水電",
-        "q": "水電"
+        "kw": "收掉",
+        "q": "收掉"
       },
       {
-        "kw": "裝潢",
-        "q": "裝潢"
+        "kw": "熄燈",
+        "q": "熄燈"
       },
       {
-        "kw": "即將開幕",
-        "q": "即將開幕"
+        "kw": "不做了",
+        "q": "不做了"
       },
       {
-        "kw": "試營運",
-        "q": "試營運"
+        "kw": "工作台",
+        "q": "工作台"
       },
       {
-        "kw": "飲料店",
-        "q": "飲料店"
+        "kw": "冰櫃",
+        "q": "冰櫃"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "展示櫃",
+        "q": "展示櫃"
       },
       {
-        "kw": "維修",
-        "q": "維修"
+        "kw": "封口機",
+        "q": "封口機"
       },
       {
-        "kw": "油煙機",
-        "q": "油煙機"
+        "kw": "炸爐",
+        "q": "炸爐"
       },
       {
-        "kw": "讓渡金",
-        "q": "讓渡金"
+        "kw": "煮麵機",
+        "q": "煮麵機"
       },
       {
-        "kw": "頂讓費",
-        "q": "頂讓費"
+        "kw": "快速爐",
+        "q": "快速爐"
       }
     ]
   },
-  "kwCursor": 27
+  "kwCursor": 39
 }
