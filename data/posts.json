@@ -1,51 +1,52 @@
 {
-  "updatedAt": "2026-10-24T21:46:36.177Z",
+  "updatedAt": "2026-10-24T22:41:57.677Z",
   "lastRun": {
-    "startedAt": "2026-10-24T21:40:33.670Z",
-    "finishedAt": "2026-10-24T21:46:36.115Z",
+    "startedAt": "2026-10-24T22:30:49.766Z",
+    "finishedAt": "2026-10-24T22:41:57.617Z",
     "status": "ok",
-    "scanned": 280,
-    "matched": 7,
-    "newCount": 7,
-    "notified": 7,
+    "scanned": 139,
+    "matched": 1,
+    "newCount": 1,
+    "notified": 1,
     "perKeyword": {
-      "頂讓": 20,
+      "頂讓": 18,
       "盤讓": 16,
       "店面頂讓": 20,
       "頂讓金": 0,
       "店面出租": 20,
-      "拆除": 18,
-      "退租": 18,
-      "清潔": 21,
-      "水電": 16,
-      "裝潢": 18,
-      "即將開幕": 20,
-      "試營運": 17,
-      "飲料店": 20,
-      "餐車": 18,
-      "維修": 20,
-      "油煙機": 18,
-      "找接手": 0
+      "接手": 0,
+      "收掉": 0,
+      "熄燈": 21,
+      "不做了": 0,
+      "工作台": 0,
+      "冰櫃": 0,
+      "展示櫃": 21,
+      "封口機": 23,
+      "炸爐": 0,
+      "煮麵機": 0,
+      "快速爐": 0
     },
-    "warnings": [],
+    "warnings": [
+      "搜尋時間超過 10 分鐘，剩下 1 個關鍵字留到下次"
+    ],
     "keywordsUsed": [
       "頂讓",
       "盤讓",
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "拆除",
-      "退租",
-      "清潔",
-      "水電",
-      "裝潢",
-      "即將開幕",
-      "試營運",
-      "飲料店",
-      "餐車",
-      "維修",
-      "油煙機",
-      "找接手"
+      "接手",
+      "收掉",
+      "熄燈",
+      "不做了",
+      "工作台",
+      "冰櫃",
+      "展示櫃",
+      "封口機",
+      "炸爐",
+      "煮麵機",
+      "快速爐",
+      "冰淇淋機"
     ],
     "queries": [
       "頂讓",
@@ -53,42 +54,115 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "拆除",
-      "退租",
-      "清潔",
-      "水電",
-      "裝潢",
-      "即將開幕",
-      "試營運",
-      "飲料店",
-      "餐車",
-      "維修",
-      "油煙機",
-      "找接手"
+      "接手",
+      "收掉",
+      "熄燈",
+      "不做了",
+      "工作台",
+      "冰櫃",
+      "展示櫃",
+      "封口機",
+      "炸爐",
+      "煮麵機",
+      "快速爐"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 221,
+      "seen": 120,
       "dup": 0,
-      "tooOld": 15,
-      "noContext": 31,
-      "noKeyword": 5,
-      "notBiz": 1
+      "tooOld": 6,
+      "noKeyword": 3,
+      "noContext": 9
     },
-    "detailFetched": 6,
+    "detailFetched": 1,
     "newUrls": [
-      "https://www.threads.com/@qing810/post/De4nmiwk-bc",
-      "https://www.threads.com/@hankhuangg/post/De4k8bdk7eR",
-      "https://www.threads.com/@mono.line__/post/De4jJSMmGsN",
-      "https://www.threads.com/@huangxiaoqin19/post/De4dGxOmEzV",
-      "https://www.threads.com/@jingchen527319/post/De4QhlNEmZW",
-      "https://www.threads.com/@andy__828__/post/De3m_0djxn4",
-      "https://www.threads.com/@bezold.tw/post/De1ZGVTmOJY"
+      "https://www.threads.com/@taiwan.6789/post/De4UNNTmdsI"
     ],
     "pushMode": "on",
-    "nextInMinutes": 35
+    "nextInMinutes": 28
   },
   "runs": [
+    {
+      "startedAt": "2026-10-24T22:30:49.766Z",
+      "finishedAt": "2026-10-24T22:41:57.617Z",
+      "status": "ok",
+      "scanned": 139,
+      "matched": 1,
+      "newCount": 1,
+      "notified": 1,
+      "perKeyword": {
+        "頂讓": 18,
+        "盤讓": 16,
+        "店面頂讓": 20,
+        "頂讓金": 0,
+        "店面出租": 20,
+        "接手": 0,
+        "收掉": 0,
+        "熄燈": 21,
+        "不做了": 0,
+        "工作台": 0,
+        "冰櫃": 0,
+        "展示櫃": 21,
+        "封口機": 23,
+        "炸爐": 0,
+        "煮麵機": 0,
+        "快速爐": 0
+      },
+      "warnings": [
+        "搜尋時間超過 10 分鐘，剩下 1 個關鍵字留到下次"
+      ],
+      "keywordsUsed": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "接手",
+        "收掉",
+        "熄燈",
+        "不做了",
+        "工作台",
+        "冰櫃",
+        "展示櫃",
+        "封口機",
+        "炸爐",
+        "煮麵機",
+        "快速爐",
+        "冰淇淋機"
+      ],
+      "queries": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "接手",
+        "收掉",
+        "熄燈",
+        "不做了",
+        "工作台",
+        "冰櫃",
+        "展示櫃",
+        "封口機",
+        "炸爐",
+        "煮麵機",
+        "快速爐"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 120,
+        "dup": 0,
+        "tooOld": 6,
+        "noKeyword": 3,
+        "noContext": 9
+      },
+      "detailFetched": 1,
+      "newUrls": [
+        "https://www.threads.com/@taiwan.6789/post/De4UNNTmdsI"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 28
+    },
     {
       "startedAt": "2026-10-24T21:40:33.670Z",
       "finishedAt": "2026-10-24T21:46:36.115Z",
@@ -8225,6 +8299,23 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "De4UNNTmdsI",
+      "user": "taiwan.6789",
+      "url": "https://www.threads.com/@taiwan.6789/post/De4UNNTmdsI",
+      "authorUrl": "https://www.threads.com/@taiwan.6789",
+      "text": "1,626次瀏覽\nmaxmell_eric\n7-11 統一再不讓利給加盟主，將會走向毀滅。\n我家附近開了30年的7-11剛盤讓\nchouyi728\n在人口密集的都會區嗎？",
+      "time": "2026-10-23T15:31:27.000Z",
+      "keywords": [
+        "盤讓",
+        "加盟"
+      ],
+      "regions": [],
+      "foundBy": "盤讓",
+      "foundQuery": "盤讓",
+      "foundAt": "2026-10-24T22:41:49.745Z",
+      "full": true
+    },
+    {
       "code": "De4nmiwk-bc",
       "user": "qing810",
       "url": "https://www.threads.com/@qing810/post/De4nmiwk-bc",
@@ -13555,24 +13646,6 @@
       "foundBy": "試營運",
       "foundQuery": "試營運",
       "foundAt": "2026-10-23T06:26:36.545Z"
-    },
-    {
-      "code": "De0xFntk8eO",
-      "user": "roninyakisoba.tw",
-      "url": "https://www.threads.com/@roninyakisoba.tw/post/De0xFntk8eO",
-      "authorUrl": "https://www.threads.com/@roninyakisoba.tw",
-      "text": "3次瀏覽\n板橋美食推薦\n🌪️🍜【浪人炒麵｜板橋全區美食外送】🍜🇯🇵\n🌧️ 颱風天不想出門？\n沒關係，就讓浪人炒麵陪你度過這個風雨交加的日子！❤️\n風雨再大，也別忘了好好吃飯！\n我們希望在大家不方便出門的日子裡，依然能為你送上一份熱騰騰、香氣滿滿的日式炒麵。\n不管是自己享用，還是與家人、朋友一起分享，都希望浪人的美味，能為你的颱風天增添一點溫暖與幸福。🥰\n🍜 【浪人炒麵｜人氣餐點・秘製醬料】\n🔥 日式招牌炒麵\n以秘製醬料搭配經典日式風味，香氣十足，每一口都是滿滿的滿足感！\n🍜 紅牌炒烏龍\nQ 彈烏龍麵搭配濃郁醬香，讓人越吃越過癮！\n🧈 明太子奶油炒烏龍\n明太子的鮮香，結合奶油的濃郁滑順，帶來令人難以抗拒的美味！\n🛵 【浪人外送服務｜板橋全區】\n📍 外送範圍：新北市板橋區全區\n🎉 訂購滿 3 份，免外送費！\n🛵 未滿 3 份，酌收外送費 NT$50。\n想吃日式炒麵，不必特地出門，在家也能享受美味！\n🏠 【店家地址】\n新北市板橋區南雅東路 27 之 6 號 1 樓\n📲 【訂購方式】\n請掃描下方 LINE QR Code，加入「浪人炒麵」專屬訂餐群組！\n小さな居酒屋 (Tiny Izakaya Traditional Japanese Lo-Fi) · Around The World Lo-Fi\n板橋人們看過來‼️",
-      "time": "2026-10-23T05:05:58.000Z",
-      "keywords": [
-        "招牌"
-      ],
-      "regions": [
-        "新北"
-      ],
-      "foundBy": "招牌",
-      "foundQuery": "招牌",
-      "foundAt": "2026-10-23T05:32:24.920Z",
-      "full": true
     }
   ],
   "kwStats": {
@@ -13589,9 +13662,9 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 55,
-      "last": 1792878063219,
-      "scanned": 1056,
+      "count": 56,
+      "last": 1792881078946,
+      "scanned": 1076,
       "leads": 24
     },
     "二手設備": {
@@ -13625,9 +13698,9 @@
       "leads": 0
     },
     "頂讓": {
-      "count": 54,
-      "last": 1792878034947,
-      "scanned": 1003,
+      "count": 55,
+      "last": 1792881050089,
+      "scanned": 1021,
       "leads": 38
     },
     "廚房設備": {
@@ -13727,10 +13800,10 @@
       "leads": 1
     },
     "盤讓": {
-      "count": 54,
-      "last": 1792878048633,
-      "scanned": 971,
-      "leads": 26
+      "count": 55,
+      "last": 1792881063850,
+      "scanned": 987,
+      "leads": 27
     },
     "營業用": {
       "count": 2,
@@ -13811,9 +13884,9 @@
       "leads": 2
     },
     "店面出租": {
-      "count": 65,
-      "last": 1792878134504,
-      "scanned": 1270,
+      "count": 66,
+      "last": 1792881154638,
+      "scanned": 1290,
       "leads": 25
     },
     "拆除": {
@@ -13913,8 +13986,8 @@
       "leads": 1
     },
     "頂讓金": {
-      "count": 51,
-      "last": 1792878076935,
+      "count": 52,
+      "last": 1792881093600,
       "scanned": 0,
       "leads": 0
     },
@@ -13937,68 +14010,68 @@
       "leads": 0
     },
     "接手": {
-      "count": 10,
-      "last": 1792858499389,
+      "count": 11,
+      "last": 1792881169007,
       "scanned": 0,
       "leads": 0
     },
     "收掉": {
-      "count": 10,
-      "last": 1792858559231,
+      "count": 11,
+      "last": 1792881229486,
       "scanned": 0,
       "leads": 0
     },
     "熄燈": {
-      "count": 10,
-      "last": 1792858620802,
-      "scanned": 177,
+      "count": 11,
+      "last": 1792881289124,
+      "scanned": 198,
       "leads": 1
     },
     "不做了": {
-      "count": 10,
-      "last": 1792858632239,
+      "count": 11,
+      "last": 1792881306105,
       "scanned": 0,
       "leads": 0
     },
     "工作台": {
-      "count": 10,
-      "last": 1792858691029,
+      "count": 11,
+      "last": 1792881367831,
       "scanned": 0,
       "leads": 0
     },
     "冰櫃": {
-      "count": 10,
-      "last": 1792860748054,
+      "count": 11,
+      "last": 1792881431301,
       "scanned": 0,
       "leads": 0
     },
     "展示櫃": {
-      "count": 10,
-      "last": 1792860808570,
-      "scanned": 201,
+      "count": 11,
+      "last": 1792881492334,
+      "scanned": 222,
       "leads": 5
     },
     "封口機": {
-      "count": 10,
-      "last": 1792860821914,
-      "scanned": 191,
+      "count": 11,
+      "last": 1792881507875,
+      "scanned": 214,
       "leads": 2
     },
     "炸爐": {
-      "count": 10,
-      "last": 1792860834755,
+      "count": 11,
+      "last": 1792881524962,
       "scanned": 0,
       "leads": 0
     },
     "煮麵機": {
-      "count": 10,
-      "last": 1792860895452,
+      "count": 11,
+      "last": 1792881586116,
       "scanned": 0,
       "leads": 0
     },
     "快速爐": {
-      "count": 10,
-      "last": 1792860955248,
+      "count": 11,
+      "last": 1792881646829,
       "scanned": 0,
       "leads": 0
     },
@@ -14087,11 +14160,11 @@
       "leads": 0
     }
   },
-  "nextScanAt": "2026-10-24T22:21:56.877Z",
+  "nextScanAt": "2026-10-24T23:10:15.667Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-24T22:21:56.877Z",
-    "madeAt": "2026-10-24T21:46:36.164Z",
+    "at": "2026-10-24T23:10:15.667Z",
+    "madeAt": "2026-10-24T22:41:57.666Z",
     "items": [
       {
         "kw": "頂讓",
@@ -14114,54 +14187,54 @@
         "q": "店面出租"
       },
       {
-        "kw": "接手",
-        "q": "接手"
-      },
-      {
-        "kw": "收掉",
-        "q": "收掉"
-      },
-      {
-        "kw": "熄燈",
-        "q": "熄燈"
-      },
-      {
-        "kw": "不做了",
-        "q": "不做了"
-      },
-      {
-        "kw": "工作台",
-        "q": "工作台"
-      },
-      {
-        "kw": "冰櫃",
-        "q": "冰櫃"
-      },
-      {
-        "kw": "展示櫃",
-        "q": "展示櫃"
-      },
-      {
-        "kw": "封口機",
-        "q": "封口機"
-      },
-      {
-        "kw": "炸爐",
-        "q": "炸爐"
-      },
-      {
-        "kw": "煮麵機",
-        "q": "煮麵機"
-      },
-      {
-        "kw": "快速爐",
-        "q": "快速爐"
-      },
-      {
         "kw": "冰淇淋機",
         "q": "冰淇淋機"
+      },
+      {
+        "kw": "收銀機",
+        "q": "收銀機"
+      },
+      {
+        "kw": "二手冷氣",
+        "q": "二手冷氣"
+      },
+      {
+        "kw": "統包",
+        "q": "統包"
+      },
+      {
+        "kw": "油漆",
+        "q": "油漆"
+      },
+      {
+        "kw": "冷氣",
+        "q": "冷氣"
+      },
+      {
+        "kw": "搬家",
+        "q": "搬家"
+      },
+      {
+        "kw": "貨運",
+        "q": "貨運"
+      },
+      {
+        "kw": "清運",
+        "q": "清運"
+      },
+      {
+        "kw": "漏水",
+        "q": "漏水"
+      },
+      {
+        "kw": "POS",
+        "q": "POS"
+      },
+      {
+        "kw": "點餐系統",
+        "q": "點餐系統"
       }
     ]
   },
-  "kwCursor": 38
+  "kwCursor": 49
 }
