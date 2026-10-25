@@ -36,6 +36,9 @@ const DEFAULT_CONFIG = {
   restHoursPerDay: 6,     // 每天休息幾小時（零散分布，每天不同）
   smartSchedule: true,    // 依發文時段：冷門時段休息、尖峰時段掃得密一點
   detailFetchMax: 6,      // 每次最多點進幾篇新線索看完整內容
+  focusRegions: [],       // 加強搜尋地區（例：台北、新北、桃園、基隆）
+  focusPerScan: 4,        // 每次掃描多搜幾個「地區＋關鍵字」（例：台北頂讓）
+  focusBases: [],         // 地區後面接的詞，空的就用預設
   comboChance: 0.5,       // 每個關鍵字有多少機率搭配一個地區一起搜（0～1）
   timezone: 'Asia/Taipei',
   maxAgeHours: 72,
@@ -72,6 +75,8 @@ function loadConfig(file = path.join(ROOT, 'config.json')) {
   applyKwRules(cfg);
   cfg.allKeywords = cleanList([...cfg.mustKeywords, ...cfg.keywords]);
   cfg.regions = cleanList(cfg.regions);
+  cfg.focusRegions = cleanList(cfg.focusRegions || []).map((r) => r.replace(/臺/g, '台'));
+  cfg.focusBases = cleanList(cfg.focusBases || []);
   cfg.excludeWords = cleanList(cfg.excludeWords);
   cfg.excludeUsers = cleanList((cfg.excludeUsers || []).map(normUser));
   cfg.watchUsers = cleanList((cfg.watchUsers || []).map(normUser));
@@ -238,6 +243,32 @@ async function scrapeKeyword(page, keyword, { scrolls = 3, retry = true } = {}) 
   return { items, loginWall, retried: !ok };
 }
 
+/* ---------------- 地區（含行政區別名） ---------------- */
+const REGION_ALIAS = {
+  台北: ['台北', '北市', '大安區', '信義區', '中山區', '松山區', '內湖', '士林', '北投', '萬華', '文山區', '南港', '大同區', '中正區', '公館', '西門'],
+  新北: ['新北', '板橋', '中和', '永和', '三重', '新莊', '土城', '樹林', '蘆洲', '汐止', '淡水', '林口', '新店', '五股', '泰山', '鶯歌', '三峽', '深坑', '八里'],
+  桃園: ['桃園', '中壢', '平鎮', '八德', '龜山', '蘆竹', '楊梅', '大園', '龍潭', '大溪', '觀音'],
+  基隆: ['基隆'],
+  新竹: ['新竹', '竹北', '竹東', '湖口', '新豐'],
+  苗栗: ['苗栗', '頭份', '竹南'],
+  台中: ['台中', '北屯', '西屯', '南屯', '豐原', '大里', '太平', '沙鹿', '清水', '逢甲', '一中街'],
+  彰化: ['彰化', '員林', '鹿港'],
+  南投: ['南投', '草屯', '埔里'],
+  雲林: ['雲林', '斗六', '虎尾'],
+  嘉義: ['嘉義'],
+  台南: ['台南', '永康', '安平', '新營', '仁德', '歸仁'],
+  高雄: ['高雄', '鳳山', '左營', '三民區', '苓雅', '前鎮', '楠梓', '鼓山', '岡山', '小港', '鳥松', '大寮'],
+  屏東: ['屏東', '潮州', '東港'],
+  宜蘭: ['宜蘭', '羅東'],
+  花蓮: ['花蓮'],
+  台東: ['台東'],
+};
+function regionsOf(text, cfg) {
+  const t = norm(text);
+  const all = cleanList([...(cfg.regions || []), ...(cfg.focusRegions || [])]);
+  return all.filter((r) => (REGION_ALIAS[r.replace(/臺/g, '台')] || [r]).some((a) => t.includes(norm(a))));
+}
+
 /* ---------------- 過濾 ---------------- */
 function matchPost(post, cfg, foundBy, drop) {
   const no = (k) => { if (drop) drop[k] = (drop[k] || 0) + 1; return null; };
@@ -252,8 +283,8 @@ function matchPost(post, cfg, foundBy, drop) {
   else if (!watched && cfg.bizOnly && !BIZ_RX.test(text)) return no('notBiz');
   const ew = cfg.excludeWords.find((w) => text.includes(norm(w)));
   if (ew) { if (drop) { drop.words = drop.words || {}; drop.words[ew] = (drop.words[ew] || 0) + 1; } return no('excludeWord'); }
-  const regions = cfg.regions.filter((r) => text.includes(norm(r)));
-  if (cfg.regionRequired && cfg.regions.length && regions.length === 0) return no('noRegion');
+  const regions = regionsOf(text, cfg);
+  if (cfg.regionRequired && (cfg.regions.length || cfg.focusRegions.length) && regions.length === 0) return no('noRegion');
   if (cfg.maxAgeHours > 0 && post.time) {
     const t = Date.parse(post.time);
     if (!isNaN(t) && Date.now() - t > cfg.maxAgeHours * 3600e3) return no('tooOld');
@@ -348,19 +379,45 @@ function pickKeywords(cfg, doc) {
   return [...must, ...shuffle(ordered.slice(0, Math.min(rest.length, n * 2))).slice(0, n)];
 }
 
+// 加強地區：把「地區＋詞」輪流排進每次掃描（例：台北頂讓、新北餐飲設備）
+// 連續 3 次 0 則的組合先休息 3 天，把機會讓給有結果的
+const FOCUS_BASES = ['頂讓', '店面頂讓', '餐飲頂讓', '店面出租', '二手設備', '餐飲設備', '收店', '結束營業', '出清', '設備出清'];
+function focusCombos(cfg) {
+  const bases = (cfg.focusBases && cfg.focusBases.length ? cfg.focusBases : FOCUS_BASES).map((b) => String(b).split('+')[0].trim()).filter(Boolean);
+  const out = [];
+  for (const b of bases) for (const r of cfg.focusRegions || []) out.push(r + b);
+  return out;
+}
+function pickFocus(cfg, doc) {
+  const n = Math.max(0, Math.round(Number(cfg.focusPerScan ?? 4)));
+  const all = focusCombos(cfg);
+  if (!n || !all.length) return [];
+  const st = doc.kwStats || {};
+  const rest = (q) => { const x = st[q]; return x && (x.zero || 0) >= 3 && Date.now() - (x.last || 0) < 3 * 864e5; };
+  const ok = all.filter((q) => !rest(q));
+  const list = ok.length ? ok : all;
+  const start = (Number(doc.focusCursor) || 0) % list.length;
+  const pick = [];
+  for (let i = 0; i < Math.min(n, list.length); i++) pick.push(list[(start + i) % list.length]);
+  doc.focusCursor = (start + pick.length) % list.length;
+  return pick.map((q) => ({ kw: q, q, focus: true }));
+}
+
 // 預先排好「下一次」要搜的內容，存進 posts.json，控制台就能先看到
 function planQueries(cfg, doc) {
   const regions = cfg.regions || [];
   return pickKeywords(cfg, doc).map((kw) => {
     const combo = regions.length && Math.random() < Number(cfg.comboChance ?? 0.5);
     return { kw, q: combo ? `${kw} ${regions[Math.floor(Math.random() * regions.length)]}` : kw };
-  });
+  }).concat(pickFocus(cfg, doc));
 }
 function usePlan(cfg, doc) {
   const plan = doc.nextPlan && Array.isArray(doc.nextPlan.items) ? doc.nextPlan.items : null;
   if (!plan || !plan.length) return planQueries(cfg, doc);
   const pool = new Set(cfg.allKeywords || []);
-  const items = plan.filter((x) => x && pool.has(x.kw));
+  const focusOk = new Set(focusCombos(cfg));
+  const items = plan.filter((x) => x && (pool.has(x.kw) || (x.focus && focusOk.has(x.kw))));
+  if (!items.some((x) => x.focus)) items.push(...pickFocus(cfg, doc));
   for (const m of cfg.mustKeywords || []) if (!items.some((x) => x.kw === m)) items.unshift({ kw: m, q: m });
   return items.length ? items : planQueries(cfg, doc);
 }
@@ -449,6 +506,7 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
         if (!r.items.length && query !== kw) { log(`「${query}」沒結果，改搜「${kw}」`); r = await scrapeKeyword(page, kw, { scrolls: cfg.scrollsPerKeyword }); usedQ = kw; run.queries[run.queries.length - 1] = `${query}→${kw}`; }
         run.perKeyword[kw] = (run.perKeyword[kw] > 0 ? run.perKeyword[kw] : 0) + r.items.length;
         st.scanned = (st.scanned || 0) + r.items.length;
+        st.zero = r.items.length ? 0 : (st.zero || 0) + 1;
         if (r.loginWall) loginWall = true;
         for (const it of r.items) scannedItems.push({ it, kw, q: usedQ });
         log(`「${query}」抓到 ${r.items.length} 則`);
@@ -613,7 +671,7 @@ async function handleOutbox({ cfg, store, env = process.env, log = console.log }
 
 module.exports = {
   handleOutbox, threadsPublish,
-  planQueries, usePlan, applyKwRules,
+  planQueries, usePlan, applyKwRules, regionsOf, focusCombos, pickFocus,
   DEFAULT_CONFIG, loadConfig, normUser, FileStore, parseCookies, extractInPage, scrapeKeyword,
   matchPost, formatPost, notify, runScan, sendTestNotification, shouldScan, inQuiet, pickNext, restHours, pickKeywords,
 };

@@ -231,6 +231,9 @@ nav button.ring svg{animation:ring 1s ease-in-out infinite;color:#ffb347}
 #mqOv label.hint{display:block;margin-top:10px}
 .mqrow{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
 .mqrow.off .mqtxt{opacity:.5}.mqtxt{font-size:16px;line-height:1.5}.mqbtn{display:flex;gap:6px;flex:none}
+#focusRegs button{font-size:17px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:#16120a;color:var(--muted);font-family:inherit;cursor:pointer}
+#focusRegs button.on{background:linear-gradient(180deg,#ffd95a,#d4a017);color:#2a1a00;font-weight:800;border-color:#ffd95a}
+.post .rtag.focus{background:linear-gradient(180deg,#ffd95a,#d4a017);color:#2a1a00;font-weight:800;border:0}
 #dirtyBar{position:fixed;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:55;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#5a2a10,#3a1a08);border:1px solid #ff8a3d;color:#ffd7b8;font-weight:800;font-size:16px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 #dirtyBar[hidden]{display:none}
 .chip.pinchip{border-color:#f5c542;color:#ffd95a;font-weight:800}
@@ -478,6 +481,16 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
       <div style="display:none">
       </div>
       <div class="banner" id="schedInfo" style="margin:0"></div>
+    </div>
+    <div class="card" id="focusCard">
+      <h3 style="margin:0 0 4px">📍 加強搜尋地區</h3>
+      <p class="hint" style="margin:0 0 10px">點選想多收線索的地區（金色＝加強中）。每次掃描會多搜幾個「地區＋關鍵字」，例如「台北頂讓」「新北餐飲設備」，輪流不重複；連續 3 次搜不到的組合會自動休息 3 天。</p>
+      <div id="focusRegs" class="taglist"></div>
+      <div class="grid2" style="margin-top:10px">
+        <div class="field"><label>每次掃描多搜幾個地區組合（0＝關閉）</label><input type="number" min="0" max="12" id="cFocusN"></div>
+        <div class="field"><label>地區後面接的詞（用逗號分開，空白＝用預設）</label><input id="cFocusBases" placeholder="頂讓,店面頂讓,餐飲頂讓,店面出租,二手設備,餐飲設備,收店,結束營業,出清,設備出清"></div>
+      </div>
+      <div id="focusStat" class="hint" style="margin:6px 0 0"></div>
     </div>
     <div class="card">
       <div class="field"><label>🏷 系統名稱（顯示在最上面和 Telegram 通知，有好幾套雷達時用來分辨）</label><input id="cTitle" placeholder="小球脆雷達"></div>
@@ -1229,6 +1242,16 @@ function pinStore(){const m=LS.get('pins',{});if(window.DB&&DB.unlocked&&DB.data
 function pinnedPosts(){const m=pinStore();const live=new Map((state.doc?.posts||[]).map(p=>[p.url,p]));
   return Object.keys(state.crm).filter(u=>state.crm[u]&&state.crm[u].pin).map(u=>live.get(u)||m[u]).filter(Boolean).sort((a,b)=>(crm(b.url).pinAt||0)-(crm(a.url).pinAt||0))}
 function findPostU(u){return (state.doc?.posts||[]).find(x=>x.url===u)||pinStore()[u]||((window.DB&&DB.leads)||[]).find(x=>x.url===u)||null}
+const ALL_REGIONS=['台北','新北','基隆','桃園','新竹','苗栗','台中','彰化','南投','雲林','嘉義','台南','高雄','屏東','宜蘭','花蓮','台東'];
+function renderFocus(){const box=$('#focusRegs');if(!box)return;const on=new Set((state.cfg&&state.cfg.focusRegions)||[]);
+  box.innerHTML=ALL_REGIONS.map(r=>`<button type="button" class="${on.has(r)?'on':''}" data-focusreg="${r}">${on.has(r)?'✓ ':''}${r}</button>`).join('');
+  const st=(state.doc&&state.doc.kwStats)||{};const regs=[...on];
+  const rows=Object.entries(st).filter(([k])=>regs.some(r=>k.startsWith(r))&&k.length>r0(k)).sort((a,b)=>(b[1].scanned||0)-(a[1].scanned||0));
+  function r0(k){const r=regs.find(x=>k.startsWith(x));return r?r.length:99}
+  const hit=Object.values((state.doc&&state.doc.posts)||[]).filter(p=>(p.regions||[]).some(r=>on.has(r))).length;
+  $('#focusStat').innerHTML=!regs.length?'目前沒有加強地區，點上面的地區就能開啟。':
+    `目前線索裡屬於加強地區的有 <b>${hit}</b> 則。`+(rows.length?'<br>地區組合成績：'+rows.slice(0,12).map(([k,v])=>`${esc(k)} 搜${v.count||0}次・抓到${v.scanned||0}則${(v.zero||0)>=3?'（休息中）':''}`).join('｜'):'<br>存檔後下一次掃描就會開始搜，成績會顯示在這裡。')}
+function isFocusPost(p){const f=(state.cfg&&state.cfg.focusRegions)||[];return (p.regions||[]).some(r=>f.includes(r))}
 const SVC_CACHE=new Map();
 function svcOf(p){let v=SVC_CACHE.get(p.url);if(!v){v=window.RadarAnalyze&&RadarAnalyze.serviceOf?RadarAnalyze.serviceOf(p):{svc:[],ask:false};SVC_CACHE.set(p.url,v)}return v}
 function todayStr(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei'}).format(new Date())}
@@ -1306,6 +1329,7 @@ function renderList(){
         ${(p.watched||(state.cfg?.watchUsers||[]).includes(normUser(p.user)))?'<span class="wtag">⭐ 關注</span>':''}
         ${viaTag(p)}
         ${(()=>{const sv=svcOf(p);return (sv.ask?'<span class="asktag">🙋 發問</span>':'')+sv.svc.map(x=>`<span class="svtag">🛠 ${esc(x)}</span>`).join('')})()}
+        ${isFocusPost(p)?'<span class="rtag focus">📍 加強地區</span>':''}
         <span class="rtag ${a.role}">${a.role}</span>
         ${a.cat!==a.role?`<span class="tag">${esc(a.cat)}</span>`:''}
         <a class="user" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">@${esc(p.user)}</a>
@@ -1323,7 +1347,6 @@ function renderList(){
         <button class="btn ghost sm" data-copytext="${u}">📄 複製貼文</button>
         <button class="btn ghost sm" data-mq="${u}">📢 上官網</button>
         <button class="btn ghost sm" data-cust="${esc(normUser(p.user))}">📇 客戶</button>
-        <a class="btn ghost sm" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">${t('openAuthor')}</a>
         <button class="btn ghost sm" data-copy="${u}">${t('copy')}</button>
         <button class="btn ghost sm" data-read="${u}">${readLabel(p.url)}</button>
         <button class="btn ghost sm" data-wuser="${esc(normUser(p.user))}">${(state.cfg?.watchUsers||[]).includes(normUser(p.user))?'★ 已關注':'⭐ 關注帳號'}</button>
@@ -1355,7 +1378,7 @@ function fillSettings(){
   renderTags();
   if($('#cTitle'))$('#cTitle').value=c.title||'';$('#cEnabled').checked=!!c.enabled;$('#cRegionReq').checked=!!c.regionRequired;$('#cStrict').checked=c.strictKeyword!==false;if($('#cBiz'))$('#cBiz').checked=!!c.bizOnly;
   $('#cFirst').checked=c.firstRunSilent!==false;$('#cTg').checked=c.notifyTelegram!==false;$('#cErr').checked=c.notifyErrors!==false;
-  $('#cAge').value=c.maxAgeHours??72;$('#cMinM').value=c.scanMinMinutes??30;$('#cMaxM').value=c.scanMaxMinutes??90;$('#cRest').value=c.restHoursPerDay??6;$('#cCombo').value=Math.round((c.comboChance??0.5)*100);$('#cDetail').value=c.detailFetchMax??6;$('#cSmart').checked=c.smartSchedule!==false;renderSchedInfo();$('#cMaxN').value=c.maxNotifyPerRun??15;$('#cWatchN').value=c.watchPerScan??1;fillReplySettings();$('#cPerScan').value=c.keywordsPerScan??4;if($('#cKwOrder'))$('#cKwOrder').value=c.kwOrder==='random'?'random':'seq';$('#cScroll').value=c.scrollsPerKeyword??3;
+  $('#cAge').value=c.maxAgeHours??72;$('#cMinM').value=c.scanMinMinutes??30;$('#cMaxM').value=c.scanMaxMinutes??90;$('#cRest').value=c.restHoursPerDay??6;$('#cCombo').value=Math.round((c.comboChance??0.5)*100);$('#cDetail').value=c.detailFetchMax??6;$('#cSmart').checked=c.smartSchedule!==false;renderSchedInfo();$('#cMaxN').value=c.maxNotifyPerRun??15;$('#cWatchN').value=c.watchPerScan??1;fillReplySettings();$('#cPerScan').value=c.keywordsPerScan??4;if($('#cKwOrder'))$('#cKwOrder').value=c.kwOrder==='random'?'random':'seq';$('#cScroll').value=c.scrollsPerKeyword??3;$('#cFocusN').value=c.focusPerScan??4;$('#cFocusBases').value=(c.focusBases||[]).join(',');renderFocus();
   snapCfg();
 }
 function addTag(id){
@@ -1370,7 +1393,7 @@ async function saveSettings(){
   c.title=($('#cTitle')?.value||'').trim()||undefined;
   Object.assign(c,{enabled:$('#cEnabled').checked,regionRequired:$('#cRegionReq').checked,strictKeyword:$('#cStrict').checked,bizOnly:!!$('#cBiz')?.checked,
     firstRunSilent:$('#cFirst').checked,notifyTelegram:$('#cTg').checked,notifyErrors:$('#cErr').checked,maxAgeHours:+$('#cAge').value||0,
-    maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),watchPerScan:Math.min(5,Math.max(0,Math.round(+$('#cWatchN').value||0))),reply:collectReplySettings(),keywordsPerScan:Math.max(0,Math.round(+$('#cPerScan').value||0)),kwOrder:$('#cKwOrder')?.value||'seq',scanMinMinutes:Math.max(5,+$('#cMinM').value||30),scanMaxMinutes:Math.max(5,+$('#cMaxM').value||90),restHoursPerDay:Math.min(20,Math.max(0,+$('#cRest').value||0)),comboChance:Math.min(1,Math.max(0,(+$('#cCombo').value||0)/100)),detailFetchMax:Math.min(15,Math.max(0,Math.round(+$('#cDetail').value||0))),smartSchedule:$('#cSmart').checked,scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0))});
+    maxNotifyPerRun:Math.max(1,+$('#cMaxN').value||15),watchPerScan:Math.min(5,Math.max(0,Math.round(+$('#cWatchN').value||0))),reply:collectReplySettings(),keywordsPerScan:Math.max(0,Math.round(+$('#cPerScan').value||0)),kwOrder:$('#cKwOrder')?.value||'seq',scanMinMinutes:Math.max(5,+$('#cMinM').value||30),scanMaxMinutes:Math.max(5,+$('#cMaxM').value||90),restHoursPerDay:Math.min(20,Math.max(0,+$('#cRest').value||0)),comboChance:Math.min(1,Math.max(0,(+$('#cCombo').value||0)/100)),detailFetchMax:Math.min(15,Math.max(0,Math.round(+$('#cDetail').value||0))),smartSchedule:$('#cSmart').checked,scrollsPerKeyword:Math.min(10,Math.max(0,+$('#cScroll').value||0)),focusRegions:[...(c.focusRegions||[])],focusPerScan:Math.min(12,Math.max(0,Math.round(+$('#cFocusN').value||0))),focusBases:$('#cFocusBases').value.split(/[,，、\s]+/).map(x=>x.trim()).filter(Boolean)});
   const a=adapter();if(!a){toast(t('needConn'));return}
   const b=$('#saveBtn');b.disabled=true;
   try{await a.saveConfig(c);snapCfg();applyLang();toast(t('saved'));speak(t('saved'))}catch(e){toast(t('connFail')+'：'+e.message)}finally{b.disabled=false}
@@ -1753,6 +1776,7 @@ document.addEventListener('click',e=>{
   if(el.dataset.copy){navigator.clipboard?.writeText(el.dataset.copy).then(()=>toast(t('copied')),()=>toast(el.dataset.copy));return}
   if(el.dataset.read){toggleSingle(el.dataset.read);return}
   if(el.dataset.copytext){copyPost(el.dataset.copytext);return}
+  if(el.dataset.focusreg){const r=el.dataset.focusreg,c=state.cfg;if(!c)return;const a=new Set(c.focusRegions||[]);a.has(r)?a.delete(r):a.add(r);c.focusRegions=ALL_REGIONS.filter(x=>a.has(x));renderFocus();setDirty(true);return}
   if(el.dataset.mq){const p=findPostU(el.dataset.mq);if(p&&window.MQ)MQ.openFromPost(p);return}
   if(el.hasAttribute('data-mqmanage')){window.MQ&&MQ.openManage();return}
   if(el.dataset.delpost){const u=el.dataset.delpost;if(R.url===u&&R.mode)deleteCurrent();else hidePost(u);return}

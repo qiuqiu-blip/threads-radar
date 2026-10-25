@@ -50,8 +50,9 @@
     }
     box.querySelector('.qqmq-lb').textContent = (doc && doc.label) || '📢 最新消息';
     var one = items.map(function (x) {
-      var t = esc(x.text.replace(/\s+/g, ' '));
-      return x.link ? '<a class="qqmq-it" href="' + esc(x.link) + '" target="_blank" rel="noopener">' + t + '</a>' : '<span class="qqmq-it">' + t + '</span>';
+      var t = esc(x.text.replace(/\s+/g, ' ')); var href = x.link || (x.noLink ? '' : x.src || '');
+      if (!/^https?:\/\//.test(href)) href = '';
+      return href ? '<a class="qqmq-it" href="' + esc(href) + '" target="_blank" rel="noopener">' + t + '</a>' : '<span class="qqmq-it">' + t + '</span>';
     }).join('<span class="qqmq-sp">★</span>') + '<span class="qqmq-sp">★</span>';
     track.innerHTML = one;
     var vw = box.querySelector('.qqmq-vp').clientWidth || window.innerWidth;

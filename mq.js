@@ -55,7 +55,7 @@
     var it = (M.doc.items || []).slice().sort(function (a, b) { return b.at - a.at; });
     if (!it.length) return '<div class="hint">官網上還沒有跑馬燈文字。</div>';
     return it.map(function (x) {
-      return '<div class="mqrow ' + (live(x) ? '' : 'off') + '"><div class="mqtxt">' + e(x.text) + '<div class="hint" style="margin:4px 0 0">' + (live(x) ? '🟢 播放中' : '⚪ 沒在播') + '・' + left(x) + (x.link ? '・🔗 有連結' : '') + '</div></div>' +
+      return '<div class="mqrow ' + (live(x) ? '' : 'off') + '"><div class="mqtxt">' + e(x.text) + '<div class="hint" style="margin:4px 0 0">' + (live(x) ? '🟢 播放中' : '⚪ 沒在播') + '・' + left(x) + (x.link && x.link !== x.src ? '・🔗 點了開你的連結' : (!x.noLink && x.src ? '・🔗 點了開原貼文' : '')) + '</div></div>' +
         '<div class="mqbtn"><button class="btn ghost sm" data-mqtog="' + e(x.id) + '">' + (x.on === false ? '▶ 播放' : '⏸ 暫停') + '</button><button class="btn ghost sm" data-mqdel="' + e(x.id) + '">🗑</button></div></div>';
     }).join('');
   }
@@ -79,19 +79,23 @@
       '<label class="hint">跑馬燈文字<textarea id="mqText" rows="4" maxlength="200" style="width:100%;font-size:18px">' + e(M.clean(p.text)) + '</textarea></label>' +
       '<div class="hint" style="text-align:right;margin:0" id="mqCnt"></div>' +
       '<label class="hint">播放多久<select id="mqDays" style="width:100%;font-size:17px"><option value="1">1 天</option><option value="3">3 天</option><option value="7" selected>7 天</option><option value="14">14 天</option><option value="30">30 天</option><option value="0">一直播（自己刪才停）</option></select></label>' +
-      '<label class="hint">點文字要連去哪裡（可不填，例如你的 LINE 官方帳號網址）<input id="mqLink" placeholder="https://" style="width:100%;font-size:16px" value="' + e(localStorage.getItem('tr_mqLink') || '') + '"></label>' +
+      '<label class="hint">點跑馬燈文字時<select id="mqOpen" style="width:100%;font-size:17px"><option value="src">直接開啟這則原貼文（Threads）</option><option value="link">開啟我填的連結</option><option value="none">不開任何東西</option></select></label>' +
+      '<label class="hint" id="mqLinkRow" style="display:none">我的連結（例如 LINE 官方帳號網址）<input id="mqLink" placeholder="https://" style="width:100%;font-size:16px" value="' + e(localStorage.getItem('tr_mqLink') || '') + '"></label>' +
       '<div class="acts" style="margin-top:12px"><button class="btn" id="mqGo">📢 送到官網</button><button class="btn ghost" data-mqclose>取消</button></div>' +
       '<h3 style="margin:18px 0 6px">目前官網上的跑馬燈</h3><div id="mqList">' + listHtml() + '</div>');
-    var ta = o.querySelector('#mqText'), cnt = o.querySelector('#mqCnt');
+    var ta = o.querySelector('#mqText'), cnt = o.querySelector('#mqCnt'), sel = o.querySelector('#mqOpen');
+    try { sel.value = localStorage.getItem('tr_mqOpen') || 'src'; } catch (x) { /* 略過 */ }
+    var showLink = function () { o.querySelector('#mqLinkRow').style.display = sel.value === 'link' ? 'block' : 'none'; }; sel.onchange = showLink; showLink();
     var upd = function () { cnt.textContent = ta.value.length + ' / 200 字'; }; ta.oninput = upd; upd();
     bindList(o);
     o.querySelector('#mqGo').onclick = async function () {
       var text = ta.value.trim(); if (!text) { toast('請先寫跑馬燈文字'); return; }
-      var days = Number(o.querySelector('#mqDays').value), link = o.querySelector('#mqLink').value.trim();
-      if (link && !/^https?:\/\//.test(link)) { toast('連結要用 https:// 開頭'); return; }
-      try { localStorage.setItem('tr_mqLink', link); } catch (x) { /* 略過 */ }
+      var days = Number(o.querySelector('#mqDays').value), how = sel.value, typed = o.querySelector('#mqLink').value.trim();
+      if (how === 'link' && !/^https?:\/\//.test(typed)) { toast('連結要用 https:// 開頭'); return; }
+      var link = how === 'link' ? typed : how === 'src' ? p.url : '';
+      try { localStorage.setItem('tr_mqOpen', how); if (how === 'link') localStorage.setItem('tr_mqLink', typed); } catch (x) { /* 略過 */ }
       M.doc.items = M.doc.items || [];
-      M.doc.items.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text: text, link: link, at: Date.now(), until: days ? Date.now() + days * 864e5 : 0, on: true, src: p.url });
+      M.doc.items.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text: text, link: link, noLink: how === 'none', at: Date.now(), until: days ? Date.now() + days * 864e5 : 0, on: true, src: p.url });
       M.doc.items = M.doc.items.filter(function (x) { return !x.until || x.until > Date.now() - 30 * 864e5; }).slice(-50);
       this.disabled = true; this.textContent = '傳送中…';
       try { await M.save('跑馬燈：新增一則'); toast('📢 已送到官網！約 5 分鐘內出現在官網最上方'); o.remove(); }
