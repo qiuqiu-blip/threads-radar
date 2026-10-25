@@ -1,31 +1,31 @@
 {
-  "updatedAt": "2026-10-25T14:55:53.020Z",
+  "updatedAt": "2026-10-25T15:29:31.821Z",
   "lastRun": {
-    "startedAt": "2026-10-25T14:50:40.191Z",
-    "finishedAt": "2026-10-25T14:55:52.725Z",
+    "startedAt": "2026-10-25T15:20:42.302Z",
+    "finishedAt": "2026-10-25T15:29:31.500Z",
     "status": "ok",
-    "scanned": 292,
-    "matched": 9,
-    "newCount": 9,
-    "notified": 9,
+    "scanned": 202,
+    "matched": 2,
+    "newCount": 2,
+    "notified": 2,
     "perKeyword": {
-      "頂讓": 19,
-      "盤讓": 15,
+      "頂讓": 18,
+      "盤讓": 16,
       "店面頂讓": 20,
       "頂讓金": 0,
       "店面出租": 18,
-      "商用冰箱": 18,
-      "營業用冰箱": 18,
-      "二手冰箱": 24,
-      "咖啡機": 20,
-      "便宜賣": 18,
-      "搬家出清": 5,
-      "招牌": 22,
-      "拆除": 17,
-      "退租": 20,
-      "清潔": 20,
-      "水電": 18,
-      "裝潢": 20
+      "即將開幕": 19,
+      "試營運": 18,
+      "飲料店": 20,
+      "餐車": 17,
+      "維修": 18,
+      "油煙機": 19,
+      "找接手": 0,
+      "接手": 0,
+      "收掉": 0,
+      "熄燈": 19,
+      "不做了": 0,
+      "工作台": 0
     },
     "warnings": [],
     "keywordsUsed": [
@@ -34,18 +34,18 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "商用冰箱",
-      "營業用冰箱",
-      "二手冰箱",
-      "咖啡機",
-      "便宜賣",
-      "搬家出清",
-      "招牌",
-      "拆除",
-      "退租",
-      "清潔",
-      "水電",
-      "裝潢"
+      "即將開幕",
+      "試營運",
+      "飲料店",
+      "餐車",
+      "維修",
+      "油煙機",
+      "找接手",
+      "接手",
+      "收掉",
+      "熄燈",
+      "不做了",
+      "工作台"
     ],
     "queries": [
       "頂讓",
@@ -53,43 +53,120 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "商用冰箱",
-      "營業用冰箱",
-      "二手冰箱",
-      "咖啡機",
-      "便宜賣",
-      "搬家出清",
-      "招牌",
-      "拆除",
-      "退租",
-      "清潔",
-      "水電",
-      "裝潢"
+      "即將開幕",
+      "試營運",
+      "飲料店",
+      "餐車",
+      "維修",
+      "油煙機",
+      "找接手",
+      "接手",
+      "收掉",
+      "熄燈",
+      "不做了",
+      "工作台"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 211,
+      "seen": 156,
       "dup": 0,
-      "noKeyword": 5,
-      "tooOld": 10,
-      "noContext": 56
+      "tooOld": 6,
+      "noKeyword": 3,
+      "notBiz": 10,
+      "noContext": 25
     },
-    "detailFetched": 6,
+    "detailFetched": 2,
     "newUrls": [
-      "https://www.threads.com/@zhengzheng9270/post/De65N2eGeDj",
-      "https://www.threads.com/@_dingxin/post/De63Up6jv3r",
-      "https://www.threads.com/@sponge_0326/post/De61hJhk8EZ",
-      "https://www.threads.com/@yuna_chen11.11/post/De61QjXHx7O",
-      "https://www.threads.com/@suzhenwu96/post/De6tvFVkzZN",
-      "https://www.threads.com/@z.hang20/post/De6nz1Ej5LV",
-      "https://www.threads.com/@b.b_bear/post/De6OCTnkjwN",
-      "https://www.threads.com/@fenju.daily/post/De6DR05kp2X",
-      "https://www.threads.com/@minasell22/post/De4jq2EATt8"
+      "https://www.threads.com/@originpunch/post/De66ty3DSit",
+      "https://www.threads.com/@popoend1130/post/De0nvsXH37R"
     ],
     "pushMode": "on",
-    "nextInMinutes": 22
+    "nextInMinutes": 33
   },
   "runs": [
+    {
+      "startedAt": "2026-10-25T15:20:42.302Z",
+      "finishedAt": "2026-10-25T15:29:31.500Z",
+      "status": "ok",
+      "scanned": 202,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "頂讓": 18,
+        "盤讓": 16,
+        "店面頂讓": 20,
+        "頂讓金": 0,
+        "店面出租": 18,
+        "即將開幕": 19,
+        "試營運": 18,
+        "飲料店": 20,
+        "餐車": 17,
+        "維修": 18,
+        "油煙機": 19,
+        "找接手": 0,
+        "接手": 0,
+        "收掉": 0,
+        "熄燈": 19,
+        "不做了": 0,
+        "工作台": 0
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "即將開幕",
+        "試營運",
+        "飲料店",
+        "餐車",
+        "維修",
+        "油煙機",
+        "找接手",
+        "接手",
+        "收掉",
+        "熄燈",
+        "不做了",
+        "工作台"
+      ],
+      "queries": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "即將開幕",
+        "試營運",
+        "飲料店",
+        "餐車",
+        "維修",
+        "油煙機",
+        "找接手",
+        "接手",
+        "收掉",
+        "熄燈",
+        "不做了",
+        "工作台"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 156,
+        "dup": 0,
+        "tooOld": 6,
+        "noKeyword": 3,
+        "notBiz": 10,
+        "noContext": 25
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@originpunch/post/De66ty3DSit",
+        "https://www.threads.com/@popoend1130/post/De0nvsXH37R"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 33
+    },
     {
       "startedAt": "2026-10-25T14:50:40.191Z",
       "finishedAt": "2026-10-25T14:55:52.725Z",
@@ -10469,6 +10546,40 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "De66ty3DSit",
+      "user": "originpunch",
+      "url": "https://www.threads.com/@originpunch/post/De66ty3DSit",
+      "authorUrl": "https://www.threads.com/@originpunch",
+      "text": "1 次瀏覽\n小店經營\n月底對工時對不起來？忘記打卡各說各話？\n起源打卡讓員工用 LINE 就能打卡，不用裝 App、不用買打卡機。\n打卡時用 GPS 或店內 Wi-Fi 確認人在店裡；忘記打卡要補登，一定要員工本人在 LINE 同意才生效。\n排班、請假、假別餘額，都在同一個網頁後台。\n創始店家招募中，限額 10 家，試營運到 2026/12/31 免費。\n註冊連結在個人檔案 👆\n小店經營 #打卡系統 #LINE打卡 #起源打卡",
+      "time": "2026-10-25T14:26:02.000Z",
+      "keywords": [
+        "試營運"
+      ],
+      "regions": [],
+      "foundBy": "試營運",
+      "foundQuery": "試營運",
+      "foundAt": "2026-10-25T15:29:18.112Z",
+      "full": true
+    },
+    {
+      "code": "De0nvsXH37R",
+      "user": "popoend1130",
+      "url": "https://www.threads.com/@popoend1130/post/De0nvsXH37R",
+      "authorUrl": "https://www.threads.com/@popoend1130",
+      "text": "9次瀏覽\n流量密碼\n地瓜球盤讓～～含技術、臥櫃冷凍冰箱15萬（可議\n攤車寬155公分， 高220公分，深88公分\n現位於高雄市三民區，可原址或自行另找地方\n還有合約在身，所以不方便po照片，真的有意願再私訊詢問，謝謝",
+      "time": "2026-10-23T03:44:20.000Z",
+      "keywords": [
+        "盤讓"
+      ],
+      "regions": [
+        "高雄"
+      ],
+      "foundBy": "盤讓",
+      "foundQuery": "盤讓",
+      "foundAt": "2026-10-25T15:29:18.112Z",
+      "full": true
+    },
+    {
       "code": "De65N2eGeDj",
       "user": "zhengzheng9270",
       "url": "https://www.threads.com/@zhengzheng9270/post/De65N2eGeDj",
@@ -15809,37 +15920,6 @@
       "foundQuery": "漏水",
       "foundAt": "2026-10-23T16:01:26.076Z",
       "full": true
-    },
-    {
-      "code": "Dey8VMCgHeL",
-      "user": "teemo_fly",
-      "url": "https://www.threads.com/@teemo_fly/post/Dey8VMCgHeL",
-      "authorUrl": "https://www.threads.com/@teemo_fly",
-      "text": "📦【工廠庫存出清｜白色連接器殼子】\n整理工廠倉庫，又翻出一批連接器塑膠殼 😆\n平常做線組加工的朋友應該知道，這類小零件看起來不起眼，但有時候少了它，整組線材就沒辦法完成！\n目前工廠有一批白色連接器殼子庫存，想趁整理倉庫的機會，看看有沒有剛好需要的朋友可以接手～\n🔹 白色塑膠連接器殼\n🔹 實際款式以照片為準\n🔹 現有庫存出清，數量依現場盤點為準\n🔹 價格、數量都歡迎私訊詢問\n📌 照片是同一款連接器，只是拍攝角度不同喔！\n如果你是線組加工廠、電子設備相關業者，或平常有使用連接器的需求，歡迎私訊我確認。\n這次主要是整理工廠現有庫存，希望讓材料找到真正用得到的人，也幫倉庫騰出一些空間 🙌\n有需要的同行朋友，歡迎來聊聊，也可以幫忙分享給可能用得到的人！\n#工廠庫存出清 #連接器 #連接器殼 #線組加工 #電子材料",
-      "time": "2026-10-22T12:05:44.000Z",
-      "keywords": [
-        "接手"
-      ],
-      "regions": [],
-      "foundBy": "設備出清",
-      "foundQuery": "設備出清",
-      "foundAt": "2026-10-23T16:01:26.077Z"
-    },
-    {
-      "code": "Dexo7ElAXhw",
-      "user": "jason.lin.1025",
-      "url": "https://www.threads.com/@jason.lin.1025/post/Dexo7ElAXhw",
-      "authorUrl": "https://www.threads.com/@jason.lin.1025",
-      "text": "4,283次瀏覽\n萬能的臉友！\n求推彰化員林市附近的\n1.泥作師傅\n2.鐵皮屋頂師傅\n3.木工師傅\n4.清運廢料\n請幫忙多多推薦\nzyc_0806\n您好👋\nfer_i_ty\n看清單怎麼感覺都有認識….\nzhenhongengineering\n你好🙋🏻‍♂️您的需求我們都有‼️歡迎來電洽詢 〰️\nzhang.jingping\n清運私\nwei_ozoz\n@interior_design_oz\n歡迎洽詢\nbaba820810\njojo700727\n@vi_0927395124\n@fengqingluoxie\n推推👍🏻👍🏻👍🏻，彰化也有接案喔~😊\npu.design612\n有承包以上工程\n需要可聯繫喔\nchichen_0903\n推薦👍\nzhanxiaodi5\n可找我配合喔 價格合理品質也不錯喔\nzhanxiaodi5\n泥作的部分",
-      "time": "2026-10-21T23:56:54.000Z",
-      "keywords": [
-        "清運"
-      ],
-      "regions": [],
-      "foundBy": "清運",
-      "foundQuery": "清運",
-      "foundAt": "2026-10-23T16:01:26.076Z",
-      "full": true
     }
   ],
   "kwStats": {
@@ -15856,9 +15936,9 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 81,
-      "last": 1792939866126,
-      "scanned": 1567,
+      "count": 82,
+      "last": 1792941669838,
+      "scanned": 1587,
       "leads": 33
     },
     "二手設備": {
@@ -15892,9 +15972,9 @@
       "leads": 0
     },
     "頂讓": {
-      "count": 80,
-      "last": 1792939840483,
-      "scanned": 1498,
+      "count": 81,
+      "last": 1792941642587,
+      "scanned": 1516,
       "leads": 45
     },
     "廚房設備": {
@@ -15994,10 +16074,10 @@
       "leads": 1
     },
     "盤讓": {
-      "count": 80,
-      "last": 1792939853903,
-      "scanned": 1420,
-      "leads": 33
+      "count": 81,
+      "last": 1792941656259,
+      "scanned": 1436,
+      "leads": 34
     },
     "營業用": {
       "count": 2,
@@ -16066,9 +16146,9 @@
       "leads": 23
     },
     "飲料店": {
-      "count": 30,
-      "last": 1792930480092,
-      "scanned": 574,
+      "count": 31,
+      "last": 1792941788601,
+      "scanned": 594,
       "leads": 7
     },
     "裝潢": {
@@ -16078,9 +16158,9 @@
       "leads": 2
     },
     "店面出租": {
-      "count": 91,
-      "last": 1792939938926,
-      "scanned": 1777,
+      "count": 92,
+      "last": 1792941744507,
+      "scanned": 1795,
       "leads": 32
     },
     "拆除": {
@@ -16096,9 +16176,9 @@
       "leads": 4
     },
     "餐車": {
-      "count": 33,
-      "last": 1792930494102,
-      "scanned": 644,
+      "count": 34,
+      "last": 1792941799991,
+      "scanned": 661,
       "leads": 1
     },
     "排油煙": {
@@ -16138,27 +16218,27 @@
       "leads": 24
     },
     "油煙機": {
-      "count": 19,
-      "last": 1792932751138,
-      "scanned": 370,
+      "count": 20,
+      "last": 1792941826838,
+      "scanned": 389,
       "leads": 17
     },
     "維修": {
-      "count": 19,
-      "last": 1792930505628,
-      "scanned": 376,
+      "count": 20,
+      "last": 1792941812564,
+      "scanned": 394,
       "leads": 1
     },
     "試營運": {
-      "count": 19,
-      "last": 1792930466425,
-      "scanned": 345,
-      "leads": 18
+      "count": 20,
+      "last": 1792941776376,
+      "scanned": 363,
+      "leads": 19
     },
     "即將開幕": {
-      "count": 19,
-      "last": 1792930450969,
-      "scanned": 377,
+      "count": 20,
+      "last": 1792941759035,
+      "scanned": 396,
       "leads": 9
     },
     "水電": {
@@ -16180,8 +16260,8 @@
       "leads": 2
     },
     "頂讓金": {
-      "count": 77,
-      "last": 1792939878134,
+      "count": 78,
+      "last": 1792941684681,
       "scanned": 0,
       "leads": 0
     },
@@ -16198,38 +16278,38 @@
       "leads": 0
     },
     "找接手": {
-      "count": 17,
-      "last": 1792932765055,
+      "count": 18,
+      "last": 1792941841829,
       "scanned": 0,
       "leads": 0
     },
     "接手": {
-      "count": 16,
-      "last": 1792932824043,
+      "count": 17,
+      "last": 1792941901634,
       "scanned": 0,
       "leads": 0
     },
     "收掉": {
-      "count": 16,
-      "last": 1792932885602,
+      "count": 17,
+      "last": 1792941964183,
       "scanned": 0,
       "leads": 0
     },
     "熄燈": {
-      "count": 16,
-      "last": 1792932945902,
-      "scanned": 292,
+      "count": 17,
+      "last": 1792942026550,
+      "scanned": 311,
       "leads": 1
     },
     "不做了": {
-      "count": 16,
-      "last": 1792932958230,
+      "count": 17,
+      "last": 1792942039318,
       "scanned": 0,
       "leads": 0
     },
     "工作台": {
-      "count": 16,
-      "last": 1792933018037,
+      "count": 17,
+      "last": 1792942097976,
       "scanned": 0,
       "leads": 0
     },
@@ -16354,11 +16434,11 @@
       "leads": 0
     }
   },
-  "nextScanAt": "2026-10-25T15:18:12.428Z",
+  "nextScanAt": "2026-10-25T16:02:49.284Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-25T15:18:12.428Z",
-    "madeAt": "2026-10-25T14:55:53.006Z",
+    "at": "2026-10-25T16:02:49.284Z",
+    "madeAt": "2026-10-25T15:29:31.807Z",
     "items": [
       {
         "kw": "頂讓",
@@ -16381,54 +16461,54 @@
         "q": "店面出租"
       },
       {
-        "kw": "即將開幕",
-        "q": "即將開幕"
+        "kw": "冰櫃",
+        "q": "冰櫃"
       },
       {
-        "kw": "試營運",
-        "q": "試營運"
+        "kw": "展示櫃",
+        "q": "展示櫃"
       },
       {
-        "kw": "飲料店",
-        "q": "飲料店"
+        "kw": "封口機",
+        "q": "封口機"
       },
       {
-        "kw": "餐車",
-        "q": "餐車"
+        "kw": "炸爐",
+        "q": "炸爐"
       },
       {
-        "kw": "維修",
-        "q": "維修"
+        "kw": "煮麵機",
+        "q": "煮麵機"
       },
       {
-        "kw": "油煙機",
-        "q": "油煙機"
+        "kw": "快速爐",
+        "q": "快速爐"
       },
       {
-        "kw": "找接手",
-        "q": "找接手"
+        "kw": "冰淇淋機",
+        "q": "冰淇淋機"
       },
       {
-        "kw": "接手",
-        "q": "接手"
+        "kw": "收銀機",
+        "q": "收銀機"
       },
       {
-        "kw": "收掉",
-        "q": "收掉"
+        "kw": "二手冷氣",
+        "q": "二手冷氣"
       },
       {
-        "kw": "熄燈",
-        "q": "熄燈"
+        "kw": "統包",
+        "q": "統包"
       },
       {
-        "kw": "不做了",
-        "q": "不做了"
+        "kw": "油漆",
+        "q": "油漆"
       },
       {
-        "kw": "工作台",
-        "q": "工作台"
+        "kw": "冷氣",
+        "q": "冷氣"
       }
     ]
   },
-  "kwCursor": 31
+  "kwCursor": 43
 }
