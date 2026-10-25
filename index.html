@@ -225,6 +225,12 @@ nav button.ring svg{animation:ring 1s ease-in-out infinite;color:#ffb347}
 .fubox .row{display:grid;grid-template-columns:1fr 2fr;gap:8px}
 .fubox input{width:100%;background:#0f0c07;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text);font:inherit}
 .post.fudue{border-color:#ff5a4d!important;box-shadow:0 0 0 2px rgba(255,90,77,.35)}
+#mqOv{position:fixed;inset:0;z-index:90;background:rgba(5,4,2,.88);overflow:auto;padding:24px 12px 60px;overscroll-behavior:contain}
+#mqOv .card{max-width:720px;margin:0 auto}
+#mqOv textarea,#mqOv input,#mqOv select{background:#0f0c07;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text);font-family:inherit;margin-top:4px}
+#mqOv label.hint{display:block;margin-top:10px}
+.mqrow{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.mqrow.off .mqtxt{opacity:.5}.mqtxt{font-size:16px;line-height:1.5}.mqbtn{display:flex;gap:6px;flex:none}
 #dirtyBar{position:fixed;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:55;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#5a2a10,#3a1a08);border:1px solid #ff8a3d;color:#ffd7b8;font-weight:800;font-size:16px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 #dirtyBar[hidden]{display:none}
 .chip.pinchip{border-color:#f5c542;color:#ffd95a;font-weight:800}
@@ -386,6 +392,10 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
 
   <!-- 設定 -->
   <section class="tab" id="tab-settings">
+    <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div><h3 style="margin:0">📢 官網跑馬燈</h3><div class="hint" style="margin:4px 0 0">線索按「📢 上官網」就會跑在官網最上方。這裡可以暫停、刪除、拿接官網的程式碼。</div></div>
+      <button class="btn" data-mqmanage>管理跑馬燈</button>
+    </div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3 data-i="keywords" style="margin:0">關鍵字池（輪流隨機搜尋）</h3><span class="tag" id="kwCount"></span></div>
       <div class="taglist" id="kwList" style="margin-top:10px"></div>
@@ -1311,6 +1321,7 @@ function renderList(){
         <button class="btn sm" data-reply="${u}">✍️ ${t('rpBtn')}</button>
         <a class="btn ghost sm" href="${u}" target="_blank" rel="noopener">${t('openPost')}</a>
         <button class="btn ghost sm" data-copytext="${u}">📄 複製貼文</button>
+        <button class="btn ghost sm" data-mq="${u}">📢 上官網</button>
         <button class="btn ghost sm" data-cust="${esc(normUser(p.user))}">📇 客戶</button>
         <a class="btn ghost sm" href="${esc(p.authorUrl)}" target="_blank" rel="noopener">${t('openAuthor')}</a>
         <button class="btn ghost sm" data-copy="${u}">${t('copy')}</button>
@@ -1742,6 +1753,8 @@ document.addEventListener('click',e=>{
   if(el.dataset.copy){navigator.clipboard?.writeText(el.dataset.copy).then(()=>toast(t('copied')),()=>toast(el.dataset.copy));return}
   if(el.dataset.read){toggleSingle(el.dataset.read);return}
   if(el.dataset.copytext){copyPost(el.dataset.copytext);return}
+  if(el.dataset.mq){const p=findPostU(el.dataset.mq);if(p&&window.MQ)MQ.openFromPost(p);return}
+  if(el.hasAttribute('data-mqmanage')){window.MQ&&MQ.openManage();return}
   if(el.dataset.delpost){const u=el.dataset.delpost;if(R.url===u&&R.mode)deleteCurrent();else hidePost(u);return}
   if(el.id==='micToggle'){LISTEN.on=!LISTEN.on;LS.set('voiceCmd',LISTEN.on);renderMic();if(LISTEN.on&&R.mode)listenStart();else listenStop();toast(LISTEN.on?'🎙 朗讀中可以說「刪除」「跳過」「暫停」':'🎙 語音指令已關閉');return}
   if(el.id==='askToggle'){ASK.on=!ASK.on;LS.set('askDel',ASK.on);renderAskToggle();toast(ASK.on?'朗讀完會問是否刪除':'朗讀完不詢問');return}
@@ -1929,5 +1942,6 @@ setTimeout(()=>$('#splash')&&$('#splash').remove(),2700);}
 </script>
 <script src="db.js"></script>
 <script src="post.js"></script>
+<script src="mq.js"></script>
 </body>
 </html>
