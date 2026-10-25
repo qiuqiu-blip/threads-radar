@@ -82,7 +82,7 @@
   "regionRequired": false,
   "strictKeyword": true,
   "firstRunSilent": true,
-  "notifyErrors": false,
+  "notifyErrors": true,
   "maxAgeHours": 72,
   "scrollsPerKeyword": 3,
   "maxNotifyPerRun": 15,
