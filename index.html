@@ -396,8 +396,8 @@ nav button.on{color:var(--gold2);border-color:var(--line);background:linear-grad
   <!-- 設定 -->
   <section class="tab" id="tab-settings">
     <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-      <div><h3 style="margin:0">📢 官網跑馬燈</h3><div class="hint" style="margin:4px 0 0">線索按「📢 上官網」就會跑在官網最上方。這裡可以暫停、刪除、拿接官網的程式碼。</div></div>
-      <button class="btn" data-mqmanage>管理跑馬燈</button>
+      <div><h3 style="margin:0">📢 跑馬燈（官網／後台 分開）</h3><div class="hint" style="margin:4px 0 0">線索按「📢 上官網」→ 客人看的官網；按「🗂 上後台」→ 只有你看的官網後台（點文字直接開原貼文）。兩邊內容不同、各自管理。</div></div>
+      <div class="acts"><button class="btn" data-mqmanage="site">📢 管理官網</button><button class="btn" data-mqmanage="admin">🗂 管理後台</button></div>
     </div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3 data-i="keywords" style="margin:0">關鍵字池（輪流隨機搜尋）</h3><span class="tag" id="kwCount"></span></div>
@@ -1346,6 +1346,7 @@ function renderList(){
         <a class="btn ghost sm" href="${u}" target="_blank" rel="noopener">${t('openPost')}</a>
         <button class="btn ghost sm" data-copytext="${u}">📄 複製貼文</button>
         <button class="btn ghost sm" data-mq="${u}">📢 上官網</button>
+        <button class="btn ghost sm" data-mqa="${u}">🗂 上後台</button>
         <button class="btn ghost sm" data-cust="${esc(normUser(p.user))}">📇 客戶</button>
         <button class="btn ghost sm" data-copy="${u}">${t('copy')}</button>
         <button class="btn ghost sm" data-read="${u}">${readLabel(p.url)}</button>
@@ -1777,8 +1778,9 @@ document.addEventListener('click',e=>{
   if(el.dataset.read){toggleSingle(el.dataset.read);return}
   if(el.dataset.copytext){copyPost(el.dataset.copytext);return}
   if(el.dataset.focusreg){const r=el.dataset.focusreg,c=state.cfg;if(!c)return;const a=new Set(c.focusRegions||[]);a.has(r)?a.delete(r):a.add(r);c.focusRegions=ALL_REGIONS.filter(x=>a.has(x));renderFocus();setDirty(true);return}
-  if(el.dataset.mq){const p=findPostU(el.dataset.mq);if(p&&window.MQ)MQ.openFromPost(p);return}
-  if(el.hasAttribute('data-mqmanage')){window.MQ&&MQ.openManage();return}
+  if(el.dataset.mq){const p=findPostU(el.dataset.mq);if(p&&window.MQ)MQ.openFromPost(p,'site');return}
+  if(el.dataset.mqa){const p=findPostU(el.dataset.mqa);if(p&&window.MQ)MQ.openFromPost(p,'admin');return}
+  if(el.dataset.mqmanage!==undefined){window.MQ&&MQ.openManage(el.dataset.mqmanage||'site');return}
   if(el.dataset.delpost){const u=el.dataset.delpost;if(R.url===u&&R.mode)deleteCurrent();else hidePost(u);return}
   if(el.id==='micToggle'){LISTEN.on=!LISTEN.on;LS.set('voiceCmd',LISTEN.on);renderMic();if(LISTEN.on&&R.mode)listenStart();else listenStop();toast(LISTEN.on?'🎙 朗讀中可以說「刪除」「跳過」「暫停」':'🎙 語音指令已關閉');return}
   if(el.id==='askToggle'){ASK.on=!ASK.on;LS.set('askDel',ASK.on);renderAskToggle();toast(ASK.on?'朗讀完會問是否刪除':'朗讀完不詢問');return}

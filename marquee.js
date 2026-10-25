@@ -4,11 +4,13 @@
  * 可選設定（寫在 script 標籤上）：
  *   data-fixed="1"   固定在畫面最上方（預設：放在網頁最上面，跟著網頁捲動）
  *   data-speed="80"  每秒移動幾個像素（預設 80）
+ *   data-feed="admin" 改讀「後台」的跑馬燈（官網後台 app.html 用）
  */
 (function () {
   'use strict';
   var me = document.currentScript;
-  var SRC = new URL('data/marquee.json', me && me.src ? me.src : location.href).href;
+  var FEED = me && me.getAttribute('data-feed') === 'admin' ? 'marquee-admin' : 'marquee';
+  var SRC = new URL('data/' + FEED + '.json', me && me.src ? me.src : location.href).href;
   var fixed = me && me.getAttribute('data-fixed') === '1';
   var speedAttr = me && Number(me.getAttribute('data-speed'));
   var box, track, lastKey = '';
@@ -39,18 +41,18 @@
     var key = JSON.stringify([items, doc && doc.label, doc && doc.speed]);
     if (key === lastKey) return; lastKey = key;
     if (!items.length) { if (box) { box.remove(); box = null; } if (fixed) document.body.style.paddingTop = ''; return; }
-    try { if (sessionStorage.getItem('qqmq-hide') === key) return; } catch (e) { /* 略過 */ }
+    try { if (sessionStorage.getItem('qqmq-hide-' + FEED) === key) return; } catch (e) { /* 略過 */ }
     css();
     if (!box) {
       box = document.createElement('div'); box.id = 'qqmq'; box.setAttribute('role', 'marquee');
       box.innerHTML = '<div class="qqmq-lb"></div><div class="qqmq-vp"><div class="qqmq-tr"></div></div><button class="qqmq-x" aria-label="關閉">✕</button>';
       document.body.insertBefore(box, document.body.firstChild);
-      box.querySelector('.qqmq-x').onclick = function () { try { sessionStorage.setItem('qqmq-hide', lastKey); } catch (e) { /* 略過 */ } box.remove(); box = null; if (fixed) document.body.style.paddingTop = ''; };
+      box.querySelector('.qqmq-x').onclick = function () { try { sessionStorage.setItem('qqmq-hide-' + FEED, lastKey); } catch (e) { /* 略過 */ } box.remove(); box = null; if (fixed) document.body.style.paddingTop = ''; };
       track = box.querySelector('.qqmq-tr');
     }
-    box.querySelector('.qqmq-lb').textContent = (doc && doc.label) || '📢 最新消息';
+    box.querySelector('.qqmq-lb').textContent = (doc && doc.label) || (FEED === 'marquee' ? '📢 最新消息' : '🗂 新線索');
     var one = items.map(function (x) {
-      var t = esc(x.text.replace(/\s+/g, ' ')); var href = x.link || (x.noLink ? '' : x.src || '');
+      var t = esc(x.text.replace(/\s+/g, ' ')); var href = x.link || (FEED === 'marquee-admin' && !x.noLink ? x.src || '' : '');
       if (!/^https?:\/\//.test(href)) href = '';
       return href ? '<a class="qqmq-it" href="' + esc(href) + '" target="_blank" rel="noopener">' + t + '</a>' : '<span class="qqmq-it">' + t + '</span>';
     }).join('<span class="qqmq-sp">★</span>') + '<span class="qqmq-sp">★</span>';
