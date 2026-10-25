@@ -1,31 +1,31 @@
 {
-  "updatedAt": "2026-10-25T05:21:05.325Z",
+  "updatedAt": "2026-10-25T05:56:02.378Z",
   "lastRun": {
-    "startedAt": "2026-10-25T05:10:34.807Z",
-    "finishedAt": "2026-10-25T05:21:05.258Z",
+    "startedAt": "2026-10-25T05:50:37.982Z",
+    "finishedAt": "2026-10-25T05:56:02.310Z",
     "status": "ok",
-    "scanned": 164,
-    "matched": 4,
-    "newCount": 4,
-    "notified": 4,
+    "scanned": 305,
+    "matched": 6,
+    "newCount": 6,
+    "notified": 6,
     "perKeyword": {
-      "頂讓": 20,
-      "盤讓": 15,
+      "頂讓": 19,
+      "盤讓": 16,
       "店面頂讓": 19,
       "頂讓金": 0,
       "店面出租": 20,
-      "收掉": 0,
-      "熄燈": 18,
-      "不做了": 0,
-      "工作台": 0,
-      "冰櫃": 0,
-      "展示櫃": 19,
-      "封口機": 18,
-      "炸爐": 0,
-      "煮麵機": 0,
-      "快速爐": 0,
-      "冰淇淋機": 14,
-      "收銀機": 21
+      "二手冷氣": 20,
+      "統包": 19,
+      "油漆": 20,
+      "冷氣": 17,
+      "搬家": 18,
+      "貨運": 13,
+      "清運": 19,
+      "漏水": 17,
+      "POS": 31,
+      "點餐系統": 21,
+      "創業": 19,
+      "找店面": 17
     },
     "warnings": [],
     "keywordsUsed": [
@@ -34,18 +34,18 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "收掉",
-      "熄燈",
-      "不做了",
-      "工作台",
-      "冰櫃",
-      "展示櫃",
-      "封口機",
-      "炸爐",
-      "煮麵機",
-      "快速爐",
-      "冰淇淋機",
-      "收銀機"
+      "二手冷氣",
+      "統包",
+      "油漆",
+      "冷氣",
+      "搬家",
+      "貨運",
+      "清運",
+      "漏水",
+      "POS",
+      "點餐系統",
+      "創業",
+      "找店面"
     ],
     "queries": [
       "頂讓",
@@ -53,38 +53,126 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "收掉",
-      "熄燈",
-      "不做了",
-      "工作台",
-      "冰櫃",
-      "展示櫃",
-      "封口機",
-      "炸爐",
-      "煮麵機",
-      "快速爐",
-      "冰淇淋機",
-      "收銀機"
+      "二手冷氣",
+      "統包",
+      "油漆",
+      "冷氣",
+      "搬家",
+      "貨運",
+      "清運",
+      "漏水",
+      "POS",
+      "點餐系統",
+      "創業",
+      "找店面"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 141,
+      "seen": 220,
       "dup": 0,
-      "noContext": 11,
-      "tooOld": 1,
-      "noKeyword": 7
+      "tooOld": 10,
+      "noKeyword": 14,
+      "noContext": 55
     },
-    "detailFetched": 4,
+    "detailFetched": 6,
     "newUrls": [
-      "https://www.threads.com/@walterlab005/post/De55xUwEXqv",
-      "https://www.threads.com/@judy30611/post/De55cRxo-HS",
-      "https://www.threads.com/@dan.dan.370/post/De53seYGaXs",
-      "https://www.threads.com/@maestro_lento_pasta_cafe/post/De0OSE8gZ-r"
+      "https://www.threads.com/@per.ju.7/post/De57kfKEzxp",
+      "https://www.threads.com/@kissevein/post/De54BrIGeYg",
+      "https://www.threads.com/@gnilnil/post/De5vFvEoJ_c",
+      "https://www.threads.com/@liilun.y/post/De5srK-D0-K",
+      "https://www.threads.com/@haozuan.tw/post/De5o-dmFizm",
+      "https://www.threads.com/@cannywewe/post/De4fDoDmIf6"
     ],
     "pushMode": "on",
-    "nextInMinutes": 21
+    "nextInMinutes": 23
   },
   "runs": [
+    {
+      "startedAt": "2026-10-25T05:50:37.982Z",
+      "finishedAt": "2026-10-25T05:56:02.310Z",
+      "status": "ok",
+      "scanned": 305,
+      "matched": 6,
+      "newCount": 6,
+      "notified": 6,
+      "perKeyword": {
+        "頂讓": 19,
+        "盤讓": 16,
+        "店面頂讓": 19,
+        "頂讓金": 0,
+        "店面出租": 20,
+        "二手冷氣": 20,
+        "統包": 19,
+        "油漆": 20,
+        "冷氣": 17,
+        "搬家": 18,
+        "貨運": 13,
+        "清運": 19,
+        "漏水": 17,
+        "POS": 31,
+        "點餐系統": 21,
+        "創業": 19,
+        "找店面": 17
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "二手冷氣",
+        "統包",
+        "油漆",
+        "冷氣",
+        "搬家",
+        "貨運",
+        "清運",
+        "漏水",
+        "POS",
+        "點餐系統",
+        "創業",
+        "找店面"
+      ],
+      "queries": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "二手冷氣",
+        "統包",
+        "油漆",
+        "冷氣",
+        "搬家",
+        "貨運",
+        "清運",
+        "漏水",
+        "POS",
+        "點餐系統",
+        "創業",
+        "找店面"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 220,
+        "dup": 0,
+        "tooOld": 10,
+        "noKeyword": 14,
+        "noContext": 55
+      },
+      "detailFetched": 6,
+      "newUrls": [
+        "https://www.threads.com/@per.ju.7/post/De57kfKEzxp",
+        "https://www.threads.com/@kissevein/post/De54BrIGeYg",
+        "https://www.threads.com/@gnilnil/post/De5vFvEoJ_c",
+        "https://www.threads.com/@liilun.y/post/De5srK-D0-K",
+        "https://www.threads.com/@haozuan.tw/post/De5o-dmFizm",
+        "https://www.threads.com/@cannywewe/post/De4fDoDmIf6"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 23
+    },
     {
       "startedAt": "2026-10-25T05:10:34.807Z",
       "finishedAt": "2026-10-25T05:21:05.258Z",
@@ -9077,6 +9165,113 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "De57kfKEzxp",
+      "user": "per.ju.7",
+      "url": "https://www.threads.com/@per.ju.7/post/De57kfKEzxp",
+      "authorUrl": "https://www.threads.com/@per.ju.7",
+      "text": "191次瀏覽\n小蔡電器\n家裡的分離式冷氣因為運轉聲音太大，被鄰居客訴，真的讓人很困擾，只好趕快找一台新冷氣來換！\n剛好前陣子在 FB 看到小蔡電器的廣告，感覺就像家電大賣場一樣，商品種類很多，於是決定親自到門市逛逛。\n經過店員詳細介紹各家廠牌後，最後決定選購聲寶一對一冷暖氣機（AU-NF28DC）。考量價格和功能都很符合自己的需求，再加上淡季期間非標準安裝費還有 8 折優惠，真的很吸引人！當下就決定付訂金了。\n幾天後，師傅到家裡現場勘查，確認安裝方式和相關細節後，我就趕緊到門市付清款項。大約等了一個星期，終於等到安裝日！\n安裝當天一共來了 4 位工作人員，大家分工合作、動作俐落，沒多久就把冷氣安裝完成，整個效率真的很不錯！\n終於可以擺脫冷氣噪音的困擾，不用再擔心被鄰居客訴，總算可以安心了！\n整體購買及安裝過程都很順利，推薦給有冷氣需求的朋友參考！\n@3cmimi\n小蔡電器值得推薦",
+      "time": "2026-10-25T05:13:46.000Z",
+      "keywords": [
+        "冷氣"
+      ],
+      "regions": [],
+      "foundBy": "冷氣",
+      "foundQuery": "冷氣",
+      "foundAt": "2026-10-25T05:55:20.549Z",
+      "full": true
+    },
+    {
+      "code": "De54BrIGeYg",
+      "user": "kissevein",
+      "url": "https://www.threads.com/@kissevein/post/De54BrIGeYg",
+      "authorUrl": "https://www.threads.com/@kissevein",
+      "text": "1,364次瀏覽\n木作日常\n想請問裝潢業的各位同行們 🔨\n現在做點工的師傅，\n除了每天的日薪之外，\n上下班自己開車到工地，\n油錢也會另外跟老闆請嗎？\n如果是幫公司載材料、跑工地、跨縣市，\n油錢由老闆負擔，我覺得合理。\n但如果只是單純上下班的交通費，\n一般業界都是怎麼計算的？\n想了解一下各位師傅與統包老闆的做法。\nhuangwen0401\n我想…為什麼你覺得要補\nchen.1118\n點工又以為是正職發言⋯\ndarrel2003\n跨縣市或需要開車幫忙買材料補貼合理\n家住台北工地在台北為什麼開車我要補貼？\njerome.lu.125\n老闆有請你開車上班嗎？如果沒有，你怎麼會有這想法🧐🧐🧐\nwei._.chieh\n沒跨縣市的不會補吧?如果是到難停車的區域要補停車費我覺得還可以理解。\nkevin_wang7916\n點工的日薪本來就很高了 除非太遠跨縣市 不然一律不補\nchenjuihsu\n我的師傅都騎車上班，我一個月固定補1500的油資補貼給他們。\nanthur514\n我叫你睡工地 我幫你準備熱水器你要嗎？\nnike24396666\n公務員去政府機關上班也沒通勤費吧。除非跨縣市，會有補油資、過路etc、再一點保養費，經驗值是差不多一公里5塊，來回計。當然你如果開跑車，油耗保養就沒辦法這樣算。",
+      "time": "2026-10-25T04:42:48.000Z",
+      "keywords": [
+        "裝潢",
+        "統包"
+      ],
+      "regions": [
+        "台北"
+      ],
+      "foundBy": "統包",
+      "foundQuery": "統包",
+      "foundAt": "2026-10-25T05:55:20.548Z",
+      "full": true
+    },
+    {
+      "code": "De5vFvEoJ_c",
+      "user": "gnilnil",
+      "url": "https://www.threads.com/@gnilnil/post/De5vFvEoJ_c",
+      "authorUrl": "https://www.threads.com/@gnilnil",
+      "text": "2,181次瀏覽\n台南\n請問台南有沒有能清運石棉瓦的？\n目前3袋 需協助從3樓吊至1樓（中間有電線會卡到）\n想知道價格多少？謝謝！\nskyboy199999\n什麼時候需要。預約呢老闆\nskyboy199999\nskyboy199999\n工程項目\n預估報價\n現場整理及安全防護\n$3,000\n石綿瓦密封包裝作業\n$4,500\n三樓吊掛至一樓（含吊掛設備）\n$8,000\n現場人員搬運及配合作業\n$5,000\n合法石綿廢棄物清運及處理\n30,000～$50,000\n預估總價\nmm100367mm\n這價格真便宜\njuncheng1980\n這報價是認真的嗎？難怪隔壁鄰居石棉瓦都不處理！\nots_eto\n私\nlindaqchen\n清理石棉瓦是不是要先跟環保局申請？\nmm100367mm\n要看有沒有被環保局空拍到列管\nshui_jian\n合法處理 可以參考一下",
+      "time": "2026-10-25T03:24:42.000Z",
+      "keywords": [
+        "清運"
+      ],
+      "regions": [
+        "台南"
+      ],
+      "foundBy": "清運",
+      "foundQuery": "清運",
+      "foundAt": "2026-10-25T05:55:20.549Z",
+      "full": true
+    },
+    {
+      "code": "De5srK-D0-K",
+      "user": "liilun.y",
+      "url": "https://www.threads.com/@liilun.y/post/De5srK-D0-K",
+      "authorUrl": "https://www.threads.com/@liilun.y",
+      "text": "1,131次瀏覽\n台南\n找台南搬家公司\n歸仁爬梯2樓 到 永康電梯14樓\n預計五箱生活用品衣服（暫無照片）\n可折疊書桌 微波爐 請留言大概報價～\nheytsaitsai\n可以加賴詢問老闆喔～\nliyishan3107\n允鴻專業吊車搬家\nwaz_95412\n私訊你\npttghj_7391\n私訊你\npttghj_7391\n私訊我\nqbi6811\n私妳\nchen.rong.ji.137992\n私\njhaoguankai\n私\nchenghuang14\n__xuan0911__\n需要可以找我喔！\nreal_life_tw\n老闆您好🙋",
+      "time": "2026-10-25T03:03:36.000Z",
+      "keywords": [
+        "搬家"
+      ],
+      "regions": [
+        "台南"
+      ],
+      "foundBy": "搬家",
+      "foundQuery": "搬家",
+      "foundAt": "2026-10-25T05:55:20.549Z",
+      "full": true
+    },
+    {
+      "code": "De5o-dmFizm",
+      "user": "haozuan.tw",
+      "url": "https://www.threads.com/@haozuan.tw/post/De5o-dmFizm",
+      "authorUrl": "https://www.threads.com/@haozuan.tw",
+      "text": "62次瀏覽\n買方最卡的一步不是找案件，是寄出第一則訊息。因為不知道寫什麼。\n可以照抄的三句：\n一、你是誰、為什麼是這一則。「您好，我在找北區的早餐店，看到您這一則的位置和坪數很符合。」讓對方知道你不是亂寄的。\n二、問一件具體的事。「這間大概做多久了？」「租約剩多久，房東知道嗎？」一次問一到兩個就好。\n三、給一個台階。「如果現在不方便講太細也沒關係，我可以先去附近看看。」\n不要做的：第一則就要電話、一開始就出價、用「不好意思打擾了」開頭。\n沒回覆是常態，不是拒絕。\n—— 好轉 · 台灣的店面頂讓與事業承繼媒合平台",
+      "time": "2026-10-25T02:31:41.000Z",
+      "keywords": [
+        "頂讓",
+        "店面頂讓"
+      ],
+      "regions": [],
+      "foundBy": "店面頂讓",
+      "foundQuery": "店面頂讓",
+      "foundAt": "2026-10-25T05:55:20.548Z",
+      "full": true
+    },
+    {
+      "code": "De4fDoDmIf6",
+      "user": "cannywewe",
+      "url": "https://www.threads.com/@cannywewe/post/De4fDoDmIf6",
+      "authorUrl": "https://www.threads.com/@cannywewe",
+      "text": "205次瀏覽\n搬家\n有一個床墊想從台中搬到桃園\n標準雙人，私訊報價，搬運日期越快越好\ngecko.2510960\n你好 已訊息給你\nhaoyun.pro\n搬家找我唷\nhuangjiangniao2\n您好，私訊給您了，謝謝\nwitega.tw\n您好！！歡迎找我們唷～🥹💐\n我們有一條龍搬家服務，讓你搬得安心又輕鬆🙌🏻\n我們師傅不菸不檳榔、衣著整齊\n價格透明、不現場加價、顧客真心好評💖\n歡迎從主頁加入我們的官方Line做線上估價～\n只需要把要搬運的物品，跟較詳細的地點，\n以及需求時間傳送給我們\n就可以幫你線上估價๑⃙⃘´༥`๑⃙⃘\naaron_yang821\n借版詢問🙋\n請問有桃園回頭車嗎？\n我們要從台中到桃園\n有20幾箱 已全部封好\n台中 桃園 兩邊都有電梯\n我們是10/27下午到10/30\n下午前都在台中",
+      "time": "2026-10-24T15:45:22.000Z",
+      "keywords": [
+        "搬家"
+      ],
+      "regions": [
+        "桃園",
+        "台中"
+      ],
+      "foundBy": "搬家",
+      "foundQuery": "搬家",
+      "foundAt": "2026-10-25T05:55:20.549Z",
+      "full": true
+    },
+    {
       "code": "De55xUwEXqv",
       "user": "walterlab005",
       "url": "https://www.threads.com/@walterlab005/post/De55xUwEXqv",
@@ -14286,113 +14481,6 @@
       "foundBy": "搬家",
       "foundQuery": "搬家",
       "foundAt": "2026-10-23T09:16:20.171Z"
-    },
-    {
-      "code": "DezUjsgEkbO",
-      "user": "kifungengineering",
-      "url": "https://www.threads.com/@kifungengineering/post/DezUjsgEkbO",
-      "authorUrl": "https://www.threads.com/@kifungengineering",
-      "text": "安裝冷氣\n小弟90後初出創業🙇🏻‍♂️希望可以幫到你手\n安裝及清洗冷氣服務（商業機,分體機,窗口機）\n水喉及電力安裝維修服務（有電工牌）\n搭棚服務（保險齊全）\n代客訂購所有牌子冷氣機服務\n如需要可以WhatsApp或pm 報價給你\n謝謝🙏",
-      "time": "2026-10-22T15:37:25.000Z",
-      "keywords": [
-        "維修",
-        "冷氣",
-        "創業"
-      ],
-      "regions": [],
-      "foundBy": "冷氣",
-      "foundQuery": "冷氣",
-      "foundAt": "2026-10-23T09:16:20.171Z"
-    },
-    {
-      "code": "DezUc1FkhJ1",
-      "user": "0.088.8888888",
-      "url": "https://www.threads.com/@0.088.8888888/post/DezUc1FkhJ1",
-      "authorUrl": "https://www.threads.com/@0.088.8888888",
-      "text": "油漆工程\n高雄有推薦的油漆工嗎？\n大約7-8坪 天花板不用 牆壁有裂縫\n希望價格透明 能大約報價的最好",
-      "time": "2026-10-22T15:36:29.000Z",
-      "keywords": [
-        "油漆"
-      ],
-      "regions": [
-        "高雄"
-      ],
-      "foundBy": "油漆",
-      "foundQuery": "油漆",
-      "foundAt": "2026-10-23T09:16:20.171Z"
-    },
-    {
-      "code": "DezNVJej9la",
-      "user": "andy__828__",
-      "url": "https://www.threads.com/@andy__828__/post/DezNVJej9la",
-      "authorUrl": "https://www.threads.com/@andy__828__",
-      "text": "210次瀏覽\n高雄店面出租\n🔥 高雄小港火鍋店頂讓｜誠可議！\n📍 地點：高雄市小港區宏平路\n✅ 現成火鍋店面，省下裝潢及購買設備成本\n✅ 約30個座位，適合個人創業、夫妻經營\n✅ 每月租金26,000元，租約還有3年\n✅ 二樓可店住，營業生活兼顧，也可當倉庫！\n✅ 設備齊全：火鍋桌椅、爐具、冷凍冷藏、廚房、飲料冰品設備等\n📍 小港在地生活圈，適合經營周邊居民、上班族及家庭客群！\n💰 頂讓金面議・誠意頂讓・價格誠可議！\n🤝 有誠意想接手的朋友，歡迎私訊洽談，條件都可以談！\n🔥 想創業，不一定要從零開始！現成店面等你來評估！\n📞 聯絡人：鄭先生\n☎️ 0913581321\n📩 歡迎私訊或來電預約看店\n⚠️ 看店請提前預約，避免影響現場營業。",
-      "time": "2026-10-22T14:34:16.000Z",
-      "keywords": [
-        "頂讓",
-        "頂讓金",
-        "店面出租",
-        "裝潢",
-        "接手",
-        "創業"
-      ],
-      "regions": [
-        "高雄"
-      ],
-      "foundBy": "店面出租",
-      "foundQuery": "店面出租",
-      "foundAt": "2026-10-23T09:16:20.168Z",
-      "full": true
-    },
-    {
-      "code": "DezLbXZmGGT",
-      "user": "u._154",
-      "url": "https://www.threads.com/@u._154/post/DezLbXZmGGT",
-      "authorUrl": "https://www.threads.com/@u._154",
-      "text": "搬家公司\n想問問有搬家公司嗎台中到鶯歌可以直接報價錢嗎",
-      "time": "2026-10-22T14:17:38.000Z",
-      "keywords": [
-        "搬家"
-      ],
-      "regions": [
-        "台中"
-      ],
-      "foundBy": "搬家",
-      "foundQuery": "搬家",
-      "foundAt": "2026-10-23T09:16:20.171Z"
-    },
-    {
-      "code": "DeyJqA4ksSJ",
-      "user": "momo8706_",
-      "url": "https://www.threads.com/@momo8706_/post/DeyJqA4ksSJ",
-      "authorUrl": "https://www.threads.com/@momo8706_",
-      "text": "1.2 萬次瀏覽\n淘寶系統櫃\n最近要交屋了 比較了很多台灣的統包\n結果看到淘寶的超級心動\n比較了幾家整體下來千城印象的態度、對談跟價格都是比較能接受的\n請問有人有實際給他做過系統櫃的心得能分享嗎🥺🥺🥺\n坐標高雄\nlizhuworks_taipei\n@tainan.seafood\n問他\n專業的\njuniya925\n@tainan.seafood\n推\ntainan.seafood\n找我啊，可以直接跟千城印象報我名字😂\ntaixinda.tw\n淘寶上看看全友係統櫃，很多客戶選擇，集運我們可以協助\nlhlizhen\n午安，集運方面有需求可以找我們了解哦可以找我預算運費了解了解\na0978380005\n歡迎聊聊\nxli054034\n恭喜🎉 後續有需要淘寶購買傢俱：衣櫃，餐桌，岩板桌，電視櫃，床，沙發等等⋯易碎品免費開箱檢查 大型傢俱都可協助集運加上樓安裝，雙清包稅，派送到門，淘寶找新维集運，讓您省事又放心\nzenster.c\n留",
-      "time": "2026-10-22T04:42:55.000Z",
-      "keywords": [
-        "統包"
-      ],
-      "regions": [
-        "高雄"
-      ],
-      "foundBy": "統包",
-      "foundQuery": "統包",
-      "foundAt": "2026-10-23T09:16:20.170Z",
-      "full": true
-    },
-    {
-      "code": "DeyJAsMkobP",
-      "user": "lily8316",
-      "url": "https://www.threads.com/@lily8316/post/DeyJAsMkobP",
-      "authorUrl": "https://www.threads.com/@lily8316",
-      "text": "冷氣安裝\n中壢平鎮有沒有冷氣安裝師傅\n地點在陽明醫院附近\n可免費到現場報價的",
-      "time": "2026-10-22T04:37:17.000Z",
-      "keywords": [
-        "冷氣"
-      ],
-      "regions": [],
-      "foundBy": "冷氣",
-      "foundQuery": "冷氣",
-      "foundAt": "2026-10-23T09:16:20.171Z"
     }
   ],
   "kwStats": {
@@ -14409,10 +14497,10 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 65,
-      "last": 1792905062770,
-      "scanned": 1252,
-      "leads": 25
+      "count": 66,
+      "last": 1792907466359,
+      "scanned": 1271,
+      "leads": 26
     },
     "二手設備": {
       "count": 31,
@@ -14445,9 +14533,9 @@
       "leads": 0
     },
     "頂讓": {
-      "count": 64,
-      "last": 1792905035907,
-      "scanned": 1189,
+      "count": 65,
+      "last": 1792907438277,
+      "scanned": 1208,
       "leads": 39
     },
     "廚房設備": {
@@ -14547,9 +14635,9 @@
       "leads": 1
     },
     "盤讓": {
-      "count": 64,
-      "last": 1792905049888,
-      "scanned": 1155,
+      "count": 65,
+      "last": 1792907452974,
+      "scanned": 1171,
       "leads": 29
     },
     "營業用": {
@@ -14631,9 +14719,9 @@
       "leads": 2
     },
     "店面出租": {
-      "count": 75,
-      "last": 1792905137799,
-      "scanned": 1470,
+      "count": 76,
+      "last": 1792907541665,
+      "scanned": 1490,
       "leads": 29
     },
     "拆除": {
@@ -14643,9 +14731,9 @@
       "leads": 21
     },
     "創業": {
-      "count": 23,
-      "last": 1792898032752,
-      "scanned": 441,
+      "count": 24,
+      "last": 1792907693514,
+      "scanned": 460,
       "leads": 4
     },
     "餐車": {
@@ -14733,8 +14821,8 @@
       "leads": 1
     },
     "頂讓金": {
-      "count": 61,
-      "last": 1792905077403,
+      "count": 62,
+      "last": 1792907480874,
       "scanned": 0,
       "leads": 0
     },
@@ -14835,69 +14923,69 @@
       "leads": 3
     },
     "二手冷氣": {
-      "count": 12,
-      "last": 1792895800211,
-      "scanned": 243,
+      "count": 13,
+      "last": 1792907556591,
+      "scanned": 263,
       "leads": 2
     },
     "統包": {
-      "count": 12,
-      "last": 1792895815275,
-      "scanned": 230,
-      "leads": 5
+      "count": 13,
+      "last": 1792907571225,
+      "scanned": 249,
+      "leads": 6
     },
     "油漆": {
-      "count": 12,
-      "last": 1792895828225,
-      "scanned": 233,
+      "count": 13,
+      "last": 1792907584979,
+      "scanned": 253,
       "leads": 5
     },
     "冷氣": {
-      "count": 12,
-      "last": 1792895842055,
-      "scanned": 233,
-      "leads": 18
+      "count": 13,
+      "last": 1792907597680,
+      "scanned": 250,
+      "leads": 19
     },
     "搬家": {
-      "count": 12,
-      "last": 1792895856396,
-      "scanned": 205,
-      "leads": 9
+      "count": 13,
+      "last": 1792907610727,
+      "scanned": 223,
+      "leads": 11
     },
     "貨運": {
-      "count": 12,
-      "last": 1792897960020,
-      "scanned": 209,
+      "count": 13,
+      "last": 1792907625286,
+      "scanned": 222,
       "leads": 3
     },
     "清運": {
-      "count": 12,
-      "last": 1792897976668,
-      "scanned": 225,
-      "leads": 10
+      "count": 13,
+      "last": 1792907637746,
+      "scanned": 244,
+      "leads": 11
     },
     "漏水": {
-      "count": 12,
-      "last": 1792897991164,
-      "scanned": 233,
+      "count": 13,
+      "last": 1792907651247,
+      "scanned": 250,
       "leads": 11
     },
     "POS": {
-      "count": 11,
-      "last": 1792898004919,
-      "scanned": 384,
+      "count": 12,
+      "last": 1792907664764,
+      "scanned": 415,
       "leads": 0
     },
     "點餐系統": {
-      "count": 12,
-      "last": 1792898018274,
-      "scanned": 229,
+      "count": 13,
+      "last": 1792907679107,
+      "scanned": 250,
       "leads": 5
     },
     "找店面": {
-      "count": 12,
-      "last": 1792898047623,
-      "scanned": 222,
+      "count": 13,
+      "last": 1792907707522,
+      "scanned": 239,
       "leads": 2
     },
     "籌備": {
@@ -14907,11 +14995,11 @@
       "leads": 0
     }
   },
-  "nextScanAt": "2026-10-25T05:42:00.046Z",
+  "nextScanAt": "2026-10-25T06:19:24.311Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-25T05:42:00.046Z",
-    "madeAt": "2026-10-25T05:21:05.312Z",
+    "at": "2026-10-25T06:19:24.311Z",
+    "madeAt": "2026-10-25T05:56:02.365Z",
     "items": [
       {
         "kw": "頂讓",
@@ -14934,54 +15022,54 @@
         "q": "店面出租"
       },
       {
-        "kw": "二手冷氣",
-        "q": "二手冷氣"
+        "kw": "籌備",
+        "q": "籌備"
       },
       {
-        "kw": "統包",
-        "q": "統包"
+        "kw": "加盟",
+        "q": "加盟"
       },
       {
-        "kw": "油漆",
-        "q": "油漆"
+        "kw": "設備出清",
+        "q": "設備出清"
       },
       {
-        "kw": "冷氣",
-        "q": "冷氣"
+        "kw": "餐飲設備",
+        "q": "餐飲設備"
       },
       {
-        "kw": "搬家",
-        "q": "搬家"
+        "kw": "二手設備",
+        "q": "二手設備"
       },
       {
-        "kw": "貨運",
-        "q": "貨運"
+        "kw": "結束營業",
+        "q": "結束營業"
       },
       {
-        "kw": "清運",
-        "q": "清運"
+        "kw": "歇業",
+        "q": "歇業"
       },
       {
-        "kw": "漏水",
-        "q": "漏水"
+        "kw": "製冰機",
+        "q": "製冰機"
       },
       {
-        "kw": "POS",
-        "q": "POS"
+        "kw": "冷凍櫃",
+        "q": "冷凍櫃"
       },
       {
-        "kw": "點餐系統",
-        "q": "點餐系統"
+        "kw": "商用冰箱",
+        "q": "商用冰箱"
       },
       {
-        "kw": "創業",
-        "q": "創業"
+        "kw": "營業用冰箱",
+        "q": "營業用冰箱"
       },
       {
-        "kw": "找店面",
-        "q": "找店面"
+        "kw": "二手冰箱",
+        "q": "二手冰箱"
       }
     ]
   },
-  "kwCursor": 51
+  "kwCursor": 10
 }
