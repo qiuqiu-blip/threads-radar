@@ -1,37 +1,35 @@
 {
-  "updatedAt": "2026-10-26T15:02:31.045Z",
+  "updatedAt": "2026-10-26T15:57:22.116Z",
   "lastRun": {
-    "startedAt": "2026-10-26T14:50:50.001Z",
-    "finishedAt": "2026-10-26T15:02:30.810Z",
+    "startedAt": "2026-10-26T15:46:22.808Z",
+    "finishedAt": "2026-10-26T15:57:21.808Z",
     "status": "ok",
-    "scanned": 230,
-    "matched": 8,
-    "newCount": 8,
-    "notified": 8,
+    "scanned": 206,
+    "matched": 5,
+    "newCount": 5,
+    "notified": 5,
     "perKeyword": {
       "頂讓": 19,
       "盤讓": 21,
-      "店面頂讓": 19,
+      "店面頂讓": 20,
       "頂讓金": 0,
-      "店面出租": 19,
-      "裝潢": 20,
-      "即將開幕": 20,
-      "試營運": 19,
-      "飲料店": 18,
-      "餐車": 17,
-      "維修": 21,
-      "油煙機": 20,
-      "找接手": 0,
-      "接手": 0,
-      "收掉": 0,
-      "熄燈": 17,
+      "店面出租": 20,
       "不做了": 0,
-      "桃園結束營業": 0,
-      "新竹結束營業": 0,
-      "台北出清": 0
+      "工作台": 0,
+      "冰櫃": 0,
+      "展示櫃": 20,
+      "封口機": 20,
+      "炸爐": 0,
+      "煮麵機": 0,
+      "快速爐": 0,
+      "冰淇淋機": 23,
+      "收銀機": 23,
+      "二手冷氣": 20,
+      "統包": 20,
+      "基隆出清": 0
     },
     "warnings": [
-      "搜尋時間超過 10 分鐘，剩下 1 個關鍵字留到下次"
+      "搜尋時間超過 10 分鐘，剩下 3 個關鍵字留到下次"
     ],
     "keywordsUsed": [
       "頂讓",
@@ -39,22 +37,22 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "裝潢",
-      "即將開幕",
-      "試營運",
-      "飲料店",
-      "餐車",
-      "維修",
-      "油煙機",
-      "找接手",
-      "接手",
-      "收掉",
-      "熄燈",
       "不做了",
-      "桃園結束營業",
-      "新竹結束營業",
-      "台北出清",
-      "新北出清"
+      "工作台",
+      "冰櫃",
+      "展示櫃",
+      "封口機",
+      "炸爐",
+      "煮麵機",
+      "快速爐",
+      "冰淇淋機",
+      "收銀機",
+      "二手冷氣",
+      "統包",
+      "基隆出清",
+      "桃園出清",
+      "新竹出清",
+      "台北設備出清"
     ],
     "queries": [
       "頂讓",
@@ -62,46 +60,141 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "裝潢",
-      "即將開幕",
-      "試營運",
-      "飲料店",
-      "餐車",
-      "維修",
-      "油煙機",
-      "找接手",
-      "接手",
-      "收掉",
-      "熄燈",
       "不做了",
-      "桃園結束營業",
-      "新竹結束營業",
-      "台北出清"
+      "工作台",
+      "冰櫃",
+      "展示櫃",
+      "封口機",
+      "炸爐",
+      "煮麵機",
+      "快速爐",
+      "冰淇淋機",
+      "收銀機",
+      "二手冷氣",
+      "統包",
+      "基隆出清"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 134,
-      "dup": 0,
-      "tooOld": 10,
-      "noKeyword": 7,
-      "noContext": 56,
-      "notBiz": 15
+      "seen": 169,
+      "dup": 1,
+      "words": {
+        "家具": 1
+      },
+      "excludeWord": 1,
+      "noKeyword": 3,
+      "noContext": 24,
+      "tooOld": 3
     },
-    "detailFetched": 6,
+    "detailFetched": 5,
     "newUrls": [
-      "https://www.threads.com/@water.mark0602/post/De9gu2fGbeA",
-      "https://www.threads.com/@masa__0813/post/De9gWn5n-HR",
-      "https://www.threads.com/@ynnchuan/post/De9eqIJk7Vj",
-      "https://www.threads.com/@house_0216/post/De9amnNEzgf",
-      "https://www.threads.com/@hooyacafe/post/De9Qau2FJKt",
-      "https://www.threads.com/@chikusentaiwanryori/post/De9OclTkidy",
-      "https://www.threads.com/@house_0216/post/De87zeWkQIH",
-      "https://www.threads.com/@lichuant/post/De8kNSzGBGY"
+      "https://www.threads.com/@sheldonwe545/post/De9lLMDk1zK",
+      "https://www.threads.com/@cheetah.2781708/post/De9jkvHEtl1",
+      "https://www.threads.com/@bernice___162546/post/De9enhKGl8W",
+      "https://www.threads.com/@chen.brown.sugar/post/De9eAdkGYL3",
+      "https://www.threads.com/@fen0925123/post/De9ccCVn6JO"
     ],
     "pushMode": "on",
-    "nextInMinutes": 26
+    "nextInMinutes": 24
   },
   "runs": [
+    {
+      "startedAt": "2026-10-26T15:46:22.808Z",
+      "finishedAt": "2026-10-26T15:57:21.808Z",
+      "status": "ok",
+      "scanned": 206,
+      "matched": 5,
+      "newCount": 5,
+      "notified": 5,
+      "perKeyword": {
+        "頂讓": 19,
+        "盤讓": 21,
+        "店面頂讓": 20,
+        "頂讓金": 0,
+        "店面出租": 20,
+        "不做了": 0,
+        "工作台": 0,
+        "冰櫃": 0,
+        "展示櫃": 20,
+        "封口機": 20,
+        "炸爐": 0,
+        "煮麵機": 0,
+        "快速爐": 0,
+        "冰淇淋機": 23,
+        "收銀機": 23,
+        "二手冷氣": 20,
+        "統包": 20,
+        "基隆出清": 0
+      },
+      "warnings": [
+        "搜尋時間超過 10 分鐘，剩下 3 個關鍵字留到下次"
+      ],
+      "keywordsUsed": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "不做了",
+        "工作台",
+        "冰櫃",
+        "展示櫃",
+        "封口機",
+        "炸爐",
+        "煮麵機",
+        "快速爐",
+        "冰淇淋機",
+        "收銀機",
+        "二手冷氣",
+        "統包",
+        "基隆出清",
+        "桃園出清",
+        "新竹出清",
+        "台北設備出清"
+      ],
+      "queries": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "不做了",
+        "工作台",
+        "冰櫃",
+        "展示櫃",
+        "封口機",
+        "炸爐",
+        "煮麵機",
+        "快速爐",
+        "冰淇淋機",
+        "收銀機",
+        "二手冷氣",
+        "統包",
+        "基隆出清"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 169,
+        "dup": 1,
+        "words": {
+          "家具": 1
+        },
+        "excludeWord": 1,
+        "noKeyword": 3,
+        "noContext": 24,
+        "tooOld": 3
+      },
+      "detailFetched": 5,
+      "newUrls": [
+        "https://www.threads.com/@sheldonwe545/post/De9lLMDk1zK",
+        "https://www.threads.com/@cheetah.2781708/post/De9jkvHEtl1",
+        "https://www.threads.com/@bernice___162546/post/De9enhKGl8W",
+        "https://www.threads.com/@chen.brown.sugar/post/De9eAdkGYL3",
+        "https://www.threads.com/@fen0925123/post/De9ccCVn6JO"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 24
+    },
     {
       "startedAt": "2026-10-26T14:50:50.001Z",
       "finishedAt": "2026-10-26T15:02:30.810Z",
@@ -13252,6 +13345,119 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "De9lLMDk1zK",
+      "user": "sheldonwe545",
+      "url": "https://www.threads.com/@sheldonwe545/post/De9lLMDk1zK",
+      "authorUrl": "https://www.threads.com/@sheldonwe545",
+      "text": "106次瀏覽\n室內設計\n林口找系統櫃裝修\n三坪主臥\n想要局部改造房間！\n要把原本的木作掀床和舊書桌拆掉，重新油漆和重鋪 3 坪的木地板，並在新大樑下做一組新的床頭系統櫃（含展示燈條跟掀蓋床頭箱）。\n​附上現場圖、尺寸跟改造模擬圖：\n​現場尺寸：舊掀床寬 300 / 深 47 / 高 230，書桌寬 275 / 深 60 / 高 75。\n​改造規格：拆除舊木作 ➔ 牆面批土油漆 ➔ 重鋪卡扣木地板 ➔ 水電移位 ➔ 新做樑下床頭系統櫃（玻璃門、LED 溫暖燈條、下掀床頭箱、雙側抽屜）。\n​求統包、木作或系統櫃廠商報價，也歡迎大家分享這樣的局部翻修大概要多少預算？感謝！🙏\nlizhuworks_taipei\n可以私訊洽詢哦💕\n私\nchenqusnyusn\n裝修施作陳先生電話，0908236678,歡迎約時間現場估價。\nswg96659592\n我們是做16mm細框拉門/屏風/PD門\n希望有機會可以一起合作打拼喔\nchenxinzhuc\n可以私訊我😊\nyu.xhg1111\n您好 ：我們是北部統包團隊\n粉專內有許多完成作品可供您參考~\nLIND ID：0916225000\nFB粉絲專頁：facebook.com/share…",
+      "time": "2026-10-26T15:15:02.000Z",
+      "keywords": [
+        "拆除",
+        "水電",
+        "統包",
+        "油漆"
+      ],
+      "regions": [
+        "新北"
+      ],
+      "foundBy": "統包",
+      "foundQuery": "統包",
+      "foundAt": "2026-10-26T15:56:49.692Z",
+      "full": true
+    },
+    {
+      "code": "De9jkvHEtl1",
+      "user": "cheetah.2781708",
+      "url": "https://www.threads.com/@cheetah.2781708/post/De9jkvHEtl1",
+      "authorUrl": "https://www.threads.com/@cheetah.2781708",
+      "text": "169次瀏覽\n頂讓\n⭐設備新門檻低，初期創業的要把握哦【現在只要 18 萬 快就好！ 忍痛割愛｜台中西屯澄清優質餐飲店面頂讓】 ⚠️ 【他團同步刊登，先看先下定者優先！】 ​因後續規劃專做團膳團體客，才決定忍痛頂讓！ 環境非常舒適，廚房內有裝冷氣，夏天備料炒菜不悶熱。 門面大方寬敞、玻璃門面採光佳，門口好停機車、汽車可臨停，附近也有停車場，客人停車超方便！ ​適合經營：麵食、飯食、鍋燒、各類小吃類。 ​📍 店面資訊與條件 ​地點：台中市西屯區（澄清醫院附近） ​租金：35,000 元 / 月（租一押二，需與房東重新簽約） ​頂讓金額：原價 28 萬 現在只要 18 萬！（ 快就好，誠意出價不囉嗦，頂到賺到！） ​🛠️ 頂讓設備（設備齊全，接手即可營業）： ​靜電機抽風設備（非常新！ 使用僅一年多，光這套當初就花了 18 萬） ​分離式冷氣 2 台（含廚房冷氣） ​玻璃門面 / 白鐵櫃檯 / 橫式招牌 / 直式招牌 ​六孔二湯煮麵機 / 炒台快速爐 / 三口中壓海產爐 ​油炸機 / 煮飯鍋 / 保溫飯鍋 ​4 門冷藏冰箱 / 橫式冷凍櫃 ​工作桌 / 洗水槽 / 餐桌椅一批\n​⚠️ 聯絡與看店須知（他團同步，為節省彼此寶貴時間）： ​請勿直接突襲或現場私下詢問。 ​請先確認「月租金 3.5 萬」符合您的預算再私訊。 ​預計何時接手 以及 希望約看店的時間，會優先安排看店！ ​純問問、無預算或仲介請繞道，謝謝體諒！",
+      "time": "2026-10-26T15:01:02.000Z",
+      "keywords": [
+        "頂讓",
+        "店面頂讓",
+        "頂讓金",
+        "冷凍櫃",
+        "招牌",
+        "接手",
+        "煮麵機",
+        "快速爐",
+        "冷氣",
+        "創業"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "頂讓",
+      "foundQuery": "頂讓",
+      "foundAt": "2026-10-26T15:56:49.690Z",
+      "full": true
+    },
+    {
+      "code": "De9enhKGl8W",
+      "user": "bernice___162546",
+      "url": "https://www.threads.com/@bernice___162546/post/De9enhKGl8W",
+      "authorUrl": "https://www.threads.com/@bernice___162546",
+      "text": "1,848次瀏覽\n中古屋翻新\n想問林口的脆友們🥹\n家裡在林口長庚附近買了房，室內約 30 坪以上，裝修預算抓 100 萬內，想找報價透明、施工品質好的統包或裝修師傅！\n🔨 需求包含：\n・兩間浴室全拆重做（一樓拆浴缸、改乾濕分離）\n・全室燈光重新配線、增加明亮度\n・5～7 扇對外窗連窗框更換\n・局部水電、全室牆面修補及油漆\n・木作拆除、隱藏門等工程\n請問有推薦的水電工程、窗戶工程、設計公司或師傅嗎？有實際合作經驗的更好！\n也歡迎廠商自薦，麻煩附上作品、報價方式及聯絡資訊，謝謝大家！🙏\nh65_1723\n桃園裝潢木工承包\n平釘天花一坪3000起\n冷氣窗簾盒一尺 600起\n3人木工班 不煙 不酒 不檳榔\n尋業主 設計師 統包\n長期配合￼\nline:hooh168\nxin1220yo\n推~\njun020335\n免費到府丈量，歡迎來電為您服務\njun020335\nringo.design.tw\n您好，這是我們的官方 IG 作品集：\n您可以從裡面看到我們歷年的室內設計案例與完工分享，如果對特定的風格或格局有興趣，也歡迎隨時跟我討論喔！\n但100真的不夠~~\ninstagram.com\n林果室內設計\niamcy77\n嗨👋您好啊，我們是醞美漆飾塗裝，有漆面塗裝需求歡迎聊聊哦😊 我們依現場實際丈量施作面積報價、工程合約保障、一年漆面保固、每日進度回報～工班不菸不酒，新成屋改色、舊漆整新、主視覺牆面設計、特殊塗料等我們都有施作 歡迎參考 atelierpura.com\natelierpura.com\n醞美漆飾塗裝｜Atelier Pura\nlitter11140310\n你好☺️~~\n🏠🏡若有居家工程上大大小小問題~~都可訊問或報價喔\n🧑‍🔧專業實在♥️誠心服務至上🙏\n🔸🔸🔸🔸🔸🔸🔸🔸🔸\n🔌🚿🛁🚽🪛🔩🔧🪚🛠️🪏\n▍ 陳家幫工程有限公司 ▍\n合法立案｜室內裝修執照｜可開立發票\n📌0985472366\n📌line line.me/ti/p…\n🔸合法裝修登記\n🔸報價合理透明\n🔸合約清楚規範施工管理\n🔸良善溝通能力\n🔸工程進度主動回報及\n🔸施工項目拍照留存\nevil72816",
+      "time": "2026-10-26T14:17:44.000Z",
+      "keywords": [
+        "拆除",
+        "水電",
+        "裝潢",
+        "統包",
+        "油漆",
+        "冷氣"
+      ],
+      "regions": [
+        "新北",
+        "桃園"
+      ],
+      "foundBy": "統包",
+      "foundQuery": "統包",
+      "foundAt": "2026-10-26T15:56:49.692Z",
+      "full": true
+    },
+    {
+      "code": "De9eAdkGYL3",
+      "user": "chen.brown.sugar",
+      "url": "https://www.threads.com/@chen.brown.sugar/post/De9eAdkGYL3",
+      "authorUrl": "https://www.threads.com/@chen.brown.sugar",
+      "text": "2,821次瀏覽\n老屋翻新\n想尋求新北裝潢\n中古屋翻新\n主要需求：水電重新拉、房間重新隔間、兩間衛浴整修、天花板跟地板、廚房\n室內約40坪\n麻煩推薦統包或設計公司謝謝🙏🏻🙏🏻\nsl760701\n合法經營的裝修公司\n可開發票\n有多名PTT網友推薦文\ninstagram.com/lin_m…\n歡迎參考喔🤗\ninstagram.com\n鴻澄泥作宅修工程行🧱\nfrank.xia\n👋\neternal__20\n哈囉👋\n有需要可洽詢\n可場勘現場討論\nangela.living23.5\n推薦 instagram.com/hsian…\ninstagram.com\n享室設計 ｜室內設計\nsmilesweet0130\n哈囉，看到您的需求～來自薦一下👋\n我們店面在林口，負責規劃設計溝通施作一條龍的服務\n先做該做的，再考慮想做的\n每一筆都花的實在很重要\n想了解可以私訊我聊聊☺️\ninstagram.com\nMark｜飛軒空間設計\nh65_1723\n桃園裝潢木工承包\n平釘天花一坪3000起\n冷氣窗簾盒一尺 600起\n3人木工班 不煙 不酒 不檳榔\n尋業主 設計師 統包\n長期配合￼\nline:hooh168\nringo.design.tw\n您好，這是我們的官方 IG 作品集：\n您可以從裡面看到我們歷年的室內設計案例與完工分享，如果對特定的風格或格局有興趣，也歡迎隨時跟我討論喔！\ninstagram.com\n林果室內設計\niamcy77\n嗨👋您好啊，我們是醞美漆飾塗裝，有漆面塗裝需求歡迎聊聊哦😊 我們依現場實際丈量施作面積報價、工程合約保障、一年漆面保固、每日進度回報～工班不菸不酒，新成屋改色、舊漆整新、主視覺牆面設計、特殊塗料等我們都有施作 歡迎參考 atelierpura.com\natelierpura.com\n醞美漆飾塗裝｜Atelier Pura\ngyinteriordesign\n室內設計、老屋翻新、新屋裝潢、預售屋客變，歡迎來電洽詢，或Line:willchen1102 粉絲專頁facebook.com/gydes… 工寓室內設計誠摯為您服務。",
+      "time": "2026-10-26T14:12:24.000Z",
+      "keywords": [
+        "水電",
+        "裝潢",
+        "統包",
+        "冷氣"
+      ],
+      "regions": [
+        "新北",
+        "桃園"
+      ],
+      "foundBy": "統包",
+      "foundQuery": "統包",
+      "foundAt": "2026-10-26T15:56:49.692Z",
+      "full": true
+    },
+    {
+      "code": "De9ccCVn6JO",
+      "user": "fen0925123",
+      "url": "https://www.threads.com/@fen0925123/post/De9ccCVn6JO",
+      "authorUrl": "https://www.threads.com/@fen0925123",
+      "text": "334次瀏覽\n二手 冷氣 出清\n售二手冷氣\n1、\n三菱【 電機】8坪 靜音大師5.0kw一級能效變頻冷暖分離式冷氣空調(MUZ-HA50NF）\n適用坪數：約 8 坪空間\n製造年份2025\n原價46000\n售：25000\n2、\n三菱電機 / 靜音大師 GT 系列（MUZ-GT42NJ）\n功能類型： 冷氣及熱泵暖氣兩用型（冷暖變頻）\n適用坪數：約 6坪空間\n製造年份： 2022 年\n原價：41500\n售：20000\n台中取\npon_yen_hao\n有興趣\n那一台有興趣呢？",
+      "time": "2026-10-26T13:58:41.000Z",
+      "keywords": [
+        "二手冷氣",
+        "冷氣"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "二手冷氣",
+      "foundQuery": "二手冷氣",
+      "foundAt": "2026-10-26T15:56:49.691Z",
+      "full": true
+    },
+    {
       "code": "De9gu2fGbeA",
       "user": "water.mark0602",
       "url": "https://www.threads.com/@water.mark0602/post/De9gu2fGbeA",
@@ -18514,96 +18720,6 @@
       "foundQuery": "油煙機",
       "foundAt": "2026-10-24T13:54:42.980Z",
       "full": true
-    },
-    {
-      "code": "De4IgxLlHIg",
-      "user": "gunggung.tw",
-      "url": "https://www.threads.com/@gunggung.tw/post/De4IgxLlHIg",
-      "authorUrl": "https://www.threads.com/@gunggung.tw",
-      "text": "18次瀏覽\n創業日記\n當了這麼多年上班族，\n你還有勇氣做一件沒做過的事嗎？\n每天上班、下班，\n生活好像早已習慣了固定的節奏。\n不是不想安穩，\n只是想在平凡的日子裡，\n試著為自己做一件不一樣的事。\n而我，選擇開始滾地瓜球。🍠\n從挑選原料、試吃口味，\n到一台攤車、一張招牌，\n每件小事都是新的挑戰。\n不知道這條創業路會滾向哪裡，\n但至少，我已經開始了。\n🟡🟣 滾滾地瓜球\n一個上班族正在努力實現的小小夢想。\n生活再苦，也要滾出一點甜。\n想問問大家：\n你們有沒有一件一直想做，\n卻還沒開始的事？\nelva11022002\n有耶，想做的事很多，但每次想到「萬一失敗怎麼辦」，只能想想算了，最後還是乖乖回去當社畜😂\n真的滿羨慕你有勇氣踏出這一步，加油👏",
-      "time": "2026-10-24T12:28:22.000Z",
-      "keywords": [
-        "招牌",
-        "創業"
-      ],
-      "regions": [],
-      "foundBy": "招牌",
-      "foundQuery": "招牌",
-      "foundAt": "2026-10-24T13:05:29.670Z",
-      "full": true
-    },
-    {
-      "code": "De4FCCfE_F4",
-      "user": "washing16888",
-      "url": "https://www.threads.com/@washing16888/post/De4FCCfE_F4",
-      "authorUrl": "https://www.threads.com/@washing16888",
-      "text": "768次瀏覽\n水電\n目前正職是水電工程\n也歡迎員林居家水電 室內配線 老屋重拉線\n詢問我 目前是我跟我師父兩個人在接案子\n懇求大家給我們個機會\n報價絕對是公道價的\n水電搶修 也可以直接打主頁上的電話",
-      "time": "2026-10-24T11:57:57.000Z",
-      "keywords": [
-        "水電"
-      ],
-      "regions": [],
-      "foundBy": "水電",
-      "foundQuery": "水電",
-      "foundAt": "2026-10-24T13:05:29.671Z",
-      "full": true
-    },
-    {
-      "code": "De3-b0-AFL-",
-      "user": "peggy.li1010",
-      "url": "https://www.threads.com/@peggy.li1010/post/De3-b0-AFL-",
-      "authorUrl": "https://www.threads.com/@peggy.li1010",
-      "text": "147次瀏覽\n嘉義\n🏠 嘉義｜退租清潔｜晶曜澤\n住了這麼久，表面看起來乾淨，不代表每個角落都乾淨。\n櫃體裡的灰塵、浴室的水垢、窗溝的累積髒污……往往都是退租點交時，才發現還有這麼多細節沒處理！😵‍💫\n🔑 如果你是租客｜別讓退租清潔，成為點交時的壓力！\n✔️ 搬家已經夠累，不必再為清潔疲於奔命\n✔️ 提前整理環境，減少點交時因清潔問題產生的爭議\n✔️ 把時間留給搬家、整理與新生活，而不是最後一天還在刷垢！\n✨ 退租清潔，不只是把房子打掃乾淨，更是讓交接更順利、讓下一段租屋生活有個好開始。\n📍 嘉義｜晶曜澤有限公司\n🧹 租客準備退租？房東準備重新出租？\n📩 現在就私訊「退租清潔」\n提供房屋坪數、現場照片與預計清潔日期，方便我們初步評估清潔需求與安排檔期。\n#晶曜澤 #退租清潔\nqingjinghao.home\n細節清的很乾淨",
-      "time": "2026-10-24T11:00:19.000Z",
-      "keywords": [
-        "退租",
-        "清潔",
-        "搬家"
-      ],
-      "regions": [],
-      "foundBy": "退租",
-      "foundQuery": "退租",
-      "foundAt": "2026-10-24T13:05:29.671Z",
-      "full": true
-    },
-    {
-      "code": "De3uny6n13B",
-      "user": "yes_g_jiachores",
-      "url": "https://www.threads.com/@yes_g_jiachores/post/De3uny6n13B",
-      "authorUrl": "https://www.threads.com/@yes_g_jiachores",
-      "text": "3,949次瀏覽\n高雄清潔\n清潔公司收費越貴\n就一定洗得越乾淨嗎！？\n先告訴你們結論 不會\n我 高雄全區 一小時500\n最低三小時\n就是幫你們服務到好\n有需要退租或是住家清潔\n歡迎聯絡我！！\nmark29_23\n想了解\nchentailing5\n一個人做嗎\njiang_chen2\n留一下賴Id\npg_1225\n您好～有私訊\nchiajane1015\n你一個人做嗎？想了解\nf5678994\n留言卡一下家裡需要",
-      "time": "2026-10-24T08:42:08.000Z",
-      "keywords": [
-        "退租",
-        "清潔"
-      ],
-      "regions": [
-        "高雄"
-      ],
-      "foundBy": "清潔",
-      "foundQuery": "清潔",
-      "foundAt": "2026-10-24T13:05:29.671Z",
-      "full": true
-    },
-    {
-      "code": "De3o0hEE-Ww",
-      "user": "ying.h077",
-      "url": "https://www.threads.com/@ying.h077/post/De3o0hEE-Ww",
-      "authorUrl": "https://www.threads.com/@ying.h077",
-      "text": "775次瀏覽\n清潔服務\n【徵居家清潔｜台中北區】\n想找穩定的清潔幫手，先試做一次，合適的話希望固定每週或每兩週一次。\n🏠 兩層樓，約26坪\n🕐 平日晚上或週末全天皆可\n😷 家中有幼兒，清潔時需全程配戴口罩\n有興趣的朋友歡迎留言或私訊，麻煩附上大概報價、可配合時段和服務內容，謝謝🙏\nlaixiaoyi32280\n私\nsugoi.procleaning\n歡迎與我們洽詢喲❤️😍\nshi05.07\n哈囉您好 我們是拾光潔 台中有任何清潔問題歡迎私訊我們\n🏡 居家清潔｜裝潢細清｜入（退）屋清潔｜冷氣清洗\n✨ 首次預約享新客體驗優惠\n優惠內容請私訊索取，依需求提供最適合的方案。\n📩 免費估價｜快速回覆\n📱 IG：\n@shi05.07\n💚 LINE：@799bnssv\nuyen.uyen2095\n我擁有多年的清潔和整理經驗，並且配備齊全所需的工具。請將我的聯絡方式加入Line，以便我們更方便地溝通。....\nmist.to.light\n你好👋🏻這邊能為你服務ㄛ\nlikeablecba\n推\n@oeddueyaqn168\n可直接私訊師傅您的需求再報價喔👍\nxl68279\n請問老闆找到人了嗎？\nfree_dobbyyyy\n需要居家除蟎我可以幫忙💪\nb11171219\n歡迎詢問！\ncoco__lovehappy\n可以找我喔",
-      "time": "2026-10-24T07:51:27.000Z",
-      "keywords": [
-        "清潔",
-        "裝潢",
-        "冷氣"
-      ],
-      "regions": [
-        "台中"
-      ],
-      "foundBy": "清潔",
-      "foundQuery": "清潔",
-      "foundAt": "2026-10-24T13:05:29.671Z",
-      "full": true
     }
   ],
   "kwStats": {
@@ -18620,9 +18736,9 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 110,
-      "last": 1793026278773,
-      "scanned": 2137,
+      "count": 111,
+      "last": 1793029610539,
+      "scanned": 2157,
       "leads": 38,
       "zero": 0
     },
@@ -18659,10 +18775,10 @@
       "leads": 0
     },
     "頂讓": {
-      "count": 109,
-      "last": 1793026250896,
-      "scanned": 2075,
-      "leads": 61,
+      "count": 110,
+      "last": 1793029584497,
+      "scanned": 2094,
+      "leads": 62,
       "zero": 0
     },
     "廚房設備": {
@@ -18769,9 +18885,9 @@
       "leads": 1
     },
     "盤讓": {
-      "count": 109,
-      "last": 1793026264851,
-      "scanned": 1968,
+      "count": 110,
+      "last": 1793029596553,
+      "scanned": 1989,
       "leads": 43,
       "zero": 0
     },
@@ -18858,9 +18974,9 @@
       "zero": 0
     },
     "店面出租": {
-      "count": 120,
-      "last": 1793026353764,
-      "scanned": 2343,
+      "count": 121,
+      "last": 1793029681794,
+      "scanned": 2363,
       "leads": 37,
       "zero": 0
     },
@@ -18975,11 +19091,11 @@
       "zero": 0
     },
     "頂讓金": {
-      "count": 106,
-      "last": 1793026293277,
+      "count": 107,
+      "last": 1793029623440,
       "scanned": 0,
       "leads": 0,
-      "zero": 23
+      "zero": 24
     },
     "讓渡金": {
       "count": 10,
@@ -19022,87 +19138,87 @@
       "zero": 0
     },
     "不做了": {
-      "count": 24,
-      "last": 1793026669642,
+      "count": 25,
+      "last": 1793029694493,
       "scanned": 0,
       "leads": 0,
-      "zero": 6
+      "zero": 7
     },
     "工作台": {
-      "count": 23,
-      "last": 1793015093279,
-      "scanned": 0,
-      "leads": 0,
-      "zero": 5
-    },
-    "冰櫃": {
       "count": 24,
-      "last": 1793015152223,
+      "last": 1793029755480,
       "scanned": 0,
       "leads": 0,
       "zero": 6
     },
+    "冰櫃": {
+      "count": 25,
+      "last": 1793029814880,
+      "scanned": 0,
+      "leads": 0,
+      "zero": 7
+    },
     "展示櫃": {
-      "count": 24,
-      "last": 1793015211125,
-      "scanned": 466,
+      "count": 25,
+      "last": 1793029875638,
+      "scanned": 486,
       "leads": 7,
       "zero": 0
     },
     "封口機": {
-      "count": 24,
-      "last": 1793015226928,
-      "scanned": 464,
+      "count": 25,
+      "last": 1793029894386,
+      "scanned": 484,
       "leads": 2,
       "zero": 0
     },
     "炸爐": {
-      "count": 23,
-      "last": 1793015240078,
-      "scanned": 0,
-      "leads": 0,
-      "zero": 5
-    },
-    "煮麵機": {
       "count": 24,
-      "last": 1793017957780,
+      "last": 1793029909418,
       "scanned": 0,
       "leads": 0,
       "zero": 6
     },
-    "快速爐": {
-      "count": 23,
-      "last": 1793018019480,
+    "煮麵機": {
+      "count": 25,
+      "last": 1793029969306,
       "scanned": 0,
       "leads": 0,
-      "zero": 5
+      "zero": 7
+    },
+    "快速爐": {
+      "count": 24,
+      "last": 1793030028711,
+      "scanned": 0,
+      "leads": 0,
+      "zero": 6
     },
     "冰淇淋機": {
-      "count": 23,
-      "last": 1793018079797,
-      "scanned": 383,
+      "count": 24,
+      "last": 1793030087806,
+      "scanned": 406,
       "leads": 1,
       "zero": 0
     },
     "收銀機": {
-      "count": 23,
-      "last": 1793018091123,
-      "scanned": 476,
+      "count": 24,
+      "last": 1793030101858,
+      "scanned": 499,
       "leads": 3,
       "zero": 0
     },
     "二手冷氣": {
-      "count": 23,
-      "last": 1793018104596,
-      "scanned": 465,
-      "leads": 3,
+      "count": 24,
+      "last": 1793030116174,
+      "scanned": 485,
+      "leads": 4,
       "zero": 0
     },
     "統包": {
-      "count": 23,
-      "last": 1793018121798,
-      "scanned": 429,
-      "leads": 10,
+      "count": 24,
+      "last": 1793030136975,
+      "scanned": 449,
+      "leads": 13,
       "zero": 0
     },
     "油漆": {
@@ -19400,11 +19516,11 @@
       "zero": 1
     },
     "基隆出清": {
-      "count": 1,
-      "last": 1792995529463,
+      "count": 2,
+      "last": 1793030151765,
       "scanned": 0,
       "leads": 0,
-      "zero": 1
+      "zero": 2
     },
     "桃園出清": {
       "count": 1,
@@ -19526,11 +19642,11 @@
       "zero": 1
     }
   },
-  "nextScanAt": "2026-10-26T15:28:45.014Z",
+  "nextScanAt": "2026-10-26T16:20:59.446Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-26T15:28:45.014Z",
-    "madeAt": "2026-10-26T15:02:31.025Z",
+    "at": "2026-10-26T16:20:59.446Z",
+    "madeAt": "2026-10-26T15:57:22.101Z",
     "items": [
       {
         "kw": "頂讓",
@@ -19553,42 +19669,6 @@
         "q": "店面出租"
       },
       {
-        "kw": "不做了",
-        "q": "不做了"
-      },
-      {
-        "kw": "工作台",
-        "q": "工作台"
-      },
-      {
-        "kw": "冰櫃",
-        "q": "冰櫃"
-      },
-      {
-        "kw": "展示櫃",
-        "q": "展示櫃"
-      },
-      {
-        "kw": "封口機",
-        "q": "封口機"
-      },
-      {
-        "kw": "炸爐",
-        "q": "炸爐"
-      },
-      {
-        "kw": "煮麵機",
-        "q": "煮麵機"
-      },
-      {
-        "kw": "快速爐",
-        "q": "快速爐"
-      },
-      {
-        "kw": "冰淇淋機",
-        "q": "冰淇淋機"
-      },
-      {
         "kw": "收銀機",
         "q": "收銀機"
       },
@@ -19601,27 +19681,63 @@
         "q": "統包"
       },
       {
-        "kw": "基隆出清",
-        "q": "基隆出清",
+        "kw": "油漆",
+        "q": "油漆"
+      },
+      {
+        "kw": "冷氣",
+        "q": "冷氣"
+      },
+      {
+        "kw": "搬家",
+        "q": "搬家"
+      },
+      {
+        "kw": "貨運",
+        "q": "貨運"
+      },
+      {
+        "kw": "清運",
+        "q": "清運"
+      },
+      {
+        "kw": "漏水",
+        "q": "漏水"
+      },
+      {
+        "kw": "POS",
+        "q": "POS"
+      },
+      {
+        "kw": "點餐系統",
+        "q": "點餐系統"
+      },
+      {
+        "kw": "創業",
+        "q": "創業"
+      },
+      {
+        "kw": "新北設備出清",
+        "q": "新北設備出清",
         "focus": true
       },
       {
-        "kw": "桃園出清",
-        "q": "桃園出清",
+        "kw": "基隆設備出清",
+        "q": "基隆設備出清",
         "focus": true
       },
       {
-        "kw": "新竹出清",
-        "q": "新竹出清",
+        "kw": "桃園設備出清",
+        "q": "桃園設備出清",
         "focus": true
       },
       {
-        "kw": "台北設備出清",
-        "q": "台北設備出清",
+        "kw": "新竹設備出清",
+        "q": "新竹設備出清",
         "focus": true
       }
     ]
   },
-  "kwCursor": 41,
-  "focusCursor": 46
+  "kwCursor": 50,
+  "focusCursor": 0
 }
