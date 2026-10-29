@@ -1,35 +1,35 @@
 {
-  "updatedAt": "2026-10-29T15:57:28.150Z",
+  "updatedAt": "2026-10-29T16:36:53.427Z",
   "lastRun": {
-    "startedAt": "2026-10-29T15:50:36.867Z",
-    "finishedAt": "2026-10-29T15:57:28.078Z",
+    "startedAt": "2026-10-29T16:30:48.171Z",
+    "finishedAt": "2026-10-29T16:36:53.354Z",
     "status": "ok",
-    "scanned": 326,
-    "matched": 14,
-    "newCount": 14,
-    "notified": 14,
+    "scanned": 363,
+    "matched": 5,
+    "newCount": 5,
+    "notified": 5,
     "perKeyword": {
-      "頂讓": 19,
+      "頂讓": 18,
       "盤讓": 13,
       "店面頂讓": 20,
       "頂讓金": 0,
       "店面出租": 20,
-      "統包": 17,
-      "油漆": 21,
-      "冷氣": 20,
-      "搬家": 11,
-      "貨運": 18,
-      "清運": 20,
-      "漏水": 19,
-      "POS": 15,
-      "點餐系統": 25,
-      "創業": 7,
-      "找店面": 22,
-      "籌備": 0,
+      "加盟": 21,
+      "設備出清": 19,
+      "餐飲設備": 21,
+      "二手設備": 20,
+      "結束營業": 16,
+      "歇業": 18,
+      "製冰機": 18,
+      "冷凍櫃": 22,
+      "商用冰箱": 22,
+      "營業用冰箱": 25,
+      "二手冰箱": 10,
+      "咖啡機": 11,
+      "新北店面出租": 20,
+      "桃園店面出租": 18,
       "新竹店面出租": 18,
-      "桃園頂讓": 14,
-      "新竹頂讓": 8,
-      "台北店面出租": 19
+      "桃園頂讓": 13
     },
     "warnings": [],
     "keywordsUsed": [
@@ -38,22 +38,22 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "統包",
-      "油漆",
-      "冷氣",
-      "搬家",
-      "貨運",
-      "清運",
-      "漏水",
-      "POS",
-      "點餐系統",
-      "創業",
-      "找店面",
-      "籌備",
+      "加盟",
+      "設備出清",
+      "餐飲設備",
+      "二手設備",
+      "結束營業",
+      "歇業",
+      "製冰機",
+      "冷凍櫃",
+      "商用冰箱",
+      "營業用冰箱",
+      "二手冰箱",
+      "咖啡機",
+      "新北店面出租",
+      "桃園店面出租",
       "新竹店面出租",
-      "桃園頂讓",
-      "新竹頂讓",
-      "台北店面出租"
+      "桃園頂讓"
     ],
     "queries": [
       "頂讓",
@@ -61,53 +61,152 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "統包",
-      "油漆",
-      "冷氣",
-      "搬家",
-      "貨運",
-      "清運",
-      "漏水",
-      "POS",
-      "點餐系統",
-      "創業",
-      "找店面",
-      "籌備",
+      "加盟",
+      "設備出清",
+      "餐飲設備",
+      "二手設備",
+      "結束營業",
+      "歇業",
+      "製冰機",
+      "冷凍櫃",
+      "商用冰箱",
+      "營業用冰箱",
+      "二手冰箱",
+      "咖啡機",
+      "新北店面出租",
+      "桃園店面出租",
       "新竹店面出租",
-      "桃園頂讓",
-      "新竹頂讓",
-      "台北店面出租"
+      "桃園頂讓"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 231,
+      "seen": 278,
       "dup": 0,
-      "noKeyword": 29,
-      "tooOld": 8,
-      "noContext": 43,
-      "notBiz": 1
+      "noKeyword": 27,
+      "notBiz": 2,
+      "tooOld": 19,
+      "noContext": 26,
+      "words": {
+        "家具": 1,
+        "定居": 4
+      },
+      "excludeWord": 5
     },
     "detailFetched": 6,
     "newUrls": [
-      "https://www.threads.com/@cb1278802002/post/DfFTQC9gSuX",
-      "https://www.threads.com/@indrewchen/post/DfFTGx1lnpW",
-      "https://www.threads.com/@kaioookai/post/DfFVxiRnwUB",
-      "https://www.threads.com/@zt.221_/post/DfFN1jtE_2p",
-      "https://www.threads.com/@huizcheng/post/DfFKVwaATJm",
-      "https://www.threads.com/@m_c_panda/post/DfFHSHcEiH2",
-      "https://www.threads.com/@mikyo_ww/post/DfD7xIHHwBk",
-      "https://www.threads.com/@a0937859234/post/DfDhHTNEm5y",
-      "https://www.threads.com/@chuwei260320/post/DfAR793j5-Q",
-      "https://www.threads.com/@sjxuahcu746/post/DfARgwwErWN",
-      "https://www.threads.com/@mokomay3/post/DfAC6_Gk5il",
-      "https://www.threads.com/@a0937083386/post/De__PhqEkTU",
-      "https://www.threads.com/@luke_at_me777/post/De_6Pt5gbb8",
-      "https://www.threads.com/@0__2__0__9/post/De_UdnfgYVm"
+      "https://www.threads.com/@bvn6847/post/DfFbv0yEp9B",
+      "https://www.threads.com/@uky5731/post/DfFbmwRklnh",
+      "https://www.threads.com/@achangchiu/post/DfFSUfvGVCO",
+      "https://www.threads.com/@chiu.anko/post/DfDkN29jmrx",
+      "https://www.threads.com/@w_love21_/post/DfAVj2Zo6ii"
     ],
     "pushMode": "on",
-    "nextInMinutes": 26
+    "nextInMinutes": 22
   },
   "runs": [
+    {
+      "startedAt": "2026-10-29T16:30:48.171Z",
+      "finishedAt": "2026-10-29T16:36:53.354Z",
+      "status": "ok",
+      "scanned": 363,
+      "matched": 5,
+      "newCount": 5,
+      "notified": 5,
+      "perKeyword": {
+        "頂讓": 18,
+        "盤讓": 13,
+        "店面頂讓": 20,
+        "頂讓金": 0,
+        "店面出租": 20,
+        "加盟": 21,
+        "設備出清": 19,
+        "餐飲設備": 21,
+        "二手設備": 20,
+        "結束營業": 16,
+        "歇業": 18,
+        "製冰機": 18,
+        "冷凍櫃": 22,
+        "商用冰箱": 22,
+        "營業用冰箱": 25,
+        "二手冰箱": 10,
+        "咖啡機": 11,
+        "新北店面出租": 20,
+        "桃園店面出租": 18,
+        "新竹店面出租": 18,
+        "桃園頂讓": 13
+      },
+      "warnings": [],
+      "keywordsUsed": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "加盟",
+        "設備出清",
+        "餐飲設備",
+        "二手設備",
+        "結束營業",
+        "歇業",
+        "製冰機",
+        "冷凍櫃",
+        "商用冰箱",
+        "營業用冰箱",
+        "二手冰箱",
+        "咖啡機",
+        "新北店面出租",
+        "桃園店面出租",
+        "新竹店面出租",
+        "桃園頂讓"
+      ],
+      "queries": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "加盟",
+        "設備出清",
+        "餐飲設備",
+        "二手設備",
+        "結束營業",
+        "歇業",
+        "製冰機",
+        "冷凍櫃",
+        "商用冰箱",
+        "營業用冰箱",
+        "二手冰箱",
+        "咖啡機",
+        "新北店面出租",
+        "桃園店面出租",
+        "新竹店面出租",
+        "桃園頂讓"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 278,
+        "dup": 0,
+        "noKeyword": 27,
+        "notBiz": 2,
+        "tooOld": 19,
+        "noContext": 26,
+        "words": {
+          "家具": 1,
+          "定居": 4
+        },
+        "excludeWord": 5
+      },
+      "detailFetched": 6,
+      "newUrls": [
+        "https://www.threads.com/@bvn6847/post/DfFbv0yEp9B",
+        "https://www.threads.com/@uky5731/post/DfFbmwRklnh",
+        "https://www.threads.com/@achangchiu/post/DfFSUfvGVCO",
+        "https://www.threads.com/@chiu.anko/post/DfDkN29jmrx",
+        "https://www.threads.com/@w_love21_/post/DfAVj2Zo6ii"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 22
+    },
     {
       "startedAt": "2026-10-29T15:50:36.867Z",
       "finishedAt": "2026-10-29T15:57:28.078Z",
@@ -21966,6 +22065,95 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "DfFbv0yEp9B",
+      "user": "bvn6847",
+      "url": "https://www.threads.com/@bvn6847/post/DfFbv0yEp9B",
+      "authorUrl": "https://www.threads.com/@bvn6847",
+      "text": "準備跟先生移民墨爾本啦\n有人需要嗎？\n二手家電出清\n大冰箱$2000\n小冰箱九五新$800\n電鍋$500\n微波爐$700\n烤箱$700\n清淨機九五新$800\n洗碗機$800\n洗地機$600\n除濕機$800\n拍立得$600\n麻將機$1200\n掃地機器人$1100\n氣炸鍋九五新$600\n洗衣機$1000\n咖啡機$600\n飲水機$750\n脆回覆訊息不及時 有需要的可以聯絡我賴🆔\n@041vpmar\n帖子還在就是還有喔\n脆回覆訊息不及時 有需要的可以聯絡我賴🆔\n@041vpmar\n帖子還在就是還有喔",
+      "time": "2026-10-29T16:26:34.000Z",
+      "keywords": [
+        "咖啡機"
+      ],
+      "regions": [],
+      "foundBy": "二手冰箱",
+      "foundQuery": "二手冰箱",
+      "foundAt": "2026-10-29T16:36:14.501Z",
+      "full": true
+    },
+    {
+      "code": "DfFbmwRklnh",
+      "user": "uky5731",
+      "url": "https://www.threads.com/@uky5731/post/DfFbmwRklnh",
+      "authorUrl": "https://www.threads.com/@uky5731",
+      "text": "準備跟先生移民墨爾本啦\n有人需要嗎？\n二手家電出清\n大冰箱$2000\n小冰箱九五新$800\n電鍋$500\n微波爐$700\n烤箱$700\n清淨機九五新$800\n洗碗機$800\n洗地機$600\n除濕機$800\n拍立得$600\n麻將機$1200\n掃地機器人$1100\n氣炸鍋九五新$600\n洗衣機$1000\n咖啡機$600\n飲水機$750\n脆回覆訊息不及時 有需要的可以聯絡我賴🆔\n@041vpmar\n帖子還在就是還有喔\n脆回覆訊息不及時 有需要的可以聯絡我賴🆔\n@041vpmar\n帖子還在就是還有喔",
+      "time": "2026-10-29T16:25:20.000Z",
+      "keywords": [
+        "咖啡機"
+      ],
+      "regions": [],
+      "foundBy": "二手冰箱",
+      "foundQuery": "二手冰箱",
+      "foundAt": "2026-10-29T16:36:14.501Z",
+      "full": true
+    },
+    {
+      "code": "DfFSUfvGVCO",
+      "user": "achangchiu",
+      "url": "https://www.threads.com/@achangchiu/post/DfFSUfvGVCO",
+      "authorUrl": "https://www.threads.com/@achangchiu",
+      "text": "22次瀏覽\n二手冷凍櫃\n直立式冷凍櫃\n#冷凍櫃\n#桃園\n#單門冰箱",
+      "time": "2026-10-29T15:04:12.000Z",
+      "keywords": [
+        "冷凍櫃"
+      ],
+      "regions": [
+        "桃園"
+      ],
+      "foundBy": "冷凍櫃",
+      "foundQuery": "冷凍櫃",
+      "foundAt": "2026-10-29T16:36:14.500Z",
+      "full": true
+    },
+    {
+      "code": "DfDkN29jmrx",
+      "user": "chiu.anko",
+      "url": "https://www.threads.com/@chiu.anko/post/DfDkN29jmrx",
+      "authorUrl": "https://www.threads.com/@chiu.anko",
+      "text": "611次瀏覽\ndadi1060124\n料理\n我真的很想問料理達人\n做菜的時候到底怎麼把肉擦乾、把菜甩乾呢？\n擦了半天肉還是有水下去煎大噴油\n還有醃製過的肉怎麼弄才不會燒焦🥹\n大量的廚房紙巾最快，有空時我會放網架用冰箱吹乾（不過商用冰箱才能用這招）\n菜的話直接連菜籃一起甩最快",
+      "time": "2026-10-28T11:33:31.000Z",
+      "keywords": [
+        "商用冰箱"
+      ],
+      "regions": [],
+      "foundBy": "商用冰箱",
+      "foundQuery": "商用冰箱",
+      "foundAt": "2026-10-29T16:36:14.501Z",
+      "full": true
+    },
+    {
+      "code": "DfAVj2Zo6ii",
+      "user": "w_love21_",
+      "url": "https://www.threads.com/@w_love21_/post/DfAVj2Zo6ii",
+      "authorUrl": "https://www.threads.com/@w_love21_",
+      "text": "511次瀏覽\n台中 租屋\n店面頂讓\n租金：49000$（可租補）\n頂讓金：現場詳談\n租約：到118/11/9\n類型：一樓店面樓上可住\n樓層：1～5樓\n二樓 有廚房可辦公可當客廳\n四房 多空間 可利用\n五樓 大陽台曬洗間\n停車位：騎樓可停一台🚗\n水電費：台水台電\n位置：台中火車站忠孝夜市附近\n店面+住家🏠\n適合行業：不限行業！\n原貓舍/可寵物業🥳\n美業/餐飲業均可🥳\n✅整棟透天✅超大坪數✅格局完善\n✅可無痛接手現有空間設施設備，\n立即開業不必重新裝修💯\n😻有意者詳談😇\n[ 我是租客尋找有緣人接手頂讓］\n［#不收仲介費］\n📩有意者請留言私訊\n詐騙不要來🙏🙏🙏\nhomebody.rent_66\n沒辦法私訊您\n我有客人需要！做婚紗出租公司\n可當天看屋\ngame0327512\n請問1樓店面原用途是什麼\nbezold.tw\n老闆您好！看到您台中中區的店面在找接手的人 🙏\nBezold 是專做店面頂讓的平台，可以免費刊登，讓正在找店的買家看見您的店。\n🔗 bezold.com.tw\n刊登有任何問題，都歡迎私訊我們～\nbezold.com.tw\n頂讓網｜全台店面頂讓平台 - Bezold 頂讓必售",
+      "time": "2026-10-27T16:56:18.000Z",
+      "keywords": [
+        "頂讓",
+        "店面頂讓",
+        "頂讓金",
+        "水電",
+        "找接手",
+        "接手"
+      ],
+      "regions": [
+        "台中"
+      ],
+      "foundBy": "店面頂讓",
+      "foundQuery": "店面頂讓",
+      "foundAt": "2026-10-29T16:36:14.498Z",
+      "full": true
+    },
+    {
       "code": "DfFTQC9gSuX",
       "user": "cb1278802002",
       "url": "https://www.threads.com/@cb1278802002/post/DfFTQC9gSuX",
@@ -27333,95 +27521,6 @@
       "foundBy": "清潔",
       "foundQuery": "清潔",
       "foundAt": "2026-10-28T11:36:40.861Z"
-    },
-    {
-      "code": "DfBrXDfne6M",
-      "user": "luslife.art",
-      "url": "https://www.threads.com/@luslife.art/post/DfBrXDfne6M",
-      "authorUrl": "https://www.threads.com/@luslife.art",
-      "text": "居家清潔\n想請問大家有推薦雲林斗六的專業清潔嗎？\n想找價格合理、清潔能力不錯的，細清也可\n有實際配合過覺得不錯的個人或團隊 都可以推薦給我！\n透天，打掃的範圍是房間跟客廳、廁所\n再麻煩廣大的脆友🫶🏻",
-      "time": "2026-10-28T05:26:02.000Z",
-      "keywords": [
-        "清潔"
-      ],
-      "regions": [],
-      "foundBy": "清潔",
-      "foundQuery": "清潔",
-      "foundAt": "2026-10-28T11:36:40.861Z"
-    },
-    {
-      "code": "DfBWwd_Etpb",
-      "user": "barmax2020",
-      "url": "https://www.threads.com/@barmax2020/post/DfBWwd_Etpb",
-      "authorUrl": "https://www.threads.com/@barmax2020",
-      "text": "水電\n有沒有台南、高雄做水電的同行\n最近案子一個接一個\n想問問大家比較缺案子，還是缺師傅？",
-      "time": "2026-10-28T02:26:01.000Z",
-      "keywords": [
-        "水電"
-      ],
-      "regions": [
-        "台南",
-        "高雄"
-      ],
-      "foundBy": "水電",
-      "foundQuery": "水電",
-      "foundAt": "2026-10-28T11:36:40.861Z"
-    },
-    {
-      "code": "DfCRUeIGpcZ",
-      "user": "tepore.tw",
-      "url": "https://www.threads.com/@tepore.tw/post/DfCRUeIGpcZ",
-      "authorUrl": "https://www.threads.com/@tepore.tw",
-      "text": "1110weiting\n老宅裝修請脆友推薦設計公司，房子在台北市，不要分工項的廠商，大概50幾坪\n提醒一下，老宅最怕的不是設計，是「拆開後才發現的問題」，像水電管線老化、漏水壁癌。\n所以找一條龍的是對的，有問題同一個團隊處理，不會互相推責任。\n挑公司可以問 2 件事：\n1. 拆除後發現問題，怎麼報價、怎麼處理？\n2. 窗口是不是同一個人，從頭到尾？\n我們是 Tepore 璽泊，提供室內設計與施工整合服務，服務台北・新北。團隊有（乙級室內裝修工程管理、乙級室內設計）\n不是只出圖不管施工的那種。\n老宅的話可以先聊聊你的狀況，不用準備資料。有興趣可以看 IG\n@tepore.tw\n🙌 品牌 新創立 ，但有5年經驗 看更多歡迎私訊聊聊",
-      "time": "2026-10-28T00:33:03.000Z",
-      "keywords": [
-        "拆除",
-        "水電",
-        "漏水"
-      ],
-      "regions": [
-        "台北",
-        "新北"
-      ],
-      "foundBy": "拆除",
-      "foundQuery": "拆除",
-      "foundAt": "2026-10-28T11:36:40.860Z",
-      "full": true
-    },
-    {
-      "code": "DfAWKeeEh9_",
-      "user": "guanjia.23218988",
-      "url": "https://www.threads.com/@guanjia.23218988/post/DfAWKeeEh9_",
-      "authorUrl": "https://www.threads.com/@guanjia.23218988",
-      "text": "包租代管\n🏠 【租屋點交有標準了！ 讓房東、房客不再各說各話】\n房子租出去容易，退租點交才是真正的考驗！\n「這面牆的污漬，本來就有啊！」\n「燈泡壞了，到底誰要負責？」\n「油漆、清潔費，真的可以扣押金嗎？」\n相信不少房東、房客，甚至租賃管理師，都曾遇過這些問題。\n最怕的不是房屋有損壞，而是沒有紀錄、沒有標準，最後只能各說各話！鞥\n📢 115年10月27日，租賃住宅服務業迎來重要的一步！ 全聯會召開第三次點交標準研議會議，由劉貞君理事長主持。\n會中「租賃住宅屋況及附屬設備點交清冊」正式拍板定案！\n📋 未來，我們希望租屋點交可以做到：\n✅ 有標準｜入住、退租逐項確認，不再憑印象\n✅ 有紀錄｜照片、影片留下依據，減少認知落差\n✅ 有流程｜房東、房客、管理業者清楚各自責任\n✅ 有數據｜設備折舊、損壞賠償朝客觀合理的方向研議\n✅ 有保障｜減少不必要的押金及修繕爭議 這次會議也針對入住通報期限、不同租賃關係的點交方式，以及油漆、清潔、燈泡、漏水等常見爭議項目進行討論。\n我們期待的，不只是一張表單。",
-      "time": "2026-10-27T17:01:35.000Z",
-      "keywords": [
-        "退租",
-        "清潔",
-        "油漆",
-        "漏水"
-      ],
-      "regions": [],
-      "foundBy": "退租",
-      "foundQuery": "退租",
-      "foundAt": "2026-10-28T11:36:40.860Z"
-    },
-    {
-      "code": "De_iikimhVE",
-      "user": "sii_boq.tw",
-      "url": "https://www.threads.com/@sii_boq.tw/post/De_iikimhVE",
-      "authorUrl": "https://www.threads.com/@sii_boq.tw",
-      "text": "1.7 萬次瀏覽\n最近有裝潢的人來參考一下地板行情吧\n用台灣 2026 年地板參考價格換算：\n① PVC 塑膠地板\n每坪 1,560～2,970 元\n20 坪約 3.12～5.94 萬\n② SPC 石塑地板\n每坪 2,500～4,640 元\n20 坪約 5～9.28 萬\n③ 超耐磨木地板（直鋪）\n每坪 4,800～7,500 元\n20 坪約 9.6～15 萬\n以上是材料與基本施工的情境換算\nPVC 已加計表列底料費\n不含拆除、整平等額外工程\n實際以現場報價為準\n如果甚至不知道自己的地板是會用什麼材質和工法的請直接問你的設計師\nadi781210\n感謝刷到這篇 留己看👀",
-      "time": "2026-10-27T09:30:29.000Z",
-      "keywords": [
-        "拆除",
-        "裝潢"
-      ],
-      "regions": [],
-      "foundBy": "拆除",
-      "foundQuery": "拆除",
-      "foundAt": "2026-10-28T11:36:40.860Z",
-      "full": true
     }
   ],
   "kwStats": {
@@ -27438,16 +27537,16 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 196,
-      "last": 1793289061997,
-      "scanned": 3809,
-      "leads": 77,
+      "count": 197,
+      "last": 1793291476789,
+      "scanned": 3829,
+      "leads": 78,
       "zero": 0
     },
     "二手設備": {
-      "count": 59,
-      "last": 1793279724092,
-      "scanned": 1115,
+      "count": 60,
+      "last": 1793291605902,
+      "scanned": 1135,
       "leads": 7,
       "zero": 0
     },
@@ -27477,9 +27576,9 @@
       "leads": 0
     },
     "頂讓": {
-      "count": 195,
-      "last": 1793289037217,
-      "scanned": 3784,
+      "count": 196,
+      "last": 1793291448532,
+      "scanned": 3802,
       "leads": 131,
       "zero": 0
     },
@@ -27496,10 +27595,10 @@
       "leads": 0
     },
     "商用冰箱": {
-      "count": 57,
-      "last": 1793281391636,
-      "scanned": 1098,
-      "leads": 23,
+      "count": 58,
+      "last": 1793291671443,
+      "scanned": 1120,
+      "leads": 24,
       "zero": 0
     },
     "讓渡": {
@@ -27541,23 +27640,23 @@
       "zero": 0
     },
     "咖啡機": {
-      "count": 59,
-      "last": 1793281428533,
-      "scanned": 1125,
+      "count": 60,
+      "last": 1793291710753,
+      "scanned": 1136,
       "leads": 39,
       "zero": 0
     },
     "製冰機": {
-      "count": 59,
-      "last": 1793281366117,
-      "scanned": 1163,
+      "count": 60,
+      "last": 1793291646690,
+      "scanned": 1181,
       "leads": 13,
       "zero": 0
     },
     "設備出清": {
-      "count": 47,
-      "last": 1793279696045,
-      "scanned": 783,
+      "count": 48,
+      "last": 1793291576694,
+      "scanned": 802,
       "leads": 18,
       "zero": 0
     },
@@ -27568,9 +27667,9 @@
       "leads": 0
     },
     "歇業": {
-      "count": 59,
-      "last": 1793281352862,
-      "scanned": 1098,
+      "count": 60,
+      "last": 1793291632569,
+      "scanned": 1116,
       "leads": 6,
       "zero": 0
     },
@@ -27587,9 +27686,9 @@
       "leads": 1
     },
     "盤讓": {
-      "count": 195,
-      "last": 1793289049009,
-      "scanned": 3660,
+      "count": 196,
+      "last": 1793291462241,
+      "scanned": 3673,
       "leads": 79,
       "zero": 0
     },
@@ -27612,9 +27711,9 @@
       "leads": 0
     },
     "結束營業": {
-      "count": 59,
-      "last": 1793279738164,
-      "scanned": 1089,
+      "count": 60,
+      "last": 1793291617565,
+      "scanned": 1105,
       "leads": 23,
       "zero": 0
     },
@@ -27631,9 +27730,9 @@
       "leads": 0
     },
     "餐飲設備": {
-      "count": 45,
-      "last": 1793279710835,
-      "scanned": 886,
+      "count": 46,
+      "last": 1793291591483,
+      "scanned": 907,
       "leads": 65,
       "zero": 0
     },
@@ -27676,9 +27775,9 @@
       "zero": 0
     },
     "店面出租": {
-      "count": 206,
-      "last": 1793289134260,
-      "scanned": 4068,
+      "count": 207,
+      "last": 1793291550699,
+      "scanned": 4088,
       "leads": 62,
       "zero": 0
     },
@@ -27716,23 +27815,23 @@
       "leads": 8
     },
     "二手冰箱": {
-      "count": 57,
-      "last": 1793281416032,
-      "scanned": 989,
-      "leads": 6,
-      "zero": 0
-    },
-    "冷凍櫃": {
       "count": 58,
-      "last": 1793281379164,
-      "scanned": 1216,
+      "last": 1793291699135,
+      "scanned": 999,
       "leads": 8,
       "zero": 0
     },
+    "冷凍櫃": {
+      "count": 59,
+      "last": 1793291659190,
+      "scanned": 1238,
+      "leads": 9,
+      "zero": 0
+    },
     "加盟": {
-      "count": 53,
-      "last": 1793279683683,
-      "scanned": 1028,
+      "count": 54,
+      "last": 1793291564049,
+      "scanned": 1049,
       "leads": 18,
       "zero": 0
     },
@@ -27786,18 +27885,18 @@
       "zero": 0
     },
     "營業用冰箱": {
-      "count": 44,
-      "last": 1793281404094,
-      "scanned": 861,
+      "count": 45,
+      "last": 1793291683943,
+      "scanned": 886,
       "leads": 5,
       "zero": 0
     },
     "頂讓金": {
-      "count": 192,
-      "last": 1793289073904,
+      "count": 193,
+      "last": 1793291490632,
       "scanned": 0,
       "leads": 0,
-      "zero": 109
+      "zero": 110
     },
     "讓渡金": {
       "count": 10,
@@ -28015,9 +28114,9 @@
       "zero": 3
     },
     "桃園頂讓": {
-      "count": 39,
-      "last": 1793289355965,
-      "scanned": 699,
+      "count": 40,
+      "last": 1793291761131,
+      "scanned": 712,
       "leads": 5,
       "zero": 0
     },
@@ -28085,9 +28184,9 @@
       "zero": 3
     },
     "新北店面出租": {
-      "count": 40,
-      "last": 1793286632643,
-      "scanned": 738,
+      "count": 41,
+      "last": 1793291722943,
+      "scanned": 758,
       "leads": 9,
       "zero": 0
     },
@@ -28295,16 +28394,16 @@
       "zero": 0
     },
     "桃園店面出租": {
-      "count": 37,
-      "last": 1793286645021,
-      "scanned": 666,
+      "count": 38,
+      "last": 1793291734540,
+      "scanned": 684,
       "leads": 6,
       "zero": 0
     },
     "新竹店面出租": {
-      "count": 39,
-      "last": 1793289344838,
-      "scanned": 681,
+      "count": 40,
+      "last": 1793291747491,
+      "scanned": 699,
       "leads": 9,
       "zero": 0
     },
@@ -28344,11 +28443,11 @@
       "zero": 3
     }
   },
-  "nextScanAt": "2026-10-29T16:23:00.264Z",
+  "nextScanAt": "2026-10-29T16:59:22.521Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-29T16:23:00.264Z",
-    "madeAt": "2026-10-29T15:57:28.125Z",
+    "at": "2026-10-29T16:59:22.521Z",
+    "madeAt": "2026-10-29T16:36:53.401Z",
     "items": [
       {
         "kw": "頂讓",
@@ -28371,52 +28470,62 @@
         "q": "店面出租"
       },
       {
-        "kw": "加盟",
-        "q": "加盟"
+        "kw": "便宜賣",
+        "q": "便宜賣"
       },
       {
-        "kw": "設備出清",
-        "q": "設備出清"
+        "kw": "搬家出清",
+        "q": "搬家出清"
       },
       {
-        "kw": "餐飲設備",
-        "q": "餐飲設備"
+        "kw": "招牌",
+        "q": "招牌"
       },
       {
-        "kw": "二手設備",
-        "q": "二手設備"
+        "kw": "拆除",
+        "q": "拆除"
       },
       {
-        "kw": "結束營業",
-        "q": "結束營業"
+        "kw": "退租",
+        "q": "退租"
       },
       {
-        "kw": "歇業",
-        "q": "歇業"
+        "kw": "清潔",
+        "q": "清潔"
       },
       {
-        "kw": "製冰機",
-        "q": "製冰機"
+        "kw": "水電",
+        "q": "水電"
       },
       {
-        "kw": "冷凍櫃",
-        "q": "冷凍櫃"
+        "kw": "裝潢",
+        "q": "裝潢"
       },
       {
-        "kw": "商用冰箱",
-        "q": "商用冰箱"
+        "kw": "即將開幕",
+        "q": "即將開幕"
       },
       {
-        "kw": "營業用冰箱",
-        "q": "營業用冰箱"
+        "kw": "試營運",
+        "q": "試營運"
       },
       {
-        "kw": "二手冰箱",
-        "q": "二手冰箱"
+        "kw": "飲料店",
+        "q": "飲料店"
       },
       {
-        "kw": "咖啡機",
-        "q": "咖啡機"
+        "kw": "餐車",
+        "q": "餐車"
+      },
+      {
+        "kw": "新竹頂讓",
+        "q": "新竹頂讓",
+        "focus": true
+      },
+      {
+        "kw": "台北店面出租",
+        "q": "台北店面出租",
+        "focus": true
       },
       {
         "kw": "新北店面出租",
@@ -28427,19 +28536,9 @@
         "kw": "桃園店面出租",
         "q": "桃園店面出租",
         "focus": true
-      },
-      {
-        "kw": "新竹店面出租",
-        "q": "新竹店面出租",
-        "focus": true
-      },
-      {
-        "kw": "桃園頂讓",
-        "q": "桃園頂讓",
-        "focus": true
       }
     ]
   },
-  "kwCursor": 11,
-  "focusCursor": 1
+  "kwCursor": 23,
+  "focusCursor": 5
 }
