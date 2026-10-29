@@ -1,59 +1,56 @@
 {
-  "updatedAt": "2026-10-29T11:18:03.186Z",
+  "updatedAt": "2026-10-29T12:01:21.268Z",
   "lastRun": {
-    "startedAt": "2026-10-29T11:10:39.413Z",
-    "finishedAt": "2026-10-29T11:18:03.085Z",
+    "startedAt": "2026-10-29T11:50:32.671Z",
+    "finishedAt": "2026-10-29T12:01:21.212Z",
     "status": "ok",
-    "scanned": 374,
-    "matched": 9,
-    "newCount": 9,
-    "notified": 9,
+    "scanned": 140,
+    "matched": 2,
+    "newCount": 2,
+    "notified": 2,
     "perKeyword": {
-      "頂讓": 22,
+      "頂讓": 19,
       "盤讓": 22,
       "店面頂讓": 20,
       "頂讓金": 0,
       "店面出租": 20,
-      "拆除": 18,
-      "退租": 20,
-      "清潔": 17,
-      "水電": 19,
-      "裝潢": 20,
-      "即將開幕": 21,
-      "試營運": 20,
-      "飲料店": 20,
-      "餐車": 21,
-      "維修": 18,
-      "油煙機": 20,
-      "找接手": 0,
-      "新竹頂讓": 19,
-      "台北店面出租": 20,
-      "新北店面出租": 19,
-      "桃園店面出租": 18
+      "接手": 0,
+      "收掉": 0,
+      "熄燈": 18,
+      "不做了": 0,
+      "工作台": 0,
+      "冰櫃": 0,
+      "展示櫃": 21,
+      "封口機": 20,
+      "炸爐": 0,
+      "煮麵機": 0,
+      "快速爐": 0
     },
-    "warnings": [],
+    "warnings": [
+      "搜尋時間超過 10 分鐘，剩下 5 個關鍵字留到下次"
+    ],
     "keywordsUsed": [
       "頂讓",
       "盤讓",
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "拆除",
-      "退租",
-      "清潔",
-      "水電",
-      "裝潢",
-      "即將開幕",
-      "試營運",
-      "飲料店",
-      "餐車",
-      "維修",
-      "油煙機",
-      "找接手",
+      "接手",
+      "收掉",
+      "熄燈",
+      "不做了",
+      "工作台",
+      "冰櫃",
+      "展示櫃",
+      "封口機",
+      "炸爐",
+      "煮麵機",
+      "快速爐",
+      "冰淇淋機",
+      "新竹店面出租",
+      "桃園頂讓",
       "新竹頂讓",
-      "台北店面出租",
-      "新北店面出租",
-      "桃園店面出租"
+      "台北店面出租"
     ],
     "queries": [
       "頂讓",
@@ -61,48 +58,129 @@
       "店面頂讓",
       "頂讓金",
       "店面出租",
-      "拆除",
-      "退租",
-      "清潔",
-      "水電",
-      "裝潢",
-      "即將開幕",
-      "試營運",
-      "飲料店",
-      "餐車",
-      "維修",
-      "油煙機",
-      "找接手",
-      "新竹頂讓",
-      "台北店面出租",
-      "新北店面出租",
-      "桃園店面出租"
+      "接手",
+      "收掉",
+      "熄燈",
+      "不做了",
+      "工作台",
+      "冰櫃",
+      "展示櫃",
+      "封口機",
+      "炸爐",
+      "煮麵機",
+      "快速爐"
     ],
     "loginMode": "guest",
     "drop": {
-      "seen": 261,
+      "seen": 109,
       "dup": 0,
-      "noKeyword": 15,
-      "tooOld": 12,
-      "notBiz": 6,
-      "noContext": 71
+      "tooOld": 7,
+      "noKeyword": 6,
+      "words": {
+        "家具": 1
+      },
+      "excludeWord": 1,
+      "noContext": 15
     },
-    "detailFetched": 6,
+    "detailFetched": 2,
     "newUrls": [
-      "https://www.threads.com/@chimm_1230/post/DfEwBYnlCY2",
-      "https://www.threads.com/@lutalica.word/post/DfEuVQYE05I",
-      "https://www.threads.com/@yang.tang.yts/post/DfEroR0iYO-",
-      "https://www.threads.com/@ee10191019/post/DfEkXM4k6iP",
-      "https://www.threads.com/@eunice._._/post/DfESPA-E3dW",
-      "https://www.threads.com/@johmp4886600/post/DfD2v6OH1S8",
-      "https://www.threads.com/@angelasin2689/post/De_EDFfEtlD",
-      "https://www.threads.com/@taichung_.home/post/De95zUZmQYu",
-      "https://www.threads.com/@mightcard_official/post/De9nUSbj_1u"
+      "https://www.threads.com/@skatepeacehao/post/DfE8EWFmIC9",
+      "https://www.threads.com/@adajdi/post/DfDJ9UZEyQk"
     ],
     "pushMode": "on",
     "nextInMinutes": 26
   },
   "runs": [
+    {
+      "startedAt": "2026-10-29T11:50:32.671Z",
+      "finishedAt": "2026-10-29T12:01:21.212Z",
+      "status": "ok",
+      "scanned": 140,
+      "matched": 2,
+      "newCount": 2,
+      "notified": 2,
+      "perKeyword": {
+        "頂讓": 19,
+        "盤讓": 22,
+        "店面頂讓": 20,
+        "頂讓金": 0,
+        "店面出租": 20,
+        "接手": 0,
+        "收掉": 0,
+        "熄燈": 18,
+        "不做了": 0,
+        "工作台": 0,
+        "冰櫃": 0,
+        "展示櫃": 21,
+        "封口機": 20,
+        "炸爐": 0,
+        "煮麵機": 0,
+        "快速爐": 0
+      },
+      "warnings": [
+        "搜尋時間超過 10 分鐘，剩下 5 個關鍵字留到下次"
+      ],
+      "keywordsUsed": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "接手",
+        "收掉",
+        "熄燈",
+        "不做了",
+        "工作台",
+        "冰櫃",
+        "展示櫃",
+        "封口機",
+        "炸爐",
+        "煮麵機",
+        "快速爐",
+        "冰淇淋機",
+        "新竹店面出租",
+        "桃園頂讓",
+        "新竹頂讓",
+        "台北店面出租"
+      ],
+      "queries": [
+        "頂讓",
+        "盤讓",
+        "店面頂讓",
+        "頂讓金",
+        "店面出租",
+        "接手",
+        "收掉",
+        "熄燈",
+        "不做了",
+        "工作台",
+        "冰櫃",
+        "展示櫃",
+        "封口機",
+        "炸爐",
+        "煮麵機",
+        "快速爐"
+      ],
+      "loginMode": "guest",
+      "drop": {
+        "seen": 109,
+        "dup": 0,
+        "tooOld": 7,
+        "noKeyword": 6,
+        "words": {
+          "家具": 1
+        },
+        "excludeWord": 1,
+        "noContext": 15
+      },
+      "detailFetched": 2,
+      "newUrls": [
+        "https://www.threads.com/@skatepeacehao/post/DfE8EWFmIC9",
+        "https://www.threads.com/@adajdi/post/DfDJ9UZEyQk"
+      ],
+      "pushMode": "on",
+      "nextInMinutes": 26
+    },
     {
       "startedAt": "2026-10-29T11:10:39.413Z",
       "finishedAt": "2026-10-29T11:18:03.085Z",
@@ -21242,6 +21320,43 @@
   "lastWarnAt": null,
   "posts": [
     {
+      "code": "DfE8EWFmIC9",
+      "user": "skatepeacehao",
+      "url": "https://www.threads.com/@skatepeacehao/post/DfE8EWFmIC9",
+      "authorUrl": "https://www.threads.com/@skatepeacehao",
+      "text": "出租店面\n📢 【餐飲店面出租｜國安一路｜月租 $17,000】\n📍 店面位置：國安一路，滷味店左手邊\n目前店名：烤魚製造所\n因烤魚製造所營業需求擴大，準備搬遷至更大的店面，故釋出目前的店面，尋找有緣的承租者！\n🏠 店面資訊\n* 📐 坪數：約 5～6 坪\n* 💰 月租金：17,000 元\n* 💧 水電皆有\n* 🔑 空屋出租，可依自己的需求規劃\n* 🛠️ 基本條件具備，無需再重新拉設水電，可自行軟裝、規劃後進場\n📌 租約說明\n有意承租者確認後，將與原房東重新簽訂租賃合約。\n適合想創業、開設小型餐飲店，或想打造自己風格店面的朋友。\n📩 有興趣歡迎私訊洽詢！\n希望找到下一位好好經營這個店面的有緣人，歡迎轉發分享，感謝大家！🙏",
+      "time": "2026-10-29T11:49:45.000Z",
+      "keywords": [
+        "店面出租",
+        "水電",
+        "創業"
+      ],
+      "regions": [],
+      "foundBy": "店面出租",
+      "foundQuery": "店面出租",
+      "foundAt": "2026-10-29T12:01:07.879Z"
+    },
+    {
+      "code": "DfDJ9UZEyQk",
+      "user": "adajdi",
+      "url": "https://www.threads.com/@adajdi/post/DfDJ9UZEyQk",
+      "authorUrl": "https://www.threads.com/@adajdi",
+      "text": "1,212次瀏覽\n盤讓\n【頂讓 / 盤讓】現成熱炒店・接手即可營業！\n【頂讓 / 盤讓】現成熱炒店・接手即可營業！\n* 地點：屏東市仁愛路\n*\n* 頂讓金：[可議價]（含生財設備、裝潢）\n*\n* 每月租金：[可跟房東協議]\n*\n* 押金：[2個月]\n*\n* 聯絡方式：私訊 或撥打電話 [0989-359-600]（找 [高老闆]）",
+      "time": "2026-10-28T19:12:39.000Z",
+      "keywords": [
+        "頂讓",
+        "盤讓",
+        "頂讓金",
+        "裝潢",
+        "接手"
+      ],
+      "regions": [],
+      "foundBy": "盤讓",
+      "foundQuery": "盤讓",
+      "foundAt": "2026-10-29T12:01:07.878Z",
+      "full": true
+    },
+    {
       "code": "DfEwBYnlCY2",
       "user": "chimm_1230",
       "url": "https://www.threads.com/@chimm_1230/post/DfEwBYnlCY2",
@@ -26674,47 +26789,6 @@
       "foundBy": "拆除",
       "foundQuery": "拆除",
       "foundAt": "2026-10-28T05:36:37.309Z"
-    },
-    {
-      "code": "DfBrGaykTyy",
-      "user": "zzzzl_lll123",
-      "url": "https://www.threads.com/@zzzzl_lll123/post/DfBrGaykTyy",
-      "authorUrl": "https://www.threads.com/@zzzzl_lll123",
-      "text": "店面頂讓\n「最後幾天頂讓」大降價！50萬\n地點：新北市中和德光路（私我）\n一次兩層可住樓上！二樓有四間房可做直播室或休息室！全設備近全新\n租金：41000（面大馬路\n押金：兩個月\n類型：輕食便當都能（可開火\n出讓原因:\n有電商等其他規劃（無暇一心兩用故尋找有緣人接替\n附帶設備：\n蛋糕 肉品 火鍋料 可分享供應商！\n所有設備都使用約兩個月近全新！\n（下面有照片）\n店面頂讓\n點餐系統（35000已繳三年\n咖啡機 （購買約四十萬\n2冷凍櫃 （三萬\n1冷藏冰箱（兩萬五\n1冷凍加冷藏冰箱 （三萬\n1裝潢 （粗估八十萬\n1靜電機 （含拉線十萬\n2一大一小新冷氣 （十一萬\n8桌子 （兩萬\n20張椅子（ 一萬\n1烤箱 （五千\n1微波爐 （五千\n1飲水機 （一萬\n1烤盤 （八千\n裝潢（八十萬\n數個高級盤子 （五千\n數個高檔杯子 （五千\n2木床 （一萬\n2桌椅 （五千\n1架子 （五千\n1櫃檯 （一萬五\n2音響 （一萬\n1洗衣機 （六千五\n1 5G網路 （一千\n4攝影機 （四千\n2500中空紙杯\n2500貓造型環保杯\n2000新紙杯\n41000月租是不含稅 含稅約45000（看要不要營業登記在本店）\n店面狀況\n本店屬一樓挑高（二樓屬夾層）\n本店情況：\n店面面對大馬路，裝修情況優，破損及漏水地方皆全部修復，電線皆重拉，包含110以及220電力，人流方面光本棟住戶就有四百戶，常有穩定住戶光顧！\n🔸 歡迎到店評估，因仍在營業中，請務必事先私訊我or電話聯繫預約，謝謝您！\n店面頂讓",
-      "time": "2026-10-28T05:23:46.000Z",
-      "keywords": [
-        "頂讓",
-        "店面頂讓",
-        "冷凍櫃",
-        "咖啡機",
-        "裝潢",
-        "冷氣",
-        "漏水",
-        "點餐系統"
-      ],
-      "regions": [
-        "台北",
-        "新北"
-      ],
-      "foundBy": "頂讓",
-      "foundQuery": "頂讓",
-      "foundAt": "2026-10-28T05:36:37.307Z",
-      "full": true
-    },
-    {
-      "code": "DfBqKrOk9ZZ",
-      "user": "lyabao",
-      "url": "https://www.threads.com/@lyabao/post/DfBqKrOk9ZZ",
-      "authorUrl": "https://www.threads.com/@lyabao",
-      "text": "不懂就問脆\n各位廣大的脆友們￼～￼有沒有推薦的清潔方法？\n還是有推薦的質感沙發布￼或是好清理的￼質感沙發",
-      "time": "2026-10-28T05:15:37.000Z",
-      "keywords": [
-        "清潔"
-      ],
-      "regions": [],
-      "foundBy": "清潔",
-      "foundQuery": "清潔",
-      "foundAt": "2026-10-28T05:36:37.310Z"
     }
   ],
   "kwStats": {
@@ -26731,9 +26805,9 @@
       "leads": 0
     },
     "店面頂讓": {
-      "count": 189,
-      "last": 1793272270132,
-      "scanned": 3673,
+      "count": 190,
+      "last": 1793274660822,
+      "scanned": 3693,
       "leads": 74,
       "zero": 0
     },
@@ -26770,9 +26844,9 @@
       "leads": 0
     },
     "頂讓": {
-      "count": 188,
-      "last": 1793272241166,
-      "scanned": 3649,
+      "count": 189,
+      "last": 1793274632930,
+      "scanned": 3668,
       "leads": 123,
       "zero": 0
     },
@@ -26880,10 +26954,10 @@
       "leads": 1
     },
     "盤讓": {
-      "count": 188,
-      "last": 1793272255787,
-      "scanned": 3545,
-      "leads": 76,
+      "count": 189,
+      "last": 1793274646693,
+      "scanned": 3567,
+      "leads": 77,
       "zero": 0
     },
     "營業用": {
@@ -26969,10 +27043,10 @@
       "zero": 0
     },
     "店面出租": {
-      "count": 199,
-      "last": 1793272345981,
-      "scanned": 3927,
-      "leads": 59,
+      "count": 200,
+      "last": 1793274733004,
+      "scanned": 3947,
+      "leads": 60,
       "zero": 0
     },
     "拆除": {
@@ -27086,11 +27160,11 @@
       "zero": 0
     },
     "頂讓金": {
-      "count": 185,
-      "last": 1793272284068,
+      "count": 186,
+      "last": 1793274673743,
       "scanned": 0,
       "leads": 0,
-      "zero": 102
+      "zero": 103
     },
     "讓渡金": {
       "count": 10,
@@ -27112,81 +27186,81 @@
       "zero": 22
     },
     "接手": {
-      "count": 39,
-      "last": 1793262895510,
+      "count": 40,
+      "last": 1793274747544,
       "scanned": 0,
       "leads": 0,
-      "zero": 21
+      "zero": 22
     },
     "收掉": {
-      "count": 39,
-      "last": 1793262955576,
+      "count": 40,
+      "last": 1793274808559,
       "scanned": 0,
       "leads": 0,
-      "zero": 21
+      "zero": 22
     },
     "熄燈": {
-      "count": 39,
-      "last": 1793263016003,
-      "scanned": 698,
+      "count": 40,
+      "last": 1793274867385,
+      "scanned": 716,
       "leads": 7,
       "zero": 0
     },
     "不做了": {
-      "count": 41,
-      "last": 1793263030290,
+      "count": 42,
+      "last": 1793274880752,
       "scanned": 0,
       "leads": 0,
-      "zero": 23
+      "zero": 24
     },
     "工作台": {
-      "count": 41,
-      "last": 1793263091610,
+      "count": 42,
+      "last": 1793274940873,
       "scanned": 0,
       "leads": 0,
-      "zero": 23
+      "zero": 24
     },
     "冰櫃": {
-      "count": 43,
-      "last": 1793265174576,
+      "count": 44,
+      "last": 1793275001279,
       "scanned": 0,
       "leads": 0,
-      "zero": 25
+      "zero": 26
     },
     "展示櫃": {
-      "count": 46,
-      "last": 1793265236129,
-      "scanned": 925,
+      "count": 47,
+      "last": 1793275059344,
+      "scanned": 946,
       "leads": 10,
       "zero": 0
     },
     "封口機": {
-      "count": 47,
-      "last": 1793265249422,
-      "scanned": 947,
+      "count": 48,
+      "last": 1793275073938,
+      "scanned": 967,
       "leads": 2,
       "zero": 0
     },
     "炸爐": {
-      "count": 46,
-      "last": 1793265262292,
+      "count": 47,
+      "last": 1793275089533,
       "scanned": 0,
       "leads": 0,
-      "zero": 28
+      "zero": 29
     },
     "煮麵機": {
+      "count": 47,
+      "last": 1793275148902,
+      "scanned": 0,
+      "leads": 0,
+      "zero": 29
+    },
+    "快速爐": {
       "count": 46,
-      "last": 1793265322568,
+      "last": 1793275208098,
       "scanned": 0,
       "leads": 0,
       "zero": 28
-    },
-    "快速爐": {
-      "count": 45,
-      "last": 1793265380222,
-      "scanned": 0,
-      "leads": 0,
-      "zero": 27
     },
     "冰淇淋機": {
       "count": 43,
@@ -27637,11 +27711,11 @@
       "zero": 3
     }
   },
-  "nextScanAt": "2026-10-29T11:44:00.897Z",
+  "nextScanAt": "2026-10-29T12:27:45.470Z",
   "archivedSeed": true,
   "nextPlan": {
-    "at": "2026-10-29T11:44:00.897Z",
-    "madeAt": "2026-10-29T11:18:03.156Z",
+    "at": "2026-10-29T12:27:45.470Z",
+    "madeAt": "2026-10-29T12:01:21.250Z",
     "items": [
       {
         "kw": "頂讓",
@@ -27664,34 +27738,6 @@
         "q": "店面出租"
       },
       {
-        "kw": "接手",
-        "q": "接手"
-      },
-      {
-        "kw": "收掉",
-        "q": "收掉"
-      },
-      {
-        "kw": "熄燈",
-        "q": "熄燈"
-      },
-      {
-        "kw": "不做了",
-        "q": "不做了"
-      },
-      {
-        "kw": "工作台",
-        "q": "工作台"
-      },
-      {
-        "kw": "冰櫃",
-        "q": "冰櫃"
-      },
-      {
-        "kw": "展示櫃",
-        "q": "展示櫃"
-      },
-      {
         "kw": "封口機",
         "q": "封口機"
       },
@@ -27712,6 +27758,44 @@
         "q": "冰淇淋機"
       },
       {
+        "kw": "收銀機",
+        "q": "收銀機"
+      },
+      {
+        "kw": "二手冷氣",
+        "q": "二手冷氣"
+      },
+      {
+        "kw": "統包",
+        "q": "統包"
+      },
+      {
+        "kw": "油漆",
+        "q": "油漆"
+      },
+      {
+        "kw": "冷氣",
+        "q": "冷氣"
+      },
+      {
+        "kw": "搬家",
+        "q": "搬家"
+      },
+      {
+        "kw": "貨運",
+        "q": "貨運"
+      },
+      {
+        "kw": "新北店面出租",
+        "q": "新北店面出租",
+        "focus": true
+      },
+      {
+        "kw": "桃園店面出租",
+        "q": "桃園店面出租",
+        "focus": true
+      },
+      {
         "kw": "新竹店面出租",
         "q": "新竹店面出租",
         "focus": true
@@ -27720,19 +27804,9 @@
         "kw": "桃園頂讓",
         "q": "桃園頂讓",
         "focus": true
-      },
-      {
-        "kw": "新竹頂讓",
-        "q": "新竹頂讓",
-        "focus": true
-      },
-      {
-        "kw": "台北店面出租",
-        "q": "台北店面出租",
-        "focus": true
       }
     ]
   },
-  "kwCursor": 38,
-  "focusCursor": 3
+  "kwCursor": 45,
+  "focusCursor": 1
 }
