@@ -1,0 +1,736 @@
+'use strict';
+/**
+ * 小球脆雷達 — 核心模組
+ * ------------------------------------------------------------
+ * 這個檔案「不綁定」執行環境：
+ *   方案 A：run-once.js 由 GitHub Actions 每 15 分鐘呼叫一次 runScan()
+ *   方案 B：之後新增 server.js，用 setInterval 呼叫同一個 runScan()，
+ *          並用 Express 提供 /api/* 給 index.html 讀寫。
+ * 換方案時只需換「入口檔」與「Store」，爬蟲 / 過濾 / 推播完全不用改。
+ */
+const fs = require('fs');
+const path = require('path');
+
+const ROOT = __dirname;
+const BASE_URL = 'https://www.threads.com';
+
+const DEFAULT_CONFIG = {
+  enabled: true,
+  keywords: ['頂讓', '盤讓', '設備轉讓', '搬家出清'],   // 關鍵字池：輪流隨機搜尋
+  mustKeywords: [],       // 必搜：每次掃描都搜（可留空）
+  keywordsPerScan: 4,     // 每次從關鍵字池抽幾個（0 = 全部都搜）
+  regions: [],
+  excludeWords: [],
+  excludeUsers: [],       // 排除帳號：這些帳號的貼文一律略過
+  watchUsers: [],         // 關注帳號：每次掃描輪流去看他們的個人頁
+  watchPerScan: 1,        // 每次掃描看幾個關注帳號（0＝不看個人頁，只做標記）
+  regionRequired: false,
+  strictKeyword: true,
+  bizOnly: false,         // 只收生意相關（過濾閒聊）
+  firstRunSilent: true,
+  notifyErrors: true,
+  notifyTelegram: true,   // false = 線索只存進控制台，不推播
+  maxStoredRuns: 300,
+  scanMinMinutes: 30,     // 每次掃描間隔：最短（分鐘）
+  scanMaxMinutes: 90,     // 每次掃描間隔：最長（分鐘），中間亂數
+  restHoursPerDay: 6,     // 每天休息幾小時（零散分布，每天不同）
+  smartSchedule: true,    // 依發文時段：冷門時段休息、尖峰時段掃得密一點
+  detailFetchMax: 6,      // 每次最多點進幾篇新線索看完整內容
+  focusRegions: [],       // 加強搜尋地區（例：台北、新北、桃園、基隆）
+  focusPerScan: 4,        // 每次掃描多搜幾個「地區＋關鍵字」（例：台北頂讓）
+  focusBases: [],         // 地區後面接的詞，空的就用預設
+  comboChance: 0.5,       // 每個關鍵字有多少機率搭配一個地區一起搜（0～1）
+  timezone: 'Asia/Taipei',
+  maxAgeHours: 72,
+  scrollsPerKeyword: 3,
+  maxNotifyPerRun: 15,
+  maxStoredPosts: 300,
+};
+
+/* ---------------- 工具 ---------------- */
+/* ---------------- 資料加密（GitHub Secret：DATA_KEY） ----------------
+ * 有設 DATA_KEY → 寫進 GitHub 的資料全部加密（AES-256-GCM，密碼用 PBKDF2 轉成金鑰），
+ * 沒有密碼的人只會看到一串亂碼。官網跑馬燈 data/marquee.json 本來就要公開，不加密。
+ * 格式跟控制台 vault.js 一樣，兩邊可以互相解開。 */
+const nodeCrypto = require('crypto');
+const VAULT_PUBLIC = /(^|\/)marquee\.json$|crm\.enc\.json$/;
+const VAULT_ITER = 150000;
+class VaultError extends Error {}
+const isSealed = (o) => !!(o && typeof o === 'object' && o.radarEnc === 1 && o.ct);
+const _vkeys = new Map(); let _vsalt = null;
+function vaultKey(pw, salt, iter) {
+  const k = `${nodeCrypto.createHash('sha256').update(String(pw)).digest('hex')}|${salt}|${iter}`;
+  if (!_vkeys.has(k)) _vkeys.set(k, nodeCrypto.pbkdf2Sync(String(pw), Buffer.from(salt, 'base64'), iter, 32, 'sha256'));
+  return _vkeys.get(k);
+}
+function seal(obj, pw) {
+  if (!_vsalt) _vsalt = nodeCrypto.randomBytes(16).toString('base64');
+  const iv = nodeCrypto.randomBytes(12); const c = nodeCrypto.createCipheriv('aes-256-gcm', vaultKey(pw, _vsalt, VAULT_ITER), iv);
+  const ct = Buffer.concat([c.update(JSON.stringify(obj), 'utf8'), c.final(), c.getAuthTag()]);
+  return { radarEnc: 1, iter: VAULT_ITER, salt: _vsalt, iv: iv.toString('base64'), ct: ct.toString('base64') };
+}
+function unseal(o, pw) {
+  if (!pw) throw new VaultError('資料已經加密，但 GitHub 沒有設定 DATA_KEY（資料密碼），請到 Settings → Secrets 新增');
+  const buf = Buffer.from(o.ct, 'base64');
+  try {
+    const d = nodeCrypto.createDecipheriv('aes-256-gcm', vaultKey(pw, o.salt, o.iter || VAULT_ITER), Buffer.from(o.iv, 'base64'));
+    d.setAuthTag(buf.subarray(buf.length - 16));
+    return JSON.parse(Buffer.concat([d.update(buf.subarray(0, buf.length - 16)), d.final()]).toString('utf8'));
+  } catch { throw new VaultError('資料密碼不對：GitHub 的 DATA_KEY 跟控制台設定的資料密碼不一樣'); }
+}
+function readJson(file, fallback) {
+  let o;
+  try { o = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return fallback; }
+  return isSealed(o) ? unseal(o, process.env.DATA_KEY) : o;   // 密碼錯不能默默當成空資料，直接報錯
+}
+function writeJson(file, data) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const pw = process.env.DATA_KEY;
+  if (pw && !VAULT_PUBLIC.test(String(file).replace(/\\/g, '/'))) fs.writeFileSync(file, JSON.stringify(seal(data, pw)) + '\n');
+  else fs.writeFileSync(file, JSON.stringify(data) + '\n');   // 不排版，檔案小三成（GitHub 超過 1MB 讀取較麻煩）
+}
+// 開啟加密後：把 data/ 裡還沒加密的舊檔（例如上個月的線索庫）全部補加密
+function sealAll(dir = path.join(ROOT, 'data'), log = console.log) {
+  const pw = process.env.DATA_KEY; if (!pw || !fs.existsSync(dir)) return 0;
+  let n = 0;
+  const walk = (d) => {
+    for (const name of fs.readdirSync(d)) {
+      const f = path.join(d, name), st = fs.statSync(f);
+      if (st.isDirectory()) { if (name !== 'media') walk(f); continue; }
+      if (!name.endsWith('.json') || VAULT_PUBLIC.test(f.replace(/\\/g, '/'))) continue;
+      let o; try { o = JSON.parse(fs.readFileSync(f, 'utf8')); } catch { continue; }
+      if (isSealed(o)) continue;
+      writeJson(f, o); n++;
+    }
+  };
+  walk(dir);
+  if (n) log(`🔐 已補加密 ${n} 個舊資料檔`);
+  return n;
+}
+// 有加密時，GitHub 公開的執行紀錄（Actions log）也不要露出關鍵字、帳號、網址
+function quietLog(log) {
+  return (m) => log(String(m).replace(/「[^」]*」/g, '「●」').replace(/(這次搜尋：).*/, '$1（已隱藏）').replace(/@[\w.]+/g, '@●').replace(/https?:\/\/\S+/g, '（網址已隱藏）').replace(/(發文提醒：|已自動發文：).*/, '$1●'));
+}
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const rand = (a, b) => a + Math.floor(Math.random() * (b - a));
+const norm = (s) => String(s || '').toLowerCase().replace(/臺/g, '台');
+const normUser = (u) => String(u || '').trim().replace(/^https?:\/\/(www\.)?threads\.(com|net)\//i, '').replace(/^@/, '').replace(/[/?#].*$/, '').toLowerCase();
+const cleanList = (arr) => [...new Set((Array.isArray(arr) ? arr : []).map((s) => String(s).trim()).filter(Boolean))];
+
+// 關鍵字可以寫成「咖啡機+商用/營業用」：只搜「咖啡機」，但貼文還要有後面其中一個字
+function applyKwRules(cfg) {
+  const { parseKw } = require('./analyze');
+  cfg.kwNeed = {};
+  const conv = (list) => cleanList(list).map((k) => { const r = parseKw(k); if (r.need.length) cfg.kwNeed[r.base] = r.need; return r.base; }).filter(Boolean);
+  cfg.keywords = cleanList(conv(cfg.keywords));
+  cfg.mustKeywords = cleanList(conv(cfg.mustKeywords));
+  return cfg;
+}
+function loadConfig(file = path.join(ROOT, 'config.json')) {
+  const cfg = { ...DEFAULT_CONFIG, ...readJson(file, {}) };
+  applyKwRules(cfg);
+  cfg.allKeywords = cleanList([...cfg.mustKeywords, ...cfg.keywords]);
+  cfg.regions = cleanList(cfg.regions);
+  cfg.focusRegions = cleanList(cfg.focusRegions || []).map((r) => r.replace(/臺/g, '台'));
+  cfg.focusBases = cleanList(cfg.focusBases || []);
+  cfg.excludeWords = cleanList(cfg.excludeWords);
+  cfg.excludeUsers = cleanList((cfg.excludeUsers || []).map(normUser));
+  cfg.watchUsers = cleanList((cfg.watchUsers || []).map(normUser));
+  return cfg;
+}
+
+/* ---------------- 儲存層（方案B可換成資料庫，介面不變） ---------------- */
+class FileStore {
+  constructor(dir = path.join(ROOT, 'data')) {
+    this.postsFile = path.join(dir, 'posts.json');
+    this.seenFile = path.join(dir, 'seen.json');
+  }
+  getSeen() { return new Set(readJson(this.seenFile, [])); }
+  saveSeen(set, max = 5000) { writeJson(this.seenFile, [...set].slice(-max)); }
+  getDoc() {
+    return readJson(this.postsFile, { updatedAt: null, lastRun: null, runs: [], lastWarnAt: null, posts: [] });
+  }
+  saveDoc(doc) { doc.updatedAt = new Date().toISOString(); writeJson(this.postsFile, doc); }
+
+  /* ---------- 資料庫：線索永久封存（依月份分檔）＋每日統計 ---------- */
+  get dbDir() { return path.join(path.dirname(this.postsFile), 'db'); }
+  archive(posts, tz = 'Asia/Taipei') {
+    if (!posts || !posts.length) return 0;
+    const idxFile = path.join(this.dbDir, 'index.json');
+    const idx = readJson(idxFile, { months: [], counts: {} });
+    const byMonth = {};
+    for (const p of posts) {
+      const m = monthIn(tz, new Date(Date.parse(p.foundAt || p.time) || Date.now()));
+      (byMonth[m] = byMonth[m] || []).push(p);
+    }
+    let added = 0;
+    for (const [m, list] of Object.entries(byMonth)) {
+      const f = path.join(this.dbDir, `leads-${m}.json`);
+      const cur = readJson(f, []);
+      const have = new Set(cur.map((x) => x.url));
+      for (const p of list) {
+        if (have.has(p.url)) continue;
+        const { url, user, authorUrl, text, time, foundAt, keywords, regions, foundBy, watched, full, code } = p;
+        cur.push({ url, user, authorUrl, text, time, foundAt, keywords, regions, foundBy, watched, full, code });
+        have.add(url); added++;
+      }
+      writeJson(f, cur);
+      if (!idx.months.includes(m)) idx.months.push(m);
+      idx.counts[m] = cur.length;
+    }
+    idx.months.sort();
+    idx.updatedAt = new Date().toISOString();
+    writeJson(idxFile, idx);
+    return added;
+  }
+  addStats(run, newPosts, tz = 'Asia/Taipei') {
+    const f = path.join(this.dbDir, 'stats.json');
+    const st = readJson(f, { days: {} });
+    const d = dateIn(tz, new Date());
+    const day = st.days[d] || (st.days[d] = { scans: 0, scanned: 0, leads: 0, high: 0, buyers: 0, kw: {} });
+    if (run.status === 'paused') return;
+    day.scans++; day.scanned += run.scanned || 0; day.leads += (newPosts || []).length;
+    for (const p of newPosts || []) {
+      const a = require('./analyze').analyzePost(p);
+      if (a.intent.level === '高') day.high++;
+      if (a.role === '買方') day.buyers++;
+      day.kw[p.foundBy] = (day.kw[p.foundBy] || 0) + 1;
+    }
+    writeJson(f, st);
+  }
+}
+function monthIn(tz, d) { return dateIn(tz, d).slice(0, 7); }
+function dateIn(tz, d) { return new Intl.DateTimeFormat('en-CA', { timeZone: tz || 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d); }
+
+/* ---------------- 登入 Cookie 解析 ----------------
+ * 支援兩種格式（放在 GitHub Secret: THREADS_COOKIES）：
+ *  1. Cookie-Editor 匯出的 JSON 陣列
+ *  2. 一行文字 "sessionid=xxx; csrftoken=yyy; ds_user_id=zzz"
+ */
+function parseCookies(raw) {
+  if (!raw || !raw.trim()) return [];
+  raw = raw.trim();
+  if (raw.startsWith('[') || raw.startsWith('{')) {
+    let arr = JSON.parse(raw);
+    if (!Array.isArray(arr)) arr = arr.cookies || [arr];
+    return arr.filter((c) => c && c.name).map((c) => {
+      const o = {
+        name: c.name, value: String(c.value ?? ''),
+        domain: c.domain || '.threads.com', path: c.path || '/',
+        httpOnly: !!c.httpOnly, secure: c.secure !== false,
+      };
+      const exp = c.expirationDate ?? c.expires;
+      if (typeof exp === 'number' && exp > 0) o.expires = Math.floor(exp);
+      const ss = String(c.sameSite || '').toLowerCase();
+      if (ss === 'lax') o.sameSite = 'Lax';
+      else if (ss === 'strict') o.sameSite = 'Strict';
+      else if (ss === 'none' || ss === 'no_restriction') { o.sameSite = 'None'; o.secure = true; }
+      return o;
+    });
+  }
+  const out = [];
+  for (const part of raw.split(';')) {
+    const i = part.indexOf('=');
+    if (i < 1) continue;
+    const name = part.slice(0, i).trim();
+    const value = part.slice(i + 1).trim();
+    for (const domain of ['.threads.com', '.threads.net']) {
+      out.push({ name, value, domain, path: '/', secure: true, httpOnly: false });
+    }
+  }
+  return out;
+}
+
+/* ---------------- 頁面內擷取（在瀏覽器裡執行） ---------------- */
+function extractInPage() {
+  const RE = /\/@([^/?#]+)\/post\/([^/?#]+)/;
+  const NOISE = /^(串文|Thread|翻譯|翻譯年糕|查看翻譯|Translate|See translation|讚|回覆|轉發|分享|更多|Like|Reply|Repost|Share|More|作者|Author|·)$/i;
+  const map = new Map();
+  for (const a of document.querySelectorAll('a[href*="/post/"]')) {
+    const m = (a.getAttribute('href') || '').match(RE);
+    if (!m) continue;
+    const user = decodeURIComponent(m[1]);
+    const code = m[2];
+    if (map.has(code)) continue;
+    let box = a.closest('[data-pressable-container="true"]');
+    if (!box) {
+      let el = a;
+      for (let i = 0; i < 10 && el.parentElement; i++) {
+        el = el.parentElement;
+        if ((el.innerText || '').length > 60) { box = el; break; }
+      }
+    }
+    if (!box) box = a.parentElement || a;
+    const timeEl = box.querySelector('time');
+    const TIME = /^(\d+\s*(秒|分鐘|小時|天|週|周|個月|年|[smhdw])|剛剛|\d{4}[-/]\d{1,2}[-/]\d{1,2}|\d{1,2}\/\d{1,2}(\/\d{2,4})?)$/;
+    let raw = (box.innerText || '').split('\n').map((s) => s.trim());
+    const cut = raw.findIndex((s) => /^(相關串文|Related threads)$/i.test(s)); if (cut > 0) raw = raw.slice(0, cut);
+    const lines = raw
+      .map((s) => (s.startsWith(user) ? s.slice(user.length).trim() : s)).filter(Boolean)
+      .filter((s) => !NOISE.test(s) && !TIME.test(s) && !/^\d+([.,]\d+)?\s*[萬千kKmM]?$/.test(s) && !/^\d+\s*\/\s*\d+$/.test(s));
+    const origin = location.origin && location.origin !== 'null' ? location.origin : 'https://www.threads.com';
+    map.set(code, {
+      code, user,
+      url: `${origin}/@${user}/post/${code}`,
+      authorUrl: `${origin}/@${user}`,
+      text: lines.join('\n').slice(0, 1500),
+      time: timeEl ? timeEl.getAttribute('datetime') : null,
+    });
+  }
+  return [...map.values()];
+}
+
+async function scrapeKeyword(page, keyword, { scrolls = 3, retry = true } = {}) {
+  const url = `${BASE_URL}/search?q=${encodeURIComponent(keyword)}&serp_type=default&filter=recent`;
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+  let ok = true;
+  try { await page.waitForSelector('a[href*="/post/"]', { timeout: 20000 }); } catch { ok = false; }
+  if (!ok && retry) {   // 第一次常常載不出來：等一下重新整理再試一次
+    await page.waitForTimeout(rand(3000, 5000));
+    try { await page.reload({ waitUntil: 'domcontentloaded', timeout: 60000 }); await page.waitForSelector('a[href*="/post/"]', { timeout: 25000 }); } catch { /* 真的沒結果或被擋 */ }
+  }
+  const loginWall = /\/login/.test(page.url()) ||
+    (await page.locator('input[autocomplete="username"], input[name="username"]').count()) > 0;
+  for (let i = 0; i < scrolls; i++) {
+    await page.mouse.wheel(0, 2400);
+    await page.waitForTimeout(rand(1200, 2200));
+  }
+  const items = await page.evaluate(extractInPage);
+  return { items, loginWall, retried: !ok };
+}
+
+/* ---------------- 地區（含行政區別名） ---------------- */
+const REGION_ALIAS = {
+  台北: ['台北', '北市', '大安區', '信義區', '中山區', '松山區', '內湖', '士林', '北投', '萬華', '文山區', '南港', '大同區', '中正區', '公館', '西門'],
+  新北: ['新北', '板橋', '中和', '永和', '三重', '新莊', '土城', '樹林', '蘆洲', '汐止', '淡水', '林口', '新店', '五股', '泰山', '鶯歌', '三峽', '深坑', '八里'],
+  桃園: ['桃園', '中壢', '平鎮', '八德', '龜山', '蘆竹', '楊梅', '大園', '龍潭', '大溪', '觀音'],
+  基隆: ['基隆'],
+  新竹: ['新竹', '竹北', '竹東', '湖口', '新豐'],
+  苗栗: ['苗栗', '頭份', '竹南'],
+  台中: ['台中', '北屯', '西屯', '南屯', '豐原', '大里', '太平', '沙鹿', '清水', '逢甲', '一中街'],
+  彰化: ['彰化', '員林', '鹿港'],
+  南投: ['南投', '草屯', '埔里'],
+  雲林: ['雲林', '斗六', '虎尾'],
+  嘉義: ['嘉義'],
+  台南: ['台南', '永康', '安平', '新營', '仁德', '歸仁'],
+  高雄: ['高雄', '鳳山', '左營', '三民區', '苓雅', '前鎮', '楠梓', '鼓山', '岡山', '小港', '鳥松', '大寮'],
+  屏東: ['屏東', '潮州', '東港'],
+  宜蘭: ['宜蘭', '羅東'],
+  花蓮: ['花蓮'],
+  台東: ['台東'],
+};
+function regionsOf(text, cfg) {
+  const t = norm(text);
+  const all = cleanList([...(cfg.regions || []), ...(cfg.focusRegions || [])]);
+  return all.filter((r) => (REGION_ALIAS[r.replace(/臺/g, '台')] || [r]).some((a) => t.includes(norm(a))));
+}
+
+/* ---------------- 過濾 ---------------- */
+function matchPost(post, cfg, foundBy, drop) {
+  const no = (k) => { if (drop) drop[k] = (drop[k] || 0) + 1; return null; };
+  const user = normUser(post.user);
+  if ((cfg.excludeUsers || []).includes(user)) return no('excludeUser');
+  const watched = (cfg.watchUsers || []).includes(user);
+  const text = norm(`${post.text}\n${post.user}`);
+  const keywords = (cfg.allKeywords || cfg.keywords).filter((k) => text.includes(norm(k)));
+  if (cfg.strictKeyword && keywords.length === 0 && !watched) return no('noKeyword');
+  const need = cfg.kwNeed && cfg.kwNeed[foundBy];
+  if (!watched && need && need.length) { if (!need.some((w) => text.includes(norm(w)))) return no('noContext'); }
+  else if (!watched && cfg.bizOnly && !BIZ_RX.test(text)) return no('notBiz');
+  const ew = cfg.excludeWords.find((w) => text.includes(norm(w)));
+  if (ew) { if (drop) { drop.words = drop.words || {}; drop.words[ew] = (drop.words[ew] || 0) + 1; } return no('excludeWord'); }
+  const regions = regionsOf(text, cfg);
+  if (cfg.regionRequired && (cfg.regions.length || cfg.focusRegions.length) && regions.length === 0) return no('noRegion');
+  if (cfg.maxAgeHours > 0 && post.time) {
+    const t = Date.parse(post.time);
+    if (!isNaN(t) && Date.now() - t > cfg.maxAgeHours * 3600e3) return no('tooOld');
+  }
+  const out = { ...post, keywords: keywords.length ? keywords : [foundBy], regions, foundBy };
+  if (watched) out.watched = true;
+  return out;
+}
+
+/* ---------------- 推播 ---------------- */
+const escHtml = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+const { analyzePost, BIZ_RX } = require('./analyze');
+const LEVEL_ICON = { 高: '🔥', 中: '🌤', 低: '❄️' };
+function formatPost(p, cfg) {
+  const a = analyzePost(p);
+  const tags = [...p.keywords, ...p.regions].join('・');
+  const body = p.text.length > 300 ? p.text.slice(0, 300) + '…' : p.text;
+  const i = a.info;
+  const facts = [
+    i.city || i.district ? `📍${[i.city, i.district].filter(Boolean).join(' ')}` : '',
+    i.shop ? `🏪${i.shop}` : '',
+    i.price ? `💰${i.price}` : '',
+    i.area ? `📐${i.area}` : '',
+    i.rent ? `🏠租金${i.rent}` : '',
+    i.phone ? `📞${i.phone}` : '',
+    i.line ? `💬LINE ${i.line}` : '',
+    i.equip.length ? `🔧${i.equip.join('、')}` : '',
+  ].filter(Boolean).join('　');
+  const head = `${cfg && cfg.title ? `【${cfg.title}】\n` : ''}${LEVEL_ICON[a.intent.level]}${a.intent.level}意向｜${a.role}｜${a.cat}`;
+  return {
+    html: `${head}\n🔔 <b>脆新線索｜${escHtml(tags)}</b>\n👤 <a href="${p.authorUrl}">@${escHtml(p.user)}</a>${facts ? `\n${escHtml(facts)}` : ''}\n\n${escHtml(body)}\n\n🔗 <a href="${p.url}">開啟貼文</a>`,
+    plain: `${head}\n🔔 脆新線索｜${tags}\n👤 @${p.user}${facts ? `\n${facts}` : ''}\n\n${body}\n\n🔗 ${p.url}`,
+  };
+}
+
+async function sendTelegram(html, env) {
+  const token = env.TELEGRAM_BOT_TOKEN;
+  const ids = String(env.TELEGRAM_CHAT_ID || '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (!token || !ids.length) return false;
+  let ok = false;
+  for (const chat_id of ids) {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id, text: html, parse_mode: 'HTML', disable_web_page_preview: true }),
+    });
+    if (res.ok) ok = true; else console.warn('Telegram 失敗', res.status, await res.text());
+  }
+  return ok;
+}
+
+async function sendLine(plain, env) {
+  const token = env.LINE_CHANNEL_TOKEN;
+  const ids = String(env.LINE_TO || '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (!token || !ids.length) return false;
+  let ok = false;
+  for (const to of ids) {
+    const res = await fetch('https://api.line.me/v2/bot/message/push', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ to, messages: [{ type: 'text', text: plain.slice(0, 4900) }] }),
+    });
+    if (res.ok) ok = true; else console.warn('LINE 失敗', res.status, await res.text());
+  }
+  return ok;
+}
+
+async function notify({ html, plain }, env) {
+  const a = await sendTelegram(html, env).catch((e) => (console.warn(e.message), false));
+  const b = await sendLine(plain || html.replace(/<[^>]+>/g, ''), env).catch((e) => (console.warn(e.message), false));
+  return a || b;
+}
+
+/* ---------------- 關鍵字輪替：平均＋隨機 ----------------
+ * 從「最久沒被搜過」的 2N 個裡面隨機抽 N 個 → 每個詞被搜的次數會很平均，順序又不固定。
+ */
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function pickKeywords(cfg, doc) {
+  const must = cfg.mustKeywords || [];
+  const rest = (cfg.keywords || []).filter((k) => !must.includes(k));
+  const n = Math.max(0, Math.round(Number(cfg.keywordsPerScan ?? 4)));
+  if (n === 0 || n >= rest.length) return [...must, ...(cfg.kwOrder === 'random' ? shuffle([...rest]) : rest)];
+  if (cfg.kwOrder !== 'random') {   // 照順序輪流：每次接著上次的位置往下搜，一輪搜完才重來，不重複
+    const start = (Number(doc.kwCursor) || 0) % rest.length;
+    const pick = [];
+    for (let i = 0; i < n; i++) pick.push(rest[(start + i) % rest.length]);
+    doc.kwCursor = (start + n) % rest.length;
+    return [...must, ...pick];
+  }
+  const stats = doc.kwStats || {};
+  const ordered = shuffle([...rest]).sort((a, b) => ((stats[a] && stats[a].last) || 0) - ((stats[b] && stats[b].last) || 0));
+  return [...must, ...shuffle(ordered.slice(0, Math.min(rest.length, n * 2))).slice(0, n)];
+}
+
+// 加強地區：把「地區＋詞」輪流排進每次掃描（例：台北頂讓、新北餐飲設備）
+// 連續 3 次 0 則的組合先休息 3 天，把機會讓給有結果的
+const FOCUS_BASES = ['頂讓', '店面頂讓', '餐飲頂讓', '店面出租', '二手設備', '餐飲設備', '收店', '結束營業', '出清', '設備出清'];
+function focusCombos(cfg) {
+  const bases = (cfg.focusBases && cfg.focusBases.length ? cfg.focusBases : FOCUS_BASES).map((b) => String(b).split('+')[0].trim()).filter(Boolean);
+  const out = [];
+  for (const b of bases) for (const r of cfg.focusRegions || []) out.push(r + b);
+  return out;
+}
+function pickFocus(cfg, doc) {
+  const n = Math.max(0, Math.round(Number(cfg.focusPerScan ?? 4)));
+  const all = focusCombos(cfg);
+  if (!n || !all.length) return [];
+  const st = doc.kwStats || {};
+  const rest = (q) => { const x = st[q]; return x && (x.zero || 0) >= 3 && Date.now() - (x.last || 0) < 3 * 864e5; };
+  const ok = all.filter((q) => !rest(q));
+  const list = ok.length ? ok : all;
+  const start = (Number(doc.focusCursor) || 0) % list.length;
+  const pick = [];
+  for (let i = 0; i < Math.min(n, list.length); i++) pick.push(list[(start + i) % list.length]);
+  doc.focusCursor = (start + pick.length) % list.length;
+  return pick.map((q) => ({ kw: q, q, focus: true }));
+}
+
+// 預先排好「下一次」要搜的內容，存進 posts.json，控制台就能先看到
+function planQueries(cfg, doc) {
+  const regions = cfg.regions || [];
+  return pickKeywords(cfg, doc).map((kw) => {
+    const combo = regions.length && Math.random() < Number(cfg.comboChance ?? 0.5);
+    return { kw, q: combo ? `${kw} ${regions[Math.floor(Math.random() * regions.length)]}` : kw };
+  }).concat(pickFocus(cfg, doc));
+}
+function usePlan(cfg, doc) {
+  const plan = doc.nextPlan && Array.isArray(doc.nextPlan.items) ? doc.nextPlan.items : null;
+  if (!plan || !plan.length) return planQueries(cfg, doc);
+  const pool = new Set(cfg.allKeywords || []);
+  const focusOk = new Set(focusCombos(cfg));
+  const items = plan.filter((x) => x && (pool.has(x.kw) || (x.focus && focusOk.has(x.kw))));
+  if (!items.some((x) => x.focus)) items.push(...pickFocus(cfg, doc));
+  for (const m of cfg.mustKeywords || []) if (!items.some((x) => x.kw === m)) items.unshift({ kw: m, q: m });
+  return items.length ? items : planQueries(cfg, doc);
+}
+
+/* ---------------- 排程：亂數間隔＋尖峰時段（演算法在 analyze.js，與控制台共用） ---------------- */
+const SCHED = require('./analyze');
+const weightsOf = (doc, cfg) => SCHED.hourWeights((doc && doc.posts) || [], cfg.timezone);
+const restHours = (cfg, d = new Date(), doc) => SCHED.restHours(cfg, d, doc ? weightsOf(doc, cfg) : null);
+const inQuiet = (cfg, d = new Date(), doc) => SCHED.inQuiet(cfg, d, doc ? weightsOf(doc, cfg) : null);
+const pickNext = (cfg, from = Date.now(), doc) => SCHED.pickNext(cfg, from, doc ? weightsOf(doc, cfg) : null);
+function shouldScan(cfg, doc, now = new Date(), force = false) {
+  if (force) return { due: true, reason: '手動執行' };
+  if (!cfg.enabled) return { due: false, reason: '雷達已暫停' };
+  if (inQuiet(cfg, now, doc)) return { due: false, reason: `今天的休息時段（${restHours(cfg, now, doc).join('、')} 點）` };
+  const next = Date.parse(doc.nextScanAt || '');
+  if (next && now.getTime() < next - 60e3) return { due: false, reason: `還沒到時間，預計 ${doc.nextScanAt}` };
+  return { due: true, reason: '時間到了' };
+}
+
+/* ---------------- 主流程（方案 A / B 共用） ---------------- */
+async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), env = process.env, log = console.log }) {
+  if (env.DATA_KEY) log = quietLog(log);
+  const run = {
+    startedAt: new Date().toISOString(), finishedAt: null, status: 'ok',
+    scanned: 0, matched: 0, newCount: 0, notified: 0, perKeyword: {}, warnings: [],
+  };
+  const doc = store.getDoc();
+  const finish = () => {
+    run.finishedAt = new Date().toISOString();
+    if (run.status !== 'paused') {
+      const n = pickNext(cfg, Date.now(), doc);
+      doc.nextScanAt = n.at; run.nextInMinutes = n.minutes;
+      try { doc.nextPlan = { at: n.at, madeAt: new Date().toISOString(), items: planQueries(cfg, doc) }; } catch (e) { doc.nextPlan = null; }
+      log(`下次掃描：約 ${n.minutes} 分鐘後${n.peak > 0.6 ? '（尖峰時段）' : ''}`);
+    }
+    try {
+      if (!doc.archivedSeed) { store.archive(doc.posts || [], cfg.timezone); doc.archivedSeed = true; }
+      store.archive(run._new || [], cfg.timezone);
+      store.addStats(run, run._new || [], cfg.timezone);
+    } catch (e) { log('資料庫寫入失敗：' + e.message); }
+    delete run._new;
+    doc.lastRun = run;
+    doc.runs = [run, ...(doc.runs || [])].slice(0, cfg.maxStoredRuns || 300);
+    store.saveDoc(doc);
+    return run;
+  };
+
+  if (!cfg.enabled) { run.status = 'paused'; log('監控已暫停'); return finish(); }
+  if (!cfg.allKeywords.length) { run.status = 'warn'; run.warnings.push('沒有設定關鍵字'); return finish(); }
+  const planned = usePlan(cfg, doc);
+  const thisRun = planned.map((x) => x.kw);
+  const qOf = new Map(planned.map((x) => [x.kw, x.q]));
+  run.keywordsUsed = thisRun;
+  doc.kwStats = doc.kwStats || {};
+  log(`這次搜尋：${thisRun.join('、')}`);
+
+  const seen = store.getSeen();
+  const firstRun = seen.size === 0 && cfg.firstRunSilent;
+  const scannedItems = [];
+  let loginWall = false;
+
+  const browser = await chromium.launch({ headless: true });
+  const fresh = new Map();
+  run.queries = [];
+  try {
+    const context = await browser.newContext({
+      locale: 'zh-TW', timezoneId: 'Asia/Taipei', viewport: { width: 1280, height: 900 },
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+    });
+    const cookies = parseCookies(env.THREADS_COOKIES);
+    if (cookies.length) { await context.addCookies(cookies); run.loginMode = 'login'; }
+    else run.loginMode = 'guest';   // 不登入模式（刻意選擇，不算警告）
+    const page = await context.newPage();
+
+    /* ① 搜尋：關鍵字（有機率加上一個地區一起搜） */
+    const regions = cfg.regions || [];
+    const tStart = Date.now(), budget = Math.max(3, Number(cfg.maxScanMinutes) || 10) * 60e3;
+    for (const kw of thisRun) {
+      // 時間保護：GitHub 一次最多跑 15 分鐘，搜太久就先停，剩下的下次再搜，已抓到的線索不會不見
+      if (Date.now() - tStart > budget) { run.warnings.push(`搜尋時間超過 ${Math.round(budget / 60e3)} 分鐘，剩下 ${thisRun.length - run.queries.length} 個關鍵字留到下次`); if (cfg.kwOrder !== 'random') doc.kwCursor = Math.max(0, (Number(doc.kwCursor) || 0) - (thisRun.length - run.queries.length)); break; }
+      const st = doc.kwStats[kw] || (doc.kwStats[kw] = { count: 0, last: 0, scanned: 0, leads: 0 });
+      st.count++; st.last = Date.now();
+      const query = qOf.get(kw) || kw;
+      run.queries.push(query);
+      try {
+        let r = await scrapeKeyword(page, query, { scrolls: cfg.scrollsPerKeyword }); let usedQ = query;
+        if (!r.items.length && query !== kw) { log(`「${query}」沒結果，改搜「${kw}」`); r = await scrapeKeyword(page, kw, { scrolls: cfg.scrollsPerKeyword }); usedQ = kw; run.queries[run.queries.length - 1] = `${query}→${kw}`; }
+        run.perKeyword[kw] = (run.perKeyword[kw] > 0 ? run.perKeyword[kw] : 0) + r.items.length;
+        st.scanned = (st.scanned || 0) + r.items.length;
+        st.zero = r.items.length ? 0 : (st.zero || 0) + 1;
+        if (r.loginWall) loginWall = true;
+        for (const it of r.items) scannedItems.push({ it, kw, q: usedQ });
+        log(`「${query}」抓到 ${r.items.length} 則`);
+      } catch (e) {
+        run.perKeyword[kw] = run.perKeyword[kw] > 0 ? run.perKeyword[kw] : -1;
+        run.warnings.push(`「${query}」失敗：${e.message.split('\n')[0]}`);
+      }
+      await sleep(rand(3000, 6000));
+    }
+
+    /* ①-2 關注帳號：輪流看個人頁（最久沒看的優先） */
+    const nWatch = Math.max(0, Math.round(Number(cfg.watchPerScan ?? 1)));
+    if (nWatch && cfg.watchUsers.length) {
+      doc.watchStats = doc.watchStats || {};
+      const order = [...cfg.watchUsers].sort((a, b) => ((doc.watchStats[a] || {}).last || 0) - ((doc.watchStats[b] || {}).last || 0));
+      for (const u of order.slice(0, nWatch)) {
+        const ws = doc.watchStats[u] || (doc.watchStats[u] = { count: 0, last: 0, leads: 0 });
+        ws.count++; ws.last = Date.now();
+        try {
+          await page.goto(`${BASE_URL}/@${encodeURIComponent(u)}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+          try { await page.waitForSelector('a[href*="/post/"]', { timeout: 15000 }); } catch { /* 可能沒貼文 */ }
+          await page.mouse.wheel(0, 1800); await page.waitForTimeout(rand(1200, 2000));
+          const items = (await page.evaluate(extractInPage)).filter((it) => normUser(it.user) === u);
+          for (const it of items) scannedItems.push({ it, kw: '@' + u, q: '@' + u });
+          run.perKeyword['@' + u] = items.length;
+          log(`關注帳號 @${u} 抓到 ${items.length} 則`);
+        } catch (e) { run.warnings.push(`關注帳號 @${u} 失敗：${e.message.split('\n')[0]}`); }
+        await sleep(rand(3000, 6000));
+      }
+    }
+
+    /* ② 過濾出新的線索 */
+    const drop = (run.drop = { seen: 0, dup: 0 });
+    for (const { it, kw, q } of scannedItems) {
+      if (seen.has(it.url)) { drop.seen++; continue; }
+      if (fresh.has(it.url)) { drop.dup++; continue; }
+      const m = matchPost(it, cfg, kw, drop);
+      if (m) fresh.set(it.url, { ...m, foundQuery: q || kw, foundAt: new Date().toISOString() });
+    }
+
+    /* ③ 點進新線索看完整內容（搜尋頁常被截斷） */
+    const maxDetail = Math.max(0, Number(cfg.detailFetchMax ?? 6));
+    let fetched = 0;
+    for (const p of [...fresh.values()].slice(0, maxDetail)) {
+      try {
+        await page.goto(p.url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+        try { await page.waitForSelector('a[href*="/post/"]', { timeout: 12000 }); } catch { /* 略過 */ }
+        await page.waitForTimeout(rand(800, 1600));
+        const items = await page.evaluate(extractInPage);
+        const full = items.find((x) => x.code === p.code);
+        if (full && full.text && full.text.length > (p.text || '').length) {
+          const again = matchPost({ ...p, text: full.text, time: full.time || p.time }, cfg, p.foundBy);
+          if (!again) { fresh.delete(p.url); log(`完整內容含排除字詞，略過：${p.url}`); }
+          else fresh.set(p.url, { ...p, text: full.text, time: full.time || p.time, regions: again.regions, keywords: again.keywords, full: true });
+        }
+        fetched++;
+      } catch (e) { log(`開啟貼文失敗：${e.message.split('\n')[0]}`); }
+      await sleep(rand(2000, 4000));
+    }
+    run.detailFetched = fetched;
+  } finally {
+    await browser.close();
+  }
+
+  run.scanned = scannedItems.length;
+  if (loginWall && run.loginMode === 'login') { run.status = 'warn'; run.warnings.push('Threads 要求登入，THREADS_COOKIES 可能已失效'); }
+
+  scannedItems.forEach(({ it }) => seen.add(it.url));
+  const newPosts = [...fresh.values()].sort((a, b) => (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0));
+  newPosts.forEach((p) => {
+    const st = doc.kwStats[p.foundBy]; if (st) st.leads = (st.leads || 0) + 1;
+    const ws = doc.watchStats && doc.watchStats[String(p.foundBy).replace(/^@/, '')]; if (ws) ws.leads = (ws.leads || 0) + 1;
+  });
+  run.matched = run.newCount = newPosts.length;
+  run._new = newPosts;
+  run.newUrls = newPosts.map((p) => p.url);
+
+  run.pushMode = cfg.notifyTelegram === false ? 'off' : 'on';
+  if (cfg.notifyTelegram === false) {
+    log('推播已關閉：線索只存進控制台');
+    if (firstRun) newPosts.forEach((p) => (p.initial = true));
+  } else if (firstRun) {
+    newPosts.forEach((p) => (p.initial = true));
+    await notify({
+      html: `✅ <b>小球脆雷達已啟動</b>\n已記錄目前 ${newPosts.length} 則符合的舊貼文（不逐則推播），之後的新貼文會即時通知你。`,
+    }, env);
+  } else {
+    for (const p of newPosts.slice(0, cfg.maxNotifyPerRun)) {
+      if (await notify(formatPost(p, cfg), env)) run.notified++;
+      await sleep(1100);
+    }
+    const rest = newPosts.length - cfg.maxNotifyPerRun;
+    if (rest > 0) await notify({ html: `📋 還有 <b>${rest}</b> 則新線索，請到控制台查看。` }, env);
+  }
+
+  if (run.status === 'warn' && cfg.notifyErrors) {
+    const last = Date.parse(doc.lastWarnAt) || 0;
+    if (Date.now() - last > 6 * 3600e3) {
+      await notify({ html: `⚠️ <b>小球脆雷達警告</b>\n${escHtml(run.warnings.join('\n'))}` }, env);
+      doc.lastWarnAt = new Date().toISOString();
+    }
+  }
+
+  doc.posts = [...newPosts, ...(doc.posts || [])].slice(0, cfg.maxStoredPosts);
+  store.saveSeen(seen);
+  log(`完成：掃描 ${run.scanned}、新線索 ${run.newCount}、推播 ${run.notified}`);
+  return finish();
+}
+
+async function sendTestNotification(env = process.env) {
+  const ok = await notify({
+    html: '🧪 <b>小球脆雷達測試通知</b>\n如果你看到這則訊息，代表推播設定成功！',
+  }, env);
+  if (!ok) throw new Error('推播失敗：請檢查 TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID（或 LINE 設定）');
+  return ok;
+}
+
+/* ---------------- 📣 發文排程：時間到提醒（半自動）／官方 API 自動發文（之後啟用） ---------------- */
+async function threadsPublish(it, env, log) {
+  const base = 'https://graph.threads.net/v1.0', uidT = env.THREADS_USER_ID, tok = env.THREADS_TOKEN;
+  const repo = env.GITHUB_REPOSITORY || '';
+  const urlOf = (p) => `https://raw.githubusercontent.com/${repo}/${env.GITHUB_REF_NAME || 'main'}/${p}`;
+  const post = async (path, params) => {
+    const r = await fetch(`${base}${path}`, { method: 'POST', body: new URLSearchParams({ ...params, access_token: tok }) });
+    const j = await r.json().catch(() => ({})); if (!r.ok || !j.id) throw new Error((j.error && j.error.message) || `HTTP ${r.status}`); return j.id;
+  };
+  const text = (it.text || '').trim() + (it.topic ? `\n#${String(it.topic).replace(/^#/, '')}` : '');
+  const imgs = (it.images || []).filter((x) => x.path).slice(0, 10);
+  let creation;
+  if (!imgs.length) creation = await post(`/${uidT}/threads`, { media_type: 'TEXT', text });
+  else if (imgs.length === 1) creation = await post(`/${uidT}/threads`, { media_type: 'IMAGE', image_url: urlOf(imgs[0].path), text });
+  else {
+    const kids = []; for (const im of imgs) kids.push(await post(`/${uidT}/threads`, { media_type: 'IMAGE', image_url: urlOf(im.path), is_carousel_item: 'true' }));
+    creation = await post(`/${uidT}/threads`, { media_type: 'CAROUSEL', children: kids.join(','), text });
+  }
+  await sleep(30000);   // 官方建議等約 30 秒再發布
+  const id = await post(`/${uidT}/threads_publish`, { creation_id: creation });
+  log(`🤖 已自動發文：${id}`); return id;
+}
+async function handleOutbox({ cfg, store, env = process.env, log = console.log }) {
+  if (env.DATA_KEY) log = quietLog(log);
+  const dir = path.dirname(store.postsFile);
+  const out = readJson(path.join(dir, 'outbox.json'), null); if (!out || !Array.isArray(out.items)) return;
+  const stFile = path.join(dir, 'outbox-state.json');
+  const st = readJson(stFile, { reminded: {}, published: {} }); st.reminded = st.reminded || {}; st.published = st.published || {};
+  const now = Date.now(); let changed = false;
+  const repo = env.GITHUB_REPOSITORY || ''; const panel = repo ? `https://${repo.split('/')[0]}.github.io/${repo.split('/')[1]}/` : '';
+  for (const it of out.items) {
+    if (it.deleted || it.status !== 'scheduled' || !it.planAt || Date.parse(it.planAt) > now || st.published[it.id]) continue;
+    if (it.mode === 'auto' && cfg.threadsAuto && env.THREADS_TOKEN && env.THREADS_USER_ID) {
+      try { const id = await threadsPublish(it, env, log); st.published[it.id] = { at: new Date().toISOString(), threadsId: id }; changed = true;
+        await sendTelegram(`🤖 <b>已自動發文</b>｜${escHtml(it.cat || '')}\n\n${escHtml((it.text || '').slice(0, 300))}`, env).catch(() => {}); }
+      catch (e) { log('自動發文失敗：' + e.message); if (!st.reminded[it.id]) { st.reminded[it.id] = new Date().toISOString(); changed = true;
+        await sendTelegram(`⚠️ <b>自動發文失敗，請手動發</b>（${escHtml(e.message)}）\n\n${escHtml((it.text || '').slice(0, 300))}${panel ? `\n\n👉 <a href="${panel}">打開控制台 → 發文</a>` : ''}`, env).catch(() => {}); } }
+      continue;
+    }
+    if (st.reminded[it.id]) continue;
+    const ok = await sendTelegram(`⏰ <b>該發文了｜${escHtml(it.cat || '貼文')}</b>${(it.images || []).length ? `（📷 ${it.images.length} 張）` : ''}\n\n${escHtml((it.text || '').slice(0, 600))}${it.topic ? `\n#${escHtml(it.topic)}` : ''}${panel ? `\n\n👉 <a href="${panel}">打開控制台 → 發文 → 📤 發文</a>` : ''}`, env).catch(() => false);
+    st.reminded[it.id] = new Date().toISOString(); changed = true; log(`⏰ 發文提醒：${it.id}${ok ? '' : '（Telegram 沒送出）'}`);
+  }
+  if (changed) writeJson(stFile, st);
+}
+
+module.exports = {
+  readJson, writeJson, seal, unseal, isSealed, VaultError, sealAll,
+  handleOutbox, threadsPublish,
+  planQueries, usePlan, applyKwRules, regionsOf, focusCombos, pickFocus,
+  DEFAULT_CONFIG, loadConfig, normUser, FileStore, parseCookies, extractInPage, scrapeKeyword,
+  matchPost, formatPost, notify, runScan, sendTestNotification, shouldScan, inQuiet, pickNext, restHours, pickKeywords,
+};
