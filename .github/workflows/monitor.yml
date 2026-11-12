@@ -65,6 +65,9 @@ jobs:
           LINE_CHANNEL_TOKEN: ${{ secrets.LINE_CHANNEL_TOKEN }}
           LINE_TO: ${{ secrets.LINE_TO }}
           DATA_KEY: ${{ secrets.DATA_KEY }}
+          OFFICE_URL: ${{ secrets.OFFICE_URL }}
+          OFFICE_KEY: ${{ secrets.OFFICE_KEY }}
+          OFFICE_WS: ${{ secrets.OFFICE_WS }}
 
       - name: Save
         if: always() && steps.gate.outputs.due == 'true'
