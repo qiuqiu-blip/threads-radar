@@ -418,8 +418,37 @@ async function notify({ html, plain }, env) {
  * 新線索先交給 AI 辦公室的「線索篩選員」評分：有用的由辦公室推到 Telegram（附 👍👎），沒用的進剔除區。
  * 辦公室連不上時，自動改回原本的直接推播，線索不會漏掉。
  */
+function officeBase(env) { return String(env.OFFICE_URL || '').trim().replace(/[\s\u200b]+/g, '').replace(/\/+$/, '').replace(/\/api\/.*$/, ''); }
+function officeWhy(e, res, j) {
+  if (res) {
+    if (res.status === 401) return '辦公室密碼不對：請檢查 GitHub 的 OFFICE_KEY 跟雲端大腦的 OFFICE_KEY 是否一模一樣';
+    if (res.status === 404) return '雲端大腦找不到收件入口：請確認 qiu-office-cloud 已經換成 v1.2，而且 OFFICE_URL 填的是雲端大腦（不是辦公室網頁）';
+    if (res.status === 403) return '被 Cloudflare 擋下（403）：請把 OFFICE_URL 改成 workers.dev 網址';
+    return `雲端大腦回應錯誤 ${res.status}：${String((j && j.error) || '').slice(0, 80)}`;
+  }
+  const c = (e && e.cause && (e.cause.code || e.cause.message)) || '';
+  if (e && e.name === 'AbortError') return '等太久沒回應（逾時）';
+  if (/ENOTFOUND|EAI_AGAIN/.test(c)) return '找不到這個網址（OFFICE_URL 可能打錯字）';
+  if (/Invalid URL|ERR_INVALID_URL/i.test(String(e && e.message) + c)) return 'OFFICE_URL 格式不對（要 https:// 開頭）';
+  return `${(e && e.message) || e}${c ? '（' + c + '）' : ''}`.slice(0, 120);
+}
+async function officeCheck(env, log) {
+  const base = officeBase(env);
+  if (!base && !env.OFFICE_KEY) return;
+  if (!base) return log('AI 辦公室：GitHub 沒有設定 OFFICE_URL');
+  if (!env.OFFICE_KEY) return log('AI 辦公室：GitHub 沒有設定 OFFICE_KEY');
+  if (!/^https:\/\//.test(base)) return log(`AI 辦公室：OFFICE_URL 要 https:// 開頭（現在開頭是「${base.slice(0, 8).replace(/[^\w:/.-]/g, '?')}」）`);
+  let res, j;
+  try {
+    const ac = new AbortController(); const t = setTimeout(() => ac.abort(), 20000);
+    res = await fetch(`${base}/api/leads?ws=${encodeURIComponent(env.OFFICE_WS || 'main')}`, { headers: { 'X-Office-Key': env.OFFICE_KEY }, signal: ac.signal });
+    clearTimeout(t); j = await res.json().catch(() => ({}));
+    if (res.ok) return log(`AI 辦公室：連線正常 ✅（辦公室已收到 ${(j.stats && j.stats.in) || 0} 則）`);
+    log('AI 辦公室連線檢查失敗：' + officeWhy(null, res, j));
+  } catch (e) { log('AI 辦公室連線檢查失敗：' + officeWhy(e)); }
+}
 async function sendToOffice(posts, cfg, env, log, silent) {
-  const base = String(env.OFFICE_URL || '').trim().replace(/\/+$/, '');
+  const base = officeBase(env);
   if (!base || !env.OFFICE_KEY || cfg.aiScreen === false || !posts.length) return false;
   try {
     const body = {
@@ -435,10 +464,10 @@ async function sendToOffice(posts, cfg, env, log, silent) {
     });
     clearTimeout(timer);
     const j = await res.json().catch(() => ({}));
-    if (!res.ok) { log(`AI 辦公室收件失敗（${String(j.error || res.status).slice(0, 60)}），改用原本的推播`); return false; }
+    if (!res.ok) { log(`AI 辦公室收件失敗：${officeWhy(null, res, j)}。改用原本的推播`); return false; }
     log(`已送 ${posts.length} 則到 AI 辦公室篩選（新收 ${j.queued} 則）`);
     return true;
-  } catch (e) { log('AI 辦公室連不上，改用原本的推播'); return false; }
+  } catch (e) { log(`AI 辦公室連不上：${officeWhy(e)}。改用原本的推播`); return false; }
 }
 
 /* ---------------- 關鍵字輪替：平均＋隨機 ----------------
@@ -523,6 +552,7 @@ function shouldScan(cfg, doc, now = new Date(), force = false) {
 /* ---------------- 主流程（方案 A / B 共用） ---------------- */
 async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), env = process.env, log = console.log }) {
   if (env.DATA_KEY) log = quietLog(log);
+  try { await officeCheck(env, log); } catch (e) { /* 不影響掃描 */ }
   const run = {
     startedAt: new Date().toISOString(), finishedAt: null, status: 'ok',
     scanned: 0, matched: 0, newCount: 0, notified: 0, perKeyword: {}, warnings: [],
@@ -758,7 +788,7 @@ async function handleOutbox({ cfg, store, env = process.env, log = console.log }
 }
 
 module.exports = {
-  sendToOffice,
+  sendToOffice, officeCheck,
   readJson, writeJson, seal, unseal, isSealed, VaultError, sealAll,
   handleOutbox, threadsPublish,
   planQueries, usePlan, applyKwRules, regionsOf, focusCombos, pickFocus,
