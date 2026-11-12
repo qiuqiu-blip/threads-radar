@@ -414,6 +414,33 @@ async function notify({ html, plain }, env) {
   return a || b;
 }
 
+/* ---------------- 送到 AI 辦公室篩選（有設定 OFFICE_URL / OFFICE_KEY 才會用） ----------------
+ * 新線索先交給 AI 辦公室的「線索篩選員」評分：有用的由辦公室推到 Telegram（附 👍👎），沒用的進剔除區。
+ * 辦公室連不上時，自動改回原本的直接推播，線索不會漏掉。
+ */
+async function sendToOffice(posts, cfg, env, log, silent) {
+  const base = String(env.OFFICE_URL || '').trim().replace(/\/+$/, '');
+  if (!base || !env.OFFICE_KEY || cfg.aiScreen === false || !posts.length) return false;
+  try {
+    const body = {
+      from: cfg.title || '脆雷達', silent: !!silent,
+      posts: posts.map((p) => {
+        let rule = null; try { const a = analyzePost(p); rule = { level: a.intent.level, role: a.role, cat: a.cat }; } catch (e) { /* 略過 */ }
+        return { url: p.url, user: p.user, authorUrl: p.authorUrl, text: p.text, time: p.time, regions: p.regions, keywords: p.keywords, rule };
+      }),
+    };
+    const ac = new AbortController(); const timer = setTimeout(() => ac.abort(), 25000);
+    const res = await fetch(`${base}/api/leads?ws=${encodeURIComponent(env.OFFICE_WS || 'main')}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Office-Key': env.OFFICE_KEY }, body: JSON.stringify(body), signal: ac.signal,
+    });
+    clearTimeout(timer);
+    const j = await res.json().catch(() => ({}));
+    if (!res.ok) { log(`AI 辦公室收件失敗（${String(j.error || res.status).slice(0, 60)}），改用原本的推播`); return false; }
+    log(`已送 ${posts.length} 則到 AI 辦公室篩選（新收 ${j.queued} 則）`);
+    return true;
+  } catch (e) { log('AI 辦公室連不上，改用原本的推播'); return false; }
+}
+
 /* ---------------- 關鍵字輪替：平均＋隨機 ----------------
  * 從「最久沒被搜過」的 2N 個裡面隨機抽 N 個 → 每個詞被搜的次數會很平均，順序又不固定。
  */
@@ -642,7 +669,10 @@ async function runScan({ chromium, cfg = loadConfig(), store = new FileStore(), 
   run.newUrls = newPosts.map((p) => p.url);
 
   run.pushMode = cfg.notifyTelegram === false ? 'off' : 'on';
-  if (cfg.notifyTelegram === false) {
+  const viaOffice = !firstRun && newPosts.length ? await sendToOffice(newPosts, cfg, env, log, cfg.notifyTelegram === false) : false;
+  if (viaOffice) {
+    run.office = newPosts.length;   // 交給 AI 辦公室篩選，有用的由辦公室推播
+  } else if (cfg.notifyTelegram === false) {
     log('推播已關閉：線索只存進控制台');
     if (firstRun) newPosts.forEach((p) => (p.initial = true));
   } else if (firstRun) {
@@ -728,6 +758,7 @@ async function handleOutbox({ cfg, store, env = process.env, log = console.log }
 }
 
 module.exports = {
+  sendToOffice,
   readJson, writeJson, seal, unseal, isSealed, VaultError, sealAll,
   handleOutbox, threadsPublish,
   planQueries, usePlan, applyKwRules, regionsOf, focusCombos, pickFocus,
